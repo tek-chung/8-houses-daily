@@ -1,0 +1,30 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "8-houses-daily",
+  "compatibility_date": "2026-09-01",
+
+  // An assets-only Worker: no `main`, no script, nothing to execute. The paper is
+  // static HTML and stays that way — spec §3 rules out runtime intelligence, and
+  // §2 A4 rules out anything that can be abused or run up a bill.
+  //
+  // Cloudflare's guidance since Workers gained native static-asset serving is to
+  // start new projects here rather than on Pages. Pages still works and is not
+  // deprecated, but their investment has moved.
+  "assets": {
+    "directory": "./dist",
+
+    // Pages are built as /about/index.html, /role/{id}/index.html and so on, so
+    // a request for /about/ must resolve to the index inside it. This is the
+    // default, set explicitly because the whole URL scheme depends on it.
+    "html_handling": "auto-trailing-slash",
+
+    // site/build.py writes dist/404.html. Without this a missing page returns a
+    // bare Cloudflare error instead of the paper's own "No such page in this
+    // edition".
+    "not_found_handling": "404-page"
+  },
+
+  "observability": {
+    "enabled": true
+  }
+}

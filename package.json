@@ -2,6 +2,13 @@
   "name": "eight-houses-daily",
   "private": true,
   "description": "Browser-side smoke tests. The Python suite cannot execute the page, and two serious bugs hid behind each other because of it.",
-  "devDependencies": { "jsdom": "^24.0.0" },
-  "scripts": { "smoke": "node site/js/smoke.js" }
+  "devDependencies": {
+    "jsdom": "^24.0.0",
+    "wrangler": "^4"
+  },
+  "scripts": {
+    "smoke": "node site/js/smoke.js",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
+  }
 }
