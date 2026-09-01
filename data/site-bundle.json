@@ -1,0 +1,624 @@
+{
+ "orgs": {
+  "depaul-uk": {
+   "n": "Depaul UK",
+   "u": "https://www.depaul.org.uk/nightstop-volunteer/",
+   "w": "https://www.depaul.org.uk/",
+   "cn": null,
+   "a": [
+    "depaul",
+    "nightstop",
+    "nightstop london"
+   ],
+   "b": []
+  },
+  "glass-door": {
+   "n": "Glass Door Homeless Charity",
+   "u": "https://www.glassdoor.org.uk/listing/category/volunteer-roles",
+   "w": "https://www.glassdoor.org.uk/",
+   "cn": "1083203",
+   "a": [
+    "glass door",
+    "glassdoor homeless"
+   ],
+   "b": [
+    "Wandsworth",
+    "Hammersmith and Fulham",
+    "Kensington and Chelsea",
+    "Lambeth"
+   ]
+  },
+  "handson-london": {
+   "n": "HandsOn London",
+   "u": "https://www.handsonlondon.org.uk/volunteer",
+   "w": "https://www.handsonlondon.org.uk/",
+   "cn": "1140291",
+   "a": [
+    "handson",
+    "hands on london",
+    "wrap up london",
+    "brighten up london"
+   ],
+   "b": []
+  },
+  "manna-society": {
+   "n": "Manna Society",
+   "u": "https://www.mannasociety.org.uk/how-you-can-help/volunteer-time/",
+   "w": "https://www.mannasociety.org.uk/",
+   "cn": "294691",
+   "a": [
+    "manna",
+    "the manna",
+    "manna day centre"
+   ],
+   "b": [
+    "Southwark"
+   ]
+  },
+  "whitechapel-mission": {
+   "n": "The Whitechapel Mission",
+   "u": "https://whitechapel.org.uk/volunteering",
+   "w": "https://whitechapel.org.uk/",
+   "cn": "227905",
+   "a": [
+    "whitechapel",
+    "whitechapel mission"
+   ],
+   "b": [
+    "Tower Hamlets"
+   ]
+  }
+ },
+ "opps": [
+  {
+   "id": "depaul-uk-nightstop-host",
+   "org_id": "depaul-uk",
+   "title": "Nightstop Host",
+   "what_youd_do": "Give a young person with nowhere to go a spare room for the night, an evening meal, breakfast and a packed lunch to leave with.",
+   "commitment": "long_term",
+   "min_term_months": null,
+   "typical_shift_hours": 14,
+   "when": [
+    "overnight"
+   ],
+   "specific_times": "Nights you pick yourself, on a flexible rota",
+   "activity": "hosting",
+   "location_type": "own_home",
+   "postcode_district": null,
+   "who_can_apply": "individual",
+   "screening": {
+    "dbs": "required_unspecified",
+    "references": null,
+    "interview": true,
+    "min_age": null,
+    "induction": "Home visit, DBS check and training on youth homelessness, boundaries and safeguarding"
+   },
+   "skills": [
+    "a spare room"
+   ],
+   "seasonal_window": null,
+   "next_intake": null,
+   "status": "open",
+   "apply_url": "https://www.depaul.org.uk/nightstop-volunteer/",
+   "url_specificity": "role",
+   "coords": null,
+   "provenance": {
+    "extracted_at": "2026-08-25T00:00:00+00:00",
+    "method": "human",
+    "reviewed_by_human": true,
+    "confidence": 1.0,
+    "source_url": "https://www.depaul.org.uk/nightstop-faqs/",
+    "verified_fields": [
+     "screening.dbs",
+     "screening.interview",
+     "screening.induction",
+     "activity",
+     "location_type",
+     "specific_times"
+    ],
+    "unsupported_fields": [
+     "screening.min_age",
+     "min_term_months"
+    ]
+   }
+  },
+  {
+   "id": "depaul-uk-nightstop-driver",
+   "org_id": "depaul-uk",
+   "title": "Nightstop Driver",
+   "what_youd_do": "Drive or travel with a young person to the host who is putting them up, and keep them company on what is usually a bad day.",
+   "commitment": "flexible",
+   "min_term_months": null,
+   "typical_shift_hours": 2,
+   "when": [
+    "weekday_evening",
+    "weekend_evening"
+   ],
+   "specific_times": "Evenings, as and when you're free",
+   "activity": "befriending",
+   "location_type": "in_person",
+   "postcode_district": null,
+   "who_can_apply": "individual",
+   "screening": {
+    "dbs": "required_unspecified",
+    "references": null,
+    "interview": null,
+    "min_age": null,
+    "induction": "Full training and ongoing support"
+   },
+   "skills": [
+    "driving"
+   ],
+   "seasonal_window": null,
+   "next_intake": null,
+   "status": "open",
+   "apply_url": "https://www.depaul.org.uk/nightstop-volunteer/",
+   "url_specificity": "role",
+   "coords": null,
+   "provenance": {
+    "extracted_at": "2026-08-25T00:00:00+00:00",
+    "method": "human",
+    "reviewed_by_human": true,
+    "confidence": 0.8,
+    "source_url": "https://www.depaul.org.uk/nightstop-volunteer/",
+    "verified_fields": [
+     "screening.dbs",
+     "activity"
+    ],
+    "unsupported_fields": [
+     "typical_shift_hours",
+     "screening.min_age",
+     "specific_times"
+    ]
+   }
+  },
+  {
+   "id": "glass-door-winter-night-shelter",
+   "org_id": "glass-door",
+   "title": "Winter Night Shelter Volunteer",
+   "what_youd_do": "Help set up a church-hall shelter for the evening, cook and serve a hot meal, and welcome guests as they arrive.",
+   "commitment": "weekly",
+   "min_term_months": null,
+   "typical_shift_hours": 3,
+   "when": [
+    "weekday_evening",
+    "weekend_evening"
+   ],
+   "specific_times": "Around 6pm to 9pm, the same evening each week, early November to April",
+   "activity": "cooking_serving",
+   "location_type": "in_person",
+   "postcode_district": null,
+   "who_can_apply": "individual",
+   "screening": {
+    "dbs": "unknown",
+    "references": null,
+    "interview": null,
+    "min_age": null,
+    "induction": "Supported by a volunteer coordinator; chance to complete Level 2 Food Safety and Hygiene"
+   },
+   "skills": [],
+   "seasonal_window": {
+    "start_month": 11,
+    "end_month": 4
+   },
+   "next_intake": null,
+   "status": "seasonal_closed",
+   "apply_url": "https://www.glassdoor.org.uk/forms/express-your-interest-in-volunteering-with-glass-door",
+   "url_specificity": "org_volunteer_page",
+   "coords": null,
+   "provenance": {
+    "extracted_at": "2026-08-25T00:00:00+00:00",
+    "method": "human",
+    "reviewed_by_human": true,
+    "confidence": 1.0,
+    "source_url": "https://www.glassdoor.org.uk/winter-night-shelter-volunteers",
+    "verified_fields": [
+     "status",
+     "specific_times",
+     "seasonal_window",
+     "typical_shift_hours"
+    ],
+    "unsupported_fields": [
+     "screening.dbs",
+     "screening.min_age",
+     "postcode_district"
+    ]
+   }
+  },
+  {
+   "id": "glass-door-drop-in-support",
+   "org_id": "glass-door",
+   "title": "Drop-in Centre Support",
+   "what_youd_do": "Support caseworkers at partner day centres where guests come for advice and practical help.",
+   "commitment": "flexible",
+   "min_term_months": null,
+   "typical_shift_hours": null,
+   "when": [
+    "flexible"
+   ],
+   "specific_times": null,
+   "activity": "advice",
+   "location_type": "in_person",
+   "postcode_district": null,
+   "who_can_apply": "individual",
+   "screening": {
+    "dbs": "unknown",
+    "references": null,
+    "interview": null,
+    "min_age": null,
+    "induction": null
+   },
+   "skills": [],
+   "seasonal_window": null,
+   "next_intake": null,
+   "status": "unknown",
+   "apply_url": "https://www.glassdoor.org.uk/forms/express-your-interest-in-volunteering-with-glass-door",
+   "url_specificity": "org_volunteer_page",
+   "coords": null,
+   "provenance": {
+    "extracted_at": "2026-08-25T00:00:00+00:00",
+    "method": "human",
+    "reviewed_by_human": true,
+    "confidence": 0.4,
+    "source_url": "https://www.glassdoor.org.uk/listing/category/volunteer-roles",
+    "verified_fields": [
+     "activity"
+    ],
+    "unsupported_fields": [
+     "status",
+     "specific_times",
+     "typical_shift_hours",
+     "screening.dbs",
+     "screening.min_age"
+    ]
+   }
+  },
+  {
+   "id": "glass-door-lived-experience-group",
+   "org_id": "glass-door",
+   "title": "Lived Experience Group",
+   "what_youd_do": "Use your own experience of homelessness to shape how services are run and help the people coming through now.",
+   "commitment": "flexible",
+   "min_term_months": null,
+   "typical_shift_hours": null,
+   "when": [
+    "flexible"
+   ],
+   "specific_times": null,
+   "activity": "advice",
+   "location_type": "hybrid",
+   "postcode_district": null,
+   "who_can_apply": "individual",
+   "screening": {
+    "dbs": "unknown",
+    "references": null,
+    "interview": null,
+    "min_age": null,
+    "induction": null
+   },
+   "skills": [
+    "lived experience of homelessness"
+   ],
+   "seasonal_window": null,
+   "next_intake": null,
+   "status": "unknown",
+   "apply_url": "https://www.glassdoor.org.uk/lived-experience-group",
+   "url_specificity": "role",
+   "coords": null,
+   "provenance": {
+    "extracted_at": "2026-08-25T00:00:00+00:00",
+    "method": "human",
+    "reviewed_by_human": true,
+    "confidence": 0.4,
+    "source_url": "https://www.glassdoor.org.uk/lived-experience-group",
+    "verified_fields": [],
+    "unsupported_fields": [
+     "status",
+     "specific_times",
+     "typical_shift_hours",
+     "screening.dbs",
+     "screening.min_age"
+    ]
+   }
+  },
+  {
+   "id": "handson-london-wrap-up-london",
+   "org_id": "handson-london",
+   "title": "Wrap Up London Coat Collection",
+   "what_youd_do": "Spend a few hours at a Tube station \u2014 King's Cross, Liverpool Street, Moorgate, Waterloo or London Bridge \u2014 taking donated winter coats from commuters.",
+   "commitment": "one_off",
+   "min_term_months": null,
+   "typical_shift_hours": null,
+   "when": [
+    "weekday_daytime",
+    "weekday_evening"
+   ],
+   "specific_times": "November into early December",
+   "activity": "fundraising",
+   "location_type": "in_person",
+   "postcode_district": null,
+   "who_can_apply": "either",
+   "screening": {
+    "dbs": "unknown",
+    "references": null,
+    "interview": null,
+    "min_age": null,
+    "induction": null
+   },
+   "skills": [],
+   "seasonal_window": {
+    "start_month": 11,
+    "end_month": 12
+   },
+   "next_intake": null,
+   "status": "seasonal_closed",
+   "apply_url": "https://www.handsonlondon.org.uk/volunteer",
+   "url_specificity": "org_volunteer_page",
+   "coords": null,
+   "provenance": {
+    "extracted_at": "2026-08-25T00:00:00+00:00",
+    "method": "human",
+    "reviewed_by_human": true,
+    "confidence": 0.9,
+    "source_url": "https://www.handsonlondon.org.uk/",
+    "verified_fields": [
+     "seasonal_window",
+     "specific_times",
+     "commitment"
+    ],
+    "unsupported_fields": [
+     "typical_shift_hours",
+     "screening.dbs",
+     "screening.min_age"
+    ]
+   }
+  },
+  {
+   "id": "handson-london-community-day",
+   "org_id": "handson-london",
+   "title": "Community Day (varied projects)",
+   "what_youd_do": "Pick a single day from their calendar. Recent projects have ranged from cooking and deliveries to befriending and gardening.",
+   "commitment": "one_off",
+   "min_term_months": null,
+   "typical_shift_hours": null,
+   "when": [
+    "flexible"
+   ],
+   "specific_times": "Varies \u2014 a couple of hours up to a full day",
+   "activity": "varies",
+   "location_type": "in_person",
+   "postcode_district": null,
+   "who_can_apply": "either",
+   "screening": {
+    "dbs": "unknown",
+    "references": null,
+    "interview": null,
+    "min_age": null,
+    "induction": "You need to register an account to see and book the calendar"
+   },
+   "skills": [],
+   "seasonal_window": null,
+   "next_intake": null,
+   "status": "open",
+   "apply_url": "https://www.handsonlondon.org.uk/volunteer",
+   "url_specificity": "org_volunteer_page",
+   "coords": null,
+   "provenance": {
+    "extracted_at": "2026-08-25T00:00:00+00:00",
+    "method": "human",
+    "reviewed_by_human": true,
+    "confidence": 0.7,
+    "source_url": "https://www.handsonlondon.org.uk/",
+    "verified_fields": [
+     "commitment",
+     "who_can_apply",
+     "screening.induction"
+    ],
+    "unsupported_fields": [
+     "activity",
+     "typical_shift_hours",
+     "screening.dbs",
+     "screening.min_age",
+     "postcode_district"
+    ]
+   }
+  },
+  {
+   "id": "manna-society-kitchen-volunteer",
+   "org_id": "manna-society",
+   "title": "Kitchen Volunteer",
+   "what_youd_do": "Help in the kitchen at a day centre that opens every day of the week, including loading the dishwasher and clearing down.",
+   "commitment": "weekly",
+   "min_term_months": 3,
+   "typical_shift_hours": 4.25,
+   "when": [
+    "weekday_daytime",
+    "weekend_daytime"
+   ],
+   "specific_times": "9.30am to 1.45pm, any day",
+   "activity": "cooking_serving",
+   "location_type": "in_person",
+   "postcode_district": "SE1",
+   "who_can_apply": "individual",
+   "screening": {
+    "dbs": "unknown",
+    "references": null,
+    "interview": null,
+    "min_age": null,
+    "induction": "You'll be added to a waiting list before a place comes up"
+   },
+   "skills": [],
+   "seasonal_window": null,
+   "next_intake": null,
+   "status": "open",
+   "apply_url": "https://www.mannasociety.org.uk/how-you-can-help/volunteer-time/",
+   "url_specificity": "org_volunteer_page",
+   "coords": null,
+   "provenance": {
+    "extracted_at": "2026-08-25T00:00:00+00:00",
+    "method": "human",
+    "reviewed_by_human": true,
+    "confidence": 1.0,
+    "source_url": "https://www.mannasociety.org.uk/how-you-can-help/volunteer-time/",
+    "verified_fields": [
+     "specific_times",
+     "min_term_months",
+     "commitment"
+    ],
+    "unsupported_fields": [
+     "screening.dbs",
+     "screening.min_age"
+    ]
+   }
+  },
+  {
+   "id": "manna-society-computer-suite",
+   "org_id": "manna-society",
+   "title": "Computer Suite Volunteer",
+   "what_youd_do": "Sit with clients in the computer room and help with straightforward problems \u2014 the kind anyone who uses a computer could sort out.",
+   "commitment": "weekly",
+   "min_term_months": null,
+   "typical_shift_hours": 3.25,
+   "when": [
+    "weekday_daytime"
+   ],
+   "specific_times": "10.00am to 1.15pm, Monday to Friday",
+   "activity": "teaching",
+   "location_type": "in_person",
+   "postcode_district": "SE1",
+   "who_can_apply": "individual",
+   "screening": {
+    "dbs": "unknown",
+    "references": null,
+    "interview": null,
+    "min_age": null,
+    "induction": null
+   },
+   "skills": [
+    "basic computer literacy"
+   ],
+   "seasonal_window": null,
+   "next_intake": null,
+   "status": "open",
+   "apply_url": "https://www.mannasociety.org.uk/how-you-can-help/volunteer-time/",
+   "url_specificity": "org_volunteer_page",
+   "coords": null,
+   "provenance": {
+    "extracted_at": "2026-08-25T00:00:00+00:00",
+    "method": "human",
+    "reviewed_by_human": true,
+    "confidence": 1.0,
+    "source_url": "https://www.mannasociety.org.uk/how-you-can-help/volunteer-time/",
+    "verified_fields": [
+     "specific_times",
+     "commitment"
+    ],
+    "unsupported_fields": [
+     "screening.dbs",
+     "screening.min_age"
+    ]
+   }
+  },
+  {
+   "id": "whitechapel-mission-breakfast-challenge",
+   "org_id": "whitechapel-mission",
+   "title": "Breakfast Challenge (teams only)",
+   "what_youd_do": "Bring a group from your workplace to prepare and serve the morning meal alongside regular staff. Very early start.",
+   "commitment": "one_off",
+   "min_term_months": null,
+   "typical_shift_hours": 4,
+   "when": [
+    "weekday_daytime",
+    "weekend_daytime"
+   ],
+   "specific_times": "From 5.45am, any day of the year",
+   "activity": "cooking_serving",
+   "location_type": "in_person",
+   "postcode_district": "E1",
+   "who_can_apply": "team_only",
+   "screening": {
+    "dbs": "unknown",
+    "references": null,
+    "interview": null,
+    "min_age": null,
+    "induction": "First-time groups visit the site beforehand. Not suitable in the third trimester of pregnancy."
+   },
+   "skills": [],
+   "seasonal_window": null,
+   "next_intake": null,
+   "status": "open",
+   "apply_url": "https://whitechapel.org.uk/process",
+   "url_specificity": "role",
+   "coords": null,
+   "provenance": {
+    "extracted_at": "2026-08-25T00:00:00+00:00",
+    "method": "human",
+    "reviewed_by_human": true,
+    "confidence": 1.0,
+    "source_url": "https://whitechapel.org.uk/volunteering",
+    "verified_fields": [
+     "who_can_apply",
+     "specific_times",
+     "screening.induction"
+    ],
+    "unsupported_fields": [
+     "screening.dbs",
+     "screening.min_age"
+    ]
+   }
+  },
+  {
+   "id": "whitechapel-mission-clothing-challenge",
+   "org_id": "whitechapel-mission",
+   "title": "Clothing Challenge (teams only)",
+   "what_youd_do": "Bring a group to work through sacks of donated clothing \u2014 sorting, measuring, tagging and hanging items ready to be given out.",
+   "commitment": "one_off",
+   "min_term_months": null,
+   "typical_shift_hours": 4,
+   "when": [
+    "weekday_daytime"
+   ],
+   "specific_times": null,
+   "activity": "shop_warehouse",
+   "location_type": "in_person",
+   "postcode_district": "E1",
+   "who_can_apply": "team_only",
+   "screening": {
+    "dbs": "unknown",
+    "references": null,
+    "interview": null,
+    "min_age": null,
+    "induction": "First-time groups visit the site beforehand. Not suitable in the third trimester of pregnancy."
+   },
+   "skills": [],
+   "seasonal_window": null,
+   "next_intake": null,
+   "status": "open",
+   "apply_url": "https://whitechapel.org.uk/volunteering/clothing-challenge",
+   "url_specificity": "role",
+   "coords": null,
+   "provenance": {
+    "extracted_at": "2026-08-25T00:00:00+00:00",
+    "method": "human",
+    "reviewed_by_human": true,
+    "confidence": 1.0,
+    "source_url": "https://whitechapel.org.uk/volunteering/clothing-challenge",
+    "verified_fields": [
+     "who_can_apply",
+     "activity"
+    ],
+    "unsupported_fields": [
+     "screening.dbs",
+     "screening.min_age",
+     "specific_times"
+    ]
+   }
+  }
+ ],
+ "meta": {
+  "orgs_listed": 5,
+  "orgs_in_scope": 32,
+  "roles": 11,
+  "generated": "2026-08-25"
+ }
+}

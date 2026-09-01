@@ -1,0 +1,141 @@
+{
+  "organisation": {
+    "id": "glass-door",
+    "name": "Glass Door Homeless Charity",
+    "aliases": ["glass door", "glassdoor homeless"],
+    "charity_number": "1083203",
+    "website_url": "https://www.glassdoor.org.uk/",
+    "volunteer_url": "https://www.glassdoor.org.uk/listing/category/volunteer-roles",
+    "summary": "Runs emergency winter night shelter circuits and year-round casework across west and south-west London.",
+    "coverage": "multi_borough",
+    "boroughs": ["Wandsworth", "Hammersmith and Fulham", "Kensington and Chelsea", "Lambeth"],
+    "focus_groups": [],
+    "lived_experience_roles": true,
+    "robots_allowed": true,
+    "check": {
+      "last_attempt": "2026-08-25T00:00:00+00:00",
+      "last_success": "2026-08-25T00:00:00+00:00",
+      "link_status": "ok",
+      "content_hash": null,
+      "consecutive_failures": 0,
+      "etag": null,
+      "last_modified": null
+    }
+  },
+  "opportunities": [
+    {
+      "id": "glass-door-winter-night-shelter",
+      "org_id": "glass-door",
+      "title": "Winter Night Shelter Volunteer",
+      "what_youd_do": "Help set up a church-hall shelter for the evening, cook and serve a hot meal, and welcome guests as they arrive.",
+      "commitment": "weekly",
+      "min_term_months": null,
+      "typical_shift_hours": 3,
+      "when": ["weekday_evening", "weekend_evening"],
+      "specific_times": "Around 6pm to 9pm, the same evening each week, early November to April",
+      "activity": "cooking_serving",
+      "location_type": "in_person",
+      "postcode_district": null,
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "Supported by a volunteer coordinator; chance to complete Level 2 Food Safety and Hygiene"
+      },
+      "skills": [],
+      "seasonal_window": {"start_month": 11, "end_month": 4},
+      "next_intake": null,
+      "status": "seasonal_closed",
+      "apply_url": "https://www.glassdoor.org.uk/forms/express-your-interest-in-volunteering-with-glass-door",
+      "url_specificity": "org_volunteer_page",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-08-25T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://www.glassdoor.org.uk/winter-night-shelter-volunteers",
+        "verified_fields": ["status", "specific_times", "seasonal_window", "typical_shift_hours"],
+        "unsupported_fields": ["screening.dbs", "screening.min_age", "postcode_district"]
+      }
+    },
+    {
+      "id": "glass-door-drop-in-support",
+      "org_id": "glass-door",
+      "title": "Drop-in Centre Support",
+      "what_youd_do": "Support caseworkers at partner day centres where guests come for advice and practical help.",
+      "commitment": "flexible",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": ["flexible"],
+      "specific_times": null,
+      "activity": "advice",
+      "location_type": "in_person",
+      "postcode_district": null,
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "skills": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "unknown",
+      "apply_url": "https://www.glassdoor.org.uk/forms/express-your-interest-in-volunteering-with-glass-door",
+      "url_specificity": "org_volunteer_page",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-08-25T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 0.4,
+        "source_url": "https://www.glassdoor.org.uk/listing/category/volunteer-roles",
+        "verified_fields": ["activity"],
+        "unsupported_fields": ["status", "specific_times", "typical_shift_hours", "screening.dbs", "screening.min_age"]
+      }
+    },
+    {
+      "id": "glass-door-lived-experience-group",
+      "org_id": "glass-door",
+      "title": "Lived Experience Group",
+      "what_youd_do": "Use your own experience of homelessness to shape how services are run and help the people coming through now.",
+      "commitment": "flexible",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": ["flexible"],
+      "specific_times": null,
+      "activity": "advice",
+      "location_type": "hybrid",
+      "postcode_district": null,
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "skills": ["lived experience of homelessness"],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "unknown",
+      "apply_url": "https://www.glassdoor.org.uk/lived-experience-group",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-08-25T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 0.4,
+        "source_url": "https://www.glassdoor.org.uk/lived-experience-group",
+        "verified_fields": [],
+        "unsupported_fields": ["status", "specific_times", "typical_shift_hours", "screening.dbs", "screening.min_age"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "organisation": {
+    "id": "handson-london",
+    "name": "HandsOn London",
+    "aliases": [
+      "handson",
+      "hands on london",
+      "wrap up london",
+      "brighten up london"
+    ],
+    "charity_number": "1140291",
+    "website_url": "https://www.handsonlondon.org.uk/",
+    "volunteer_url": "https://www.handsonlondon.org.uk/volunteer",
+    "summary": "Places individuals, families and teams on one-off projects with London community organisations, and runs the annual Wrap Up London coat collection.",
+    "coverage": "london_wide",
+    "boroughs": [],
+    "focus_groups": [],
+    "lived_experience_roles": false,
+    "robots_allowed": true,
+    "check": {
+      "last_attempt": "2026-08-25T00:00:00+00:00",
+      "last_success": "2026-08-25T00:00:00+00:00",
+      "link_status": "ok",
+      "content_hash": null,
+      "consecutive_failures": 0,
+      "etag": null,
+      "last_modified": null
+    }
+  },
+  "opportunities": [
+    {
+      "id": "handson-london-wrap-up-london",
+      "org_id": "handson-london",
+      "title": "Wrap Up London Coat Collection",
+      "what_youd_do": "Spend a few hours at a Tube station \u2014 King's Cross, Liverpool Street, Moorgate, Waterloo or London Bridge \u2014 taking donated winter coats from commuters.",
+      "commitment": "one_off",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "weekday_daytime",
+        "weekday_evening"
+      ],
+      "specific_times": "November into early December",
+      "activity": "fundraising",
+      "location_type": "in_person",
+      "postcode_district": null,
+      "who_can_apply": "either",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "skills": [],
+      "seasonal_window": {
+        "start_month": 11,
+        "end_month": 12
+      },
+      "next_intake": null,
+      "status": "seasonal_closed",
+      "apply_url": "https://www.handsonlondon.org.uk/volunteer",
+      "url_specificity": "org_volunteer_page",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-08-25T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 0.9,
+        "source_url": "https://www.handsonlondon.org.uk/",
+        "verified_fields": [
+          "seasonal_window",
+          "specific_times",
+          "commitment"
+        ],
+        "unsupported_fields": [
+          "typical_shift_hours",
+          "screening.dbs",
+          "screening.min_age"
+        ]
+      }
+    },
+    {
+      "id": "handson-london-community-day",
+      "org_id": "handson-london",
+      "title": "Community Day",
+      "what_youd_do": "Pick a single day from their calendar. Recent projects have ranged from cooking and deliveries to befriending and gardening.",
+      "commitment": "one_off",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "Varies \u2014 a couple of hours up to a full day",
+      "activity": "varies",
+      "location_type": "in_person",
+      "postcode_district": null,
+      "who_can_apply": "either",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "You need to register an account to see and book the calendar"
+      },
+      "skills": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://www.handsonlondon.org.uk/volunteer",
+      "url_specificity": "org_volunteer_page",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-08-25T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 0.7,
+        "source_url": "https://www.handsonlondon.org.uk/",
+        "verified_fields": [
+          "commitment",
+          "who_can_apply",
+          "screening.induction"
+        ],
+        "unsupported_fields": [
+          "activity",
+          "typical_shift_hours",
+          "screening.dbs",
+          "screening.min_age",
+          "postcode_district"
+        ]
+      }
+    }
+  ]
+}

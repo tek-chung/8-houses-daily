@@ -1,0 +1,23 @@
+# generated — rebuilt by `python site/build.py`
+dist/
+
+# downloaded source for site/tools/build_map.py; the generated
+# data/london-map.json is committed so the build needs no network
+.cache/
+
+# dependencies
+node_modules/
+.venv/
+venv/
+
+# python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# the weekly check writes these; http_cache is committed so conditional
+# requests work across runs, review.json is a working file
+pipeline/state/review.json
+pipeline/state/census.json
+
+.DS_Store

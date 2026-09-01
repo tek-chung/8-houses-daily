@@ -1,0 +1,135 @@
+{
+  "organisation": {
+    "id": "depaul-uk",
+    "name": "Depaul UK",
+    "aliases": [
+      "depaul",
+      "nightstop",
+      "nightstop london"
+    ],
+    "charity_number": null,
+    "website_url": "https://www.depaul.org.uk/",
+    "volunteer_url": "https://www.depaul.org.uk/nightstop-volunteer/",
+    "summary": "Runs Nightstop, placing young people aged 16 to 25 in the spare rooms of vetted volunteer hosts for a night.",
+    "coverage": "london_wide",
+    "boroughs": [],
+    "focus_groups": [
+      "youth"
+    ],
+    "lived_experience_roles": false,
+    "robots_allowed": true,
+    "check": {
+      "last_attempt": "2026-08-25T00:00:00+00:00",
+      "last_success": "2026-08-25T00:00:00+00:00",
+      "link_status": "ok",
+      "content_hash": null,
+      "consecutive_failures": 0,
+      "etag": null,
+      "last_modified": null
+    }
+  },
+  "opportunities": [
+    {
+      "id": "depaul-uk-nightstop-host",
+      "org_id": "depaul-uk",
+      "title": "Nightstop Host",
+      "what_youd_do": "Give a young person with nowhere to go a spare room for the night, an evening meal, breakfast and a packed lunch to leave with.",
+      "commitment": "long_term",
+      "min_term_months": null,
+      "typical_shift_hours": 14,
+      "when": [
+        "overnight"
+      ],
+      "specific_times": "Nights you pick yourself, on a flexible rota",
+      "activity": "hosting",
+      "location_type": "own_home",
+      "postcode_district": null,
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "required_unspecified",
+        "references": null,
+        "interview": true,
+        "min_age": null,
+        "induction": "Home visit, DBS check and training on youth homelessness, boundaries and safeguarding"
+      },
+      "skills": [
+        "a spare room"
+      ],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://www.depaul.org.uk/nightstop-volunteer/",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-08-25T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://www.depaul.org.uk/nightstop-faqs/",
+        "verified_fields": [
+          "screening.dbs",
+          "screening.interview",
+          "screening.induction",
+          "activity",
+          "location_type",
+          "specific_times"
+        ],
+        "unsupported_fields": [
+          "screening.min_age",
+          "min_term_months"
+        ]
+      }
+    },
+    {
+      "id": "depaul-uk-nightstop-driver",
+      "org_id": "depaul-uk",
+      "title": "Nightstop Driver",
+      "what_youd_do": "Drive or travel with a young person to the host who is putting them up, and keep them company on what is usually a bad day.",
+      "commitment": "flexible",
+      "min_term_months": null,
+      "typical_shift_hours": 2,
+      "when": [
+        "weekday_evening",
+        "weekend_evening"
+      ],
+      "specific_times": "Evenings, as and when you're free",
+      "activity": "befriending",
+      "location_type": "in_person",
+      "postcode_district": null,
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "required_unspecified",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "Full training and ongoing support"
+      },
+      "skills": [
+        "driving"
+      ],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://www.depaul.org.uk/nightstop-volunteer/",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-08-25T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 0.8,
+        "source_url": "https://www.depaul.org.uk/nightstop-volunteer/",
+        "verified_fields": [
+          "screening.dbs",
+          "activity"
+        ],
+        "unsupported_fields": [
+          "typical_shift_hours",
+          "screening.min_age",
+          "specific_times"
+        ]
+      }
+    }
+  ]
+}

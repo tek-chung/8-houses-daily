@@ -1,0 +1,25 @@
+{
+  "organisation": {
+    "id": "cardboard-citizens",
+    "name": "Cardboard Citizens",
+    "aliases": [],
+    "charity_number": null,
+    "website_url": "https://cardboardcitizens.org.uk/",
+    "volunteer_url": "https://cardboardcitizens.org.uk/",
+    "summary": null,
+    "coverage": "london_wide",
+    "boroughs": [],
+    "focus_groups": [],
+    "lived_experience_roles": false,
+    "check": {
+      "last_attempt": null,
+      "last_success": null,
+      "link_status": "ok",
+      "content_hash": null,
+      "consecutive_failures": 0,
+      "etag": null,
+      "last_modified": null
+    }
+  },
+  "opportunities": []
+}

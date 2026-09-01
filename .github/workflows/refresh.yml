@@ -1,0 +1,159 @@
+name: Weekly freshness check
+
+# Spec §11.1. Sunday 04:00 UTC. Thirty-four pages, one request per second.
+on:
+  schedule:
+    - cron: "0 4 * * 0"
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Comma-separated org ids (blank = all)"
+        required: false
+        default: ""
+      dry_run:
+        description: "Fetch and extract but write nothing"
+        type: boolean
+        default: false
+      census_only:
+        description: "Scrapability census only — no model calls, no API key needed"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: freshness
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r pipeline/requirements.txt
+
+      # The Python suite cannot execute the page's JavaScript. Two serious bugs
+      # hid behind each other in that blind spot, so jsdom runs the built pages.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm install --no-audit --no-fund
+
+      # The gate decides what reaches visitors unreviewed. If its tests don't
+      # pass, we do not run the pipeline at all.
+      - name: Test the gate, content isolation and site build
+        run: python -m pytest pipeline/test_gate.py pipeline/test_fetch.py site/test_build.py -q
+        working-directory: .
+        env:
+          PYTHONPATH: pipeline
+
+      # Answers "can we read these pages?" without spending anything or making
+      # any claims. Run this before the first real extraction.
+      - name: Scrapability census
+        if: inputs.census_only == true
+        env:
+          PYTHONPATH: pipeline
+        run: |
+          python pipeline/census.py
+          cat docs/census.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit the census
+        if: inputs.census_only == true
+        run: |
+          git config user.name  "freshness-bot"
+          git config user.email "freshness-bot@users.noreply.github.com"
+          git add docs/census.md pipeline/state/census.json
+          git diff --cached --quiet || {
+            git commit -m "Scrapability census"
+            git pull --rebase --autostash origin "${{ github.ref_name }}"
+            git push origin "HEAD:${{ github.ref_name }}"; }
+
+      - name: Run the check
+        if: inputs.census_only != true
+        id: run
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PYTHONPATH: pipeline
+        run: |
+          set +e
+          python pipeline/run.py \
+            ${{ inputs.dry_run && '--dry-run' || '' }} \
+            --only "${{ inputs.only }}" | tee run.log
+          echo "code=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+
+      - name: Stop if the run itself broke
+        if: inputs.census_only != true && steps.run.outputs.code == '2'
+        run: |
+          echo "::error::Pipeline failed to run. See log above."
+          exit 1
+
+      # Auto-published changes: committed straight to main. These are non-critical
+      # fields only, at or above the confidence threshold. Spec §11.3.
+      - name: Commit auto-published changes
+        if: inputs.census_only != true && inputs.dry_run != true
+        run: |
+          git config user.name  "freshness-bot"
+          git config user.email "freshness-bot@users.noreply.github.com"
+          git add data/ pipeline/state/http_cache.json
+          if git diff --cached --quiet; then
+            echo "No auto-publishable changes."
+          else
+            git commit -m "Weekly freshness check: auto-published changes"
+            git pull --rebase --autostash origin "${{ github.ref_name }}"
+            git push origin "HEAD:${{ github.ref_name }}"
+          fi
+
+      # Anything the gate held back becomes a PR. Uses the preinstalled gh CLI
+      # rather than a third-party action, so there's no supply chain to pin.
+      - name: Open a review PR
+        if: inputs.census_only != true && steps.run.outputs.code == '1' && inputs.dry_run != true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          BRANCH="freshness/review-$(date +%Y-%m-%d)"
+          git checkout -B "$BRANCH"
+          git add -f pipeline/state/review.json
+          git commit -m "Freshness check: items needing review" || true
+          git push -f -u origin "$BRANCH"
+
+          N=$(python -c "import json;print(json.load(open('pipeline/state/review.json'))['needs_review'])")
+          {
+            echo "$N item(s) from this week's check need a human before they go live."
+            echo
+            echo "The gate held these back. Anything touching \`screening\`,"
+            echo "\`status\` or \`next_intake\` always lands here — those are the"
+            echo "claims that waste someone's day or misstate a safeguarding rule."
+            echo
+            echo "**To review:** read \`pipeline/state/review.json\`. Each item has"
+            echo "the reasons, the changed fields, and the proposed records. Move"
+            echo "anything you accept into the relevant \`data/orgs/*.json\`, set"
+            echo "\`provenance.reviewed_by_human\` to \`true\`, then merge."
+            echo
+            echo '```'
+            grep '^REVIEW' run.log || true
+            echo '```'
+          } > body.md
+
+          if ! gh pr create --title "Freshness review — $(date '+%d %b %Y')" \
+               --body-file body.md --base "${{ github.ref_name }}" --head "$BRANCH"; then
+            gh pr edit "$BRANCH" --body-file body.md
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: freshness-run
+          path: |
+            run.log
+            pipeline/state/review.json
+          retention-days: 30

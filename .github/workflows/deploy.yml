@@ -1,0 +1,75 @@
+name: Deploy
+
+# Builds the paper and publishes it. Runs on every push to main, and after the
+# weekly freshness check commits new data — so a corrected notice is live within
+# minutes of the pull request being merged.
+#
+# The site build imports nothing outside the standard library, so there is no
+# `pip install` step and nothing to go stale.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never two deploys at once, but never cancel one either: a half-published site
+# is worse than a slightly stale one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build
+        env:
+          # Set this as a repository variable (Settings -> Secrets and variables
+          # -> Actions -> Variables). Sitemap and canonical URLs depend on it, and
+          # a wrong value is invisible until a search engine tells you.
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: |
+          if [ -z "$SITE_URL" ]; then
+            echo "::error::SITE_URL repository variable is not set."
+            echo "Canonical URLs and the sitemap would point at example.org."
+            exit 1
+          fi
+          python site/build.py
+
+      # Every internal reference is root-absolute (/assets/app.css and so on), so
+      # the site has to be served from the root of a domain. On a project page at
+      # user.github.io/repo/ every one of them 404s. Fail here with an explanation
+      # rather than shipping a site with no stylesheet.
+      - name: Check this is a root deployment
+        run: |
+          if [ ! -f dist/CNAME ] && [[ "${{ github.repository }}" != *".github.io" ]]; then
+            echo "::error::No custom domain set, and this is not a user/org pages repo."
+            echo "The site uses root-absolute paths and will break on a subpath."
+            echo "Either add a custom domain, or deploy to Cloudflare Pages instead."
+            exit 1
+          fi
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
