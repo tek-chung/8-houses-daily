@@ -42,6 +42,38 @@ const BOROUGHS = [...new Set(OPPS.flatMap(o=>o.areas))].sort();
    runs and stays correct afterwards. */
 const _ds=document.body.dataset;
 const prefersStill=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+/* Moving newspaper illustrations. Keep posters when motion is reduced, and
+   give every reader a pause control for the otherwise continuous loops. */
+if(window.matchMedia){
+  const motion=window.matchMedia("(prefers-reduced-motion: reduce)");
+  document.querySelectorAll(".door-film").forEach(video=>{
+    const button=video.parentElement.querySelector(".film-toggle");
+    const label=video.getAttribute("aria-label").replace(/ illustration$/, "").toLowerCase();
+    const showState=()=>{
+      const action=video.paused ? "Play" : "Pause";
+      button.dataset.state=video.paused ? "paused" : "playing";
+      button.setAttribute("aria-label",`${action} ${label} animation`);
+      button.title=`${action} animation`;
+    };
+    const play=()=>{video.muted=true;video.play()?.catch(showState);};
+    const applyMotion=()=>{
+      button.hidden=motion.matches;
+      if(motion.matches){
+        if(video.hasAttribute("src")){
+          video.pause();video.removeAttribute("src");video.load();
+        }
+      }else{
+        if(!video.hasAttribute("src")) video.src=video.dataset.src;
+        play();
+      }
+    };
+    video.addEventListener("play",showState);
+    video.addEventListener("pause",showState);
+    button.addEventListener("click",()=>{if(video.paused) play();else video.pause();});
+    motion.addEventListener("change",applyMotion);
+    applyMotion();
+  });
+}
 const S={c:_ds.commitment||"",b:_ds.borough||"",act:_ds.activity||"",
          who:"",remote:"",open:"",sort:"soonest"};
 

@@ -222,6 +222,25 @@ h1,h2,h3{font-weight:inherit}
 .plate{border:1px solid var(--ink);padding:6px;background:var(--paper-2);
   margin:0 0 12px}
 .plate svg{display:block;width:100%;height:auto}
+.door-film{display:block;width:100%;aspect-ratio:100/59;object-fit:cover;
+  background:var(--paper-2)}
+.plate:has(.door-film){position:relative}
+.film-toggle{position:absolute;top:12px;right:12px;display:grid;place-items:center;
+  width:36px;height:36px;padding:0;color:var(--ink);
+  background:var(--paper);border:1px solid var(--ink);border-radius:50%;
+  cursor:pointer;opacity:0;pointer-events:none}
+.film-toggle::before{content:"";width:9px;height:12px;
+  border-left:3px solid currentColor;border-right:3px solid currentColor}
+.film-toggle[data-state="paused"]::before{width:0;height:0;margin-left:3px;
+  border-top:6px solid transparent;border-bottom:6px solid transparent;
+  border-left:10px solid currentColor;border-right:0}
+.plate:hover .film-toggle,.plate:focus-within .film-toggle,
+.film-toggle[data-state="paused"]{opacity:1;pointer-events:auto}
+.film-toggle:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+@media (hover:none),(pointer:coarse){
+  .film-toggle{width:44px;height:44px;opacity:1;pointer-events:auto}
+}
+.film-toggle[hidden]{display:none}
 .plate figcaption{
   font-family:var(--label);font-size:11px;letter-spacing:.07em;
   text-transform:uppercase;color:var(--ink-3);text-align:center;

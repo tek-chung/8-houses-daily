@@ -573,11 +573,13 @@ def test_every_article_carries_an_engraving(built):
 
 
 def test_engravings_are_drawn_not_photographed(built):
-    """§15 forbids poverty tourism. There must be no photography anywhere, and the
-    plates must be inline vector drawings rather than fetched images."""
+    """Articles retain their drawn engravings; the homepage uses supplied films."""
     for url, h in built.items():
         assert "<img" not in h, f"{url} contains an <img> — no photography here"
         for plate in re.findall(r'<figure class="plate">(.*?)</figure>', h, re.S):
+            if url == "/":
+                assert plate.strip().startswith("<video"), "homepage film missing"
+                continue
             assert plate.strip().startswith("<svg"), f"{url}: plate is not an svg"
             assert "xlink:href" not in plate and "url(http" not in plate
 

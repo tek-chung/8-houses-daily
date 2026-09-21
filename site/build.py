@@ -859,6 +859,26 @@ DOOR_PLATE = {"one_off": "cooking_serving",   # the pot, steam rising
               "weekly": "befriending",         # the lamp, lit again each week
               "long_term": "hosting"}          # the doorway, fanlight burning
 
+DOOR_VIDEO = {"one_off": ("soup-kitchen", "Soup kitchen"),
+              "weekly": ("coffee-chat", "Coffee chat"),
+              "long_term": ("hosting", "Hosting")}
+
+
+def moving_plate(key):
+    name, label = DOOR_VIDEO[key]
+    caption = ENGRAVING[DOOR_PLATE[key]][1]
+    # Delay loading the film until motion preferences have been checked.
+    # The poster also works without JavaScript or when autoplay is unavailable.
+    return (f'<figure class="plate">'
+            f'<video class="door-film" muted loop playsinline preload="none" '
+            f'poster="/assets/videos/{name}.webp" '
+            f'data-src="/assets/videos/{name}.mp4" '
+            f'aria-label="{e(label)} illustration"></video>'
+            f'<figcaption>{e(caption)}</figcaption>'
+            f'<button class="film-toggle" type="button" data-state="paused" hidden '
+            f'aria-label="Play {e(label.lower())} animation"></button>'
+            '</figure>')
+
 
 def build_home(orgs, opps, fresh, total):
     """The front page.
@@ -890,7 +910,7 @@ def build_home(orgs, opps, fresh, total):
     for key, blurb in ways:
         n = counts[key]
         cols.append(f"""    <div class="col">
-      {plate(DOOR_PLATE[key])}
+      {moving_plate(key)}
       <h2><a href="/{DOOR[key]}/">{e(DOOR_LABEL[key])}</a></h2>
       <p>{blurb}</p>
       <a class="doorcta" href="/{DOOR[key]}/">
@@ -1382,6 +1402,13 @@ def build_assets(orgs, opps, fresh):
     (DIST / "assets").mkdir(parents=True, exist_ok=True)
     shutil.copy(STATIC / "app.css", DIST / "assets" / "app.css")
     shutil.copy(STATIC / "app.js", DIST / "assets" / "app.js")
+    # Publish only the prepared web copies; keep the large source films intact.
+    video_out = DIST / "assets" / "videos"
+    video_out.mkdir(parents=True, exist_ok=True)
+    for name, _ in DOOR_VIDEO.values():
+        for suffix in ("mp4", "webp"):
+            shutil.copy(STATIC / "videos" / "web" / f"{name}.{suffix}",
+                        video_out / f"{name}.{suffix}")
     bundle = {"orgs": {k: {"n": v["name"], "u": v["volunteer_url"],
                            "w": v["website_url"], "cn": v.get("charity_number"),
                            "a": v.get("aliases", []), "b": v.get("boroughs", [])}
