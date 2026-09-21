@@ -2,18 +2,24 @@
   "organisation": {
     "id": "the-passage",
     "name": "The Passage",
-    "aliases": [],
-    "charity_number": null,
+    "aliases": [
+      "passage",
+      "the passage charity"
+    ],
+    "charity_number": "1079764",
     "website_url": "https://passage.org.uk/",
-    "volunteer_url": "https://passage.org.uk/volunteering/",
-    "summary": null,
-    "coverage": "multi_borough",
-    "boroughs": [],
+    "volunteer_url": "https://passage.org.uk/volunteering-vacancies/",
+    "summary": "London's largest voluntary-sector day centre, in Victoria, helping over 200 people a day with food, showers, clothing, laundry and advice.",
+    "coverage": "borough",
+    "boroughs": [
+      "Westminster"
+    ],
     "focus_groups": [],
     "lived_experience_roles": false,
+    "robots_allowed": true,
     "check": {
-      "last_attempt": null,
-      "last_success": null,
+      "last_attempt": "2026-09-02T00:00:00+00:00",
+      "last_success": "2026-09-02T00:00:00+00:00",
       "link_status": "ok",
       "content_hash": null,
       "consecutive_failures": 0,
@@ -21,5 +27,395 @@
       "last_modified": null
     }
   },
-  "opportunities": []
+  "opportunities": [
+    {
+      "id": "the-passage-kitchen-support-resource-centre",
+      "org_id": "the-passage",
+      "title": "Kitchen Support Volunteer",
+      "what_youd_do": "Work in a team of six under one of the chefs, preparing and serving food at the day centre. Standing throughout, with lifting and carrying.",
+      "commitment": "weekly",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "weekday_daytime"
+      ],
+      "specific_times": null,
+      "activity": "cooking_serving",
+      "location_type": "in_person",
+      "postcode_district": "SW1P",
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": 18,
+        "induction": "Full induction and training; travel expenses reimbursed"
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://passage.org.uk/volunteering/kitchen-support-volunteer-resource-centre/",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-09-02T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://passage.org.uk/volunteering/kitchen-support-volunteer-resource-centre/",
+        "verified_fields": [
+          "screening.min_age",
+          "who_can_apply"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "specific_times",
+          "typical_shift_hours"
+        ]
+      }
+    },
+    {
+      "id": "the-passage-clothing-store-laundry",
+      "org_id": "the-passage",
+      "title": "Clothing Store and Laundry Volunteer",
+      "what_youd_do": "Help run the laundry and clothing store, working directly with people who come in for a shower, clean clothes and a wash.",
+      "commitment": "weekly",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "weekday_daytime"
+      ],
+      "specific_times": "Shifts booked on an online rota; weekly or fortnightly",
+      "activity": "shop_warehouse",
+      "location_type": "in_person",
+      "postcode_district": "SW1P",
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "Full induction and training; travel expenses reimbursed"
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://passage.org.uk/volunteering/clothing-store-laundry-service-volunteer/",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-09-02T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://passage.org.uk/volunteering/clothing-store-laundry-service-volunteer/",
+        "verified_fields": [
+          "specific_times",
+          "activity"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "typical_shift_hours"
+        ]
+      }
+    },
+    {
+      "id": "the-passage-irish-weekly-group",
+      "org_id": "the-passage",
+      "title": "Irish Weekly Group Volunteer",
+      "what_youd_do": "Help run the weekly Irish group, making it a warm and easy room to walk into for the clients who come.",
+      "commitment": "weekly",
+      "min_term_months": null,
+      "typical_shift_hours": 2,
+      "when": [
+        "weekday_daytime"
+      ],
+      "specific_times": "Wednesday afternoons, 1pm to 3pm",
+      "activity": "befriending",
+      "location_type": "in_person",
+      "postcode_district": "SW1P",
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "Full induction and training; travel expenses reimbursed"
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://passage.org.uk/volunteering/irish-weekly-group-volunteer/",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-09-02T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://passage.org.uk/volunteering/irish-weekly-group-volunteer/",
+        "verified_fields": [
+          "specific_times",
+          "typical_shift_hours"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age"
+        ]
+      }
+    },
+    {
+      "id": "the-passage-sports-activities",
+      "org_id": "the-passage",
+      "title": "Sports and Activities Volunteer",
+      "what_youd_do": "Support clients to take part in sport, fitness and social activities, across the day centre and venues around Westminster.",
+      "commitment": "flexible",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "Depends on the activity schedule and your availability",
+      "activity": "teaching",
+      "location_type": "in_person",
+      "postcode_district": "SW1P",
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "Full induction and training; travel expenses reimbursed"
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://passage.org.uk/volunteering/sports-activities-volunteer/",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-09-02T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://passage.org.uk/volunteering/sports-activities-volunteer/",
+        "verified_fields": [
+          "commitment",
+          "specific_times"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "typical_shift_hours"
+        ]
+      }
+    },
+    {
+      "id": "the-passage-reception-passage-house",
+      "org_id": "the-passage",
+      "title": "Reception Volunteer, Passage House",
+      "what_youd_do": "Front desk at a hostel for people who were rough sleeping in Westminster with no local connection. Mostly talking to people and making them feel safe.",
+      "commitment": "weekly",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "befriending",
+      "location_type": "in_person",
+      "postcode_district": "SW1P",
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "Full induction and training; travel expenses reimbursed"
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://passage.org.uk/volunteering/reception-volunteer-phac/",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-09-02T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://passage.org.uk/volunteering/reception-volunteer-phac/",
+        "verified_fields": [
+          "activity"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "typical_shift_hours"
+        ]
+      }
+    },
+    {
+      "id": "the-passage-barber-afro-textured",
+      "org_id": "the-passage",
+      "title": "Barber, Afro-Textured Hair Specialist",
+      "what_youd_do": "Cut and style afro-textured hair once a month or so. A fresh haircut does more for someone's morale than almost anything else here.",
+      "commitment": "monthly",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "Once a month or fortnight",
+      "activity": "teaching",
+      "location_type": "in_person",
+      "postcode_district": "SW1P",
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "Full induction and training; travel expenses reimbursed"
+      },
+      "skills": [
+        "barbering",
+        "afro-textured hair"
+      ],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://passage.org.uk/volunteering/barber-hairdresser-afro-textured-specialist-2/",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-09-02T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://passage.org.uk/volunteering/barber-hairdresser-afro-textured-specialist-2/",
+        "verified_fields": [
+          "commitment",
+          "skills"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "typical_shift_hours"
+        ]
+      }
+    },
+    {
+      "id": "the-passage-womens-hairdresser",
+      "org_id": "the-passage",
+      "title": "Women's Hairdresser",
+      "what_youd_do": "Cut and style women's hair of all types. The role exists because women using the service asked for a hairdresser they felt comfortable with. Bring your own equipment; chairs and capes provided.",
+      "commitment": "monthly",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "teaching",
+      "location_type": "in_person",
+      "postcode_district": "SW1P",
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "Full induction and training; travel expenses reimbursed"
+      },
+      "skills": [
+        "hairdressing"
+      ],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://passage.org.uk/volunteering/hairdresser-womens-hair/",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-09-02T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 0.7,
+        "source_url": "https://passage.org.uk/volunteering/hairdresser-womens-hair/",
+        "verified_fields": [
+          "skills",
+          "activity"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "commitment"
+        ]
+      }
+    },
+    {
+      "id": "the-passage-station-collector",
+      "org_id": "the-passage",
+      "title": "Station Collector",
+      "what_youd_do": "Stand with a collecting tin at Victoria or another London station and talk to passers-by. Collections run between 7am and 10pm.",
+      "commitment": "one_off",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "Between 7am and 10pm, monthly collections",
+      "activity": "fundraising",
+      "location_type": "in_person",
+      "postcode_district": "SW1P",
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "Full induction and training; travel expenses reimbursed"
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://passage.org.uk/volunteering/station-collector-volunteer/",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-09-02T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://passage.org.uk/volunteering/station-collector-volunteer/",
+        "verified_fields": [
+          "specific_times",
+          "activity"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "typical_shift_hours"
+        ]
+      }
+    }
+  ]
 }

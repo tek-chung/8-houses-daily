@@ -53,6 +53,7 @@
         "induction": null
       },
       "skills": [],
+      "eligibility": [],
       "seasonal_window": {
         "start_month": 11,
         "end_month": 12
@@ -104,6 +105,7 @@
         "induction": "You need to register an account to see and book the calendar"
       },
       "skills": [],
+      "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",

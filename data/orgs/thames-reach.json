@@ -2,18 +2,22 @@
   "organisation": {
     "id": "thames-reach",
     "name": "Thames Reach",
-    "aliases": [],
+    "aliases": [
+      "thames reach charity",
+      "brent reach"
+    ],
     "charity_number": null,
     "website_url": "https://thamesreach.org.uk/",
     "volunteer_url": "https://thamesreach.org.uk/support-us/volunteer/",
-    "summary": null,
+    "summary": "Runs street outreach, hostels, specialist supported housing and employment schemes across London, helping over 15,000 people a year.",
     "coverage": "london_wide",
     "boroughs": [],
     "focus_groups": [],
     "lived_experience_roles": false,
+    "robots_allowed": true,
     "check": {
-      "last_attempt": null,
-      "last_success": null,
+      "last_attempt": "2026-09-02T00:00:00+00:00",
+      "last_success": "2026-09-02T00:00:00+00:00",
       "link_status": "ok",
       "content_hash": null,
       "consecutive_failures": 0,
@@ -21,5 +25,57 @@
       "last_modified": null
     }
   },
-  "opportunities": []
+  "opportunities": [
+    {
+      "id": "thames-reach-services",
+      "org_id": "thames-reach",
+      "title": "Volunteering in their Services",
+      "what_youd_do": "Work alongside their street outreach, hostel, supported housing or employment teams. They are open that volunteering here is often a first step into a paid job in the sector.",
+      "commitment": "weekly",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "varies",
+      "location_type": "in_person",
+      "postcode_district": null,
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "A one-day core training covering safeguarding and boundaries. Travel expenses paid."
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "unknown",
+      "apply_url": "https://thamesreach.org.uk/support-us/volunteer/",
+      "url_specificity": "org_volunteer_page",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-09-02T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 0.5,
+        "source_url": "https://thamesreach.org.uk/support-us/volunteer/",
+        "verified_fields": [
+          "status",
+          "activity"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "typical_shift_hours",
+          "commitment",
+          "screening.induction: the one-day training and expenses come from a Team London listing, not their own page, and that listing still refers to COVID lockdowns"
+        ]
+      }
+    }
+  ]
 }

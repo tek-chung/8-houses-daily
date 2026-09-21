@@ -11,16 +11,27 @@ rename a record, reassign it to another charity, move it on a map, or mark itsel
 as human-reviewed.
 """
 
-COMMITMENTS = ["one_off", "flexible", "weekly", "fortnightly", "monthly", "long_term"]
+# "unknown" added after Phase 0. dbs, status and who_can_apply all have one;
+# commitment did not, so "their page does not say how often" was being filed as
+# "flexible" — 5 of 18 flexible roles were really unknowns. That matters because
+# flexible is a promise (you choose, so any frequency works) while unknown is an
+# absence, and they behave oppositely behind a door: flexible belongs in all of
+# them, unknown in none. Same reasoning as activity: "varies".
+COMMITMENTS = ["one_off", "flexible", "weekly", "fortnightly", "monthly",
+               "long_term", "unknown"]
 WHEN = ["weekday_daytime", "weekday_evening", "weekend_daytime",
         "weekend_evening", "overnight", "flexible"]
 # "varies" added after Phase 0: HandsOn London runs a rotating calendar of one-off
 # projects rather than fixed roles. Picking one activity would be a fabrication.
 # Roles marked "varies" appear when no activity filter is set and are excluded when
 # one is, because we cannot promise a match we can't support.
+# "practical" added after Phase 0: Providence Row runs a rooftop garden, and
+# gardening, decorating and maintenance recur across charity day-lists. None of
+# the other twelve activities describes it — shop_warehouse is a shop floor or a
+# stockroom — so someone looking for outdoor work would never find it.
 ACTIVITIES = ["cooking_serving", "befriending", "outreach", "advice", "mentoring",
-              "teaching", "shop_warehouse", "admin", "fundraising", "campaigning",
-              "hosting", "governance", "varies"]
+              "teaching", "shop_warehouse", "practical", "admin", "fundraising",
+              "campaigning", "hosting", "governance", "varies"]
 # "required_unspecified" added after Phase 0: Depaul's Nightstop pages confirm a DBS
 # check is required but never say which level. Collapsing that to "unknown" loses
 # the actionable half of the fact — "you will definitely need a check" is very
@@ -67,6 +78,17 @@ _OPPORTUNITY_CORE = {
     "screening": _SCREENING,
     "skills": {"type": "array", "items": {"type": "string", "maxLength": 40},
                "maxItems": 6},
+    # Who may apply, as distinct from what they can do. Added after Women at the
+    # Well: "we are a women-only service and can only accept applications from
+    # women", with the statutory exemption cited. That was being crammed into
+    # `skills`, where it read as a competence and would have shown up beside
+    # "cooking" in a skills filter. Groundswell's requirement for lived
+    # experience and Nightstop's for a spare room are the same shape: a bar on
+    # who is eligible, not a description of ability. Longer cap than skills
+    # because these often need a clause to be honest.
+    "eligibility": {"type": "array",
+                    "items": {"type": "string", "maxLength": 100},
+                    "maxItems": 4},
     "seasonal_window": {
         "type": ["object", "null"],
         "additionalProperties": False,

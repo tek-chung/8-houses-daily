@@ -2,18 +2,23 @@
   "organisation": {
     "id": "stonewall-housing",
     "name": "Stonewall Housing",
-    "aliases": [],
+    "aliases": [
+      "stonewall housing association"
+    ],
     "charity_number": null,
     "website_url": "https://stonewallhousing.org/",
     "volunteer_url": "https://stonewallhousing.org/volunteer-opportunities/",
-    "summary": null,
+    "summary": "Founded 1983, the leading charity for LGBTQ+ people of any age facing homelessness or living somewhere unsafe. Housing advice, advocacy and supported accommodation.",
     "coverage": "london_wide",
     "boroughs": [],
-    "focus_groups": [],
+    "focus_groups": [
+      "lgbtq"
+    ],
     "lived_experience_roles": false,
+    "robots_allowed": true,
     "check": {
-      "last_attempt": null,
-      "last_success": null,
+      "last_attempt": "2026-09-02T00:00:00+00:00",
+      "last_success": "2026-09-02T00:00:00+00:00",
       "link_status": "ok",
       "content_hash": null,
       "consecutive_failures": 0,
@@ -21,5 +26,65 @@
       "last_modified": null
     }
   },
-  "opportunities": []
+  "opportunities": [
+    {
+      "id": "stonewall-housing-online-support",
+      "org_id": "stonewall-housing",
+      "title": "Online Support Volunteer",
+      "what_youd_do": "Work an online shift from home, on the platform they train you on, helping LGBTQ+ people facing homelessness. A supervisor is with you for every shift.",
+      "commitment": "weekly",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "advice",
+      "location_type": "remote",
+      "postcode_district": null,
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "required_unspecified",
+        "references": null,
+        "interview": null,
+        "min_age": 18,
+        "induction": "Training on the platform, a supervisor on every shift, and ongoing supervision from their Volunteer Coordinator"
+      },
+      "skills": [
+        "your own computer, tablet or phone",
+        "internet access for each shift"
+      ],
+      "eligibility": [
+        "People aged 18 or over, living in the UK"
+      ],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://stonewallhousing.org/volunteer-opportunities/",
+      "url_specificity": "org_volunteer_page",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-09-02T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://stonewallhousing.org/volunteer-opportunities/",
+        "verified_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "screening.induction",
+          "location_type",
+          "skills",
+          "eligibility",
+          "status"
+        ],
+        "unsupported_fields": [
+          "screening.references",
+          "specific_times",
+          "typical_shift_hours",
+          "commitment"
+        ]
+      }
+    }
+  ]
 }

@@ -39,17 +39,58 @@ CONTACT = "tek@8houses.co.uk"
 
 DOOR = {"one_off": "one-day", "flexible": "flexible", "weekly": "weekly",
         "fortnightly": "fortnightly", "monthly": "monthly", "long_term": "bigger"}
+def in_door(op, door):
+    """Which notices belong behind a door.
+
+    Not an equality test on `commitment`, which is how this started and which left
+    25 of 75 notices unreachable from the front page. The three doors lead to
+    one_off, weekly and long_term; flexible, fortnightly and monthly had pages of
+    their own that nothing linked to.
+
+    The labels already promise ranges. "Every week or so" plainly covers
+    fortnightly and monthly — the "or so" is doing that work. And `flexible` means
+    the volunteer chooses, so it belongs behind every door: someone who wants a
+    single day can do a flexible role once, and someone who wants it weekly can do
+    it weekly. Same reasoning as `activity: "varies"` appearing whenever no
+    activity is chosen.
+    """
+    c = op["commitment"]
+    if c == "unknown":
+        # An absence, not a promise. Shown on /all/, behind no door — the same
+        # treatment as activity: "varies", and for the same reason: we never
+        # offer a match we cannot support.
+        return False
+    if c == "flexible":
+        # A promise: the volunteer picks, so every frequency is available.
+        return True
+    return c in DOOR_MEMBERS[door]
+
+
+DOOR_MEMBERS = {
+    "one_off":   {"one_off"},
+    "weekly":    {"weekly", "fortnightly", "monthly"},
+    "long_term": {"long_term"},
+    # The three orphan values keep their own pages, each holding exactly itself,
+    # so an existing URL does not break. They are simply not front-page doors.
+    "flexible":    {"flexible"},
+    "fortnightly": {"fortnightly"},
+    "monthly":     {"monthly"},
+}
+
+
 DOOR_LABEL = {"one_off": "One day", "flexible": "A few odd hours",
               "weekly": "Every week or so", "fortnightly": "Every fortnight",
               "monthly": "A few hours a month", "long_term": "Something bigger"}
 COMMIT_PHRASE = {"one_off": "one day", "flexible": "a few odd hours",
                  "weekly": "a slot each week", "fortnightly": "a slot fortnightly",
                  "monthly": "a few hours a month",
-                 "long_term": "a serious commitment"}
+                 "long_term": "a serious commitment",
+                 "unknown": "a commitment their page does not state"}
 ACT_LABEL = {"cooking_serving": "cook and serve", "befriending": "welcome and befriend",
              "outreach": "do outreach", "advice": "give advice or casework",
              "mentoring": "mentor someone", "teaching": "teach a skill",
              "shop_warehouse": "work a shop or warehouse",
+             "practical": "garden, decorate or mend",
              "admin": "do admin or back office",
              "fundraising": "fundraise or run events", "campaigning": "campaign",
              "hosting": "host someone", "governance": "join a board",
@@ -110,10 +151,15 @@ def areas_of(op, orgs):
         else orgs[op["org_id"]].get("boroughs", [])
 
 
-DISTRICT_BOROUGH = {"SE1": "Southwark", "E1": "Tower Hamlets", "N1": "Islington",
-                    "NW1": "Camden", "SW1": "Westminster", "WC1": "Camden",
-                    "EC1": "Islington", "E8": "Hackney", "SE11": "Lambeth",
-                    "SW9": "Lambeth", "W10": "Kensington and Chelsea"}
+DISTRICT_BOROUGH = {
+    "SE1": "Southwark", "SE11": "Lambeth", "SE27": "Lambeth",
+    "E1": "Tower Hamlets", "E2": "Tower Hamlets", "E8": "Hackney",
+    "N1": "Islington", "N16": "Hackney",
+    "NW1": "Camden", "WC1": "Camden", "WC1H": "Camden",
+    "SW1": "Westminster", "SW1P": "Westminster",
+    "SW4": "Lambeth", "SW9": "Lambeth", "SW16": "Lambeth", "SW17": "Wandsworth",
+    "EC1": "Islington", "W10": "Kensington and Chelsea",
+}
 
 
 def boroughs_of(op, orgs):
@@ -178,6 +224,7 @@ _DOOR = """<svg viewBox="0 0 120 78" role="img" aria-label="Engraving of a doorw
 ENGRAVING = {
     "cooking_serving": (_POT, "A single shift, then home"),
     "shop_warehouse": (_COAT, "Sorting what has been given"),
+    "practical": (_DOOR, "Work that shows when it's done"),
     "befriending": (_LAMP, "The same evening, every week"),
     "advice": (_DOOR, "A door, and someone behind it"),
     "hosting": (_DOOR, "A spare room, a name, a year"),
@@ -238,7 +285,19 @@ def narrate(op, orgs, fresh):
     # 1 — what you would actually be doing. Drop cap sits here.
     paras.append(sentence(op["what_youd_do"]))
 
-    # 2 — can you even apply? Only when the answer is no.
+    # 2 — can you even apply? Eligibility first, because it is absolute.
+    if op.get("eligibility"):
+        # Lower-case the opening word so it reads as part of the sentence — but
+        # not proper nouns. "open only to londoners" is simply wrong.
+        PROPER = {"Londoners", "London"}
+        def lead(t):
+            # The sentence already supplies "only", so drop a duplicate.
+            t = re.sub(r"^(\w+)\s+only\b", r"\1", t, count=1)
+            t = re.sub(r"^only\s+", "", t, count=1, flags=re.I)
+            first = t.split(" ", 1)[0].rstrip(",")
+            return t if first in PROPER else t[0].lower() + t[1:]
+        paras.append("This one is open only to "
+                     + serial([lead(e) for e in op["eligibility"]]) + ".")
     if op["who_can_apply"] == "team_only":
         paras.append("This house takes volunteer teams rather than individuals, so "
                      "if you are on your own this is not one to sign up to. A "
@@ -257,16 +316,32 @@ def narrate(op, orgs, fresh):
         when_bits.append("Their page does not set out the hours")
     if op.get("typical_shift_hours"):
         h = op["typical_shift_hours"]
-        when_bits.append("and covers a whole night" if overnight
-                         else f'and takes about {h:g} hour{"" if h == 1 else "s"} '
-                              f'at a time')
+        known = bool(op.get("specific_times")) and not sup
+        if overnight:
+            when_bits.append("and covers a whole night")
+        elif known:
+            when_bits.append(f'and takes about {h:g} '
+                             f'hour{"" if h == 1 else "s"} at a time')
+        else:
+            # No clock time published, but the length is known.
+            when_bits[0] = ("Their page does not set the time of day, though a "
+                            f'shift is about {h:g} hour{"" if h == 1 else "s"}')
     para = sentence(", ".join(when_bits) if len(when_bits) > 1 else when_bits[0])
-    term = COMMIT_PHRASE[op["commitment"]]
-    if op.get("min_term_months"):
-        para += " " + sentence(f'They ask for {term}, for at least '
-                               f'{op["min_term_months"]} months')
+    if op["commitment"] == "unknown":
+        # Two negatives in a row read badly — "Their page does not set out the
+        # hours. Their page does not say how often they need you." Merge them.
+        if para.startswith("Their page does not set out the hours"):
+            para = sentence("Their page sets out neither the hours nor how often "
+                            "they need you")
+        else:
+            para += " " + sentence("Their page does not say how often they need you")
     else:
-        para += " " + sentence(f'They ask for {term}')
+        term = COMMIT_PHRASE[op["commitment"]]
+        if op.get("min_term_months"):
+            para += " " + sentence(f'They ask for {term}, for at least '
+                                   f'{op["min_term_months"]} months')
+        else:
+            para += " " + sentence(f'They ask for {term}')
     paras.append(para)
 
     # 4 — what they will ask of you before you start
@@ -307,7 +382,8 @@ def narrate(op, orgs, fresh):
     elif op["location_type"] == "remote":
         paras.append("It is done remotely, from wherever you are.")
     elif bs:
-        d = f' ({op["postcode_district"]})' if op.get("postcode_district") else ""
+        pc = op.get("postcode_district")
+        d = f" ({pc})" if pc and pc not in bs else ""
         tail = ", and some of it is remote" if op["location_type"] == "hybrid" else ""
         paras.append(sentence(f'It is in {serial(bs)}{d}{tail}'))
     else:
@@ -327,8 +403,9 @@ def narrate(op, orgs, fresh):
                                + " Register your interest now and they will be in "
                                  "touch when it opens again.",
             "closed": "They were not recruiting when we last read the page.",
-            "oversubscribed": "They had more offers than places when we last read "
-                              "the page, though it is still worth asking.",
+            "oversubscribed": "They had more offers than places when we last "
+                              "read the page, and put new volunteers on a "
+                              "waiting list. Apply anyway if it suits you.",
             "unknown": "Their page does not say whether they are recruiting at the "
                        "moment, so ask before you set your heart on it.",
         }[op["status"]])
@@ -451,8 +528,9 @@ def banner(fresh, orgs_listed, orgs_total, wrap=True):
                       f'{e(fresh.get("site_banner_copy") or "")}</div>', wrap))
     out.append(_w(
         f'<div class="notice grey"><b>Notice from the publisher</b>{orgs_listed} of '
-        f'{orgs_total} charities read so far, every word from their own page. '
-        f'<a href="/data/">How the notices are checked &rarr;</a></div>', wrap))
+        f'{orgs_total} charities place notices here, every word from their own '
+        f'page. <a href="/data/">How the notices are checked &rarr;</a></div>',
+        wrap))
     return "\n".join(out)
 
 
@@ -490,6 +568,10 @@ def card(op, orgs, fresh):
     if op.get("min_term_months"):
         term += f', {op["min_term_months"]} months at least'
     rows.append(("Term", term))
+    # First row after the hours, because it decides whether the rest is worth
+    # reading at all.
+    if op.get("eligibility"):
+        rows.append(("Only for", " \u00b7 ".join(op["eligibility"])))
     if sup:
         rows.append(("Asked of you", "Not checked recently"))
     else:
@@ -531,6 +613,15 @@ def card(op, orgs, fresh):
         op["url_specificity"], "Their own house")
     href = op.get("apply_url") or org["volunteer_url"]
 
+    # An article page says "Confidence low" in its byline; a classified said
+    # nothing at all. With 11 of 67 notices resting on a thin page or a
+    # third-party listing, a reader scanning a column had no way to tell which.
+    # Printed at the foot of the particulars, where it qualifies them.
+    unconfirmed_html = (
+        '<p class="unconfirmed">We could not confirm these particulars &mdash; '
+        'read their own page before you go.</p>'
+        if op["provenance"]["confidence"] < 0.7 and not sup else "")
+
     return f"""<article class="ad" data-id="{e(op['id'])}">
   <div class="ad-org">
     <span><a href="/charity/{e(org['id'])}/">{e(org['name'])}</a></span>
@@ -540,6 +631,7 @@ def card(op, orgs, fresh):
   {stamp_html}
   <p class="what">{e(op['what_youd_do'])}</p>
   <dl>{dl}</dl>
+  {unconfirmed_html}
   <a class="apply" href="{e(href)}" target="_blank" rel="noopener nofollow">{e(btn)} &rarr;</a>
 </article>"""
 
@@ -858,7 +950,7 @@ def build_filters(orgs, opps, fresh, total):
     made.append("/all/")
 
     for c in DOOR:
-        crows = sort_roles([o for o in opps if o["commitment"] == c])
+        crows = sort_roles([o for o in opps if in_door(o, c)])
         if not crows:
             continue
         p = f"/{DOOR[c]}/"
@@ -923,6 +1015,11 @@ def build_roles(orgs, opps, fresh):
         checked_txt = (short_date(datetime.fromisoformat(checked))
                        if checked else "not yet checked")
 
+        # An unknown commitment sits behind no door, so its article goes back
+        # to the full list rather than to a page it does not appear on.
+        back_to = DOOR.get(op["commitment"], "all")
+        back_label = DOOR_LABEL.get(op["commitment"], "All notices")
+
         paras = narrate(op, orgs, fresh)
         prose = "".join(
             f'<p{" class=\"dropcap\"" if i == 0 else ""}>{e(t)}</p>'
@@ -949,6 +1046,8 @@ def build_roles(orgs, opps, fresh):
                 rows.append(("Age", f'{op["screening"]["min_age"]} and over'))
             if op["screening"].get("induction"):
                 rows.append(("Before you start", op["screening"]["induction"]))
+        if op.get("eligibility"):
+            rows.append(("Only for", "; ".join(op["eligibility"])))
         rows.append(("Apply as", {"individual": "On your own",
                                  "team_only": "A team only",
                                  "either": "On your own or as a team"}.get(
@@ -973,7 +1072,7 @@ def build_roles(orgs, opps, fresh):
         ] if x)
 
         body = f"""<main class="wrap article" id="main">
-  <a class="back" href="/{DOOR[op['commitment']]}/">&larr; {e(DOOR_LABEL[op['commitment']])}</a>
+  <a class="back" href="/{back_to}/">&larr; {e(back_label)}</a>
   <p class="kicker">{kicker}</p>
   <h1>{e(op['title'])}</h1>
   <p class="standfirst">At {e(org['name'])}{', ' + e(org['summary'].rstrip('.').lower()) if org.get('summary') else ''}</p>
@@ -1290,8 +1389,16 @@ def build_assets(orgs, opps, fresh):
               "opps": opps,
               "meta": {"orgs_listed": len(orgs), "roles": len(opps),
                        "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d")}}
+    # Ship only what the client reads. app.js filters server-rendered notices by
+    # data-id rather than rebuilding them, so it needs the fields match() tests
+    # plus the title for the lookup field — nine of twenty-three. Provenance
+    # alone was 28KB of data nothing on the client can use, on every results page.
+    CLIENT_FIELDS = ("id", "org_id", "title", "commitment", "activity", "status",
+                     "who_can_apply", "location_type", "postcode_district")
+    slim = dict(bundle)
+    slim["opps"] = [{k: o[k] for k in CLIENT_FIELDS} for o in bundle["opps"]]
     (DIST / "assets" / "data.js").write_text(
-        "window.__DATA__=" + json.dumps(bundle, separators=(",", ":")) + ";\n", encoding="utf-8")
+        "window.__DATA__=" + json.dumps(slim, separators=(",", ":")) + ";\n", encoding="utf-8")
     # A separate asset, not inlined: 43KB of borough geometry across 45 pages
     # would be 2MB of duplicated bytes. One file, cached once.
     m = map_data()
@@ -1327,6 +1434,40 @@ def check(orgs, opps, fresh) -> list[str]:
     untidy, so the build refuses to produce output when any of them trips.
     """
     errs = []
+
+    # Validate every record against the schema before anything else.
+    #
+    # This was missing, and it let a hand-written record with an over-long field
+    # build 99 pages successfully. The pipeline validates its own output, so the
+    # gap only ever showed up for records written by a person — which is exactly
+    # the path with no other machine checking it.
+    try:
+        sys.path.insert(0, str(ROOT / "pipeline"))
+        import schema as _schema
+        from jsonschema import ValidationError as _VE, validate as _validate
+        for op in opps:
+            try:
+                _validate(op, _schema.RECORD_SCHEMA)
+            except _VE as exc:
+                path = ".".join(str(x) for x in exc.absolute_path) or "(root)"
+                errs.append(f'{op.get("id", "?")}: {path} — {exc.message}')
+        for org in orgs.values():
+            try:
+                _validate(org, _schema.ORG_SCHEMA)
+            except _VE as exc:
+                path = ".".join(str(x) for x in exc.absolute_path) or "(root)"
+                errs.append(f'{org.get("id", "?")}: {path} — {exc.message}')
+    except ImportError:
+        # Not an error. Cloudflare's build command is `python3 site/build.py`
+        # with no pip install, so making jsonschema a hard requirement would
+        # break deployment outright — which the first version of this did.
+        #
+        # Schema conformance is a data-hygiene question, and the right place for
+        # it is a test (see test_every_record_matches_the_schema) plus the
+        # pipeline, which validates its own output. The ten invariants below are
+        # the ones that stop a reader being misled, and they are pure stdlib.
+        print("  (jsonschema not installed — records not schema-checked here)")
+
     seen_ids = {}
     for op in opps:
         # A duplicate id silently overwrites a page, so one role vanishes and the
@@ -1371,9 +1512,34 @@ def check(orgs, opps, fresh) -> list[str]:
         if op.get("apply_url"):
             ad = _u.urlparse(op["apply_url"]).netloc.replace("www.", "")
             od = _u.urlparse(org["website_url"]).netloc.replace("www.", "")
-            if ad and od and ad != od:
+            # A subdomain of the charity's own domain is still the charity.
+            # Crisis run their volunteering board at volunteer.crisis.org.uk and
+            # this refused it, which was the invariant being wrong rather than
+            # the data. Note the leading dot: evil-crisis.org.uk does not match.
+            same = ad == od or ad.endswith("." + od)
+            # Plenty of charities run their volunteering on a hosted platform —
+            # Shelter on Better Impact, others on Reach or Assemble — so a
+            # foreign apply_url is not automatically wrong. What must not happen
+            # is an *unreviewed* one: that is where a model inventing a URL, or a
+            # link going stale, would slip through.
+            #
+            # So the bar is acknowledgement rather than prohibition: a person has
+            # looked at it, and the record names the platform. Machine-extracted
+            # records cannot satisfy either condition, which is the point.
+            # The declaration must name the actual foreign domain. Looking for
+            # the word "platform" was too loose and also too narrow: Big Issue
+            # run their volunteering on bigissue.com while the Foundation's site
+            # is bigissue.org.uk — the same organisation on two domains, which is
+            # not a platform at all. Naming the domain is unambiguous and leaves
+            # an auditable trail.
+            pv = op.get("provenance", {})
+            declared = any(ad in x for x in pv.get("unsupported_fields", []))
+            waived = bool(pv.get("reviewed_by_human")) and declared
+            if ad and od and not same and not waived:
                 errs.append(f"{oid}: apply_url is on {ad} but the charity is {od} — "
-                            "third-party platform or stale link; confirm by hand")
+                            "third-party platform or stale link. If it is their "
+                            "own platform, review the record and name the "
+                            "platform in provenance.unsupported_fields")
         # An unverified status claim rendered as fact.
         if op["status"] == "open" and "status" in op["provenance"].get(
                 "unsupported_fields", []):

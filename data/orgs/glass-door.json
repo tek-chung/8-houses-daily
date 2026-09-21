@@ -2,13 +2,21 @@
   "organisation": {
     "id": "glass-door",
     "name": "Glass Door Homeless Charity",
-    "aliases": ["glass door", "glassdoor homeless"],
+    "aliases": [
+      "glass door",
+      "glassdoor homeless"
+    ],
     "charity_number": "1083203",
     "website_url": "https://www.glassdoor.org.uk/",
     "volunteer_url": "https://www.glassdoor.org.uk/listing/category/volunteer-roles",
     "summary": "Runs emergency winter night shelter circuits and year-round casework across west and south-west London.",
     "coverage": "multi_borough",
-    "boroughs": ["Wandsworth", "Hammersmith and Fulham", "Kensington and Chelsea", "Lambeth"],
+    "boroughs": [
+      "Wandsworth",
+      "Hammersmith and Fulham",
+      "Kensington and Chelsea",
+      "Lambeth"
+    ],
     "focus_groups": [],
     "lived_experience_roles": true,
     "robots_allowed": true,
@@ -31,7 +39,10 @@
       "commitment": "weekly",
       "min_term_months": null,
       "typical_shift_hours": 3,
-      "when": ["weekday_evening", "weekend_evening"],
+      "when": [
+        "weekday_evening",
+        "weekend_evening"
+      ],
       "specific_times": "Around 6pm to 9pm, the same evening each week, early November to April",
       "activity": "cooking_serving",
       "location_type": "in_person",
@@ -45,7 +56,11 @@
         "induction": "Supported by a volunteer coordinator; chance to complete Level 2 Food Safety and Hygiene"
       },
       "skills": [],
-      "seasonal_window": {"start_month": 11, "end_month": 4},
+      "eligibility": [],
+      "seasonal_window": {
+        "start_month": 11,
+        "end_month": 4
+      },
       "next_intake": null,
       "status": "seasonal_closed",
       "apply_url": "https://www.glassdoor.org.uk/forms/express-your-interest-in-volunteering-with-glass-door",
@@ -57,8 +72,17 @@
         "reviewed_by_human": true,
         "confidence": 1.0,
         "source_url": "https://www.glassdoor.org.uk/winter-night-shelter-volunteers",
-        "verified_fields": ["status", "specific_times", "seasonal_window", "typical_shift_hours"],
-        "unsupported_fields": ["screening.dbs", "screening.min_age", "postcode_district"]
+        "verified_fields": [
+          "status",
+          "specific_times",
+          "seasonal_window",
+          "typical_shift_hours"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "postcode_district"
+        ]
       }
     },
     {
@@ -69,7 +93,9 @@
       "commitment": "flexible",
       "min_term_months": null,
       "typical_shift_hours": null,
-      "when": ["flexible"],
+      "when": [
+        "flexible"
+      ],
       "specific_times": null,
       "activity": "advice",
       "location_type": "in_person",
@@ -83,6 +109,7 @@
         "induction": null
       },
       "skills": [],
+      "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
       "status": "unknown",
@@ -95,8 +122,16 @@
         "reviewed_by_human": true,
         "confidence": 0.4,
         "source_url": "https://www.glassdoor.org.uk/listing/category/volunteer-roles",
-        "verified_fields": ["activity"],
-        "unsupported_fields": ["status", "specific_times", "typical_shift_hours", "screening.dbs", "screening.min_age"]
+        "verified_fields": [
+          "activity"
+        ],
+        "unsupported_fields": [
+          "status",
+          "specific_times",
+          "typical_shift_hours",
+          "screening.dbs",
+          "screening.min_age"
+        ]
       }
     },
     {
@@ -107,7 +142,9 @@
       "commitment": "flexible",
       "min_term_months": null,
       "typical_shift_hours": null,
-      "when": ["flexible"],
+      "when": [
+        "flexible"
+      ],
       "specific_times": null,
       "activity": "advice",
       "location_type": "hybrid",
@@ -120,7 +157,10 @@
         "min_age": null,
         "induction": null
       },
-      "skills": ["lived experience of homelessness"],
+      "skills": [
+        "lived experience of homelessness"
+      ],
+      "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
       "status": "unknown",
@@ -134,7 +174,13 @@
         "confidence": 0.4,
         "source_url": "https://www.glassdoor.org.uk/lived-experience-group",
         "verified_fields": [],
-        "unsupported_fields": ["status", "specific_times", "typical_shift_hours", "screening.dbs", "screening.min_age"]
+        "unsupported_fields": [
+          "status",
+          "specific_times",
+          "typical_shift_hours",
+          "screening.dbs",
+          "screening.min_age"
+        ]
       }
     }
   ]

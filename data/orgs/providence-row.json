@@ -2,18 +2,24 @@
   "organisation": {
     "id": "providence-row",
     "name": "Providence Row",
-    "aliases": [],
-    "charity_number": null,
+    "aliases": [
+      "providence row charity",
+      "dellow centre"
+    ],
+    "charity_number": "1140192",
     "website_url": "https://www.providencerow.org.uk/",
-    "volunteer_url": "https://www.providencerow.org.uk/pages/68-volunteering-opportunities",
-    "summary": null,
-    "coverage": "multi_borough",
-    "boroughs": [],
+    "volunteer_url": "https://www.providencerow.org.uk/pages/16-volunteer-for-us",
+    "summary": "East London charity at the Dellow Centre in Whitechapel, working with over a thousand people a year on crisis support, advice, recovery, learning and training.",
+    "coverage": "borough",
+    "boroughs": [
+      "Tower Hamlets"
+    ],
     "focus_groups": [],
     "lived_experience_roles": false,
+    "robots_allowed": true,
     "check": {
-      "last_attempt": null,
-      "last_success": null,
+      "last_attempt": "2026-09-02T00:00:00+00:00",
+      "last_success": "2026-09-02T00:00:00+00:00",
       "link_status": "ok",
       "content_hash": null,
       "consecutive_failures": 0,
@@ -21,5 +27,106 @@
       "last_modified": null
     }
   },
-  "opportunities": []
+  "opportunities": [
+    {
+      "id": "providence-row-welcome-host",
+      "org_id": "providence-row",
+      "title": "Welcome Host",
+      "what_youd_do": "First person anyone meets in the welcome area at the Dellow Centre. Greeting people, making the room easy to walk into, pointing them to the right worker.",
+      "commitment": "weekly",
+      "min_term_months": null,
+      "typical_shift_hours": 3,
+      "when": [
+        "weekday_daytime"
+      ],
+      "specific_times": "8.30am to 11.30am or 11.30am to 2.30pm, Monday to Friday",
+      "activity": "befriending",
+      "location_type": "in_person",
+      "postcode_district": "E1",
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "required_unspecified",
+        "references": null,
+        "interview": true,
+        "min_age": null,
+        "induction": "A short chat, then a tour, then a taster day before you start"
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://www.providencerow.org.uk/pages/421-welcome-area-volunteer",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-09-02T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://www.providencerow.org.uk/pages/421-welcome-area-volunteer",
+        "verified_fields": [
+          "screening.dbs",
+          "screening.interview",
+          "screening.induction",
+          "specific_times",
+          "typical_shift_hours",
+          "commitment"
+        ],
+        "unsupported_fields": [
+          "screening.min_age",
+          "screening.references"
+        ]
+      }
+    },
+    {
+      "id": "providence-row-garden",
+      "org_id": "providence-row",
+      "title": "Garden Volunteer",
+      "what_youd_do": "Work on the rooftop garden at the Dellow Centre. Outdoor, hands-on, and the sort of job that visibly looks better when you leave.",
+      "commitment": "weekly",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "weekday_daytime"
+      ],
+      "specific_times": null,
+      "activity": "practical",
+      "location_type": "in_person",
+      "postcode_district": "E1",
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://www.providencerow.org.uk/pages/16-volunteer-for-us",
+      "url_specificity": "org_volunteer_page",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-09-02T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 0.6,
+        "source_url": "https://www.providencerow.org.uk/pages/16-volunteer-for-us",
+        "verified_fields": [
+          "activity"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "typical_shift_hours",
+          "commitment"
+        ]
+      }
+    }
+  ]
 }

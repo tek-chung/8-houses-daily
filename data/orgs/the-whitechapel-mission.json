@@ -1,6 +1,6 @@
 {
   "organisation": {
-    "id": "whitechapel-mission",
+    "id": "the-whitechapel-mission",
     "name": "The Whitechapel Mission",
     "aliases": [
       "whitechapel",
@@ -30,7 +30,7 @@
   "opportunities": [
     {
       "id": "whitechapel-mission-breakfast-challenge",
-      "org_id": "whitechapel-mission",
+      "org_id": "the-whitechapel-mission",
       "title": "Breakfast Challenge",
       "what_youd_do": "Bring a group from your workplace to prepare and serve the morning meal alongside regular staff. Very early start.",
       "commitment": "one_off",
@@ -53,6 +53,7 @@
         "induction": "First-time groups visit the site beforehand. Not suitable in the third trimester of pregnancy."
       },
       "skills": [],
+      "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
@@ -78,7 +79,7 @@
     },
     {
       "id": "whitechapel-mission-clothing-challenge",
-      "org_id": "whitechapel-mission",
+      "org_id": "the-whitechapel-mission",
       "title": "Clothing Challenge",
       "what_youd_do": "Bring a group to work through sacks of donated clothing \u2014 sorting, measuring, tagging and hanging items ready to be given out.",
       "commitment": "one_off",
@@ -100,6 +101,7 @@
         "induction": "First-time groups visit the site beforehand. Not suitable in the third trimester of pregnancy."
       },
       "skills": [],
+      "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",

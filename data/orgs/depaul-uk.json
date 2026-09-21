@@ -52,9 +52,7 @@
         "min_age": null,
         "induction": "Home visit, DBS check and training on youth homelessness, boundaries and safeguarding"
       },
-      "skills": [
-        "a spare room"
-      ],
+      "skills": [],
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
@@ -73,13 +71,17 @@
           "screening.induction",
           "activity",
           "location_type",
-          "specific_times"
+          "specific_times",
+          "eligibility"
         ],
         "unsupported_fields": [
           "screening.min_age",
           "min_term_months"
         ]
-      }
+      },
+      "eligibility": [
+        "People with a spare room"
+      ]
     },
     {
       "id": "depaul-uk-nightstop-driver",
@@ -108,6 +110,7 @@
       "skills": [
         "driving"
       ],
+      "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",

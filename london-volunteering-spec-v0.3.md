@@ -117,9 +117,30 @@ Two record types, JSON in the repo, one file per organisation. Full schema in
 
 ### 6.1 Charities do not publish their screening requirements
 
-Across 11 verified roles: `dbs` is `unknown` nine times and
-`required_unspecified` twice. **Not one page states a DBS level, a minimum age or
-a references policy.**
+Across all 75 verified roles, `dbs` is `unknown` **63 times — 84%**.
+
+The first eleven roles gave a starker version: nine `unknown`, two
+`required_unspecified`, and not one page stating a DBS level, a minimum age or a
+references policy. Reading all 32 organisations qualifies that without overturning
+it:
+
+| | First 5 orgs | All 32 |
+|---|---|---|
+| Roles | 11 | 75 |
+| DBS stated | 2 (18%) | 12 (16%) |
+| Minimum age stated | 0 | 14 |
+| References stated | 0 | 3 |
+| An `enhanced` DBS | 0 | 1 |
+
+**The proportion has not moved, so a screening filter still cannot work.** But the
+gap is a habit rather than an impossibility. Groundswell, Providence Row, Solace,
+Stonewall Housing, Shelter and Crisis all publish their requirements, some in
+full — Solace as a downloadable role description, Crisis as a policy covering
+every role. Those that do tend to run the most sensitive services.
+
+Shelter states *"You will not undergo a criminal record check for this role"*,
+which is the only verified `dbs: "none"` in the set and the only one the build
+invariant will accept.
 
 v0.2 called screening tolerance "the facet nobody else offers". On observational
 data it is silent almost always, which makes it the PoC's failure reached from the
@@ -316,15 +337,29 @@ pre-rendered page, because a results page holds only its own notices.
 
 ### 11.1 Build invariants
 
-`site/build.py` refuses to build — exit 2, nothing written — on any of ten
+`site/build.py` refuses to build — exit 2, nothing written — on any of twelve
 conditions, each demonstrated by deliberately breaking the data:
 
-a role pointing at an organisation that is not in the build · an opted-out charity
-still in the build · `dbs: "none"` without a verified source · nothing to link to,
-so the button would lie · a homepage-only link at high confidence · duplicate role
-ids · `seasonal_closed` with no window · a minimum term on a one-off role · an
-`apply_url` on a different domain from the charity · `status: open` where
-provenance says the source does not support it.
+a record failing the schema · an organisation failing the schema · duplicate role
+ids · a role pointing at an organisation that is not in the build · an opted-out
+charity still in the build · nothing to link to, so the button would lie ·
+`dbs: "none"` without a verified source · a homepage-only link at high confidence ·
+`seasonal_closed` with no window · a minimum term on a one-off role · an
+`apply_url` off the charity's own domain, unreviewed or with the domain unnamed ·
+`status: open` where provenance says the source does not support it.
+
+The first two were added during Phase 0 and are the reason for the other ten
+holding: a hand-written record with an over-long field **built 197 pages
+successfully** before them. The pipeline validates its own output; nothing
+validated a record written by a person, which is the one path with no other
+machine checking it. They degrade to a printed note rather than a failure when
+`jsonschema` is absent, because Cloudflare's build installs nothing.
+
+Three of the twelve fired on real mistakes during Phase 0, not on deliberate
+tests: an inferred `dbs: "none"` for a Crisis shop with no such statement, and two
+length caps. Two others were wrong about the world rather than the data and were
+corrected — a charity's own subdomain read as foreign, and a hosted volunteering
+platform treated as a stale link.
 
 A promise enforced by the build is worth more than one written in a document.
 
@@ -386,12 +421,20 @@ busy, so it is built in rather than hoped for.
 
 ## 13. Testing
 
-145 tests: 42 on the pipeline, 103 on the site.
+162 tests: 42 on the pipeline, 120 on the site.
 
 ### 13.1 Grouped by who breaks
 
 Honesty (a reader is misled about what we know) · reachability · accessibility ·
-SEO · responsive · engravings · readability · concision · map · badge placement.
+SEO · responsive · engravings · readability · concision · map · badge placement ·
+**provenance** · **data integrity**.
+
+The last two were added during Phase 0 and both found bugs immediately. Provenance
+asserts that any fact taken from a domain the charity does not control names that
+domain — which caught three records declaring a source in prose without naming it.
+Data integrity reconciles the organisation files against `seed.py`, and found a
+filename that had drifted from its id months earlier: both sets counted 32, so no
+count check could ever have seen it.
 
 ### 13.2 A Python suite cannot execute the page
 
@@ -420,25 +463,34 @@ opinion about whether a decoration exists.
 
 | Phase | State |
 |---|---|
-| 0 — data | **5 of 32 organisations, 11 roles. The bottleneck.** |
-| 1 — site | Built. 45 pages, tested, no console errors. |
-| 2 — map | Geography done. Travel-time reach blocked on `coords`. |
+| 0 — data | **Complete. All 32 read; 75 roles across 30. Two place none.** |
+| 1 — site | Built. 197 pages, 162 tests, no console errors. |
+| 2 — map | Geography done. Travel-time reach still blocked: no role has `coords`. |
 | 3 — pipeline | Built and tested. **Never run against a live page.** |
 | 4 — later | Seasonality, corporate days, follow-up survey. |
 
+Phase 0 was the bottleneck for the whole of v0.2 and v0.3's drafting. It is done,
+and the reading changed the product as much as it filled it: five schema additions
+forced by real pages, seven findings in `docs/scrapability.md`, and three bugs
+found in code that was already called finished.
+
 ### The critical path
 
-1. **`python pipeline/census.py`** — no API key, about two minutes. Answers whether
-   the remaining 27 pages can be read at all, and distinguishes `client_rendered`
-   (needs a different URL or a headless browser) from `thin` (real prose, no role
-   detail — link-only permanently). Those lead to opposite decisions.
-2. **Read `docs/census.md`** before extracting anything. If most pages are
-   client-rendered, that is a different project and worth knowing before publishing
-   a hundred unreliable records.
-3. **Run the extraction.** Everything lands in a review PR; the first will be large
-   and that is correct for a cold start.
-4. **Send the launch email** (`docs/launch-email.md`) with the four screening
-   questions attached.
+The census is no longer the first step — it existed to survey the 27 unresearched
+organisations and there are none.
+
+1. **Deploy.** The crawler's user agent points at the paper's own `/bot/` page,
+   which has to resolve before the crawler visits any charity.
+2. **`python pipeline/run.py --dry-run`** — the freshness pipeline has never met a
+   live charity page. The hand-written records give it something to diff against,
+   which is a far better first run than a cold start would have been.
+3. **Send the launch email** (`docs/launch-email.md`) with the four screening
+   questions. §6.1 is now the strongest argument for asking: a fifth of these
+   charities already publish what the questions ask for, so it is a request to
+   match their peers rather than to generate something new.
+4. **Populate `coords`** to unblock travel-time reach. 75 roles, none with
+   coordinates. Postcode-district centroids would be honest at the precision the
+   map already claims.
 
 ### Before any of it
 

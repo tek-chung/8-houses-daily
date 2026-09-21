@@ -2,18 +2,25 @@
   "organisation": {
     "id": "single-homeless-project",
     "name": "Single Homeless Project",
-    "aliases": [],
+    "aliases": [
+      "shp",
+      "single homeless project london"
+    ],
     "charity_number": null,
     "website_url": "https://www.shp.org.uk/",
     "volunteer_url": "https://www.shp.org.uk/get-involved/volunteer/",
-    "summary": null,
+    "summary": "The largest homelessness charity working solely with Londoners, supporting over 10,000 people a year across prevention, hostels and recovery.",
     "coverage": "london_wide",
     "boroughs": [],
-    "focus_groups": [],
-    "lived_experience_roles": false,
+    "focus_groups": [
+      "lived_experience",
+      "addiction"
+    ],
+    "lived_experience_roles": true,
+    "robots_allowed": true,
     "check": {
-      "last_attempt": null,
-      "last_success": null,
+      "last_attempt": "2026-09-02T00:00:00+00:00",
+      "last_success": "2026-09-02T00:00:00+00:00",
       "link_status": "ok",
       "content_hash": null,
       "consecutive_failures": 0,
@@ -21,5 +28,116 @@
       "last_modified": null
     }
   },
-  "opportunities": []
+  "opportunities": [
+    {
+      "id": "shp-peer-mentor",
+      "org_id": "single-homeless-project",
+      "title": "Peer Mentor",
+      "what_youd_do": "Use your own recovery to guide someone through theirs. Over forty Londoners graduate as Peer Mentors a year, and many go on to work here afterwards.",
+      "commitment": "weekly",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "mentoring",
+      "location_type": "in_person",
+      "postcode_district": null,
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "Accredited training, run throughout the year, with ongoing support"
+      },
+      "skills": [],
+      "eligibility": [
+        "Londoners with lived experience of homelessness, substance use or the justice system",
+        "People six months clear of substances, serious mental health episodes or offending"
+      ],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://www.shp.org.uk/what-we-do/next-steps/lived-experience/peer-mentoring/",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-09-02T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://www.shp.org.uk/what-we-do/next-steps/lived-experience/peer-mentoring/",
+        "verified_fields": [
+          "eligibility",
+          "screening.induction",
+          "activity"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "typical_shift_hours",
+          "boroughs: the programme runs in Camden, Islington and Westminster, which the schema records only at organisation level"
+        ]
+      }
+    },
+    {
+      "id": "shp-skills-based",
+      "org_id": "single-homeless-project",
+      "title": "Skills-Based Volunteering",
+      "what_youd_do": "Give them a skill they cannot buy \u2014 fitness instruction, IT support, training, design, PR. One-off or regular, on your own or with colleagues.",
+      "commitment": "flexible",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "One-off or regular, as it suits you",
+      "activity": "varies",
+      "location_type": "hybrid",
+      "postcode_district": null,
+      "who_can_apply": "either",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "skills": [
+        "fitness instruction",
+        "IT support",
+        "training",
+        "design",
+        "PR and marketing"
+      ],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://www.shp.org.uk/get-involved/volunteer/",
+      "url_specificity": "org_volunteer_page",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-09-02T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 0.9,
+        "source_url": "https://www.shp.org.uk/get-involved/volunteer/",
+        "verified_fields": [
+          "skills",
+          "who_can_apply",
+          "specific_times",
+          "commitment"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "typical_shift_hours"
+        ]
+      }
+    }
+  ]
 }

@@ -15,44 +15,42 @@ stylesheet. A custom domain fixes this on any host.
 
 ## The setup, for 8houses.co.uk
 
-The domain is registered with Cloudflare, so the DNS is already in the same
-account as Pages. That makes the custom domain automatic — no nameserver change,
-no CNAME to add by hand.
+**Use Workers, not Pages.** Since Workers gained native static-asset serving,
+Cloudflare's own guidance is to start new projects there; Pages still works and is
+not deprecated, but their investment has moved. The dashboard steers you to Workers
+by default, and that is now the right default.
+
+`wrangler.jsonc` in the repo root does the configuring. It declares an
+**assets-only** Worker — no script, nothing executed — which keeps the deployment
+consistent with spec §3 (no runtime intelligence) and §2 A4 (nothing that can be
+abused or run up a bill).
 
 1. Push the repo to GitHub.
-2. Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect
-   to Git**, and pick the repo.
+2. Cloudflare dashboard → **Workers & Pages** → **Create** → **Import a
+   repository**, and pick it.
 3. Build settings:
 
    | Field | Value |
    |---|---|
-   | Framework preset | None |
    | Build command | `python3 site/build.py` |
-   | Build output directory | `dist` |
-   | Root directory | *(leave blank)* |
+   | Deploy command | `npx wrangler deploy` |
 
-4. Environment variables → add:
+   There is no "output directory" field — `wrangler.jsonc` says `./dist`.
 
-   | Name | Value |
-   |---|---|
-   | `SITE_URL` | `https://daily.8houses.co.uk` (whatever you settle on) |
+4. Environment variables → add `SITE_URL` = `https://daily.8houses.co.uk`. The
+   Python version comes from `.python-version` in the repo.
+5. Deploy. You get a `*.workers.dev` URL immediately — a root, so it works before
+   any custom domain exists.
+6. **Custom domain** → add `daily.8houses.co.uk`. The zone is in the same account,
+   so Cloudflare writes the DNS record and issues the certificate itself.
+7. **Analytics** (optional, one click) → Web Analytics. Cookieless and
+   IP-anonymising, which is what spec §13 asks for, and it needs no consent banner
+   because it sets nothing.
 
-   The Python version comes from the `.python-version` file in the repo, so it is
-   version-controlled rather than set in a dashboard. Cloudflare's current build
-   image defaults to 3.13 and honours that file; the code needs nothing newer
-   than 3.9.
-
-5. Deploy. You get `something.pages.dev` immediately — that is a root, so it works
-   without a custom domain.
-6. **Custom domain** → **Set up a custom domain** → `daily.8houses.co.uk`.
-   Because the zone is in the same account, Cloudflare writes the DNS record and
-   issues the certificate itself. Nothing to do at the registrar.
-7. **Analytics** (optional, one click) → Cloudflare Web Analytics. Cookieless and
-   IP-anonymising, which is what spec §13 asks for, and it needs no consent
-   banner because it sets nothing.
-
-Every push to `main` rebuilds. Pull requests get preview URLs, which is handy for
-looking at a freshness change before merging it.
+Two settings in `wrangler.jsonc` are load-bearing. `html_handling:
+auto-trailing-slash` makes `/about/` resolve to `/about/index.html`, which the
+whole URL scheme depends on. `not_found_handling: 404-page` serves the paper's own
+"No such page in this edition" instead of a bare Cloudflare error.
 
 ## Option B — GitHub Pages
 

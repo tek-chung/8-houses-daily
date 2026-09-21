@@ -2,18 +2,24 @@
   "organisation": {
     "id": "centrepoint",
     "name": "Centrepoint",
-    "aliases": [],
+    "aliases": [
+      "centrepoint soho",
+      "centrepoint charity"
+    ],
     "charity_number": null,
     "website_url": "https://centrepoint.org.uk/",
-    "volunteer_url": "https://centrepoint.org.uk/support-us/volunteer",
-    "summary": null,
+    "volunteer_url": "https://centrepoint.org.uk/get-involved/volunteer/",
+    "summary": "The UK's leading youth homelessness charity since 1969, working with 16 to 25 year olds across 60 services. A bed for over 500 young people a night, and support for up to two years.",
     "coverage": "london_wide",
     "boroughs": [],
-    "focus_groups": [],
+    "focus_groups": [
+      "youth"
+    ],
     "lived_experience_roles": false,
+    "robots_allowed": true,
     "check": {
-      "last_attempt": null,
-      "last_success": null,
+      "last_attempt": "2026-09-02T00:00:00+00:00",
+      "last_success": "2026-09-02T00:00:00+00:00",
       "link_status": "ok",
       "content_hash": null,
       "consecutive_failures": 0,
@@ -21,5 +27,111 @@
       "last_modified": null
     }
   },
-  "opportunities": []
+  "opportunities": [
+    {
+      "id": "centrepoint-mentor",
+      "org_id": "centrepoint",
+      "title": "Volunteer Mentor",
+      "what_youd_do": "Be matched with one young person and stay with them for a year, working on whatever they are aiming at \u2014 work, learning, health, moving on. Their own mentors say reliability matters more than anything else.",
+      "commitment": "long_term",
+      "min_term_months": 12,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "mentoring",
+      "location_type": "in_person",
+      "postcode_district": null,
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": true,
+        "min_age": null,
+        "induction": "Investing in Volunteers accredited since 2024. A discussion meeting about the role before you start."
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "unknown",
+      "apply_url": "https://centrepoint.org.uk/get-involved/volunteer/",
+      "url_specificity": "org_volunteer_page",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-09-02T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 0.7,
+        "source_url": "https://centrepoint.org.uk/get-involved/volunteer/",
+        "verified_fields": [
+          "screening.interview",
+          "screening.induction",
+          "activity"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "typical_shift_hours",
+          "min_term_months: the one-year match is described in an NCVO case study of their programme, not on their own page",
+          "status: their FAQ says roles are recruited as young people need them, and no live listing was found"
+        ]
+      }
+    },
+    {
+      "id": "centrepoint-helpline",
+      "org_id": "centrepoint",
+      "title": "Helpline Volunteer",
+      "what_youd_do": "Answer their national helpline for under-25s who are homeless or about to be \u2014 calls, emails and web chats.",
+      "commitment": "weekly",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "weekday_daytime"
+      ],
+      "specific_times": null,
+      "activity": "advice",
+      "location_type": "hybrid",
+      "postcode_district": null,
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": true,
+        "min_age": null,
+        "induction": "Investing in Volunteers accredited since 2024. A discussion meeting about the role before you start."
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "unknown",
+      "apply_url": "https://centrepoint.org.uk/get-involved/volunteer/",
+      "url_specificity": "org_volunteer_page",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-09-02T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 0.5,
+        "source_url": "https://centrepoint.org.uk/get-involved/volunteer/",
+        "verified_fields": [
+          "screening.interview",
+          "screening.induction"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "typical_shift_hours",
+          "commitment",
+          "activity",
+          "role detail comes from the vInspired platform, which is no longer operating, so it may not reflect current roles",
+          "status: no live listing found"
+        ]
+      }
+    }
+  ]
 }

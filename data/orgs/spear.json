@@ -2,18 +2,28 @@
   "organisation": {
     "id": "spear",
     "name": "SPEAR",
-    "aliases": [],
+    "aliases": [
+      "spear london",
+      "spear homelessness"
+    ],
     "charity_number": null,
     "website_url": "https://www.spearlondon.org/",
     "volunteer_url": "https://www.spearlondon.org/get-involved/be-a-volunteer/",
-    "summary": null,
+    "summary": "Working with homeless people across south-west London since 1987 \u2014 hostels, shared housing, tenancy sustainment and a health link service into primary care.",
     "coverage": "multi_borough",
-    "boroughs": [],
+    "boroughs": [
+      "Richmond upon Thames",
+      "Kingston upon Thames",
+      "Merton",
+      "Sutton",
+      "Wandsworth"
+    ],
     "focus_groups": [],
     "lived_experience_roles": false,
+    "robots_allowed": true,
     "check": {
-      "last_attempt": null,
-      "last_success": null,
+      "last_attempt": "2026-09-02T00:00:00+00:00",
+      "last_success": "2026-09-02T00:00:00+00:00",
       "link_status": "ok",
       "content_hash": null,
       "consecutive_failures": 0,
@@ -21,5 +31,57 @@
       "last_modified": null
     }
   },
-  "opportunities": []
+  "opportunities": [
+    {
+      "id": "spear-fundraising",
+      "org_id": "spear",
+      "title": "Fundraising Volunteer",
+      "what_youd_do": "Help raise money for their work across south-west London. They say they welcome applications from everyone, and particularly from people who have been homeless themselves.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "fundraising",
+      "location_type": "in_person",
+      "postcode_district": null,
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "A thorough induction, ongoing training and support, and they tell you what your help achieved"
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://www.spearlondon.org/get-involved/be-a-volunteer/",
+      "url_specificity": "org_volunteer_page",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-09-02T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 0.9,
+        "source_url": "https://www.spearlondon.org/get-involved/be-a-volunteer/",
+        "verified_fields": [
+          "status",
+          "activity",
+          "screening.induction"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "typical_shift_hours",
+          "their page says roles change frequently, so this list may be short-lived"
+        ]
+      }
+    }
+  ]
 }

@@ -3,8 +3,10 @@
 **Date** 25 August 2026
 **Method** Manual fetch and read of live volunteering pages, treating each as the
 pipeline would. Three organisations done in full; findings generalise.
-**Status** 5 of 32 organisations have verified role data (11 roles). 27 remain.
-Two of the original 34 were excluded as not being sources of volunteering roles.
+**Status** **Complete.** All 32 organisations read; 75 roles across 30. Four of
+the original 34 turned out not to be sources of volunteering roles: StreetLink and
+Homeless Link excluded up front by judgement, Streets of London and Cardboard
+Citizens found by reading them (Finding 4g).
 
 ---
 
@@ -104,6 +106,191 @@ Three options:
 My recommendation is **(a) now, (b) opportunistically** — put the four questions in
 the §16 launch email you're sending anyway, and take whatever comes back. Do not
 ship a screening filter on observational data.
+
+## Finding 4b — Marketing prose describes roles the vacancy list does not offer
+
+**akt is the clearest case yet of the bait problem in Finding 1.**
+
+Their volunteering page runs several hundred words on what volunteers do —
+mentoring a young person for an hour a week, walking in a Pride parade, presenting
+at a local school, fundraising. Rich, specific, quotable. Then the *opportunities*
+section reads:
+
+> new volunteering opportunities coming soon... Stay tuned!
+
+There are no open roles. An extractor reading the prose would confidently produce
+three open vacancies, each with plausible detail, and send people to apply for
+nothing.
+
+Two consequences.
+
+**For the extraction prompt.** Describing a role type is not offering it. The
+prompt already says `status: open` only where the page says roles are available,
+but this is the case that makes it concrete, and it is worth naming in the prompt
+explicitly: prefer the vacancy list over the prose when the two disagree.
+
+**For the records.** Both akt roles are stored with `status: "closed"` and
+confidence 0.5–0.6, which puts a `NOT RECRUITING` stamp on the notice. That is
+more use than hiding them — someone can see akt exists, see it is shut, and check
+back — and far more use than sending them to apply.
+
+## Finding 4c — A closure notice can be years out of date
+
+West London Mission's volunteer page reads:
+
+> **COVID-19 update:** Please note that we are not taking on volunteers at the
+> moment but please keep checking this page to see our update on WLM volunteering
+
+Still live in 2026. The notice is not wrong about anything except its own age, and
+there is no way to tell from the sentence itself how old it is — except that it
+mentions COVID-19.
+
+This is a third distinct failure mode, after akt's empty vacancy list:
+
+| Pattern | What the page does | What to record |
+|---|---|---|
+| Bait (akt) | Prose describes roles; vacancy list empty | `closed`, low confidence |
+| **Stale notice (WLM)** | **Says "not taking volunteers", notice years old** | **`closed`, and say the notice is old** |
+| Silence (most) | Lists roles, never says if recruiting | `unknown` |
+
+**Why it matters more than it looks.** A reader who sees "not recruiting" walks
+away. If that notice is five years old they have been turned away by a page rather
+than by a charity — and WLM's own page carries three named staff with direct phone
+numbers, which look current. So the record is `closed` at confidence 0.5, with an
+`unsupported_fields` entry saying the notice is headed COVID-19 and is worth a
+phone call.
+
+**For the pipeline.** `fetchpage.cms_updated()` already captures a CMS-published
+"last updated" date where one exists. This is the case that makes it valuable: a
+closure notice on a page last touched in 2021 should be weighted differently from
+one on a page updated last week. Worth wiring into the confidence calculation
+rather than leaving as metadata.
+
+## Finding 4d — Hands-on volunteering can sit behind a corporate paywall
+
+Two of the largest day centres in this set reserve their front-line volunteering
+for companies that pay them.
+
+**The Connection at St Martin's** — Europe's largest homeless day centre, over a
+hundred people a day — lists exactly **one** opportunity open to an individual:
+helping at fundraising events. Catering, artistic activities and Christmas are
+corporate only, and the page says why: *"We reserve these opportunities for our
+financial partners as part of their partnership with us."* 627 corporate
+volunteers worked the day centre last year.
+
+**The Passage** is the same shape: *"all our volunteering opportunities are part of
+these packages and we are unable to accommodate requests for one-off volunteering
+days."*
+
+This is not a criticism. Managing volunteers costs staff time, and a partnership
+that funds the service while supplying the labour is a rational answer. But it is
+**material to a reader**, and invisible unless someone says it. A person who wants
+to serve lunch at the busiest day centre in Europe cannot, unless their employer
+writes a cheque.
+
+**Recorded without a new enum.** `eligibility`, added for Women at the Well,
+carries it exactly: `["Companies that are financial partners of the charity"]`
+alongside `who_can_apply: "team_only"`. The notice prints **Only for: Companies
+that are financial partners**, which is the honest version of what a reader needs
+to know before they email.
+
+**It is not universal, though.** Single Homeless Project — larger than either, over
+10,000 Londoners a year — says the opposite: *"There are many opportunities for
+individuals or groups to support us, either on a one-off or regular basis."* Its
+Peer Mentor programme is open to any Londoner who meets the eligibility, and its
+skills-based volunteering takes individuals and teams alike.
+
+So the pattern is a choice each charity makes, not a consequence of size. Worth
+tracking across the remaining organisations: if it clusters among the large
+central-London day centres, the paper's most useful function for an individual may
+be steering them towards the charities where the door is genuinely open.
+
+## Finding 4e — Third-party volunteering portals are richer and less reliable
+
+Twice now the only place with real detail about a role has been a platform the
+charity does not control.
+
+**Ace of Clubs.** Their own page says little; **Lambeth Council's volunteer
+portal** gives the shift as 9.30am to 3pm, Monday to Friday. The detail looks
+current and is almost certainly right.
+
+**Thames Reach.** Their own page names no roles at all, pointing instead at a
+vacancies list. **The GLA's Team London platform** carries a detailed BSL support
+role at Brent Reach — one-day core training, safeguarding and boundaries, travel
+paid up to £10, £5 towards lunch over five hours. It also refers to *"lock down
+times"* and a *"COVID risk assessment"*, which dates it to 2020 or 2021.
+
+**Why this matters for the pipeline.** These portals are exactly what a search
+surfaces first, because they are better structured than the charities' own pages.
+They are also where listings go to die: a charity updates its own site and forgets
+the copy it posted on a council portal five years ago.
+
+**How it is handled here.** `source_url` records where a fact actually came from,
+not where the reader should apply. Ace of Clubs' shift times point at the Lambeth
+portal, so when the weekly check reads aceofclubs.org.uk and never finds them it
+will honestly downgrade rather than assume. Thames Reach's training and expenses
+sit in `unsupported_fields` with a note naming the source and its age.
+
+**A rule for extraction.** The pipeline only ever reads the charity's own
+`volunteer_url`, so it will never see these portals — which is the right default.
+The corollary is that a human adding detail from a portal must record the source,
+or the weekly check will silently treat a five-year-old third-party claim as
+verified first-party fact.
+
+## Finding 4f — Some volunteering is only open to students
+
+`pipeline/seed.py` flagged New Horizon Youth Centre's URL as pointing at a paid
+jobs page. That was right, and the reason is more interesting than the flag.
+
+Their get-involved page is a jobs page **because their volunteering runs as
+student placements**:
+
+> You must be able to demonstrate valid enrolment at a UK or EU higher level
+> institution (i.e. University level or above) and we can only offer placements to
+> students aged 18 or over.
+
+The actual role descriptions — kitchen, ESOL tutor, sports assistant — are on
+**UCL's student volunteering platform**, not on New Horizon's site at all. Third
+time a third-party portal has held the detail (see Finding 4e), and the second
+time it has been a university rather than a council.
+
+**Why it matters.** A reader who is not a student cannot volunteer here, and
+nothing on the charity's own volunteering route says so until you reach a
+paragraph about placements. The `eligibility` field carries it:
+`["Students enrolled at a UK or EU university, aged 18 or over"]`, so the notice
+prints **Only for: students enrolled at a UK or EU university** before anyone
+spends time on it.
+
+**For the pipeline.** This is the case where `url_specificity: "org_homepage"` and
+the seeded-URL flags earn their keep. A landing page that is really a jobs page
+will yield paid roles unless something stops it, and the build invariant that
+refuses a homepage-only link at high confidence is the backstop.
+
+## Finding 4g — Two more of the 32 place no notices at all
+
+`seed.py` excluded StreetLink and Homeless Link up front, by judgement. Reading all
+32 found two more, by evidence.
+
+**Streets of London** is a grant-giving charity. Its volunteer page does not list
+roles; it sends you elsewhere, and does so rather well:
+
+> You can visit Homeless Link and search for charities in your area... there are at
+> least 150 different homelessness organisations in London alone, so don't hesitate
+> to try several!
+
+**Cardboard Citizens** is a theatre company whose members are people who have
+experienced homelessness. Its get-involved route is sponsored events — The Big
+Tramp is an all-night walk with a £39 entry fee. Paying to take part in a fundraiser
+is not volunteering, and listing it as such would misdescribe both.
+
+**Recorded with `link_status: "link_only"`**, which the schema has had since v0.2
+for precisely this. Both stay in scope at 32; they simply never appear in a column.
+No new field, no exclusion, no empty pages.
+
+**It also exposed a wrong sentence on every page.** The publisher's notice read
+*"30 of 32 charities read so far"*, which implied two were unread. All 32 have now
+been read; two place nothing. It now reads *"30 of 32 charities place notices
+here"* — a different claim, and the true one.
 
 ## Finding 5 — Three of my own enums were too narrow (fixed)
 

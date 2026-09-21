@@ -2,13 +2,19 @@
   "organisation": {
     "id": "manna-society",
     "name": "Manna Society",
-    "aliases": ["manna", "the manna", "manna day centre"],
+    "aliases": [
+      "manna",
+      "the manna",
+      "manna day centre"
+    ],
     "charity_number": "294691",
     "website_url": "https://www.mannasociety.org.uk/",
     "volunteer_url": "https://www.mannasociety.org.uk/how-you-can-help/volunteer-time/",
     "summary": "Day centre near London Bridge providing meals, showers, clothing and welfare advice.",
     "coverage": "borough",
-    "boroughs": ["Southwark"],
+    "boroughs": [
+      "Southwark"
+    ],
     "focus_groups": [],
     "lived_experience_roles": false,
     "robots_allowed": true,
@@ -31,7 +37,10 @@
       "commitment": "weekly",
       "min_term_months": 3,
       "typical_shift_hours": 4.25,
-      "when": ["weekday_daytime", "weekend_daytime"],
+      "when": [
+        "weekday_daytime",
+        "weekend_daytime"
+      ],
       "specific_times": "9.30am to 1.45pm, any day",
       "activity": "cooking_serving",
       "location_type": "in_person",
@@ -45,6 +54,7 @@
         "induction": "You'll be added to a waiting list before a place comes up"
       },
       "skills": [],
+      "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
@@ -57,19 +67,28 @@
         "reviewed_by_human": true,
         "confidence": 1.0,
         "source_url": "https://www.mannasociety.org.uk/how-you-can-help/volunteer-time/",
-        "verified_fields": ["specific_times", "min_term_months", "commitment"],
-        "unsupported_fields": ["screening.dbs", "screening.min_age"]
+        "verified_fields": [
+          "specific_times",
+          "min_term_months",
+          "commitment"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age"
+        ]
       }
     },
     {
       "id": "manna-society-computer-suite",
       "org_id": "manna-society",
       "title": "Computer Suite Volunteer",
-      "what_youd_do": "Sit with clients in the computer room and help with straightforward problems — the kind anyone who uses a computer could sort out.",
+      "what_youd_do": "Sit with clients in the computer room and help with straightforward problems \u2014 the kind anyone who uses a computer could sort out.",
       "commitment": "weekly",
       "min_term_months": null,
       "typical_shift_hours": 3.25,
-      "when": ["weekday_daytime"],
+      "when": [
+        "weekday_daytime"
+      ],
       "specific_times": "10.00am to 1.15pm, Monday to Friday",
       "activity": "teaching",
       "location_type": "in_person",
@@ -82,7 +101,10 @@
         "min_age": null,
         "induction": null
       },
-      "skills": ["basic computer literacy"],
+      "skills": [
+        "basic computer literacy"
+      ],
+      "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
@@ -95,8 +117,14 @@
         "reviewed_by_human": true,
         "confidence": 1.0,
         "source_url": "https://www.mannasociety.org.uk/how-you-can-help/volunteer-time/",
-        "verified_fields": ["specific_times", "commitment"],
-        "unsupported_fields": ["screening.dbs", "screening.min_age"]
+        "verified_fields": [
+          "specific_times",
+          "commitment"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age"
+        ]
       }
     }
   ]

@@ -23,7 +23,18 @@ This matters most for:
   that is a real and useful fact, and collapsing it to `unknown` throws it away.
 - `screening.min_age` — only if stated as a number.
 - `status` — `open` only if the page says roles are available. A page that lists
-  roles without saying whether they're recruiting is `unknown`.
+  roles without saying whether they're recruiting is `unknown`. **Where a page's
+  prose describes role types but its vacancy list is empty or says something like
+  "opportunities coming soon", trust the vacancy list: record the roles as
+  `closed`, not `open`.** Describing a role is not offering it, and akt's page
+  does exactly this — several hundred words on mentoring and Pride events above an
+  opportunities section with nothing in it.
+
+  **And if a closure notice looks old, say so in `page_notes`.** West London
+  Mission still carries a notice headed "COVID-19 update" saying they are not
+  taking volunteers. Record `closed`, because that is what the page says, but a
+  reader deserves to know the notice may be years out of date rather than being
+  quietly turned away by it.
 - `next_intake` — only an actual date on the page.
 
 A record full of `unknown` is useful: it tells a human reviewer to look, and it
@@ -70,13 +81,28 @@ gives no timing, use `["flexible"]`.
 `specific_times` — the page's actual stated timing, briefly: "Saturdays 9am–12pm",
 "Tuesday and Thursday mornings", "October to March". Null if not stated.
 
-`activity` — exactly one, the dominant activity. A role that genuinely spans two has
+`activity` — exactly one, the dominant activity. Use `practical` for gardening,
+decorating, maintenance and similar hands-on work; `shop_warehouse` is for a shop
+floor or a stockroom and does not cover it. A role that genuinely spans two has
 been described too broadly; pick the one a volunteer would spend most time on. Use
 `varies` only for a rotating programme or calendar where the page deliberately does
 not fix the activity — not as an escape hatch when you are merely unsure.
 
+`commitment` — `flexible` means **the volunteer chooses** how often, and the page
+must actually say so. If the page simply does not mention frequency, that is
+`unknown`, not `flexible`. The two behave oppositely on the site: a flexible role
+appears behind every door because any frequency works; an unknown one behind none,
+because we never offer a match we cannot support. Five records were filed as
+flexible when they were really unknowns.
+
 `location_type` — use `own_home` where the volunteering happens at the volunteer's
 own address, such as hosting someone overnight. That is not the same as `remote`.
+
+`eligibility` — a bar on *who may apply*, kept separate from `skills`, which is
+what someone can do. Record it only where the page states a restriction: a
+women-only service, a role requiring lived experience of homelessness, a host role
+requiring a spare room. If the page merely says a quality is welcome or preferred,
+that is not eligibility and belongs nowhere.
 
 `postcode_district` — the outward code only (`SE1`, `E8`, `N16`), and only if the
 page gives an address or clear location. Null for remote roles and when unstated.

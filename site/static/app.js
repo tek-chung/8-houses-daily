@@ -20,7 +20,7 @@ const ACT = [
   {v:"cooking_serving",l:"cook and serve"},{v:"befriending",l:"welcome and befriend"},
   {v:"outreach",l:"do outreach"},{v:"advice",l:"give advice or casework"},
   {v:"mentoring",l:"mentor someone"},{v:"teaching",l:"teach a skill"},
-  {v:"shop_warehouse",l:"work a shop or warehouse"},{v:"admin",l:"do admin or back office"},
+  {v:"shop_warehouse",l:"work a shop or warehouse"},{v:"practical",l:"garden, decorate or mend"},{v:"admin",l:"do admin or back office"},
   {v:"fundraising",l:"fundraise or run events"},{v:"campaigning",l:"campaign"},
   {v:"hosting",l:"host someone"},{v:"governance",l:"join a board"},{v:"varies",l:"anything — varies by day"}
 ];
@@ -107,9 +107,11 @@ function countIf(over){return match(Object.assign({},S,over)).length}
    =============================================================== */
 /* Postcode districts we hold map onto their borough, so a notice recorded as SE1
    colours Southwark rather than sitting in a category of its own. */
-const DISTRICT_BOROUGH={SE1:"Southwark",E1:"Tower Hamlets",N1:"Islington",
-  NW1:"Camden",SW1:"Westminster",WC1:"Camden",EC1:"Islington",E8:"Hackney",
-  SE11:"Lambeth",SW9:"Lambeth",W10:"Kensington and Chelsea"};
+const DISTRICT_BOROUGH={SE1:"Southwark",SE11:"Lambeth",SE27:"Lambeth",
+  E1:"Tower Hamlets",E2:"Tower Hamlets",E8:"Hackney",N1:"Islington",N16:"Hackney",
+  NW1:"Camden",WC1:"Camden",WC1H:"Camden",SW1:"Westminster",SW1P:"Westminster",
+  SW4:"Lambeth",SW9:"Lambeth",SW16:"Lambeth",SW17:"Wandsworth",
+  EC1:"Islington",W10:"Kensington and Chelsea"};
 const MAP = window.__MAP__ || null;
 const BOROUGH_NAMES = MAP ? MAP.boroughs.map(b=>b.name) : [];
 

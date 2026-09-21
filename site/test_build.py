@@ -32,12 +32,28 @@ def built():
     pages = {}
     for p in DIST.rglob("index.html"):
         rel = p.parent.relative_to(DIST)
-        url = "/" if str(rel) == "." else f"/{rel}/"
+        # as_posix(), not str(). A Path renders with the OS separator, so on
+        # Windows every key came out as "/role\\ace-of-clubs-lunch-service\\" and
+        # twelve tests failed on KeyError looking up a URL. A URL is always
+        # forward-slashed whatever the filesystem thinks.
+        url = "/" if rel == Path(".") else f"/{rel.as_posix()}/"
         pages[url] = p.read_text(encoding="utf-8")
     return pages
 
 
 def data():
+    """The full records, as the build sees them.
+
+    Not dist/assets/data.js — that ships only the nine fields the client filters
+    on, so provenance, screening and the rest are absent from it by design. Tests
+    that assert on what a reader is told need the whole record.
+    """
+    return json.loads((ROOT / "data" / "site-bundle.json").read_text(encoding="utf-8"))
+
+
+def shipped():
+    """What the browser actually receives. Use this to assert the bundle stays
+    small and carries nothing it does not need."""
     js = (DIST / "assets" / "data.js").read_text(encoding="utf-8")
     return json.loads(js[js.index("=") + 1:].rstrip(";\n"))
 
@@ -51,7 +67,7 @@ def test_every_page_carries_the_coverage_banner_except_help(built):
     for url, h in built.items():
         if url == "/help/":
             continue          # deliberately stripped; nothing to be honest about
-        assert "charities read so far" in h, f"{url} has no banner"
+        assert "charities place notices here" in h, f"{url} has no banner"
 
 
 def test_help_page_has_no_search_box(built):
@@ -1262,7 +1278,16 @@ def test_the_build_needs_no_third_party_packages():
         elif isinstance(n, ast.ImportFrom) and n.level == 0 and n.module:
             mods.add(n.module.split(".")[0])
     third = sorted(m for m in mods if m not in sys.stdlib_module_names)
-    assert not third, f"site/build.py now needs {third} installed to build"
+    # jsonschema is imported inside a try/except so records get validated when it
+    # is available and the build still runs when it is not. Hosting stays a one
+    # line build command; anything else appearing here does not.
+    allowed = {"jsonschema", "schema"}
+    unexpected = [m for m in third if m not in allowed]
+    assert not unexpected, \
+        f"site/build.py now needs {unexpected} installed to build"
+    src = (ROOT / "site" / "build.py").read_text(encoding="utf-8")
+    assert "except ImportError" in src, \
+        "jsonschema is imported unguarded — the build would fail without it"
 
 
 def test_the_crawler_contact_page_exists_and_says_how_to_opt_out(built):
@@ -1353,3 +1378,245 @@ def test_dates_render_the_way_a_person_writes_them(built):
     assert m, "no dateline found on the front page"
     day = m.group(1).split(",")[1].strip().split()[0]
     assert not day.startswith("0"), f"dateline reads {m.group(1)!r}"
+
+
+def test_wrangler_config_matches_what_the_build_produces():
+    """The deploy config and the build output have to agree, and nothing else
+    checks that they do — a wrong directory deploys an empty site successfully."""
+    import json as _json
+    raw = (ROOT / "wrangler.jsonc").read_text(encoding="utf-8")
+    cfg = _json.loads(re.sub(r"^\s*//.*$", "", raw, flags=re.M))
+    assert cfg["assets"]["directory"] == "./dist"
+    assert (ROOT / "site" / "build.py").read_text(encoding="utf-8").count(
+        'ROOT / "dist"') >= 1, "build.py no longer defaults to dist/"
+
+
+def test_workers_serves_directory_urls_and_our_own_404(built):
+    """Every page is /path/index.html, so directory URLs must resolve to the index
+    inside them. And build.py writes a 404 page in the paper's voice — without
+    not_found_handling a missing page shows a bare Cloudflare error instead."""
+    import json as _json
+    raw = (ROOT / "wrangler.jsonc").read_text(encoding="utf-8")
+    cfg = _json.loads(re.sub(r"^\s*//.*$", "", raw, flags=re.M))
+    assert cfg["assets"]["html_handling"] == "auto-trailing-slash"
+    assert cfg["assets"]["not_found_handling"] == "404-page"
+    assert (DIST / "404.html").exists()
+    assert (DIST / "about" / "index.html").exists()
+
+
+def test_the_deploy_is_assets_only_with_no_worker_script():
+    """Spec §3 rules out runtime intelligence and §2 A4 rules out anything that
+    can be abused or run up a bill. An assets-only Worker executes nothing."""
+    import json as _json
+    raw = (ROOT / "wrangler.jsonc").read_text(encoding="utf-8")
+    cfg = _json.loads(re.sub(r"^\s*//.*$", "", raw, flags=re.M))
+    assert "main" not in cfg, "a Worker script has appeared; the site is static"
+
+
+def test_every_record_matches_the_schema():
+    """Schema conformance lives here rather than in the build.
+
+    The build cannot require jsonschema: Cloudflare runs `python3 site/build.py`
+    with no pip install, so a hard dependency breaks deployment. It validates when
+    the package happens to be available and says so when it is not.
+
+    That leaves this as the real check — and it is needed, because a hand-written
+    record with a 158-character field in a 120-character slot once built 99 pages
+    successfully. The pipeline validates its own output; nothing was validating a
+    record written by a person.
+    """
+    sys.path.insert(0, str(ROOT / "pipeline"))
+    import glob as _glob
+
+    import schema as pipeline_schema
+    from jsonschema import ValidationError, validate
+
+    bad = []
+    for f in sorted(_glob.glob(str(ROOT / "data" / "orgs" / "*.json"))):
+        doc = json.loads(Path(f).read_text(encoding="utf-8"))
+        try:
+            validate(doc["organisation"], pipeline_schema.ORG_SCHEMA)
+        except ValidationError as exc:
+            bad.append(f"{Path(f).name} organisation: {exc.message[:80]}")
+        for op in doc["opportunities"]:
+            try:
+                validate(op, pipeline_schema.RECORD_SCHEMA)
+            except ValidationError as exc:
+                path = ".".join(str(x) for x in exc.absolute_path) or "(root)"
+                bad.append(f'{op.get("id", "?")} {path}: {exc.message[:80]}')
+    assert not bad, "records failing the schema:\n  " + "\n  ".join(bad)
+
+
+def test_facts_taken_from_someone_elses_site_say_so():
+    """A record may cite a source the charity does not control — Ace of Clubs'
+    shift times come from Lambeth Council's volunteer portal, because their own
+    page does not publish them. That is fine, and better than inventing hours.
+
+    What is not fine is doing it silently. The weekly check only ever reads the
+    charity's own volunteer_url, so an undeclared third-party fact will be treated
+    as verified first-party data forever, and a five-year-old council listing will
+    outlive the thing it described. Team London still carries a Thames Reach role
+    referring to COVID lockdowns.
+
+    So: if source_url is off the charity's own domain, the record must say where
+    the fact came from.
+    """
+    import glob as _glob
+    from urllib.parse import urlparse
+
+    bad = []
+    for f in sorted(_glob.glob(str(ROOT / "data" / "orgs" / "*.json"))):
+        doc = json.loads(Path(f).read_text(encoding="utf-8"))
+        own = urlparse(doc["organisation"]["website_url"]).netloc.replace("www.", "")
+        for op in doc["opportunities"]:
+            pv = op["provenance"]
+            src = urlparse(pv["source_url"]).netloc.replace("www.", "")
+            if not src or src == own:
+                continue
+            # Require the domain itself to be named, which is what the build
+            # invariant on apply_url checks. Matching on phrases like "comes
+            # from" was fragile in both places: an honest declaration worded
+            # differently failed, and a vague one passed.
+            declared = any(src in x for x in pv.get("unsupported_fields", []))
+            if not declared:
+                bad.append(f'{op["id"]}: source {src} is not {own}, and no '
+                           f"unsupported_fields entry names {src}")
+    assert not bad, "undeclared third-party sources:\n  " + "\n  ".join(bad)
+
+
+def test_unconfirmed_notices_say_so_on_the_classified_not_just_the_article():
+    """An article page prints "Confidence low" in its byline. A classified printed
+    nothing, so a reader scanning a column of notices could not tell which rested
+    on a thin page, a defunct platform or a third-party listing.
+
+    At the time of writing that was 11 of 67 notices. Disclosure on the detail
+    page only is disclosure to the people who were already going to read it.
+    """
+    low = [op for op in data()["opps"] if op["provenance"]["confidence"] < 0.7]
+    assert low, "no low-confidence roles — this test needs one to be meaningful"
+    h = built_pages_all()
+    for op in low:
+        card = re.search(
+            r'<article class="ad" data-id="%s".*?</article>' % re.escape(op["id"]),
+            h, re.S)
+        assert card, f'{op["id"]} has no classified on /all/'
+        assert "could not confirm" in card.group(0), \
+            f'{op["id"]} is confidence {op["provenance"]["confidence"]} and says nothing'
+
+
+def test_confident_notices_carry_no_such_warning():
+    """The marker is only worth anything if it marks an exception."""
+    h = built_pages_all()
+    high = [op for op in data()["opps"] if op["provenance"]["confidence"] >= 0.7]
+    for op in high[:12]:
+        card = re.search(
+            r'<article class="ad" data-id="%s".*?</article>' % re.escape(op["id"]),
+            h, re.S)
+        if card:
+            assert "could not confirm" not in card.group(0), \
+                f'{op["id"]} is confidence {op["provenance"]["confidence"]}'
+
+
+def built_pages_all():
+    return (DIST / "all" / "index.html").read_text(encoding="utf-8")
+
+
+def test_the_organisation_set_matches_the_seed_exactly():
+    """Scope is fixed at the 32 organisations in seed.py (spec §2 A5).
+
+    Added because I broke it: writing a record as `big-issue-foundation.json`
+    while seed.py had already created `the-big-issue-foundation.json` took the
+    count to 33. Nothing caught it except the build's own count line, which only
+    works if someone reads it.
+    """
+    import glob as _glob
+    files = sorted(_glob.glob(str(ROOT / "data" / "orgs" / "*.json")))
+    ids_on_disk = set()
+    for f in files:
+        doc = json.loads(Path(f).read_text(encoding="utf-8"))
+        oid = doc["organisation"]["id"]
+        assert Path(f).stem == oid, \
+            f"{Path(f).name} holds organisation id {oid!r} — filename and id must match"
+        ids_on_disk.add(oid)
+
+    # seed.py keys on organisation names and derives ids with slug(), so import
+    # it rather than pattern-matching the source. The first version of this test
+    # grepped for '"id":' and found nothing, then reported an empty set as the
+    # failure — a test that cannot read its own reference is worse than none.
+    sys.path.insert(0, str(ROOT / "pipeline"))
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "seedmod", ROOT / "pipeline" / "seed.py")
+    seedmod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(seedmod)
+    seeded = {seedmod.slug(name) for name, _area, _url in seedmod.SEED
+              if name not in seedmod.NOT_A_ROLE_SOURCE}
+    assert len(seeded) == 32, \
+        f"seed.py yields {len(seeded)} in-scope organisations, expected 32"
+
+    extra = ids_on_disk - seeded
+    missing = seeded - ids_on_disk
+    assert not extra, f"organisations on disk that seed.py does not know: {sorted(extra)}"
+    assert not missing, f"seeded organisations with no file: {sorted(missing)}"
+    assert len(ids_on_disk) == 32, f"{len(ids_on_disk)} organisations, expected 32"
+
+
+def test_every_role_id_belongs_to_its_organisation():
+    """A role whose org_id does not match its file would be attributed to the
+    wrong charity — the build refuses an unknown org_id but not a wrong one."""
+    import glob as _glob
+    bad = []
+    for f in sorted(_glob.glob(str(ROOT / "data" / "orgs" / "*.json"))):
+        doc = json.loads(Path(f).read_text(encoding="utf-8"))
+        oid = doc["organisation"]["id"]
+        for op in doc["opportunities"]:
+            if op["org_id"] != oid:
+                bad.append(f'{op["id"]}: org_id {op["org_id"]!r} in {oid}.json')
+    assert not bad, "roles filed under the wrong organisation:\n  " + "\n  ".join(bad)
+
+
+def test_the_client_bundle_ships_only_what_it_reads():
+    """app.js filters server-rendered notices by data-id rather than rebuilding
+    them, so it needs the fields match() tests plus the title for the lookup
+    field. Everything else is weight on every results page.
+
+    Provenance alone was 28KB of data the client cannot use. Trimming took the
+    bundle from 101KB to 24KB, and from 15.7KB to 4.2KB gzipped.
+    """
+    allowed = {"id", "org_id", "title", "commitment", "activity", "status",
+               "who_can_apply", "location_type", "postcode_district"}
+    for op in shipped()["opps"]:
+        extra = set(op) - allowed
+        assert not extra, f'{op["id"]} ships fields the client never reads: {sorted(extra)}'
+    for op in shipped()["opps"][:5]:
+        assert allowed <= set(op), f'{op["id"]} is missing a field match() needs'
+
+
+def test_every_field_the_client_reads_is_actually_shipped():
+    """The mirror of the test above — trimming too far is the other failure, and
+    it breaks filtering silently rather than loudly."""
+    js = (ROOT / "site" / "static" / "app.js").read_text(encoding="utf-8")
+    shipped_fields = set(shipped()["opps"][0])
+    for field in ("commitment", "activity", "status", "who_can_apply",
+                  "location_type", "postcode_district", "org_id", "title", "id"):
+        if re.search(rf"\bo\.{field}\b|\brole\.{field}\b", js):
+            assert field in shipped_fields, \
+                f"app.js reads o.{field} but the bundle does not ship it"
+
+
+def test_page_keys_are_urls_not_filesystem_paths(built):
+    """Third Windows-only bug of this project, after locale file encoding and the
+    glibc-only %-d strftime flag — and the first one inside the test harness
+    rather than the code it tests.
+
+    The fixture built its keys with f"/{rel}/", and a Path renders with the OS
+    separator. On Windows every key came out as "/role\\ace-of-clubs-lunch-service\\"
+    and twelve tests failed on KeyError looking up a URL that could never exist.
+    It passed everywhere it had been run because those machines use forward
+    slashes anyway.
+    """
+    bad = [u for u in built if "\\" in u]
+    assert not bad, f"filesystem separators in URL keys: {bad[:5]}"
+    for u in built:
+        assert u.startswith("/"), f"{u} is not a URL path"
+        assert u == "/" or u.endswith("/"), f"{u} does not end in a slash"

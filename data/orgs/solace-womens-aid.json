@@ -2,18 +2,25 @@
   "organisation": {
     "id": "solace-womens-aid",
     "name": "Solace Women's Aid",
-    "aliases": [],
-    "charity_number": null,
+    "aliases": [
+      "solace",
+      "solace womens aid",
+      "north london rape crisis"
+    ],
+    "charity_number": "1082450",
     "website_url": "https://www.solacewomensaid.org/",
     "volunteer_url": "https://www.solacewomensaid.org/get-involved/volunteer-with-us/",
-    "summary": null,
+    "summary": "London's largest domestic abuse and sexual violence charity, with around 300 staff across refuges, advocacy and community services. Its definition of women includes trans women.",
     "coverage": "london_wide",
     "boroughs": [],
-    "focus_groups": [],
+    "focus_groups": [
+      "women"
+    ],
     "lived_experience_roles": false,
+    "robots_allowed": true,
     "check": {
-      "last_attempt": null,
-      "last_success": null,
+      "last_attempt": "2026-09-02T00:00:00+00:00",
+      "last_success": "2026-09-02T00:00:00+00:00",
       "link_status": "ok",
       "content_hash": null,
       "consecutive_failures": 0,
@@ -21,5 +28,64 @@
       "last_modified": null
     }
   },
-  "opportunities": []
+  "opportunities": [
+    {
+      "id": "solace-nlrc-helpline",
+      "org_id": "solace-womens-aid",
+      "title": "Rape Crisis Helpline",
+      "what_youd_do": "Take calls on the North London Rape Crisis helpline, giving emotional support and information to women who have experienced sexual violence. Office or remote.",
+      "commitment": "weekly",
+      "min_term_months": 6,
+      "typical_shift_hours": 4,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "advice",
+      "location_type": "hybrid",
+      "postcode_district": null,
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "enhanced",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "Solace induction and their internal volunteer training. Spent convictions must be declared."
+      },
+      "skills": [
+        "reliable, with good time management"
+      ],
+      "eligibility": [
+        "Women, trans women included \u2014 exempt under the Equality Act 2010, Schedule 9"
+      ],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "unknown",
+      "apply_url": "https://www.solacewomensaid.org/get-involved/volunteer-with-us/",
+      "url_specificity": "org_volunteer_page",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-09-02T00:00:00+00:00",
+        "method": "human",
+        "reviewed_by_human": true,
+        "confidence": 0.9,
+        "source_url": "https://www.solacewomensaid.org/wp-content/uploads/2024/01/Solace-Womens-Aid-Volunteer-Role-Description-NLRC-Helpline.pdf",
+        "verified_fields": [
+          "screening.dbs",
+          "eligibility",
+          "min_term_months",
+          "specific_times",
+          "screening.induction",
+          "activity"
+        ],
+        "unsupported_fields": [
+          "screening.min_age",
+          "screening.references",
+          "status: their role description is dated January 2024 and no live listing was found",
+          "postcode_district: the service is Camden-based but the role is part remote",
+          "specific_times: they state half a day a week but no time of day"
+        ]
+      }
+    }
+  ]
 }
