@@ -1,0 +1,107 @@
+.discovery{max-width:720px;padding-bottom:40px}
+body[data-discovery] header.wrap{max-width:720px}
+body[data-discovery] .earpiece,body[data-discovery] .dateline,body[data-discovery] .title .the{display:none}
+body[data-discovery] .title{font-size:36px;line-height:1.15;padding:14px 0;margin:0}
+.discovery-heading{padding:24px 0 20px;border-bottom:1px solid var(--rule)}
+.discovery-heading h1{font-family:var(--display);font-size:clamp(34px,5vw,46px);line-height:1.08;margin:8px 0 12px}
+.discovery-heading p{font-size:17px}
+.discovery-heading-actions{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:10px;font-size:14px}
+.discovery-kicker,.discovery-eyebrow{font-family:var(--label);font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3)}
+.discovery-heading>a{display:inline-block;margin-top:14px;font-size:16px}
+.discovery-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 0;border-bottom:1px solid var(--rule);font-family:var(--label);font-size:14px}
+.discovery button,.discovery select{font:inherit;color:var(--ink);min-height:44px}
+.discovery button{padding:9px 15px;border:1px solid var(--ink);background:var(--paper);cursor:pointer}
+.discovery button:hover{background:var(--paper-2)}
+.discovery button:disabled{opacity:.55;cursor:default}
+.discovery button.primary{background:var(--ink);color:var(--paper)}
+.discovery button.primary:hover{background:var(--red)}
+.discovery button:focus-visible,.discovery a:focus-visible,.discovery select:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.discovery-status{font-size:15px;color:var(--red);min-height:28px;margin:8px 0}
+.discovery-status:empty{min-height:0;margin:0}
+.journey-tools{display:flex;gap:8px;flex-shrink:0}
+.discovery [hidden]{display:none!important}
+.discovery h2[tabindex="-1"]:focus{outline:none}
+.discovery .role-notice{padding:18px;background:var(--paper);border:1px solid var(--ink);overflow:hidden}
+.discovery .role-notice h3{padding-right:0;margin:8px 0 12px;font-family:var(--display);font-size:28px;line-height:1.1}
+.role-topline{font-family:var(--label);font-size:12px;text-transform:uppercase;color:var(--ink-3)}
+.role-illustration{float:right;width:116px;height:72px;margin:10px 0 10px 14px;background-size:cover;background-position:center;border:1px solid var(--rule)}
+.role-lead{font-size:17px;line-height:1.5;margin-bottom:16px}
+.discovery .role-facts{display:grid;grid-template-columns:90px 1fr;gap:8px 14px;padding:14px 0;border-top:1px solid var(--rule);clear:both}
+.discovery .role-facts dt{font-family:var(--label);font-size:12px;line-height:1.5;text-transform:uppercase}
+.discovery .role-facts dd{font-size:16px;line-height:1.45;overflow-wrap:anywhere}
+.discovery .role-facts dt::after,.discovery .role-facts dd::after{content:none}
+.role-eligibility{padding:10px;background:var(--red-tint);font-size:15px;line-height:1.5}
+.role-recruitment,.role-uncertainty{font-size:14px;line-height:1.5;color:var(--red);margin:8px 0}
+.role-details{border-top:1px solid var(--rule);padding:8px 0;font-size:16px}
+.role-details summary{min-height:44px;display:list-item;cursor:pointer;line-height:1.5;padding:10px 0}
+.role-details summary:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.role-details p{margin:10px 0;line-height:1.55}
+.role-details dl{margin-bottom:10px}
+.role-source{font-size:12px;line-height:1.5;color:var(--ink-3);margin:10px 0}
+.discovery .role-notice .apply{font-size:14px;line-height:1.5;margin-top:12px}
+.discovery-panel{max-width:720px;margin:0 auto;padding:10px 0 24px}
+.discovery-panel h2{font-family:var(--display);font-size:26px;line-height:1.2;margin:8px 0 8px}
+.discovery-panel>p{margin-bottom:16px}
+.discovery-notice{position:relative;touch-action:pan-y}
+.discovery-notice .ad{margin:16px 0}
+.discovery-actions{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.discovery-actions>*{flex:1}
+.discovery-hint{font-size:14px;color:var(--ink-3)}
+.discovery-footnote{border-top:1px solid var(--rule);padding:18px 0;font-size:14px;color:var(--ink-3)}
+.fit-reasons{padding:10px 0;font-size:14px}
+.fit-reasons summary{cursor:pointer;min-height:44px;display:flex;align-items:center;text-decoration:underline;color:var(--red)}
+.fit-reasons p+p{margin-top:6px}
+.discovery-question{border:0;border-top:1px solid var(--rule);padding:18px 0;margin-top:14px}
+.discovery-question legend{font-family:var(--display);font-size:23px;font-weight:600;padding-right:12px}
+.discovery-choice{display:flex;align-items:center;gap:12px;min-height:48px;cursor:pointer}
+.discovery-choice input{width:20px;height:20px;accent-color:var(--red)}
+.area-choice{padding:8px 0;align-items:flex-start}
+.area-choice input{margin-top:4px;flex-shrink:0}
+.area-choice small{display:block;font-size:13px;color:var(--ink-3);margin-top:3px;line-height:1.4}
+.role-location-note{font-size:13px;line-height:1.5;color:var(--ink-3);margin:0 0 8px}
+.role-travel{display:inline-block;min-height:44px;font-size:13px;padding:8px 0}
+.discovery-question select{display:block;width:100%;padding:10px;margin-top:10px;border:1px solid var(--ink);background:var(--paper);font-size:16px}
+.shortlist-grid{display:grid;grid-template-columns:1fr;gap:22px;margin:18px 0}
+.shortlist-item{min-width:0;border-top:3px double var(--ink);padding-top:14px}
+.shortlist-item .ad{margin:12px 0}
+.shortlist-item>button{width:100%}
+.shortlist-item .ad .stamp{position:static;display:inline-block;margin:4px 6px 12px 0;transform:none}
+.discovery-summary{padding:18px;background:var(--paper-2);margin:18px 0}
+.discovery-summary h2{font-family:var(--display);font-size:24px;margin-bottom:8px}
+.discovery-text-button{border:0!important;text-decoration:underline;padding-left:0!important;font-size:15px!important}
+.role-share{display:flex;justify-content:flex-end;gap:16px;margin:0 0 12px}
+.role-share button{border:0;padding:0;font-family:var(--label);font-size:13px;text-decoration:underline;min-height:44px;color:var(--ink-3)}
+.share-link{display:block;font:14px var(--label);padding:12px 0}
+.share-link input{display:block;width:100%;margin-top:8px;padding:10px;font-size:16px;border:1px solid var(--rule);background:var(--paper)}
+.discovery-about{font-size:14px;margin-top:12px}
+.discovery-about summary{cursor:pointer;min-height:44px;display:flex;align-items:center;text-decoration:underline;color:var(--ink-3)}
+.social-overlay{position:fixed;inset:0;z-index:100;background:#201c16b8;display:flex;align-items:center;justify-content:center;padding:16px}
+.social-dialog{max-width:480px;width:100%;max-height:95vh;overflow:auto;background:var(--paper);padding:20px;border:1px solid var(--ink)}
+.social-dialog h2{font:26px var(--display);margin:0 0 8px}
+.social-dialog p{font-size:15px;margin:0 0 16px;line-height:1.5}
+.social-dialog img{display:block;width:100%;height:auto}
+.social-actions{display:flex;gap:12px;margin-top:16px}
+.social-actions button,.social-actions a{flex:1;min-height:44px;padding:10px;font:16px var(--label);border:1px solid var(--ink);background:var(--paper);cursor:pointer;text-align:center;text-decoration:none}
+.social-actions .primary{background:var(--ink);color:var(--paper)}
+.social-actions button:focus-visible,.social-actions a:focus-visible,.fit-reasons summary:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+@media (min-width:900px){.shortlist-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:480px){
+  .discovery{padding-bottom:100px}
+  .discovery-heading{padding:18px 0 16px}
+  body[data-discovery] .title{font-size:26px}
+  .discovery-heading h1{font-size:34px}
+  .discovery-heading p{font-size:16px;line-height:1.5}
+  .discovery-heading>a{font-size:14px}
+  .discovery-heading-actions{gap:8px;font-size:13px}
+  .discovery-bar{align-items:center;font-size:12px;gap:8px}
+  .discovery-bar>span{max-width:38%}
+  .journey-tools{gap:5px}
+  .journey-tools button{padding:8px;font-size:13px}
+  .discovery-panel h2{font-size:25px}
+  .discovery-panel>p{font-size:16px;line-height:1.5}
+  .discovery-actions{flex-wrap:nowrap}
+  .discovery-actions>*{min-width:0;padding-left:8px;padding-right:8px;font-size:16px}
+  .role-actions{position:fixed;bottom:0;left:0;right:0;z-index:20;margin:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--ink);background:var(--paper)}
+  .role-illustration{width:90px;height:56px}
+  .discovery .role-notice h3{font-size:24px}
+}

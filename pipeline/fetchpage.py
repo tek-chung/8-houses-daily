@@ -231,7 +231,7 @@ def _get(url: str, headers: dict) -> httpx.Response:
 
 
 def fetch(url: str, known_hash: str | None = None,
-          follow_roles: bool = True) -> FetchResult:
+          follow_roles: bool = True, cache_write: bool = True) -> FetchResult:
     """Fetch a volunteering page plus its role sub-pages as one payload."""
     if not robots_allows(url):
         return FetchResult("blocked", error="disallowed by robots.txt")
@@ -239,9 +239,12 @@ def fetch(url: str, known_hash: str | None = None,
     cache = _load_cache()
     entry = cache.get(url, {})
     headers = {"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml"}
-    if entry.get("etag"):
+    # A cached fetch is not an approved snapshot. Also, a landing page's 304
+    # says nothing about the linked role pages, which may change independently.
+    conditional = not follow_roles and known_hash and entry.get('hash') == known_hash
+    if conditional and entry.get("etag"):
         headers["If-None-Match"] = entry["etag"]
-    if entry.get("last_modified"):
+    if conditional and entry.get("last_modified"):
         headers["If-Modified-Since"] = entry["last_modified"]
 
     try:
@@ -250,6 +253,8 @@ def fetch(url: str, known_hash: str | None = None,
         return FetchResult("failed", error=f"{type(exc).__name__}: {exc}")
 
     if r.status_code == 304:
+        if not conditional:
+            return FetchResult('failed', error='unexpected 304 without an approved content baseline')
         return FetchResult("unchanged", content_hash=known_hash,
                            etag=entry.get("etag"),
                            last_modified=entry.get("last_modified"),
@@ -293,7 +298,8 @@ def fetch(url: str, known_hash: str | None = None,
 
     etag, last_mod = r.headers.get("ETag"), r.headers.get("Last-Modified")
     cache[url] = {"etag": etag, "last_modified": last_mod, "hash": digest}
-    _save_cache(cache)
+    if cache_write:
+        _save_cache(cache)
 
     final = str(r.url)
     return FetchResult(

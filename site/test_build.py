@@ -99,7 +99,8 @@ def test_unknown_screening_is_shown_as_unknown_not_as_none(built):
     for rid in unknown:
         h = built[f"/role/{rid}/"]
         assert "No DBS needed" not in h, rid
-        assert "not stated" in h.lower(), rid
+        assert "not stated" in h.lower() or \
+            "conditions are not printed here" in h, rid
 
 
 def test_team_only_roles_say_so_on_their_page(built):
@@ -124,7 +125,9 @@ def test_team_only_fact_appears_before_the_conditions(built):
         if op["who_can_apply"] != "team_only":
             continue
         h = built[f"/role/{op['id']}/"]
-        assert h.index("teams rather than individuals") < h.index("DBS"), op["id"]
+        conditions = ("We have not managed to check this notice recently"
+                      if "conditions are not printed here" in h else "DBS")
+        assert h.index("teams rather than individuals") < h.index(conditions), op["id"]
 
 
 def test_borough_pages_disclose_roles_not_in_that_borough(built):
@@ -259,6 +262,9 @@ def test_role_pages_carry_structured_data(built):
     for op in data()["opps"]:
         h = built[f"/role/{op['id']}/"]
         m = re.search(r'<script type="application/ld\+json">(.*?)</script>', h, re.S)
+        if "conditions are not printed here" in h:
+            assert not m, f"{op['id']}: stale notice advertised as a current opportunity"
+            continue
         assert m, op["id"]
         d = json.loads(m.group(1))
         assert d["@type"] == "VolunteerOpportunity"
@@ -736,7 +742,7 @@ def _visible(h):
     import html as _h
     m = re.search(r"<body[^>]*>(.*)</body>", h, re.S)
     b = m.group(1) if m else h
-    b = re.sub(r"<(script|style|svg)[^>]*>.*?</\1>", " ", b, flags=re.S)
+    b = re.sub(r"<(script|style|svg|template)[^>]*>.*?</\1>", " ", b, flags=re.S)
     return re.sub(r"\s+", " ", _h.unescape(re.sub(r"<[^>]+>", " ", b))).strip()
 
 
@@ -837,7 +843,7 @@ def test_front_page_carries_no_slogan_between_headline_and_actions(built):
     page."""
     h = built["/"]
     start = _pos(h, "</h1>") + len("</h1>")
-    end = h.rfind("<", 0, _pos(h, 'class="cols cols-lead"'))
+    end = h.rfind("<", 0, _pos(h, 'class="discovery-entry"'))
     text = re.sub(r"<[^>]+>", "", h[start:end]).strip()
     assert not text, f"copy has crept back in between: {text[:70]!r}"
 
@@ -1283,7 +1289,8 @@ def test_the_build_needs_no_third_party_packages():
     # jsonschema is imported inside a try/except so records get validated when it
     # is available and the build still runs when it is not. Hosting stays a one
     # line build command; anything else appearing here does not.
-    allowed = {"jsonschema", "schema"}
+    # discovery is a checked-in module alongside build.py, not a package to install.
+    allowed = {"jsonschema", "schema", "discovery", "decay", "locations"}
     unexpected = [m for m in third if m not in allowed]
     assert not unexpected, \
         f"site/build.py now needs {unexpected} installed to build"
@@ -1586,7 +1593,7 @@ def test_the_client_bundle_ships_only_what_it_reads():
     bundle from 101KB to 24KB, and from 15.7KB to 4.2KB gzipped.
     """
     allowed = {"id", "org_id", "title", "commitment", "activity", "status",
-               "who_can_apply", "location_type", "postcode_district"}
+               "who_can_apply", "location_type", "postcode_district", "typical_shift_hours"}
     for op in shipped()["opps"]:
         extra = set(op) - allowed
         assert not extra, f'{op["id"]} ships fields the client never reads: {sorted(extra)}'

@@ -14,19 +14,18 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-import anthropic
+from ai import AIClient
 from jsonschema import ValidationError, validate
 
 import decay
 from config import (DEAD_LINK_AFTER_FAILURES, ORGS_DIR, ROUTE_REVIEW, STATE)
 from extract import extract, finalise
 from fetchpage import fetch
-from gate import classify_fetch_failure, route_org
+from gate import classify_fetch_failure, pair_roles, route_org
 from schema import ORG_SCHEMA, RECORD_SCHEMA
 
 REVIEW_OUT = STATE / "review.json"
@@ -57,7 +56,11 @@ def process(path: Path, doc: dict, client, dry: bool) -> dict:
               "route": "auto", "reasons": [], "roles_before": len(old_roles),
               "roles_after": len(old_roles)}
 
-    res = fetch(url, known_hash=check.get("content_hash"))
+    res = fetch(url, known_hash=check.get("content_hash"), cache_write=not dry)
+
+    def save_check():
+        if not dry:
+            path.write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
 
     if res.status == "blocked":
         check["link_status"] = "link_only"
@@ -82,6 +85,8 @@ def process(path: Path, doc: dict, client, dry: bool) -> dict:
     check["etag"] = res.etag
     check["last_modified"] = res.last_modified
     check["link_status"] = "redirected" if res.redirected else "ok"
+    report['fetched_content_hash'] = res.content_hash
+    report['checked_at'] = check['last_attempt']
 
     if res.status == "unchanged":
         check["last_success"] = NOW()
@@ -91,9 +96,17 @@ def process(path: Path, doc: dict, client, dry: bool) -> dict:
             path.write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
         return report
 
+    if client is None:
+        report.update(route=ROUTE_REVIEW, reasons=[
+            "page changed or has no approved baseline; no enabled AI provider, "
+            "so extraction is unavailable. Existing roles and last_success are unchanged."])
+        save_check()
+        return report
+
     ex = extract(client, org["name"], url, res.text)
     if ex.error:
         report.update(route=ROUTE_REVIEW, reasons=[f"extraction failed: {ex.error}"])
+        save_check()
         return report
 
     new_roles = []
@@ -104,9 +117,16 @@ def process(path: Path, doc: dict, client, dry: bool) -> dict:
         except ValidationError as exc:
             report.update(route=ROUTE_REVIEW,
                           reasons=[f"record failed schema: {exc.message}"])
+            save_check()
             return report
         new_roles.append(rec)
 
+    pairs, _, _ = pair_roles(old_roles, new_roles)
+    for old, new in pairs:
+        new['id'] = old['id']  # retain published links and visitors' saved IDs
+        if (old.get('postcode_district'), old.get('location_type')) == \
+                (new.get('postcode_district'), new.get('location_type')):
+            new['coords'] = old.get('coords')
     route, decisions = route_org(old_roles, new_roles, ex.confidence)
     report.update(
         route=route,
@@ -121,6 +141,7 @@ def process(path: Path, doc: dict, client, dry: bool) -> dict:
 
     if route == ROUTE_REVIEW:
         report["proposed"] = new_roles       # held, not written
+        save_check()
         return report
 
     check["last_success"] = NOW()
@@ -134,7 +155,7 @@ def process(path: Path, doc: dict, client, dry: bool) -> dict:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true",
-                    help="fetch, extract and gate, but write nothing")
+                    help="check source pages only; no AI calls or file writes")
     ap.add_argument("--only", default="", help="comma-separated org ids")
     args = ap.parse_args()
 
@@ -144,11 +165,11 @@ def main() -> int:
         log("No organisation files found in", ORGS_DIR)
         return 2
 
-    key = os.environ.get("ANTHROPIC_API_KEY")
-    if not key:
-        log("ANTHROPIC_API_KEY is not set.")
-        return 2
-    client = anthropic.Anthropic(api_key=key)
+    configured_client = AIClient()
+    client = configured_client if configured_client.available and not args.dry_run else None
+    if client is None:
+        log("WARNING: No enabled AI provider (or source-only dry run). Checking source pages without "
+            "model calls; changed or unbaselined content will need review.")
 
     for p, doc in orgs:
         try:
@@ -162,10 +183,9 @@ def main() -> int:
         name = doc["organisation"]["name"]
         try:
             rep = process(path, doc, client, args.dry_run)
-        except Exception as exc:                       # never let one page stop the run
-            rep = {"org_id": doc["organisation"]["id"], "name": name,
-                   "route": ROUTE_REVIEW,
-                   "reasons": [f"unhandled error: {type(exc).__name__}: {exc}"]}
+        except Exception as exc:
+            log(f"Internal refresh error: {type(exc).__name__}. Stopping without publishing.")
+            return 2
         reports.append(rep)
         mark = "REVIEW" if rep["route"] == ROUTE_REVIEW else "ok    "
         log(f"{mark}  {name:<38} {'; '.join(rep['reasons'])[:88]}")
@@ -175,12 +195,15 @@ def main() -> int:
     fresh = decay.compute(all_orgs) if args.dry_run else decay.write(all_orgs)
 
     needs = [r for r in reports if r["route"] == ROUTE_REVIEW]
-    STATE.mkdir(parents=True, exist_ok=True)
-    REVIEW_OUT.write_text(json.dumps(
-        {"generated_at": NOW(), "dry_run": args.dry_run,
+    review = {"generated_at": NOW(), "dry_run": args.dry_run,
+         "extraction_available": client is not None,
+         "ai_diagnostics": configured_client.diagnostics,
          "checked": len(reports), "needs_review": len(needs),
          "median_days_since_check": fresh["median_days_since_check"],
-         "site_banner": fresh["site_banner"], "items": needs}, indent=2) + "\n", encoding="utf-8")
+         "site_banner": fresh["site_banner"], "items": needs}
+    if not args.dry_run:
+        STATE.mkdir(parents=True, exist_ok=True)
+        REVIEW_OUT.write_text(json.dumps(review, indent=2) + "\n", encoding="utf-8")
 
     log(f"\n{len(reports)} checked · {len(needs)} need review · "
         f"median freshness {fresh['median_days_since_check']} days"

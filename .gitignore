@@ -19,5 +19,12 @@ __pycache__/
 # requests work across runs, review.json is a working file
 pipeline/state/review.json
 pipeline/state/census.json
+pipeline/state/ai_usage.lock
+pipeline/state/ai_usage.tmp
+
+# Private provider configuration; the example contains no credentials.
+.env
+.env.*
+!.env.example
 
 .DS_Store

@@ -29,6 +29,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 STATIC = ROOT / "site" / "static"
 import os
+import locations
 DIST = pathlib.Path(os.environ.get("DIST_DIR", str(ROOT / "dist")))
 
 SITE_NAME = "The 8 Houses Daily"
@@ -137,9 +138,11 @@ def load():
             continue                       # a charity page with no roles is a dead end
         orgs[o["id"]] = o
         opps += d["opportunities"]
-    fresh = {}
-    if (DATA / "freshness.json").exists():
-        fresh = json.loads((DATA / "freshness.json").read_text(encoding="utf-8"))
+    # Recompute on every build: a saved report can be absent or out of date.
+    # The pipeline's decay calculation needs only the standard library.
+    sys.path.insert(0, str(ROOT / "pipeline"))
+    from decay import compute
+    fresh = compute(list(orgs.values()))
     total = len(list((DATA / "orgs").glob("*.json")))
     return orgs, opps, fresh, total
 
@@ -155,7 +158,8 @@ DISTRICT_BOROUGH = {
     "SE1": "Southwark", "SE11": "Lambeth", "SE27": "Lambeth",
     "E1": "Tower Hamlets", "E2": "Tower Hamlets", "E8": "Hackney",
     "N1": "Islington", "N16": "Hackney",
-    "NW1": "Camden", "WC1": "Camden", "WC1H": "Camden",
+    "NW1": "Camden", "NW5": "Camden", "WC1": "Camden", "WC1H": "Camden",
+    "WC2N": "Westminster", "SE18": "Greenwich",
     "SW1": "Westminster", "SW1P": "Westminster",
     "SW4": "Lambeth", "SW9": "Lambeth", "SW16": "Lambeth", "SW17": "Wandsworth",
     "EC1": "Islington", "W10": "Kensington and Chelsea",
@@ -434,6 +438,13 @@ def shell(*, title, desc, path, body, state=None, extra_head="", noindex=False,
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:type" content="website">
+<meta property="og:url" content="{e(canonical)}">
+<meta property="og:site_name" content="{e(SITE_NAME)}">
+<meta property="og:image" content="{e(BASE_URL)}/assets/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The 8 Houses Daily. Find your way to help. London homelessness volunteering.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
@@ -481,7 +492,7 @@ def header(search=True):
       <span>{long_date(today)}</span><i>&#9670;</i>
       <span><b>{COUNTS[0]}</b> notices</span><i>&#9670;</i>
       <span><b>{COUNTS[1]}</b> charities</span>
-      <i class="drop">&#9670;</i><span class="drop">Checked this week</span>
+      <i class="drop">&#9670;</i><span class="drop">Read the source before you go</span>
     </div>
     <div class="r-thin"></div>
   </div>
@@ -553,8 +564,11 @@ def card(op, orgs, fresh):
 
     where = ("At your own home" if op["location_type"] == "own_home"
              else "Anywhere &mdash; remote" if op["location_type"] == "remote"
-             else (", ".join(bs) + (" &middot; part remote" if op["location_type"] == "hybrid" else ""))
-             if bs else "Across London")
+             else (", ".join(e(x) for x in bs) + (" &middot; part remote" if op["location_type"] == "hybrid" else ""))
+             if bs else "Location not stated")
+    if op.get('postcode_district') and op['location_type'] not in ('remote', 'own_home'):
+        district = op['postcode_district']
+        where = e(district) + (' &middot; ' + where if bs != [district] else '')
 
     # Particulars: only what the page actually stated.
     rows = []
@@ -620,7 +634,7 @@ def card(op, orgs, fresh):
     unconfirmed_html = (
         '<p class="unconfirmed">We could not confirm these particulars &mdash; '
         'read their own page before you go.</p>'
-        if op["provenance"]["confidence"] < 0.7 and not sup else "")
+        if op["provenance"]["confidence"] < 0.7 else "")
 
     return f"""<article class="ad" data-id="{e(op['id'])}">
   <div class="ad-org">
@@ -691,8 +705,8 @@ def sentence(state, orgs, opps):
 
     s1 = slot("b1", "How much time you can give", "I have",
               [(k, COMMIT_PHRASE[k]) for k in DOOR], c, "any amount of time")
-    s2 = slot("b2", "Which borough", "I am in",
-              [(x, x) for x in boroughs], b, "any borough")
+    s2 = slot("b2", "Preferred London area", "I can reach",
+              [(z['id'], z['label']) for z in locations.ZONES], '', "any London area")
     s3 = slot("b3", "What you would like to do", "I should like to",
               [(x, ACT_LABEL[x]) for x in acts], a, "anything at all")
     n = state["n"]
@@ -701,7 +715,7 @@ def sentence(state, orgs, opps):
   <h2 class="coupon-head">Form of enquiry</h2>
   <div class="fillin">
     <span class="d640">I have </span>{s1}<span class="d640"> to give, </span>
-    <span class="d640">I am in </span>{s2}<span class="d640">, </span>
+    <span class="d640">I can reach </span>{s2}<span class="d640">, </span>
     <span class="d640">and I should like to </span>{s3}<span class="d640">.</span>
   </div>
   <div class="coupon-foot">
@@ -828,6 +842,8 @@ def results_page(*, path, title, desc, heading, intro, rows, orgs, fresh,
   {f'<p class="standfirst">{e(intro)}</p>' if intro else ''}
   <div class="r-thin" style="margin:14px 0 0"></div>
   {sentence(st, orgs, opps)}
+  <p class="colnote">Choose a broad London area, or use the map for a borough.
+    Areas use stated postcodes or charity coverage; confirm the venue before travelling.</p>
   {REFINE}
   {map_panel()}
   <div class="section-bar" style="margin-top:26px"><h2>The notices</h2></div>
@@ -892,7 +908,7 @@ def build_home(orgs, opps, fresh, total):
     An earlier draft ran to 491 words and said "no applications taken here" three
     times over. Standing terms live in the colophon, which prints on every page.
     """
-    counts = {k: len([o for o in opps if o["commitment"] == k]) for k in DOOR}
+    counts = {k: len([o for o in opps if in_door(o, k)]) for k in DOOR}
 
     ways = [
         ("one_off",
@@ -919,6 +935,10 @@ def build_home(orgs, opps, fresh, total):
 
     body = f"""<main class="wrap" id="main"><section id="home">
   <div class="lead"><h1>How Much<br>Can You Spare?</h1></div>
+  <nav class="discovery-entry" aria-label="Choose how to find a role">
+    <a class="guided-cta" href="/find/">Help me find a role &rarr;</a>
+    <a href="/all/">Browse all opportunities &rarr;</a>
+  </nav>
   <div class="cols cols-lead">
 {chr(10).join(cols)}
   </div>
@@ -1055,9 +1075,14 @@ def build_roles(orgs, opps, fresh):
         if op.get("min_term_months"):
             term += f', {op["min_term_months"]} months at least'
         rows.append(("Term", term))
+        precise_where = (op['postcode_district'] + ' · ' + ', '.join(bs)
+                         if op.get('postcode_district') and bs != [op['postcode_district']]
+                         else ', '.join(bs) if bs else 'Not stated')
+        if locations.location_basis(op, orgs) == 'charity_coverage':
+            precise_where += ' · charity coverage; confirm venue'
         rows.append(("Where", "Your own home" if op["location_type"] == "own_home"
                      else "Remote" if op["location_type"] == "remote"
-                     else ", ".join(bs) if bs else "Not stated"))
+                     else precise_where))
         if not sup:
             rows.append(("Check", "Not stated"
                          if op["screening"]["dbs"] == "unknown"
@@ -1402,6 +1427,9 @@ def build_assets(orgs, opps, fresh):
     (DIST / "assets").mkdir(parents=True, exist_ok=True)
     shutil.copy(STATIC / "app.css", DIST / "assets" / "app.css")
     shutil.copy(STATIC / "app.js", DIST / "assets" / "app.js")
+    for asset in ("discovery.js", "discovery.css"):
+        shutil.copy(STATIC / asset, DIST / "assets" / asset)
+    shutil.copy(STATIC / 'images' / 'social-preview.png', DIST / 'assets' / 'social-preview.png')
     # Publish only the prepared web copies; keep the large source films intact.
     video_out = DIST / "assets" / "videos"
     video_out.mkdir(parents=True, exist_ok=True)
@@ -1416,14 +1444,20 @@ def build_assets(orgs, opps, fresh):
               "opps": opps,
               "meta": {"orgs_listed": len(orgs), "roles": len(opps),
                        "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d")}}
+    bundle['volunteer_areas'] = locations.ZONES
+    bundle['location_zones'] = {op['id']: locations.zones_for(op, orgs, DISTRICT_BOROUGH) for op in opps}
     # Ship only what the client reads. app.js filters server-rendered notices by
     # data-id rather than rebuilding them, so it needs the fields match() tests
     # plus the title for the lookup field — nine of twenty-three. Provenance
     # alone was 28KB of data nothing on the client can use, on every results page.
     CLIENT_FIELDS = ("id", "org_id", "title", "commitment", "activity", "status",
-                     "who_can_apply", "location_type", "postcode_district")
+                     "who_can_apply", "location_type", "postcode_district",
+                     "typical_shift_hours")
     slim = dict(bundle)
     slim["opps"] = [{k: o[k] for k in CLIENT_FIELDS} for o in bundle["opps"]]
+    for op in slim["opps"]:
+        if suppressed(op, fresh):
+            op["status"] = "unknown"
     (DIST / "assets" / "data.js").write_text(
         "window.__DATA__=" + json.dumps(slim, separators=(",", ":")) + ";\n", encoding="utf-8")
     # A separate asset, not inlined: 43KB of borough geometry across 45 pages
@@ -1624,6 +1658,8 @@ def main() -> int:
 
     build_home(orgs, opps, fresh, total)
     paths = ["/"]
+    import discovery
+    paths += discovery.build(sys.modules[__name__], orgs, opps, fresh, total)
     paths += build_filters(orgs, opps, fresh, total)
     paths += build_roles(orgs, opps, fresh)
     paths += build_charities(orgs, opps, fresh)

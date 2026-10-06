@@ -52,7 +52,9 @@ different URL or a headless browser) versus `thin` (real prose, just no role det
 
 ```bash
 pip install -r pipeline/requirements.txt
-export ANTHROPIC_API_KEY=sk-ant-...
+export GEMINI_API_KEY=your-private-key
+export AI_GEMINI_MODELS=gemini-2.5-flash,gemini-2.5-flash-lite
+export AI_GEMINI_FREE_TIER_CONFIRMED=true # only after verifying the project's tier
 export PYTHONPATH=pipeline
 
 python pipeline/run.py --dry-run                    # writes nothing
@@ -62,6 +64,39 @@ python -m pytest pipeline/test_gate.py -q
 ```
 
 Exit codes: `0` nothing needs review · `1` review needed · `2` the run itself broke.
+
+The weekly workflow treats review-needed as a completed check, and unexpected
+exit codes as failures. Both standard output and errors are saved in the
+`freshness-run` artifact. If repository permissions prevent a review pull request,
+the report remains available in that artifact and the job summary explains why.
+
+Configure `GEMINI_API_KEY`, model names and free-tier confirmation to enable
+extraction and verification. Without an enabled provider, the pipeline still checks source pages. An identical
+approved content hash can advance `last_success`; changed pages or pages without
+an approved baseline go to review. Their existing facts, approved hash and
+`last_success` remain unchanged. The report includes `extraction_available` so this
+mode is visible rather than silently claiming a full refresh.
+
+Weekly checks re-read linked role pages even when the landing page is unchanged.
+HTTP cache entries are fetch history, not approval: only an approved, single-page
+baseline can use a conditional GET. Dry runs write neither records, reports nor
+HTTP cache. Matched roles retain their published IDs when titles are reworded,
+preserving shared links and saved shortlists.
+
+Dry runs are source-only: they do not generate AI content or reserve quota. Use
+`python pipeline/ai.py probe` for an explicit synthetic API compatibility check.
+The shared AI interface supports Gemini and optional OpenRouter `:free` fallback;
+Anthropic is no longer called. See [account setup](../docs/ai-setup.md).
+
+Run the complete regression checks before changing the refresh workflow:
+
+```bash
+PYTHONPATH=pipeline python -m pytest pipeline/ site/ -q
+python site/build.py
+node site/js/discovery-test.js
+node site/js/directory-test.js
+node site/js/sharing-test.js
+```
 
 ## The map data
 
@@ -130,7 +165,8 @@ calibrated and tends to be cheerful. Instead:
 1. Extract normally.
 2. For each critical claim that asserts something (`unknown` and `null` assert
    nothing, so they're skipped), a second pass sees the claim next to the page and
-   judges whether the page actually supports it. Silence is not support.
+   judges whether the page actually supports it and supplies a supporting quotation.
+   The quotation must occur in the supplied source text. Silence is not support.
 3. Unsupported claims are forced to `unknown` **before the gate sees them**.
 4. `confidence = supported / checked` — an observable, not an opinion.
 
@@ -150,16 +186,17 @@ The Action opens one PR. Read `pipeline/state/review.json`: each item carries th
 reasons, the changed fields, and the proposed records. Accept what's right into
 `data/orgs/*.json`, set `provenance.reviewed_by_human: true`, merge.
 
-Expect roughly eight items a week — ten minutes of reading. If it's consistently
-more, the confidence threshold is probably too tight rather than the pages being
-unusually volatile.
+Review volume depends on source changes, available quota and enabled providers.
+Do not loosen the gate to reduce the queue. When approving a source snapshot,
+copy its `fetched_content_hash` into the organisation's `check.content_hash` and
+its `checked_at` into `check.last_success` only after checking the proposed facts.
+Otherwise the next run correctly treats it as an unapproved baseline again.
 
 ## Setup
 
-1. `ANTHROPIC_API_KEY` as a repository secret.
-2. **Set a spend limit in the Anthropic console.** The Action can't enforce one.
-   Realistically this costs well under £1/month, but a limit turns a runaway loop
-   into a failed job rather than a bill.
+1. Follow [AI setup](../docs/ai-setup.md) using the intended Google account.
+2. Confirm the API key's project is Free Tier and has no billing account attached.
+   The workflow fixes `AI_DAILY_USD=0`; it cannot inspect project billing itself.
 3. Settings → Actions → General → allow Actions to create pull requests.
 4. Change `USER_AGENT` in `config.py` to a real contact URL before the first run.
    A charity that wants us to stop needs somewhere to say so.
@@ -172,7 +209,7 @@ unusually volatile.
   no text; the fetcher reports that honestly rather than extracting from a shell. If
   several charities turn out to be React apps, that's a Phase 3.1 conversation about
   a headless browser — not something to paper over.
-- **No deletion.** A role that vanishes from a page is set to `unknown` and queued
-  for review, never removed. Pages get restructured.
+- **No automatic deletion.** A role that vanishes is queued for review; existing
+  published records remain until a human approves a change. Pages get restructured.
 - **No writing to `provenance.reviewed_by_human`.** Only a human merging a PR sets
   that, which is why the model can't reach it.

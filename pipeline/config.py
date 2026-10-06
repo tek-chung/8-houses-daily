@@ -36,10 +36,7 @@ MAX_PAGE_CHARS = 60_000          # truncate before sending to the model
 MIN_MAIN_CONTENT_CHARS = 400     # below this, treat the page as client-rendered
 MAX_ROLE_SUBPAGES = 6            # role links followed per organisation
 
-# ---------------------------------------------------------------- model
-MODEL_PRIMARY = "claude-haiku-4-5-20251001"
-MODEL_ESCALATE = "claude-sonnet-5"   # used only when primary output fails validation
-MAX_TOKENS = 4000
+# Model selection and request limits are configured through pipeline/ai.py.
 
 # ---------------------------------------------------------------- the gate
 # Fields where being wrong wastes someone's day or misstates a safeguarding

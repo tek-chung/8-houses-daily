@@ -33,7 +33,8 @@ function roleAreas(o){
   const b = ORGS[o.org_id].b || [];
   return b.length ? b : [];
 }
-const OPPS = BUNDLE.opps.map(o=>({...o, areas: roleAreas(o)}));
+const OPPS = BUNDLE.opps.map(o=>({...o, areas: roleAreas(o),zones:BUNDLE.location_zones?.[o.id]||[]}));
+const VOLUNTEER_AREAS=BUNDLE.volunteer_areas||[];
 const BOROUGHS = [...new Set(OPPS.flatMap(o=>o.areas))].sort();
 
 /* ---------- state ---------- */
@@ -75,6 +76,7 @@ if(window.matchMedia){
   });
 }
 const S={c:_ds.commitment||"",b:_ds.borough||"",act:_ds.activity||"",
+         z:VOLUNTEER_AREAS.some(z=>z.id===new URLSearchParams(location.search).get('area'))?new URLSearchParams(location.search).get('area'):"",
          who:"",remote:"",open:"",sort:"soonest"};
 
 /* Not every page carries every control. bind() no-ops when one is absent, which
@@ -84,9 +86,17 @@ let prevCount=null;
 
 /* ---------- matcher: pure function, spec §12 ---------- */
 const DBS_RANK={none:0,basic:1,enhanced:2,unknown:9};
+function matchesCommitment(role, commitment){
+  if(!commitment) return true;
+  if(role.commitment==="unknown") return false;
+  if(role.commitment==="flexible") return true;
+  const groups={one_off:["one_off"],weekly:["weekly","fortnightly","monthly"],
+    long_term:["long_term"],flexible:["flexible"],fortnightly:["fortnightly"],monthly:["monthly"]};
+  return (groups[commitment]||[]).includes(role.commitment);
+}
 function match(s){
   let out=OPPS.filter(o=>{
-    if(s.c && o.commitment!==s.c) return false;
+    if(!matchesCommitment(o,s.c)) return false;
     // A role with no stated location matches any borough — and its card says so.
     // This is not the PoC's london-wide bug: that passed *organisations* through a
     // *location* filter. Here the role genuinely has no location to contradict.
@@ -95,7 +105,8 @@ function match(s){
     // organisations through a location filter. These roles have no location to
     // contradict, and their cards say so.
     if(s.b && !["remote","own_home"].includes(o.location_type)
-       && o.areas.length && !o.areas.includes(s.b)) return false;
+       && o.areas.length && !o.areas.includes(s.b) && !boroughsFor(o).includes(s.b)) return false;
+    if(s.z && !['remote','own_home'].includes(o.location_type) && !o.zones.includes(s.z))return false;
     // A "varies" role is a rotating calendar. When someone asks for a specific
     // activity we exclude it rather than promise a match we cannot support.
     if(s.act && o.activity!==s.act) return false;
@@ -141,7 +152,7 @@ function countIf(over){return match(Object.assign({},S,over)).length}
    colours Southwark rather than sitting in a category of its own. */
 const DISTRICT_BOROUGH={SE1:"Southwark",SE11:"Lambeth",SE27:"Lambeth",
   E1:"Tower Hamlets",E2:"Tower Hamlets",E8:"Hackney",N1:"Islington",N16:"Hackney",
-  NW1:"Camden",WC1:"Camden",WC1H:"Camden",SW1:"Westminster",SW1P:"Westminster",
+  NW1:"Camden",NW5:"Camden",WC1:"Camden",WC1H:"Camden",WC2N:"Westminster",SE18:"Greenwich",SW1:"Westminster",SW1P:"Westminster",
   SW4:"Lambeth",SW9:"Lambeth",SW16:"Lambeth",SW17:"Wandsworth",
   EC1:"Islington",W10:"Kensington and Chelsea"};
 const MAP = window.__MAP__ || null;
@@ -313,7 +324,8 @@ function drawMap(){
     b.setAttribute("aria-label",`${name}: ${n} notice${n===1?"":"s"}`);
     const short=(MAP&&(MAP.boroughs.find(x=>x.name===name)||{}).short)||name;
     b.innerHTML='<span class="bt-name">'+short+'</span><span class="bt-n">'+n+'</span>';
-    b.addEventListener("click",()=>{S.b=(S.b===name?"":name);render()});
+    b.addEventListener("click",()=>{S.b=(S.b===name?"":name);
+      if(_ds.borough && S.b!==_ds.borough)location.href=canonicalPath(S);else render();});
     box.appendChild(b);
   });
 
@@ -332,7 +344,7 @@ function drawMap(){
 /* Filling a slot inks it red. Completion is rewarded rather than merely recorded,
    which is the whole point of making it a form you fill in. */
 function inkSlots(){
-  [["b1","c"],["b2","b"],["b3","act"]].forEach(([id,key])=>{
+  [["b1","c"],["b2","z"],["b3","act"]].forEach(([id,key])=>{
     const sel=document.getElementById(id);
     if(!sel) return;
     const slot=sel.closest(".slot");
@@ -349,7 +361,7 @@ function canonicalPath(s){
   const parts=[s.c?DOOR[s.c]:"all"];
   if(s.b) parts.push(SLUG(s.b));
   if(s.act) parts.push(SLUG(s.act));
-  return "/"+parts.join("/")+"/";
+  return "/"+parts.join("/")+"/"+(s.z?'?area='+encodeURIComponent(s.z):'');
 }
 
 function setNoindex(on){
@@ -379,10 +391,10 @@ function fillSelect(el,items,{placeholder,counts}={}){
 
 function buildSentence(){
   fillSelect($("b1"),COMMIT,{counts:v=>countIf({c:v})});
-  fillSelect($("b2"),BOROUGHS.map(b=>({v:b,l:b})),
-    {placeholder:"add a borough",counts:v=>countIf({b:v})});
+  fillSelect($("b2"),VOLUNTEER_AREAS.map(z=>({v:z.id,l:z.label})),
+    {placeholder:"any London area",counts:v=>countIf({z:v,b:""})});
   fillSelect($("b3"),ACT,{placeholder:"anything",counts:v=>countIf({act:v})});
-  $("b1").value=S.c; $("b2").value=S.b; $("b3").value=S.act;
+  $("b1").value=S.c; $("b2").value=S.z; $("b3").value=S.act;
 }
 function render(){
   const rows=match(S);
@@ -410,8 +422,8 @@ function render(){
   const uo=$("urlout"); if(uo) uo.textContent=path;
   /* One- and two-blank states are pre-rendered and indexable. Three-blank states
      exist only to be shared, so they get noindex (spec §14). */
-  setNoindex([S.c,S.b,S.act].filter(Boolean).length>2);
-  try{ if(location.pathname!==path) history.replaceState(null,"",path); }catch(e){}
+  setNoindex(!!S.z || [S.c,S.b,S.act].filter(Boolean).length>2);
+  try{ if(location.pathname+location.search!==path) history.replaceState(null,"",path); }catch(e){}
 
   drawMap();
 
@@ -442,6 +454,7 @@ function render(){
 
 function renderEmpty(){
   const tests=[
+    {lab:"Any London area",fix:{z:""},k:"z"},
     {lab:"Any district",fix:{b:""},k:"b"},
     {lab:"Anything at all",fix:{act:""},k:"act"},
     {lab:"Include those not recruiting",fix:{open:""},k:"open"},
@@ -453,7 +466,7 @@ function renderEmpty(){
     .filter(t=>t.n>0 && JSON.stringify(t.fix)!==JSON.stringify(
       Object.fromEntries(Object.keys(t.fix).map(k=>[k,S[k]]))))
     .sort((a,b)=>b.n-a.n).slice(0,3);
-  const bind=S.b?"the district":S.act?"what you would do":S.who?"how you are applying":S.open?"asking only for those recruiting":"how much time you have";
+  const bind=S.z?"the area":S.b?"the district":S.act?"what you would do":S.who?"how you are applying":S.open?"asking only for those recruiting":"how much time you have";
   $("ehead").textContent="No notices answer this";
   $("ebody").textContent=`In this edition it is ${bind} that rules everything out. Try one of these instead:`;
   const box=$("eopts");box.innerHTML="";
@@ -472,7 +485,7 @@ function renderEmpty(){
 }
 
 function resetAll(){
-  Object.assign(S,{c:_ds.commitment||"",b:"",act:"",who:"",remote:"",open:"",sort:"soonest"});
+  Object.assign(S,{c:_ds.commitment||"",b:"",z:"",act:"",who:"",remote:"",open:"",sort:"soonest"});
   ["rWho","rOpen","rRemote"].forEach(id=>$(id).value="");
   $("rSort").value="soonest";prevCount=null;render();
 }
@@ -545,7 +558,8 @@ bind("back","onclick",()=>{location.href="/"});
 /* A results page holds only its own commitment, so this one is navigation. */
 bind("b1","onchange",e=>{S.c=e.target.value;
   if($("results")) location.href=canonicalPath(S); else render();});
-bind("b2","onchange",e=>{S.b=e.target.value;render()});
+bind("b2","onchange",e=>{S.z=e.target.value;S.b="";
+  if(_ds.borough && $("results"))location.href=canonicalPath(S);else render();});
 bind("b3","onchange",e=>{S.act=e.target.value;render()});
 bind("rOpen","onchange",e=>{S.open=e.target.value;render()});
 bind("rWho","onchange",e=>{S.who=e.target.value;render()});
@@ -561,7 +575,7 @@ bind("copy","onclick",()=>{
 
 function doorCounts(){
   document.querySelectorAll("[data-dc]").forEach(el=>{
-    const n=OPPS.filter(o=>o.commitment===el.dataset.dc).length;
+    const n=OPPS.filter(o=>matchesCommitment(o,el.dataset.dc)).length;
     el.textContent=`${n} role${n===1?"":"s"}`;
   });
 }

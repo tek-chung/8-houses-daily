@@ -11,7 +11,7 @@ on:
         required: false
         default: ""
       dry_run:
-        description: "Fetch and extract but write nothing"
+        description: "Check source pages without AI calls or file writes"
         type: boolean
         default: false
       census_only:
@@ -46,12 +46,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - run: npm install --no-audit --no-fund
+      - run: npm ci --no-audit --no-fund
 
       # The gate decides what reaches visitors unreviewed. If its tests don't
       # pass, we do not run the pipeline at all.
       - name: Test the gate, content isolation and site build
-        run: python -m pytest pipeline/test_gate.py pipeline/test_fetch.py site/test_build.py -q
+        run: |
+          python -m pytest pipeline/ site/ -q
+          node site/js/discovery-test.js
+          node site/js/directory-test.js
+          node site/js/sharing-test.js
         working-directory: .
         env:
           PYTHONPATH: pipeline
@@ -80,22 +84,45 @@ jobs:
       - name: Run the check
         if: inputs.census_only != true
         id: run
-        continue-on-error: true
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          AI_PROVIDERS: ${{ vars.AI_PROVIDERS || 'gemini' }}
+          AI_GEMINI_MODELS: ${{ vars.AI_GEMINI_MODELS || 'gemini-2.5-flash,gemini-2.5-flash-lite' }}
+          AI_GEMINI_FREE_TIER_CONFIRMED: ${{ vars.AI_GEMINI_FREE_TIER_CONFIRMED || 'false' }}
+          AI_GEMINI_DAILY_CALLS: ${{ vars.AI_GEMINI_DAILY_CALLS || '20' }}
+          AI_GEMINI_MIN_INTERVAL_MS: ${{ vars.AI_GEMINI_MIN_INTERVAL_MS || '5000' }}
+          AI_OPENROUTER_MODELS: ${{ vars.AI_OPENROUTER_MODELS }}
+          AI_OPENROUTER_FREE_TIER_CONFIRMED: ${{ vars.AI_OPENROUTER_FREE_TIER_CONFIRMED || 'false' }}
+          AI_OPENROUTER_DAILY_CALLS: ${{ vars.AI_OPENROUTER_DAILY_CALLS || '20' }}
+          AI_MAX_RUN_CALLS: ${{ vars.AI_MAX_RUN_CALLS || '20' }}
+          AI_DAILY_USD: '0'
+          AI_LEDGER_GIT_SYNC: 'true'
           PYTHONPATH: pipeline
+          CHECK_ONLY_ORGS: ${{ inputs.only }}
+          CHECK_DRY_RUN: ${{ inputs.dry_run }}
         run: |
           set +e
-          python pipeline/run.py \
-            ${{ inputs.dry_run && '--dry-run' || '' }} \
-            --only "${{ inputs.only }}" | tee run.log
-          echo "code=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
-
-      - name: Stop if the run itself broke
-        if: inputs.census_only != true && steps.run.outputs.code == '2'
-        run: |
-          echo "::error::Pipeline failed to run. See log above."
-          exit 1
+          args=(--only "$CHECK_ONLY_ORGS")
+          if [ "$CHECK_DRY_RUN" = "true" ]; then args+=(--dry-run); fi
+          python pipeline/run.py "${args[@]}" 2>&1 | tee run.log
+          statuses=("${PIPESTATUS[@]}")
+          code=${statuses[0]}
+          set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          if [ "${statuses[1]}" -ne 0 ] || { [ "$code" -ne 0 ] && [ "$code" -ne 1 ]; }; then
+            echo "::error::Refresh failed to run. See run.log in the uploaded artifact."
+            exit 1
+          fi
+          if [ "$CHECK_DRY_RUN" != "true" ]; then
+            python -c "import json; r=json.load(open('pipeline/state/review.json', encoding='utf-8')); assert isinstance(r['items'], list) and r['needs_review'] == len(r['items'])"
+          fi
+          if [ "$CHECK_DRY_RUN" != "true" ]; then
+            python -c "import json; r=json.load(open('pipeline/state/review.json', encoding='utf-8')); print('AI extraction enabled:', r['extraction_available']); print('Items needing review:', r['needs_review'])" >> "$GITHUB_STEP_SUMMARY"
+            if ! python -c "import json,sys; r=json.load(open('pipeline/state/review.json', encoding='utf-8')); sys.exit(0 if r['extraction_available'] else 1)"; then
+              echo "::warning::No enabled AI provider. Check the API secret, model list and free-tier confirmation. Changed pages require review."
+            fi
+          fi
 
       # Auto-published changes: committed straight to main. These are non-critical
       # fields only, at or above the confidence threshold. Spec §11.3.
@@ -104,7 +131,8 @@ jobs:
         run: |
           git config user.name  "freshness-bot"
           git config user.email "freshness-bot@users.noreply.github.com"
-          git add data/ pipeline/state/http_cache.json
+          git add data/
+          if [ -f pipeline/state/http_cache.json ]; then git add pipeline/state/http_cache.json; fi
           if git diff --cached --quiet; then
             echo "No auto-publishable changes."
           else
@@ -129,6 +157,12 @@ jobs:
           N=$(python -c "import json;print(json.load(open('pipeline/state/review.json'))['needs_review'])")
           {
             echo "$N item(s) from this week's check need a human before they go live."
+            if ! python -c "import json,sys; r=json.load(open('pipeline/state/review.json')); sys.exit(0 if r.get('extraction_available') else 1)"; then
+              echo
+              echo "Model extraction is unavailable because no AI provider is enabled."
+              echo "Existing role facts and their last successful verification dates were preserved."
+              echo "Configure GEMINI_API_KEY, AI_GEMINI_MODELS and AI_GEMINI_FREE_TIER_CONFIRMED for automatic extraction, then rerun the check."
+            fi
             echo
             echo "The gate held these back. Anything touching \`screening\`,"
             echo "\`status\` or \`next_intake\` always lands here — those are the"
@@ -146,7 +180,10 @@ jobs:
 
           if ! gh pr create --title "Freshness review — $(date '+%d %b %Y')" \
                --body-file body.md --base "${{ github.ref_name }}" --head "$BRANCH"; then
-            gh pr edit "$BRANCH" --body-file body.md
+            if ! gh pr edit "$BRANCH" --body-file body.md; then
+              echo "::warning::Review PR could not be created or updated. The review report is available in the freshness-run artifact. Check repository Actions PR permissions."
+              cat body.md >> "$GITHUB_STEP_SUMMARY"
+            fi
           fi
 
       - uses: actions/upload-artifact@v4
@@ -156,4 +193,5 @@ jobs:
           path: |
             run.log
             pipeline/state/review.json
+            pipeline/state/ai_usage.json
           retention-days: 30
