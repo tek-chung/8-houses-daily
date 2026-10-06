@@ -242,6 +242,56 @@ ENGRAVING = {
     "varies": (_COAT, "Whatever the day asks for"),
 }
 
+# Local copies of marks published by the charities themselves. They are kept
+# beside the site rather than hotlinked, so a notice cannot acquire a broken
+# header (or make a third-party request) when a charity redesigns its website.
+LOGO_FILE = {
+    "ace-of-clubs": "ace-of-clubs.svg",
+    "akt": "akt.png",
+    "centrepoint": "centrepoint.png",
+    "crisis": "crisis.png",
+    "depaul-uk": "depaul-uk.png",
+    "emmaus": "emmaus.ico",
+    "glass-door": "glass-door.png",
+    "groundswell": "groundswell.svg",
+    "handson-london": "handson-london.png",
+    "housing-justice": "housing-justice.svg",
+    "manna-society": "manna-society.png",
+    "new-horizon-youth-centre": "new-horizon-youth-centre.svg",
+    "north-london-action-for-the-homeless": "north-london-action-for-the-homeless.png",
+    "providence-row": "providence-row.png",
+    "shelter": "shelter.png",
+    "simon-community": "simon-community.png",
+    "single-homeless-project": "single-homeless-project.png",
+    "solace-womens-aid": "solace-womens-aid.png",
+    "spear": "spear.png",
+    "spires": "spires.png",
+    "spitalfields-crypt-trust": "spitalfields-crypt-trust.png",
+    "st-mungos": "st-mungos.png",
+    "stonewall-housing": "stonewall-housing.png",
+    "thames-reach": "thames-reach.png",
+    "the-big-issue-foundation": "the-big-issue-foundation.svg",
+    "the-connection-at-st-martins": "the-connection-at-st-martins.svg",
+    "the-passage": "the-passage.png",
+    "the-whitechapel-mission": "the-whitechapel-mission.png",
+    "west-london-mission": "west-london-mission.png",
+    "women-at-the-well": "women-at-the-well.webp",
+}
+
+
+def logo_img(org, class_name="charity-logo"):
+    """A locally held charity mark; adjacent text supplies its accessible name."""
+    filename = LOGO_FILE.get(org["id"])
+    if not filename:
+        return ""
+    return (f'<img class="{e(class_name)}" '
+            f'src="/assets/logos/{e(filename)}" alt="" loading="lazy">')
+
+
+def logo_plate(org):
+    return (f'<figure class="charity-plate">{logo_img(org, "charity-logo-large")}'
+            f'<figcaption>Notice placed by {e(org["name"])}</figcaption></figure>')
+
 
 def plate(activity):
     svg, caption = ENGRAVING.get(activity, ENGRAVING["advice"])
@@ -460,6 +510,7 @@ def shell(*, title, desc, path, body, state=None, extra_head="", noindex=False,
 {footer()}
 {'<script src="/assets/map.js"></script>' if needs_data else ''}
 {'<script src="/assets/data.js"></script>' if needs_data else ''}
+{'<script src="/assets/zone-map.js"></script>' if needs_data else ''}
 {'<script src="/assets/app.js"></script>' if needs_data else ''}
 </body>
 </html>
@@ -638,8 +689,11 @@ def card(op, orgs, fresh):
 
     return f"""<article class="ad" data-id="{e(op['id'])}">
   <div class="ad-org">
-    <span><a href="/charity/{e(org['id'])}/">{e(org['name'])}</a></span>
-    <span>{where}</span>
+    <a class="ad-logo" href="/charity/{e(org['id'])}/" aria-label="{e(org['name'])}">
+      {logo_img(org)}
+    </a>
+    <span class="ad-charity"><a href="/charity/{e(org['id'])}/">{e(org['name'])}</a></span>
+    <span class="ad-place">{where}</span>
   </div>
   <h3><a href="/role/{e(op['id'])}/">{e(op['title'])}</a></h3>
   {stamp_html}
@@ -798,6 +852,30 @@ def map_panel():
 </div>"""
 
 
+def zone_map_panel():
+    """Shared broad-area selector using the existing London boundary geometry."""
+    m = map_data()
+    if not m:
+        return '<div class="zone-picker"><div class="zone-controls" role="group" aria-label="London areas"></div><p class="zone-selection" role="status" aria-live="polite"></p></div>'
+    shapes = ''.join(
+        f'<path data-zone="{e(locations.BOROUGH_ZONES.get(b["name"], ""))}" d="{b["d"]}"/>'
+        for b in m['boroughs'])
+    return f'''<div class="zone-picker">
+  <p class="zone-instruction">Tap areas on the map. You can choose more than one.</p>
+  <div class="zone-map-picture">
+    <svg viewBox="0 0 {m['width']} {m['height']}" aria-hidden="true" focusable="false">
+      {shapes}<path class="zone-river" d="{m['thames']}"/>
+    </svg>
+    <div class="zone-map-labels" aria-hidden="true"></div>
+  </div>
+  <div class="zone-controls" role="group" aria-label="London areas"></div>
+  <p class="zone-selection" role="status" aria-live="polite"></p>
+  <p class="zone-map-note">Broad areas, not TfL fare zones. The map groups boroughs;
+    central postcodes can cross those boundaries. Confirm the venue before travelling.</p>
+  <p class="mapattr">{' · '.join(e(a) for a in m['attribution'])}</p>
+</div>'''
+
+
 # ------------------------------------------------------------------ pages
 
 def write(path: str, content: str) -> None:
@@ -842,10 +920,10 @@ def results_page(*, path, title, desc, heading, intro, rows, orgs, fresh,
   {f'<p class="standfirst">{e(intro)}</p>' if intro else ''}
   <div class="r-thin" style="margin:14px 0 0"></div>
   {sentence(st, orgs, opps)}
-  <p class="colnote">Choose a broad London area, or use the map for a borough.
+  <p class="colnote">Choose one or more broad London areas using the map.
     Areas use stated postcodes or charity coverage; confirm the venue before travelling.</p>
   {REFINE}
-  {map_panel()}
+  <div id="area-map">{zone_map_panel()}</div>
   <div class="section-bar" style="margin-top:26px"><h2>The notices</h2></div>
   {screening_note(rows)}
   <div class="list" id="list">{cards}</div>
@@ -869,99 +947,21 @@ def sort_roles(rows):
                                        o["typical_shift_hours"] or 99))
 
 
-# One engraving per door. Not keyed to activity here — a door spans several — so
-# each gets the image that best carries its character.
-DOOR_PLATE = {"one_off": "cooking_serving",   # the pot, steam rising
-              "weekly": "befriending",         # the lamp, lit again each week
-              "long_term": "hosting"}          # the doorway, fanlight burning
-
-DOOR_VIDEO = {"one_off": ("soup-kitchen", "Soup kitchen"),
-              "weekly": ("coffee-chat", "Coffee chat"),
-              "long_term": ("hosting", "Hosting")}
-
-
-def moving_plate(key):
-    name, label = DOOR_VIDEO[key]
-    caption = ENGRAVING[DOOR_PLATE[key]][1]
-    # Delay loading the film until motion preferences have been checked.
-    # The poster also works without JavaScript or when autoplay is unavailable.
-    return (f'<figure class="plate">'
-            f'<video class="door-film" muted loop playsinline preload="none" '
-            f'poster="/assets/videos/{name}.webp" '
-            f'data-src="/assets/videos/{name}.mp4" '
-            f'aria-label="{e(label)} illustration"></video>'
-            f'<figcaption>{e(caption)}</figcaption>'
-            f'<button class="film-toggle" type="button" data-state="paused" hidden '
-            f'aria-label="Play {e(label.lower())} animation"></button>'
-            '</figure>')
-
-
 def build_home(orgs, opps, fresh, total):
-    """The front page.
-
-    Order is deliberate: the three ways are the only things on this page a reader
-    can act on, so they come first, immediately under the masthead. The headline
-    and the paper's purpose follow, because explanation is worth less than action
-    and costs the fold to put above it. The lookup field is lower still — it serves
-    the reader who already knows the charity they want, who is a minority.
-
-    An earlier draft ran to 491 words and said "no applications taken here" three
-    times over. Standing terms live in the colophon, which prints on every page.
-    """
-    counts = {k: len([o for o in opps if in_door(o, k)]) for k in DOOR}
-
-    ways = [
-        ("one_off",
-         "A morning in a kitchen, an evening on a station concourse. Turn up, be "
-         "useful, go home."),
-        ("weekly",
-         "A regular slot in a kitchen, day centre or drop-in. The people you sit "
-         "with come to know your face."),
-        ("long_term",
-         "Mentoring, a seat on a board, or a spare room for a young person with "
-         "nowhere else. These ask for references and a check."),
-    ]
-
-    cols = []
-    for key, blurb in ways:
-        n = counts[key]
-        cols.append(f"""    <div class="col">
-      {moving_plate(key)}
-      <h2><a href="/{DOOR[key]}/">{e(DOOR_LABEL[key])}</a></h2>
-      <p>{blurb}</p>
-      <a class="doorcta" href="/{DOOR[key]}/">
-        Read the {n} notice{'' if n == 1 else 's'} &rarr;</a>
-    </div>""")
-
+    """A single headline and two routes into the volunteering notices."""
+    suspension = (f'<div class="notice"><b>Publication suspended</b>'
+                  f'{e(fresh.get("site_banner_copy") or "")}</div>'
+                  if fresh.get('site_banner') else '')
     body = f"""<main class="wrap" id="main"><section id="home">
-  <div class="lead"><h1>How Much<br>Can You Spare?</h1></div>
+  <div class="lead"><h1>Everyone deserves a good home</h1></div>
   <nav class="discovery-entry" aria-label="Choose how to find a role">
-    <a class="guided-cta" href="/find/">Help me find a role &rarr;</a>
-    <a href="/all/">Browse all opportunities &rarr;</a>
+    <a class="guided-cta" href="/find/">Let's find a role</a>
+    <a href="/all/">Browse all opportunities</a>
   </nav>
-  <div class="cols cols-lead">
-{chr(10).join(cols)}
-  </div>
-  <p><a class="applybig" href="/all/">Or read every notice &rarr;</a></p>
 </section>
-
-  {banner(fresh, len(orgs), total, wrap=False)}
-
-  <div class="section">
-    <div class="section-bar"><h2>Five minutes instead</h2></div>
-    <div class="five">
-      <a href="https://www.streetlink.org.uk" rel="nofollow">
-        <b>Report someone sleeping rough</b>
-        <p>StreetLink sends the location to a local outreach team. Call 999 in an
-          emergency.</p></a>
-      <a href="/five-minutes/"><b>Give what they are short of</b>
-        <p>Most charities publish a list. Read it before you gather anything.</p></a>
-      <a href="/five-minutes/"><b>Set a reminder for autumn</b>
-        <p>Winter shelters recruit from October and fill quickly.</p></a>
-    </div>
-  </div>
+{suspension}
 </main>"""
-    write("/", shell(banner_html="",   # printed inline, after the calls to action
+    write("/", shell(banner_html="", search=False, needs_data=False,
                      title=f"{SITE_NAME} — volunteering with London homelessness charities",
                      desc=f"{len(opps)} volunteering posts at {len(orgs)} London "
                           "homelessness charities, set out by how much time you "
@@ -1125,7 +1125,7 @@ def build_roles(orgs, opps, fresh):
     {'&middot; Confidence low' if pv['confidence'] < 0.7 else ''}</p>
   <div class="r-thin" style="margin:14px 0 0"></div>
 
-  {plate(op["activity"])}
+  {logo_plate(org)}
   <div class="prose">{prose}</div>
 
   <div class="particulars">
@@ -1427,16 +1427,13 @@ def build_assets(orgs, opps, fresh):
     (DIST / "assets").mkdir(parents=True, exist_ok=True)
     shutil.copy(STATIC / "app.css", DIST / "assets" / "app.css")
     shutil.copy(STATIC / "app.js", DIST / "assets" / "app.js")
-    for asset in ("discovery.js", "discovery.css"):
+    for asset in ("discovery.js", "discovery.css", "zone-map.js"):
         shutil.copy(STATIC / asset, DIST / "assets" / asset)
     shutil.copy(STATIC / 'images' / 'social-preview.png', DIST / 'assets' / 'social-preview.png')
-    # Publish only the prepared web copies; keep the large source films intact.
-    video_out = DIST / "assets" / "videos"
-    video_out.mkdir(parents=True, exist_ok=True)
-    for name, _ in DOOR_VIDEO.values():
-        for suffix in ("mp4", "webp"):
-            shutil.copy(STATIC / "videos" / "web" / f"{name}.{suffix}",
-                        video_out / f"{name}.{suffix}")
+    logo_out = DIST / "assets" / "logos"
+    logo_out.mkdir(parents=True, exist_ok=True)
+    for filename in LOGO_FILE.values():
+        shutil.copy(STATIC / "logos" / filename, logo_out / filename)
     bundle = {"orgs": {k: {"n": v["name"], "u": v["volunteer_url"],
                            "w": v["website_url"], "cn": v.get("charity_number"),
                            "a": v.get("aliases", []), "b": v.get("boroughs", [])}

@@ -56,9 +56,7 @@ def notice(b, op, orgs, fresh):
             pass
     state = 'Check current availability' if stale else b.STATUS_LABEL[op['status']]
     uncertain = '<p class="role-uncertainty">Some particulars could not be confirmed. Check the charity’s own page.</p>' if op['provenance']['confidence'] < .7 else ''
-    images = {'cooking_serving': 'soup-kitchen', 'befriending': 'coffee-chat', 'mentoring': 'coffee-chat', 'hosting': 'hosting'}
-    picture = (f'<div class="role-illustration" aria-hidden="true" style="background-image:url(/assets/videos/{images[op["activity"]]}.webp)"></div>'
-               if op['activity'] in images else '')
+    picture = f'<div class="role-logo">{b.logo_img(org)}</div>'
     href = op.get('apply_url') or org['volunteer_url']
     return f'''<article class="ad role-notice" data-id="{b.e(op['id'])}">
 <div class="role-topline">{b.e(org['name'])}</div>{picture}
@@ -123,6 +121,8 @@ def build(b, orgs, opps, fresh, total):
 <div hidden id="discovery-templates">{''.join(templates)}</div>
 <script type="application/json" id="discovery-data">{payload}</script>
 <script type="application/json" id="discovery-locations">{json.dumps({'zones': locations.ZONES, 'borough_zones': locations.BOROUGH_ZONES})}</script>
+<template id="discovery-zone-map">{b.zone_map_panel()}</template>
+<script src="/assets/zone-map.js"></script>
 <script src="/assets/discovery.js" defer></script>'''
     b.write('/find/', b.shell(title=f'Find a volunteering role — {b.SITE_NAME}',
             desc='A few questions to find a London homelessness volunteering role that fits your life.',

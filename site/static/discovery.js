@@ -31,6 +31,8 @@
   } catch (_) { persistent = false; }
   let phase = preferences ? 'ranked' : 'examples', exampleIndex = 0;
   let initialising = true, includeOther = false;
+  let cancelTear = null;
+  const reducedMotion = () => !window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const history = [];
   const skipped = new Set();
   let prompted = saved.length >= 3;
@@ -136,6 +138,8 @@
     });
   }
   function panel(title, intro) {
+    cancelTear?.();
+    stage.classList.remove('scrapbook');
     stage.replaceChildren();
     const box = el('section', '', 'discovery-panel');
     const heading = el('h2', title); heading.tabIndex = -1;
@@ -250,18 +254,61 @@
       phase === 'examples' ? 'Skip or save. Three quick questions come next.'
         : includeOther ? 'Outside your preferences. Check the differences below.' : 'Chosen using your answers.');
     box.append(reasons(role));
-    const card=notice(role);box.append(card);
+    const paperSlot=el('div','','paper-slot');
+    const card=notice(role);paperSlot.append(card);box.append(paperSlot);
+    const cue=el('span','','paper-choice');cue.setAttribute('aria-hidden','true');card.append(cue);
     const actions=el('div','','discovery-actions role-actions');
-    actions.append(button('Skip',()=>choose(role,false)),button('Save role',()=>choose(role,true),'primary'));
+    let tearing=false, start=null;
+    function resetPaper() {
+      card.classList.remove('paper-dragging','paper-returning');
+      card.style.removeProperty('--drag-x');card.style.removeProperty('--drag-angle');
+      card.removeAttribute('data-choice');cue.textContent='';
+    }
+    function tear(save) {
+      if(tearing)return;
+      if(reducedMotion()){choose(role,save);return;}
+      tearing=true;start=null;
+      card.classList.remove('paper-dragging','paper-returning');
+      card.dataset.choice=save?'save':'skip';cue.textContent=save?'Keep this!':'Next…';
+      card.classList.add(save?'paper-tear-right':'paper-tear-left');
+      actions.querySelectorAll('button').forEach(node=>{node.disabled=true;});
+      let timer;
+      function cleanup(){clearTimeout(timer);card.removeEventListener('animationend',finished);cancelTear=null;}
+      function finished(event){
+        if(event && event.target!==card)return;
+        cleanup();if(card.isConnected)choose(role,save);
+      }
+      cancelTear=cleanup;
+      card.addEventListener('animationend',finished);
+      timer=setTimeout(finished,560);
+    }
+    actions.append(button('Skip',()=>tear(false)),button('Save role',()=>tear(true),'primary'));
     box.append(actions,el('p','Swipe left to skip · right to save','discovery-hint'));
     box.append(button(phase === 'examples' ? 'Answer the questions now' : 'Change my answers',questions,'discovery-text-button'));
-    let start;
-    card.addEventListener('pointerdown',e=>{if(!e.target.closest('a,button,summary,input,select') && e.isPrimary)start={x:e.clientX,y:e.clientY};});
-    card.addEventListener('pointerup',e=>{
-      if(!start)return;const dx=e.clientX-start.x,dy=e.clientY-start.y;start=null;
-      if(Math.abs(dx)>90 && Math.abs(dx)>Math.abs(dy)*1.5)choose(role,dx>0);
+    card.addEventListener('pointerdown',e=>{
+      if(tearing || !e.isPrimary || (e.pointerType==='mouse' && e.button!==0) || e.target.closest('a,button,summary,input,select,label'))return;
+      resetPaper();start={x:e.clientX,y:e.clientY,id:e.pointerId};
+      card.setPointerCapture?.(e.pointerId);
     });
-    card.addEventListener('pointercancel',()=>{start=null;});
+    card.addEventListener('pointermove',e=>{
+      if(!start || e.pointerId!==start.id)return;
+      const dx=e.clientX-start.x,dy=e.clientY-start.y;
+      if(Math.abs(dy)>Math.abs(dx)*1.5 && Math.abs(dy)>12){start=null;resetPaper();return;}
+      if(reducedMotion() || Math.abs(dx)<8)return;
+      card.classList.add('paper-dragging');
+      card.style.setProperty('--drag-x',Math.max(-180,Math.min(180,dx))+'px');
+      card.style.setProperty('--drag-angle',Math.max(-9,Math.min(9,dx/20))+'deg');
+      card.dataset.choice=dx>0?'save':'skip';cue.textContent=dx>0?'Keep this!':'Next…';
+    });
+    card.addEventListener('pointerup',e=>{
+      if(!start || e.pointerId!==start.id)return;
+      const dx=e.clientX-start.x,dy=e.clientY-start.y;start=null;
+      if(card.hasPointerCapture?.(e.pointerId))card.releasePointerCapture(e.pointerId);
+      if(Math.abs(dx)>90 && Math.abs(dx)>Math.abs(dy)*1.5)tear(dx>0);
+      else {resetPaper();card.classList.add('paper-returning');}
+    });
+    card.addEventListener('pointercancel',()=>{start=null;resetPaper();});
+    card.addEventListener('lostpointercapture',()=>{if(start){start=null;resetPaper();}});
   }
   function questions() {
     phase='questions';progress.textContent='Three questions about your life';
@@ -280,14 +327,18 @@
     [['once','Try it once'],['regular','Volunteer regularly'],['any','Either / not sure yet']].forEach(([v,t])=>choice(second,'commitment',v,t,'radio',(preferences?.commitment||'any')===v));
     const third=group('3. Which areas can you comfortably reach?');
     third.append(el('p','Choose several if useful. Leave blank for anywhere / not sure.','discovery-hint'));
+    const mapInput=el('div','','discovery-area-map');
+    mapInput.append(document.getElementById('discovery-zone-map').content.cloneNode(true));third.append(mapInput);
     geography.zones.forEach(zone=>{
-      choice(third,'zones',zone.id,zone.label,'checkbox',!!preferences?.zones.includes(zone.id));
-      const label=third.lastElementChild;label.classList.add('area-choice');
-      label.querySelector('span').append(el('small',zone.places));
+      const input=el('input');Object.assign(input,{type:'checkbox',name:'zones',value:zone.id,
+        checked:!!preferences?.zones.includes(zone.id)});input.hidden=true;third.append(input);
     });
+    window.mountZoneMap(mapInput,{zones:geography.zones,selected:preferences?.zones||[],onChange:ids=>{
+      third.querySelectorAll('[name=zones]').forEach(input=>{input.checked=ids.includes(input.value);});
+    }});
     choice(third,'remote','yes','Remote volunteering','checkbox',!!preferences?.remote);
     const travel=el('a','Check a journey with TfL →');travel.href='https://tfl.gov.uk/plan-a-journey/';travel.target='_blank';travel.rel='noopener';
-    third.append(el('p','Broad areas, not TfL fare zones. Choose places that work with your usual train, Tube or bus route.','discovery-hint'),travel);
+    third.append(el('p','Choose places that work with your usual train, Tube or bus route.','discovery-hint'),travel);
     let step=0;
     const fields=[first,second,third];
     const actions=el('div','','discovery-actions');
@@ -310,12 +361,18 @@
     },'discovery-text-button'));
   }
   function showShortlist() {
+    cancelTear?.();
     phase='shortlist';progress.textContent='Your saved roles';
-    stage.replaceChildren();const heading=el('h2',saved.length ? 'Which one feels right?' : 'Your shortlist is ready for a first role.');heading.tabIndex=-1;stage.append(heading);heading.focus({preventScroll:true});
-    stage.append(el('p','Compare the essentials. Enquire directly with the charity.'));
+    stage.replaceChildren();stage.classList.add('scrapbook');
+    stage.append(el('p','Clippings for a little good','scrapbook-kicker'));
+    const heading=el('h2','Your volunteering scrapbook.');heading.tabIndex=-1;stage.append(heading);heading.focus({preventScroll:true});
+    stage.append(el('p',saved.length?'A few possibilities, kept together. Compare the essentials and enquire directly with the charity.':'Your first clipping goes here. Save a role that catches your eye.','scrapbook-intro'));
+    stage.append(el('p',saved.length?'Something to come back to ♡':'Find a role → save it here','crayon-note scrapbook-note'));
     const grid=el('div','','shortlist-grid');
-    saved.forEach(id=>{
-      const role=byId.get(id),item=el('section','','shortlist-item');item.append(reasons(role),notice(role));
+    saved.forEach((id,index)=>{
+      const role=byId.get(id),item=el('section','','shortlist-item');
+      item.append(el('p','Clipping '+String(index+1).padStart(2,'0'),'scrapbook-number'),reasons(role),notice(role));
+      item.append(el('p',['Worth a closer look','Check the little details','A possible next step'][index%3],'crayon-note clipping-note'));
       item.append(button('Remove '+role.title,()=>{saved=saved.filter(x=>x!==id);history.length=0;persist();message('Removed from your shortlist.');showShortlist();}));grid.append(item);
     });stage.append(grid);
     const actions=el('div','','discovery-actions');actions.append(button('Keep exploring',()=>{phase=preferences?'ranked':'examples';render();},'primary'),button('Change my answers',questions));stage.append(actions);

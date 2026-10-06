@@ -21,7 +21,10 @@ setTimeout(() => {
   const d = dom.window.document;
   const report = {
     errors,
-    boroughPaths: d.querySelectorAll("path.bo").length,
+    boroughPaths: d.querySelectorAll("path.bo,.zone-map-picture svg [data-zone]").length,
+    zones: d.querySelectorAll('.zone-controls .zone-button').length,
+    zoneLabels: d.querySelectorAll('.zone-map-labels [data-zone]').length,
+    zoneButtonsLabelled: [...d.querySelectorAll('.zone-button')].every(b=>b.textContent && b.hasAttribute('aria-pressed')),
     litPaths: d.querySelectorAll("path.bo.lit").length,
     badges: d.querySelectorAll(".badge").length,
     chips: d.querySelectorAll("#tilemap .bt").length,

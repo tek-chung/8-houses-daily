@@ -3,6 +3,8 @@ const fs=require('fs'),path=require('path'),assert=require('node:assert/strict')
 const {JSDOM,VirtualConsole}=require('jsdom');
 const root=path.resolve(__dirname,'../..');
 const html=fs.readFileSync(path.join(root,'dist/find/index.html'),'utf8')
+  .replace('<script src="/assets/zone-map.js"></script>',
+    '<script>'+fs.readFileSync(path.join(root,'site/static/zone-map.js'),'utf8')+'</script>')
   .replace('<script src="/assets/discovery.js" defer></script>',
     '<script>'+fs.readFileSync(path.join(root,'site/static/discovery.js'),'utf8')+'</script>');
 function boot(share,clipboard,url='https://volunteer.example/find/'){

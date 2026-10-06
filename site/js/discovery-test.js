@@ -5,13 +5,16 @@ const assert = require('node:assert/strict');
 const {JSDOM, VirtualConsole} = require('jsdom');
 const root = path.resolve(__dirname, '../..');
 const html = fs.readFileSync(path.join(root, 'dist/find/index.html'), 'utf8')
+  .replace('<script src="/assets/zone-map.js"></script>',
+    '<script>'+fs.readFileSync(path.join(root, 'site/static/zone-map.js'), 'utf8')+'</script>')
   .replace('<script src="/assets/discovery.js" defer></script>',
     '<script>'+fs.readFileSync(path.join(root, 'site/static/discovery.js'), 'utf8')+'</script>');
 const key = '8houses-volunteer-discovery-v1';
-function boot(source=html, state=null, blocked=false) {
+function boot(source=html, state=null, blocked=false, motion=false) {
   const errors=[], vc=new VirtualConsole(); vc.on('jsdomError', e=>errors.push(e.message));
   const dom=new JSDOM(source,{runScripts:'dangerously',url:'https://example.org/find/',virtualConsole:vc,
     beforeParse(w){
+      w.matchMedia=()=>({matches:!motion});
       if(state) w.localStorage.setItem(key,JSON.stringify(state));
       if(blocked) Object.defineProperty(w,'localStorage',{get(){throw new Error('Storage blocked');}});
     }});
@@ -40,8 +43,14 @@ click(dom,'Change my answers');
 d.querySelector('[name=when][value=weekend_daytime]').checked=true;
 d.querySelector('[name=commitment][value=once]').checked=true;
 click(dom,'Next question');click(dom,'Next question');
+const map=d.querySelector('.discovery-area-map');
+assert.equal(map.querySelectorAll('svg [data-zone]').length,33);
+map.querySelector('.zone-button[data-zone=central]').click();
+map.querySelector('svg [data-zone=east]').dispatchEvent(new dom.window.MouseEvent('click',{bubbles:true}));
+assert.equal(map.querySelectorAll('.zone-button[aria-pressed=true]').length,2);
 d.querySelector('form').dispatchEvent(new dom.window.Event('submit',{bubbles:true,cancelable:true}));
 assert.equal(JSON.parse(dom.window.localStorage.getItem(key)).preferences.commitment,'once');
+assert.deepEqual(JSON.parse(dom.window.localStorage.getItem(key)).preferences.zones,['central','east']);
 assert.match(d.querySelector('#journey-progress').textContent,/Suggestions/);
 assert(d.querySelector('.discovery-notice a.apply').href.startsWith('https://'));
 
@@ -87,3 +96,41 @@ click(coverage,'Skip');assert.match(coverage.window.document.querySelector('.fit
 flexible.window.close();
 for(const instance of [dom,restored,ranked,blocked,multiple,legacy,remoteOnly,coverage])instance.window.close();
 console.log('Passed: undo, shortlist, persistence, questions, ranking, conflicts, flexible commitments and blocked storage.');
+
+// Exercise deferred choices, interrupted tears and actual pointer directions.
+const animated=boot(html,null,false,true), ad=animated.window.document;
+function pointer(card,type,x,y=0,id=1){
+  const event=new animated.window.Event(type,{bubbles:true});
+  Object.assign(event,{clientX:x,clientY:y,pointerId:id,isPrimary:true,pointerType:'touch'});
+  card.dispatchEvent(event);
+}
+let paper=ad.querySelector('.paper-slot .discovery-notice');
+pointer(paper,'pointerdown',0);pointer(paper,'pointermove',120);
+assert.equal(paper.dataset.choice,'save');
+pointer(paper,'pointerup',120);
+assert(paper.classList.contains('paper-tear-right'));
+assert.equal(ad.querySelector('#saved-count').textContent,'0','Save waits for the tear');
+paper.dispatchEvent(new animated.window.Event('animationend'));
+assert.equal(ad.querySelector('#saved-count').textContent,'1');
+paper.dispatchEvent(new animated.window.Event('animationend'));
+assert.equal(ad.querySelector('#saved-count').textContent,'1','Animation commits once');
+paper=ad.querySelector('.paper-slot .discovery-notice');
+pointer(paper,'pointerdown',160);pointer(paper,'pointermove',20);pointer(paper,'pointerup',20);
+assert(paper.classList.contains('paper-tear-left'));
+paper.dispatchEvent(new animated.window.Event('animationend'));
+assert.equal(ad.querySelector('#journey-progress').textContent,'Example 3 of 3');
+click(animated,'Undo');
+paper=ad.querySelector('.paper-slot .discovery-notice');
+pointer(paper,'pointerdown',0);pointer(paper,'pointermove',40);pointer(paper,'pointercancel',40);
+assert(!paper.hasAttribute('data-choice'));
+pointer(paper,'pointerdown',0);pointer(paper,'pointermove',10,120);pointer(paper,'pointerup',120,130);
+assert(!paper.classList.contains('paper-tear-right'),'Vertical scrolling never saves');
+click(animated,'Save role');
+click(animated,'Saved roles 1');
+paper.dispatchEvent(new animated.window.Event('animationend'));
+assert.equal(ad.querySelector('#saved-count').textContent,'1','Leaving the card cancels its pending choice');
+assert(ad.querySelector('#discovery-stage.scrapbook'));
+assert.equal(ad.querySelectorAll('.shortlist-item .clipping-note').length,1);
+click(animated,'Keep exploring');assert(!ad.querySelector('#discovery-stage.scrapbook'));
+animated.window.close();
+console.log('Passed: left/right tears, single save, cancellation, vertical scrolling and scrapbook navigation.');

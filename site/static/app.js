@@ -42,41 +42,9 @@ const BOROUGHS = [...new Set(OPPS.flatMap(o=>o.areas))].sort();
    rather than defaulting, so a deep link renders correctly before any JavaScript
    runs and stays correct afterwards. */
 const _ds=document.body.dataset;
-const prefersStill=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-/* Moving newspaper illustrations. Keep posters when motion is reduced, and
-   give every reader a pause control for the otherwise continuous loops. */
-if(window.matchMedia){
-  const motion=window.matchMedia("(prefers-reduced-motion: reduce)");
-  document.querySelectorAll(".door-film").forEach(video=>{
-    const button=video.parentElement.querySelector(".film-toggle");
-    const label=video.getAttribute("aria-label").replace(/ illustration$/, "").toLowerCase();
-    const showState=()=>{
-      const action=video.paused ? "Play" : "Pause";
-      button.dataset.state=video.paused ? "paused" : "playing";
-      button.setAttribute("aria-label",`${action} ${label} animation`);
-      button.title=`${action} animation`;
-    };
-    const play=()=>{video.muted=true;video.play()?.catch(showState);};
-    const applyMotion=()=>{
-      button.hidden=motion.matches;
-      if(motion.matches){
-        if(video.hasAttribute("src")){
-          video.pause();video.removeAttribute("src");video.load();
-        }
-      }else{
-        if(!video.hasAttribute("src")) video.src=video.dataset.src;
-        play();
-      }
-    };
-    video.addEventListener("play",showState);
-    video.addEventListener("pause",showState);
-    button.addEventListener("click",()=>{if(video.paused) play();else video.pause();});
-    motion.addEventListener("change",applyMotion);
-    applyMotion();
-  });
-}
 const S={c:_ds.commitment||"",b:_ds.borough||"",act:_ds.activity||"",
-         z:VOLUNTEER_AREAS.some(z=>z.id===new URLSearchParams(location.search).get('area'))?new URLSearchParams(location.search).get('area'):"",
+         z:[...new Set((new URLSearchParams(location.search).get('area')||'').split(',')
+           .filter(id=>VOLUNTEER_AREAS.some(z=>z.id===id)))].join(','),
          who:"",remote:"",open:"",sort:"soonest"};
 
 /* Not every page carries every control. bind() no-ops when one is absent, which
@@ -106,7 +74,7 @@ function match(s){
     // contradict, and their cards say so.
     if(s.b && !["remote","own_home"].includes(o.location_type)
        && o.areas.length && !o.areas.includes(s.b) && !boroughsFor(o).includes(s.b)) return false;
-    if(s.z && !['remote','own_home'].includes(o.location_type) && !o.zones.includes(s.z))return false;
+    if(s.z && !['remote','own_home'].includes(o.location_type) && !s.z.split(',').some(id=>o.zones.includes(id)))return false;
     // A "varies" role is a rotating calendar. When someone asks for a specific
     // activity we exclude it rather than promise a match we cannot support.
     if(s.act && o.activity!==s.act) return false;
@@ -244,6 +212,16 @@ function placeBadges(items, field){
    chips beneath are the real control, so a keyboard user is not walked through 33
    duplicate tab stops to reach a view of what the chips already do.        */
 function drawMap(){
+  const areaMap=$("area-map");
+  if(areaMap){
+    const counts=Object.fromEntries(VOLUNTEER_AREAS.map(zone=>[zone.id,
+      match({...S,z:zone.id,b:""}).filter(o=>o.zones.includes(zone.id)).length]));
+    window.mountZoneMap(areaMap,{zones:VOLUNTEER_AREAS,selected:S.z?S.z.split(','):[],counts,onChange:ids=>{
+      S.z=ids.join(',');S.b="";
+      if(_ds.borough)location.href=canonicalPath(S);else render();
+    }});
+    return;
+  }
   const box=$("tilemap"); if(!box) return;
 
   /* Counted with the district blank ignored, so each borough shows what choosing
@@ -393,6 +371,11 @@ function buildSentence(){
   fillSelect($("b1"),COMMIT,{counts:v=>countIf({c:v})});
   fillSelect($("b2"),VOLUNTEER_AREAS.map(z=>({v:z.id,l:z.label})),
     {placeholder:"any London area",counts:v=>countIf({z:v,b:""})});
+  if(S.z.includes(',')){
+    const selected=document.createElement('option');selected.value=S.z;
+    selected.textContent=VOLUNTEER_AREAS.filter(z=>S.z.split(',').includes(z.id)).map(z=>z.label).join(' + ');
+    $("b2").append(selected);
+  }
   fillSelect($("b3"),ACT,{placeholder:"anything",counts:v=>countIf({act:v})});
   $("b1").value=S.c; $("b2").value=S.z; $("b3").value=S.act;
 }

@@ -24,7 +24,9 @@ body[data-discovery] .title{font-size:36px;line-height:1.15;padding:14px 0;margi
 .discovery .role-notice{padding:18px;background:var(--paper);border:1px solid var(--ink);overflow:hidden}
 .discovery .role-notice h3{padding-right:0;margin:8px 0 12px;font-family:var(--display);font-size:28px;line-height:1.1}
 .role-topline{font-family:var(--label);font-size:12px;text-transform:uppercase;color:var(--ink-3)}
-.role-illustration{float:right;width:116px;height:72px;margin:10px 0 10px 14px;background-size:cover;background-position:center;border:1px solid var(--rule)}
+.role-logo{float:right;display:grid;place-items:center;width:116px;height:72px;
+  margin:10px 0 10px 14px;padding:8px;background:var(--paper-2);border:1px solid var(--rule)}
+.role-logo .charity-logo{max-height:54px}
 .role-lead{font-size:17px;line-height:1.5;margin-bottom:16px}
 .discovery .role-facts{display:grid;grid-template-columns:90px 1fr;gap:8px 14px;padding:14px 0;border-top:1px solid var(--rule);clear:both}
 .discovery .role-facts dt{font-family:var(--label);font-size:12px;line-height:1.5;text-transform:uppercase}
@@ -44,6 +46,25 @@ body[data-discovery] .title{font-size:36px;line-height:1.15;padding:14px 0;margi
 .discovery-panel>p{margin-bottom:16px}
 .discovery-notice{position:relative;touch-action:pan-y}
 .discovery-notice .ad{margin:16px 0}
+/* A clipping lifts from the sheet, then tears towards the chosen side. */
+.paper-slot{overflow:hidden;padding:10px 18px;margin:0 -18px;isolation:isolate;background:radial-gradient(ellipse at center,var(--paper-2),transparent 72%)}
+.paper-slot .discovery-notice{transform-origin:50% 85%;will-change:auto;filter:drop-shadow(2px 5px 3px #453c331c)}
+.paper-slot .role-notice{border-color:var(--rule);clip-path:polygon(0 0,100% 0,100% 98.5%,97% 99.6%,93% 98.8%,89% 100%,84% 99%,80% 99.7%,75% 98.8%,70% 100%,65% 99%,60% 99.8%,55% 98.7%,50% 100%,45% 99%,40% 99.7%,35% 98.8%,30% 100%,25% 99%,20% 99.7%,15% 98.8%,10% 100%,5% 99%,0 99.6%);padding-bottom:28px}
+.paper-choice{position:absolute;top:30px;right:14px;z-index:2;pointer-events:none;opacity:0;font:700 25px 'Segoe Print','Comic Sans MS',cursive;color:#315c48;background:#f8f2dfed;padding:7px 14px;border:3px dashed currentColor;transform:rotate(8deg)}
+.discovery-notice[data-choice] .paper-choice{opacity:1}
+.discovery-notice[data-choice=skip] .paper-choice{right:auto;left:14px;color:var(--red);transform:rotate(-9deg)}
+.paper-dragging{transform:translateX(var(--drag-x,0px)) rotate(var(--drag-angle,0deg));user-select:none;will-change:transform}
+.paper-returning{transition:transform 200ms ease-out}
+.paper-tear-right,.paper-tear-left{pointer-events:none;animation:paper-tear 480ms cubic-bezier(.35,.02,.72,.45) both;will-change:transform,opacity;--tear-direction:1}
+.paper-tear-left{--tear-direction:-1}
+.paper-tear-right .role-notice,.paper-tear-left .role-notice{animation:paper-peel 480ms ease-in both;transform-origin:50% 0}
+@keyframes paper-tear{
+  0%{transform:translateX(var(--drag-x,0px)) rotate(var(--drag-angle,0deg));opacity:1}
+  24%{transform:translate(calc(var(--tear-direction)*24px),-8px) rotate(calc(var(--tear-direction)*-3deg))}
+  55%{opacity:1;transform:translate(calc(var(--tear-direction)*100px),-22px) rotate(calc(var(--tear-direction)*9deg))}
+  100%{opacity:0;transform:translate(calc(var(--tear-direction)*115%),-50px) rotate(calc(var(--tear-direction)*21deg))}
+}
+@keyframes paper-peel{0%{transform:perspective(900px) rotateX(0)}40%{transform:perspective(900px) rotateX(-7deg);box-shadow:0 12px 18px #453c3333}100%{transform:perspective(900px) rotateX(12deg)}}
 .discovery-actions{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
 .discovery-actions>*{flex:1}
 .discovery-hint{font-size:14px;color:var(--ink-3)}
@@ -85,6 +106,26 @@ body[data-discovery] .title{font-size:36px;line-height:1.15;padding:14px 0;margi
 .social-actions .primary{background:var(--ink);color:var(--paper)}
 .social-actions button:focus-visible,.social-actions a:focus-visible,.fit-reasons summary:focus-visible{outline:3px solid var(--red);outline-offset:3px}
 @media (min-width:900px){.shortlist-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* Saved newspaper clippings on a warm, lightly ruled scrapbook leaf. */
+.scrapbook{margin:20px -8px 24px;padding:28px 22px 22px;border:1px solid #c9bfa8;background:repeating-linear-gradient(0deg,transparent 0,transparent 31px,#b8ae982e 31px,#b8ae982e 32px),#e8dfca;box-shadow:3px 5px 0 #d9cfb9;position:relative}
+.scrapbook::before{content:'';position:absolute;top:0;bottom:0;left:12px;border-left:2px solid #9e2b2330;pointer-events:none}
+.scrapbook h2{font:600 clamp(28px,5vw,38px)/1.15 var(--display);max-width:530px;margin:8px 0 12px}
+.scrapbook-kicker,.scrapbook-number{font:12px var(--label);text-transform:uppercase;letter-spacing:.12em;color:var(--ink-3)}
+.scrapbook-intro{font-size:16px;line-height:1.6;max-width:520px}
+.crayon-note{font:700 19px/1.5 'Segoe Print','Comic Sans MS',cursive;color:#315c48;text-shadow:.5px .4px 0 currentColor;letter-spacing:.02em}
+.scrapbook-note{display:table;margin:18px 0 28px;transform:rotate(-3deg);position:relative}
+.scrapbook-note::after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:5px;border-top:3px solid currentColor;border-bottom:1px dashed currentColor;border-radius:50%;transform:rotate(-1deg);opacity:.7}
+.scrapbook .shortlist-grid{grid-template-columns:1fr;gap:36px;margin:30px 0}
+.scrapbook .shortlist-item{position:relative;border:0;padding:24px 14px 16px;background:#f9f5e9;box-shadow:2px 4px 7px #453c3326;transform:rotate(-.7deg);border-bottom:3px dashed #c9bfa8}
+.scrapbook .shortlist-item:nth-child(even){transform:rotate(.8deg)}
+.scrapbook .shortlist-item::before{content:'';position:absolute;z-index:1;top:-13px;left:calc(50% - 42px);width:84px;height:28px;background:repeating-linear-gradient(95deg,#d2ba8559 0,#d2ba8559 3px,#e5d09d66 3px,#e5d09d66 6px);border-left:2px dotted #c9b88b; border-right:2px dotted #c9b88b;transform:rotate(-5deg);pointer-events:none}
+.scrapbook .shortlist-item:nth-child(even)::before{transform:rotate(6deg)}
+.scrapbook .role-notice{background:transparent;border:0;border-top:1px solid var(--rule);padding:14px 0 4px}
+.scrapbook .shortlist-item .ad{margin:12px 0}
+.scrapbook .clipping-note{color:var(--red);font-size:17px;margin:8px 0 18px;transform:rotate(-2deg)}
+.scrapbook .shortlist-item>button{background:transparent;border-color:var(--rule);font-size:14px}
+@media(min-width:640px){.scrapbook .shortlist-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.scrapbook .role-notice h3{font-size:24px}.scrapbook .role-facts{grid-template-columns:1fr;gap:4px}.scrapbook .role-facts dd{margin-bottom:8px}.scrapbook .role-logo{width:86px;height:56px}.scrapbook .role-logo .charity-logo{max-height:38px}}
+@media(prefers-reduced-motion:reduce){.paper-slot .discovery-notice,.paper-slot .role-notice{animation:none!important;transition:none!important;transform:none!important}}
 @media (max-width:480px){
   .discovery{padding-bottom:100px}
   .discovery-heading{padding:18px 0 16px}
@@ -102,6 +143,6 @@ body[data-discovery] .title{font-size:36px;line-height:1.15;padding:14px 0;margi
   .discovery-actions{flex-wrap:nowrap}
   .discovery-actions>*{min-width:0;padding-left:8px;padding-right:8px;font-size:16px}
   .role-actions{position:fixed;bottom:0;left:0;right:0;z-index:20;margin:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--ink);background:var(--paper)}
-  .role-illustration{width:90px;height:56px}
+  .role-logo{width:90px;height:56px}
   .discovery .role-notice h3{font-size:24px}
 }

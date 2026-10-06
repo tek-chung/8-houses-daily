@@ -60,13 +60,13 @@ def shipped():
 
 # --------------------------------------------------------------------- honesty
 
-def test_every_page_carries_the_coverage_banner_except_help(built):
+def test_role_browsing_pages_carry_the_coverage_banner(built):
     """§11.5 specifies a *site-wide* banner. Only having it on the home page meant
     anyone arriving from search — which is the entire point of §14 — saw no
     indication of how fresh the data was."""
     for url, h in built.items():
-        if url == "/help/":
-            continue          # deliberately stripped; nothing to be honest about
+        if url in ("/help/", "/"):
+            continue          # these pages do not display volunteering notices
         assert "charities place notices here" in h, f"{url} has no banner"
 
 
@@ -237,10 +237,10 @@ def test_district_controls_are_real_buttons():
 
 
 def test_single_live_region_per_page(built):
-    """Two live regions announcing the same count means screen readers say it
-    twice — the exact bug the PoC had."""
+    """Announce each result count once; area selection has its own status."""
     for url, h in built.items():
-        assert h.count("aria-live") <= 1, f"{url} has {h.count('aria-live')}"
+        count_markup = re.sub(r'<p class="zone-selection"[^>]*>.*?</p>', '', h, flags=re.S)
+        assert count_markup.count("aria-live") <= 1, f"{url} repeats its result announcements"
 
 
 # ---------------------------------------------------------------------- seo
@@ -558,36 +558,27 @@ def test_stamps_only_mark_exceptions(built):
         assert "Recruiting now</span>" not in h, f"{url} stamps the default state"
 
 
-# ------------------------------------------------------------ the engravings
-# These exist because the engravings, their CSS and the plate() helper were all
-# written and then not wired to anything. Every page built, every other test
-# passed, and the signature element of the design was absent from the site.
-# Absence of a decorative element is exactly the kind of thing a test suite that
-# only checks structure will never notice.
+# ------------------------------------------------------------ charity marks
 
-def test_front_page_carries_an_engraving_per_lead(built):
-    h = built["/"]
-    assert h.count('class="plate"') == 3, \
-        f'front page has {h.count(chr(34) + "plate" + chr(34))} plates, expected 3'
-    assert h.count('class="col"') == 3
+def test_animation_assets_are_not_used(built):
+    for url, h in built.items():
+        assert "<video" not in h, f"{url}: video animation remains"
+        assert "/assets/videos/" not in h, f"{url}: animation artwork remains"
+        assert "door-film" not in h and "film-toggle" not in h
 
 
-def test_every_article_carries_an_engraving(built):
+def test_every_article_carries_its_charity_logo(built):
     for op in data()["opps"]:
         h = built[f"/role/{op['id']}/"]
-        assert 'class="plate"' in h, f"{op['id']}: no engraving"
+        assert 'class="charity-plate"' in h, f"{op['id']}: no charity logo plate"
+        assert f'/assets/logos/{op["org_id"]}.' in h, \
+            f"{op['id']}: wrong charity logo"
 
 
-def test_engravings_are_drawn_not_photographed(built):
-    """Articles retain their drawn engravings; the homepage uses supplied films."""
-    for url, h in built.items():
-        assert "<img" not in h, f"{url} contains an <img> — no photography here"
-        for plate in re.findall(r'<figure class="plate">(.*?)</figure>', h, re.S):
-            if url == "/":
-                assert plate.strip().startswith("<video"), "homepage film missing"
-                continue
-            assert plate.strip().startswith("<svg"), f"{url}: plate is not an svg"
-            assert "xlink:href" not in plate and "url(http" not in plate
+def test_classifieds_carry_local_charity_logos(built):
+    h = built["/all/"]
+    assert h.count('class="ad-logo"') == len(data()["opps"])
+    assert "http" not in "".join(re.findall(r'<img[^>]+src="([^"]+)"', h))
 
 
 def test_every_svg_is_either_labelled_or_explicitly_decorative(built):
@@ -824,17 +815,14 @@ def _pos(h, needle):
 
 
 def test_calls_to_action_come_high_on_the_front_page(built):
-    """The headline leads, then the three ways. Nothing else may get between
-    them, and nothing secondary may precede them."""
+    """The simple homepage leads with the headline and two browsing routes."""
     h = built["/"]
-    assert _pos(h, "<h1>") < _pos(h, 'class="cols cols-lead"'), \
+    assert _pos(h, "<h1>") < _pos(h, 'class="discovery-entry"'), \
         "the headline no longer leads"
-    assert _pos(h, 'class="doorcta"') < _pos(h, 'class="notice grey"'), \
-        "the publisher's notice pushes the calls to action down"
-    assert _pos(h, 'class="doorcta"') < _pos(h, 'class="five"'), \
-        "the five-minute actions come before the main ones"
-    assert _pos(h, 'class="doorcta"') < _pos(h, 'class="section lookup"'), \
-        "the lookup field precedes the calls to action"
+    assert '<h1>Everyone deserves a good home</h1>' in h
+    assert 'class="cols cols-lead"' not in h
+    assert 'class="five"' not in h
+    assert 'id="ta"' not in h
 
 
 def test_front_page_carries_no_slogan_between_headline_and_actions(built):
@@ -858,15 +846,13 @@ def test_the_lookup_field_is_below_the_calls_to_action(built):
             f"{url}: lookup precedes the main content"
 
 
-def test_each_way_ends_in_an_unmistakable_call_to_action(built):
+def test_front_page_has_two_clear_browsing_routes(built):
     h = built["/"]
-    assert h.count('class="doorcta"') == 3
-    css = _first_block(CSS(), ".doorcta")
-    for prop in ["display:block", "border:1px solid", "min-height:var(--tap)",
-                 "text-transform:uppercase"]:
-        assert prop in css, f".doorcta lacks {prop} — it will not read as a button"
-    assert "margin-top:auto" in css, \
-        "buttons will not align across columns of unequal prose"
+    nav = re.search(r'<nav class="discovery-entry".*?</nav>', h, re.S).group(0)
+    assert re.findall(r'href="([^"]+)"', nav) == ['/find/', '/all/']
+    assert "Let's find a role" in nav
+    assert "Browse all opportunities" in nav
+    assert 'class="doorcta"' not in h
 
 
 def test_heading_outline_is_valid(built):
@@ -935,6 +921,7 @@ def _inline(built_path: Path, out: Path):
     for ph, asset in [('<link rel="stylesheet" href="/assets/app.css">', "app.css"),
                       ('<script src="/assets/map.js"></script>', "map.js"),
                       ('<script src="/assets/data.js"></script>', "data.js"),
+                      ('<script src="/assets/zone-map.js"></script>', "zone-map.js"),
                       ('<script src="/assets/app.js"></script>', "app.js")]:
         if ph in h:
             b = (DIST / "assets" / asset).read_text(encoding="utf-8")
@@ -990,12 +977,10 @@ def test_the_district_map_actually_draws(tmp_path, built):
     rep = _smoke("all/index.html", "/all/", tmp_path)
     assert rep["boroughPaths"] == 33, \
         f"drew {rep['boroughPaths']} of 33 borough outlines"
-    assert rep["litPaths"] > 0, "no borough is shaded"
-    assert rep["badges"] == rep["litPaths"], \
-        "a shaded borough has no count badge, or vice versa"
+    assert rep["zones"] == 7, "the shared seven-area input is missing"
+    assert rep["zoneLabels"] == 7, "the map needs seven area labels"
+    assert rep["zoneButtonsLabelled"]
     assert rep["textInsideSvg"] == 0, "text is back inside the scaled viewBox"
-    assert rep["chips"] == rep["litPaths"], "chips and shaded boroughs disagree"
-    assert rep["chipsAreButtons"] and rep["chipsLabelled"]
 
 
 def test_javascript_does_not_replace_the_server_rendered_classifieds(tmp_path,
@@ -1134,7 +1119,7 @@ def test_the_shapes_are_decorative_and_the_chips_are_the_control(built):
     """33 focusable paths would put 33 duplicate tab stops in front of a keyboard
     user, for a view of what the chips already do."""
     h = built["/all/"]
-    svg = re.search(r'<svg class="boroughs".*?>', h, re.S).group(0)
+    svg = re.search(r'<svg viewBox=.*?>', h, re.S).group(0)
     assert 'aria-hidden="true"' in svg and 'focusable="false"' in svg
     assert "pointer-events:none" in _first_block(CSS(), ".badges"), \
         "badges would swallow clicks meant for the borough beneath"
