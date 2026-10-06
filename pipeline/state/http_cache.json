@@ -1,0 +1,87 @@
+{
+  "https://cardboardcitizens.org.uk/": {
+    "etag": null,
+    "hash": "4caaebaa17ca3c3fa0c9b1bd106d31b9866a15f266c0bdb34aca214bfe86cf25",
+    "last_modified": null
+  },
+  "https://centrepoint.org.uk/get-involved/volunteer/": {
+    "etag": "\"1791153991\"",
+    "hash": "033f25f20af2e41add295e10053708c04066cdb62569744fa9cafab67b483061",
+    "last_modified": "Sun, 04 Oct 2026 22:46:31 GMT"
+  },
+  "https://england.shelter.org.uk/support_us/volunteer": {
+    "etag": "\"c67f518fa8ff8596d4f185db7532fee5-ssl-df\"",
+    "hash": "4e9ef762c5aaacfa038b3999a1939a7a0cfbb24f5663d640dc4e1b6618634269",
+    "last_modified": null
+  },
+  "https://nhyouthcentre.org.uk/get-involved/jobs/": {
+    "etag": null,
+    "hash": "a713b7c67c16c524c2f7612c39287a36c2029bf041907c5c500a910b966b9261",
+    "last_modified": "Mon, 05 Oct 2026 06:30:20 GMT"
+  },
+  "https://stonewallhousing.org/volunteer-opportunities/": {
+    "etag": null,
+    "hash": "731f36336e04e38defda18024f25fa47f2433d3110af404b35ed9b5c89b2339d",
+    "last_modified": null
+  },
+  "https://thamesreach.org.uk/support-us/volunteer/": {
+    "etag": null,
+    "hash": "987b32b3a6c900f1bb2dc62a28ae03fe8cb3e6d1bf3558744323f87bc42e31cc",
+    "last_modified": "Mon, 05 Oct 2026 17:07:03 GMT"
+  },
+  "https://www.bigissue.com/partner-with-the-big-issue-group/engage-your-staff/volunteering-with-the-big-issue/": {
+    "etag": null,
+    "hash": "61cab5b688d86aa350896e2eccc485b9e5233db46fa928fbf19701b49ac39f83",
+    "last_modified": null
+  },
+  "https://www.crisis.org.uk/get-involved/volunteer/": {
+    "etag": null,
+    "hash": "32b69bdf630b8d08557e90887bbb99b508ac2381578b8e9a42a9400b4445d097",
+    "last_modified": null
+  },
+  "https://www.depaul.org.uk/nightstop-volunteer/": {
+    "etag": null,
+    "hash": "71bc8af6f5d60b19a59a1d0f1f6c88ba56cbc332373347bf056ee2f5f7498b19",
+    "last_modified": null
+  },
+  "https://www.glassdoor.org.uk/listing/category/volunteer-roles": {
+    "etag": null,
+    "hash": "4ecf590f373dbe22eb0970e6ca5ff33518627dabb5b9d19df4fb41e2f199291a",
+    "last_modified": null
+  },
+  "https://www.handsonlondon.org.uk/volunteer": {
+    "etag": null,
+    "hash": "5df808373541522d52de304dbea038b65de867744cfee248bdcb0773fe0d194e",
+    "last_modified": "Mon, 05 Oct 2026 13:24:53 GMT"
+  },
+  "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/": {
+    "etag": "\"61836-1791214143;gz\"",
+    "hash": "2f273e1f35e47da270c19fccd2cd9f3b1e3a056ad74770edcedca1242f6440b6",
+    "last_modified": null
+  },
+  "https://www.simoncommunity.org.uk/volunteering/": {
+    "etag": "\"276331436d10344fd79bf87e6cd16db3-ssl-df\"",
+    "hash": "5fd9b31ddb50eda409f25c4e18f5fed3a41c8ce68a04aac9e77336445acd0fe5",
+    "last_modified": null
+  },
+  "https://www.spearlondon.org/get-involved/be-a-volunteer/": {
+    "etag": null,
+    "hash": "f0c1d29fd9bc12dd5ccc58256bb78d2f8f7614851a480f60a5b09f070b131bfe",
+    "last_modified": null
+  },
+  "https://www.spires.org.uk/volunteer": {
+    "etag": "W/\"3e1dd421bb81345d2a5aba833ca521db\"",
+    "hash": "3b86c0ce07a71f95cf9da969f676743f0ad0e966d96fb2d33a73624c9b554bc0",
+    "last_modified": null
+  },
+  "https://www.streetsoflondon.org.uk/get-involved/volunteer": {
+    "etag": null,
+    "hash": "ec5012ca0a5be7504fd0cbb6327ce96f328f315fa8e88ebba622b3ebf2e58389",
+    "last_modified": null
+  },
+  "https://www.watw.org.uk/volunteer": {
+    "etag": "W/\"cc02c3b5a1322e975165ac385de4054b\"",
+    "hash": "72e373a8aaaadf2d4fa09832e753695d32e586e83d251d2ef088fe85feb174f3",
+    "last_modified": null
+  }
+}

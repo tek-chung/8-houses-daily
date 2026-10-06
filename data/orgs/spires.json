@@ -23,12 +23,12 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-09-02T00:00:00+00:00",
+      "last_attempt": "2026-10-06T01:07:26+00:00",
       "last_success": "2026-09-02T00:00:00+00:00",
       "link_status": "ok",
       "content_hash": null,
       "consecutive_failures": 0,
-      "etag": null,
+      "etag": "W/\"3e1dd421bb81345d2a5aba833ca521db\"",
       "last_modified": null
     }
   },

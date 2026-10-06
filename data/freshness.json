@@ -1,0 +1,399 @@
+{
+  "generated_at": "2026-10-06T01:08:03+00:00",
+  "median_days_since_check": 34,
+  "oldest_days_since_check": 42,
+  "orgs_total": 32,
+  "orgs_suppressed": 32,
+  "site_banner": false,
+  "site_banner_copy": null,
+  "thresholds": {
+    "suppress_assertive_after_days": 21,
+    "site_banner_after_days": 60
+  },
+  "orgs": {
+    "ace-of-clubs": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "akt": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "cardboard-citizens": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "centrepoint": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "redirected",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "crisis": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "depaul-uk": {
+      "days_since_check": 42,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "emmaus": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "glass-door": {
+      "days_since_check": 42,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "groundswell": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "handson-london": {
+      "days_since_check": 42,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "housing-justice": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "manna-society": {
+      "days_since_check": 42,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "new-horizon-youth-centre": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "north-london-action-for-the-homeless": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "providence-row": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "shelter": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "simon-community": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "single-homeless-project": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "solace-womens-aid": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "spear": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "spires": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "spitalfields-crypt-trust": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "st-mungos": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "stonewall-housing": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "streets-of-london": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "thames-reach": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "the-big-issue-foundation": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "the-connection-at-st-martins": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "the-passage": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "the-whitechapel-mission": {
+      "days_since_check": 42,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "west-london-mission": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    },
+    "women-at-the-well": {
+      "days_since_check": 34,
+      "state": "stale",
+      "link_status": "ok",
+      "suppress_assertive": true,
+      "suppress_fields": [
+        "screening",
+        "status",
+        "next_intake",
+        "specific_times"
+      ]
+    }
+  }
+}

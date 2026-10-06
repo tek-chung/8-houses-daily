@@ -16,13 +16,13 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-09-02T00:00:00+00:00",
+      "last_attempt": "2026-10-06T01:07:45+00:00",
       "last_success": "2026-09-02T00:00:00+00:00",
       "link_status": "ok",
       "content_hash": null,
       "consecutive_failures": 0,
       "etag": null,
-      "last_modified": null
+      "last_modified": "Mon, 05 Oct 2026 17:07:03 GMT"
     }
   },
   "opportunities": [
