@@ -251,3 +251,27 @@ def test_run_crossing_midnight_reserves_the_new_day(factory, monkeypatch, tmp_pa
     data = json.loads((tmp_path / 'usage.json').read_text(encoding='utf-8'))
     assert data['2026-10-05']['providers']['gemini'] == 3
     assert data['2026-10-06']['providers']['gemini'] == 2
+
+
+def test_both_unavailable_models_report_http_cause(factory):
+    client = factory(lambda request: httpx.Response(404))
+    with pytest.raises(AIUnavailable, match='model_unavailable.*HTTP 404'):
+        client.generate_structured('I', 'X', SCHEMA)
+    assert client.successful_calls == 0
+
+
+def test_default_byte_limit_accepts_full_unicode_page_and_schema(factory):
+    from extract import PROMPT
+    from schema import EXTRACTION_SCHEMA
+    def handler(request):
+        assert len(request.content) < ai.DEFAULT_MAX_INPUT_BYTES
+        return httpx.Response(200, json=answer(raw='{"roles":[],"page_notes":null}'))
+    client = factory(handler)
+    assert client.generate_structured(PROMPT, '\U0001f600' * 60000, EXTRACTION_SCHEMA).json['roles'] == []
+    assert client.successful_calls == 1
+
+
+def test_default_models_follow_requested_order(monkeypatch):
+    monkeypatch.setenv('AI_PROVIDERS', 'gemini')
+    monkeypatch.delenv('AI_GEMINI_MODELS', raising=False)
+    assert ai.providers_from_env()[0].models == ('gemini-3.5-flash-lite', 'gemini-flash-lite-latest')

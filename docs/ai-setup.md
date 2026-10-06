@@ -12,7 +12,7 @@ validated provider interface. Existing listings are retained when AI is unavaila
    determine API pricing: the key inherits its project's billing settings.
 3. Check [current model pricing](https://ai.google.dev/gemini-api/docs/pricing)
    and the account's actual quota. The starting configuration uses
-   `gemini-2.5-flash,gemini-2.5-flash-lite`; availability must still be checked for
+   `gemini-3.5-flash-lite,gemini-flash-lite-latest`; availability must still be checked for
    this account. The application cap of 20 calls is a conservative setting,
    not a claim about Google's allowance. Verification also consumes calls.
 4. In this repository's **Settings → Secrets and variables → Actions**, add the
@@ -22,7 +22,7 @@ validated provider interface. Existing listings are retained when AI is unavaila
 | Variable | Starting value |
 | --- | --- |
 | `AI_PROVIDERS` | `gemini` |
-| `AI_GEMINI_MODELS` | `gemini-2.5-flash,gemini-2.5-flash-lite` |
+| `AI_GEMINI_MODELS` | `gemini-3.5-flash-lite,gemini-flash-lite-latest` |
 | `AI_GEMINI_FREE_TIER_CONFIRMED` | `true`, after the billing check |
 | `AI_GEMINI_DAILY_CALLS` | `20`, or a lower value matching the account |
 | `AI_MAX_RUN_CALLS` | `20`, or a lower value |
@@ -33,6 +33,20 @@ attestation; the code cannot independently verify billing. If project billing or
 model pricing changes, disable confirmation until checked again. Google documents
 these project-level rules in [billing](https://ai.google.dev/gemini-api/docs/billing).
 Only public charity page text is supplied; Google's free-tier data-use terms apply.
+
+If you previously set `AI_GEMINI_MODELS` to the 2.5 models, update that repository
+variable: it overrides the workflow default. Google now restricts 2.5 model access
+to projects that previously used them, as explained in its
+[model availability notice](https://ai.google.dev/gemini-api/docs/deprecations).
+The 6 October 2026 refresh report recorded HTTP 404 for both 2.5 models.
+The `latest` fallback is a moving alias: it may resolve to the primary model and
+does not provide a separate provider or independent quota allowance.
+
+`AI_MAX_INPUT_BYTES` defaults to 262,144 bytes, counting the complete serialised
+request. This accommodates the fetcher's existing 60,000-character source limit,
+including multi-byte text, instructions and schema. The source limit, output-token
+limit, quota limits and zero-spend guard remain in place. Oversized requests are
+still held; source text is not silently shortened merely to make a request fit.
 
 ## Local diagnostics and first activation
 
@@ -72,6 +86,11 @@ ledger only within that checkout; independent clones and other projects using th
 same key are outside this budget. Use the API only through the scheduled job for
 shared quota accounting. A local probe reserves locally, so allow for that call in
 the remote cap. The provider still enforces its own account/project quotas.
+
+An incomplete source check or AI extraction makes the workflow fail after safe
+updates and diagnostic artifacts are saved. Only genuine proposed changes create
+a review PR. The summary distinguishes configuration, validated AI responses,
+published updates and incomplete checks. No provider response bodies are logged.
 
 Dry runs never call AI, so they neither change the ledger nor push checkpoints.
 Provider failures, failed generations and the single bounded 429 retry consume

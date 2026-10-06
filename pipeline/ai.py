@@ -22,6 +22,8 @@ from jsonschema import Draft202012Validator, ValidationError, validate
 
 from config import ROOT, STATE
 
+DEFAULT_GEMINI_MODELS = 'gemini-3.5-flash-lite,gemini-flash-lite-latest'
+DEFAULT_MAX_INPUT_BYTES = 262144  # accommodates the fetcher's 60,000-char cap + schema
 
 class AIUnavailable(Exception):
     """Expected provider/quota failure; existing records must be retained."""
@@ -129,7 +131,8 @@ def providers_from_env() -> list[Provider]:
         if name not in ('gemini', 'openrouter'):
             raise ValueError('Unknown AI provider; supported: gemini, openrouter')
         prefix = f'AI_{name.upper()}_'
-        models = tuple(m.strip() for m in os.environ.get(prefix + 'MODELS', '').split(',') if m.strip())
+        default_models = DEFAULT_GEMINI_MODELS if name == 'gemini' else ''
+        models = tuple(m.strip() for m in os.environ.get(prefix + 'MODELS', default_models).split(',') if m.strip())
         if any(not re.fullmatch(r'[A-Za-z0-9._:/-]{1,150}', m) for m in models):
             raise ValueError('Invalid AI model identifier')
         providers.append(Provider(name, models, os.environ.get(name.upper() + '_API_KEY', ''),
@@ -144,11 +147,12 @@ class AIClient:
         self.providers = providers if providers is not None else providers_from_env()
         self.daily_usd = float(os.environ.get('AI_DAILY_USD', '0'))
         self.run_cap = int(os.environ.get('AI_MAX_RUN_CALLS', '20'))
-        self.max_bytes = int(os.environ.get('AI_MAX_INPUT_BYTES', '80000'))
+        self.max_bytes = int(os.environ.get('AI_MAX_INPUT_BYTES', str(DEFAULT_MAX_INPUT_BYTES)))
         self.max_tokens = int(os.environ.get('AI_MAX_OUTPUT_TOKENS', '4096'))
         self.max_wait = float(os.environ.get('AI_MAX_RETRY_SECONDS', '15'))
         self.timeout = float(os.environ.get('AI_TIMEOUT_SECONDS', '90'))
         if (self.run_cap < 1 or self.max_bytes < 1 or self.max_tokens < 1 or self.max_wait < 0
+                or not math.isfinite(self.max_wait) or not math.isfinite(self.timeout)
                 or self.timeout <= 0 or not math.isfinite(self.daily_usd) or self.daily_usd < 0):
             raise ValueError('Invalid AI limits')
         if any(p.daily_calls < 1 or not math.isfinite(p.interval) or p.interval < 0 for p in self.providers):
@@ -159,6 +163,7 @@ class AIClient:
         self.disabled, self.last_started, self.remaining = set(), {}, {}
         self.lease_days = {}
         self.calls = 0
+        self.successful_calls = 0
         self.diagnostics = []
 
     @property
@@ -214,6 +219,7 @@ class AIClient:
                     try:
                         result = self._request(provider, model, instruction, input, schema)
                         validate(result.json, schema)
+                        self.successful_calls += 1
                         return result
                     except ValidationError:
                         failure = ProviderFailure('malformed')
@@ -228,7 +234,11 @@ class AIClient:
                     if failure.kind in ('auth', 'provider_unavailable', 'network', 'rate_limited'):
                         self.disabled.update((provider.name, m) for m in provider.models)
                     break
-        raise AIUnavailable('No configured AI provider produced a valid result')
+        failures = list(dict.fromkeys(
+            f"{d['provider']}/{d['model']}: {d['reason']}" +
+            (f" (HTTP {d['status']})" if d.get('status') else '') for d in self.diagnostics))
+        detail = '; '.join(failures[-4:]) or 'no provider with a key, model and free-tier confirmation'
+        raise AIUnavailable(f'No valid AI result: {detail}')
 
     def _request(self, provider, model, instruction, input, schema):
         if provider.name == 'gemini':

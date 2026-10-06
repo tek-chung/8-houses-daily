@@ -64,7 +64,7 @@ def process(path: Path, doc: dict, client, dry: bool) -> dict:
 
     if res.status == "blocked":
         check["link_status"] = "link_only"
-        report.update(route="auto", reasons=["robots.txt disallows crawling; "
+        report.update(route="auto", outcome='link_only', reasons=["robots.txt disallows crawling; "
                                             "record set to link-only"])
         if not dry:
             path.write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
@@ -76,7 +76,7 @@ def process(path: Path, doc: dict, client, dry: bool) -> dict:
                                    DEAD_LINK_AFTER_FAILURES)
         if d.needs_review:
             check["link_status"] = "dead"
-        report.update(route=d.route, reasons=d.reasons + [res.error or ""])
+        report.update(route=d.route, outcome='source_failed', reasons=d.reasons + [res.error or ""])
         if not dry:
             path.write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
         return report
@@ -89,6 +89,7 @@ def process(path: Path, doc: dict, client, dry: bool) -> dict:
     report['checked_at'] = check['last_attempt']
 
     if res.status == "unchanged":
+        report['outcome'] = 'unchanged'
         check["last_success"] = NOW()
         report["reasons"] = ["page unchanged (304 or identical hash); "
                              "no extraction needed"]
@@ -97,7 +98,7 @@ def process(path: Path, doc: dict, client, dry: bool) -> dict:
         return report
 
     if client is None:
-        report.update(route=ROUTE_REVIEW, reasons=[
+        report.update(route=ROUTE_REVIEW, outcome='ai_unavailable', reasons=[
             "page changed or has no approved baseline; no enabled AI provider, "
             "so extraction is unavailable. Existing roles and last_success are unchanged."])
         save_check()
@@ -105,7 +106,7 @@ def process(path: Path, doc: dict, client, dry: bool) -> dict:
 
     ex = extract(client, org["name"], url, res.text)
     if ex.error:
-        report.update(route=ROUTE_REVIEW, reasons=[f"extraction failed: {ex.error}"])
+        report.update(route=ROUTE_REVIEW, outcome='extraction_failed', reasons=[f"extraction failed: {ex.error}"])
         save_check()
         return report
 
@@ -115,7 +116,7 @@ def process(path: Path, doc: dict, client, dry: bool) -> dict:
         try:
             validate(rec, RECORD_SCHEMA)
         except ValidationError as exc:
-            report.update(route=ROUTE_REVIEW,
+            report.update(route=ROUTE_REVIEW, outcome='invalid_extraction',
                           reasons=[f"record failed schema: {exc.message}"])
             save_check()
             return report
@@ -140,11 +141,13 @@ def process(path: Path, doc: dict, client, dry: bool) -> dict:
     )
 
     if route == ROUTE_REVIEW:
+        report['outcome'] = 'review_required'
         report["proposed"] = new_roles       # held, not written
         save_check()
         return report
 
     check["last_success"] = NOW()
+    report['outcome'] = 'published'
     check["content_hash"] = res.content_hash
     doc["opportunities"] = new_roles
     if not dry:
@@ -195,8 +198,17 @@ def main() -> int:
     fresh = decay.compute(all_orgs) if args.dry_run else decay.write(all_orgs)
 
     needs = [r for r in reports if r["route"] == ROUTE_REVIEW]
+    failures = [r for r in reports if r.get('outcome') in (
+        'source_failed', 'ai_unavailable', 'extraction_failed', 'invalid_extraction')]
+    human_review = [r for r in reports if r.get('outcome') == 'review_required']
     review = {"generated_at": NOW(), "dry_run": args.dry_run,
+         "ai_configured": client is not None,
          "extraction_available": client is not None,
+         "ai_successful_calls": configured_client.successful_calls,
+         "human_review_count": len(human_review), "failed_count": len(failures),
+         "published_count": sum(r.get('outcome') == 'published' for r in reports),
+         "unchanged_count": sum(r.get('outcome') == 'unchanged' for r in reports),
+         "results": reports,
          "ai_diagnostics": configured_client.diagnostics,
          "checked": len(reports), "needs_review": len(needs),
          "median_days_since_check": fresh["median_days_since_check"],
@@ -205,13 +217,14 @@ def main() -> int:
         STATE.mkdir(parents=True, exist_ok=True)
         REVIEW_OUT.write_text(json.dumps(review, indent=2) + "\n", encoding="utf-8")
 
-    log(f"\n{len(reports)} checked · {len(needs)} need review · "
+    log(f"\n{len(reports)} checked · {len(human_review)} proposals need review · "
+        f"{len(failures)} checks incomplete · "
         f"median freshness {fresh['median_days_since_check']} days"
         + ("  [dry run, nothing written]" if args.dry_run else ""))
     if fresh["site_banner"]:
         log("! decay banner is ACTIVE — listings look unmaintained")
 
-    return 1 if needs else 0
+    return 1 if needs or failures else 0
 
 
 if __name__ == "__main__":

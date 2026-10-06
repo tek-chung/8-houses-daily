@@ -71,6 +71,9 @@ def test_main_without_key_checks_sources_and_dry_run_writes_nothing(record, monk
         report = json.loads((state / 'review.json').read_text(encoding='utf-8'))
         assert report['extraction_available'] is False
         assert report['needs_review'] == len(report['items']) == 1
+        assert report['human_review_count'] == 0
+        assert report['failed_count'] == 1
+        assert report['ai_successful_calls'] == 0
 
 
 def test_extraction_failure_records_attempt_without_verifying(record, monkeypatch):

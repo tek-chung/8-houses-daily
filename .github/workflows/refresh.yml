@@ -88,7 +88,8 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           AI_PROVIDERS: ${{ vars.AI_PROVIDERS || 'gemini' }}
-          AI_GEMINI_MODELS: ${{ vars.AI_GEMINI_MODELS || 'gemini-2.5-flash,gemini-2.5-flash-lite' }}
+          AI_GEMINI_MODELS: ${{ vars.AI_GEMINI_MODELS || 'gemini-3.5-flash-lite,gemini-flash-lite-latest' }}
+          AI_MAX_INPUT_BYTES: ${{ vars.AI_MAX_INPUT_BYTES || '262144' }}
           AI_GEMINI_FREE_TIER_CONFIRMED: ${{ vars.AI_GEMINI_FREE_TIER_CONFIRMED || 'false' }}
           AI_GEMINI_DAILY_CALLS: ${{ vars.AI_GEMINI_DAILY_CALLS || '20' }}
           AI_GEMINI_MIN_INTERVAL_MS: ${{ vars.AI_GEMINI_MIN_INTERVAL_MS || '5000' }}
@@ -118,7 +119,8 @@ jobs:
             python -c "import json; r=json.load(open('pipeline/state/review.json', encoding='utf-8')); assert isinstance(r['items'], list) and r['needs_review'] == len(r['items'])"
           fi
           if [ "$CHECK_DRY_RUN" != "true" ]; then
-            python -c "import json; r=json.load(open('pipeline/state/review.json', encoding='utf-8')); print('AI extraction enabled:', r['extraction_available']); print('Items needing review:', r['needs_review'])" >> "$GITHUB_STEP_SUMMARY"
+            python pipeline/report.py summary >> "$GITHUB_STEP_SUMMARY"
+            python pipeline/report.py outputs >> "$GITHUB_OUTPUT"
             if ! python -c "import json,sys; r=json.load(open('pipeline/state/review.json', encoding='utf-8')); sys.exit(0 if r['extraction_available'] else 1)"; then
               echo "::warning::No enabled AI provider. Check the API secret, model list and free-tier confirmation. Changed pages require review."
             fi
@@ -144,7 +146,7 @@ jobs:
       # Anything the gate held back becomes a PR. Uses the preinstalled gh CLI
       # rather than a third-party action, so there's no supply chain to pin.
       - name: Open a review PR
-        if: inputs.census_only != true && steps.run.outputs.code == '1' && inputs.dry_run != true
+        if: inputs.census_only != true && steps.run.outputs.review_count != '' && steps.run.outputs.review_count != '0' && inputs.dry_run != true
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -154,29 +156,7 @@ jobs:
           git commit -m "Freshness check: items needing review" || true
           git push -f -u origin "$BRANCH"
 
-          N=$(python -c "import json;print(json.load(open('pipeline/state/review.json'))['needs_review'])")
-          {
-            echo "$N item(s) from this week's check need a human before they go live."
-            if ! python -c "import json,sys; r=json.load(open('pipeline/state/review.json')); sys.exit(0 if r.get('extraction_available') else 1)"; then
-              echo
-              echo "Model extraction is unavailable because no AI provider is enabled."
-              echo "Existing role facts and their last successful verification dates were preserved."
-              echo "Configure GEMINI_API_KEY, AI_GEMINI_MODELS and AI_GEMINI_FREE_TIER_CONFIRMED for automatic extraction, then rerun the check."
-            fi
-            echo
-            echo "The gate held these back. Anything touching \`screening\`,"
-            echo "\`status\` or \`next_intake\` always lands here — those are the"
-            echo "claims that waste someone's day or misstate a safeguarding rule."
-            echo
-            echo "**To review:** read \`pipeline/state/review.json\`. Each item has"
-            echo "the reasons, the changed fields, and the proposed records. Move"
-            echo "anything you accept into the relevant \`data/orgs/*.json\`, set"
-            echo "\`provenance.reviewed_by_human\` to \`true\`, then merge."
-            echo
-            echo '```'
-            grep '^REVIEW' run.log || true
-            echo '```'
-          } > body.md
+          python pipeline/report.py pr > body.md
 
           if ! gh pr create --title "Freshness review — $(date '+%d %b %Y')" \
                --body-file body.md --base "${{ github.ref_name }}" --head "$BRANCH"; then
@@ -195,3 +175,9 @@ jobs:
             pipeline/state/review.json
             pipeline/state/ai_usage.json
           retention-days: 30
+
+      - name: Flag incomplete source or AI checks
+        if: inputs.census_only != true && inputs.dry_run != true && steps.run.outputs.failed_count != '' && steps.run.outputs.failed_count != '0'
+        run: |
+          echo "::error::Refresh is incomplete. See provider diagnostics and failed checks in the job summary. Existing listings were retained."
+          exit 1

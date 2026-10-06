@@ -53,7 +53,7 @@ different URL or a headless browser) versus `thin` (real prose, just no role det
 ```bash
 pip install -r pipeline/requirements.txt
 export GEMINI_API_KEY=your-private-key
-export AI_GEMINI_MODELS=gemini-2.5-flash,gemini-2.5-flash-lite
+export AI_GEMINI_MODELS=gemini-3.5-flash-lite,gemini-flash-lite-latest
 export AI_GEMINI_FREE_TIER_CONFIRMED=true # only after verifying the project's tier
 export PYTHONPATH=pipeline
 
@@ -63,7 +63,10 @@ python pipeline/run.py                              # the real thing
 python -m pytest pipeline/test_gate.py -q
 ```
 
-Exit codes: `0` nothing needs review · `1` review needed · `2` the run itself broke.
+Exit codes: `0` complete with no attention needed · `1` held proposals or incomplete
+checks · `2` the run itself broke. The workflow uploads the report, publishes safe
+updates, opens a PR only for real proposals, then fails the job if checks remain
+incomplete. Configuration alone is not labelled a working AI integration.
 
 The weekly workflow treats review-needed as a completed check, and unexpected
 exit codes as failures. Both standard output and errors are saved in the
@@ -87,6 +90,13 @@ Dry runs are source-only: they do not generate AI content or reserve quota. Use
 `python pipeline/ai.py probe` for an explicit synthetic API compatibility check.
 The shared AI interface supports Gemini and optional OpenRouter `:free` fallback;
 Anthropic is no longer called. See [account setup](../docs/ai-setup.md).
+
+`human_review_count` counts valid proposals; `failed_count` counts source,
+configuration, extraction and record-validation failures. `ai_successful_calls`
+counts schema-valid responses (including verification), not successfully updated
+charities. `extraction_available` is retained for compatibility and means configured,
+not that any request succeeded. Read `results` for every check's outcome and
+`ai_diagnostics` for safe provider/model failure categories and HTTP codes.
 
 Run the complete regression checks before changing the refresh workflow:
 
