@@ -47,7 +47,7 @@ body[data-discovery] .title{font-size:36px;line-height:1.15;padding:14px 0;margi
 .role-panel .discovery-notice .ad{margin-top:8px}
 .discovery-panel h2{font-family:var(--display);font-size:26px;line-height:1.2;margin:8px 0 8px}
 .discovery-panel>p{margin-bottom:16px}
-.discovery-notice{position:relative;touch-action:pan-y}
+.discovery-notice{position:relative;touch-action:pan-y;user-select:none;-webkit-user-select:none}
 .discovery-notice .ad{margin:16px 0}
 /* A clipping lifts from the sheet, then tears towards the chosen side. */
 .paper-slot{overflow:hidden;padding:10px 18px;margin:0 -18px;isolation:isolate;background:radial-gradient(ellipse at center,var(--paper-2),transparent 72%)}
@@ -128,7 +128,7 @@ body[data-discovery] .title{font-size:36px;line-height:1.15;padding:14px 0;margi
 .scrapbook .clipping-note{color:var(--red);font-size:17px;margin:8px 0 18px;transform:rotate(-2deg)}
 .scrapbook .shortlist-item>button{background:transparent;border-color:var(--rule);font-size:14px}
 @media(min-width:640px){.scrapbook .shortlist-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.scrapbook .role-notice h3{font-size:24px}.scrapbook .role-facts{grid-template-columns:1fr;gap:4px}.scrapbook .role-facts dd{margin-bottom:8px}.scrapbook .role-logo{width:86px;height:56px}.scrapbook .role-logo .charity-logo{max-height:38px}}
-@media(prefers-reduced-motion:reduce){.paper-slot .discovery-notice,.paper-slot .role-notice{animation:none!important;transition:none!important;transform:none!important}}
+@media(prefers-reduced-motion:reduce){.paper-slot .discovery-notice,.paper-slot .role-notice{animation:none!important;transition:none!important}.paper-slot .discovery-notice.paper-dragging{transform:translateX(var(--drag-x,0px))}}
 @media (max-width:480px){
   .discovery{padding-bottom:100px}
   .discovery-heading{padding:0}

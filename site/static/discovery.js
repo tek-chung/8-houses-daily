@@ -304,10 +304,9 @@
       }
       suppressClick=true;
       if(!card.hasPointerCapture?.(e.pointerId))card.setPointerCapture?.(e.pointerId);
-      if(reducedMotion())return;
       card.classList.add('paper-dragging');
       card.style.setProperty('--drag-x',dx+'px');
-      card.style.setProperty('--drag-angle',Math.max(-9,Math.min(9,dx/20))+'deg');
+      card.style.setProperty('--drag-angle',(reducedMotion()?0:Math.max(-9,Math.min(9,dx/20)))+'deg');
       card.dataset.choice=dx>0?'save':'skip';cue.textContent=dx>0?'Keep this!':'Next…';
     });
     card.addEventListener('pointerup',e=>{
@@ -322,7 +321,11 @@
       if(suppressClick && event.detail!==0){event.preventDefault();event.stopImmediatePropagation();suppressClick=false;}
     },true);
     card.addEventListener('pointercancel',()=>{start=null;suppressClick=false;resetPaper();});
-    card.addEventListener('lostpointercapture',()=>{if(start){start=null;resetPaper();}});
+    card.addEventListener('lostpointercapture',event=>{
+      // Touch browsers initially capture the child under the finger. Its capture
+      // loss bubbles here when we transfer capture to the whole card.
+      if(event.target===card && start){start=null;resetPaper();}
+    });
   }
   function questions() {
     phase='questions';progress.textContent='Three questions about your life';
