@@ -257,6 +257,9 @@
     if(includeOther)box.append(el('p','Outside your preferences. Check the differences below.','discovery-hint'));
     const paperSlot=el('div','','paper-slot');
     const card=notice(role);paperSlot.append(card);box.append(paperSlot);
+    // Browser link/image dragging must not take over the paper gesture.
+    card.querySelectorAll('a,img').forEach(node=>{node.draggable=false;});
+    card.addEventListener('dragstart',event=>event.preventDefault());
     const cue=el('span','','paper-choice');cue.setAttribute('aria-hidden','true');card.append(cue);
     const actions=el('div','','discovery-actions role-actions');
     let tearing=false, start=null, suppressClick=false;
@@ -289,18 +292,21 @@
     card.addEventListener('pointerdown',e=>{
       if(tearing || !e.isPrimary || (e.pointerType==='mouse' && e.button!==0) || e.target.closest('input,select,textarea'))return;
       suppressClick=false;
-      resetPaper();start={x:e.clientX,y:e.clientY,id:e.pointerId};
+      resetPaper();start={x:e.clientX,y:e.clientY,id:e.pointerId,horizontal:false};
     });
     card.addEventListener('pointermove',e=>{
       if(!start || e.pointerId!==start.id)return;
       const dx=e.clientX-start.x,dy=e.clientY-start.y;
-      if(Math.abs(dy)>Math.abs(dx)*1.5 && Math.abs(dy)>12){start=null;resetPaper();return;}
-      if(Math.abs(dx)<8 || Math.abs(dx)<=Math.abs(dy)*1.5)return;
+      if(!start.horizontal){
+        if(Math.abs(dy)>Math.abs(dx)*1.5 && Math.abs(dy)>12){start=null;resetPaper();return;}
+        if(Math.abs(dx)<8 || Math.abs(dx)<=Math.abs(dy)*1.5)return;
+        start.horizontal=true;
+      }
       suppressClick=true;
       if(!card.hasPointerCapture?.(e.pointerId))card.setPointerCapture?.(e.pointerId);
       if(reducedMotion())return;
       card.classList.add('paper-dragging');
-      card.style.setProperty('--drag-x',Math.max(-180,Math.min(180,dx))+'px');
+      card.style.setProperty('--drag-x',dx+'px');
       card.style.setProperty('--drag-angle',Math.max(-9,Math.min(9,dx/20))+'deg');
       card.dataset.choice=dx>0?'save':'skip';cue.textContent=dx>0?'Keep this!':'Next…';
     });

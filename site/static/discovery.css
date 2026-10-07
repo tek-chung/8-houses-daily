@@ -63,9 +63,9 @@ body[data-discovery] .title{font-size:36px;line-height:1.15;padding:14px 0;margi
 .paper-tear-right .role-notice,.paper-tear-left .role-notice{animation:paper-peel 480ms ease-in both;transform-origin:50% 0}
 @keyframes paper-tear{
   0%{transform:translateX(var(--drag-x,0px)) rotate(var(--drag-angle,0deg));opacity:1}
-  24%{transform:translate(calc(var(--tear-direction)*24px),-8px) rotate(calc(var(--tear-direction)*-3deg))}
-  55%{opacity:1;transform:translate(calc(var(--tear-direction)*100px),-22px) rotate(calc(var(--tear-direction)*9deg))}
-  100%{opacity:0;transform:translate(calc(var(--tear-direction)*115%),-50px) rotate(calc(var(--tear-direction)*21deg))}
+  24%{transform:translate(calc(var(--drag-x,0px) + var(--tear-direction)*24px),-8px) rotate(calc(var(--drag-angle,0deg) + var(--tear-direction)*-3deg))}
+  55%{opacity:1;transform:translate(calc(var(--drag-x,0px) + var(--tear-direction)*100px),-22px) rotate(calc(var(--drag-angle,0deg) + var(--tear-direction)*9deg))}
+  100%{opacity:0;transform:translate(calc(var(--drag-x,0px) + var(--tear-direction)*115%),-50px) rotate(calc(var(--drag-angle,0deg) + var(--tear-direction)*21deg))}
 }
 @keyframes paper-peel{0%{transform:perspective(900px) rotateX(0)}40%{transform:perspective(900px) rotateX(-7deg);box-shadow:0 12px 18px #453c3333}100%{transform:perspective(900px) rotateX(12deg)}}
 .discovery-actions{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}

@@ -105,6 +105,13 @@ function pointer(card,type,x,y=0,id=1){
   card.dispatchEvent(event);
 }
 let paper=ad.querySelector('.paper-slot .discovery-notice');
+assert.equal(paper.querySelector('h3 a').draggable,false,'Links must not steal the paper drag');
+const nativeDrag=new animated.window.Event('dragstart',{bubbles:true,cancelable:true});
+paper.querySelector('h3 a').dispatchEvent(nativeDrag);
+assert(nativeDrag.defaultPrevented,'Native dragging is suppressed across the card');
+pointer(paper,'pointerdown',0);pointer(paper,'pointermove',320);
+assert.equal(paper.style.getPropertyValue('--drag-x'),'320px','Paper follows the full drag without a distance cap');
+pointer(paper,'pointercancel',320);
 pointer(paper,'pointerdown',0);pointer(paper,'pointermove',120);
 assert.equal(paper.dataset.choice,'save');
 pointer(paper,'pointerup',120);
