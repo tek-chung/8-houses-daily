@@ -59,6 +59,11 @@
 #home .lead h1{max-width:800px;margin:0 auto;font-size:clamp(38px,7vw,72px);line-height:1.12;text-transform:none}
 #home .discovery-entry{flex-direction:column;gap:18px;margin:28px 0 0}
 #home .discovery-entry>a{min-height:44px;display:inline-flex;align-items:center}
+#home .guided-cta{font-size:20px;gap:18px;padding:16px 28px;min-height:58px}
+#home .guided-cta span{font-size:28px;line-height:1}
+.streetlink-advice{border-top:3px double var(--ink);padding:20px 0;text-align:center;font-size:14px;line-height:1.6}
+.streetlink-advice p+p{margin-top:6px;color:var(--ink-3)}
+.streetlink-advice+*{margin-top:0}
 .zone-picker{margin:18px 0;padding:16px;border:1px solid var(--rule);background:var(--paper-2)}
 .zone-instruction,.zone-map-note,.zone-selection{font:14px/1.5 var(--label);margin:8px 0 14px}
 .zone-map-picture{position:relative;max-width:720px;margin:0 auto 16px}

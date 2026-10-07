@@ -36,7 +36,7 @@ def notice(b, op, orgs, fresh):
     eligibility = (f'<p class="role-eligibility"><b>Before you save:</b> {b.e(" · ".join(requirements))}</p>'
                    if requirements else '')
     screening = 'Screening needs a fresh check' if stale else b.DBS_LABEL[op['screening']['dbs']]
-    details = '<p>' + description + '</p><dl><dt>Screening</dt><dd>' + b.e(screening) + '</dd>'
+    details = ('<p>' + description + '</p>' if lead != text else '') + '<dl><dt>Screening</dt><dd>' + b.e(screening) + '</dd>'
     if not stale:
         for key, label in [('induction', 'Training'), ('references', 'References'), ('interview', 'Interview')]:
             value = op['screening'].get(key)
@@ -64,10 +64,10 @@ def notice(b, op, orgs, fresh):
 <p class="role-lead">{b.e(lead)}</p>
 <dl class="role-facts"><dt>Where</dt><dd>{b.e(where)}</dd>
 <dt>When</dt><dd>{b.e(timing)}</dd><dt>Commitment</dt><dd>{b.e(frequency)}</dd></dl>
-{location_note}{travel}
+{location_note}
 {eligibility}<p class="role-recruitment">{b.e(state)}</p>{uncertain}
 <details class="role-details"><summary>Requirements &amp; details</summary>{details}
-<p class="role-source">{b.e(source)}. Confirm details before enquiring.</p></details>
+{travel}<p class="role-source">{b.e(source)}. Confirm details before enquiring.</p></details>
 <a class="apply" href="{b.e(href)}" target="_blank" rel="noopener nofollow">Enquire with the charity &rarr;</a>
 </article>'''
 
@@ -99,10 +99,8 @@ def build(b, orgs, opps, fresh, total):
     payload = json.dumps(roles, separators=(',', ':')).replace('<', '\\u003c')
     body = f'''<main class="wrap discovery" id="main">
   <div class="discovery-heading">
-    <p class="discovery-kicker">Volunteer in London</p>
-    <h1>Find your way to help.</h1>
-    <p>A role that fits your life. A first step that matters.</p>
-    <div class="discovery-heading-actions"><a href="/all/">Browse all roles &rarr;</a></div>
+    <h1 class="sr">Find your way to help.</h1>
+    <a href="/all/">Browse all roles &rarr;</a>
   </div>
   <div class="discovery-bar">
     <span id="journey-progress">Start with a few examples</span>
@@ -112,8 +110,7 @@ def build(b, orgs, opps, fresh, total):
   <p id="journey-status" class="discovery-status" role="status" aria-live="polite"></p>
   <div id="discovery-stage"><h2>Explore a few roles</h2></div>
   <noscript><p>This guided journey needs JavaScript. You can still <a href="/all/">browse every role in the directory</a>.</p></noscript>
-  <p class="discovery-footnote">No account needed. Saves stay on this device.
-    Enquire directly with the charity. Saving does not contact them.</p>
+  <p class="discovery-footnote">Saves stay on this device. Saving does not contact the charity.</p>
   {f'<div class="notice"><b>Publication suspended</b>{b.e(fresh.get("site_banner_copy") or "")}</div>' if fresh.get('site_banner') else ''}
   <details class="discovery-about"><summary>About these notices</summary>
     {b.banner(dict(fresh, site_banner=False), len(orgs), total, wrap=False)}</details>

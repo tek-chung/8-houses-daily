@@ -955,11 +955,15 @@ def build_home(orgs, opps, fresh, total):
     body = f"""<main class="wrap" id="main"><section id="home">
   <div class="lead"><h1>Everyone deserves a good home</h1></div>
   <nav class="discovery-entry" aria-label="Choose how to find a role">
-    <a class="guided-cta" href="/find/">Let's find a role</a>
+    <a class="guided-cta" href="/find/">Let's find a role <span aria-hidden="true">&rarr;</span></a>
     <a href="/all/">Browse all opportunities</a>
   </nav>
 </section>
 {suspension}
+<aside class="streetlink-advice" aria-label="Help someone sleeping rough">
+  <p><a href="https://www.streetlink.org.uk" rel="nofollow">Concerned about someone sleeping rough? Contact StreetLink &rarr;</a></p>
+  <p>StreetLink connects people sleeping rough with local outreach teams. Call 999 in an emergency.</p>
+</aside>
 </main>"""
     write("/", shell(banner_html="", search=False, needs_data=False,
                      title=f"{SITE_NAME} — volunteering with London homelessness charities",
