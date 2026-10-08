@@ -4,5 +4,11 @@
       "gemini": 20
     },
     "reserved_usd": 0.0
+  },
+  "2026-10-08": {
+    "providers": {
+      "gemini": 20
+    },
+    "reserved_usd": 0.0
   }
 }
