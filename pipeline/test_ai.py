@@ -395,9 +395,20 @@ def test_gemini_receives_only_supported_schema_keywords(factory):
         return httpx.Response(200, json=answer(raw='{"roles": []}'))
     factory(handler).generate_structured('I', 'X', EXTRACTION_SCHEMA)
     used = _keywords(sent[0])
-    assert not used & {'minLength', 'maxLength', 'pattern', 'uniqueItems'}
-    assert {'enum', 'required', 'additionalProperties', 'maxItems'} <= used
-    assert 'pattern' in _keywords(EXTRACTION_SCHEMA)  # the original is untouched
+    # schema-check, 8 Oct 2026: these made gemini-3.5-flash-lite return HTTP 400
+    assert not used & {'minLength', 'maxLength', 'pattern', 'uniqueItems', 'minItems', 'maxItems'}
+    assert {'enum', 'required', 'additionalProperties', 'minimum'} <= used
+    assert {'pattern', 'maxItems'} <= _keywords(EXTRACTION_SCHEMA)  # the original is untouched
+    item = sent[0]['properties']['roles']['items']['properties']
+    assert sent[0]['properties']['roles']['description'] == 'At most 15 items.'
+    assert item['when']['description'] == '1 to 3 items.'
+    assert 'At most 220 characters.' in item['what_youd_do']['description']
+
+
+def test_limits_note_is_not_duplicated_on_reprojection():
+    once = ai.gemini_schema({'type': 'string', 'maxLength': 5, 'description': 'Code.'})
+    assert once == {'type': 'string', 'description': 'Code. At most 5 characters.'}
+    assert ai.gemini_schema(once) == once
 
 
 def test_property_named_like_a_keyword_survives_projection():
@@ -499,3 +510,26 @@ def test_git_checkpoint_against_real_repositories(tmp_path, monkeypatch):
     with pytest.raises(AIUnavailable):
         git_checkpoint()
     assert 'stale' not in sh(origin, 'show', 'main:pipeline/state/ai_usage.json')
+
+
+def test_schema_check_pinpoints_the_rejected_keyword(factory, monkeypatch, capsys):
+    def handler(request):
+        sent = json.dumps(json.loads(request.content)['generationConfig']['responseJsonSchema'])
+        if '"enum"' in sent:
+            return httpx.Response(400, json={'error': {'status': 'INVALID_ARGUMENT',
+                                                       'message': 'Request contains an invalid argument.'}})
+        return httpx.Response(200, json=answer(raw='{"roles": []}'))
+    monkeypatch.setattr(ai.time, 'sleep', lambda s: None)
+    client = factory(handler, [replace(GEMINI, daily_calls=20)])
+    assert ai.schema_check(client) == 0
+    lines = {l.split('  ')[1].strip(): l for l in capsys.readouterr().out.splitlines()[1:]}
+    assert 'rejected' in lines['extraction schema as sent']
+    assert 'accepted' in lines['extraction without enum']
+    assert 'rejected' in lines['extraction without null unions']
+    assert 'accepted' in lines['verification schema as sent']
+
+
+def test_variant_removes_keywords_but_not_property_names():
+    s = {'type': 'object', 'properties': {'enum': {'type': ['string', 'null'], 'enum': ['a']}}}
+    assert ai._variant(s, {'enum'}, flatten_null=True) == {
+        'type': 'object', 'properties': {'enum': {'type': 'string'}}}

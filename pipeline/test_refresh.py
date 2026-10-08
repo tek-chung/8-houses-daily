@@ -225,7 +225,8 @@ def test_exhausted_allowance_defers_instead_of_failing(record, monkeypatch):
     stored = json.loads(path.read_text(encoding='utf-8'))
     assert report['outcome'] == 'ai_deferred' and report['route'] == 'auto'
     assert stored['opportunities'] == before['opportunities']
-    assert 'last_extraction' not in stored['organisation']['check']
+    assert stored['organisation']['check'].get('last_extraction') == \
+        before['organisation']['check'].get('last_extraction')   # keeps its queue position
 
 
 def test_allowance_running_out_mid_page_defers_and_keeps_queue_position(record, monkeypatch):

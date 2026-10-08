@@ -35,16 +35,33 @@ class AIUnavailable(Exception):
     """Expected provider/quota failure; existing records must be retained."""
 
 
-# Gemini's structured output accepts a documented subset of JSON Schema. String
-# length and pattern keywords are not in it, and sending them makes the API reject
-# the whole request with HTTP 400 (the weekly-refresh failure of October 2026).
-# The full schema is still enforced locally on every response.
+# Gemini's structured output accepts only part of JSON Schema, and rejects a whole
+# request with HTTP 400 "Request contains an invalid argument" otherwise. Found by
+# `python pipeline/ai.py schema-check` on 8 October 2026: string length/pattern
+# keywords and array minItems/maxItems are rejected on 3.5 Flash-Lite, although
+# the documentation lists the latter. They are removed from what Gemini receives
+# and restated as descriptions, so the model still sees the limits; every response
+# is still validated locally against the full schema.
 _GEMINI_UNSUPPORTED = frozenset({'minLength', 'maxLength', 'pattern', 'uniqueItems',
-                                 '$schema', '$id', '$comment'})
+                                 'minItems', 'maxItems', '$schema', '$id', '$comment'})
+
+
+def _limits_note(schema: dict) -> str | None:
+    notes = []
+    lo, hi = schema.get('minItems'), schema.get('maxItems')
+    if lo is not None and hi is not None:
+        notes.append(f'{lo} to {hi} items.')
+    elif hi is not None:
+        notes.append(f'At most {hi} items.')
+    elif lo is not None:
+        notes.append(f'At least {lo} items.')
+    if schema.get('maxLength') is not None:
+        notes.append(f"At most {schema['maxLength']} characters.")
+    return ' '.join(notes) or None
 
 
 def gemini_schema(schema):
-    """Project a JSON Schema onto the keywords Gemini documents as supported."""
+    """Project a JSON Schema onto the keywords Gemini accepts, keeping limits as text."""
     if isinstance(schema, dict):
         out = {}
         for key, value in schema.items():
@@ -54,6 +71,9 @@ def gemini_schema(schema):
                 out[key] = {name: gemini_schema(sub) for name, sub in value.items()}
             else:
                 out[key] = gemini_schema(value)
+        note = _limits_note(schema)
+        if note and note not in out.get('description', ''):
+            out['description'] = f"{out['description']} {note}" if out.get('description') else note
         return out
     if isinstance(schema, list):
         return [gemini_schema(item) for item in schema]
@@ -388,11 +408,85 @@ class AIClient:
             raise ProviderFailure('malformed') from None
 
 
+def _variant(schema, drop=frozenset(), flatten_null=False):
+    """A copy of a schema without some keywords, for finding what a provider rejects."""
+    if isinstance(schema, list):
+        return [_variant(x, drop, flatten_null) for x in schema]
+    if not isinstance(schema, dict):
+        return schema
+    out = {}
+    for key, value in schema.items():
+        if key in drop:
+            continue
+        if key == 'properties' and isinstance(value, dict):
+            out[key] = {k: _variant(v, drop, flatten_null) for k, v in value.items()}
+        elif key == 'type' and flatten_null and isinstance(value, list):
+            rest = [t for t in value if t != 'null']
+            out[key] = rest[0] if len(rest) == 1 else rest
+        else:
+            out[key] = _variant(value, drop, flatten_null)
+    return out
+
+
+def schema_check(client) -> int:
+    """Send the real extraction and verification schemas, then variants, to find a 400's cause.
+
+    Uses one reserved call per variant on the first configured Gemini model only.
+    """
+    from schema import EXTRACTION_SCHEMA
+    provider = next((p for p in client.providers if p.name == 'gemini' and p.key
+                     and p.confirmed_free and p.models), None)
+    if provider is None:
+        print('No Gemini provider with a key, model and free-tier confirmation')
+        return 1
+    model = provider.models[0]
+    full = gemini_schema(EXTRACTION_SCHEMA)
+    verify = gemini_schema({'type': 'object', 'additionalProperties': False,
+        'required': ['screening.dbs'], 'properties': {'screening.dbs': {
+            'type': 'object', 'additionalProperties': False, 'required': ['supported', 'evidence'],
+            'properties': {'supported': {'type': 'boolean'},
+                           'evidence': {'type': ['string', 'null'], 'minLength': 8,
+                                        'maxLength': 600}}}}})
+    everything = {'minimum', 'maximum', 'minItems', 'maxItems', 'additionalProperties',
+                  'enum', 'description'}
+    variants = [
+        ('extraction schema as sent', full),
+        ('verification schema as sent', verify),
+        ('extraction without null unions', _variant(full, flatten_null=True)),
+        ('extraction without minimum/maximum', _variant(full, {'minimum', 'maximum'})),
+        ('extraction without minItems/maxItems', _variant(full, {'minItems', 'maxItems'})),
+        ('extraction without additionalProperties', _variant(full, {'additionalProperties'})),
+        ('extraction without enum', _variant(full, {'enum'})),
+        ('extraction without all of the above', _variant(full, everything, flatten_null=True)),
+    ]
+    client.run_cap = len(variants)
+    page = ('Charity: Example\nPage: https://example.org\n\n--- page text begins ---\n'
+            'Kitchen volunteers help serve breakfast on Saturday mornings, 8am to 11am. '
+            'An enhanced DBS check is required.\n--- page text ends ---')
+    print(f'Testing {model}; {len(variants)} calls.')
+    for label, variant in variants:
+        try:
+            client._reserve(provider)
+        except AIUnavailable as exc:
+            print(f'  stopped: {exc}')
+            return 1
+        try:
+            client._request(provider, model, 'Return the roles described. JSON only.', page, variant)
+            outcome = 'accepted'
+        except ProviderFailure as exc:
+            outcome = f'{exc.kind} (HTTP {exc.status}) {exc.message or ""}'.strip()
+        print(f'  {label:<44} {outcome}')
+        time.sleep(provider.interval)
+    return 0
+
+
 def main():
     parser = argparse.ArgumentParser(description='AI diagnostics; no credentials are printed')
-    parser.add_argument('command', choices=['providers', 'models', 'probe'])
+    parser.add_argument('command', choices=['providers', 'models', 'probe', 'schema-check'])
     args = parser.parse_args()
     client = AIClient()
+    if args.command == 'schema-check':
+        return schema_check(client)
     if args.command == 'providers':
         for p in client.providers:
             print(json.dumps({'provider': p.name, 'key_present': bool(p.key), 'models': p.models,

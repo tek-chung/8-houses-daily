@@ -112,10 +112,13 @@ the least recently extracted pages go first next run, so every charity is reache
 in rotation. Raise `AI_GEMINI_DAILY_CALLS` and `AI_MAX_RUN_CALLS` only within the
 account's free-tier limits.
 
-Gemini accepts a subset of JSON Schema. `minLength`, `maxLength`, `pattern` and
-`uniqueItems` are removed from the schema sent to Gemini (sending them caused the
-HTTP 400 rejections of October 2026); every response is still validated locally
-against the full schema.
+Gemini accepts a subset of JSON Schema. `minLength`, `maxLength`, `pattern`,
+`uniqueItems`, `minItems` and `maxItems` are removed from the schema sent to Gemini
+(they caused the HTTP 400 rejections of October 2026) and the limits are restated
+in each field's description. Every response is still validated locally against
+the full schema. If Gemini starts rejecting requests again, run
+`python pipeline/ai.py schema-check`: it sends the real schemas and variants
+without each keyword family, and shows which one the model refuses (8 calls).
 
 Dry runs never call AI, so they neither change the ledger nor push checkpoints.
 Provider failures, failed generations and the single bounded 429 retry consume
