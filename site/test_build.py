@@ -1578,7 +1578,7 @@ def test_the_client_bundle_ships_only_what_it_reads():
     bundle from 101KB to 24KB, and from 15.7KB to 4.2KB gzipped.
     """
     allowed = {"id", "org_id", "title", "commitment", "activity", "status",
-               "who_can_apply", "location_type", "postcode_district", "typical_shift_hours", "what_youd_do"}
+               "who_can_apply", "location_type", "postcode_district", "typical_shift_hours", "what_youd_do", "when", "min_term_months"}
     for op in shipped()["opps"]:
         extra = set(op) - allowed
         assert not extra, f'{op["id"]} ships fields the client never reads: {sorted(extra)}'

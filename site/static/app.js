@@ -45,7 +45,10 @@ const _ds=document.body.dataset;
 const S={c:_ds.commitment||"",b:_ds.borough||"",act:_ds.activity||"",
          z:[...new Set((new URLSearchParams(location.search).get('area')||'').split(',')
            .filter(id=>VOLUNTEER_AREAS.some(z=>z.id===id)))].join(','),
-         q:new URLSearchParams(location.search).get('q')||'',who:"",remote:"",open:"",sort:"soonest"};
+         q:document.querySelector('.browse-questions')?'':new URLSearchParams(location.search).get('q')||'',
+         when:(new URLSearchParams(location.search).get('when')||'').split(',').filter(v=>['weekday_daytime','weekday_evening','weekend_daytime','weekend_evening','overnight'].includes(v)),
+         frequency:['once','regular'].includes(new URLSearchParams(location.search).get('frequency'))?new URLSearchParams(location.search).get('frequency'):'any',
+         who:"",remote:new URLSearchParams(location.search).get('remote')==='yes'?'remote':'',open:"",sort:"soonest"};
 
 /* Not every page carries every control. bind() no-ops when one is absent, which
    is cheaper than guarding each wiring line and impossible to get half-right. */
@@ -64,6 +67,9 @@ function matchesCommitment(role, commitment){
 }
 function match(s){
   let out=OPPS.filter(o=>{
+    if(s.when?.length && o.when?.length && !o.when.some(v=>s.when.includes(v)))return false;
+    if(s.frequency==='once' && (o.min_term_months>0 || !['one_off','flexible','unknown'].includes(o.commitment)))return false;
+    if(s.frequency==='regular' && o.commitment==='one_off')return false;
     if(s.q && !`${o.title} ${ORGS[o.org_id].name||ORGS[o.org_id].n||''} ${o.what_youd_do||''}`.toLocaleLowerCase('en-GB').includes(s.q.trim().toLocaleLowerCase('en-GB')))return false;
     if(!matchesCommitment(o,s.c)) return false;
     // A role with no stated location matches any borough — and its card says so.
@@ -341,6 +347,8 @@ function canonicalPath(s){
   if(s.b) parts.push(SLUG(s.b));
   if(s.act) parts.push(SLUG(s.act));
   const query=new URLSearchParams();if(s.z)query.set('area',s.z);if(s.q)query.set('q',s.q);
+  if(s.when?.length)query.set('when',s.when.join(','));if(s.frequency && s.frequency!=='any')query.set('frequency',s.frequency);
+  if(s.remote)query.set('remote','yes');
   return "/"+parts.join("/")+"/"+(query.size?'?'+query.toString():'');
 }
 
@@ -370,6 +378,7 @@ function fillSelect(el,items,{placeholder,counts}={}){
 }
 
 function buildSentence(){
+  if(!$("b1")){if($("b3"))$("b3").value=S.act;return;}
   fillSelect($("b1"),COMMIT,{counts:v=>countIf({c:v})});
   fillSelect($("b2"),VOLUNTEER_AREAS.map(z=>({v:z.id,l:z.label})),
     {placeholder:"any London area",counts:v=>countIf({z:v,b:""})});
@@ -400,14 +409,20 @@ function render(){
   buildSentence();
   inkSlots();
   ["rWho","rOpen","rRemote"].forEach(id=>{
-    $(id).classList.toggle("on",!!$(id).value);
+    if($(id))$(id).classList.toggle("on",!!$(id).value);
   });
+  document.querySelectorAll('[name=browse-when]').forEach(input=>input.checked=S.when.includes(input.value));
+  document.querySelectorAll('[name=browse-frequency]').forEach(input=>input.checked=input.value===S.frequency);
+  if($("browse-remote"))$("browse-remote").checked=!!S.remote;
+  if($("when-answer"))$("when-answer").textContent=S.when.length?S.when.map(v=>document.querySelector(`[name=browse-when][value=${v}]`).parentElement.textContent.trim()).join(' · '):'Any time';
+  if($("frequency-answer"))$("frequency-answer").textContent={once:'Try it once',regular:'Volunteer regularly',any:'Either / not sure yet'}[S.frequency];
+  if($("where-answer"))$("where-answer").textContent=[S.z?VOLUNTEER_AREAS.filter(z=>S.z.split(',').includes(z.id)).map(z=>z.label).join(' · '):S.remote?'':'Anywhere',S.remote?'Remote':''].filter(Boolean).join(' · ');
 
   const path=canonicalPath(S);
   const uo=$("urlout"); if(uo) uo.textContent=path;
   /* One- and two-blank states are pre-rendered and indexable. Three-blank states
      exist only to be shared, so they get noindex (spec §14). */
-  setNoindex(!!S.z || [S.c,S.b,S.act].filter(Boolean).length>2);
+  setNoindex(!!S.z || !!S.when.length || S.frequency!=='any' || !!S.remote || [S.c,S.b,S.act].filter(Boolean).length>2);
   try{ if(location.pathname+location.search!==path) history.replaceState(null,"",path); }catch(e){}
 
   drawMap();
@@ -438,6 +453,10 @@ function render(){
 }
 
 function renderEmpty(){
+  if(document.querySelector('.browse-questions')){
+    $("ehead").textContent='No roles match these answers';$("ebody").textContent='Try changing an answer or clearing them to see all roles.';
+    const box=$("eopts");box.innerHTML='';const clear=document.createElement('button');clear.textContent='Clear answers';clear.onclick=resetAll;box.append(clear);return;
+  }
   const tests=[
     {lab:"Any London area",fix:{z:""},k:"z"},
     {lab:"Any district",fix:{b:""},k:"b"},
@@ -470,10 +489,10 @@ function renderEmpty(){
 }
 
 function resetAll(){
-  Object.assign(S,{c:_ds.commitment||"",b:"",z:"",act:"",q:"",who:"",remote:"",open:"",sort:"soonest"});
+  Object.assign(S,{c:_ds.commitment||"",b:"",z:"",act:"",q:"",when:[],frequency:'any',who:"",remote:"",open:"",sort:"soonest"});
   if($("role-search"))$("role-search").value='';
-  ["rWho","rOpen","rRemote"].forEach(id=>$(id).value="");
-  $("rSort").value="soonest";prevCount=null;render();
+  ["rWho","rOpen","rRemote"].forEach(id=>{if($(id))$(id).value="";});
+  if($("rSort"))$("rSort").value="soonest";prevCount=null;render();
 }
 
 /* ---------- typeahead: closed vocabulary, spec §7.3.2 ---------- */
@@ -552,6 +571,9 @@ bind("rWho","onchange",e=>{S.who=e.target.value;render()});
 bind("rRemote","onchange",e=>{S.remote=e.target.value;render()});
 bind("rSort","onchange",e=>{S.sort=e.target.value;render()});
 bind("rstall","onclick",resetAll);
+document.querySelectorAll('[name=browse-when]').forEach(input=>input.onchange=()=>{S.when=[...document.querySelectorAll('[name=browse-when]:checked')].map(node=>node.value);render();});
+document.querySelectorAll('[name=browse-frequency]').forEach(input=>input.onchange=()=>{S.frequency=input.value;render();});
+bind('browse-remote','onchange',e=>{S.remote=e.target.checked?'remote':'';render();});
 if($("role-search"))$("role-search").value=S.q;
 bind("role-search","oninput",e=>{S.q=e.target.value;render();});
 bind("mapclear","onclick",()=>{S.b="";render()});

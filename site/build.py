@@ -910,6 +910,41 @@ def results_page(*, path, title, desc, heading, intro, rows, orgs, fresh,
         <a href="/">Front page</a></div></div>"""
     st = dict(state)
     st["n"] = len(rows)
+    browse = path == '/all/'
+    times = [('weekday_daytime', 'Weekdays during the day'), ('weekday_evening', 'Weekday evenings'),
+             ('weekend_daytime', 'Weekend days'), ('weekend_evening', 'Weekend evenings'), ('overnight', 'Overnight')]
+    questions = f'''<div class="browse-questions">
+  <details class="directory-filter-panel"><summary>When <span id="when-answer">Any time</span></summary>
+    <fieldset><legend>When could you help?</legend>
+    {''.join(f'<label><input type="checkbox" name="browse-when" value="{v}"> {label}</label>' for v, label in times)}
+    <p>Leave blank if you’re not sure.</p></fieldset></details>
+  <details class="directory-filter-panel"><summary>How often <span id="frequency-answer">Either / not sure yet</span></summary>
+    <fieldset><legend>How often would you like to help?</legend>
+    {''.join(f'<label><input type="radio" name="browse-frequency" value="{v}" {"checked" if v == "any" else ""}> {label}</label>' for v, label in [('once', 'Try it once'), ('regular', 'Volunteer regularly'), ('any', 'Either / not sure yet')])}
+    </fieldset></details>
+  <details class="directory-filter-panel"><summary>Where <span id="where-answer">Anywhere</span></summary>
+    <fieldset><legend>Which areas can you comfortably reach?</legend>
+    <div id="area-map">{zone_map_panel()}</div>
+    <label><input type="checkbox" id="browse-remote"> Remote volunteering</label></fieldset></details>
+  <details class="directory-filter-panel advanced-filters"><summary>Advanced filters</summary>
+    <div class="advanced-fields">
+      <label for="b3">Activity<select id="b3"><option value="">Any activity</option>
+        {''.join(f'<option value="{e(v)}">{e(label)}</option>' for v, label in ACT_LABEL.items())}</select></label>
+      <label for="rWho">Applying as<select id="rWho"><option value="">On my own or with a team</option>
+        <option value="individual">On my own</option><option value="team_only">With a team</option></select></label>
+      <label for="rOpen">Recruitment<select id="rOpen"><option value="">Any availability</option>
+        <option value="open">Recruiting now</option></select></label>
+      <label for="rSort">Sort by<select id="rSort"><option value="soonest">Recruiting first</option>
+        <option value="least">Least asked of you</option><option value="az">Alphabetical</option></select></label>
+    </div></details>
+  <div class="browse-results"><b id="cnum" aria-live="polite">{len(rows)} roles</b>
+    <button id="rstall" type="button">Clear answers</button></div>
+</div>'''
+    controls = questions if browse else f'''<label class="directory-search" for="role-search">Search roles
+    <input type="search" id="role-search" placeholder="Role, charity or keyword" autocomplete="off"></label>
+    {sentence(st, orgs, opps).replace('I have', 'Time').replace('I can reach', 'Area').replace('I should like to', 'Activity')}
+    <details class="directory-filter-panel"><summary>Choose areas on the map</summary><div id="area-map">{zone_map_panel()}</div></details>
+    <details class="directory-filter-panel"><summary>Advanced filters</summary>{REFINE}</details>'''
     body = f"""<main class="wrap directory" id="main">
   <a class="back" href="/">&larr; Front page</a>
   <h1 style="font-family:var(--display);font-weight:900;
@@ -917,12 +952,8 @@ def results_page(*, path, title, desc, heading, intro, rows, orgs, fresh,
      text-transform:uppercase">{e(heading)}</h1>
   {f'<p class="standfirst">{e(intro)}</p>' if intro else ''}
   <div class="r-thin" style="margin:14px 0 0"></div>
-  <label class="directory-search" for="role-search">Search roles
-    <input type="search" id="role-search" placeholder="Role, charity or keyword" autocomplete="off"></label>
-  {sentence(st, orgs, opps).replace('I have', 'Time').replace('I can reach', 'Area').replace('I should like to', 'Activity')}
-  <details class="directory-filter-panel"><summary>Choose areas on the map</summary>
-    <div id="area-map">{zone_map_panel()}</div></details>
-  <details class="directory-filter-panel"><summary>More filters</summary>{REFINE}</details>
+  {controls}
+  <h2 class="sr">Matching roles</h2>
   <div class="list" id="list">{cards}</div>
   <details class="directory-filter-panel"><summary>About these notices</summary>
     {banner(dict(fresh, site_banner=False), len(orgs), orgs_total, wrap=False)}
@@ -1453,12 +1484,13 @@ def build_assets(orgs, opps, fresh):
     # alone was 28KB of data nothing on the client can use, on every results page.
     CLIENT_FIELDS = ("id", "org_id", "title", "commitment", "activity", "status",
                      "who_can_apply", "location_type", "postcode_district",
-                     "typical_shift_hours", "what_youd_do")
+                     "typical_shift_hours", "what_youd_do", "when", "min_term_months")
     slim = dict(bundle)
     slim["opps"] = [{k: o[k] for k in CLIENT_FIELDS} for o in bundle["opps"]]
     for op in slim["opps"]:
         if suppressed(op, fresh):
             op["status"] = "unknown"
+            op["when"] = []
     (DIST / "assets" / "data.js").write_text(
         "window.__DATA__=" + json.dumps(slim, separators=(",", ":")) + ";\n", encoding="utf-8")
     # A separate asset, not inlined: 43KB of borough geometry across 45 pages

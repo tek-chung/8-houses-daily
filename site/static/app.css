@@ -81,6 +81,22 @@
 .directory .refine{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:0 0 14px}
 .directory .refine select{width:100%;min-height:var(--tap);height:48px;font-size:16px}
 .directory .list{margin-top:20px}
+.browse-questions{margin-top:20px}
+.browse-questions summary{display:flex;justify-content:space-between;gap:14px;font-weight:600;font-size:16px;padding:16px 0;min-height:56px}
+.browse-questions summary::after{content:'+';color:var(--red)}
+.browse-questions details[open]>summary::after{content:'−'}
+.browse-questions summary span{margin-left:auto;text-align:right;max-width:62%;font-size:13px;font-weight:400;color:var(--ink-3);line-height:1.5}
+.browse-questions fieldset{border:0;padding:12px 0 20px;min-width:0}
+.browse-questions legend{font:20px var(--display);padding-top:10px}
+.browse-questions fieldset>label{display:flex;align-items:center;gap:12px;min-height:48px;font:16px var(--body)}
+.browse-questions input{width:20px;height:20px;accent-color:var(--red);flex-shrink:0}
+.browse-questions fieldset>p{font:14px var(--label);color:var(--ink-3);margin-top:10px}
+.browse-results{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--rule);padding:10px 0;font:14px var(--label)}
+.browse-results button{min-height:44px;padding:10px;background:transparent;border:0;color:var(--red);font:14px var(--label);text-decoration:underline;cursor:pointer}
+.advanced-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:12px 0 20px}
+.advanced-fields label{display:block;font:14px var(--label)}
+.advanced-fields select{display:block;width:100%;min-height:48px;margin-top:8px;padding:10px;font:16px var(--label);border:1px solid var(--rule);background:var(--paper);color:var(--ink)}
+@media(max-width:480px){.advanced-fields{grid-template-columns:1fr}}
 @media(max-width:480px){.directory .fillin{grid-template-columns:1fr}.directory .slot{display:grid;grid-template-columns:70px minmax(0,1fr);align-items:center}.directory .refine{grid-template-columns:1fr}}
 .zone-picker{margin:18px 0;padding:16px;border:1px solid var(--rule);background:var(--paper-2)}
 .zone-instruction,.zone-map-note,.zone-selection{font:14px/1.5 var(--label);margin:8px 0 14px}
