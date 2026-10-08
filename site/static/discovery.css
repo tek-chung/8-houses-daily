@@ -19,6 +19,9 @@ body[data-discovery] .title{font-size:36px;line-height:1.15;padding:14px 0;margi
 .discovery-status{font-size:15px;color:var(--red);min-height:28px;margin:8px 0}
 .discovery-status:empty{min-height:0;margin:0}
 .journey-tools{display:flex;gap:8px;flex-shrink:0}
+.matching-navigation{margin-top:18px;font:13px var(--label)}
+.matching-answers{display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--ink-3)}
+.matching-navigation>a{display:block;margin-top:8px;padding:10px 0}
 .discovery [hidden]{display:none!important}
 .discovery h2[tabindex="-1"]:focus{outline:none}
 .discovery .role-notice{padding:18px;background:var(--paper);border:1px solid var(--ink);overflow:hidden}

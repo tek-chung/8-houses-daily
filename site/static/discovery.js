@@ -244,6 +244,7 @@
     if (phase === 'examples' && exampleIndex >= examples.length) {questions();return;}
     const role = phase === 'examples' ? byId.get(examples[exampleIndex]) : ranked()[0];
     progress.textContent = phase === 'examples' ? `Example ${exampleIndex+1} of ${examples.length}` : 'Suggestions based on your answers';
+    progress.hidden=phase!=='examples';
     if (!role) {
       const box=panel('You’ve seen the roles that may fit.', 'Change your answers or explore beyond them.');
       box.append(button('Change my answers',questions,'primary'),button('Compare saved roles',showShortlist),button('Show skipped roles again',()=>{skipped.clear();render();}));
@@ -288,7 +289,12 @@
     }
     actions.append(button('Skip',()=>tear(false)),button('Save role',()=>tear(true),'primary'));
     box.append(reasons(role),actions);
-    box.append(button(phase === 'examples' ? 'Answer the questions now' : 'Change my answers',questions,'discovery-text-button'));
+    const navigation=el('div','','matching-navigation');
+    const answers=el('div','','matching-answers');
+    if(phase!=='examples')answers.append(el('span','Suggestions based on your answers'));
+    answers.append(button(phase === 'examples' ? 'Answer the questions now' : 'Change my answers',questions,'discovery-text-button'));
+    const browse=el('a','Browse all roles →');browse.href='/all/';
+    navigation.append(answers,browse);box.append(navigation);
     card.addEventListener('pointerdown',e=>{
       if(tearing || !e.isPrimary || (e.pointerType==='mouse' && e.button!==0) || e.target.closest('input,select,textarea'))return;
       suppressClick=false;
@@ -328,7 +334,7 @@
     });
   }
   function questions() {
-    phase='questions';progress.textContent='Three questions about your life';
+    phase='questions';progress.hidden=false;progress.textContent='Three questions about your life';
     const box=panel('What works for you?', '“Not sure” is fine. You can change these later.');
     const form=el('form');
     function group(legend) {const field=el('fieldset','','discovery-question');field.append(el('legend',legend));form.append(field);return field;}
@@ -354,8 +360,6 @@
       third.querySelectorAll('[name=zones]').forEach(input=>{input.checked=ids.includes(input.value);});
     }});
     choice(third,'remote','yes','Remote volunteering','checkbox',!!preferences?.remote);
-    const travel=el('a','Check a journey with TfL →');travel.href='https://tfl.gov.uk/plan-a-journey/';travel.target='_blank';travel.rel='noopener';
-    third.append(el('p','Choose places that work with your usual train, Tube or bus route.','discovery-hint'),travel);
     let step=0;
     const fields=[first,second,third];
     const actions=el('div','','discovery-actions');
@@ -370,7 +374,7 @@
     form.addEventListener('submit',e=>{
       e.preventDefault();if(step<2){step++;showQuestion();return;}const answers=new FormData(form);
       preferences={when:answers.getAll('when'),commitment:answers.get('commitment'),zones:answers.getAll('zones'),remote:answers.has('remote')};
-      includeOther=false;persist();phase='ranked';message('Suggestions reordered using your answers. You can change them at any time.');render();
+      includeOther=false;persist();phase='ranked';message('');render();
     });box.append(form);
     box.append(button('Reset answers',()=>{
       preferences=null;exampleIndex=0;skipped.clear();history.length=0;includeOther=false;phase='examples';

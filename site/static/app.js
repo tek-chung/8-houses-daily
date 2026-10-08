@@ -45,7 +45,7 @@ const _ds=document.body.dataset;
 const S={c:_ds.commitment||"",b:_ds.borough||"",act:_ds.activity||"",
          z:[...new Set((new URLSearchParams(location.search).get('area')||'').split(',')
            .filter(id=>VOLUNTEER_AREAS.some(z=>z.id===id)))].join(','),
-         who:"",remote:"",open:"",sort:"soonest"};
+         q:new URLSearchParams(location.search).get('q')||'',who:"",remote:"",open:"",sort:"soonest"};
 
 /* Not every page carries every control. bind() no-ops when one is absent, which
    is cheaper than guarding each wiring line and impossible to get half-right. */
@@ -64,6 +64,7 @@ function matchesCommitment(role, commitment){
 }
 function match(s){
   let out=OPPS.filter(o=>{
+    if(s.q && !`${o.title} ${ORGS[o.org_id].name||ORGS[o.org_id].n||''} ${o.what_youd_do||''}`.toLocaleLowerCase('en-GB').includes(s.q.trim().toLocaleLowerCase('en-GB')))return false;
     if(!matchesCommitment(o,s.c)) return false;
     // A role with no stated location matches any borough — and its card says so.
     // This is not the PoC's london-wide bug: that passed *organisations* through a
@@ -339,7 +340,8 @@ function canonicalPath(s){
   const parts=[s.c?DOOR[s.c]:"all"];
   if(s.b) parts.push(SLUG(s.b));
   if(s.act) parts.push(SLUG(s.act));
-  return "/"+parts.join("/")+"/"+(s.z?'?area='+encodeURIComponent(s.z):'');
+  const query=new URLSearchParams();if(s.z)query.set('area',s.z);if(s.q)query.set('q',s.q);
+  return "/"+parts.join("/")+"/"+(query.size?'?'+query.toString():'');
 }
 
 function setNoindex(on){
@@ -385,7 +387,7 @@ function render(){
 
   const cn=$("cnum");
   if(cn) cn.textContent = n===0 ? "No notices answer this"
-    : `${n} notice${n===1?"":"s"}`;
+    : `${n} role${n===1?"":"s"}`;
   const d=$("cdelta");
   if(d){
     d.textContent=(prevCount!==null&&prevCount!==n)
@@ -468,7 +470,8 @@ function renderEmpty(){
 }
 
 function resetAll(){
-  Object.assign(S,{c:_ds.commitment||"",b:"",z:"",act:"",who:"",remote:"",open:"",sort:"soonest"});
+  Object.assign(S,{c:_ds.commitment||"",b:"",z:"",act:"",q:"",who:"",remote:"",open:"",sort:"soonest"});
+  if($("role-search"))$("role-search").value='';
   ["rWho","rOpen","rRemote"].forEach(id=>$(id).value="");
   $("rSort").value="soonest";prevCount=null;render();
 }
@@ -512,8 +515,8 @@ function taPick(i){
   else if(it.url) window.open(it.url,"_blank","noopener");
   taIn.value="";taClose();
 }
-taIn.addEventListener("input",e=>{taIdx=-1;taRender(e.target.value)});
-taIn.addEventListener("keydown",e=>{
+taIn?.addEventListener("input",e=>{taIdx=-1;taRender(e.target.value)});
+taIn?.addEventListener("keydown",e=>{
   if(taUl.hidden)return;
   if(e.key==="ArrowDown"||e.key==="ArrowUp"){
     e.preventDefault();
@@ -524,7 +527,7 @@ taIn.addEventListener("keydown",e=>{
   if(e.key==="Enter"&&taIdx>=0){e.preventDefault();taPick(taIdx)}
   if(e.key==="Escape")taClose();
 });
-document.addEventListener("click",e=>{if(!e.target.closest(".ta"))taClose()});
+document.addEventListener("click",e=>{if(taIn && !e.target.closest(".ta"))taClose()});
 
 /* ---------- wiring ---------- */
 function go(){
@@ -540,7 +543,7 @@ document.querySelectorAll("[data-door]").forEach(b=>{
 bind("back","onclick",()=>{location.href="/"});
 /* A results page holds only its own commitment, so this one is navigation. */
 bind("b1","onchange",e=>{S.c=e.target.value;
-  if($("results")) location.href=canonicalPath(S); else render();});
+  if($("results") && _ds.commitment) location.href=canonicalPath(S); else render();});
 bind("b2","onchange",e=>{S.z=e.target.value;S.b="";
   if(_ds.borough && $("results"))location.href=canonicalPath(S);else render();});
 bind("b3","onchange",e=>{S.act=e.target.value;render()});
@@ -549,6 +552,8 @@ bind("rWho","onchange",e=>{S.who=e.target.value;render()});
 bind("rRemote","onchange",e=>{S.remote=e.target.value;render()});
 bind("rSort","onchange",e=>{S.sort=e.target.value;render()});
 bind("rstall","onclick",resetAll);
+if($("role-search"))$("role-search").value=S.q;
+bind("role-search","oninput",e=>{S.q=e.target.value;render();});
 bind("mapclear","onclick",()=>{S.b="";render()});
 bind("copy","onclick",()=>{
   navigator.clipboard?.writeText(location.origin+canonicalPath(S)).catch(()=>{});

@@ -19,8 +19,6 @@ def notice(b, op, orgs, fresh):
     basis = locations.location_basis(op, orgs)
     location_note = ('<p class="role-location-note">Charity coverage area; confirm the venue.</p>'
                      if basis == 'charity_coverage' else '')
-    travel = ('<a class="role-travel" href="https://tfl.gov.uk/plan-a-journey/" target="_blank" rel="noopener">Check your journey with TfL &rarr;</a>'
-              if op['location_type'] not in ('remote', 'own_home') else '')
     frequency = {'one_off': 'One-off', 'flexible': 'Flexible frequency',
                  'weekly': 'Weekly', 'fortnightly': 'Every fortnight',
                  'monthly': 'Monthly', 'long_term': 'Ongoing commitment',
@@ -65,9 +63,10 @@ def notice(b, op, orgs, fresh):
 <dl class="role-facts"><dt>Where</dt><dd>{b.e(where)}</dd>
 <dt>When</dt><dd>{b.e(timing)}</dd><dt>Commitment</dt><dd>{b.e(frequency)}</dd></dl>
 {location_note}
-{eligibility}<p class="role-recruitment">{b.e(state)}</p>{uncertain}
-<details class="role-details"><summary>Requirements &amp; details</summary>{details}
-{travel}<p class="role-source">{b.e(source)}. Confirm details before enquiring.</p></details>
+{eligibility}
+<details class="role-details"><summary>Requirements &amp; details</summary>
+<p class="role-recruitment">{b.e(state)}</p>{uncertain}{details}
+<p class="role-source">{b.e(source)}. Confirm details before enquiring.</p></details>
 <a class="apply" href="{b.e(href)}" target="_blank" rel="noopener nofollow">Enquire with the charity &rarr;</a>
 </article>'''
 
@@ -100,7 +99,6 @@ def build(b, orgs, opps, fresh, total):
     body = f'''<main class="wrap discovery" id="main">
   <div class="discovery-heading">
     <h1 class="sr">Find your way to help.</h1>
-    <a href="/all/">Browse all roles &rarr;</a>
   </div>
   <div class="discovery-bar">
     <span id="journey-progress">Start with a few examples</span>

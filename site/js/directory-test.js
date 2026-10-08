@@ -15,6 +15,13 @@ for(const route of ['one-day','weekly','bigger','all']){
   const area=dom.window.document.querySelector('#b2');
   assert.equal(area.options.length,8,'Seven areas plus the unfiltered choice');
   if(route==='all'){
+    const search=dom.window.document.querySelector('#role-search');
+    search.value='kitchen';search.dispatchEvent(new dom.window.Event('input',{bubbles:true}));
+    assert(dom.window.document.querySelectorAll('.ad:not([hidden])').length>0);
+    assert.equal(dom.window.eval('match(S).every(o=>`${o.title} ${ORGS[o.org_id].name||ORGS[o.org_id].n||""} ${o.what_youd_do}`.toLowerCase().includes("kitchen"))'),true);
+    assert.equal(dom.window.location.search,'?q=kitchen');
+    dom.window.document.querySelector('#rstall').click();
+    assert.equal(search.value,'');
     area.value='central';area.dispatchEvent(new dom.window.Event('change',{bubbles:true}));
     const ids=[...dom.window.document.querySelectorAll('.ad:not([hidden])')].map(card=>card.dataset.id);
     assert(ids.length>0);

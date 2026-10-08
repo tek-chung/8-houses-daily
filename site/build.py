@@ -766,7 +766,7 @@ def sentence(state, orgs, opps):
     n = state["n"]
 
     return f"""<div class="coupon">
-  <h2 class="coupon-head">Form of enquiry</h2>
+  <h2 class="coupon-head sr">Filter roles</h2>
   <div class="fillin">
     <span class="d640">I have </span>{s1}<span class="d640"> to give, </span>
     <span class="d640">I can reach </span>{s2}<span class="d640">, </span>
@@ -775,7 +775,7 @@ def sentence(state, orgs, opps):
   <div class="coupon-foot">
     <b id="cnum" aria-live="polite">{n} notice{'' if n == 1 else 's'}</b>
     <span class="stoppress" id="cdelta"></span>
-    <button class="rst" id="rstall">Begin again</button>
+    <button class="rst" id="rstall">Clear filters</button>
   </div>
 </div>"""
 
@@ -796,8 +796,7 @@ REFINE = """<div class="refine">
     <option value="least">Least asked of you</option>
     <option value="az">Alphabetical</option></select>
 </div>
-<p class="linkline">This page &mdash; <span id="urlout"></span>
-  <button id="copy">copy the address</button></p>"""
+"""
 
 MAP_JSON = DATA / "london-map.json"
 
@@ -911,22 +910,23 @@ def results_page(*, path, title, desc, heading, intro, rows, orgs, fresh,
         <a href="/">Front page</a></div></div>"""
     st = dict(state)
     st["n"] = len(rows)
-    body = f"""<main class="wrap" id="main">
+    body = f"""<main class="wrap directory" id="main">
   <a class="back" href="/">&larr; Front page</a>
-  <p class="kicker">Situations vacant</p>
   <h1 style="font-family:var(--display);font-weight:900;
      font-size:clamp(26px,7vw,46px);line-height:.96;letter-spacing:-.022em;
      text-transform:uppercase">{e(heading)}</h1>
   {f'<p class="standfirst">{e(intro)}</p>' if intro else ''}
   <div class="r-thin" style="margin:14px 0 0"></div>
-  {sentence(st, orgs, opps)}
-  <p class="colnote">Choose one or more broad London areas using the map.
-    Areas use stated postcodes or charity coverage; confirm the venue before travelling.</p>
-  {REFINE}
-  <div id="area-map">{zone_map_panel()}</div>
-  <div class="section-bar" style="margin-top:26px"><h2>The notices</h2></div>
-  {screening_note(rows)}
+  <label class="directory-search" for="role-search">Search roles
+    <input type="search" id="role-search" placeholder="Role, charity or keyword" autocomplete="off"></label>
+  {sentence(st, orgs, opps).replace('I have', 'Time').replace('I can reach', 'Area').replace('I should like to', 'Activity')}
+  <details class="directory-filter-panel"><summary>Choose areas on the map</summary>
+    <div id="area-map">{zone_map_panel()}</div></details>
+  <details class="directory-filter-panel"><summary>More filters</summary>{REFINE}</details>
   <div class="list" id="list">{cards}</div>
+  <details class="directory-filter-panel"><summary>About these notices</summary>
+    {banner(dict(fresh, site_banner=False), len(orgs), orgs_total, wrap=False)}
+    {screening_note(rows)}</details>
   {empty}
   <div class="empty" id="empty" hidden><h3 id="ehead">No notices answer this</h3>
     <p id="ebody"></p>
@@ -934,8 +934,8 @@ def results_page(*, path, title, desc, heading, intro, rows, orgs, fresh,
 </main>"""
     body = f'<section id="results">{body}</section>'
     write(path, shell(title=title, desc=desc, path=path, body=body,
-                      state={k: v for k, v in state.items()}, noindex=noindex,
-                      banner_html=banner(fresh, len(orgs), orgs_total)))
+                      state={k: v for k, v in state.items()}, noindex=noindex, search=False,
+                      banner_html=(f'<div class="notice">{e(fresh.get("site_banner_copy") or "Publication suspended")}</div>' if fresh.get('site_banner') else '')))
 
 
 def sort_roles(rows):
@@ -988,7 +988,7 @@ def build_filters(orgs, opps, fresh, total):
     results_page(path="/all/", title=f"All volunteering roles — {SITE_NAME}",
                  desc=f"All {len(rows)} volunteering roles we've researched at "
                       "London homelessness charities.",
-                 heading="Every notice in this edition",
+                 heading="Browse all roles",
                  intro=None, rows=rows, orgs=orgs, fresh=fresh,
                  state={}, opps=opps)
     made.append("/all/")
@@ -1453,7 +1453,7 @@ def build_assets(orgs, opps, fresh):
     # alone was 28KB of data nothing on the client can use, on every results page.
     CLIENT_FIELDS = ("id", "org_id", "title", "commitment", "activity", "status",
                      "who_can_apply", "location_type", "postcode_district",
-                     "typical_shift_hours")
+                     "typical_shift_hours", "what_youd_do")
     slim = dict(bundle)
     slim["opps"] = [{k: o[k] for k in CLIENT_FIELDS} for o in bundle["opps"]]
     for op in slim["opps"]:

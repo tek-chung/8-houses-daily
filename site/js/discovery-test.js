@@ -26,6 +26,9 @@ function click(dom,text) {
   assert(button,'Missing button: '+text);button.click();
 }
 const dom=boot(), d=dom.window.document;
+assert(d.querySelector('.role-details .role-recruitment'),'Availability is inside the expandable details');
+assert.equal(d.querySelector('.role-travel'),null,'Journey links are removed');
+assert(d.querySelector('.matching-navigation>a[href="/all/"]'),'Browse follows the answer controls');
 click(dom,'Skip');click(dom,'Undo');
 assert.equal(d.querySelector('#journey-progress').textContent,'Example 1 of 3');
 click(dom,'Save role');click(dom,'Undo');
@@ -52,6 +55,8 @@ d.querySelector('form').dispatchEvent(new dom.window.Event('submit',{bubbles:tru
 assert.equal(JSON.parse(dom.window.localStorage.getItem(key)).preferences.commitment,'once');
 assert.deepEqual(JSON.parse(dom.window.localStorage.getItem(key)).preferences.zones,['central','east']);
 assert.match(d.querySelector('#journey-progress').textContent,/Suggestions/);
+assert(d.querySelector('#journey-progress').hidden,'Suggestions are moved out of the top toolbar');
+assert.match(d.querySelector('.matching-answers').textContent,/Suggestions based on your answers.*Change my answers/);
 assert(d.querySelector('.discovery-notice a.apply').href.startsWith('https://'));
 
 const payload=JSON.parse(d.querySelector('#discovery-data').textContent);
