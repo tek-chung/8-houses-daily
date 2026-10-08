@@ -42,6 +42,7 @@ from config import (HTTP_CACHE, MAX_PAGE_CHARS, MAX_ROLE_SUBPAGES,
                     REQUEST_TIMEOUT_SECONDS, USER_AGENT)
 
 _robots_cache: dict[str, urllib.robotparser.RobotFileParser] = {}
+_robots_unavailable: set[str] = set()
 _last_request_at = 0.0
 
 _STRIP_TAGS = ["nav", "header", "footer", "aside", "form", "script", "style",
@@ -80,6 +81,14 @@ class FetchResult:
     pages_read: list[str] = field(default_factory=list)
     cms_updated: str | None = None
     boilerplate_ratio: float | None = None
+    # A site that answers but refuses us (bot protection, TLS it cannot complete
+    # with a standard client) is not a dead link: visitors' browsers still work.
+    refused: bool = False
+
+
+# 401/403/429/451 from a page that loads in a browser is a WAF or rate limit aimed
+# at data-centre IPs, not a broken link. Run #7 marked seven working links dead.
+REFUSED_STATUSES = frozenset({401, 403, 429, 451})
 
 
 def _throttle() -> None:
@@ -101,7 +110,15 @@ def robots_allows(url: str) -> bool:
                               timeout=REQUEST_TIMEOUT_SECONDS,
                               follow_redirects=True) as c:
                 r = c.get(urljoin(origin, "/robots.txt"))
-            rp.parse(r.text.splitlines() if r.status_code == 200 else [])
+            if r.status_code == 200:
+                rp.parse(r.text.splitlines())
+            elif r.status_code >= 500:
+                # RFC 9309 §2.3.1.4: an unreachable robots.txt means assume
+                # complete disallow, not permission.
+                rp.disallow_all = True
+                _robots_unavailable.add(origin)
+            else:
+                rp.parse([])          # 4xx: no robots.txt, crawling allowed
         except Exception:
             rp.parse([])
         _robots_cache[origin] = rp
@@ -127,19 +144,37 @@ def main_content(html: str) -> str:
     except Exception:
         pass
 
-    soup = BeautifulSoup(html, "html.parser")
-    for tag in soup(_STRIP_TAGS):
-        tag.decompose()
-    for attr in ("class", "id"):
-        for el in soup.find_all(attrs={attr: _STRIP_PATTERNS}):
-            el.decompose()
+    # Class/id stripping first, because it removes the rotating sidebars. If that
+    # leaves too little, a wrapper whose class merely contains "header" or
+    # "banner" took the content with it (Spitalfields Crypt Trust, 280 chars), so
+    # retry with tag stripping only.
+    best = ""
+    for strip_patterns in (True, False):
+        soup = BeautifulSoup(html, "html.parser")
+        for tag in soup(_STRIP_TAGS):
+            tag.decompose()
+        if strip_patterns:
+            for attr in ("class", "id"):
+                for el in soup.find_all(attrs={attr: _STRIP_PATTERNS}):
+                    el.decompose()
+        # An empty or decorative <main> must not hide the page body (Housing
+        # Justice ships an empty <main>; its content sits beside it).
+        for node in (soup.find("main"), soup.find(attrs={"role": "main"}),
+                     soup.find("article"), soup.body, soup):
+            if node is None:
+                continue
+            text = _clean(node.get_text("\n"))
+            if len(text) > len(best):
+                best = text
+            if len(text) >= MIN_MAIN_CONTENT_CHARS:
+                return text[:MAX_PAGE_CHARS]
+    return best[:MAX_PAGE_CHARS]
 
-    node = (soup.find("main") or soup.find(attrs={"role": "main"})
-            or soup.find("article") or soup.body or soup)
-    text = node.get_text("\n")
+
+def _clean(text: str) -> str:
     text = re.sub(r"[ \t\r\f\v]+", " ", text)
     text = re.sub(r"\n\s*\n\s*\n+", "\n\n", text)
-    return text.strip()[:MAX_PAGE_CHARS]
+    return text.strip()
 
 
 def full_text(html: str) -> str:
@@ -234,11 +269,16 @@ def fetch(url: str, known_hash: str | None = None,
           follow_roles: bool = True, cache_write: bool = True) -> FetchResult:
     """Fetch a volunteering page plus its role sub-pages as one payload."""
     if not robots_allows(url):
+        if "{0.scheme}://{0.netloc}".format(urlparse(url)) in _robots_unavailable:
+            # A server error is not a disallow rule; retry next run rather than
+            # switching the charity to link-only.
+            return FetchResult("failed", error="robots.txt unavailable (server error)")
         return FetchResult("blocked", error="disallowed by robots.txt")
 
     cache = _load_cache()
     entry = cache.get(url, {})
-    headers = {"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml"}
+    headers = {"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml",
+               "Accept-Language": "en-GB,en;q=0.8"}
     # A cached fetch is not an approved snapshot. Also, a landing page's 304
     # says nothing about the linked role pages, which may change independently.
     conditional = not follow_roles and known_hash and entry.get('hash') == known_hash
@@ -250,7 +290,9 @@ def fetch(url: str, known_hash: str | None = None,
     try:
         r = _get(url, headers)
     except Exception as exc:
-        return FetchResult("failed", error=f"{type(exc).__name__}: {exc}")
+        message = f"{type(exc).__name__}: {exc}"
+        return FetchResult("failed", error=message,
+                           refused="CERTIFICATE_VERIFY_FAILED" in message)
 
     if r.status_code == 304:
         if not conditional:
@@ -260,7 +302,8 @@ def fetch(url: str, known_hash: str | None = None,
                            last_modified=entry.get("last_modified"),
                            final_url=url, pages_read=[url])
     if r.status_code >= 400:
-        return FetchResult("failed", error=f"HTTP {r.status_code}")
+        return FetchResult("failed", error=f"HTTP {r.status_code}",
+                           refused=r.status_code in REFUSED_STATUSES)
 
     html = r.text
     main = main_content(html)
@@ -280,7 +323,8 @@ def fetch(url: str, known_hash: str | None = None,
             if not robots_allows(link):
                 continue
             try:
-                rr = _get(link, {"User-Agent": USER_AGENT})
+                rr = _get(link, {"User-Agent": USER_AGENT,
+                                 "Accept-Language": headers["Accept-Language"]})
                 if rr.status_code >= 400:
                     continue
                 sub = main_content(rr.text)

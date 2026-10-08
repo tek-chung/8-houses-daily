@@ -3,3 +3,4 @@ trafilatura>=2.0
 beautifulsoup4>=4.12
 jsonschema>=4.21
 pytest>=8.0
+lxml_html_clean>=0.4  # trafilatura/justext import lxml.html.clean, split out of lxml 5.2

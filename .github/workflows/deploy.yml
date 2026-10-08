@@ -14,16 +14,17 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # Pinned: ubuntu-latest moves to Ubuntu 26 from 19 October 2026.
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     env:
       SITE_URL: ${{ vars.SITE_URL }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: "22"
           cache: npm
@@ -45,7 +46,7 @@ jobs:
           node site/js/directory-test.js
           node site/js/sharing-test.js
           node node_modules/wrangler/bin/wrangler.js deploy --dry-run
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: production-site
           path: dist

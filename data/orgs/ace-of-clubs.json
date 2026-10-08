@@ -20,9 +20,9 @@
     "check": {
       "last_attempt": "2026-10-08T07:36:26+00:00",
       "last_success": "2026-09-02T00:00:00+00:00",
-      "link_status": "dead",
+      "link_status": "ok",
       "content_hash": null,
-      "consecutive_failures": 2,
+      "consecutive_failures": 0,
       "etag": null,
       "last_modified": null
     }

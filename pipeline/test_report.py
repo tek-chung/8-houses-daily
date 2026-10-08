@@ -31,3 +31,18 @@ def test_pr_only_lists_valid_proposals():
     assert 'Proposal charity' in summary
     assert 'Failed charity' not in summary
     assert 'fetched_content_hash' in summary
+
+
+def test_provider_message_and_new_counts_are_shown():
+    report = {'ai_configured': True, 'ai_successful_calls': 0,
+              'human_review_count': 0, 'failed_count': 1, 'refused_count': 2,
+              'deferred_count': 3, 'published_count': 0, 'unchanged_count': 0,
+              'ai_diagnostics': [{'provider': 'gemini', 'model': 'm', 'reason': 'rejected',
+                                  'status': 400, 'message': 'INVALID_ARGUMENT bad | schema'}],
+              'results': [{'name': 'Blocked charity', 'outcome': 'source_refused',
+                           'reasons': ['HTTP 403']}]}
+    summary = render(report)
+    assert 'INVALID_ARGUMENT bad \\| schema' in summary
+    assert 'Refused by site: **2**' in summary and '**3**' in summary
+    assert 'HTTP 400' in summary
+    assert 'Blocked charity' in summary

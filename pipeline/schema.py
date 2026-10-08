@@ -181,6 +181,7 @@ ORG_SCHEMA = {
             "properties": {
                 "last_attempt": {"type": ["string", "null"]},
                 "last_success": {"type": ["string", "null"]},
+                "last_extraction": {"type": ["string", "null"]},
                 "link_status": {"type": "string",
                                 "enum": ["ok", "redirected", "dead", "link_only"]},
                 "content_hash": {"type": ["string", "null"]},

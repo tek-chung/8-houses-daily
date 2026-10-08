@@ -222,7 +222,7 @@ def test_git_checkpoint_pushes_only_ledger_before_returning(monkeypatch):
     commands = []
     def run(command, **kwargs):
         commands.append(command)
-        return SimpleNamespace(stdout='pipeline/state/ai_usage.json\n')
+        return SimpleNamespace(stdout='pipeline/state/ai_usage.json\n', returncode=0)
     monkeypatch.setattr(ai.subprocess, 'run', run)
     git_checkpoint()
     assert commands[0] == ['git', 'add', 'pipeline/state/ai_usage.json']
@@ -275,3 +275,171 @@ def test_default_models_follow_requested_order(monkeypatch):
     monkeypatch.setenv('AI_PROVIDERS', 'gemini')
     monkeypatch.delenv('AI_GEMINI_MODELS', raising=False)
     assert ai.providers_from_env()[0].models == ('gemini-3.5-flash-lite', 'gemini-flash-lite-latest')
+
+
+def _fake_git(monkeypatch, pushes, ledger_changed_upstream=False):
+    monkeypatch.setenv('GITHUB_ACTIONS', 'true')
+    monkeypatch.setenv('GITHUB_REF_NAME', 'main')
+    commands, pushes = [], iter(pushes)
+    def run(command, **kwargs):
+        commands.append(command)
+        if command[:2] == ['git', 'push']:
+            code = next(pushes)
+        elif command[:2] == ['git', 'diff'] and '--quiet' in command:
+            code = 1 if ledger_changed_upstream else 0
+        else:
+            code = 0
+        return SimpleNamespace(stdout='pipeline/state/ai_usage.json\n', returncode=code)
+    monkeypatch.setattr(ai.subprocess, 'run', run)
+    return commands
+
+
+def test_git_checkpoint_rebases_when_branch_moved_during_run(monkeypatch):
+    """Run #7 raced a maintainer push; an unrelated push must not disable AI."""
+    commands = _fake_git(monkeypatch, [1, 0])
+    git_checkpoint()
+    rebases = [c for c in commands if 'rebase' in c]
+    assert len(rebases) == 1 and '--autostash' in rebases[0]
+    assert commands[-1] == ['git', 'push', 'origin', 'HEAD:main']
+
+
+def test_git_checkpoint_refuses_when_ledger_changed_upstream(monkeypatch):
+    """A newer reservation elsewhere means ours was computed from stale counts."""
+    commands = _fake_git(monkeypatch, [1, 0], ledger_changed_upstream=True)
+    with pytest.raises(AIUnavailable):
+        git_checkpoint()
+    assert not [c for c in commands if 'rebase' in c]
+
+
+def test_git_checkpoint_gives_up_after_repeated_rejection(monkeypatch):
+    _fake_git(monkeypatch, [1, 1, 1])
+    with pytest.raises(AIUnavailable):
+        git_checkpoint()
+
+
+def _keywords(node, found=None):
+    found = set() if found is None else found
+    if isinstance(node, dict):
+        for key, value in node.items():
+            if key != 'properties':
+                found.add(key)
+            _keywords(value, found)
+    elif isinstance(node, list):
+        for item in node:
+            _keywords(item, found)
+    return found
+
+
+def test_gemini_receives_only_supported_schema_keywords(factory):
+    """Gemini 400s on minLength/maxLength/pattern; the full schema stays local."""
+    from schema import EXTRACTION_SCHEMA
+    sent = []
+    def handler(request):
+        sent.append(json.loads(request.content)['generationConfig']['responseJsonSchema'])
+        return httpx.Response(200, json=answer(raw='{"roles": []}'))
+    factory(handler).generate_structured('I', 'X', EXTRACTION_SCHEMA)
+    used = _keywords(sent[0])
+    assert not used & {'minLength', 'maxLength', 'pattern', 'uniqueItems'}
+    assert {'enum', 'required', 'additionalProperties', 'maxItems'} <= used
+    assert 'pattern' in _keywords(EXTRACTION_SCHEMA)  # the original is untouched
+
+
+def test_property_named_like_a_keyword_survives_projection():
+    projected = ai.gemini_schema({'type': 'object', 'properties': {
+        'pattern': {'type': 'string', 'pattern': '^x$'}}})
+    assert projected == {'type': 'object', 'properties': {'pattern': {'type': 'string'}}}
+
+
+def test_local_validation_still_enforces_dropped_keywords(factory):
+    schema = {'type': 'object', 'additionalProperties': False, 'required': ['code'],
+              'properties': {'code': {'type': 'string', 'pattern': '^[A-Z]{2}$'}}}
+    client = factory(lambda r: httpx.Response(200, json=answer(raw='{"code": "not valid"}')))
+    with pytest.raises(AIUnavailable, match='malformed'):
+        client.generate_structured('I', 'X', schema)
+
+
+def test_one_malformed_answer_does_not_disable_the_model_for_the_run(factory):
+    replies = iter(['{"ok": "nope"}', '{"ok": true}'])
+    client = factory(lambda r: httpx.Response(200, json=answer(raw=next(replies))),
+                     providers=[replace(GEMINI, models=('only',))])
+    with pytest.raises(AIUnavailable):
+        client.generate_structured('I', 'X', SCHEMA)
+    assert client.generate_structured('I', 'X', SCHEMA).json == {'ok': True}
+
+
+def test_rejection_reports_redacted_provider_reason(factory):
+    secret = 'AIzaSy' + 'x' * 33
+    body = {'error': {'code': 400, 'status': 'INVALID_ARGUMENT',
+                      'message': f'Invalid JSON payload; key {secret} rejected'}}
+    client = factory(lambda r: httpx.Response(400, json=body),
+                     providers=[replace(GEMINI, models=('only',))])
+    with pytest.raises(AIUnavailable) as exc:
+        client.generate_structured('I', 'X', SCHEMA)
+    assert 'INVALID_ARGUMENT' in str(exc.value)
+    assert secret not in str(exc.value)
+    assert secret not in json.dumps(client.diagnostics)
+
+
+def test_budget_exhaustion_is_flagged_for_deferral(factory, monkeypatch):
+    monkeypatch.setenv('AI_MAX_RUN_CALLS', '1')
+    client = factory(lambda r: httpx.Response(200, json=answer()))
+    client.generate_structured('I', 'X', SCHEMA)
+    assert client.budget_exhausted is False
+    with pytest.raises(AIUnavailable):
+        client.generate_structured('I', 'X', SCHEMA)
+    assert client.budget_exhausted is True
+
+
+def test_verification_cut_short_by_allowance_is_deferred_not_proposed():
+    from extract import extract
+    class Client:
+        budget_exhausted = False
+        def generate_structured(self, instruction, input, schema):
+            if 'roles' in schema['properties']:
+                role = {'title': 'Kitchen helper', 'what_youd_do': 'Help cook meals for guests.',
+                        'screening': {'dbs': 'enhanced'}, 'status': 'open'}
+                return SimpleNamespace(json={'roles': [role]}, provider='p', model='m')
+            self.budget_exhausted = True
+            raise AIUnavailable('run AI allowance exhausted')
+    result = extract(Client(), 'Charity', 'https://example.org', 'An enhanced DBS check is required.')
+    assert result.deferred is True and result.error and result.roles == []
+
+
+def test_git_checkpoint_against_real_repositories(tmp_path, monkeypatch):
+    """End to end with real git: unrelated upstream push is replayed, ledger edits are not."""
+    import shutil
+    import subprocess
+    if not shutil.which('git'):
+        pytest.skip('git not installed')
+    def sh(cwd, *args):
+        return subprocess.run(['git', '-c', 'user.name=t', '-c', 'user.email=t@e', *args],
+                              cwd=cwd, check=True, capture_output=True, text=True).stdout
+    origin, work, other = tmp_path / 'origin.git', tmp_path / 'work', tmp_path / 'other'
+    sh(tmp_path, 'init', '--bare', '-b', 'main', str(origin))
+    sh(tmp_path, 'clone', str(origin), str(work))
+    (work / 'pipeline' / 'state').mkdir(parents=True)
+    ledger = work / 'pipeline' / 'state' / 'ai_usage.json'
+    ledger.write_text('{}\n', encoding='utf-8')
+    (work / 'record.json').write_text('old\n', encoding='utf-8')
+    sh(work, 'add', '.'); sh(work, 'commit', '-m', 'base'); sh(work, 'push', 'origin', 'HEAD:main')
+    sh(tmp_path, 'clone', str(origin), str(other))
+    (other / 'code.py').write_text('x = 1\n', encoding='utf-8')
+    sh(other, 'add', '.'); sh(other, 'commit', '-m', 'maintainer'); sh(other, 'push')
+
+    monkeypatch.setenv('GITHUB_ACTIONS', 'true')
+    monkeypatch.setenv('GITHUB_REF_NAME', 'main')
+    monkeypatch.setattr(ai, 'ROOT', work)
+    (work / 'record.json').write_text('updated by the run, uncommitted\n', encoding='utf-8')
+    ledger.write_text('{"day": 20}\n', encoding='utf-8')
+    git_checkpoint()
+    log = sh(origin, 'log', '--format=%s', 'main')
+    assert log.splitlines()[:2] == ['Reserve refresh AI allowance', 'maintainer']
+    assert (work / 'record.json').read_text(encoding='utf-8') == 'updated by the run, uncommitted\n'
+
+    sh(other, 'pull')
+    (other / 'pipeline' / 'state' / 'ai_usage.json').write_text('{"day": 40}\n', encoding='utf-8')
+    sh(other, 'commit', '-am', 'another reservation'); sh(other, 'push')
+    ledger.write_text('{"day": 40, "stale": true}\n', encoding='utf-8')
+    with pytest.raises(AIUnavailable):
+        git_checkpoint()
+    assert 'stale' not in sh(origin, 'show', 'main:pipeline/state/ai_usage.json')

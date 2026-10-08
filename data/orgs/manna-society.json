@@ -8,8 +8,8 @@
       "manna day centre"
     ],
     "charity_number": "294691",
-    "website_url": "https://www.mannasociety.org.uk/",
-    "volunteer_url": "https://www.mannasociety.org.uk/how-you-can-help/volunteer-time/",
+    "website_url": "https://mannasociety.org.uk/",
+    "volunteer_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
     "summary": "Day centre near London Bridge providing meals, showers, clothing and welfare advice.",
     "coverage": "borough",
     "boroughs": [
@@ -21,9 +21,9 @@
     "check": {
       "last_attempt": "2026-10-08T07:37:19+00:00",
       "last_success": "2026-08-25T00:00:00+00:00",
-      "link_status": "dead",
+      "link_status": "ok",
       "content_hash": null,
-      "consecutive_failures": 2,
+      "consecutive_failures": 0,
       "etag": null,
       "last_modified": null
     }
@@ -58,7 +58,7 @@
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
-      "apply_url": "https://www.mannasociety.org.uk/how-you-can-help/volunteer-time/",
+      "apply_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
       "url_specificity": "org_volunteer_page",
       "coords": null,
       "provenance": {
@@ -108,7 +108,7 @@
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
-      "apply_url": "https://www.mannasociety.org.uk/how-you-can-help/volunteer-time/",
+      "apply_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
       "url_specificity": "org_volunteer_page",
       "coords": null,
       "provenance": {

@@ -78,7 +78,7 @@ SEED = [
     ("SPEAR", "south-west london", "https://www.spearlondon.org/get-involved/be-a-volunteer/"),
     ("Ace of Clubs", "south london", "https://aceofclubs.org.uk/volunteer/"),
     ("North London Action for the Homeless", "north london", "https://www.nlah.org.uk/volunteer/"),
-    ("Manna Society", "south london", "https://www.mannasociety.org.uk/how-you-can-help/volunteer-time/"),
+    ("Manna Society", "south london", "https://mannasociety.org.uk/support-us/volunteer-for-us/"),
     ("Spitalfields Crypt Trust", "east london", "https://sct.org.uk/support-us/volunteer/"),
     ("West London Mission", "central london", "https://www.wlm.org.uk/pages/category/volunteer-opportunities"),
 ]

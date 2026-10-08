@@ -14,7 +14,7 @@
     "ace-of-clubs": {
       "days_since_check": 36,
       "state": "stale",
-      "link_status": "dead",
+      "link_status": "ok",
       "suppress_assertive": true,
       "suppress_fields": [
         "screening",
@@ -26,7 +26,7 @@
     "akt": {
       "days_since_check": 36,
       "state": "stale",
-      "link_status": "dead",
+      "link_status": "ok",
       "suppress_assertive": true,
       "suppress_fields": [
         "screening",
@@ -86,7 +86,7 @@
     "emmaus": {
       "days_since_check": 36,
       "state": "stale",
-      "link_status": "dead",
+      "link_status": "ok",
       "suppress_assertive": true,
       "suppress_fields": [
         "screening",
@@ -110,7 +110,7 @@
     "groundswell": {
       "days_since_check": 36,
       "state": "stale",
-      "link_status": "dead",
+      "link_status": "ok",
       "suppress_assertive": true,
       "suppress_fields": [
         "screening",
@@ -146,7 +146,7 @@
     "manna-society": {
       "days_since_check": 44,
       "state": "stale",
-      "link_status": "dead",
+      "link_status": "ok",
       "suppress_assertive": true,
       "suppress_fields": [
         "screening",
@@ -182,7 +182,7 @@
     "providence-row": {
       "days_since_check": 36,
       "state": "stale",
-      "link_status": "dead",
+      "link_status": "ok",
       "suppress_assertive": true,
       "suppress_fields": [
         "screening",
@@ -230,7 +230,7 @@
     "solace-womens-aid": {
       "days_since_check": 36,
       "state": "stale",
-      "link_status": "dead",
+      "link_status": "ok",
       "suppress_assertive": true,
       "suppress_fields": [
         "screening",
@@ -338,7 +338,7 @@
     "the-connection-at-st-martins": {
       "days_since_check": 36,
       "state": "stale",
-      "link_status": "dead",
+      "link_status": "ok",
       "suppress_assertive": true,
       "suppress_fields": [
         "screening",
@@ -362,7 +362,7 @@
     "the-whitechapel-mission": {
       "days_since_check": 44,
       "state": "stale",
-      "link_status": "dead",
+      "link_status": "ok",
       "suppress_assertive": true,
       "suppress_fields": [
         "screening",
@@ -374,7 +374,7 @@
     "west-london-mission": {
       "days_since_check": 36,
       "state": "stale",
-      "link_status": "dead",
+      "link_status": "ok",
       "suppress_assertive": true,
       "suppress_fields": [
         "screening",

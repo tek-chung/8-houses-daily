@@ -164,3 +164,105 @@ def test_304_requires_approved_single_page_baseline(mocked_http, monkeypatch, kn
                              follow_roles=False, cache_write=False)
     assert result.status == status
     assert ('If-None-Match' in headers_seen[0]) == (status == 'unchanged')
+
+
+# ---------------------------------------------------------- run #7 regressions
+
+@pytest.mark.parametrize('status,refused', [(403, True), (429, True), (404, False), (500, False)])
+def test_refusals_are_flagged_but_missing_pages_are_not(mocked_http, monkeypatch, status, refused):
+    monkeypatch.setattr(fetchpage, '_get', lambda url, headers: httpx.Response(
+        status, request=httpx.Request('GET', url)))
+    result = fetchpage.fetch('https://example.org', cache_write=False)
+    assert result.status == 'failed' and result.refused is refused
+
+
+def test_tls_verification_failure_is_a_refusal(mocked_http, monkeypatch):
+    def get(url, headers):
+        raise httpx.ConnectError('[SSL: CERTIFICATE_VERIFY_FAILED] unable to get local issuer')
+    monkeypatch.setattr(fetchpage, '_get', get)
+    assert fetchpage.fetch('https://example.org', cache_write=False).refused is True
+
+
+def test_refused_source_never_marks_a_working_link_dead(record, monkeypatch):
+    path, doc = record
+    doc['organisation']['check'].update(link_status='ok', consecutive_failures=5)
+    monkeypatch.setattr(runner, 'fetch', lambda *a, **k: FetchResult(
+        'failed', error='HTTP 403', refused=True))
+    report = runner.process(path, doc, None, False)
+    check = json.loads(path.read_text(encoding='utf-8'))['organisation']['check']
+    assert report['outcome'] == 'source_refused' and report['route'] == 'auto'
+    assert check['link_status'] == 'ok'
+    assert check['consecutive_failures'] == 5   # refusals do not count towards dead
+
+
+def test_robots_server_error_is_a_retry_not_link_only(monkeypatch):
+    fetchpage._robots_cache.clear()
+    fetchpage._robots_unavailable.clear()
+    class Client:
+        def __init__(self, **kw): pass
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        def get(self, url): return SimpleNamespace(status_code=503, text='')
+    monkeypatch.setattr(fetchpage.httpx, 'Client', Client)
+    monkeypatch.setattr(fetchpage, '_throttle', lambda: None)
+    result = fetchpage.fetch('https://robots-down.example/volunteer', cache_write=False)
+    assert result.status == 'failed' and 'robots.txt unavailable' in result.error
+    fetchpage._robots_cache.clear()
+    fetchpage._robots_unavailable.clear()
+
+
+def test_exhausted_allowance_defers_instead_of_failing(record, monkeypatch):
+    path, doc = record
+    before = copy.deepcopy(doc)
+    monkeypatch.setattr(runner, 'fetch', lambda *a, **k: FetchResult('changed', text='source', content_hash='new'))
+    monkeypatch.setattr(runner, 'extract', lambda *a: pytest.fail('no call once the allowance is gone'))
+    client = SimpleNamespace(budget_exhausted=True)
+    report = runner.process(path, doc, client, False)
+    stored = json.loads(path.read_text(encoding='utf-8'))
+    assert report['outcome'] == 'ai_deferred' and report['route'] == 'auto'
+    assert stored['opportunities'] == before['opportunities']
+    assert 'last_extraction' not in stored['organisation']['check']
+
+
+def test_allowance_running_out_mid_page_defers_and_keeps_queue_position(record, monkeypatch):
+    path, doc = record
+    doc['organisation']['check']['last_extraction'] = '2026-09-01T00:00:00+00:00'
+    monkeypatch.setattr(runner, 'fetch', lambda *a, **k: FetchResult('changed', text='source', content_hash='new'))
+    monkeypatch.setattr(runner, 'extract', lambda *a: SimpleNamespace(
+        error='AI allowance ran out', deferred=True))
+    report = runner.process(path, doc, SimpleNamespace(budget_exhausted=False), False)
+    check = json.loads(path.read_text(encoding='utf-8'))['organisation']['check']
+    assert report['outcome'] == 'ai_deferred'
+    assert check['last_extraction'] == '2026-09-01T00:00:00+00:00'
+
+
+def test_completed_extraction_moves_org_to_back_of_queue(record, monkeypatch):
+    path, doc = record
+    monkeypatch.setattr(runner, 'fetch', lambda *a, **k: FetchResult('changed', text='source'))
+    monkeypatch.setattr(runner, 'extract', lambda *a: SimpleNamespace(error='rejected', deferred=False))
+    runner.process(path, doc, SimpleNamespace(budget_exhausted=False), False)
+    check = json.loads(path.read_text(encoding='utf-8'))['organisation']['check']
+    assert check['last_extraction'] == runner.NOW()
+
+
+def test_least_recently_extracted_orgs_use_the_allowance_first(tmp_path, monkeypatch):
+    orgs_dir = tmp_path / 'orgs'
+    orgs_dir.mkdir()
+    template = json.loads(next(runner.ORGS_DIR.glob('*.json')).read_text(encoding='utf-8'))
+    for org_id, stamp in [('aaa', '2026-10-01T00:00:00+00:00'), ('mmm', None),
+                          ('zzz', '2026-09-01T00:00:00+00:00')]:
+        doc = copy.deepcopy(template)
+        doc['organisation']['id'] = org_id
+        doc['organisation']['check']['last_extraction'] = stamp
+        (orgs_dir / f'{org_id}.json').write_text(json.dumps(doc), encoding='utf-8')
+    seen = []
+    def process(path, doc, client, dry):
+        seen.append(doc['organisation']['id'])
+        return {'route': 'auto', 'reasons': [], 'outcome': 'unchanged'}
+    monkeypatch.setattr(runner, 'ORGS_DIR', orgs_dir)
+    monkeypatch.setattr(runner, 'process', process)
+    monkeypatch.setattr(runner.decay, 'compute', lambda orgs: {'median_days_since_check': 0, 'site_banner': False})
+    monkeypatch.setattr(sys, 'argv', ['run.py', '--dry-run'])
+    monkeypatch.delenv('GEMINI_API_KEY', raising=False)
+    assert runner.main() == 0
+    assert seen == ['mmm', 'zzz', 'aaa']

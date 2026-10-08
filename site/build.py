@@ -1096,8 +1096,9 @@ def build_roles(orgs, opps, fresh):
         back_label = DOOR_LABEL.get(op["commitment"], "All notices")
 
         paras = narrate(op, orgs, fresh)
+        DROPCAP = ' class="dropcap"'
         prose = "".join(
-            f'<p{" class=\"dropcap\"" if i == 0 else ""}>{e(t)}</p>'
+            f'<p{DROPCAP if i == 0 else ""}>{e(t)}</p>'
             for i, t in enumerate(paras))
 
         # Particulars: the same labelled facts as the classified, set as a table.

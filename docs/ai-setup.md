@@ -77,8 +77,10 @@ allowance and commits/pushes that reservation using normal checkout authenticati
 If that checkpoint fails, no provider call is sent. A killed runner cannot erase
 an already-persisted reservation. Unused reservations are not refunded: this is
 deliberately conservative. New runs from the latest branch read the updated ledger.
-Rerunning an older commit cannot overwrite a newer reservation: its checkpoint
-push is rejected and no AI request is sent. Start a fresh dispatch from the branch
+Rerunning an older commit cannot overwrite a newer reservation: if the ledger has
+changed upstream, the checkpoint is refused and no AI request is sent. If the
+branch moved only for other reasons (for example a push during the run), the
+reservation is rebased onto it and pushed. Start a fresh dispatch from the branch
 instead of rerunning an obsolete commit.
 
 Do not delete/reset the ledger to make a same-day rerun fit. Local runs share the
@@ -87,10 +89,27 @@ same key are outside this budget. Use the API only through the scheduled job for
 shared quota accounting. A local probe reserves locally, so allow for that call in
 the remote cap. The provider still enforces its own account/project quotas.
 
-An incomplete source check or AI extraction makes the workflow fail after safe
-updates and diagnostic artifacts are saved. Only genuine proposed changes create
-a review PR. The summary distinguishes configuration, validated AI responses,
-published updates and incomplete checks. No provider response bodies are logged.
+An AI or extraction failure makes the workflow fail after safe updates and
+diagnostic artifacts are saved. A charity page that cannot be read raises a
+warning instead: existing listings are kept and the summary names the page. A site
+that refuses the crawler (HTTP 401/403/429/451, or a TLS chain only browsers can
+complete) is reported as refused and never marks the link dead. Only genuine
+proposed changes create a review PR. Provider response bodies are not logged;
+the summary shows only the provider's error status and a short message with any
+key-like strings redacted.
+
+The run allowance is small next to the work: each changed page needs one
+extraction call plus one verification call per role with a stated screening or
+status fact. With 20 calls a run, expect roughly four or five pages per run.
+Pages left over are deferred (not failed) and the least recently extracted pages
+go first next run, so every charity is reached in rotation. Raise
+`AI_GEMINI_DAILY_CALLS` and `AI_MAX_RUN_CALLS` only within the account's free-tier
+limits.
+
+Gemini accepts a subset of JSON Schema. `minLength`, `maxLength`, `pattern` and
+`uniqueItems` are removed from the schema sent to Gemini (sending them caused the
+HTTP 400 rejections of October 2026); every response is still validated locally
+against the full schema.
 
 Dry runs never call AI, so they neither change the ledger nor push checkpoints.
 Provider failures, failed generations and the single bounded 429 retry consume

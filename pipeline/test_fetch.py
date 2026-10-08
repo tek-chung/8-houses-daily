@@ -225,3 +225,37 @@ def test_genuinely_thin_page_is_not_called_client_rendered():
 
 def test_full_content_page_is_not_client_rendered():
     assert not looks_client_rendered(page(["a", "b"]))
+
+
+# ---------------------------------------------------------- run #7 regressions
+
+LONG_ROLE = ("Volunteer hosts welcome people who are destitute into their home when "
+             "they have no other safe options. Citadel volunteers support people in "
+             "their local community to find a home and sustain their tenancy. ") * 4
+
+
+@pytest.fixture
+def no_trafilatura(monkeypatch):
+    """Exercise the DOM fallback, which is what real failing pages reached."""
+    import fetchpage
+    monkeypatch.setattr(fetchpage.trafilatura, 'extract', lambda *a, **k: None)
+
+
+def test_empty_main_does_not_hide_the_page_body(no_trafilatura):
+    """Housing Justice ships an empty <main>; its roles sit beside it."""
+    html = f"<html><body><main></main><section><p>{LONG_ROLE}</p></section></body></html>"
+    assert "Citadel volunteers" in main_content(html)
+
+
+def test_over_eager_class_stripping_falls_back_to_tag_stripping(no_trafilatura):
+    """A wrapper whose class contains 'header' must not take the content with it."""
+    html = (f"<html><body><div class='page-header-wrap'><h1>Volunteer</h1>"
+            f"<p>{LONG_ROLE}</p></div></body></html>")
+    assert "Citadel volunteers" in main_content(html)
+
+
+def test_sidebar_is_still_stripped_when_main_content_is_sufficient(no_trafilatura):
+    html = (f"<html><body><main><p>{LONG_ROLE}</p>"
+            f"<div class='sidebar'><p>Sleep Out 2026 sign up now</p></div></main></body></html>")
+    out = main_content(html)
+    assert "Citadel volunteers" in out and "Sleep Out" not in out

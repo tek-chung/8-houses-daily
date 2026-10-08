@@ -22,6 +22,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  actions: write   # dispatch the deploy workflow; pushes made with GITHUB_TOKEN do not trigger it
 
 concurrency:
   group: freshness
@@ -29,12 +30,13 @@ concurrency:
 
 jobs:
   refresh:
-    runs-on: ubuntu-latest
+    # Pinned: ubuntu-latest moves to Ubuntu 26 from 19 October 2026.
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
@@ -43,9 +45,10 @@ jobs:
 
       # The Python suite cannot execute the page's JavaScript. Two serious bugs
       # hid behind each other in that blind spot, so jsdom runs the built pages.
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: "20"
+          node-version: "22"
+          cache: npm
       - run: npm ci --no-audit --no-fund
 
       # The gate decides what reaches visitors unreviewed. If its tests don't
@@ -129,6 +132,7 @@ jobs:
       # Auto-published changes: committed straight to main. These are non-critical
       # fields only, at or above the confidence threshold. Spec §11.3.
       - name: Commit auto-published changes
+        id: publish
         if: inputs.census_only != true && inputs.dry_run != true
         run: |
           git config user.name  "freshness-bot"
@@ -141,7 +145,16 @@ jobs:
             git commit -m "Weekly freshness check: auto-published changes"
             git pull --rebase --autostash origin "${{ github.ref_name }}"
             git push origin "HEAD:${{ github.ref_name }}"
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      # A push made with GITHUB_TOKEN never starts another workflow, so without
+      # this the refreshed data would wait for the next human push to go live.
+      - name: Deploy the refreshed data
+        if: steps.publish.outputs.pushed == 'true' && github.ref_name == 'main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main
 
       # Anything the gate held back becomes a PR. Uses the preinstalled gh CLI
       # rather than a third-party action, so there's no supply chain to pin.
@@ -166,7 +179,7 @@ jobs:
             fi
           fi
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         if: always()
         with:
           name: freshness-run
@@ -176,8 +189,16 @@ jobs:
             pipeline/state/ai_usage.json
           retention-days: 30
 
-      - name: Flag incomplete source or AI checks
-        if: inputs.census_only != true && inputs.dry_run != true && steps.run.outputs.failed_count != '' && steps.run.outputs.failed_count != '0'
+      # Charity pages that are missing or unreadable need a maintainer, not a red
+      # pipeline: existing listings are retained and the job summary names them.
+      - name: Flag unreadable charity pages
+        if: inputs.census_only != true && inputs.dry_run != true && steps.run.outputs.source_failed_count != '' && steps.run.outputs.source_failed_count != '0'
         run: |
-          echo "::error::Refresh is incomplete. See provider diagnostics and failed checks in the job summary. Existing listings were retained."
+          echo "::warning::${{ steps.run.outputs.source_failed_count }} charity page(s) could not be read. See the job summary. Existing listings were retained."
+
+      # AI or extraction failures mean the pipeline itself is not working.
+      - name: Flag incomplete AI checks
+        if: inputs.census_only != true && inputs.dry_run != true && steps.run.outputs.ai_failed_count != '' && steps.run.outputs.ai_failed_count != '0'
+        run: |
+          echo "::error::AI extraction failed for ${{ steps.run.outputs.ai_failed_count }} page(s). See provider diagnostics in the job summary. Existing listings were retained."
           exit 1

@@ -20,7 +20,7 @@ pip install -r pipeline/requirements.txt
 # 2. Node side — only for the browser tests
 npm install
 
-# 3. Check it all works (expect 145 passing)
+# 3. Check it all works (everything should pass)
 export PYTHONPATH=pipeline
 python -m pytest pipeline/ site/ -q
 
@@ -28,7 +28,7 @@ python -m pytest pipeline/ site/ -q
 python site/build.py --serve      # http://localhost:8000
 ```
 
-Needs Python 3.11+ and Node 20+.
+Needs Python 3.11+ and Node 20+ (CI uses Python 3.12 and Node 22).
 
 ### On Windows (PowerShell)
 

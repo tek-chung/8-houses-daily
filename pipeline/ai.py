@@ -29,13 +29,59 @@ class AIUnavailable(Exception):
     """Expected provider/quota failure; existing records must be retained."""
 
 
+# Gemini's structured output accepts a documented subset of JSON Schema. String
+# length and pattern keywords are not in it, and sending them makes the API reject
+# the whole request with HTTP 400 (the weekly-refresh failure of October 2026).
+# The full schema is still enforced locally on every response.
+_GEMINI_UNSUPPORTED = frozenset({'minLength', 'maxLength', 'pattern', 'uniqueItems',
+                                 '$schema', '$id', '$comment'})
+
+
+def gemini_schema(schema):
+    """Project a JSON Schema onto the keywords Gemini documents as supported."""
+    if isinstance(schema, dict):
+        out = {}
+        for key, value in schema.items():
+            if key in _GEMINI_UNSUPPORTED:
+                continue
+            if key == 'properties' and isinstance(value, dict):
+                out[key] = {name: gemini_schema(sub) for name, sub in value.items()}
+            else:
+                out[key] = gemini_schema(value)
+        return out
+    if isinstance(schema, list):
+        return [gemini_schema(item) for item in schema]
+    return schema
+
+
+_SECRETISH = re.compile(r'[A-Za-z0-9_\-]{24,}')
+
+
+def provider_message(response) -> str | None:
+    """A short, redacted error summary. Never the raw body; never anything key-like."""
+    try:
+        error = response.json().get('error')
+    except (ValueError, AttributeError):
+        return None
+    if isinstance(error, dict):
+        parts = [str(error.get('status') or error.get('code') or ''), str(error.get('message') or '')]
+    elif isinstance(error, str):
+        parts = [error]
+    else:
+        return None
+    text = ' '.join(' '.join(p for p in parts if p).split())
+    return _SECRETISH.sub('[redacted]', text)[:200] or None
+
+
 def utc_day():
     return datetime.now(timezone.utc).date().isoformat()
 
 
 class ProviderFailure(Exception):
-    def __init__(self, kind: str, status: int | None = None, retry_after: float = 0):
+    def __init__(self, kind: str, status: int | None = None, retry_after: float = 0,
+                 message: str | None = None):
         self.kind, self.status, self.retry_after = kind, status, retry_after
+        self.message = message  # redacted summary only, see provider_message()
         super().__init__(kind)  # never include provider response bodies or keys
 
 
@@ -111,15 +157,30 @@ def git_checkpoint():
         result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, check=True)
     if result.stdout.strip() != 'pipeline/state/ai_usage.json':
         raise AIUnavailable('usage checkpoint contained unexpected staged changes')
-    for command in [
-        ['git', '-c', 'user.name=freshness-bot', '-c',
-         'user.email=freshness-bot@users.noreply.github.com', 'commit', '-m', 'Reserve refresh AI allowance'],
-        ['git', 'push', 'origin', f'HEAD:{branch}'],
-    ]:
-        try:
-            subprocess.run(command, cwd=ROOT, check=True, capture_output=True)
-        except subprocess.CalledProcessError:
-            raise AIUnavailable('could not persist AI allowance; no request sent') from None
+    bot = ['-c', 'user.name=freshness-bot', '-c', 'user.email=freshness-bot@users.noreply.github.com']
+    ledger = 'pipeline/state/ai_usage.json'
+    def git(*args, check=True):
+        return subprocess.run(['git', *args], cwd=ROOT, check=check, capture_output=True)
+    try:
+        git(*bot, 'commit', '-m', 'Reserve refresh AI allowance')
+        for attempt in range(3):
+            if git('push', 'origin', f'HEAD:{branch}', check=False).returncode == 0:
+                return
+            # Rejected. If someone else changed the ledger, our reservation was
+            # computed from stale counts: refuse, exactly as before. If the branch
+            # only moved for other reasons (a maintainer push mid-run, as in run
+            # #7), replay the reservation on top. --autostash keeps the run's
+            # uncommitted record updates intact.
+            git('fetch', 'origin', branch)
+            if git('diff', '--quiet', 'HEAD~1', 'FETCH_HEAD', '--', ledger,
+                   check=False).returncode != 0:
+                break
+            if git(*bot, 'rebase', '--autostash', 'FETCH_HEAD', check=False).returncode != 0:
+                git('rebase', '--abort', check=False)
+                break
+    except subprocess.CalledProcessError:
+        pass
+    raise AIUnavailable('could not persist AI allowance; no request sent')
 
 
 def providers_from_env() -> list[Provider]:
@@ -164,6 +225,7 @@ class AIClient:
         self.lease_days = {}
         self.calls = 0
         self.successful_calls = 0
+        self.budget_exhausted = False
         self.diagnostics = []
 
     @property
@@ -172,6 +234,7 @@ class AIClient:
 
     def _reserve(self, provider):
         if self.calls >= self.run_cap:
+            self.budget_exhausted = True
             raise AIUnavailable('run AI allowance exhausted')
         day = utc_day()
         if provider.name not in self.remaining or self.lease_days.get(provider.name) != day:
@@ -183,6 +246,7 @@ class AIClient:
             if utc_day() != day:
                 return self._reserve(provider)  # a CI checkpoint crossed midnight
         if self.remaining[provider.name] <= 0:
+            self.budget_exhausted = True
             raise AIUnavailable('provider run allowance exhausted')
         self.remaining[provider.name] -= 1
         self.calls += 1
@@ -194,6 +258,7 @@ class AIClient:
         if len(json.dumps(request, ensure_ascii=False).encode('utf-8')) > self.max_bytes:
             raise AIUnavailable('AI request exceeds input limit')
         if self.calls >= self.run_cap:
+            self.budget_exhausted = True
             raise AIUnavailable('run AI allowance exhausted')
         for provider in self.providers:
             if not provider.key or not provider.confirmed_free:
@@ -212,6 +277,7 @@ class AIClient:
                     try:
                         self._reserve(provider)
                     except AIUnavailable:
+                        self.budget_exhausted = True
                         self.diagnostics.append({'provider': provider.name, 'model': model, 'reason': 'budget_exhausted'})
                         self.disabled.update((provider.name, m) for m in provider.models)
                         break
@@ -226,17 +292,22 @@ class AIClient:
                     except ProviderFailure as exc:
                         failure = exc
                     self.diagnostics.append({'provider': provider.name, 'model': model,
-                                             'reason': failure.kind, 'status': failure.status})
+                                             'reason': failure.kind, 'status': failure.status,
+                                             'message': failure.message})
                     if failure.kind == 'rate_limited' and attempt == 0 and max(failure.retry_after, provider.interval) <= self.max_wait:
                         self.sleep(max(provider.interval, failure.retry_after))
                         continue
-                    self.disabled.add(identity)
+                    # A malformed or truncated answer is about this one page, not the
+                    # model; disabling it here would end AI for the rest of the run.
+                    if failure.kind not in ('malformed', 'incomplete'):
+                        self.disabled.add(identity)
                     if failure.kind in ('auth', 'provider_unavailable', 'network', 'rate_limited'):
                         self.disabled.update((provider.name, m) for m in provider.models)
                     break
         failures = list(dict.fromkeys(
             f"{d['provider']}/{d['model']}: {d['reason']}" +
-            (f" (HTTP {d['status']})" if d.get('status') else '') for d in self.diagnostics))
+            (f" (HTTP {d['status']})" if d.get('status') else '') +
+            (f" {d['message']}" if d.get('message') else '') for d in self.diagnostics))
         detail = '; '.join(failures[-4:]) or 'no provider with a key, model and free-tier confirmation'
         raise AIUnavailable(f'No valid AI result: {detail}')
 
@@ -247,7 +318,7 @@ class AIClient:
             payload = {'systemInstruction': {'parts': [{'text': instruction}]},
                        'contents': [{'role': 'user', 'parts': [{'text': input}]}],
                        'generationConfig': {'responseMimeType': 'application/json',
-                                            'responseJsonSchema': schema,
+                                            'responseJsonSchema': gemini_schema(schema),
                                             'maxOutputTokens': self.max_tokens}}
         else:
             url = 'https://openrouter.ai/api/v1/chat/completions'
@@ -274,7 +345,7 @@ class AIClient:
                 retry = retry if math.isfinite(retry) and retry >= 0 else self.max_wait + 1
             except ValueError:
                 retry = self.max_wait + 1
-            raise ProviderFailure(kind, status, retry)
+            raise ProviderFailure(kind, status, retry, provider_message(response))
         try:
             body = response.json()
             if not isinstance(body, dict):

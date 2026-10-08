@@ -53,6 +53,10 @@ class Extraction:
     unsupported: list[str] = field(default_factory=list)
     error: str | None = None
     model_used: str | None = None
+    # True when the run's AI allowance ran out before this page was finished. The
+    # page is then retried first next run instead of becoming a review proposal
+    # full of fields demoted only because nobody checked them.
+    deferred: bool = False
 
 
 # --------------------------------------------------------------- copyright guard
@@ -168,7 +172,7 @@ def extract(client, org_name: str, url: str, page_text: str) -> Extraction:
     """Expected provider failures are held for review; programming errors propagate."""
     data, err, model_used = _extract_once(client, org_name, url, page_text)
     if data is None:
-        return Extraction(error=err)
+        return Extraction(error=err, deferred=bool(getattr(client, 'budget_exhausted', False)))
 
     roles = data.get("roles", [])
     notes = data.get("page_notes")
@@ -191,6 +195,10 @@ def extract(client, org_name: str, url: str, page_text: str) -> Extraction:
             _set(r, f, UNKNOWN_FOR.get(f))     # demote unsupported claims
         all_ok += [f"{r.get('title')}::{f}" for f in ok]
         all_bad += [f"{r.get('title')}::{f}" for f in bad]
+
+    if verify_errs and getattr(client, 'budget_exhausted', False):
+        return Extraction(error="AI allowance ran out before verification finished",
+                          page_notes=notes, deferred=True)
 
     checked = len(all_ok) + len(all_bad)
     confidence = 1.0 if checked == 0 else round(len(all_ok) / checked, 3)

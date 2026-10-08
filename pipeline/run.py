@@ -70,6 +70,15 @@ def process(path: Path, doc: dict, client, dry: bool) -> dict:
             path.write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
         return report
 
+    if res.status == "failed" and res.refused:
+        # The site answered but turned us away (bot protection, rate limit, or a
+        # TLS chain only browsers can complete). Visitors can still reach it, so
+        # this is not evidence of a dead link, and does not count towards one.
+        report.update(route="auto", outcome='source_refused', reasons=[
+            "site refused the automated check; link status unchanged", res.error or ""])
+        save_check()
+        return report
+
     if res.status == "failed":
         check["consecutive_failures"] = check.get("consecutive_failures", 0) + 1
         d = classify_fetch_failure(check["consecutive_failures"],
@@ -104,7 +113,24 @@ def process(path: Path, doc: dict, client, dry: bool) -> dict:
         save_check()
         return report
 
+    if getattr(client, "budget_exhausted", False):
+        report.update(route="auto", outcome='ai_deferred', reasons=[
+            "AI allowance for this run is used up; queued first for the next run"])
+        save_check()
+        return report
+
+    previous_extraction = check.get("last_extraction")
+    check["last_extraction"] = NOW()
     ex = extract(client, org["name"], url, res.text)
+    if getattr(ex, "deferred", False):
+        if previous_extraction is None:
+            check.pop("last_extraction", None)
+        else:
+            check["last_extraction"] = previous_extraction
+        report.update(route="auto", outcome='ai_deferred', reasons=[
+            f"deferred to next run: {ex.error}"])
+        save_check()
+        return report
     if ex.error:
         report.update(route=ROUTE_REVIEW, outcome='extraction_failed', reasons=[f"extraction failed: {ex.error}"])
         save_check()
@@ -163,7 +189,11 @@ def main() -> int:
     args = ap.parse_args()
 
     only = [s.strip() for s in args.only.split(",") if s.strip()] or None
-    orgs = load_orgs(only)
+    # The AI allowance covers only a few pages per run. In filename order the same
+    # charities would use it every week and the rest would never be extracted, so
+    # the longest-unextracted go first.
+    orgs = sorted(load_orgs(only), key=lambda item: (
+        item[1]["organisation"].get("check", {}).get("last_extraction") or ""))
     if not orgs:
         log("No organisation files found in", ORGS_DIR)
         return 2
@@ -198,14 +228,19 @@ def main() -> int:
     fresh = decay.compute(all_orgs) if args.dry_run else decay.write(all_orgs)
 
     needs = [r for r in reports if r["route"] == ROUTE_REVIEW]
-    failures = [r for r in reports if r.get('outcome') in (
-        'source_failed', 'ai_unavailable', 'extraction_failed', 'invalid_extraction')]
+    source_failures = [r for r in reports if r.get('outcome') == 'source_failed']
+    ai_failures = [r for r in reports if r.get('outcome') in (
+        'ai_unavailable', 'extraction_failed', 'invalid_extraction')]
+    failures = source_failures + ai_failures
     human_review = [r for r in reports if r.get('outcome') == 'review_required']
     review = {"generated_at": NOW(), "dry_run": args.dry_run,
          "ai_configured": client is not None,
          "extraction_available": client is not None,
          "ai_successful_calls": configured_client.successful_calls,
          "human_review_count": len(human_review), "failed_count": len(failures),
+         "source_failed_count": len(source_failures), "ai_failed_count": len(ai_failures),
+         "refused_count": sum(r.get('outcome') == 'source_refused' for r in reports),
+         "deferred_count": sum(r.get('outcome') == 'ai_deferred' for r in reports),
          "published_count": sum(r.get('outcome') == 'published' for r in reports),
          "unchanged_count": sum(r.get('outcome') == 'unchanged' for r in reports),
          "results": reports,
@@ -218,7 +253,8 @@ def main() -> int:
         REVIEW_OUT.write_text(json.dumps(review, indent=2) + "\n", encoding="utf-8")
 
     log(f"\n{len(reports)} checked · {len(human_review)} proposals need review · "
-        f"{len(failures)} checks incomplete · "
+        f"{len(failures)} checks incomplete · {review['refused_count']} refused · "
+        f"{review['deferred_count']} deferred · "
         f"median freshness {fresh['median_days_since_check']} days"
         + ("  [dry run, nothing written]" if args.dry_run else ""))
     if fresh["site_banner"]:
