@@ -95,15 +95,30 @@ def test_unavailable_provider_is_not_retried_for_every_model(factory, status):
     assert 'private provider body' not in json.dumps(client.diagnostics)
 
 
-def test_429_waits_once_then_moves_to_next_provider(factory):
+def test_429_waits_once_per_model_then_moves_on(factory, monkeypatch):
+    monkeypatch.setenv('AI_MAX_RUN_CALLS', '10')
     seen, waits = [], []
     def handler(request):
         seen.append(str(request.url))
         return httpx.Response(429, headers={'Retry-After': '2'}) if 'googleapis' in str(request.url) else httpx.Response(200, json=answer('openrouter'))
     client = factory(handler, [GEMINI, OPENROUTER], sleep=waits.append)
     assert client.generate_structured('I', 'X', SCHEMA).provider == 'openrouter'
-    assert len(seen) == 3
-    assert waits == [2]
+    assert [u.split('/models/')[-1].split(':')[0] for u in seen[:4]] == ['first'] * 2 + ['second'] * 2
+    assert len(seen) == 5
+    assert waits == [2, 2]
+
+
+def test_429_on_one_model_falls_back_to_the_next_model(factory):
+    """Gemini quotas are per model: a rate-limited primary must not end AI for the run."""
+    def handler(request):
+        if '/models/first:' in str(request.url):
+            return httpx.Response(429, headers={'Retry-After': '99999'})
+        return httpx.Response(200, json=answer())
+    client = factory(handler)
+    assert client.generate_structured('I', 'X', SCHEMA).model == 'second'
+    assert client.generate_structured('I', 'X', SCHEMA).model == 'second'
+    assert ('gemini', 'first') in client.disabled
+    assert ('gemini', 'second') not in client.disabled
 
 
 def test_long_retry_after_does_not_wait(factory):
@@ -112,7 +127,7 @@ def test_long_retry_after_does_not_wait(factory):
     client = factory(handler, sleep=lambda s: pytest.fail('Unbounded retry wait'))
     with pytest.raises(AIUnavailable):
         client.generate_structured('I', 'X', SCHEMA)
-    assert client.calls == 1
+    assert client.calls == 2   # one try per model, no waiting
 
 
 def test_network_failure_falls_back(factory):
@@ -274,7 +289,19 @@ def test_default_byte_limit_accepts_full_unicode_page_and_schema(factory):
 def test_default_models_follow_requested_order(monkeypatch):
     monkeypatch.setenv('AI_PROVIDERS', 'gemini')
     monkeypatch.delenv('AI_GEMINI_MODELS', raising=False)
-    assert ai.providers_from_env()[0].models == ('gemini-3.5-flash-lite', 'gemini-flash-lite-latest')
+    assert ai.providers_from_env()[0].models == ('gemini-3.5-flash-lite', 'gemini-3.1-flash-lite')
+
+
+def test_default_limits_cover_a_full_pass_within_free_tier(monkeypatch):
+    for name in ('AI_GEMINI_DAILY_CALLS', 'AI_GEMINI_MIN_INTERVAL_MS', 'AI_MAX_RUN_CALLS',
+                 'AI_OPENROUTER_DAILY_CALLS', 'AI_OPENROUTER_MIN_INTERVAL_MS'):
+        monkeypatch.delenv(name, raising=False)
+    monkeypatch.setenv('AI_PROVIDERS', 'gemini,openrouter')
+    gemini, openrouter = ai.providers_from_env()
+    assert (gemini.daily_calls, gemini.interval) == (150, 6.0)
+    assert (openrouter.daily_calls, openrouter.interval) == (20, 5.0)
+    assert AIClient([gemini]).run_cap == 150
+    assert 60 / gemini.interval < 15          # under the 15 requests/minute limit
 
 
 def _fake_git(monkeypatch, pushes, ledger_changed_upstream=False):

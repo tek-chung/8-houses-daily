@@ -12,9 +12,12 @@ validated provider interface. Existing listings are retained when AI is unavaila
    determine API pricing: the key inherits its project's billing settings.
 3. Check [current model pricing](https://ai.google.dev/gemini-api/docs/pricing)
    and the account's actual quota. The starting configuration uses
-   `gemini-3.5-flash-lite,gemini-flash-lite-latest`; availability must still be checked for
-   this account. The application cap of 20 calls is a conservative setting,
-   not a claim about Google's allowance. Verification also consumes calls.
+   `gemini-3.5-flash-lite,gemini-3.1-flash-lite`; availability must still be checked for
+   this account. In October 2026 the free tier gave each of these models 15
+   requests/minute, 250k input tokens/minute and 500 requests/day, per project.
+   The application cap of 150 calls covers one full pass (about 110 calls) at 30%
+   of one model's daily limit. Use a project that nothing else draws on: Google's
+   quota is shared by everything in the project.
 4. In this repository's **Settings → Secrets and variables → Actions**, add the
    repository secret `GEMINI_API_KEY`. Never paste the key into chat or commit it.
 5. Add repository variables:
@@ -22,11 +25,15 @@ validated provider interface. Existing listings are retained when AI is unavaila
 | Variable | Starting value |
 | --- | --- |
 | `AI_PROVIDERS` | `gemini` |
-| `AI_GEMINI_MODELS` | `gemini-3.5-flash-lite,gemini-flash-lite-latest` |
+| `AI_GEMINI_MODELS` | `gemini-3.5-flash-lite,gemini-3.1-flash-lite` |
 | `AI_GEMINI_FREE_TIER_CONFIRMED` | `true`, after the billing check |
-| `AI_GEMINI_DAILY_CALLS` | `20`, or a lower value matching the account |
-| `AI_MAX_RUN_CALLS` | `20`, or a lower value |
-| `AI_GEMINI_MIN_INTERVAL_MS` | `5000`, increase if required |
+| `AI_GEMINI_DAILY_CALLS` | `150`, or lower to match the account |
+| `AI_MAX_RUN_CALLS` | `150`, or lower |
+| `AI_GEMINI_MIN_INTERVAL_MS` | `6000`; keeps 60k-character pages under 250k tokens/minute |
+
+These are also the workflow defaults, so the variables are only needed to change
+them. A 429 from one model switches off that model only; the next model in
+`AI_GEMINI_MODELS` has its own quota and is tried instead.
 
 The workflow always sets `AI_DAILY_USD=0`. Free-tier confirmation is an operator
 attestation; the code cannot independently verify billing. If project billing or
@@ -98,13 +105,12 @@ proposed changes create a review PR. Provider response bodies are not logged;
 the summary shows only the provider's error status and a short message with any
 key-like strings redacted.
 
-The run allowance is small next to the work: each changed page needs one
-extraction call plus one verification call per role with a stated screening or
-status fact. With 20 calls a run, expect roughly four or five pages per run.
-Pages left over are deferred (not failed) and the least recently extracted pages
-go first next run, so every charity is reached in rotation. Raise
-`AI_GEMINI_DAILY_CALLS` and `AI_MAX_RUN_CALLS` only within the account's free-tier
-limits.
+Each changed page needs one extraction call plus one verification call per role
+with a stated screening or status fact: about 110 calls for all 32 charities.
+If the allowance runs out first, the remaining pages are deferred (not failed) and
+the least recently extracted pages go first next run, so every charity is reached
+in rotation. Raise `AI_GEMINI_DAILY_CALLS` and `AI_MAX_RUN_CALLS` only within the
+account's free-tier limits.
 
 Gemini accepts a subset of JSON Schema. `minLength`, `maxLength`, `pattern` and
 `uniqueItems` are removed from the schema sent to Gemini (sending them caused the

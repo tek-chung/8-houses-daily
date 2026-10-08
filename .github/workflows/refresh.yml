@@ -32,7 +32,7 @@ jobs:
   refresh:
     # Pinned: ubuntu-latest moves to Ubuntu 26 from 19 October 2026.
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 45   # up to 150 AI calls at 6 s spacing, plus fetching
     steps:
       - uses: actions/checkout@v5
 
@@ -91,15 +91,15 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           AI_PROVIDERS: ${{ vars.AI_PROVIDERS || 'gemini' }}
-          AI_GEMINI_MODELS: ${{ vars.AI_GEMINI_MODELS || 'gemini-3.5-flash-lite,gemini-flash-lite-latest' }}
+          AI_GEMINI_MODELS: ${{ vars.AI_GEMINI_MODELS || 'gemini-3.5-flash-lite,gemini-3.1-flash-lite' }}
           AI_MAX_INPUT_BYTES: ${{ vars.AI_MAX_INPUT_BYTES || '262144' }}
           AI_GEMINI_FREE_TIER_CONFIRMED: ${{ vars.AI_GEMINI_FREE_TIER_CONFIRMED || 'false' }}
-          AI_GEMINI_DAILY_CALLS: ${{ vars.AI_GEMINI_DAILY_CALLS || '20' }}
-          AI_GEMINI_MIN_INTERVAL_MS: ${{ vars.AI_GEMINI_MIN_INTERVAL_MS || '5000' }}
+          AI_GEMINI_DAILY_CALLS: ${{ vars.AI_GEMINI_DAILY_CALLS || '150' }}
+          AI_GEMINI_MIN_INTERVAL_MS: ${{ vars.AI_GEMINI_MIN_INTERVAL_MS || '6000' }}
           AI_OPENROUTER_MODELS: ${{ vars.AI_OPENROUTER_MODELS }}
           AI_OPENROUTER_FREE_TIER_CONFIRMED: ${{ vars.AI_OPENROUTER_FREE_TIER_CONFIRMED || 'false' }}
           AI_OPENROUTER_DAILY_CALLS: ${{ vars.AI_OPENROUTER_DAILY_CALLS || '20' }}
-          AI_MAX_RUN_CALLS: ${{ vars.AI_MAX_RUN_CALLS || '20' }}
+          AI_MAX_RUN_CALLS: ${{ vars.AI_MAX_RUN_CALLS || '150' }}
           AI_DAILY_USD: '0'
           AI_LEDGER_GIT_SYNC: 'true'
           PYTHONPATH: pipeline

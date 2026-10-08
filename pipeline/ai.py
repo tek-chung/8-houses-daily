@@ -22,7 +22,13 @@ from jsonschema import Draft202012Validator, ValidationError, validate
 
 from config import ROOT, STATE
 
-DEFAULT_GEMINI_MODELS = 'gemini-3.5-flash-lite,gemini-flash-lite-latest'
+# Two models with separate free-tier quotas (500 requests/day each in October 2026).
+# A 'latest' alias would add nothing: it can resolve to the primary model.
+DEFAULT_GEMINI_MODELS = 'gemini-3.5-flash-lite,gemini-3.1-flash-lite'
+# A full pass is ~110 calls (one extraction per page, one verification per role).
+# 6 s between calls keeps 60k-character pages under the 250k tokens/minute limit.
+DEFAULT_LIMITS = {'gemini': ('150', '6000'), 'openrouter': ('20', '5000')}
+DEFAULT_RUN_CALLS = '150'
 DEFAULT_MAX_INPUT_BYTES = 262144  # accommodates the fetcher's 60,000-char cap + schema
 
 class AIUnavailable(Exception):
@@ -198,8 +204,8 @@ def providers_from_env() -> list[Provider]:
             raise ValueError('Invalid AI model identifier')
         providers.append(Provider(name, models, os.environ.get(name.upper() + '_API_KEY', ''),
                                   os.environ.get(prefix + 'FREE_TIER_CONFIRMED') == 'true',
-                                  int(os.environ.get(prefix + 'DAILY_CALLS', '20')),
-                                  float(os.environ.get(prefix + 'MIN_INTERVAL_MS', '5000')) / 1000))
+                                  int(os.environ.get(prefix + 'DAILY_CALLS', DEFAULT_LIMITS[name][0])),
+                                  float(os.environ.get(prefix + 'MIN_INTERVAL_MS', DEFAULT_LIMITS[name][1])) / 1000))
     return providers
 
 
@@ -207,7 +213,7 @@ class AIClient:
     def __init__(self, providers=None, ledger=None, transport=None, sleep=time.sleep):
         self.providers = providers if providers is not None else providers_from_env()
         self.daily_usd = float(os.environ.get('AI_DAILY_USD', '0'))
-        self.run_cap = int(os.environ.get('AI_MAX_RUN_CALLS', '20'))
+        self.run_cap = int(os.environ.get('AI_MAX_RUN_CALLS', DEFAULT_RUN_CALLS))
         self.max_bytes = int(os.environ.get('AI_MAX_INPUT_BYTES', str(DEFAULT_MAX_INPUT_BYTES)))
         self.max_tokens = int(os.environ.get('AI_MAX_OUTPUT_TOKENS', '4096'))
         self.max_wait = float(os.environ.get('AI_MAX_RETRY_SECONDS', '15'))
@@ -301,7 +307,10 @@ class AIClient:
                     # model; disabling it here would end AI for the rest of the run.
                     if failure.kind not in ('malformed', 'incomplete'):
                         self.disabled.add(identity)
-                    if failure.kind in ('auth', 'provider_unavailable', 'network', 'rate_limited'):
+                    # Gemini quotas are per model, so a 429 leaves the next model in
+                    # the list usable. Auth, network and server failures affect the
+                    # whole provider.
+                    if failure.kind in ('auth', 'provider_unavailable', 'network'):
                         self.disabled.update((provider.name, m) for m in provider.models)
                     break
         failures = list(dict.fromkeys(
