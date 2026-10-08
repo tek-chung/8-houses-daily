@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-08T09:28:28+00:00",
+  "generated_at": "2026-10-08T10:03:56+00:00",
   "median_days_since_check": 36,
   "oldest_days_since_check": 44,
   "orgs_total": 32,
@@ -14,7 +14,7 @@
     "ace-of-clubs": {
       "days_since_check": 36,
       "state": "stale",
-      "link_status": "ok",
+      "link_status": "dead",
       "suppress_assertive": true,
       "suppress_fields": [
         "screening",
@@ -374,7 +374,7 @@
     "west-london-mission": {
       "days_since_check": 36,
       "state": "stale",
-      "link_status": "ok",
+      "link_status": "dead",
       "suppress_assertive": true,
       "suppress_fields": [
         "screening",
