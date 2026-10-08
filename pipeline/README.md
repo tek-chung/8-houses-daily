@@ -192,15 +192,29 @@ quoting — we're restating in our own words.
 
 ## Weekly review
 
-The Action opens one PR. Read `pipeline/state/review.json`: each item carries the
-reasons, the changed fields, and the proposed records. Accept what's right into
-`data/orgs/*.json`, set `provenance.reviewed_by_human: true`, merge.
+The Action opens one PR listing what it held back. Decide on `main`, after
+`git fetch`, with `pipeline/review.py`. It reads the newest `freshness/review-*`
+branch (or a local `pipeline/state/review.json`):
 
-Review volume depends on source changes, available quota and enabled providers.
-Do not loosen the gate to reduce the queue. When approving a source snapshot,
-copy its `fetched_content_hash` into the organisation's `check.content_hash` and
-its `checked_at` into `check.last_success` only after checking the proposed facts.
-Otherwise the next run correctly treats it as an unapproved baseline again.
+```bash
+python pipeline/review.py list                # what is waiting
+python pipeline/review.py show crisis         # field-by-field changes, new and missing roles
+python pipeline/review.py approve crisis      # publish it as human-reviewed
+python pipeline/review.py approve crisis --drop "Kitchen helper" --keep-missing
+python pipeline/review.py reject crisis       # current listing stays
+```
+
+Read the charity's page before approving: approving marks every record
+`provenance.reviewed_by_human`. `approve` also records the page version as the
+approved baseline (`check.content_hash`, `check.last_success`), so an unchanged
+page is not proposed again. It refuses stale or repeated decisions, schema-invalid
+records, duplicate ids and anything the site build would reject; it writes
+nothing in those cases. `reject` keeps the current listing and records the page
+version, meaning "the listing is still right for this page". Roles no longer found
+are removed on approval unless `--keep-missing` keeps them as status unknown.
+
+Then commit `data/` and push; Cloudflare deploys it. Close the PR without
+merging. Do not loosen the gate to reduce the queue.
 
 ## Setup
 
@@ -221,5 +235,5 @@ Otherwise the next run correctly treats it as an unapproved baseline again.
   a headless browser — not something to paper over.
 - **No automatic deletion.** A role that vanishes is queued for review; existing
   published records remain until a human approves a change. Pages get restructured.
-- **No writing to `provenance.reviewed_by_human`.** Only a human merging a PR sets
-  that, which is why the model can't reach it.
+- **No writing to `provenance.reviewed_by_human`.** Only a human running
+  `review.py approve` sets that, which is why the model can't reach it.

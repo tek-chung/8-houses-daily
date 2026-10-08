@@ -171,12 +171,41 @@ def test_openrouter_never_uses_priced_models(factory):
     assert client.calls == 0
 
 
-def test_daily_reservations_survive_new_clients(factory):
+def test_daily_reservations_survive_new_clients(factory, tmp_path):
     handler = lambda r: httpx.Response(200, json=answer())
-    for _ in range(3):
+    for _ in range(3):                      # 3 runs x 3 reserved = 9 of the 10 a day
         factory(handler).generate_structured('I', 'X', SCHEMA)
+    last = factory(handler)                 # the 10th call is granted, not refused
+    last.generate_structured('I', 'X', SCHEMA)
+    with pytest.raises(AIUnavailable):
+        last.generate_structured('I', 'X', SCHEMA)
     with pytest.raises(AIUnavailable):
         factory(lambda r: pytest.fail('Daily cap exceeded')).generate_structured('I', 'X', SCHEMA)
+    data = json.loads((tmp_path / 'usage.json').read_text(encoding='utf-8'))
+    assert next(iter(data.values()))['providers']['gemini'] == 10
+
+
+def test_second_run_of_the_day_gets_what_is_left(tmp_path):
+    """Run #8: 20 already reserved today, asked for 150 of 150, got nothing."""
+    path = tmp_path / 'usage.json'
+    provider = replace(GEMINI, daily_calls=150)
+    assert Ledger(path).reserve(provider, 20, 0) == 20
+    assert Ledger(path).reserve(provider, 150, 0) == 130
+    with pytest.raises(AIUnavailable):
+        Ledger(path).reserve(provider, 150, 0)
+    data = json.loads(path.read_text(encoding='utf-8'))
+    assert next(iter(data.values()))['providers']['gemini'] == 150
+
+
+def test_partial_grant_limits_the_run(factory, monkeypatch, tmp_path):
+    monkeypatch.setenv('AI_MAX_RUN_CALLS', '10')
+    Ledger(tmp_path / 'usage.json').reserve(GEMINI, 8, 0)   # 2 of 10 left today
+    client = factory(lambda r: httpx.Response(200, json=answer()))
+    client.generate_structured('I', 'X', SCHEMA)
+    client.generate_structured('I', 'X', SCHEMA)
+    with pytest.raises(AIUnavailable):
+        client.generate_structured('I', 'X', SCHEMA)
+    assert client.calls == 2 and client.budget_exhausted
 
 
 def test_run_limit_counts_failed_calls(factory):

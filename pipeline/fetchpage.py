@@ -291,8 +291,11 @@ def fetch(url: str, known_hash: str | None = None,
         r = _get(url, headers)
     except Exception as exc:
         message = f"{type(exc).__name__}: {exc}"
+        # Only a missing intermediate certificate is something browsers quietly
+        # repair. An expired or wrong-host certificate warns visitors too, so it
+        # is a real fault with the link (Ace of Clubs, West London Mission).
         return FetchResult("failed", error=message,
-                           refused="CERTIFICATE_VERIFY_FAILED" in message)
+                           refused="unable to get local issuer certificate" in message)
 
     if r.status_code == 304:
         if not conditional:

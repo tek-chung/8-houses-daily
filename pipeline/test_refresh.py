@@ -176,11 +176,15 @@ def test_refusals_are_flagged_but_missing_pages_are_not(mocked_http, monkeypatch
     assert result.status == 'failed' and result.refused is refused
 
 
-def test_tls_verification_failure_is_a_refusal(mocked_http, monkeypatch):
+@pytest.mark.parametrize('detail,refused', [
+    ('unable to get local issuer certificate', True),   # browsers repair the chain
+    ('certificate has expired', False),                  # browsers warn visitors too
+    ("Hostname mismatch, certificate is not valid for 'www.example.org'", False)])
+def test_only_repairable_tls_failures_are_refusals(mocked_http, monkeypatch, detail, refused):
     def get(url, headers):
-        raise httpx.ConnectError('[SSL: CERTIFICATE_VERIFY_FAILED] unable to get local issuer')
+        raise httpx.ConnectError(f'[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: {detail}')
     monkeypatch.setattr(fetchpage, '_get', get)
-    assert fetchpage.fetch('https://example.org', cache_write=False).refused is True
+    assert fetchpage.fetch('https://example.org', cache_write=False).refused is refused
 
 
 def test_refused_source_never_marks_a_working_link_dead(record, monkeypatch):

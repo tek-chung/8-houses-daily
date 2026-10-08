@@ -115,7 +115,12 @@ class Ledger:
     def __init__(self, path: Path, checkpoint: Callable | None = None):
         self.path, self.checkpoint = path, checkpoint
 
-    def reserve(self, provider: Provider, calls: int, daily_usd: float):
+    def reserve(self, provider: Provider, calls: int, daily_usd: float) -> int:
+        """Reserve up to `calls` from today's allowance; return how many were granted.
+
+        Granting only what is left (rather than all-or-nothing) matters for a second
+        run on the same UTC day: run #8 asked for 150 with 130 left and got none.
+        """
         if (not math.isfinite(provider.estimated_cost) or provider.estimated_cost < 0
                 or not math.isfinite(daily_usd) or daily_usd < 0):
             raise ValueError('Invalid AI price or budget')
@@ -136,10 +141,14 @@ class Ledger:
             day = utc_day()
             usage = data.setdefault(day, {'providers': {}, 'reserved_usd': 0.0})
             used = usage['providers'].get(provider.name, 0)
-            cost = provider.estimated_cost * calls
-            if used + calls > provider.daily_calls or usage['reserved_usd'] + cost > daily_usd:
+            grant = min(calls, provider.daily_calls - used)
+            if provider.estimated_cost > 0:
+                spare = daily_usd - usage['reserved_usd']
+                grant = min(grant, math.floor(spare / provider.estimated_cost + 1e-9))
+            if grant < 1:
                 raise AIUnavailable('daily AI allowance exhausted; no request sent')
-            usage['providers'][provider.name] = used + calls
+            cost = provider.estimated_cost * grant
+            usage['providers'][provider.name] = used + grant
             usage['reserved_usd'] += cost
             pending = self.path.with_suffix('.tmp')
             pending.write_text(json.dumps(data, indent=2) + '\n', encoding='utf-8')
@@ -148,6 +157,7 @@ class Ledger:
                 self.checkpoint()  # failure prevents all subsequent network calls
         finally:
             lock.unlink()
+        return grant
 
 
 def git_checkpoint():
@@ -246,8 +256,8 @@ class AIClient:
         if provider.name not in self.remaining or self.lease_days.get(provider.name) != day:
             # Reserve the maximum before using any part; no refunds after crashes.
             allowance = min(self.run_cap - self.calls, provider.daily_calls)
-            self.ledger.reserve(provider, allowance, self.daily_usd)
-            self.remaining[provider.name] = allowance
+            granted = self.ledger.reserve(provider, allowance, self.daily_usd)
+            self.remaining[provider.name] = granted if isinstance(granted, int) else allowance
             self.lease_days[provider.name] = day
             if utc_day() != day:
                 return self._reserve(provider)  # a CI checkpoint crossed midnight

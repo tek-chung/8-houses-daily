@@ -99,8 +99,8 @@ the remote cap. The provider still enforces its own account/project quotas.
 An AI or extraction failure makes the workflow fail after safe updates and
 diagnostic artifacts are saved. A charity page that cannot be read raises a
 warning instead: existing listings are kept and the summary names the page. A site
-that refuses the crawler (HTTP 401/403/429/451, or a TLS chain only browsers can
-complete) is reported as refused and never marks the link dead. Only genuine
+that refuses the crawler (HTTP 401/403/429/451, or a certificate chain only browsers
+can complete) is reported as refused and never marks the link dead. Only genuine
 proposed changes create a review PR. Provider response bodies are not logged;
 the summary shows only the provider's error status and a short message with any
 key-like strings redacted.

@@ -30,7 +30,7 @@ def test_pr_only_lists_valid_proposals():
     summary = render(report, pr=True)
     assert 'Proposal charity' in summary
     assert 'Failed charity' not in summary
-    assert 'fetched_content_hash' in summary
+    assert 'python pipeline/review.py approve' in summary
 
 
 def test_provider_message_and_new_counts_are_shown():

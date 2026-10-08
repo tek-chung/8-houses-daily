@@ -46,12 +46,15 @@ def render(report, pr=False):
                       'on Gemini.', '']
     if human:
         lines += ['### Proposals to review', '',
-                  'Review only entries with `outcome: review_required` and `proposed` '
-                  'records in `pipeline/state/review.json`. Screening, recruitment status '
-                  'and intake changes require human approval. After checking the facts, '
-                  'copy accepted records, their `fetched_content_hash` and `checked_at` '
-                  'into the organisation record. Set `provenance.reviewed_by_human` '
-                  'only after a human has reviewed them.', '']
+                  'Screening, recruitment status, intake and new or missing roles need a '
+                  'person. On `main`, after `git fetch`:', '',
+                  '```',
+                  'python pipeline/review.py list',
+                  'python pipeline/review.py show <org-id>      # then read their page',
+                  'python pipeline/review.py approve <org-id>   # or: reject <org-id>',
+                  '```', '',
+                  'Then commit `data/` and push; Cloudflare deploys it. Close this PR '
+                  'without merging. Approving marks the records as reviewed by a human.', '']
     results = report.get('results', [])
     selected = [r for r in results if r.get('outcome') == 'review_required' or
                 (not pr and r.get('outcome') in ('source_failed', 'source_refused',
