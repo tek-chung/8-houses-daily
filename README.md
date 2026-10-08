@@ -117,13 +117,18 @@ the build imports nothing outside the standard library, and hosting is free.
   `wrangler.jsonc` declares an assets-only Worker pointing at `dist`; the Python
   version comes from `.python-version`. Cloudflare's guidance since Workers gained
   static-asset serving is to start here rather than on Pages.
-- **GitHub Pages** — `.github/workflows/deploy.yml` is ready; set the `SITE_URL`
-  repository variable and add a custom domain.
+- **GitHub Actions** — `.github/workflows/deploy.yml` builds and validates the
+  site using the `SITE_URL` repository variable. It deploys to the existing
+  Cloudflare Worker when `CLOUDFLARE_API_TOKEN` is configured as a repository
+  secret and `CLOUDFLARE_ACCOUNT_ID` as a repository variable (or secret).
+  Without those credentials, it saves the validated build as an artifact and
+  reports that automatic deployment is not configured. Local Wrangler releases
+  remain available.
 
 **It must be served from a domain root.** Every internal reference is
 root-absolute, so a project page at `user.github.io/repo/` breaks every one of
-them. The deploy workflow refuses to publish in that situation rather than
-shipping a site with no stylesheet.
+them. The production site is hosted at `https://daily.8houses.co.uk/` on Cloudflare;
+the workflow does not publish to GitHub Pages.
 
 ---
 

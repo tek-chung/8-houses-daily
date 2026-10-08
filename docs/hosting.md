@@ -52,19 +52,23 @@ auto-trailing-slash` makes `/about/` resolve to `/about/index.html`, which the
 whole URL scheme depends on. `not_found_handling: 404-page` serves the paper's own
 "No such page in this edition" instead of a bare Cloudflare error.
 
-## Option B — GitHub Pages
+## GitHub Actions with the existing Cloudflare Worker
 
-Keeps everything in one place, which matters because the weekly freshness check
-already runs there. `.github/workflows/deploy.yml` is written and ready.
+Production is served at `https://daily.8houses.co.uk/` by the `8-houses-daily`
+Cloudflare Worker. `.github/workflows/deploy.yml` builds and validates it on pushes
+to `main`; it does not publish to GitHub Pages or require a `CNAME` file.
 
-1. Settings → **Pages** → Source: **GitHub Actions**.
-2. Settings → **Secrets and variables** → **Actions** → **Variables** → add
-   `SITE_URL`. The workflow fails loudly without it rather than quietly publishing
-   canonical URLs pointing at `example.org`.
-3. Add a custom domain in Settings → Pages. This writes a `CNAME` file, which the
-   workflow checks for — **without a custom domain the deploy deliberately fails**,
-   because a project page serves from `/repo/` and the site would be broken.
-4. Push to `main`.
+1. In Settings → **Secrets and variables** → **Actions** → **Variables**, set
+   `SITE_URL` to `https://daily.8houses.co.uk`.
+2. To enable automatic Cloudflare releases, add a scoped deployment token as the
+   `CLOUDFLARE_API_TOKEN` repository secret, and its account ID as the
+   `CLOUDFLARE_ACCOUNT_ID` repository variable (or secret).
+3. Push to `main`. The workflow runs the Python and browser checks and packages
+   the site before deploying with the repository's Wrangler version.
+
+Without Cloudflare credentials, the workflow validates and saves the
+`production-site` artifact, then explicitly reports that automatic deployment is
+not configured. Local Wrangler deployment remains the release path in that case.
 
 ## Neither, for now
 
