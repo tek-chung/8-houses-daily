@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-08T07:38:39+00:00",
+  "generated_at": "2026-10-08T09:03:56+00:00",
   "median_days_since_check": 36,
   "oldest_days_since_check": 44,
   "orgs_total": 32,
@@ -134,7 +134,7 @@
     "housing-justice": {
       "days_since_check": 36,
       "state": "stale",
-      "link_status": "dead",
+      "link_status": "ok",
       "suppress_assertive": true,
       "suppress_fields": [
         "screening",
@@ -170,7 +170,7 @@
     "north-london-action-for-the-homeless": {
       "days_since_check": 36,
       "state": "stale",
-      "link_status": "dead",
+      "link_status": "ok",
       "suppress_assertive": true,
       "suppress_fields": [
         "screening",
@@ -266,7 +266,7 @@
     "spitalfields-crypt-trust": {
       "days_since_check": 36,
       "state": "stale",
-      "link_status": "dead",
+      "link_status": "ok",
       "suppress_assertive": true,
       "suppress_fields": [
         "screening",

@@ -24,12 +24,12 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-08T07:38:02+00:00",
+      "last_attempt": "2026-10-08T09:02:53+00:00",
       "last_success": "2026-09-02T00:00:00+00:00",
-      "link_status": "dead",
+      "link_status": "ok",
       "content_hash": null,
-      "consecutive_failures": 2,
-      "etag": null,
+      "consecutive_failures": 0,
+      "etag": "\"7089-1791445084;gz\"",
       "last_modified": null
     }
   },
