@@ -1,0 +1,4375 @@
+{
+  "generated_at": "2026-10-08T10:03:56+00:00",
+  "dry_run": false,
+  "ai_configured": true,
+  "extraction_available": true,
+  "ai_successful_calls": 46,
+  "human_review_count": 21,
+  "failed_count": 4,
+  "source_failed_count": 2,
+  "ai_failed_count": 2,
+  "refused_count": 7,
+  "deferred_count": 0,
+  "published_count": 0,
+  "unchanged_count": 0,
+  "results": [
+    {
+      "org_id": "ace-of-clubs",
+      "name": "Ace of Clubs",
+      "url": "https://aceofclubs.org.uk/volunteer/",
+      "route": "review",
+      "reasons": [
+        "fetch failed 2 times; link marked dead",
+        "ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1010)"
+      ],
+      "roles_before": 1,
+      "roles_after": 1,
+      "outcome": "source_failed"
+    },
+    {
+      "org_id": "akt",
+      "name": "akt",
+      "url": "https://www.akt.org.uk/volunteer/",
+      "route": "auto",
+      "reasons": [
+        "site refused the automated check; link status unchanged",
+        "HTTP 403"
+      ],
+      "roles_before": 2,
+      "roles_after": 2,
+      "outcome": "source_refused"
+    },
+    {
+      "org_id": "emmaus",
+      "name": "Emmaus Greenwich",
+      "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+      "route": "auto",
+      "reasons": [
+        "site refused the automated check; link status unchanged",
+        "HTTP 403"
+      ],
+      "roles_before": 3,
+      "roles_after": 3,
+      "outcome": "source_refused"
+    },
+    {
+      "org_id": "groundswell",
+      "name": "Groundswell",
+      "url": "https://groundswell.org.uk/volunteer-opportunities/",
+      "route": "auto",
+      "reasons": [
+        "site refused the automated check; link status unchanged",
+        "HTTP 403"
+      ],
+      "roles_before": 2,
+      "roles_after": 2,
+      "outcome": "source_refused"
+    },
+    {
+      "org_id": "providence-row",
+      "name": "Providence Row",
+      "url": "https://www.providencerow.org.uk/pages/16-volunteer-for-us",
+      "route": "auto",
+      "reasons": [
+        "site refused the automated check; link status unchanged",
+        "HTTP 403"
+      ],
+      "roles_before": 2,
+      "roles_after": 2,
+      "outcome": "source_refused"
+    },
+    {
+      "org_id": "solace-womens-aid",
+      "name": "Solace Women's Aid",
+      "url": "https://www.solacewomensaid.org/get-involved/volunteer-with-us/",
+      "route": "auto",
+      "reasons": [
+        "site refused the automated check; link status unchanged",
+        "HTTP 403"
+      ],
+      "roles_before": 1,
+      "roles_after": 1,
+      "outcome": "source_refused"
+    },
+    {
+      "org_id": "the-connection-at-st-martins",
+      "name": "The Connection at St Martin's",
+      "url": "https://www.connection-at-stmartins.org.uk/volunteer/",
+      "route": "auto",
+      "reasons": [
+        "site refused the automated check; link status unchanged",
+        "HTTP 403"
+      ],
+      "roles_before": 2,
+      "roles_after": 2,
+      "outcome": "source_refused"
+    },
+    {
+      "org_id": "the-whitechapel-mission",
+      "name": "The Whitechapel Mission",
+      "url": "https://whitechapel.org.uk/volunteering",
+      "route": "auto",
+      "reasons": [
+        "site refused the automated check; link status unchanged",
+        "HTTP 403"
+      ],
+      "roles_before": 2,
+      "roles_after": 2,
+      "outcome": "source_refused"
+    },
+    {
+      "org_id": "west-london-mission",
+      "name": "West London Mission",
+      "url": "https://www.wlm.org.uk/pages/category/volunteer-opportunities",
+      "route": "review",
+      "reasons": [
+        "fetch failed 2 times; link marked dead",
+        "ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.wlm.org.uk'. (_ssl.c:1010)"
+      ],
+      "roles_before": 1,
+      "roles_after": 1,
+      "outcome": "source_failed"
+    },
+    {
+      "org_id": "cardboard-citizens",
+      "name": "Cardboard Citizens",
+      "url": "https://cardboardcitizens.org.uk/",
+      "route": "review",
+      "reasons": [
+        "no roles found on page at all"
+      ],
+      "roles_before": 0,
+      "roles_after": 0,
+      "fetched_content_hash": "a2ef32b919b690f0334cea97ff44da1c18d4852133d3e3cdd500384e3cd72fc4",
+      "checked_at": "2026-10-08T09:58:11+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "The provided page text is heavily spammed with casino advertisements and contains no legitimate volunteering roles or opportunities for Cardboard Citizens.",
+      "unsupported": [],
+      "changed_fields": [],
+      "outcome": "review_required",
+      "proposed": []
+    },
+    {
+      "org_id": "centrepoint",
+      "name": "Centrepoint",
+      "url": "https://centrepoint.org.uk/get-involved/volunteer/",
+      "route": "review",
+      "reasons": [
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 2,
+      "roles_after": 0,
+      "fetched_content_hash": "033f25f20af2e41add295e10053708c04066cdb62569744fa9cafab67b483061",
+      "checked_at": "2026-10-08T09:58:20+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "The page lists general volunteer role types (helpline, gardener, mentor, etc.) but does not link to specific open roles or application forms per role. Status is unknown.",
+      "unsupported": [],
+      "changed_fields": [
+        "status"
+      ],
+      "outcome": "review_required",
+      "proposed": []
+    },
+    {
+      "org_id": "crisis",
+      "name": "Crisis",
+      "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+      "route": "review",
+      "reasons": [
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 3,
+      "roles_after": 0,
+      "fetched_content_hash": "32b69bdf630b8d08557e90887bbb99b508ac2381578b8e9a42a9400b4445d097",
+      "checked_at": "2026-10-08T09:58:25+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "The pages describe various volunteer opportunities in shops, local services, and Christmas programmes, but do not list specific active vacancy listings with apply links for individual roles.",
+      "unsupported": [],
+      "changed_fields": [
+        "status"
+      ],
+      "outcome": "review_required",
+      "proposed": []
+    },
+    {
+      "org_id": "depaul-uk",
+      "name": "Depaul UK",
+      "url": "https://www.depaul.org.uk/nightstop-volunteer/",
+      "route": "review",
+      "reasons": [
+        "critical field changed: screening.induction, screening.interview, screening.references",
+        "new role detected",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 2,
+      "roles_after": 2,
+      "fetched_content_hash": "71bc8af6f5d60b19a59a1d0f1f6c88ba56cbc332373347bf056ee2f5f7498b19",
+      "checked_at": "2026-10-08T09:58:34+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "Page describes both hosting and transport roles, with sign up at the bottom.",
+      "unsupported": [],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Nightstop Host",
+          "what_youd_do": "Provide a temporary spare room, warm meals, washing facilities, and a supportive environment for individuals facing homelessness.",
+          "commitment": "flexible",
+          "min_term_months": null,
+          "typical_shift_hours": 12,
+          "when": [
+            "overnight",
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "hosting",
+          "location_type": "own_home",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": true,
+            "interview": null,
+            "min_age": null,
+            "induction": "Full training provided"
+          },
+          "skills": [],
+          "eligibility": [
+            "Must have a spare room"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.depaul.org.uk/nightstop-volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "id": "depaul-uk-nightstop-host",
+          "org_id": "depaul-uk",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T09:58:52+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.depaul.org.uk/nightstop-volunteer/",
+            "verified_fields": [
+              "screening.dbs",
+              "screening.references",
+              "screening.induction",
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Nightstop Transport Volunteer",
+          "what_youd_do": "Drive or accompany vulnerable young individuals to their designated host accommodation while providing reassurance.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "outreach",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.depaul.org.uk/nightstop-volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "id": "depaul-uk-nightstop-transport-volunteer",
+          "org_id": "depaul-uk",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T09:58:52+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.depaul.org.uk/nightstop-volunteer/",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "glass-door",
+      "name": "Glass Door Homeless Charity",
+      "url": "https://www.glassdoor.org.uk/listing/category/volunteer-roles",
+      "route": "review",
+      "reasons": [
+        "critical field changed: screening.induction, status",
+        "critical field changed: status",
+        "new role detected",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 3,
+      "roles_after": 3,
+      "fetched_content_hash": "4ecf590f373dbe22eb0970e6ca5ff33518627dabb5b9d19df4fb41e2f199291a",
+      "checked_at": "2026-10-08T09:58:52+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "The page also lists external volunteering opportunities with partner organisations like Ace of Clubs and City Harvest, which are not hosted directly by Glass Door.",
+      "unsupported": [],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Winter Night Shelter Volunteer",
+          "what_youd_do": "Welcome individuals experiencing homelessness, help set up the venue, and prepare and serve food and drinks during winter evening sessions.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 3.0,
+          "when": [
+            "weekday_evening",
+            "weekend_evening"
+          ],
+          "specific_times": "Around 6pm to 9pm on the same evening weekly, early November to April",
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": {
+            "start_month": 11,
+            "end_month": 4
+          },
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://www.glassdoor.org.uk/winter-night-shelter-volunteers",
+          "url_specificity": "role",
+          "id": "glass-door-winter-night-shelter",
+          "org_id": "glass-door",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T09:59:10+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.glassdoor.org.uk/listing/category/volunteer-roles",
+            "verified_fields": [],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Casework Triage Volunteer",
+          "what_youd_do": "Greet visitors at partner day centres, assess their support needs, signpost them to appropriate services, and help manage facility access.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 3.0,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "One day a week, daytime shifts",
+          "activity": "advice",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "closed",
+          "apply_url": "https://www.glassdoor.org.uk/casework-triage-volunteering",
+          "url_specificity": "role",
+          "id": "glass-door-casework-triage-volunteer",
+          "org_id": "glass-door",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T09:59:10+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.glassdoor.org.uk/listing/category/volunteer-roles",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Lived Experience Group Member",
+          "what_youd_do": "Share personal insights and feedback on current operations, strategy, and future planning to help improve homelessness services.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": "Meets five times per year",
+          "activity": "varies",
+          "location_type": "hybrid",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [
+            "Must have current or past experience of homelessness"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.glassdoor.org.uk/lived-experience-group",
+          "url_specificity": "role",
+          "id": "glass-door-lived-experience-group",
+          "org_id": "glass-door",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T09:59:10+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.glassdoor.org.uk/listing/category/volunteer-roles",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "handson-london",
+      "name": "HandsOn London",
+      "url": "https://www.handsonlondon.org.uk/volunteer",
+      "route": "review",
+      "reasons": [
+        "new role detected",
+        "new role detected",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 2,
+      "roles_after": 2,
+      "fetched_content_hash": "a794a417705c58dec8425eaa901b77be4130eeef21c375e5b0e2a1e46da33d62",
+      "checked_at": "2026-10-08T09:59:10+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "Extracted sample roles from the aggregate listings page provided by HandsOn London.",
+      "unsupported": [],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "HandsOn London Volunteer",
+          "what_youd_do": "Participate in varied and flexible community volunteering sessions organised across London.",
+          "commitment": "flexible",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "varies",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.handsonlondon.org.uk/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "id": "handson-london-handson-london-volunteer",
+          "org_id": "handson-london",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T09:59:28+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.handsonlondon.org.uk/volunteer",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Warehouse Assistant",
+          "what_youd_do": "Inspect food items to ensure quality standards and arrange produce into trays for community distribution.",
+          "commitment": "flexible",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "shop_warehouse",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.handsonlondon.org.uk/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "id": "handson-london-warehouse-assistant",
+          "org_id": "handson-london",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T09:59:28+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.handsonlondon.org.uk/volunteer",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "housing-justice",
+      "name": "Housing Justice",
+      "url": "https://housingjustice.org.uk/get-involved",
+      "route": "review",
+      "reasons": [
+        "critical field changed: screening.induction",
+        "new role detected",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 3,
+      "roles_after": 2,
+      "fetched_content_hash": "579442c18fdf60a1fe91fc4fba45ff1f754038d37ce5571dc481ac2aecd83592",
+      "checked_at": "2026-10-08T09:59:28+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "Resident Landlord scheme is paid rental income rather than volunteering, so it was excluded.",
+      "unsupported": [],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Citadel Volunteer",
+          "what_youd_do": "Provide community support to individuals facing homelessness to help them build skills and sustain tenancies.",
+          "commitment": "flexible",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "befriending",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://housingjustice.org.uk/citadel/volunteer-signup",
+          "url_specificity": "role",
+          "id": "housing-justice-citadel",
+          "org_id": "housing-justice",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:00:00+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://housingjustice.org.uk/get-involved",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Hosting Volunteer",
+          "what_youd_do": "Provide a safe spare room in your property to accommodate a vulnerable migrant or destitute person seeking sanctuary.",
+          "commitment": "long_term",
+          "min_term_months": 3,
+          "typical_shift_hours": 24,
+          "when": [
+            "overnight"
+          ],
+          "specific_times": null,
+          "activity": "hosting",
+          "location_type": "own_home",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [
+            "Must have a spare room to offer"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://housingjustice.org.uk/get-involved",
+          "url_specificity": "org_volunteer_page",
+          "id": "housing-justice-hosting-volunteer",
+          "org_id": "housing-justice",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:00:00+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://housingjustice.org.uk/get-involved",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "manna-society",
+      "name": "Manna Society",
+      "url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
+      "route": "review",
+      "reasons": [
+        "critical field changed: screening.induction, status",
+        "new role detected",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 2,
+      "roles_after": 2,
+      "fetched_content_hash": "9f7d111d63c67323bdefa8fe0d1691ae1c352c05580c8fc0ea10d109555a3e50",
+      "checked_at": "2026-10-08T10:00:00+00:00",
+      "confidence": 0.5,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "Page mentions general volunteering without explicit application instructions, but describes active roles.",
+      "unsupported": [
+        "Kitchen Volunteer::status"
+      ],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Kitchen Volunteer",
+          "what_youd_do": "Pre-rinse kitchen plates and cookware before loading them into the commercial dishwasher for washing.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": 4,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "9am to 1pm",
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
+          "url_specificity": "org_volunteer_page",
+          "id": "manna-society-kitchen-volunteer",
+          "org_id": "manna-society",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:00:18+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 0.5,
+            "source_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
+            "verified_fields": [],
+            "unsupported_fields": [
+              "status"
+            ]
+          }
+        },
+        {
+          "title": "IT Volunteer",
+          "what_youd_do": "Prepare computer equipment in the digital suite, guide visitors through basic tech questions, and maintain an orderly environment.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": 2,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "10.30\u201311.30am and 12noon\u20131.00pm",
+          "activity": "teaching",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [
+            "Basic computer skills"
+          ],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
+          "url_specificity": "org_volunteer_page",
+          "id": "manna-society-it-volunteer",
+          "org_id": "manna-society",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:00:18+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 0.5,
+            "source_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "new-horizon-youth-centre",
+      "name": "New Horizon Youth Centre",
+      "url": "https://nhyouthcentre.org.uk/get-involved/jobs/",
+      "route": "review",
+      "reasons": [
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 3,
+      "roles_after": 0,
+      "fetched_content_hash": "a713b7c67c16c524c2f7612c39287a36c2029bf041907c5c500a910b966b9261",
+      "checked_at": "2026-10-08T10:00:18+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "The page only lists a full-time paid staff position with a salary, not a volunteering role.",
+      "unsupported": [],
+      "changed_fields": [
+        "status"
+      ],
+      "outcome": "review_required",
+      "proposed": []
+    },
+    {
+      "org_id": "north-london-action-for-the-homeless",
+      "name": "North London Action for the Homeless",
+      "url": "https://www.nlah.org.uk/volunteer/",
+      "route": "review",
+      "reasons": [
+        "new role detected",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 2,
+      "roles_after": 1,
+      "fetched_content_hash": "7677329d05283aee29aa7dba6a72b0d81c6691daac0f76af8ae826ead3c806f4",
+      "checked_at": "2026-10-08T10:00:24+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": null,
+      "unsupported": [],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Kitchen Washing Up Volunteer",
+          "what_youd_do": "Clean plates, cutlery, and kitchen equipment after service hours to keep the dining area operational.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 2,
+          "when": [
+            "weekday_evening",
+            "weekday_daytime"
+          ],
+          "specific_times": "Wednesdays 7pm-9pm or Mondays 1pm-3pm",
+          "activity": "practical",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.nlah.org.uk/wp-content/uploads/2022/01/NLAH-VolunteerApplicationForm2022.docx",
+          "url_specificity": "role",
+          "id": "north-london-action-for-the-homeless-kitchen-washing-up-volunteer",
+          "org_id": "north-london-action-for-the-homeless",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:00:38+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.nlah.org.uk/volunteer/",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "shelter",
+      "name": "Shelter",
+      "url": "https://england.shelter.org.uk/support_us/volunteer",
+      "route": "review",
+      "reasons": [
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 4,
+      "roles_after": 0,
+      "fetched_content_hash": "4e9ef762c5aaacfa038b3999a1939a7a0cfbb24f5663d640dc4e1b6618634269",
+      "checked_at": "2026-10-08T10:00:38+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "The page describes general volunteering categories (shops, community, services, campaigns) rather than individual live roles. Users are directed to browse current opportunities separately.",
+      "unsupported": [],
+      "changed_fields": [
+        "status"
+      ],
+      "outcome": "review_required",
+      "proposed": []
+    },
+    {
+      "org_id": "simon-community",
+      "name": "Simon Community",
+      "url": "https://www.simoncommunity.org.uk/volunteering/",
+      "route": "review",
+      "reasons": [
+        "critical field changed: screening.induction, screening.interview, screening.min_age",
+        "non-critical fields only, confidence ok",
+        "new role detected",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 4,
+      "roles_after": 3,
+      "fetched_content_hash": "5fd9b31ddb50eda409f25c4e18f5fed3a41c8ce68a04aac9e77336445acd0fe5",
+      "checked_at": "2026-10-08T10:00:44+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": null,
+      "unsupported": [],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Live-in Volunteer",
+          "what_youd_do": "Reside in community housing alongside homeless residents, assisting with outreach services, housekeeping chores, and cooking meals.",
+          "commitment": "long_term",
+          "min_term_months": 6,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "outreach",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": true,
+            "min_age": 18,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.simoncommunity.org.uk/volunteering/",
+          "url_specificity": "org_volunteer_page",
+          "id": "simon-community-live-in",
+          "org_id": "simon-community",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:01:08+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.simoncommunity.org.uk/volunteering/",
+            "verified_fields": [
+              "screening.min_age",
+              "screening.interview",
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Part-time Outreach Volunteer",
+          "what_youd_do": "Walk designated central London routes to distribute hot drinks, food, clothing, and toiletries to rough sleepers.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": 2,
+          "when": [
+            "weekday_evening",
+            "weekend_evening"
+          ],
+          "specific_times": "Evening services",
+          "activity": "outreach",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.simoncommunity.org.uk/volunteering/",
+          "url_specificity": "org_volunteer_page",
+          "id": "simon-community-part-time-outreach-volunteer",
+          "org_id": "simon-community",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:01:08+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.simoncommunity.org.uk/volunteering/",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Minibus Driver",
+          "what_youd_do": "Drive the community minibus to support evening outreach operations.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": 2,
+          "when": [
+            "weekday_evening",
+            "weekend_evening"
+          ],
+          "specific_times": "Evening services",
+          "activity": "practical",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": 25,
+            "induction": null
+          },
+          "skills": [
+            "Driving licence"
+          ],
+          "eligibility": [
+            "Must be over 25 with a clean driving licence"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.simoncommunity.org.uk/volunteering/",
+          "url_specificity": "org_volunteer_page",
+          "id": "simon-community-minibus-driver",
+          "org_id": "simon-community",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:01:08+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.simoncommunity.org.uk/volunteering/",
+            "verified_fields": [
+              "screening.min_age",
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "single-homeless-project",
+      "name": "Single Homeless Project",
+      "url": "https://www.shp.org.uk/get-involved/volunteer/",
+      "route": "review",
+      "reasons": [
+        "critical field changed: screening.induction",
+        "new role detected",
+        "new role detected",
+        "new role detected",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 2,
+      "roles_after": 4,
+      "fetched_content_hash": "a56d3670f53d33cfa5459235b88eadcfc2cb7d4640ba5c2b9a37f7b2949233ca",
+      "checked_at": "2026-10-08T10:01:08+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "General opportunities require checking an external portal, while peer mentoring and specific skill tracks are detailed on the page.",
+      "unsupported": [],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Wellbeing and Employment Programme Volunteer",
+          "what_youd_do": "Facilitate activity sessions and workshops covering art, music, gardening, or sports to support client wellbeing.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "teaching",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [
+            "Gardening",
+            "Art",
+            "Music",
+            "Sports",
+            "Digital skills"
+          ],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://www.shp.org.uk/get-involved/volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "id": "single-homeless-project-wellbeing-and-employment-programme-volunteer",
+          "org_id": "single-homeless-project",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:01:20+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.shp.org.uk/get-involved/volunteer/",
+            "verified_fields": [],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Corporate and Individual Fundraising Support",
+          "what_youd_do": "Assist the internal team with event coordination and fundraising operations.",
+          "commitment": "flexible",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "fundraising",
+          "location_type": "in_person",
+          "who_can_apply": "either",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://www.shp.org.uk/get-involved/volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "id": "single-homeless-project-corporate-and-individual-fundraising-support",
+          "org_id": "single-homeless-project",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:01:20+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.shp.org.uk/get-involved/volunteer/",
+            "verified_fields": [],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Hostel Maintenance and Gardening Volunteer",
+          "what_youd_do": "Carry out hands-on repairs, painting, DIY tasks, and garden upkeep at residential properties.",
+          "commitment": "flexible",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "practical",
+          "location_type": "in_person",
+          "who_can_apply": "either",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [
+            "DIY",
+            "Gardening",
+            "Maintenance"
+          ],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://www.shp.org.uk/get-involved/volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "id": "single-homeless-project-hostel-maintenance-and-gardening-volunteer",
+          "org_id": "single-homeless-project",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:01:20+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.shp.org.uk/get-involved/volunteer/",
+            "verified_fields": [],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Peer Mentor",
+          "what_youd_do": "Use personal recovery experiences to guide, encourage, and support individuals navigating similar life challenges.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "mentoring",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [
+            "Must live in London",
+            "Must be abstinent from illegal and problematic substances for at least six months",
+            "Must have been free of serious mental health episodes or offending behaviour for at least six months"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.shp.org.uk/get-involved/volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "id": "shp-peer-mentor",
+          "org_id": "single-homeless-project",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:01:20+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.shp.org.uk/get-involved/volunteer/",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "spear",
+      "name": "SPEAR",
+      "url": "https://www.spearlondon.org/get-involved/be-a-volunteer/",
+      "route": "review",
+      "reasons": [
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 1,
+      "roles_after": 0,
+      "fetched_content_hash": "f0c1d29fd9bc12dd5ccc58256bb78d2f8f7614851a480f60a5b09f070b131bfe",
+      "checked_at": "2026-10-08T10:01:20+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "The page explicitly states that they are not currently recruiting new volunteers and no specific roles are listed.",
+      "unsupported": [],
+      "changed_fields": [
+        "status"
+      ],
+      "outcome": "review_required",
+      "proposed": []
+    },
+    {
+      "org_id": "spires",
+      "name": "Spires",
+      "url": "https://www.spires.org.uk/volunteer",
+      "route": "review",
+      "reasons": [
+        "new role detected",
+        "new role detected",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 3,
+      "roles_after": 2,
+      "fetched_content_hash": "3b86c0ce07a71f95cf9da969f676743f0ad0e966d96fb2d33a73624c9b554bc0",
+      "checked_at": "2026-10-08T10:01:32+00:00",
+      "confidence": 0.333,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": null,
+      "unsupported": [
+        "Centre Volunteer::status",
+        "Outreach Volunteer::status"
+      ],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Centre Volunteer",
+          "what_youd_do": "Assist support staff during breakfast services by helping prepare and serve food, wash dishes, and sort through donated items.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://www.spires.org.uk/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "id": "spires-centre-volunteer",
+          "org_id": "spires",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:01:50+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 0.333,
+            "source_url": "https://www.spires.org.uk/volunteer",
+            "verified_fields": [],
+            "unsupported_fields": [
+              "status"
+            ]
+          }
+        },
+        {
+          "title": "Outreach Volunteer",
+          "what_youd_do": "Travel in the outreach vehicle to offer listening ears, practical advice, and health packs to women experiencing homelessness.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": 4,
+          "when": [
+            "weekday_daytime",
+            "weekday_evening",
+            "overnight"
+          ],
+          "specific_times": "Monday, Thursday and Friday nights 9:30pm-1:30am, Monday mornings 5am-8am",
+          "activity": "outreach",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "Health & safety training and shift shadowing required before starting"
+          },
+          "skills": [],
+          "eligibility": [
+            "Women only"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://www.spires.org.uk/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "id": "spires-outreach-volunteer",
+          "org_id": "spires",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:01:50+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 0.333,
+            "source_url": "https://www.spires.org.uk/volunteer",
+            "verified_fields": [
+              "screening.induction"
+            ],
+            "unsupported_fields": [
+              "status"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "spitalfields-crypt-trust",
+      "name": "Spitalfields Crypt Trust",
+      "url": "https://sct.org.uk/support-us/volunteer/",
+      "route": "review",
+      "reasons": [
+        "critical field changed: screening.induction",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 4,
+      "roles_after": 1,
+      "fetched_content_hash": "fb4bae959d4bd0b0da94a943e64355265f05cd0c7d3336526e053fdd67aaf43e",
+      "checked_at": "2026-10-08T10:01:50+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "General shop volunteering details were found on a linked subpage, while other specific roles mentioned lack distinct descriptions.",
+      "unsupported": [],
+      "changed_fields": [
+        "apply_url",
+        "screening.induction",
+        "specific_times",
+        "status",
+        "url_specificity",
+        "what_youd_do"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Charity Shop Volunteer",
+          "what_youd_do": "Assist customers, handle transactions, and sort donated items in a local retail environment.",
+          "commitment": "flexible",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "shop_warehouse",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://sct.org.uk/support-us/volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "id": "sct-charity-shops",
+          "org_id": "spitalfields-crypt-trust",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:02:02+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://sct.org.uk/support-us/volunteer/",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "st-mungos",
+      "name": "St Mungo's",
+      "url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+      "route": "review",
+      "reasons": [
+        "extraction failed: extraction reproduced source text verbatim: 'skills to help build an accessible online learning' in role 'Digital Skills Volunteer'"
+      ],
+      "roles_before": 5,
+      "roles_after": 5,
+      "fetched_content_hash": "2f273e1f35e47da270c19fccd2cd9f3b1e3a056ad74770edcedca1242f6440b6",
+      "checked_at": "2026-10-08T10:02:02+00:00",
+      "outcome": "extraction_failed"
+    },
+    {
+      "org_id": "stonewall-housing",
+      "name": "Stonewall Housing",
+      "url": "https://stonewallhousing.org/volunteer-opportunities/",
+      "route": "review",
+      "reasons": [
+        "new role detected",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 1,
+      "roles_after": 1,
+      "fetched_content_hash": "731f36336e04e38defda18024f25fa47f2433d3110af404b35ed9b5c89b2339d",
+      "checked_at": "2026-10-08T10:02:14+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": null,
+      "unsupported": [],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Live Chat Volunteer",
+          "what_youd_do": "Respond to written enquiries via an online web chat platform, guiding individuals to relevant services and sharing information.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Monday to Friday, 14:00 to 17:00",
+          "activity": "advice",
+          "location_type": "remote",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": null,
+            "interview": null,
+            "min_age": 18,
+            "induction": "Full training provided by expert caseworkers"
+          },
+          "skills": [],
+          "eligibility": [
+            "Must be 18+",
+            "Must live in the UK",
+            "Must have own internet-enabled device"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://stonewallhousing.org/volunteer-opportunities/",
+          "url_specificity": "org_volunteer_page",
+          "id": "stonewall-housing-live-chat-volunteer",
+          "org_id": "stonewall-housing",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:02:27+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://stonewallhousing.org/volunteer-opportunities/",
+            "verified_fields": [
+              "screening.dbs",
+              "screening.min_age",
+              "screening.induction",
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "streets-of-london",
+      "name": "Streets of London",
+      "url": "https://www.streetsoflondon.org.uk/get-involved/volunteer",
+      "route": "review",
+      "reasons": [
+        "no roles found on page at all"
+      ],
+      "roles_before": 0,
+      "roles_after": 0,
+      "fetched_content_hash": "ec5012ca0a5be7504fd0cbb6327ce96f328f315fa8e88ebba622b3ebf2e58389",
+      "checked_at": "2026-10-08T10:02:27+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "The page does not describe specific volunteering roles for this charity, but instead directs readers to Homeless Link to find other London homelessness organisations.",
+      "unsupported": [],
+      "changed_fields": [],
+      "outcome": "review_required",
+      "proposed": []
+    },
+    {
+      "org_id": "thames-reach",
+      "name": "Thames Reach",
+      "url": "https://thamesreach.org.uk/support-us/volunteer/",
+      "route": "review",
+      "reasons": [
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 1,
+      "roles_after": 0,
+      "fetched_content_hash": "987b32b3a6c900f1bb2dc62a28ae03fe8cb3e6d1bf3558744323f87bc42e31cc",
+      "checked_at": "2026-10-08T10:02:32+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "The page describes general volunteering and a corporate scheme, but lists no specific current roles or application links.",
+      "unsupported": [],
+      "changed_fields": [
+        "status"
+      ],
+      "outcome": "review_required",
+      "proposed": []
+    },
+    {
+      "org_id": "the-big-issue-foundation",
+      "name": "The Big Issue Foundation",
+      "url": "https://www.bigissue.com/partner-with-the-big-issue-group/engage-your-staff/volunteering-with-the-big-issue/",
+      "route": "review",
+      "reasons": [
+        "new role detected",
+        "new role detected",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 1,
+      "roles_after": 2,
+      "fetched_content_hash": "61cab5b688d86aa350896e2eccc485b9e5233db46fa928fbf19701b49ac39f83",
+      "checked_at": "2026-10-08T10:02:39+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.1-flash-lite",
+      "page_notes": "The page describes roles but does not explicitly state which are currently recruiting. Applicants are invited to email the organisation to inquire.",
+      "unsupported": [],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Office Administration Volunteer",
+          "what_youd_do": "Assist the staff team with various general administrative tasks and office support duties.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "admin",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": true,
+            "interview": null,
+            "min_age": null,
+            "induction": "Training provided in safeguarding, health and safety, and data protection."
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://www.bigissue.com/partner-with-the-big-issue-group/engage-your-staff/volunteering-with-the-big-issue/",
+          "url_specificity": "org_volunteer_page",
+          "id": "the-big-issue-foundation-office-administration-volunteer",
+          "org_id": "the-big-issue-foundation",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:03:04+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.bigissue.com/partner-with-the-big-issue-group/engage-your-staff/volunteering-with-the-big-issue/",
+            "verified_fields": [
+              "screening.references",
+              "screening.induction"
+            ],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Front Desk Vendor Support Volunteer",
+          "what_youd_do": "Provide help and support to vendors visiting the office, managing their inquiries at the reception point.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "befriending",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": true,
+            "interview": null,
+            "min_age": null,
+            "induction": "Training provided in safeguarding, health and safety, and data protection."
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://www.bigissue.com/partner-with-the-big-issue-group/engage-your-staff/volunteering-with-the-big-issue/",
+          "url_specificity": "org_volunteer_page",
+          "id": "the-big-issue-foundation-front-desk-vendor-support-volunteer",
+          "org_id": "the-big-issue-foundation",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:03:04+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.bigissue.com/partner-with-the-big-issue-group/engage-your-staff/volunteering-with-the-big-issue/",
+            "verified_fields": [
+              "screening.references",
+              "screening.induction"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "the-passage",
+      "name": "The Passage",
+      "url": "https://passage.org.uk/volunteering-vacancies/",
+      "route": "review",
+      "reasons": [
+        "extraction failed: No valid AI result: gemini/gemini-3.5-flash-lite: malformed; gemini/gemini-3.1-flash-lite: malformed"
+      ],
+      "roles_before": 8,
+      "roles_after": 8,
+      "fetched_content_hash": "84f79fccb76fea7958d8467fd2dbeb352adc685d8b1e8b598212d842ca000dd9",
+      "checked_at": "2026-10-08T10:03:04+00:00",
+      "outcome": "extraction_failed"
+    },
+    {
+      "org_id": "women-at-the-well",
+      "name": "Women at the Well",
+      "url": "https://www.watw.org.uk/volunteer",
+      "route": "review",
+      "reasons": [
+        "new role detected",
+        "new role detected",
+        "new role detected",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 3,
+      "roles_after": 3,
+      "fetched_content_hash": "72e373a8aaaadf2d4fa09832e753695d32e586e83d251d2ef088fe85feb174f3",
+      "checked_at": "2026-10-08T10:03:34+00:00",
+      "confidence": 0.571,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "Service is women-only. Volunteers are asked to pick a regular weekly shift during drop-in hours (Mon-Thu 12:30-15:30). A waitlist is available if spots are full.",
+      "unsupported": [
+        "Kitchen Volunteer::screening.dbs",
+        "Activities Volunteer::screening.dbs",
+        "Reception Volunteer::screening.dbs"
+      ],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Kitchen Volunteer",
+          "what_youd_do": "Prepare snacks and light meals for drop-in visitors while chatting and keeping the kitchen area orderly.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 3,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Monday through Thursday, 12:30pm to 3:30pm",
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "Complete a certified online course in food hygiene and receive hands-on training."
+          },
+          "skills": [],
+          "eligibility": [
+            "Women only service"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.watw.org.uk/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "id": "women-at-the-well-kitchen-volunteer",
+          "org_id": "women-at-the-well",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:03:56+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 0.571,
+            "source_url": "https://www.watw.org.uk/volunteer",
+            "verified_fields": [
+              "screening.induction",
+              "status"
+            ],
+            "unsupported_fields": [
+              "screening.dbs"
+            ]
+          }
+        },
+        {
+          "title": "Activities Volunteer",
+          "what_youd_do": "Facilitate creative workshops or support visitors by engaging in craft sessions and offering a friendly conversation.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 3,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Monday through Thursday, 12:30pm to 3:30pm",
+          "activity": "teaching",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [
+            "Creative skills",
+            "People skills"
+          ],
+          "eligibility": [
+            "Women only service"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.watw.org.uk/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "id": "women-at-the-well-activities-volunteer",
+          "org_id": "women-at-the-well",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:03:56+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 0.571,
+            "source_url": "https://www.watw.org.uk/volunteer",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": [
+              "screening.dbs"
+            ]
+          }
+        },
+        {
+          "title": "Reception Volunteer",
+          "what_youd_do": "Welcome visitors at the front desk, handle incoming telephone calls, and schedule appointments.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 3,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Monday through Thursday, 12:30pm to 3:30pm",
+          "activity": "admin",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [
+            "Communication",
+            "Organization"
+          ],
+          "eligibility": [
+            "Women only service"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.watw.org.uk/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "id": "women-at-the-well-reception-volunteer",
+          "org_id": "women-at-the-well",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:03:56+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 0.571,
+            "source_url": "https://www.watw.org.uk/volunteer",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": [
+              "screening.dbs"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "ai_diagnostics": [
+    {
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "reason": "malformed",
+      "status": null,
+      "message": null
+    },
+    {
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "reason": "malformed",
+      "status": null,
+      "message": null
+    },
+    {
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "reason": "malformed",
+      "status": null,
+      "message": null
+    }
+  ],
+  "checked": 32,
+  "needs_review": 25,
+  "median_days_since_check": 36,
+  "site_banner": false,
+  "items": [
+    {
+      "org_id": "ace-of-clubs",
+      "name": "Ace of Clubs",
+      "url": "https://aceofclubs.org.uk/volunteer/",
+      "route": "review",
+      "reasons": [
+        "fetch failed 2 times; link marked dead",
+        "ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1010)"
+      ],
+      "roles_before": 1,
+      "roles_after": 1,
+      "outcome": "source_failed"
+    },
+    {
+      "org_id": "west-london-mission",
+      "name": "West London Mission",
+      "url": "https://www.wlm.org.uk/pages/category/volunteer-opportunities",
+      "route": "review",
+      "reasons": [
+        "fetch failed 2 times; link marked dead",
+        "ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.wlm.org.uk'. (_ssl.c:1010)"
+      ],
+      "roles_before": 1,
+      "roles_after": 1,
+      "outcome": "source_failed"
+    },
+    {
+      "org_id": "cardboard-citizens",
+      "name": "Cardboard Citizens",
+      "url": "https://cardboardcitizens.org.uk/",
+      "route": "review",
+      "reasons": [
+        "no roles found on page at all"
+      ],
+      "roles_before": 0,
+      "roles_after": 0,
+      "fetched_content_hash": "a2ef32b919b690f0334cea97ff44da1c18d4852133d3e3cdd500384e3cd72fc4",
+      "checked_at": "2026-10-08T09:58:11+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "The provided page text is heavily spammed with casino advertisements and contains no legitimate volunteering roles or opportunities for Cardboard Citizens.",
+      "unsupported": [],
+      "changed_fields": [],
+      "outcome": "review_required",
+      "proposed": []
+    },
+    {
+      "org_id": "centrepoint",
+      "name": "Centrepoint",
+      "url": "https://centrepoint.org.uk/get-involved/volunteer/",
+      "route": "review",
+      "reasons": [
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 2,
+      "roles_after": 0,
+      "fetched_content_hash": "033f25f20af2e41add295e10053708c04066cdb62569744fa9cafab67b483061",
+      "checked_at": "2026-10-08T09:58:20+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "The page lists general volunteer role types (helpline, gardener, mentor, etc.) but does not link to specific open roles or application forms per role. Status is unknown.",
+      "unsupported": [],
+      "changed_fields": [
+        "status"
+      ],
+      "outcome": "review_required",
+      "proposed": []
+    },
+    {
+      "org_id": "crisis",
+      "name": "Crisis",
+      "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+      "route": "review",
+      "reasons": [
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 3,
+      "roles_after": 0,
+      "fetched_content_hash": "32b69bdf630b8d08557e90887bbb99b508ac2381578b8e9a42a9400b4445d097",
+      "checked_at": "2026-10-08T09:58:25+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "The pages describe various volunteer opportunities in shops, local services, and Christmas programmes, but do not list specific active vacancy listings with apply links for individual roles.",
+      "unsupported": [],
+      "changed_fields": [
+        "status"
+      ],
+      "outcome": "review_required",
+      "proposed": []
+    },
+    {
+      "org_id": "depaul-uk",
+      "name": "Depaul UK",
+      "url": "https://www.depaul.org.uk/nightstop-volunteer/",
+      "route": "review",
+      "reasons": [
+        "critical field changed: screening.induction, screening.interview, screening.references",
+        "new role detected",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 2,
+      "roles_after": 2,
+      "fetched_content_hash": "71bc8af6f5d60b19a59a1d0f1f6c88ba56cbc332373347bf056ee2f5f7498b19",
+      "checked_at": "2026-10-08T09:58:34+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "Page describes both hosting and transport roles, with sign up at the bottom.",
+      "unsupported": [],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Nightstop Host",
+          "what_youd_do": "Provide a temporary spare room, warm meals, washing facilities, and a supportive environment for individuals facing homelessness.",
+          "commitment": "flexible",
+          "min_term_months": null,
+          "typical_shift_hours": 12,
+          "when": [
+            "overnight",
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "hosting",
+          "location_type": "own_home",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": true,
+            "interview": null,
+            "min_age": null,
+            "induction": "Full training provided"
+          },
+          "skills": [],
+          "eligibility": [
+            "Must have a spare room"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.depaul.org.uk/nightstop-volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "id": "depaul-uk-nightstop-host",
+          "org_id": "depaul-uk",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T09:58:52+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.depaul.org.uk/nightstop-volunteer/",
+            "verified_fields": [
+              "screening.dbs",
+              "screening.references",
+              "screening.induction",
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Nightstop Transport Volunteer",
+          "what_youd_do": "Drive or accompany vulnerable young individuals to their designated host accommodation while providing reassurance.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "outreach",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.depaul.org.uk/nightstop-volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "id": "depaul-uk-nightstop-transport-volunteer",
+          "org_id": "depaul-uk",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T09:58:52+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.depaul.org.uk/nightstop-volunteer/",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "glass-door",
+      "name": "Glass Door Homeless Charity",
+      "url": "https://www.glassdoor.org.uk/listing/category/volunteer-roles",
+      "route": "review",
+      "reasons": [
+        "critical field changed: screening.induction, status",
+        "critical field changed: status",
+        "new role detected",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 3,
+      "roles_after": 3,
+      "fetched_content_hash": "4ecf590f373dbe22eb0970e6ca5ff33518627dabb5b9d19df4fb41e2f199291a",
+      "checked_at": "2026-10-08T09:58:52+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "The page also lists external volunteering opportunities with partner organisations like Ace of Clubs and City Harvest, which are not hosted directly by Glass Door.",
+      "unsupported": [],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Winter Night Shelter Volunteer",
+          "what_youd_do": "Welcome individuals experiencing homelessness, help set up the venue, and prepare and serve food and drinks during winter evening sessions.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 3.0,
+          "when": [
+            "weekday_evening",
+            "weekend_evening"
+          ],
+          "specific_times": "Around 6pm to 9pm on the same evening weekly, early November to April",
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": {
+            "start_month": 11,
+            "end_month": 4
+          },
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://www.glassdoor.org.uk/winter-night-shelter-volunteers",
+          "url_specificity": "role",
+          "id": "glass-door-winter-night-shelter",
+          "org_id": "glass-door",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T09:59:10+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.glassdoor.org.uk/listing/category/volunteer-roles",
+            "verified_fields": [],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Casework Triage Volunteer",
+          "what_youd_do": "Greet visitors at partner day centres, assess their support needs, signpost them to appropriate services, and help manage facility access.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 3.0,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "One day a week, daytime shifts",
+          "activity": "advice",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "closed",
+          "apply_url": "https://www.glassdoor.org.uk/casework-triage-volunteering",
+          "url_specificity": "role",
+          "id": "glass-door-casework-triage-volunteer",
+          "org_id": "glass-door",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T09:59:10+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.glassdoor.org.uk/listing/category/volunteer-roles",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Lived Experience Group Member",
+          "what_youd_do": "Share personal insights and feedback on current operations, strategy, and future planning to help improve homelessness services.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": "Meets five times per year",
+          "activity": "varies",
+          "location_type": "hybrid",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [
+            "Must have current or past experience of homelessness"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.glassdoor.org.uk/lived-experience-group",
+          "url_specificity": "role",
+          "id": "glass-door-lived-experience-group",
+          "org_id": "glass-door",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T09:59:10+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.glassdoor.org.uk/listing/category/volunteer-roles",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "handson-london",
+      "name": "HandsOn London",
+      "url": "https://www.handsonlondon.org.uk/volunteer",
+      "route": "review",
+      "reasons": [
+        "new role detected",
+        "new role detected",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 2,
+      "roles_after": 2,
+      "fetched_content_hash": "a794a417705c58dec8425eaa901b77be4130eeef21c375e5b0e2a1e46da33d62",
+      "checked_at": "2026-10-08T09:59:10+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "Extracted sample roles from the aggregate listings page provided by HandsOn London.",
+      "unsupported": [],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "HandsOn London Volunteer",
+          "what_youd_do": "Participate in varied and flexible community volunteering sessions organised across London.",
+          "commitment": "flexible",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "varies",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.handsonlondon.org.uk/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "id": "handson-london-handson-london-volunteer",
+          "org_id": "handson-london",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T09:59:28+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.handsonlondon.org.uk/volunteer",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Warehouse Assistant",
+          "what_youd_do": "Inspect food items to ensure quality standards and arrange produce into trays for community distribution.",
+          "commitment": "flexible",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "shop_warehouse",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.handsonlondon.org.uk/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "id": "handson-london-warehouse-assistant",
+          "org_id": "handson-london",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T09:59:28+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.handsonlondon.org.uk/volunteer",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "housing-justice",
+      "name": "Housing Justice",
+      "url": "https://housingjustice.org.uk/get-involved",
+      "route": "review",
+      "reasons": [
+        "critical field changed: screening.induction",
+        "new role detected",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 3,
+      "roles_after": 2,
+      "fetched_content_hash": "579442c18fdf60a1fe91fc4fba45ff1f754038d37ce5571dc481ac2aecd83592",
+      "checked_at": "2026-10-08T09:59:28+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "Resident Landlord scheme is paid rental income rather than volunteering, so it was excluded.",
+      "unsupported": [],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Citadel Volunteer",
+          "what_youd_do": "Provide community support to individuals facing homelessness to help them build skills and sustain tenancies.",
+          "commitment": "flexible",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "befriending",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://housingjustice.org.uk/citadel/volunteer-signup",
+          "url_specificity": "role",
+          "id": "housing-justice-citadel",
+          "org_id": "housing-justice",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:00:00+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://housingjustice.org.uk/get-involved",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Hosting Volunteer",
+          "what_youd_do": "Provide a safe spare room in your property to accommodate a vulnerable migrant or destitute person seeking sanctuary.",
+          "commitment": "long_term",
+          "min_term_months": 3,
+          "typical_shift_hours": 24,
+          "when": [
+            "overnight"
+          ],
+          "specific_times": null,
+          "activity": "hosting",
+          "location_type": "own_home",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [
+            "Must have a spare room to offer"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://housingjustice.org.uk/get-involved",
+          "url_specificity": "org_volunteer_page",
+          "id": "housing-justice-hosting-volunteer",
+          "org_id": "housing-justice",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:00:00+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://housingjustice.org.uk/get-involved",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "manna-society",
+      "name": "Manna Society",
+      "url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
+      "route": "review",
+      "reasons": [
+        "critical field changed: screening.induction, status",
+        "new role detected",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 2,
+      "roles_after": 2,
+      "fetched_content_hash": "9f7d111d63c67323bdefa8fe0d1691ae1c352c05580c8fc0ea10d109555a3e50",
+      "checked_at": "2026-10-08T10:00:00+00:00",
+      "confidence": 0.5,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "Page mentions general volunteering without explicit application instructions, but describes active roles.",
+      "unsupported": [
+        "Kitchen Volunteer::status"
+      ],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Kitchen Volunteer",
+          "what_youd_do": "Pre-rinse kitchen plates and cookware before loading them into the commercial dishwasher for washing.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": 4,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "9am to 1pm",
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
+          "url_specificity": "org_volunteer_page",
+          "id": "manna-society-kitchen-volunteer",
+          "org_id": "manna-society",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:00:18+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 0.5,
+            "source_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
+            "verified_fields": [],
+            "unsupported_fields": [
+              "status"
+            ]
+          }
+        },
+        {
+          "title": "IT Volunteer",
+          "what_youd_do": "Prepare computer equipment in the digital suite, guide visitors through basic tech questions, and maintain an orderly environment.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": 2,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "10.30\u201311.30am and 12noon\u20131.00pm",
+          "activity": "teaching",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [
+            "Basic computer skills"
+          ],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
+          "url_specificity": "org_volunteer_page",
+          "id": "manna-society-it-volunteer",
+          "org_id": "manna-society",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:00:18+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 0.5,
+            "source_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "new-horizon-youth-centre",
+      "name": "New Horizon Youth Centre",
+      "url": "https://nhyouthcentre.org.uk/get-involved/jobs/",
+      "route": "review",
+      "reasons": [
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 3,
+      "roles_after": 0,
+      "fetched_content_hash": "a713b7c67c16c524c2f7612c39287a36c2029bf041907c5c500a910b966b9261",
+      "checked_at": "2026-10-08T10:00:18+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "The page only lists a full-time paid staff position with a salary, not a volunteering role.",
+      "unsupported": [],
+      "changed_fields": [
+        "status"
+      ],
+      "outcome": "review_required",
+      "proposed": []
+    },
+    {
+      "org_id": "north-london-action-for-the-homeless",
+      "name": "North London Action for the Homeless",
+      "url": "https://www.nlah.org.uk/volunteer/",
+      "route": "review",
+      "reasons": [
+        "new role detected",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 2,
+      "roles_after": 1,
+      "fetched_content_hash": "7677329d05283aee29aa7dba6a72b0d81c6691daac0f76af8ae826ead3c806f4",
+      "checked_at": "2026-10-08T10:00:24+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": null,
+      "unsupported": [],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Kitchen Washing Up Volunteer",
+          "what_youd_do": "Clean plates, cutlery, and kitchen equipment after service hours to keep the dining area operational.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 2,
+          "when": [
+            "weekday_evening",
+            "weekday_daytime"
+          ],
+          "specific_times": "Wednesdays 7pm-9pm or Mondays 1pm-3pm",
+          "activity": "practical",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.nlah.org.uk/wp-content/uploads/2022/01/NLAH-VolunteerApplicationForm2022.docx",
+          "url_specificity": "role",
+          "id": "north-london-action-for-the-homeless-kitchen-washing-up-volunteer",
+          "org_id": "north-london-action-for-the-homeless",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:00:38+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.nlah.org.uk/volunteer/",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "shelter",
+      "name": "Shelter",
+      "url": "https://england.shelter.org.uk/support_us/volunteer",
+      "route": "review",
+      "reasons": [
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 4,
+      "roles_after": 0,
+      "fetched_content_hash": "4e9ef762c5aaacfa038b3999a1939a7a0cfbb24f5663d640dc4e1b6618634269",
+      "checked_at": "2026-10-08T10:00:38+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "The page describes general volunteering categories (shops, community, services, campaigns) rather than individual live roles. Users are directed to browse current opportunities separately.",
+      "unsupported": [],
+      "changed_fields": [
+        "status"
+      ],
+      "outcome": "review_required",
+      "proposed": []
+    },
+    {
+      "org_id": "simon-community",
+      "name": "Simon Community",
+      "url": "https://www.simoncommunity.org.uk/volunteering/",
+      "route": "review",
+      "reasons": [
+        "critical field changed: screening.induction, screening.interview, screening.min_age",
+        "non-critical fields only, confidence ok",
+        "new role detected",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 4,
+      "roles_after": 3,
+      "fetched_content_hash": "5fd9b31ddb50eda409f25c4e18f5fed3a41c8ce68a04aac9e77336445acd0fe5",
+      "checked_at": "2026-10-08T10:00:44+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": null,
+      "unsupported": [],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Live-in Volunteer",
+          "what_youd_do": "Reside in community housing alongside homeless residents, assisting with outreach services, housekeeping chores, and cooking meals.",
+          "commitment": "long_term",
+          "min_term_months": 6,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "outreach",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": true,
+            "min_age": 18,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.simoncommunity.org.uk/volunteering/",
+          "url_specificity": "org_volunteer_page",
+          "id": "simon-community-live-in",
+          "org_id": "simon-community",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:01:08+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.simoncommunity.org.uk/volunteering/",
+            "verified_fields": [
+              "screening.min_age",
+              "screening.interview",
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Part-time Outreach Volunteer",
+          "what_youd_do": "Walk designated central London routes to distribute hot drinks, food, clothing, and toiletries to rough sleepers.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": 2,
+          "when": [
+            "weekday_evening",
+            "weekend_evening"
+          ],
+          "specific_times": "Evening services",
+          "activity": "outreach",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.simoncommunity.org.uk/volunteering/",
+          "url_specificity": "org_volunteer_page",
+          "id": "simon-community-part-time-outreach-volunteer",
+          "org_id": "simon-community",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:01:08+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.simoncommunity.org.uk/volunteering/",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Minibus Driver",
+          "what_youd_do": "Drive the community minibus to support evening outreach operations.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": 2,
+          "when": [
+            "weekday_evening",
+            "weekend_evening"
+          ],
+          "specific_times": "Evening services",
+          "activity": "practical",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": 25,
+            "induction": null
+          },
+          "skills": [
+            "Driving licence"
+          ],
+          "eligibility": [
+            "Must be over 25 with a clean driving licence"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.simoncommunity.org.uk/volunteering/",
+          "url_specificity": "org_volunteer_page",
+          "id": "simon-community-minibus-driver",
+          "org_id": "simon-community",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:01:08+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.simoncommunity.org.uk/volunteering/",
+            "verified_fields": [
+              "screening.min_age",
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "single-homeless-project",
+      "name": "Single Homeless Project",
+      "url": "https://www.shp.org.uk/get-involved/volunteer/",
+      "route": "review",
+      "reasons": [
+        "critical field changed: screening.induction",
+        "new role detected",
+        "new role detected",
+        "new role detected",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 2,
+      "roles_after": 4,
+      "fetched_content_hash": "a56d3670f53d33cfa5459235b88eadcfc2cb7d4640ba5c2b9a37f7b2949233ca",
+      "checked_at": "2026-10-08T10:01:08+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "General opportunities require checking an external portal, while peer mentoring and specific skill tracks are detailed on the page.",
+      "unsupported": [],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Wellbeing and Employment Programme Volunteer",
+          "what_youd_do": "Facilitate activity sessions and workshops covering art, music, gardening, or sports to support client wellbeing.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "teaching",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [
+            "Gardening",
+            "Art",
+            "Music",
+            "Sports",
+            "Digital skills"
+          ],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://www.shp.org.uk/get-involved/volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "id": "single-homeless-project-wellbeing-and-employment-programme-volunteer",
+          "org_id": "single-homeless-project",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:01:20+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.shp.org.uk/get-involved/volunteer/",
+            "verified_fields": [],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Corporate and Individual Fundraising Support",
+          "what_youd_do": "Assist the internal team with event coordination and fundraising operations.",
+          "commitment": "flexible",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "fundraising",
+          "location_type": "in_person",
+          "who_can_apply": "either",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://www.shp.org.uk/get-involved/volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "id": "single-homeless-project-corporate-and-individual-fundraising-support",
+          "org_id": "single-homeless-project",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:01:20+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.shp.org.uk/get-involved/volunteer/",
+            "verified_fields": [],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Hostel Maintenance and Gardening Volunteer",
+          "what_youd_do": "Carry out hands-on repairs, painting, DIY tasks, and garden upkeep at residential properties.",
+          "commitment": "flexible",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "practical",
+          "location_type": "in_person",
+          "who_can_apply": "either",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [
+            "DIY",
+            "Gardening",
+            "Maintenance"
+          ],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://www.shp.org.uk/get-involved/volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "id": "single-homeless-project-hostel-maintenance-and-gardening-volunteer",
+          "org_id": "single-homeless-project",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:01:20+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.shp.org.uk/get-involved/volunteer/",
+            "verified_fields": [],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Peer Mentor",
+          "what_youd_do": "Use personal recovery experiences to guide, encourage, and support individuals navigating similar life challenges.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "mentoring",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [
+            "Must live in London",
+            "Must be abstinent from illegal and problematic substances for at least six months",
+            "Must have been free of serious mental health episodes or offending behaviour for at least six months"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.shp.org.uk/get-involved/volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "id": "shp-peer-mentor",
+          "org_id": "single-homeless-project",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:01:20+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.shp.org.uk/get-involved/volunteer/",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "spear",
+      "name": "SPEAR",
+      "url": "https://www.spearlondon.org/get-involved/be-a-volunteer/",
+      "route": "review",
+      "reasons": [
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 1,
+      "roles_after": 0,
+      "fetched_content_hash": "f0c1d29fd9bc12dd5ccc58256bb78d2f8f7614851a480f60a5b09f070b131bfe",
+      "checked_at": "2026-10-08T10:01:20+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "The page explicitly states that they are not currently recruiting new volunteers and no specific roles are listed.",
+      "unsupported": [],
+      "changed_fields": [
+        "status"
+      ],
+      "outcome": "review_required",
+      "proposed": []
+    },
+    {
+      "org_id": "spires",
+      "name": "Spires",
+      "url": "https://www.spires.org.uk/volunteer",
+      "route": "review",
+      "reasons": [
+        "new role detected",
+        "new role detected",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 3,
+      "roles_after": 2,
+      "fetched_content_hash": "3b86c0ce07a71f95cf9da969f676743f0ad0e966d96fb2d33a73624c9b554bc0",
+      "checked_at": "2026-10-08T10:01:32+00:00",
+      "confidence": 0.333,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": null,
+      "unsupported": [
+        "Centre Volunteer::status",
+        "Outreach Volunteer::status"
+      ],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Centre Volunteer",
+          "what_youd_do": "Assist support staff during breakfast services by helping prepare and serve food, wash dishes, and sort through donated items.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://www.spires.org.uk/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "id": "spires-centre-volunteer",
+          "org_id": "spires",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:01:50+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 0.333,
+            "source_url": "https://www.spires.org.uk/volunteer",
+            "verified_fields": [],
+            "unsupported_fields": [
+              "status"
+            ]
+          }
+        },
+        {
+          "title": "Outreach Volunteer",
+          "what_youd_do": "Travel in the outreach vehicle to offer listening ears, practical advice, and health packs to women experiencing homelessness.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": 4,
+          "when": [
+            "weekday_daytime",
+            "weekday_evening",
+            "overnight"
+          ],
+          "specific_times": "Monday, Thursday and Friday nights 9:30pm-1:30am, Monday mornings 5am-8am",
+          "activity": "outreach",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "Health & safety training and shift shadowing required before starting"
+          },
+          "skills": [],
+          "eligibility": [
+            "Women only"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://www.spires.org.uk/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "id": "spires-outreach-volunteer",
+          "org_id": "spires",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:01:50+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 0.333,
+            "source_url": "https://www.spires.org.uk/volunteer",
+            "verified_fields": [
+              "screening.induction"
+            ],
+            "unsupported_fields": [
+              "status"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "spitalfields-crypt-trust",
+      "name": "Spitalfields Crypt Trust",
+      "url": "https://sct.org.uk/support-us/volunteer/",
+      "route": "review",
+      "reasons": [
+        "critical field changed: screening.induction",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 4,
+      "roles_after": 1,
+      "fetched_content_hash": "fb4bae959d4bd0b0da94a943e64355265f05cd0c7d3336526e053fdd67aaf43e",
+      "checked_at": "2026-10-08T10:01:50+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "General shop volunteering details were found on a linked subpage, while other specific roles mentioned lack distinct descriptions.",
+      "unsupported": [],
+      "changed_fields": [
+        "apply_url",
+        "screening.induction",
+        "specific_times",
+        "status",
+        "url_specificity",
+        "what_youd_do"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Charity Shop Volunteer",
+          "what_youd_do": "Assist customers, handle transactions, and sort donated items in a local retail environment.",
+          "commitment": "flexible",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "shop_warehouse",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://sct.org.uk/support-us/volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "id": "sct-charity-shops",
+          "org_id": "spitalfields-crypt-trust",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:02:02+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://sct.org.uk/support-us/volunteer/",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "st-mungos",
+      "name": "St Mungo's",
+      "url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+      "route": "review",
+      "reasons": [
+        "extraction failed: extraction reproduced source text verbatim: 'skills to help build an accessible online learning' in role 'Digital Skills Volunteer'"
+      ],
+      "roles_before": 5,
+      "roles_after": 5,
+      "fetched_content_hash": "2f273e1f35e47da270c19fccd2cd9f3b1e3a056ad74770edcedca1242f6440b6",
+      "checked_at": "2026-10-08T10:02:02+00:00",
+      "outcome": "extraction_failed"
+    },
+    {
+      "org_id": "stonewall-housing",
+      "name": "Stonewall Housing",
+      "url": "https://stonewallhousing.org/volunteer-opportunities/",
+      "route": "review",
+      "reasons": [
+        "new role detected",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 1,
+      "roles_after": 1,
+      "fetched_content_hash": "731f36336e04e38defda18024f25fa47f2433d3110af404b35ed9b5c89b2339d",
+      "checked_at": "2026-10-08T10:02:14+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": null,
+      "unsupported": [],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Live Chat Volunteer",
+          "what_youd_do": "Respond to written enquiries via an online web chat platform, guiding individuals to relevant services and sharing information.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Monday to Friday, 14:00 to 17:00",
+          "activity": "advice",
+          "location_type": "remote",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": null,
+            "interview": null,
+            "min_age": 18,
+            "induction": "Full training provided by expert caseworkers"
+          },
+          "skills": [],
+          "eligibility": [
+            "Must be 18+",
+            "Must live in the UK",
+            "Must have own internet-enabled device"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://stonewallhousing.org/volunteer-opportunities/",
+          "url_specificity": "org_volunteer_page",
+          "id": "stonewall-housing-live-chat-volunteer",
+          "org_id": "stonewall-housing",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:02:27+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://stonewallhousing.org/volunteer-opportunities/",
+            "verified_fields": [
+              "screening.dbs",
+              "screening.min_age",
+              "screening.induction",
+              "status"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "streets-of-london",
+      "name": "Streets of London",
+      "url": "https://www.streetsoflondon.org.uk/get-involved/volunteer",
+      "route": "review",
+      "reasons": [
+        "no roles found on page at all"
+      ],
+      "roles_before": 0,
+      "roles_after": 0,
+      "fetched_content_hash": "ec5012ca0a5be7504fd0cbb6327ce96f328f315fa8e88ebba622b3ebf2e58389",
+      "checked_at": "2026-10-08T10:02:27+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "The page does not describe specific volunteering roles for this charity, but instead directs readers to Homeless Link to find other London homelessness organisations.",
+      "unsupported": [],
+      "changed_fields": [],
+      "outcome": "review_required",
+      "proposed": []
+    },
+    {
+      "org_id": "thames-reach",
+      "name": "Thames Reach",
+      "url": "https://thamesreach.org.uk/support-us/volunteer/",
+      "route": "review",
+      "reasons": [
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 1,
+      "roles_after": 0,
+      "fetched_content_hash": "987b32b3a6c900f1bb2dc62a28ae03fe8cb3e6d1bf3558744323f87bc42e31cc",
+      "checked_at": "2026-10-08T10:02:32+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "The page describes general volunteering and a corporate scheme, but lists no specific current roles or application links.",
+      "unsupported": [],
+      "changed_fields": [
+        "status"
+      ],
+      "outcome": "review_required",
+      "proposed": []
+    },
+    {
+      "org_id": "the-big-issue-foundation",
+      "name": "The Big Issue Foundation",
+      "url": "https://www.bigissue.com/partner-with-the-big-issue-group/engage-your-staff/volunteering-with-the-big-issue/",
+      "route": "review",
+      "reasons": [
+        "new role detected",
+        "new role detected",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 1,
+      "roles_after": 2,
+      "fetched_content_hash": "61cab5b688d86aa350896e2eccc485b9e5233db46fa928fbf19701b49ac39f83",
+      "checked_at": "2026-10-08T10:02:39+00:00",
+      "confidence": 1.0,
+      "model": "gemini/gemini-3.1-flash-lite",
+      "page_notes": "The page describes roles but does not explicitly state which are currently recruiting. Applicants are invited to email the organisation to inquire.",
+      "unsupported": [],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Office Administration Volunteer",
+          "what_youd_do": "Assist the staff team with various general administrative tasks and office support duties.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "admin",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": true,
+            "interview": null,
+            "min_age": null,
+            "induction": "Training provided in safeguarding, health and safety, and data protection."
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://www.bigissue.com/partner-with-the-big-issue-group/engage-your-staff/volunteering-with-the-big-issue/",
+          "url_specificity": "org_volunteer_page",
+          "id": "the-big-issue-foundation-office-administration-volunteer",
+          "org_id": "the-big-issue-foundation",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:03:04+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.bigissue.com/partner-with-the-big-issue-group/engage-your-staff/volunteering-with-the-big-issue/",
+            "verified_fields": [
+              "screening.references",
+              "screening.induction"
+            ],
+            "unsupported_fields": []
+          }
+        },
+        {
+          "title": "Front Desk Vendor Support Volunteer",
+          "what_youd_do": "Provide help and support to vendors visiting the office, managing their inquiries at the reception point.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "befriending",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": true,
+            "interview": null,
+            "min_age": null,
+            "induction": "Training provided in safeguarding, health and safety, and data protection."
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://www.bigissue.com/partner-with-the-big-issue-group/engage-your-staff/volunteering-with-the-big-issue/",
+          "url_specificity": "org_volunteer_page",
+          "id": "the-big-issue-foundation-front-desk-vendor-support-volunteer",
+          "org_id": "the-big-issue-foundation",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:03:04+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 1.0,
+            "source_url": "https://www.bigissue.com/partner-with-the-big-issue-group/engage-your-staff/volunteering-with-the-big-issue/",
+            "verified_fields": [
+              "screening.references",
+              "screening.induction"
+            ],
+            "unsupported_fields": []
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "the-passage",
+      "name": "The Passage",
+      "url": "https://passage.org.uk/volunteering-vacancies/",
+      "route": "review",
+      "reasons": [
+        "extraction failed: No valid AI result: gemini/gemini-3.5-flash-lite: malformed; gemini/gemini-3.1-flash-lite: malformed"
+      ],
+      "roles_before": 8,
+      "roles_after": 8,
+      "fetched_content_hash": "84f79fccb76fea7958d8467fd2dbeb352adc685d8b1e8b598212d842ca000dd9",
+      "checked_at": "2026-10-08T10:03:04+00:00",
+      "outcome": "extraction_failed"
+    },
+    {
+      "org_id": "women-at-the-well",
+      "name": "Women at the Well",
+      "url": "https://www.watw.org.uk/volunteer",
+      "route": "review",
+      "reasons": [
+        "new role detected",
+        "new role detected",
+        "new role detected",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown",
+        "role no longer found on page; status set to unknown"
+      ],
+      "roles_before": 3,
+      "roles_after": 3,
+      "fetched_content_hash": "72e373a8aaaadf2d4fa09832e753695d32e586e83d251d2ef088fe85feb174f3",
+      "checked_at": "2026-10-08T10:03:34+00:00",
+      "confidence": 0.571,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "page_notes": "Service is women-only. Volunteers are asked to pick a regular weekly shift during drop-in hours (Mon-Thu 12:30-15:30). A waitlist is available if spots are full.",
+      "unsupported": [
+        "Kitchen Volunteer::screening.dbs",
+        "Activities Volunteer::screening.dbs",
+        "Reception Volunteer::screening.dbs"
+      ],
+      "changed_fields": [
+        "activity",
+        "apply_url",
+        "commitment",
+        "eligibility",
+        "location_type",
+        "min_term_months",
+        "next_intake",
+        "postcode_district",
+        "screening.dbs",
+        "screening.induction",
+        "screening.interview",
+        "screening.min_age",
+        "screening.references",
+        "seasonal_window",
+        "skills",
+        "specific_times",
+        "status",
+        "title",
+        "typical_shift_hours",
+        "url_specificity",
+        "what_youd_do",
+        "when",
+        "who_can_apply"
+      ],
+      "outcome": "review_required",
+      "proposed": [
+        {
+          "title": "Kitchen Volunteer",
+          "what_youd_do": "Prepare snacks and light meals for drop-in visitors while chatting and keeping the kitchen area orderly.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 3,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Monday through Thursday, 12:30pm to 3:30pm",
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "Complete a certified online course in food hygiene and receive hands-on training."
+          },
+          "skills": [],
+          "eligibility": [
+            "Women only service"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.watw.org.uk/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "id": "women-at-the-well-kitchen-volunteer",
+          "org_id": "women-at-the-well",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:03:56+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 0.571,
+            "source_url": "https://www.watw.org.uk/volunteer",
+            "verified_fields": [
+              "screening.induction",
+              "status"
+            ],
+            "unsupported_fields": [
+              "screening.dbs"
+            ]
+          }
+        },
+        {
+          "title": "Activities Volunteer",
+          "what_youd_do": "Facilitate creative workshops or support visitors by engaging in craft sessions and offering a friendly conversation.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 3,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Monday through Thursday, 12:30pm to 3:30pm",
+          "activity": "teaching",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [
+            "Creative skills",
+            "People skills"
+          ],
+          "eligibility": [
+            "Women only service"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.watw.org.uk/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "id": "women-at-the-well-activities-volunteer",
+          "org_id": "women-at-the-well",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:03:56+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 0.571,
+            "source_url": "https://www.watw.org.uk/volunteer",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": [
+              "screening.dbs"
+            ]
+          }
+        },
+        {
+          "title": "Reception Volunteer",
+          "what_youd_do": "Welcome visitors at the front desk, handle incoming telephone calls, and schedule appointments.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 3,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Monday through Thursday, 12:30pm to 3:30pm",
+          "activity": "admin",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [
+            "Communication",
+            "Organization"
+          ],
+          "eligibility": [
+            "Women only service"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.watw.org.uk/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "id": "women-at-the-well-reception-volunteer",
+          "org_id": "women-at-the-well",
+          "coords": null,
+          "provenance": {
+            "extracted_at": "2026-10-08T10:03:56+00:00",
+            "method": "llm",
+            "reviewed_by_human": false,
+            "confidence": 0.571,
+            "source_url": "https://www.watw.org.uk/volunteer",
+            "verified_fields": [
+              "status"
+            ],
+            "unsupported_fields": [
+              "screening.dbs"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
