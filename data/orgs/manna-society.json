@@ -20,9 +20,9 @@
     "robots_allowed": true,
     "check": {
       "last_attempt": "2026-10-08T10:00:00+00:00",
-      "last_success": "2026-08-25T00:00:00+00:00",
+      "last_success": "2026-10-08T10:00:00+00:00",
       "link_status": "ok",
-      "content_hash": null,
+      "content_hash": "9f7d111d63c67323bdefa8fe0d1691ae1c352c05580c8fc0ea10d109555a3e50",
       "consecutive_failures": 0,
       "etag": "\"84-1791430480;gz\"",
       "last_modified": null,
@@ -31,70 +31,62 @@
   },
   "opportunities": [
     {
-      "id": "manna-society-kitchen-volunteer",
-      "org_id": "manna-society",
       "title": "Kitchen Volunteer",
-      "what_youd_do": "Help in the kitchen at a day centre that opens every day of the week, including loading the dishwasher and clearing down.",
-      "commitment": "weekly",
-      "min_term_months": 3,
-      "typical_shift_hours": 4.25,
+      "what_youd_do": "Pre-rinse kitchen plates and cookware before loading them into the commercial dishwasher for washing.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": 4,
       "when": [
-        "weekday_daytime",
-        "weekend_daytime"
+        "weekday_daytime"
       ],
-      "specific_times": "9.30am to 1.45pm, any day",
+      "specific_times": "9am to 1pm",
       "activity": "cooking_serving",
       "location_type": "in_person",
-      "postcode_district": "SE1",
-      "who_can_apply": "individual",
+      "who_can_apply": "unknown",
+      "postcode_district": null,
       "screening": {
         "dbs": "unknown",
         "references": null,
         "interview": null,
         "min_age": null,
-        "induction": "You'll be added to a waiting list before a place comes up"
+        "induction": null
       },
       "skills": [],
       "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
-      "status": "open",
+      "status": "unknown",
       "apply_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
       "url_specificity": "org_volunteer_page",
+      "id": "manna-society-kitchen-volunteer",
+      "org_id": "manna-society",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-08-25T00:00:00+00:00",
-        "method": "human",
+        "extracted_at": "2026-10-08T10:00:18+00:00",
+        "method": "llm",
         "reviewed_by_human": true,
-        "confidence": 1.0,
-        "source_url": "https://www.mannasociety.org.uk/how-you-can-help/volunteer-time/",
-        "verified_fields": [
-          "specific_times",
-          "min_term_months",
-          "commitment"
-        ],
+        "confidence": 0.5,
+        "source_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
+        "verified_fields": [],
         "unsupported_fields": [
-          "screening.dbs",
-          "screening.min_age"
+          "status"
         ]
       }
     },
     {
-      "id": "manna-society-computer-suite",
-      "org_id": "manna-society",
-      "title": "Computer Suite Volunteer",
-      "what_youd_do": "Sit with clients in the computer room and help with straightforward problems \u2014 the kind anyone who uses a computer could sort out.",
-      "commitment": "weekly",
+      "title": "IT Volunteer",
+      "what_youd_do": "Prepare computer equipment in the digital suite, guide visitors through basic tech questions, and maintain an orderly environment.",
+      "commitment": "unknown",
       "min_term_months": null,
-      "typical_shift_hours": 3.25,
+      "typical_shift_hours": 2,
       "when": [
         "weekday_daytime"
       ],
-      "specific_times": "10.00am to 1.15pm, Monday to Friday",
+      "specific_times": "10.30\u201311.30am and 12noon\u20131.00pm",
       "activity": "teaching",
       "location_type": "in_person",
-      "postcode_district": "SE1",
-      "who_can_apply": "individual",
+      "who_can_apply": "unknown",
+      "postcode_district": null,
       "screening": {
         "dbs": "unknown",
         "references": null,
@@ -103,7 +95,7 @@
         "induction": null
       },
       "skills": [
-        "basic computer literacy"
+        "Basic computer skills"
       ],
       "eligibility": [],
       "seasonal_window": null,
@@ -111,21 +103,19 @@
       "status": "open",
       "apply_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
       "url_specificity": "org_volunteer_page",
+      "id": "manna-society-computer-suite",
+      "org_id": "manna-society",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-08-25T00:00:00+00:00",
-        "method": "human",
+        "extracted_at": "2026-10-08T10:00:18+00:00",
+        "method": "llm",
         "reviewed_by_human": true,
-        "confidence": 1.0,
-        "source_url": "https://www.mannasociety.org.uk/how-you-can-help/volunteer-time/",
+        "confidence": 0.5,
+        "source_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
         "verified_fields": [
-          "specific_times",
-          "commitment"
+          "status"
         ],
-        "unsupported_fields": [
-          "screening.dbs",
-          "screening.min_age"
-        ]
+        "unsupported_fields": []
       }
     }
   ]

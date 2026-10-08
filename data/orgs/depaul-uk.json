@@ -20,9 +20,9 @@
     "robots_allowed": true,
     "check": {
       "last_attempt": "2026-10-08T09:58:34+00:00",
-      "last_success": "2026-08-25T00:00:00+00:00",
+      "last_success": "2026-10-08T09:58:34+00:00",
       "link_status": "ok",
-      "content_hash": null,
+      "content_hash": "71bc8af6f5d60b19a59a1d0f1f6c88ba56cbc332373347bf056ee2f5f7498b19",
       "consecutive_failures": 0,
       "etag": null,
       "last_modified": null,
@@ -31,108 +31,95 @@
   },
   "opportunities": [
     {
-      "id": "depaul-uk-nightstop-host",
-      "org_id": "depaul-uk",
       "title": "Nightstop Host",
-      "what_youd_do": "Give a young person with nowhere to go a spare room for the night, an evening meal, breakfast and a packed lunch to leave with.",
-      "commitment": "long_term",
+      "what_youd_do": "Provide a temporary spare room, warm meals, washing facilities, and a supportive environment for individuals facing homelessness.",
+      "commitment": "flexible",
       "min_term_months": null,
-      "typical_shift_hours": 14,
+      "typical_shift_hours": 12,
       "when": [
-        "overnight"
+        "overnight",
+        "flexible"
       ],
-      "specific_times": "Nights you pick yourself, on a flexible rota",
+      "specific_times": null,
       "activity": "hosting",
       "location_type": "own_home",
+      "who_can_apply": "unknown",
       "postcode_district": null,
-      "who_can_apply": "individual",
       "screening": {
         "dbs": "required_unspecified",
-        "references": null,
-        "interview": true,
+        "references": true,
+        "interview": null,
         "min_age": null,
-        "induction": "Home visit, DBS check and training on youth homelessness, boundaries and safeguarding"
+        "induction": "Full training provided"
       },
       "skills": [],
+      "eligibility": [
+        "Must have a spare room"
+      ],
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
       "apply_url": "https://www.depaul.org.uk/nightstop-volunteer/",
-      "url_specificity": "role",
+      "url_specificity": "org_volunteer_page",
+      "id": "depaul-uk-nightstop-host",
+      "org_id": "depaul-uk",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-08-25T00:00:00+00:00",
-        "method": "human",
+        "extracted_at": "2026-10-08T09:58:52+00:00",
+        "method": "llm",
         "reviewed_by_human": true,
         "confidence": 1.0,
-        "source_url": "https://www.depaul.org.uk/nightstop-faqs/",
+        "source_url": "https://www.depaul.org.uk/nightstop-volunteer/",
         "verified_fields": [
           "screening.dbs",
-          "screening.interview",
+          "screening.references",
           "screening.induction",
-          "activity",
-          "location_type",
-          "specific_times",
-          "eligibility"
+          "status"
         ],
-        "unsupported_fields": [
-          "screening.min_age",
-          "min_term_months"
-        ]
-      },
-      "eligibility": [
-        "People with a spare room"
-      ]
+        "unsupported_fields": []
+      }
     },
     {
-      "id": "depaul-uk-nightstop-driver",
-      "org_id": "depaul-uk",
-      "title": "Nightstop Driver",
-      "what_youd_do": "Drive or travel with a young person to the host who is putting them up, and keep them company on what is usually a bad day.",
-      "commitment": "flexible",
+      "title": "Nightstop Transport Volunteer",
+      "what_youd_do": "Drive or accompany vulnerable young individuals to their designated host accommodation while providing reassurance.",
+      "commitment": "unknown",
       "min_term_months": null,
-      "typical_shift_hours": 2,
+      "typical_shift_hours": null,
       "when": [
-        "weekday_evening",
-        "weekend_evening"
+        "flexible"
       ],
-      "specific_times": "Evenings, as and when you're free",
-      "activity": "befriending",
+      "specific_times": null,
+      "activity": "outreach",
       "location_type": "in_person",
+      "who_can_apply": "unknown",
       "postcode_district": null,
-      "who_can_apply": "individual",
       "screening": {
-        "dbs": "required_unspecified",
+        "dbs": "unknown",
         "references": null,
         "interview": null,
         "min_age": null,
-        "induction": "Full training and ongoing support"
+        "induction": null
       },
-      "skills": [
-        "driving"
-      ],
+      "skills": [],
       "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
       "apply_url": "https://www.depaul.org.uk/nightstop-volunteer/",
-      "url_specificity": "role",
+      "url_specificity": "org_volunteer_page",
+      "id": "depaul-uk-nightstop-driver",
+      "org_id": "depaul-uk",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-08-25T00:00:00+00:00",
-        "method": "human",
+        "extracted_at": "2026-10-08T09:58:52+00:00",
+        "method": "llm",
         "reviewed_by_human": true,
-        "confidence": 0.8,
+        "confidence": 1.0,
         "source_url": "https://www.depaul.org.uk/nightstop-volunteer/",
         "verified_fields": [
-          "screening.dbs",
-          "activity"
+          "status"
         ],
-        "unsupported_fields": [
-          "typical_shift_hours",
-          "screening.min_age",
-          "specific_times"
-        ]
+        "unsupported_fields": []
       }
     }
   ]
