@@ -61,6 +61,16 @@ One record per distinct thing a person could sign up to. If the page describes a
 kitchen shift, a shop assistant post and a trustee vacancy, that is three records
 with different commitments and screening.
 
+A role described by type counts, even with no vacancy list and no role-specific
+link. "Helpline volunteers answer calls from young people" is a role: record it,
+with `status` taken from what the page says — `unknown` if it does not say. Return
+an empty `roles` array only when the page describes no volunteering activity at
+all. An empty array tells the site the roles no longer exist, which is a much
+stronger claim than "no live vacancy is listed".
+
+If the page says the charity is not currently recruiting, still record each role
+it describes, with `status` `closed`.
+
 Do not create a record for:
 
 - Donating money, goods, or signing a petition — those aren't volunteering roles.

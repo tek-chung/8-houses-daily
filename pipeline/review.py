@@ -4,6 +4,7 @@
     python pipeline/review.py show crisis          the changes, field by field
     python pipeline/review.py approve crisis       publish the proposal as reviewed
     python pipeline/review.py approve crisis --drop "Kitchen helper" --keep-missing
+    python pipeline/review.py approve watw --same "Kitchen Volunteer=Drop-In Kitchen"
     python pipeline/review.py reject crisis        the current listing stays
 
 Work on main. The proposals are read from pipeline/state/review.json; if there is
@@ -137,6 +138,12 @@ def describe(result: dict, doc: dict) -> str:
             lines.append(f"    apply: {n['apply_url']}")
     for o in gone:
         lines.append(f"- MISSING {o['title']} (no longer found on the page)")
+    # Titles get reworded ("Drop-In Kitchen" → "Kitchen Volunteer"). Pairing is by
+    # title, so suggest likely renames; --same keeps the published id and links.
+    hints = [(n, o) for n in added for o in gone if n["activity"] == o["activity"]]
+    if hints:
+        lines += ["", "Possibly the same role renamed (same activity) — if so, approve with:"]
+        lines += [f'    --same "{n["title"]}={o["title"]}"' for n, o in hints]
     unsupported = sorted({f"{n['title']}: {f}" for n in new
                           for f in n["provenance"].get("unsupported_fields", [])})
     if unsupported:
@@ -162,7 +169,7 @@ def _site_errors(org_id: str) -> list[str]:
 
 
 def approve(result: dict, path: Path, drop: list[str] = (), keep_missing: bool = False,
-            site_check=None) -> dict:
+            site_check=None, same: list[str] = ()) -> dict:
     original = path.read_text(encoding="utf-8")
     doc = json.loads(original)
     _assert_current(doc, result)
@@ -178,11 +185,28 @@ def approve(result: dict, path: Path, drop: list[str] = (), keep_missing: bool =
             raise ReviewError(f"--drop {title!r}: no proposed role has that title")
         proposed.remove(titles[title.casefold()])
 
+    old_roles = doc.get("opportunities", [])
+    renamed = set()
+    for pair in same:
+        new_title, sep, old_title = pair.partition("=")
+        if not sep:
+            raise ReviewError(f'--same {pair!r}: use "New title=Old title"')
+        new = next((r for r in proposed if r["title"].casefold() == new_title.strip().casefold()), None)
+        old = next((r for r in old_roles if r["title"].casefold() == old_title.strip().casefold()), None)
+        if new is None or old is None:
+            raise ReviewError(f'--same {pair!r}: no proposed role "{new_title.strip()}" '
+                              f'or no current role "{old_title.strip()}"')
+        new["id"] = old["id"]          # keep published links and visitors' saved roles
+        if (old.get("postcode_district"), old.get("location_type")) == \
+                (new.get("postcode_district"), new.get("location_type")):
+            new["coords"] = old.get("coords")
+        renamed.add(old["id"])
+
     for record in proposed:
         record["provenance"]["reviewed_by_human"] = True
     if keep_missing:
-        _, _, gone = pair_roles(doc.get("opportunities", []), result.get("proposed") or [])
-        for old in gone:
+        _, _, gone = pair_roles(old_roles, result.get("proposed") or [])
+        for old in (o for o in gone if o["id"] not in renamed):
             kept = copy.deepcopy(old)
             kept["status"] = "unknown"   # we no longer see it, so we cannot say it is open
             proposed.append(kept)
@@ -242,6 +266,8 @@ def main(argv=None) -> int:
                            help="leave out a proposed role (repeatable)")
             p.add_argument("--keep-missing", action="store_true",
                            help="keep roles no longer found, with status unknown")
+            p.add_argument("--same", action="append", default=[], metavar="NEW=OLD",
+                           help="a proposed role is a renamed current one; keep its id")
     args = ap.parse_args(argv)
 
     try:
@@ -260,7 +286,7 @@ def main(argv=None) -> int:
             print(describe(result, json.loads(path.read_text(encoding="utf-8"))))
             return 0
         if args.command == "approve":
-            doc = approve(result, path, args.drop, args.keep_missing)
+            doc = approve(result, path, args.drop, args.keep_missing, same=args.same)
             _note(review, args.org_id, "approved", args.path)
             print(f"Approved: {len(doc['opportunities'])} roles written to "
                   f"data/orgs/{path.name}. Commit data/ and push to publish.")

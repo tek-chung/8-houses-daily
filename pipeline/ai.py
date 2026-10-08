@@ -323,8 +323,12 @@ class AIClient:
                         validate(result.json, schema)
                         self.successful_calls += 1
                         return result
-                    except ValidationError:
-                        failure = ProviderFailure('malformed')
+                    except ValidationError as exc:
+                        # Which rule, never the value: the value is model output
+                        # that may quote the page.
+                        where = '/'.join(str(p) for p in exc.absolute_path) or 'response'
+                        failure = ProviderFailure('malformed',
+                                                  message=f'{where} failed {exc.validator}')
                     except ProviderFailure as exc:
                         failure = exc
                     self.diagnostics.append({'provider': provider.name, 'model': model,

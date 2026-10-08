@@ -165,3 +165,27 @@ def test_cli_list_approve_and_note(org, tmp_path, monkeypatch, capsys):
 def test_real_site_check_accepts_current_data():
     org_id = json.loads(next(review.ORGS_DIR.glob('*.json')).read_text(encoding='utf-8'))['organisation']['id']
     assert review._site_errors(org_id) == []
+
+
+def test_same_keeps_the_published_id_of_a_renamed_role(org):
+    path, doc = org
+    old = doc['opportunities'][0]
+    renamed = copy.deepcopy(old)
+    renamed.update(title='Completely different wording', id='org-completely-different-wording')
+    roles = [renamed] + copy.deepcopy(doc['opportunities'][1:])
+    text = describe(proposal(doc, roles), doc)
+    assert f'--same "Completely different wording={old["title"]}"' in text
+    approve(proposal(doc, roles), path, keep_missing=True, site_check=no_site_errors,
+            same=[f'Completely different wording={old["title"]}'])
+    stored = json.loads(path.read_text(encoding='utf-8'))['opportunities']
+    assert [r['id'] for r in stored].count(old['id']) == 1          # not also kept as missing
+    assert next(r for r in stored if r['id'] == old['id'])['title'] == 'Completely different wording'
+
+
+def test_same_with_unknown_titles_changes_nothing(org):
+    path, doc = org
+    before = path.read_bytes()
+    with pytest.raises(ReviewError, match='--same'):
+        approve(proposal(doc, copy.deepcopy(doc['opportunities'])), path,
+                site_check=no_site_errors, same=['Nope=Also nope'])
+    assert path.read_bytes() == before

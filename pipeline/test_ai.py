@@ -533,3 +533,16 @@ def test_variant_removes_keywords_but_not_property_names():
     s = {'type': 'object', 'properties': {'enum': {'type': ['string', 'null'], 'enum': ['a']}}}
     assert ai._variant(s, {'enum'}, flatten_null=True) == {
         'type': 'object', 'properties': {'enum': {'type': 'string'}}}
+
+
+def test_malformed_answer_reports_which_rule_failed_without_the_value(factory):
+    schema = {'type': 'object', 'additionalProperties': False, 'required': ['roles'],
+              'properties': {'roles': {'type': 'array', 'items': {
+                  'type': 'object', 'required': ['what'], 'properties': {
+                      'what': {'type': 'string', 'maxLength': 5}}}}}}
+    raw = json.dumps({'roles': [{'what': 'ok'}, {'what': 'far too long a sentence'}]})
+    client = factory(lambda r: httpx.Response(200, json=answer(raw=raw)),
+                     providers=[replace(GEMINI, models=('only',))])
+    with pytest.raises(AIUnavailable, match='roles/1/what failed maxLength'):
+        client.generate_structured('I', 'X', schema)
+    assert 'far too long' not in json.dumps(client.diagnostics)
