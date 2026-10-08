@@ -5,12 +5,12 @@
     "last_modified": null
   },
   "https://centrepoint.org.uk/get-involved/volunteer/": {
-    "etag": "\"1791362153\"",
+    "etag": "\"1791451610\"",
     "hash": "033f25f20af2e41add295e10053708c04066cdb62569744fa9cafab67b483061",
-    "last_modified": "Wed, 07 Oct 2026 08:35:53 GMT"
+    "last_modified": "Thu, 08 Oct 2026 09:26:50 GMT"
   },
   "https://england.shelter.org.uk/support_us/volunteer": {
-    "etag": "\"f95b835375159f51375b8873b990843f-ssl-df\"",
+    "etag": "\"795155e0b5a296a9ea479ae694723275-ssl-df\"",
     "hash": "4e9ef762c5aaacfa038b3999a1939a7a0cfbb24f5663d640dc4e1b6618634269",
     "last_modified": null
   },
@@ -72,7 +72,7 @@
   "https://www.handsonlondon.org.uk/volunteer": {
     "etag": null,
     "hash": "a794a417705c58dec8425eaa901b77be4130eeef21c375e5b0e2a1e46da33d62",
-    "last_modified": "Wed, 07 Oct 2026 14:52:22 GMT"
+    "last_modified": "Wed, 07 Oct 2026 10:22:35 GMT"
   },
   "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/": {
     "etag": "\"2011-1791450201;gz\"",
@@ -100,7 +100,7 @@
     "last_modified": null
   },
   "https://www.spires.org.uk/volunteer": {
-    "etag": "W/\"54507b878e192d631db17e6c9e272bb8--gzip\"",
+    "etag": "W/\"54507b878e192d631db17e6c9e272bb8\"",
     "hash": "3b86c0ce07a71f95cf9da969f676743f0ad0e966d96fb2d33a73624c9b554bc0",
     "last_modified": null
   },
@@ -110,7 +110,7 @@
     "last_modified": null
   },
   "https://www.watw.org.uk/volunteer": {
-    "etag": "W/\"80bc6f6e6e5da746106e849e19596061--gzip\"",
+    "etag": "W/\"80bc6f6e6e5da746106e849e19596061\"",
     "hash": "72e373a8aaaadf2d4fa09832e753695d32e586e83d251d2ef088fe85feb174f3",
     "last_modified": null
   }
