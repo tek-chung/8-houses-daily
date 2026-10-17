@@ -20,12 +20,12 @@
     "lived_experience_roles": true,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-08T10:00:44+00:00",
-      "last_success": "2026-10-08T10:00:44+00:00",
+      "last_attempt": "2026-10-17T18:53:03+00:00",
+      "last_success": "2026-10-17T18:53:04+00:00",
       "link_status": "ok",
       "content_hash": "5fd9b31ddb50eda409f25c4e18f5fed3a41c8ce68a04aac9e77336445acd0fe5",
       "consecutive_failures": 0,
-      "etag": "\"276331436d10344fd79bf87e6cd16db3-ssl-df\"",
+      "etag": "\"19f2580d83ceb0712d2c9dcccbd4f665-ssl-df\"",
       "last_modified": null,
       "last_extraction": "2026-10-08T10:00:46+00:00"
     }
@@ -74,7 +74,9 @@
           "screening.min_age",
           "screening.interview"
         ],
-        "unsupported_fields": ["status"]
+        "unsupported_fields": [
+          "status"
+        ]
       }
     },
     {
@@ -118,7 +120,10 @@
         "confidence": 1.0,
         "source_url": "https://www.simoncommunity.org.uk/volunteering/",
         "verified_fields": [],
-        "unsupported_fields": ["status", "commitment"]
+        "unsupported_fields": [
+          "status",
+          "commitment"
+        ]
       }
     },
     {
@@ -162,8 +167,12 @@
         "reviewed_by_human": true,
         "confidence": 1.0,
         "source_url": "https://www.simoncommunity.org.uk/volunteering/",
-        "verified_fields": ["status"],
-        "unsupported_fields": ["commitment"]
+        "verified_fields": [
+          "status"
+        ],
+        "unsupported_fields": [
+          "commitment"
+        ]
       }
     }
   ]

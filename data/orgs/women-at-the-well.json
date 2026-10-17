@@ -21,12 +21,12 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-08T10:03:34+00:00",
-      "last_success": "2026-10-08T10:03:34+00:00",
+      "last_attempt": "2026-10-17T18:57:49+00:00",
+      "last_success": "2026-10-17T18:57:51+00:00",
       "link_status": "ok",
       "content_hash": "72e373a8aaaadf2d4fa09832e753695d32e586e83d251d2ef088fe85feb174f3",
       "consecutive_failures": 0,
-      "etag": "W/\"80bc6f6e6e5da746106e849e19596061--gzip\"",
+      "etag": "W/\"9ac6736f7ae30a208aea8ce3a6c54cb8\"",
       "last_modified": null,
       "last_extraction": "2026-10-08T10:03:37+00:00"
     }

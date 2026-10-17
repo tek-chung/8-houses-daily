@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-08T10:03:56+00:00",
-  "median_days_since_check": 36,
-  "oldest_days_since_check": 44,
-  "orgs_total": 32,
-  "orgs_suppressed": 32,
+  "generated_at": "2026-10-17T18:57:51+00:00",
+  "median_days_since_check": 45,
+  "oldest_days_since_check": 53,
+  "orgs_total": 30,
+  "orgs_suppressed": 24,
   "site_banner": false,
   "site_banner_copy": null,
   "thresholds": {
@@ -12,19 +12,7 @@
   },
   "orgs": {
     "ace-of-clubs": {
-      "days_since_check": 36,
-      "state": "stale",
-      "link_status": "dead",
-      "suppress_assertive": true,
-      "suppress_fields": [
-        "screening",
-        "status",
-        "next_intake",
-        "specific_times"
-      ]
-    },
-    "akt": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -35,8 +23,8 @@
         "specific_times"
       ]
     },
-    "cardboard-citizens": {
-      "days_since_check": 36,
+    "akt": {
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -48,7 +36,7 @@
       ]
     },
     "centrepoint": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "redirected",
       "suppress_assertive": true,
@@ -60,7 +48,7 @@
       ]
     },
     "crisis": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -72,19 +60,14 @@
       ]
     },
     "depaul-uk": {
-      "days_since_check": 44,
-      "state": "stale",
+      "days_since_check": 0,
+      "state": "fresh",
       "link_status": "ok",
-      "suppress_assertive": true,
-      "suppress_fields": [
-        "screening",
-        "status",
-        "next_intake",
-        "specific_times"
-      ]
+      "suppress_assertive": false,
+      "suppress_fields": []
     },
     "emmaus": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -96,19 +79,14 @@
       ]
     },
     "glass-door": {
-      "days_since_check": 44,
-      "state": "stale",
+      "days_since_check": 0,
+      "state": "fresh",
       "link_status": "ok",
-      "suppress_assertive": true,
-      "suppress_fields": [
-        "screening",
-        "status",
-        "next_intake",
-        "specific_times"
-      ]
+      "suppress_assertive": false,
+      "suppress_fields": []
     },
     "groundswell": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -120,7 +98,7 @@
       ]
     },
     "handson-london": {
-      "days_since_check": 44,
+      "days_since_check": 53,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -132,7 +110,7 @@
       ]
     },
     "housing-justice": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -144,19 +122,14 @@
       ]
     },
     "manna-society": {
-      "days_since_check": 44,
-      "state": "stale",
+      "days_since_check": 0,
+      "state": "fresh",
       "link_status": "ok",
-      "suppress_assertive": true,
-      "suppress_fields": [
-        "screening",
-        "status",
-        "next_intake",
-        "specific_times"
-      ]
+      "suppress_assertive": false,
+      "suppress_fields": []
     },
     "new-horizon-youth-centre": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -168,7 +141,7 @@
       ]
     },
     "north-london-action-for-the-homeless": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -180,7 +153,7 @@
       ]
     },
     "providence-row": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -192,7 +165,7 @@
       ]
     },
     "shelter": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -204,31 +177,21 @@
       ]
     },
     "simon-community": {
-      "days_since_check": 36,
-      "state": "stale",
+      "days_since_check": 0,
+      "state": "fresh",
       "link_status": "ok",
-      "suppress_assertive": true,
-      "suppress_fields": [
-        "screening",
-        "status",
-        "next_intake",
-        "specific_times"
-      ]
+      "suppress_assertive": false,
+      "suppress_fields": []
     },
     "single-homeless-project": {
-      "days_since_check": 36,
-      "state": "stale",
+      "days_since_check": 0,
+      "state": "fresh",
       "link_status": "ok",
-      "suppress_assertive": true,
-      "suppress_fields": [
-        "screening",
-        "status",
-        "next_intake",
-        "specific_times"
-      ]
+      "suppress_assertive": false,
+      "suppress_fields": []
     },
     "solace-womens-aid": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -240,7 +203,7 @@
       ]
     },
     "spear": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -252,7 +215,7 @@
       ]
     },
     "spires": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -264,7 +227,7 @@
       ]
     },
     "spitalfields-crypt-trust": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -276,7 +239,7 @@
       ]
     },
     "st-mungos": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -288,19 +251,7 @@
       ]
     },
     "stonewall-housing": {
-      "days_since_check": 36,
-      "state": "stale",
-      "link_status": "ok",
-      "suppress_assertive": true,
-      "suppress_fields": [
-        "screening",
-        "status",
-        "next_intake",
-        "specific_times"
-      ]
-    },
-    "streets-of-london": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -312,7 +263,7 @@
       ]
     },
     "thames-reach": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -324,7 +275,7 @@
       ]
     },
     "the-big-issue-foundation": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -336,7 +287,7 @@
       ]
     },
     "the-connection-at-st-martins": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -348,7 +299,7 @@
       ]
     },
     "the-passage": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -360,7 +311,7 @@
       ]
     },
     "the-whitechapel-mission": {
-      "days_since_check": 44,
+      "days_since_check": 53,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -372,7 +323,7 @@
       ]
     },
     "west-london-mission": {
-      "days_since_check": 36,
+      "days_since_check": 45,
       "state": "stale",
       "link_status": "dead",
       "suppress_assertive": true,
@@ -384,16 +335,11 @@
       ]
     },
     "women-at-the-well": {
-      "days_since_check": 36,
-      "state": "stale",
+      "days_since_check": 0,
+      "state": "fresh",
       "link_status": "ok",
-      "suppress_assertive": true,
-      "suppress_fields": [
-        "screening",
-        "status",
-        "next_intake",
-        "specific_times"
-      ]
+      "suppress_assertive": false,
+      "suppress_fields": []
     }
   }
 }

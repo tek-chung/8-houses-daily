@@ -19,12 +19,12 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-08T10:00:00+00:00",
-      "last_success": "2026-10-08T10:00:00+00:00",
+      "last_attempt": "2026-10-17T18:51:50+00:00",
+      "last_success": "2026-10-17T18:51:52+00:00",
       "link_status": "ok",
       "content_hash": "9f7d111d63c67323bdefa8fe0d1691ae1c352c05580c8fc0ea10d109555a3e50",
       "consecutive_failures": 0,
-      "etag": "\"84-1791430480;gz\"",
+      "etag": "\"811-1792262551;gz\"",
       "last_modified": null,
       "last_extraction": "2026-10-08T10:00:02+00:00"
     }
@@ -68,7 +68,12 @@
         "confidence": 0.5,
         "source_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
         "verified_fields": [],
-        "unsupported_fields": ["status", "commitment", "min_term_months", "who_can_apply"]
+        "unsupported_fields": [
+          "status",
+          "commitment",
+          "min_term_months",
+          "who_can_apply"
+        ]
       }
     },
     {
@@ -111,7 +116,11 @@
         "confidence": 0.5,
         "source_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
         "verified_fields": [],
-        "unsupported_fields": ["status", "commitment", "who_can_apply"]
+        "unsupported_fields": [
+          "status",
+          "commitment",
+          "who_can_apply"
+        ]
       }
     }
   ]

@@ -21,8 +21,8 @@
     "lived_experience_roles": true,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-08T09:58:52+00:00",
-      "last_success": "2026-10-08T09:58:52+00:00",
+      "last_attempt": "2026-10-17T18:50:43+00:00",
+      "last_success": "2026-10-17T18:50:48+00:00",
       "link_status": "ok",
       "content_hash": "4ecf590f373dbe22eb0970e6ca5ff33518627dabb5b9d19df4fb41e2f199291a",
       "consecutive_failures": 0,
@@ -117,7 +117,9 @@
         "verified_fields": [
           "status"
         ],
-        "unsupported_fields": ["commitment"]
+        "unsupported_fields": [
+          "commitment"
+        ]
       }
     },
     {
