@@ -70,7 +70,7 @@ def in_london(op):
     does not take them out of London. A role with no stated place is kept: nothing
     says it is elsewhere.
     """
-    if op['location_type'] in ('remote', 'own_home') or not op.get('stated_places'):
+    if op.get('location_type') in ('remote', 'own_home') or not op.get('stated_places'):
         return True
     boroughs, london_only, _ = stated(op)
     return bool(boroughs) or london_only
@@ -78,7 +78,7 @@ def in_london(op):
 
 def stated_boroughs(op):
     """London boroughs the page names for the role (never the charity's coverage)."""
-    if op['location_type'] in ('remote', 'own_home') or op.get('postcode_district'):
+    if op.get('location_type') in ('remote', 'own_home') or op.get('postcode_district'):
         return []
     return stated(op)[0]
 
@@ -138,7 +138,7 @@ def area_label(op, orgs):
     Only what the charity's page said: named areas, or "Across London". Never a
     guessed venue.
     """
-    if op['location_type'] in ('remote', 'own_home') or op.get('postcode_district'):
+    if op.get('location_type') in ('remote', 'own_home') or op.get('postcode_district'):
         return None
     boroughs, london_only, _ = stated(op)
     if boroughs:
