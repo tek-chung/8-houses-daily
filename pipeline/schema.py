@@ -200,9 +200,24 @@ ORG_SCHEMA = {
         # pipeline/boards.py). Roles are then read from the platform's own feed.
         "board": {"type": "object", "additionalProperties": False,
                   "required": ["type", "base_url"],
-                  "properties": {"type": {"type": "string", "enum": ["rosterfy", "assemble"]},
+                  "properties": {"type": {"type": "string", "enum": ["rosterfy", "assemble", "betterimpact"]},
                                  "base_url": {"type": "string", "pattern": "^https://"},
+                                 # betterimpact: the search the charity's page links to
+                                 "params": {"type": "object"},
+                                 "collapse": {"type": "array", "items": {
+                                     "type": "object", "required": ["match", "title"],
+                                     "properties": {"match": {"type": "string"},
+                                                    "title": {"type": "string"},
+                                                    "id": {"type": "string"},
+                                                    "url": {"type": "string"}}}},
                                  "region": {"type": "string", "enum": ["london"]}}},
+        # The charity's own WordPress role list (REST). Used as a completeness check
+        # only: roles it lists that we do not hold are reported, never imported.
+        "feed": {"type": "object", "additionalProperties": False,
+                 "required": ["type", "url"],
+                 "properties": {"type": {"type": "string", "enum": ["wordpress", "simplyvolunteer"]},
+                                "url": {"type": "string", "pattern": "^https://"},
+                                "params": {"type": "object"}}},
         # Platform hosts a person has looked at and decided not to read automatically
         # (they stop being reported as unread roles).
         "platforms_acknowledged": {"type": "array", "items": {"type": "string"}},

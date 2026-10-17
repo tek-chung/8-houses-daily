@@ -26,6 +26,13 @@
       "consecutive_failures": 0,
       "etag": null,
       "last_modified": null
+    },
+    "feed": {
+      "type": "wordpress",
+      "url": "https://solacewomensaid.org/wp-json/wp/v2/vacancy",
+      "params": {
+        "job_type": 124
+      }
     }
   },
   "opportunities": [

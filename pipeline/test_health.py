@@ -222,3 +222,19 @@ def test_unread_additions_are_noted():
              other_roles=["Night shelter"])
     a = assess_refresh(review(results=[r]), "success")
     assert a.level == "ok" and "Night shelter" in render(a, RUN, REPO)
+
+
+def test_roles_a_charity_lists_that_we_lack_are_never_silent():
+    gap = dict(result("st-mungos", "confirmed"),
+               feed_gaps={"missing": ["Hub Support Volunteer"], "gone": ["Old Role"], "listed": 5})
+    a = assess_refresh(review(results=[gap, result("akt", "confirmed")]), "success")
+    body = render(a, RUN, REPO)
+    section = body.split("Roles the charity lists that we do not")[1].split("###")[0]
+    assert a.level == "attention" and "Hub Support Volunteer" in section
+    assert "Old Role" in section and "Akt" not in section
+
+
+def test_a_broken_feed_is_reported_without_raising_an_alarm():
+    r = dict(result("solace", "confirmed"), feed_error="board feed answered HTTP 503")
+    a = assess_refresh(review(results=[r]), "success")
+    assert a.level == "ok" and "HTTP 503" in render(a, RUN, REPO)

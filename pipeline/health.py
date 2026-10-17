@@ -195,6 +195,30 @@ def assess_refresh(review: dict | None, job_status: str) -> Assessment:
             "`platforms_acknowledged` in `data/orgs/<id>.json` once you have looked.", ""] +
             [f"- {_name(r)}: {', '.join(r['unread_platforms'])}" for r in gaps]))
 
+    feed_gaps = [r for r in results if (r.get("feed_gaps") or {}).get("missing")
+                 or (r.get("feed_gaps") or {}).get("gone")]
+    if feed_gaps:
+        level = max(level, "attention", key=LEVELS.get)
+        if headline == "Nothing needs you.":
+            headline = "A charity's own role list differs from our listing."
+        lines = ["The charity's own role feed and our listing disagree. Open the role "
+                 "page, then add the role (or retire it) in `data/orgs/<id>.json`.", ""]
+        for r in feed_gaps:
+            gap = r["feed_gaps"]
+            if gap.get("missing"):
+                lines.append(f"- {_name(r)} lists, and we do not hold: "
+                             + "; ".join(gap["missing"]))
+            if gap.get("gone"):
+                lines.append(f"- {_name(r)}: held but no longer in its feed: "
+                             + "; ".join(gap["gone"]))
+        sections.append(("Roles the charity lists that we do not", lines))
+
+    feed_broken = [r for r in results if r.get("feed_error")]
+    if feed_broken:
+        sections.append(("Role feeds that could not be read", [
+            "The completeness check was skipped for these; nothing was changed.", ""] +
+            [f"- {_name(r)}: {r['feed_error']}" for r in feed_broken]))
+
     dead = by("source_failed")
     if dead:
         level = max(level, "attention", key=LEVELS.get)

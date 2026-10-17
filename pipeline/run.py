@@ -104,7 +104,8 @@ def known_role_pages(doc: dict) -> list[str]:
     return out
 
 
-def process(path: Path, doc: dict, client, dry: bool, site_check=record_errors) -> dict:
+def process(path: Path, doc: dict, client, dry: bool, site_check=record_errors,
+            feed_get=None) -> dict:
     org = doc["organisation"]
     old_roles = doc.get("opportunities", [])
     check = org.setdefault("check", {})
@@ -159,8 +160,17 @@ def process(path: Path, doc: dict, client, dry: bool, site_check=record_errors) 
     # Volunteer platforms the page links to that no reader of ours covers: roles
     # there are invisible to this check, and the report must say so.
     covered = {urlparse(org.get("board", {}).get("base_url", "")).netloc,
+               urlparse(org.get("feed", {}).get("url", "")).netloc,
                *org.get("platforms_acknowledged", [])}
     report['unread_platforms'] = [h for h in getattr(res, "platforms", []) or [] if h not in covered]
+    if org.get("feed"):
+        # The charity's own role list, used only to say what we are missing. It never
+        # changes a record, so a failure here is reported and nothing else.
+        try:
+            report['feed_gaps'] = boards.feed_gaps(
+                boards.fetch_feed(org["feed"], get=feed_get), old_roles)
+        except boards.BoardError as exc:
+            report['feed_error'] = str(exc)
 
     if org.get("board"):
         # The landing page tells us the link works; the roles are on a board the page
@@ -405,7 +415,8 @@ def process_board(path, doc, old_roles, client, dry, site_check, report, save_ch
     only_new = (lambda offer: summarise(offer) if summarise and offer.title.casefold()
                 not in paired_titles else None)
     new_roles, set_aside = boards.london_records(
-        offers, org["id"], now_iso, org["volunteer_url"], only_new)
+        offers, org["id"], now_iso, org["volunteer_url"], only_new,
+        collapse=board.get("collapse"))
     report.update(board_offers=len(offers), board_set_aside=set_aside)
     for rec in new_roles:
         try:

@@ -418,3 +418,270 @@ def test_a_summary_that_repeats_the_description_is_refused(harness):
     report = run_board(harness, doc, items, client=Client())
     assert "repeated source wording" in " ".join(report["summaries_skipped"])
     assert report["proposed"][0]["what_youd_do"] != sentence
+
+
+# ------------------------------------------------------------------ WordPress role feeds
+# Captured from the live St Mungo's `volunteer_role` feed on 17 October 2026.
+
+def wp(title, slug, status="publish"):
+    return {"status": status, "title": {"rendered": title}, "modified": "2026-10-15T14:42:34",
+            "link": f"https://www.mungos.org/volunteer_role/{slug}/"}
+
+
+MUNGOS_FEED = [
+    wp("Roma Casework Volunteer  (Roma or Romanian Speaking)", "roma-casework-volunteer"),
+    wp("Workshop Assistant Volunteer", "workshop-assistant-volunteer"),
+    wp("Women&#8217;s Sewing Group Volunteer", "53914"),
+    wp("Hub Support Volunteer", "bournemouth-outreach-and-hub-support-volunteer"),
+    wp("Cooking Group Volunteer", "cooking-group-volunteer"),
+    wp("Draft role", "draft", status="draft"),
+]
+
+
+def held(title, slug=None):
+    return {"title": title,
+            "apply_url": f"https://www.mungos.org/volunteer_role/{slug}/" if slug
+            else "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/"}
+
+
+def test_feed_roles_we_do_not_hold_are_reported_and_drafts_are_ignored():
+    feed = boards.fetch_wordpress({"url": "https://x/wp"}, get=lambda u, p: MUNGOS_FEED)
+    gaps = boards.feed_gaps(feed, [held("Roma Casework Volunteer", "roma-casework-volunteer"),
+                                   held("Workshop Assistant Volunteer", "workshop-assistant-volunteer"),
+                                   held("Cooking Group Volunteer", "cooking-group-volunteer")])
+    assert gaps["missing"] == ["Women’s Sewing Group Volunteer", "Hub Support Volunteer"]
+    assert gaps["gone"] == [] and gaps["listed"] == 5
+
+
+def test_a_held_role_whose_page_left_the_feed_is_reported_but_others_are_not():
+    feed = boards.fetch_wordpress({"url": "https://x/wp"}, get=lambda u, p: MUNGOS_FEED)
+    gaps = boards.feed_gaps(feed, [held("Old Role", "old-role"), held("Gardening Group Volunteer")])
+    assert gaps["gone"] == ["Old Role"]          # the listing-page link makes no claim
+
+
+def test_a_malformed_or_partial_wordpress_feed_is_refused(monkeypatch):
+    with pytest.raises(boards.BoardError):
+        boards.fetch_wordpress({"url": "https://x/wp"}, get=lambda u, p: {"code": "rest_no_route"})
+    with pytest.raises(boards.BoardError):
+        boards.fetch_wordpress({"url": "https://x/wp"},
+                               get=lambda u, p: [{"status": "publish", "title": {"rendered": ""}}])
+    monkeypatch.setattr(boards, "WP_PER_PAGE", 1)
+    with pytest.raises(boards.BoardError):       # never ends: refuse a partial read
+        boards.fetch_wordpress({"url": "https://x/wp"}, get=lambda u, p: MUNGOS_FEED[:1])
+
+
+def test_feed_params_are_sent():
+    seen = []
+    boards.fetch_wordpress({"url": "https://x/wp", "params": {"job_type": 124}},
+                           get=lambda u, p: seen.append(dict(p)) or [])
+    assert seen[0]["job_type"] == "124" and seen[0]["per_page"] == "100"
+
+
+def test_org_schema_accepts_a_feed_and_the_data_files_that_use_it_validate():
+    import glob
+    for path in glob.glob("../data/orgs/*.json") + glob.glob("data/orgs/*.json"):
+        validate(json.load(open(path, encoding="utf-8"))["organisation"], ORG_SCHEMA)
+
+
+# ------------------------------------------------------------------ Better Impact (Shelter)
+# Fixtures are the live London search and detail pages of 17 October 2026, trimmed
+# to the fields the reader uses (GUIDs lengthened with zeros).
+
+BI = "https://app.betterimpact.com"
+ENT = "3649308b-8a14-4513-8a59-a4087e2a2ee8"
+BI_BOARD = {"type": "betterimpact", "base_url": BI, "region": "london",
+            "params": {"EnterpriseGuid": ENT, "SearchType": "SuitabilityClassification",
+                       "SearchId": "3526"},
+            "collapse": [{"match": r"\bshop$", "title": "Community Shop Volunteer", "id": "shops",
+                          "url": BI + "/PublicEnterprise/EnterpriseSearch?x=1"}]}
+
+
+def g(prefix):
+    return prefix + "-0000-0000-0000-000000000000"
+
+
+BI_ROLES = {
+    g("7e531ffc"): ("Lived Experience Coordination Volunteer",
+                    "Do you want to help?\n\nLocation: Hub/community/home based location, London.\n\n"
+                    "Suggested contribution: Approximately 7 - 14 hours per month, flexible\n\n"
+                    "Availability: at a time that suits you\n\n[Volunteering Team: please add any "
+                    "relevant information about Criminal Record Checks here.]"),
+    g("a349c694"): ("Crouch End Shop", "Location: Shop in Crouch End, N8 8PT\n\nAvailability: "
+                    "The shop is open Monday - Saturday 10:00-18:00.\n\nSome roles involve a basic "
+                    "criminal record check."),
+    g("2d41a88a"): ("Highgate Shop", "Location: Shop in Highgate, N6 5HX\n\nAvailability: The shop "
+                    "is open Monday - Saturday."),
+    g("4ec25ece"): ("St Albans Shop", "Location: Shelter, 9 High Street, St Albans, Hertfordshire, "
+                    "AL3 4ED\n\nAvailability: Coming early November."),
+    g("b1fed740"): ("Volunteer Van Driver's Mate", "Location: South London\n\nThe Van Driver’s "
+                    "Mate role can be any time between Monday-Friday."),
+}
+
+
+def bi_list(guids=None):
+    lis = "".join(
+        f'<li>\n    <a href="/PublicEnterprise/EnterpriseGvi?enterpriseGuid={ENT}&amp;gviGuid={gid}'
+        f'&amp;searchUrl=https%253a%252f%252fapp.betterimpact.com" class="regularLink">{name} </a>\n'
+        f'<button type="button" class="ui-icon">i</button></li>'
+        for gid, (name, _) in BI_ROLES.items() if guids is None or gid in guids)
+    return ("<html><head><title>MyImpactPage - Shelter - Search Volunteer Opportunities by Where "
+            f"would you like to volunteer? - London</title></head><body><ul>{lis}</ul></body></html>")
+
+
+def bi_detail(gid):
+    name, text = BI_ROLES[gid]
+    esc = text.replace("&", "&amp;").replace('"', "&quot;")
+    return (f'<html><head><meta property="og:title" content="\n    {name} \n" />'
+            f'<meta property="og:description" content="\n   {name}\n\n{esc}\n" /></head></html>')
+
+
+def bi_get(calls=None, drop_detail=None):
+    def get(url, params):
+        if calls is not None:
+            calls.append((url, dict(params)))
+        if url.endswith("EnterpriseSearch"):
+            return bi_list()
+        gid = dict(params)["gviGuid"]
+        if gid == drop_detail:
+            return "<html>nothing</html>"
+        return bi_detail(gid)
+    return get
+
+
+def bi_records(**kw):
+    offers = boards.load_offers(BI_BOARD, get=bi_get(**kw))
+    return boards.london_records(offers, "shelter", "2026-10-17T21:00:00+00:00",
+                                 BI + "/x", collapse=BI_BOARD["collapse"])
+
+
+def test_betterimpact_reads_each_opportunity_page_and_sends_the_enterprise_id():
+    calls = []
+    offers = boards.load_offers(BI_BOARD, get=bi_get(calls))
+    assert [o.title for o in offers][:2] == ["Lived Experience Coordination Volunteer", "Crouch End Shop"]
+    details = [c for c in calls if c[0].endswith("EnterpriseGvi")]
+    assert len(details) == 5 and all(c[1]["enterpriseGuid"] == ENT for c in details)
+    assert calls[0][1]["SearchId"] == "3526"
+
+
+def test_betterimpact_uses_the_location_line_and_never_the_shop_opening_hours():
+    offers = {o.title: o for o in boards.load_offers(BI_BOARD, get=bi_get())}
+    lived = offers["Lived Experience Coordination Volunteer"]
+    assert lived.address == "Hub/community/home based location, London."
+    assert lived.timing == "Approximately 7 - 14 hours per month, flexible"
+    assert offers["Crouch End Shop"].timing is None       # "open Monday - Saturday" is the shop's
+    assert "placeholder" in lived.notes[0] and not offers["Highgate Shop"].notes
+
+
+def test_a_shop_in_st_albans_is_set_aside_and_london_shops_become_one_role():
+    records, aside = bi_records()
+    assert aside == 1
+    titles = sorted(r["title"] for r in records)
+    assert titles == ["Community Shop Volunteer", "Lived Experience Coordination Volunteer",
+                      "Volunteer Van Driver's Mate"]
+    shop = next(r for r in records if r["title"] == "Community Shop Volunteer")
+    assert "2 charity shops" in shop["what_youd_do"] and shop["id"] == "shelter-board-shops"
+    assert shop["stated_places"] == ["London"] and shop["url_specificity"] == "org_volunteer_page"
+    for r in records:
+        validate(r, RECORD_SCHEMA)
+
+
+def test_betterimpact_never_claims_a_disclosure_check_or_a_placeholder_as_fact():
+    records, _ = bi_records()
+    for r in records:
+        assert r["screening"]["dbs"] == "unknown" and r["screening"]["interview"] is None
+    lived = next(r for r in records if r["title"].startswith("Lived"))
+    assert any("placeholder" in f for f in lived["provenance"]["unsupported_fields"])
+    assert lived["stated_places"] == ["London"] and lived["apply_url"].endswith(g("7e531ffc"))
+
+
+def test_betterimpact_refuses_a_partial_read_or_a_page_it_does_not_recognise():
+    with pytest.raises(boards.BoardError):
+        boards.load_offers(BI_BOARD, get=bi_get(drop_detail=g("2d41a88a")))
+    with pytest.raises(boards.BoardError):
+        boards.load_offers(BI_BOARD, get=lambda u, p: "<html>Sign in to continue</html>")
+    with pytest.raises(boards.BoardError):
+        boards.load_offers({**BI_BOARD, "params": {}}, get=bi_get())
+
+
+def test_org_schema_accepts_the_betterimpact_board():
+    doc = json.load(open(next(p for p in ("../data/orgs/shelter.json", "data/orgs/shelter.json")
+                              if __import__("os").path.exists(p)), encoding="utf-8"))
+    validate(doc["organisation"], ORG_SCHEMA)
+    assert doc["organisation"]["board"]["type"] == "betterimpact"
+
+
+# ------------------------------------------------------------------ Simply Volunteer London
+# Cards copied from the live role search on 17 October 2026 (descriptions trimmed).
+
+def svl_card(title, org, slug, tag="Hackney"):
+    return ('<div class="card shadow-0 border rounded-3"><div class="card-body"><div class="row">'
+            f'<div class="tag bg-success text-truncate">\n {tag}</div>'
+            f'<h5 class="text-success">{title}</h5><span class="text-danger">Organisation :\n'
+            f'    {org}</span><p class="text mb-4">Short text</p>'
+            f'<a href="https://simplyvolunteerlondon.uk/role/{slug}">Details</a></div></div></div>')
+
+
+def svl_page(*cards, next_page=None):
+    nxt = f'<a href="roles-search?page={next_page}">next</a>' if next_page else ""
+    return "<html><title>Find Volunteer Roles | Simply Volunteer London</title>" + "".join(cards) + nxt
+
+
+SVL = {"type": "simplyvolunteer", "url": "https://simplyvolunteerlondon.uk/roles-search",
+       "params": {"keyword": "Housing Justice", "organisation": "Housing Justice"}}
+
+
+def test_only_cards_for_the_organisation_count_and_pages_are_followed():
+    pages = {1: svl_page(svl_card("Volunteer Community Connector", "Housing Justice", "5247/22/hackney/vcc"),
+                         svl_card("Walk Leader", "Walk+Talk", "5601/22/hackney/walk"), next_page=2),
+             2: svl_page(svl_card("Citadel Mentor: Empowering Lives, Ending Homelessness",
+                                  "Housing Justice", "3578/21/greenwich/citadel"))}
+    seen = []
+
+    def get(url, params):
+        seen.append(dict(params))
+        return pages[int(dict(params).get("page", 1))]
+    roles = boards.fetch_feed(SVL, get=get)
+    assert [r.title for r in roles] == ["Volunteer Community Connector",
+                                        "Citadel Mentor: Empowering Lives, Ending Homelessness"]
+    assert roles[0].link == "https://simplyvolunteerlondon.uk/role/5247/22/hackney/vcc"
+    assert seen[0] == {"keyword": "Housing Justice"} and seen[1]["page"] == "2"
+
+
+def test_an_organisation_with_no_roles_there_is_an_empty_answer_not_an_error():
+    cfg = {**SVL, "params": {"keyword": "SHP", "organisation": "Single Homeless Project"}}
+    assert boards.fetch_feed(cfg, get=lambda u, p: svl_page()) == []
+    assert boards.fetch_feed(cfg, get=lambda u, p: svl_page(
+        svl_card("Citizens Advice role", "Citizens Advice - Bromley", "1/2/x/y"))) == []
+
+
+def test_simplyvolunteer_refuses_a_page_it_does_not_recognise_or_cannot_read():
+    with pytest.raises(boards.BoardError):
+        boards.fetch_feed(SVL, get=lambda u, p: "<html>Maintenance</html>")
+    with pytest.raises(boards.BoardError):
+        boards.fetch_feed(SVL, get=lambda u, p: svl_page('<div class="card shadow-0">broken</div>'))
+    with pytest.raises(boards.BoardError):
+        boards.fetch_feed({**SVL, "params": {"keyword": "x"}}, get=lambda u, p: svl_page())
+    with pytest.raises(boards.BoardError):
+        boards.fetch_feed({**SVL, "type": "rss"}, get=lambda u, p: svl_page())
+
+
+def test_a_role_on_the_platform_that_we_do_not_hold_is_reported():
+    feed = boards.fetch_feed(SVL, get=lambda u, p: svl_page(
+        svl_card("Volunteer Community Connector", "Housing Justice", "5247/22/hackney/vcc"),
+        svl_card("Citadel Mentor: Empowering Lives", "Housing Justice", "3578/21/greenwich/citadel")))
+    held_roles = [{"title": "Citadel Volunteer", "apply_url": "https://housingjustice.org.uk/x"}]
+    gaps = boards.feed_gaps(feed, held_roles)
+    assert gaps["missing"] == ["Volunteer Community Connector", "Citadel Mentor: Empowering Lives"]
+    assert boards.feed_gaps([], held_roles)["missing"] == []
+
+
+def test_a_feed_failure_is_reported_and_never_changes_roles(tmp_path, monkeypatch):
+    doc = crisis_doc([])
+    doc["organisation"]["feed"] = SVL
+    boom = lambda u, p: (_ for _ in ()).throw(boards.BoardError("board answered HTTP 503"))
+    monkeypatch.setattr(runner, "fetch", lambda *a, **k: FetchResult(
+        status="unchanged", text=None, content_hash="h", platforms=[]))
+    path = tmp_path / "o.json"
+    path.write_text(json.dumps(doc), encoding="utf-8")
+    report = runner.process(path, doc, None, True, lambda o, r: [], feed_get=boom)
+    assert report["feed_error"] == "board answered HTTP 503" and "feed_gaps" not in report

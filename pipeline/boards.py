@@ -76,6 +76,7 @@ class Offer:
     updated: str | None = None
     virtual: bool = False
     skills: list[str] = field(default_factory=list)
+    notes: list[str] = field(default_factory=list)         # things a reviewer should know
 
 
 # ------------------------------------------------------------------ fetching
@@ -141,6 +142,102 @@ def fetch_rosterfy(base_url: str, now: datetime | None = None, get=None) -> list
         if not body.get("next_page_url"):
             return items
     raise BoardError(f"board feed has more than {MAX_PAGES} pages; refusing a partial read")
+
+
+def _polite_text_getter(url: str):
+    """Like _polite_getter, but returns the page text (for server-rendered boards)."""
+    from fetchpage import _throttle, robots_allows
+
+    if not robots_allows(url):
+        raise BoardError("robots.txt does not allow reading the board")
+
+    def get(page_url, params):
+        _throttle()
+        try:
+            with httpx.Client(follow_redirects=True, timeout=REQUEST_TIMEOUT_SECONDS,
+                              headers={"User-Agent": USER_AGENT}) as client:
+                response = client.get(page_url, params=params)
+        except httpx.HTTPError as exc:
+            raise BoardError(f"board unreachable: {type(exc).__name__}") from exc
+        if response.status_code != 200:
+            raise BoardError(f"board answered HTTP {response.status_code}")
+        return response.text
+    return get
+
+
+_BI_LINK = re.compile(r'<a\s+href="(/PublicEnterprise/EnterpriseGvi\?[^"]*)"[^>]*>(.*?)</a>', re.S)
+_BI_GUID = re.compile(r"gviGuid=([0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12})")
+_META = r'<meta\s+[^>]*property="og:{0}"[^>]*content="([^"]*)"'
+
+
+def fetch_betterimpact(board: dict, get=None) -> list[dict]:
+    """Every opportunity on a Better Impact "MyImpactPage" search, with its detail page.
+
+    The pages are server-rendered HTML. The search is the one the charity's own page
+    links to (a place filter), configured as `params`. Raises BoardError unless every
+    listed opportunity's detail page was read.
+    """
+    base = board["base_url"].rstrip("/")
+    params = dict(board.get("params") or {})
+    enterprise = params.get("EnterpriseGuid")
+    if not enterprise:
+        raise BoardError("board config has no EnterpriseGuid")
+    search = f"{base}/PublicEnterprise/EnterpriseSearch"
+    get = get or _polite_text_getter(search)
+    page = get(search, list(params.items()))
+    if not isinstance(page, str) or "Search Volunteer Opportunities" not in page:
+        raise BoardError("board search page has an unexpected shape")
+    found, seen = [], set()
+    for link in _BI_LINK.finditer(page):
+        guid = _BI_GUID.search(html.unescape(link.group(1)))
+        if guid and guid.group(1).lower() not in seen:
+            seen.add(guid.group(1).lower())
+            found.append((guid.group(1).lower(), _text(re.sub(r"<[^>]+>", "", link.group(2)))))
+    if len(found) >= 200:
+        raise BoardError("board search has too many results; refusing a partial read")
+    items = []
+    for guid, listed_title in found:
+        detail = get(f"{base}/PublicEnterprise/EnterpriseGvi",
+                     [("enterpriseGuid", enterprise), ("gviGuid", guid)])
+        if not isinstance(detail, str):
+            raise BoardError("opportunity page has an unexpected shape")
+        desc = re.search(_META.format("description"), detail, re.I | re.S)
+        title = re.search(_META.format("title"), detail, re.I | re.S)
+        if not desc:
+            raise BoardError(f"opportunity {guid[:8]} has no description to read")
+        items.append({"guid": guid, "listed_title": listed_title,
+                      "title": html.unescape(title.group(1)) if title else listed_title,
+                      "description": html.unescape(desc.group(1))})
+    return items
+
+
+def parse_betterimpact(items: list[dict], board: dict) -> list[Offer]:
+    """Offers from Better Impact pages. Only two stated fields are used, the
+    "Location:" line and "Suggested contribution:" (hours); "Availability:" on shop
+    roles is the shop's opening hours, not the volunteer's, so it is never used."""
+    base = board["base_url"].rstrip("/")
+    enterprise = (board.get("params") or {}).get("EnterpriseGuid", "")
+    out = []
+    for item in items:
+        title = _text(item.get("title")) or item.get("listed_title")
+        if not title:
+            continue
+        raw = item.get("description") or ""
+
+        def line(label):
+            m = re.search(rf"^\s*{label}\s*:\s*(.+)$", raw, re.I | re.M)
+            return _text(m.group(1)) if m else None
+        where = line("Location")
+        notes = []
+        if re.search(r"\[Volunteering Team:", raw):
+            notes.append("the page still contains an unfinished placeholder from the charity")
+        out.append(Offer(
+            id=item["guid"], title=title,
+            url=f"{base}/PublicEnterprise/EnterpriseGvi?enterpriseGuid={enterprise}&gviGuid={item['guid']}",
+            places=[where] if where else [], address=where,
+            timing=line("Suggested contribution"),
+            description=" ".join(raw.split()), notes=notes))
+    return out
 
 
 def fetch_assemble(base_url: str, get=None) -> list[dict]:
@@ -270,7 +367,126 @@ def load_offers(board: dict, get=None) -> list[Offer]:
         return parse_rosterfy(fetch_rosterfy(base, get=get), base)
     if board["type"] == "assemble":
         return parse_assemble(fetch_assemble(base, get=get), base)
+    if board["type"] == "betterimpact":
+        return parse_betterimpact(fetch_betterimpact(board, get=get), board)
     raise BoardError(f"unknown board type {board['type']!r}")
+
+
+# ------------------------------------------------------------------ WordPress role feeds
+#
+# Some charities publish each role as a WordPress post (St Mungo's `volunteer_role`,
+# Solace's `vacancy`). The public REST list is a complete, dated inventory of the
+# roles the charity itself shows, but it carries no place, hours or screening, so it
+# is used as a completeness check against what we hold, never as a source of facts.
+
+WP_PER_PAGE = 100
+
+
+@dataclass
+class FeedRole:
+    title: str
+    link: str
+    modified: str | None = None
+
+
+def fetch_wordpress(feed: dict, get=None) -> list[FeedRole]:
+    """Every published post on a WordPress role feed. Raises BoardError on a partial
+    or malformed read (a half-read inventory must not look like missing roles)."""
+    url = feed["url"]
+    get = get or _polite_getter(url)
+    out: list[FeedRole] = []
+    for page in range(1, MAX_PAGES + 1):
+        params = [("per_page", str(WP_PER_PAGE)), ("page", str(page)),
+                  *[(k, str(v)) for k, v in (feed.get("params") or {}).items()]]
+        body = get(url, params)
+        if not isinstance(body, list):
+            raise BoardError("role feed has an unexpected shape")
+        for item in body:
+            if not isinstance(item, dict) or item.get("status", "publish") != "publish":
+                continue
+            title = _text((item.get("title") or {}).get("rendered"))
+            link = _text(item.get("link"))
+            if not title or not link:
+                raise BoardError("role feed has an entry without a title or link")
+            out.append(FeedRole(title=title, link=link, modified=_text(item.get("modified"))))
+        if len(body) < WP_PER_PAGE:
+            return out
+    raise BoardError(f"role feed has more than {MAX_PAGES} pages; refusing a partial read")
+
+
+_SVL_CARD = re.compile(r'<div class="card shadow-0')
+_SVL_TITLE = re.compile(r"<h5[^>]*>(.*?)</h5>", re.S)
+_SVL_ORG = re.compile(r"Organisation\s*:\s*([^<]+)", re.S)
+_SVL_LINK = re.compile(r'href="((?:https://[^"/]+)?/role/[^"]+)"')
+
+
+def fetch_simplyvolunteer(feed: dict, get=None) -> list[FeedRole]:
+    """Roles one organisation lists on Simply Volunteer London (a regional platform).
+
+    The platform's keyword search also matches other organisations, so only cards
+    whose "Organisation" is exactly `params.organisation` count. An organisation with
+    no roles there returns an empty list: that is an answer, not a failure. A page
+    that is not the role search raises BoardError.
+    """
+    params = dict(feed.get("params") or {})
+    wanted = (params.pop("organisation", "") or "").casefold().strip()
+    if not wanted:
+        raise BoardError("feed config has no organisation to match")
+    base = feed["url"].rstrip("/")
+    get = get or _polite_text_getter(base)
+    out: list[FeedRole] = []
+    for page in range(1, MAX_PAGES + 1):
+        query = [*params.items(), *([("page", str(page))] if page > 1 else [])]
+        text = get(base, query)
+        if not isinstance(text, str) or "Find Volunteer Roles" not in text:
+            raise BoardError("role search page has an unexpected shape")
+        blocks = _SVL_CARD.split(text)[1:]
+        for block in blocks:
+            title, org, link = _SVL_TITLE.search(block), _SVL_ORG.search(block), _SVL_LINK.search(block)
+            if not (title and org and link):
+                raise BoardError("a role card on the search page could not be read")
+            if _text(org.group(1)).casefold() == wanted:
+                href = html.unescape(link.group(1))
+                if href.startswith("/"):
+                    href = f"{urlparse(base).scheme}://{urlparse(base).netloc}{href}"
+                out.append(FeedRole(title=_text(re.sub(r"<[^>]+>", "", title.group(1))), link=href))
+        if not blocks or f"page={page + 1}" not in text:
+            return out
+    raise BoardError(f"role search has more than {MAX_PAGES} pages; refusing a partial read")
+
+
+def fetch_feed(feed: dict, get=None) -> list[FeedRole]:
+    """Read a charity's role feed according to its configured type."""
+    if feed["type"] == "wordpress":
+        return fetch_wordpress(feed, get=get)
+    if feed["type"] == "simplyvolunteer":
+        return fetch_simplyvolunteer(feed, get=get)
+    raise BoardError(f"unknown feed type {feed['type']!r}")
+
+
+def _title_key(title: str) -> str:
+    """A title with any bracketed qualifier removed, for matching feed to listing."""
+    plain = re.sub(r"\([^)]*\)", " ", html.unescape(title).replace("’", "'"))
+    return re.sub(r"[^a-z0-9]+", " ", plain.casefold()).strip()
+
+
+def feed_gaps(feed_roles: list[FeedRole], held: list[dict]) -> dict:
+    """What the charity's own feed lists that we do not hold, and held roles that cite
+    the feed's own role pages but are no longer in it.
+
+    `missing` is a to-do for a person (the charity advertises a role we cannot see);
+    `gone` roles point at a role page the feed no longer lists. Neither changes data.
+    """
+    held_titles = {_title_key(r["title"]) for r in held}
+    held_links = {(r.get("apply_url") or "").rstrip("/") for r in held}
+    missing = [f.title for f in feed_roles
+               if _title_key(f.title) not in held_titles and f.link.rstrip("/") not in held_links]
+    feed_links = {f.link.rstrip("/") for f in feed_roles}
+    prefixes = {"/".join(f.link.split("/")[:4]) + "/" for f in feed_roles if f.link.count("/") >= 4}
+    gone = [r["title"] for r in held
+            if (r.get("apply_url") or "").rstrip("/") not in feed_links
+            and any((r.get("apply_url") or "").startswith(p) for p in prefixes)]
+    return {"missing": missing, "gone": gone, "listed": len(feed_roles)}
 
 
 # ------------------------------------------------------------------ region
@@ -435,21 +651,42 @@ def to_record(offer: Offer, org_id: str, now_iso: str, source_url: str,
             "verified_fields": verified,
             "unsupported_fields": ["what_youd_do: " + ("model summary of the board's description"
                                                         if summary else "built from structured fields")]
-            + ([f"closes {offer.closes}"] if offer.closes else []),
+            + ([f"closes {offer.closes}"] if offer.closes else [])
+            + list(offer.notes),
         },
     }
     return record
 
 
 def london_records(offers: list[Offer], org_id: str, now_iso: str,
-                   source_url: str, summarise=None) -> tuple[list[dict], int]:
+                   source_url: str, summarise=None, collapse=None) -> tuple[list[dict], int]:
     """Records for the board's London offers, and how many other offers were set aside.
 
     `summarise(offer)` may return the model's own-words summary or None.
+    `collapse` is a list of {"match": regex, "title": str, "url": str}: London offers
+    whose title matches become ONE role (a chain of near-identical shop openings is
+    one thing to do, not twenty-six cards).
     """
     mine = [o for o in offers if is_london(o) or o.virtual]
-    records = [to_record(o, org_id, now_iso, source_url, summarise(o) if summarise else None)
-               for o in mine]
+    records = []
+    rest = list(mine)
+    for rule in collapse or []:
+        group = [o for o in rest if re.search(rule["match"], o.title, re.I)]
+        if not group:
+            continue
+        rest = [o for o in rest if o not in group]
+        merged = Offer(id=rule.get("id", "group"), title=rule["title"],
+                       url=rule.get("url") or group[0].url, places=["London"])
+        rec = to_record(merged, org_id, now_iso, source_url, None)
+        rec["what_youd_do"] = (f"Volunteer in one of the {len(group)} charity shops "
+                               "currently recruiting in London.")[:220]
+        rec["url_specificity"] = "org_volunteer_page"
+        rec["provenance"]["unsupported_fields"] = [
+            f"what_youd_do: built from the board ({len(group)} shop openings)",
+            "stated_places: London only; each shop's own postcode is on the board"]
+        records.append(rec)
+    records += [to_record(o, org_id, now_iso, source_url, summarise(o) if summarise else None)
+                for o in rest]
     return records, len(offers) - len(mine)
 
 

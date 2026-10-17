@@ -28,7 +28,11 @@
       "consecutive_failures": 0,
       "etag": "\"25532-1792313273;gz\"",
       "last_modified": null,
-      "last_extraction": "2026-10-18T08:48:16+00:00"
+      "last_extraction": "2026-10-17T18:54:06+00:00"
+    },
+    "feed": {
+      "type": "wordpress",
+      "url": "https://www.mungos.org/wp-json/wp/v2/volunteer_role"
     }
   },
   "opportunities": [

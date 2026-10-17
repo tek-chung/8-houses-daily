@@ -27,6 +27,14 @@
       "etag": null,
       "last_modified": null,
       "last_extraction": "2026-10-08T10:01:11+00:00"
+    },
+    "feed": {
+      "type": "simplyvolunteer",
+      "url": "https://simplyvolunteerlondon.uk/roles-search",
+      "params": {
+        "keyword": "Single Homeless Project",
+        "organisation": "Single Homeless Project"
+      }
     }
   },
   "opportunities": [

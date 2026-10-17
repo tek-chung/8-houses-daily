@@ -280,6 +280,19 @@ whole feed was read). Roles from a platform we have no reader for (Better Impact
 Simply Volunteer) are reported in the status issue under "Roles we cannot see"
 until a person adds the host to `platforms_acknowledged`.
 
+Board types: `rosterfy`, `assemble` (JSON feeds) and `betterimpact` (Shelter; the
+server-rendered search the charity's page links to, plus one detail page per role,
+using only the "Location:" and "Suggested contribution:" lines; opening hours on shop
+roles are never read as volunteer availability). A `collapse` rule turns a chain of
+near-identical openings (Shelter's shops) into one role.
+
+A `feed` is weaker than a `board`: it only checks completeness and never changes a
+record. It lists what the charity's own role list contains that we do not hold (and
+held roles whose role page has left the list), and the status issue reports it.
+Types: `wordpress` (St Mungo's `volunteer_role`, Solace `vacancy`) and
+`simplyvolunteer` (Housing Justice, Single Homeless Project; matched on the exact
+organisation name, and an empty answer is valid).
+
 Every role's `stated_places` are the towns or boroughs the page names for that
 role. Each must occur near the role's title in the page (`extract.check_places`)
 and is a critical field, so a change never auto-publishes. The site hides roles
