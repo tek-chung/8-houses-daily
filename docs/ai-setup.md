@@ -49,9 +49,12 @@ The 6 October 2026 refresh report recorded HTTP 404 for both 2.5 models.
 The `latest` fallback is a moving alias: it may resolve to the primary model and
 does not provide a separate provider or independent quota allowance.
 
-`AI_MAX_INPUT_BYTES` defaults to 262,144 bytes, counting the complete serialised
-request. This accommodates the fetcher's existing 60,000-character source limit,
-including multi-byte text, instructions and schema. The source limit, output-token
+`AI_MAX_INPUT_BYTES` defaults to 524,288 bytes, counting the complete serialised
+request. This accommodates the fetcher's 90,000-character limit for the landing
+page and up to 15 role pages together, including multi-byte text, instructions and
+schema. Requests are also paced to `AI_GEMINI_TPM` estimated input tokens a minute
+(default 200,000, 80% of the free tier's 250,000), and each role's verification
+is sent only the landing page and that role's own pages. The source limit, output-token
 limit, quota limits and zero-spend guard remain in place. Oversized requests are
 still held; source text is not silently shortened merely to make a request fit.
 

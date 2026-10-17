@@ -259,3 +259,43 @@ def test_sidebar_is_still_stripped_when_main_content_is_sufficient(no_trafilatur
             f"<div class='sidebar'><p>Sleep Out 2026 sign up now</p></div></main></body></html>")
     out = main_content(html)
     assert "Citadel volunteers" in out and "Sleep Out" not in out
+
+
+# ------------------------------------------------------------- reading role pages
+
+def test_role_links_include_www_variants_and_subdomains_but_not_other_sites():
+    from fetchpage import same_site
+    assert same_site("https://solacewomensaid.org/vacancy/x", "https://www.solacewomensaid.org/v")
+    assert same_site("https://volunteer.crisis.org.uk/", "https://www.crisis.org.uk/get-involved/")
+    assert not same_site("https://evil-crisis.org.uk/", "https://www.crisis.org.uk/")
+    assert not same_site("https://other.org.uk/", "https://www.crisis.org.uk/")
+    assert not same_site("https://example.com/", "https://other.com/")
+
+
+def test_volunteer_vacancies_are_followed_but_paid_jobs_are_not():
+    """Solace lists volunteer roles under /vacancy/; blocking 'vacanc' hid them."""
+    html = """<html><body><main>
+      <a href="https://solacewomensaid.org/vacancy/volunteer-staff-counsellor/">Volunteer counsellor</a>
+      <a href="/vacancy/finance-manager/">Finance manager</a>
+      <a href="/jobs">Jobs</a>
+      </main></body></html>"""
+    links = find_role_links(html, "https://www.solacewomensaid.org/get-involved/volunteer/")
+    assert links == ["https://solacewomensaid.org/vacancy/volunteer-staff-counsellor/"]
+
+
+def test_links_under_the_volunteering_path_need_no_keyword():
+    html = """<html><body><main>
+      <a href="/get-involved/volunteer/kitchen-assistant/">Kitchen assistant</a>
+      <a href="/about-us/team/">Our team</a>
+      <a href="/files/roles.pdf">Volunteer role pack</a>
+      </main></body></html>"""
+    links = find_role_links(html, "https://example.org/get-involved/volunteer/")
+    assert links == ["https://example.org/get-involved/volunteer/kitchen-assistant/"]
+
+
+def test_eight_roles_are_all_read():
+    """The Passage lists eight roles; a cap of six dropped the last two."""
+    from config import MAX_ROLE_SUBPAGES
+    html = "".join(f'<a href="/volunteering/role-{i}/">Role {i} volunteer</a>' for i in range(8))
+    assert len(find_role_links(f"<main>{html}</main>", "https://example.org/v")) == 8
+    assert MAX_ROLE_SUBPAGES >= 15

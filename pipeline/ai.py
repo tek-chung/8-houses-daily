@@ -29,7 +29,7 @@ DEFAULT_GEMINI_MODELS = 'gemini-3.5-flash-lite,gemini-3.1-flash-lite'
 # 6 s between calls keeps 60k-character pages under the 250k tokens/minute limit.
 DEFAULT_LIMITS = {'gemini': ('150', '6000'), 'openrouter': ('20', '5000')}
 DEFAULT_RUN_CALLS = '150'
-DEFAULT_MAX_INPUT_BYTES = 262144  # accommodates the fetcher's 60,000-char cap + schema
+DEFAULT_MAX_INPUT_BYTES = 524288  # the fetcher's 90,000-char cap in 4-byte text + schema
 
 class AIUnavailable(Exception):
     """Expected provider/quota failure; existing records must be retained."""
@@ -120,6 +120,13 @@ class Provider:
     daily_calls: int = 20
     interval: float = 5.0
     estimated_cost: float = 0.0
+    tokens_per_minute: int = 0    # 0 = no token pacing
+
+
+# Free-tier input tokens per minute are 250k for these models (Oct 2026). With role
+# pages included a call can be ~25k tokens, so 10 calls a minute could exceed it.
+# Pace to 80% of the limit.
+DEFAULT_TPM = {'gemini': '200000', 'openrouter': '0'}
 
 
 @dataclass
@@ -235,7 +242,8 @@ def providers_from_env() -> list[Provider]:
         providers.append(Provider(name, models, os.environ.get(name.upper() + '_API_KEY', ''),
                                   os.environ.get(prefix + 'FREE_TIER_CONFIRMED') == 'true',
                                   int(os.environ.get(prefix + 'DAILY_CALLS', DEFAULT_LIMITS[name][0])),
-                                  float(os.environ.get(prefix + 'MIN_INTERVAL_MS', DEFAULT_LIMITS[name][1])) / 1000))
+                                  float(os.environ.get(prefix + 'MIN_INTERVAL_MS', DEFAULT_LIMITS[name][1])) / 1000,
+                                  tokens_per_minute=int(os.environ.get(prefix + 'TPM', DEFAULT_TPM[name]))))
     return providers
 
 
@@ -257,6 +265,8 @@ class AIClient:
         checkpoint = git_checkpoint if os.environ.get('AI_LEDGER_GIT_SYNC') == 'true' else None
         self.ledger = ledger or Ledger(STATE / 'ai_usage.json', checkpoint)
         self.transport, self.sleep = transport, sleep
+        self.clock = time.monotonic
+        self.token_log = {}   # provider -> [(started, estimated input tokens)]
         self.disabled, self.last_started, self.remaining = set(), {}, {}
         self.lease_days = {}
         self.calls = 0
@@ -267,6 +277,25 @@ class AIClient:
     @property
     def available(self):
         return any(p.key and p.models and p.confirmed_free for p in self.providers)
+
+    def _pace_tokens(self, provider, chars: int) -> None:
+        """Wait until this request fits the provider's tokens-per-minute budget.
+
+        Estimated at four characters a token, before sending, so a burst of large
+        pages cannot trip a 429 that would switch the model off for the run.
+        """
+        budget = provider.tokens_per_minute
+        if budget <= 0:
+            return
+        need = max(1, chars // 4)
+        log = self.token_log.setdefault(provider.name, [])
+        while True:
+            now = self.clock()
+            log[:] = [(t, n) for t, n in log if now - t < 60]
+            if not log or sum(n for _, n in log) + need <= budget:
+                break
+            self.sleep(log[0][0] + 60 - now)
+        log.append((self.clock(), need))
 
     def _reserve(self, provider):
         if self.calls >= self.run_cap:
@@ -321,8 +350,9 @@ class AIClient:
                         self.disabled.update((provider.name, m) for m in provider.models)
                         break
                     self.last_started[provider.name] = time.monotonic()
+                    sent = instruction if correction is None else f'{instruction}\n\n{correction}'
+                    self._pace_tokens(provider, len(sent) + len(input) + len(json.dumps(schema)))
                     try:
-                        sent = instruction if correction is None else f'{instruction}\n\n{correction}'
                         result = self._request(provider, model, sent, input, schema)
                         validate(result.json, schema)
                         self.successful_calls += 1

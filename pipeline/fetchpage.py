@@ -37,9 +37,10 @@ import httpx
 import trafilatura
 from bs4 import BeautifulSoup
 
-from config import (HTTP_CACHE, MAX_PAGE_CHARS, MAX_ROLE_SUBPAGES,
-                    MIN_MAIN_CONTENT_CHARS, REQUEST_DELAY_SECONDS,
-                    REQUEST_TIMEOUT_SECONDS, USER_AGENT)
+from config import (HTTP_CACHE, MAX_LANDING_CHARS, MAX_PAGE_CHARS,
+                    MAX_ROLE_SUBPAGES, MAX_SUBPAGE_CHARS, MIN_MAIN_CONTENT_CHARS,
+                    REQUEST_DELAY_SECONDS, REQUEST_TIMEOUT_SECONDS, ROLE_LINK_DEPTH,
+                    USER_AGENT)
 
 _robots_cache: dict[str, urllib.robotparser.RobotFileParser] = {}
 _robots_unavailable: set[str] = set()
@@ -60,8 +61,13 @@ _ROLE_LINK_HINTS = re.compile(
 # ...but these are not roles, however volunteer-ish they sound.
 _ROLE_LINK_BLOCK = re.compile(
     r"(donate|donation|fundrais|marathon|sleep ?out|challenge event|cycle|"
-    r"half.?marathon|10k|legacy|gift.?aid|shop online|job|vacanc|career|"
+    r"half.?marathon|10k|legacy|gift.?aid|shop online|"
     r"privacy|cookie|terms|complaint|sitemap|login|basket|/news|blog)", re.I)
+# Paid-work words exclude a link only when nothing says "volunteer": Solace
+# publishes its volunteer roles under /vacancy/, and blocking "vacanc" outright
+# hid them all.
+_PAID_WORK = re.compile(r"(job|vacanc|career|recruitment)", re.I)
+_VOLUNTEER_WORD = re.compile(r"volunteer", re.I)
 
 _UPDATED_RE = re.compile(
     r"(?:last\s+)?updated[:\s]*"
@@ -220,31 +226,55 @@ def cms_updated(html: str) -> str | None:
     return m.group(1).strip() if m else None
 
 
+def _site(netloc: str) -> str:
+    """The charity's own domain, so www/non-www and subdomains count as one site."""
+    host = netloc.lower().split(":")[0]
+    host = host[4:] if host.startswith("www.") else host
+    parts = host.split(".")
+    # crisis.org.uk, not org.uk; example.com, not com.
+    keep = 3 if len(parts) >= 3 and parts[-2] in ("org", "co", "ac", "gov", "nhs") else 2
+    return ".".join(parts[-keep:])
+
+
+def same_site(a: str, b: str) -> bool:
+    return _site(urlparse(a).netloc) == _site(urlparse(b).netloc)
+
+
 def find_role_links(html: str, base_url: str) -> list[str]:
-    """Links from a volunteering landing page that look like role detail pages."""
+    """Links from a volunteering page that look like role or listing pages.
+
+    Same charity only, which includes www/non-www and subdomains (Crisis runs
+    volunteer.crisis.org.uk). Role-looking links come first so the cap keeps them.
+    """
     soup = BeautifulSoup(html, "html.parser")
     for tag in soup(["nav", "header", "footer", "aside"]):
         tag.decompose()
 
-    origin = urlparse(base_url).netloc
-    seen, out = set(), []
+    base_path = urlparse(base_url).path.rstrip("/")
+    seen, strong, weak = set(), [], []
     for a in soup.find_all("a", href=True):
         label = a.get_text(" ").strip()
         href = urldefrag(urljoin(base_url, a["href"]))[0]
-        if not label or len(label) > 90:
+        if not label or len(label) > 90 or not href.startswith(("http://", "https://")):
             continue
-        if urlparse(href).netloc != origin:
+        if urlparse(href).path.lower().endswith((".pdf", ".doc", ".docx", ".zip")):
             continue
-        if href.rstrip("/") == base_url.rstrip("/") or href in seen:
+        if not same_site(href, base_url):
+            continue
+        key = href.rstrip("/")
+        if key == base_url.rstrip("/") or key in seen:
             continue
         haystack = f"{label} {href}"
         if _ROLE_LINK_BLOCK.search(haystack):
             continue
-        if not _ROLE_LINK_HINTS.search(haystack):
+        if _PAID_WORK.search(haystack) and not _VOLUNTEER_WORD.search(haystack):
             continue
-        seen.add(href)
-        out.append(href)
-    return out[:MAX_ROLE_SUBPAGES]
+        under = base_path and urlparse(href).path.startswith(base_path + "/")
+        if not (_ROLE_LINK_HINTS.search(haystack) or under):
+            continue
+        seen.add(key)
+        (strong if under or _VOLUNTEER_WORD.search(href) else weak).append(href)
+    return (strong + weak)[:MAX_ROLE_SUBPAGES]
 
 
 # ------------------------------------------------------------- http
@@ -265,8 +295,44 @@ def _get(url: str, headers: dict) -> httpx.Response:
         return client.get(url, headers=headers)
 
 
+def _read_subpages(start_html: str, url: str, known: list[str],
+                   headers: dict) -> list[tuple[str, str]]:
+    """Role pages linked from the landing page, then from listing pages they lead
+    to, plus role pages already in the published listing. Each is read once."""
+    queue = [(link, 1) for link in find_role_links(start_html, url)]
+    # Pages the current listing came from are always re-read, whether or not the
+    # landing page still links them in a way we can find.
+    queue = [(k, 1) for k in known] + queue
+    seen, out = {url.rstrip("/")}, []
+    while queue and len(out) < MAX_ROLE_SUBPAGES:
+        link, depth = queue.pop(0)
+        if link.rstrip("/") in seen:
+            continue
+        seen.add(link.rstrip("/"))
+        if not robots_allows(link):
+            continue
+        try:
+            rr = _get(link, headers)
+            if rr.status_code >= 400:
+                continue
+            html = rr.text
+            sub = main_content(html)
+        except Exception:
+            continue
+        if len(sub) >= MIN_MAIN_CONTENT_CHARS:
+            out.append((link, sub))
+        if depth < ROLE_LINK_DEPTH:
+            deeper = find_role_links(html, link)
+            # Only listing pages are worth going through: one stray link from a
+            # role page is usually "other roles", already queued.
+            if len(deeper) >= 2:
+                queue += [(d, depth + 1) for d in deeper]
+    return out
+
+
 def fetch(url: str, known_hash: str | None = None,
-          follow_roles: bool = True, cache_write: bool = True) -> FetchResult:
+          follow_roles: bool = True, cache_write: bool = True,
+          known_pages: list[str] = ()) -> FetchResult:
     """Fetch a volunteering page plus its role sub-pages as one payload."""
     if not robots_allows(url):
         if "{0.scheme}://{0.netloc}".format(urlparse(url)) in _robots_unavailable:
@@ -319,23 +385,14 @@ def fetch(url: str, known_hash: str | None = None,
         return FetchResult("failed", boilerplate_ratio=ratio,
                            error=f"only {len(main)} chars extractable — {why}")
 
-    sections, pages = [f"## Page: {url}\n\n{main}"], [url]
+    sections, pages = [f"## Page: {url}\n\n{main[:MAX_LANDING_CHARS]}"], [url]
 
     if follow_roles:
-        for link in find_role_links(html, url):
-            if not robots_allows(link):
-                continue
-            try:
-                rr = _get(link, {"User-Agent": USER_AGENT,
-                                 "Accept-Language": headers["Accept-Language"]})
-                if rr.status_code >= 400:
-                    continue
-                sub = main_content(rr.text)
-            except Exception:
-                continue
-            if len(sub) >= MIN_MAIN_CONTENT_CHARS:
-                sections.append(f"## Page: {link}\n\n{sub}")
-                pages.append(link)
+        sub_headers = {"User-Agent": USER_AGENT,
+                       "Accept-Language": headers["Accept-Language"]}
+        for link, sub in _read_subpages(html, url, list(known_pages), sub_headers):
+            sections.append(f"## Page: {link}\n\n{sub[:MAX_SUBPAGE_CHARS]}")
+            pages.append(link)
 
     combined = "\n\n".join(sections)[:MAX_PAGE_CHARS]
 

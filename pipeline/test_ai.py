@@ -578,3 +578,30 @@ def test_repeated_schema_breach_moves_to_the_next_model(factory, monkeypatch):
     client = factory(handler)
     assert client.generate_structured('I', 'X', SCHEMA).model == 'second'
     assert [p.split('/')[-1] for p in seen] == ['first:generateContent'] * 2 + ['second:generateContent']
+
+
+def test_token_pacing_waits_instead_of_tripping_the_minute_limit(factory):
+    clock = [0.0]
+    waits = []
+    def sleep(seconds):
+        waits.append(seconds)
+        clock[0] += seconds
+    client = factory(lambda r: httpx.Response(200, json=answer()),
+                     [replace(GEMINI, tokens_per_minute=1000, daily_calls=10)], sleep=sleep)
+    client.clock = lambda: clock[0]
+    big = 'x' * 3000                      # ~750 tokens with the instruction and schema
+    client.generate_structured('I', big, SCHEMA)
+    client.generate_structured('I', big, SCHEMA)   # would exceed 1,000 within the minute
+    assert waits and abs(sum(waits) - 60) < 1
+
+
+def test_verification_sees_only_the_landing_page_and_the_roles_own_page():
+    from extract import role_text
+    text = ("## Page: https://e.org/v\n\nWe have two roles.\n\n"
+            "## Page: https://e.org/v/kitchen\n\nKitchen helper: enhanced DBS check.\n\n"
+            "## Page: https://e.org/v/driver\n\nDriver: no DBS check needed.")
+    kitchen = role_text(text, {'title': 'Kitchen helper', 'apply_url': None})
+    assert 'enhanced DBS' in kitchen and 'Driver' not in kitchen
+    driver = role_text(text, {'title': 'Van crew', 'apply_url': 'https://e.org/v/driver/'})
+    assert 'no DBS check needed' in driver and 'Kitchen' not in driver
+    assert role_text(text, {'title': 'Unmentioned', 'apply_url': None}) == text

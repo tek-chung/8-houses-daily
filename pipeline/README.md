@@ -174,8 +174,23 @@ sending it anywhere (spec §13).
 Real charity pages are 76–95% boilerplate. Hashing a whole page meant the rotating
 "Latest" news sidebar changed the hash every week, so all 34 pages looked changed
 every run and the review queue was permanently full. `fetchpage.py` now isolates
-main content before hashing or extracting, and follows role links one level down
-because most landing pages carry no role detail. See `docs/scrapability.md`.
+main content before hashing or extracting, and reads the role pages too, because
+most landing pages carry no role detail. See `docs/scrapability.md`.
+
+Which pages are read, per charity, up to 15 besides the landing page:
+
+- links on the volunteering page that look like roles or sit under its path, on
+  the charity's own site including `www`/non-`www` and subdomains;
+- links from a listing page those lead to ("current opportunities" → role), one
+  level further;
+- every page the published listing was written from (`apply_url`,
+  `provenance.source_url`), even if nothing links it any more.
+
+Each role page is capped at 6,000 characters and the landing page at 15,000, so
+one long page cannot push the others out of the 90,000-character payload. Paid
+work words (`job`, `vacancy`) exclude a link only when it does not also say
+"volunteer". Pages on third-party platforms are read only when a published role
+already points at them; client-rendered ones (Better Impact) still yield nothing.
 
 `test_fetch.py::test_hash_stable_when_only_sidebar_changes` is the load-bearing
 test. Do not weaken it.

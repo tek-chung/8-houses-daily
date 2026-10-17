@@ -274,3 +274,81 @@ def test_least_recently_extracted_orgs_use_the_allowance_first(tmp_path, monkeyp
     monkeypatch.delenv('GEMINI_API_KEY', raising=False)
     assert runner.main() == 0
     assert seen == ['mmm', 'zzz', 'aaa']
+
+
+# ------------------------------------------------------------- reading role pages
+
+ROLE_TEXT = ("Kitchen volunteers prepare breakfast every Saturday from 8am to 11am. "
+             "An enhanced DBS check is required and we ask for two references. ") * 4
+
+
+def _site(pages, monkeypatch, robots=True):
+    """A fake website: url -> html. Records the order pages were requested."""
+    seen = []
+    monkeypatch.setattr(fetchpage, 'robots_allows', lambda url: robots)
+    monkeypatch.setattr(fetchpage, '_load_cache', lambda: {})
+    def get(url, headers):
+        seen.append(url)
+        if url not in pages:
+            return httpx.Response(404, request=httpx.Request('GET', url))
+        return httpx.Response(200, text=pages[url], request=httpx.Request('GET', url))
+    monkeypatch.setattr(fetchpage, '_get', get)
+    return seen
+
+
+def page_html(body):
+    return f"<html><body><main>{body}</main></body></html>"
+
+
+def test_listing_pages_are_followed_to_the_roles(monkeypatch):
+    base = 'https://example.org/volunteer'
+    pages = {
+        base: page_html(f"<p>{ROLE_TEXT}</p><a href='/volunteer/opportunities'>Current volunteer opportunities</a>"),
+        'https://example.org/volunteer/opportunities': page_html(
+            "<a href='/volunteer/kitchen'>Kitchen volunteer</a>"
+            "<a href='/volunteer/reception'>Reception volunteer</a>"),
+        'https://example.org/volunteer/kitchen': page_html(f"<h1>Kitchen</h1><p>{ROLE_TEXT}</p>"),
+        'https://example.org/volunteer/reception': page_html(f"<h1>Reception</h1><p>{ROLE_TEXT}</p>"),
+    }
+    _site(pages, monkeypatch)
+    res = fetchpage.fetch(base, cache_write=False)
+    assert 'https://example.org/volunteer/kitchen' in res.pages_read
+    assert 'https://example.org/volunteer/reception' in res.pages_read
+    assert '## Page: https://example.org/volunteer/kitchen' in res.text
+
+
+def test_published_role_pages_are_reread_even_when_unlinked(monkeypatch):
+    base = 'https://example.org/volunteer'
+    role = 'https://example.org/somewhere/kitchen-helper'
+    pages = {base: page_html(f"<p>{ROLE_TEXT}</p>"), role: page_html(f"<p>{ROLE_TEXT}</p>")}
+    seen = _site(pages, monkeypatch)
+    res = fetchpage.fetch(base, cache_write=False, known_pages=[role])
+    assert role in res.pages_read and role in seen
+
+
+def test_one_long_page_cannot_crowd_out_the_others(monkeypatch):
+    from config import MAX_SUBPAGE_CHARS
+    base = 'https://example.org/volunteer'
+    long_page = 'https://example.org/volunteer/long'
+    short_page = 'https://example.org/volunteer/short'
+    pages = {base: page_html(f"<p>{ROLE_TEXT}</p><a href='/volunteer/long'>Long role</a>"
+                             "<a href='/volunteer/short'>Short role</a>"),
+             long_page: page_html("<p>" + "word " * 50000 + "</p>"),
+             short_page: page_html(f"<p>Short role. {ROLE_TEXT}</p>")}
+    _site(pages, monkeypatch)
+    res = fetchpage.fetch(base, cache_write=False)
+    assert '## Page: ' + short_page in res.text
+    section = res.text.split('## Page: ' + long_page)[1].split('## Page: ')[0]
+    assert len(section) <= MAX_SUBPAGE_CHARS + 10
+
+
+def test_known_role_pages_come_from_the_listing(record):
+    path, doc = record
+    landing = doc['organisation']['volunteer_url']
+    doc['opportunities'][0]['apply_url'] = 'https://example.org/roles/kitchen/'
+    doc['opportunities'][0]['provenance']['source_url'] = landing
+    doc['opportunities'][1]['apply_url'] = 'https://example.org/pack.pdf'
+    pages = runner.known_role_pages(doc)
+    assert 'https://example.org/roles/kitchen' in pages
+    assert landing.rstrip('/') not in pages
+    assert not any(p.endswith('.pdf') for p in pages)

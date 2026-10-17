@@ -55,6 +55,17 @@ Write it as what a volunteer would physically be doing: "Cook and serve lunch fo
 around 80 guests, then help clear down" — not "opportunities within our catering
 support function".
 
+## Reading several pages
+
+The text may contain several pages, each starting with a `## Page: <url>` line:
+first the charity's volunteering page, then pages about individual roles or lists
+of roles. Treat them as one source. A role's own page usually carries the detail
+the overview leaves out — times, commitment, screening, who can apply — so take
+each role's facts from its own page where there is one, and do not record the same
+role twice because it appears on two pages. Where a role has its own page and no
+more specific application form, use that page's URL as `apply_url` with
+`url_specificity` `role`.
+
 ## What counts as a role
 
 One record per distinct thing a person could sign up to. If the page describes a

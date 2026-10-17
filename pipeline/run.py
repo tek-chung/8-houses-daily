@@ -79,6 +79,29 @@ def disagreements(pairs) -> list[str]:
     return out
 
 
+_NOT_HTML = (".pdf", ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".zip")
+
+
+def known_role_pages(doc: dict) -> list[str]:
+    """Pages the published listing was written from, other than the landing page.
+
+    They are re-read every run even if the landing page no longer links them in a
+    way the crawler can follow, so a role's details are checked against its own
+    page rather than a one-line summary.
+    """
+    landing = doc["organisation"]["volunteer_url"].rstrip("/")
+    out = []
+    for role in doc.get("opportunities", []):
+        for url in (role.get("apply_url"), role.get("provenance", {}).get("source_url")):
+            if not url or not url.startswith(("http://", "https://")):
+                continue
+            key = url.split("#")[0].rstrip("/")
+            if key == landing or key.lower().endswith(_NOT_HTML) or key in out:
+                continue
+            out.append(key)
+    return out
+
+
 def process(path: Path, doc: dict, client, dry: bool, site_check=record_errors) -> dict:
     org = doc["organisation"]
     old_roles = doc.get("opportunities", [])
@@ -89,7 +112,8 @@ def process(path: Path, doc: dict, client, dry: bool, site_check=record_errors) 
               "route": "auto", "reasons": [], "roles_before": len(old_roles),
               "roles_after": len(old_roles)}
 
-    res = fetch(url, known_hash=check.get("content_hash"), cache_write=not dry)
+    res = fetch(url, known_hash=check.get("content_hash"), cache_write=not dry,
+                known_pages=known_role_pages(doc))
 
     def save_check():
         if not dry:
@@ -128,6 +152,7 @@ def process(path: Path, doc: dict, client, dry: bool, site_check=record_errors) 
     check["last_modified"] = res.last_modified
     check["link_status"] = "redirected" if res.redirected else "ok"
     report['fetched_content_hash'] = res.content_hash
+    report['pages_read'] = list(res.pages_read)
     report['checked_at'] = check['last_attempt']
 
     if res.status == "unchanged":
@@ -346,6 +371,9 @@ def main() -> int:
         reports.append(rep)
         mark = "REVIEW" if rep["route"] == ROUTE_REVIEW else "ok    "
         log(f"{mark}  {name:<38} {'; '.join(rep['reasons'])[:88]}")
+        if args.dry_run and rep.get('pages_read'):
+            for page in rep['pages_read']:
+                log(f"          read {page}")
 
     # Freshness as the site computes it: only charities that place notices
     # (site/build.py load() skips the rest), so the median the run reports is the

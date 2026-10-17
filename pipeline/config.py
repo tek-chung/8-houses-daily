@@ -25,7 +25,10 @@ USER_AGENT = (
 )
 REQUEST_DELAY_SECONDS = 1.0
 REQUEST_TIMEOUT_SECONDS = 20
-MAX_PAGE_CHARS = 60_000          # truncate before sending to the model
+MAX_PAGE_CHARS = 90_000          # whole payload sent to the model, all pages together
+MAX_LANDING_CHARS = 15_000       # the volunteering page itself
+MAX_SUBPAGE_CHARS = 6_000        # each role or listing page, so one long page
+                                 # cannot crowd the others out of the payload
 
 # Phase 0 reconnaissance findings (see docs/scrapability.md).
 # Charity CMS pages are typically 90%+ navigation, tag clouds and rotating news
@@ -34,7 +37,12 @@ MAX_PAGE_CHARS = 60_000          # truncate before sending to the model
 # before hashing, and follow role links one level down because most landing pages
 # carry no role detail themselves.
 MIN_MAIN_CONTENT_CHARS = 400     # below this, treat the page as client-rendered
-MAX_ROLE_SUBPAGES = 6            # role links followed per organisation
+# Role pages read per organisation, landing page excluded. Matches the 15-role
+# ceiling of the extraction schema; 6 dropped The Passage's last two roles.
+MAX_ROLE_SUBPAGES = 15
+# Listing pages ("current opportunities") are followed one level further, so a
+# landing page -> listing -> role page chain still reaches the role.
+ROLE_LINK_DEPTH = 2
 
 # Model selection and request limits are configured through pipeline/ai.py.
 

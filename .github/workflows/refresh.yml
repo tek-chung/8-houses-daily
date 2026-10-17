@@ -93,7 +93,7 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           AI_PROVIDERS: ${{ vars.AI_PROVIDERS || 'gemini' }}
           AI_GEMINI_MODELS: ${{ vars.AI_GEMINI_MODELS || 'gemini-3.5-flash-lite,gemini-3.1-flash-lite' }}
-          AI_MAX_INPUT_BYTES: ${{ vars.AI_MAX_INPUT_BYTES || '262144' }}
+          AI_MAX_INPUT_BYTES: ${{ vars.AI_MAX_INPUT_BYTES || '524288' }}
           AI_GEMINI_FREE_TIER_CONFIRMED: ${{ vars.AI_GEMINI_FREE_TIER_CONFIRMED || 'false' }}
           AI_GEMINI_DAILY_CALLS: ${{ vars.AI_GEMINI_DAILY_CALLS || '150' }}
           AI_GEMINI_MIN_INTERVAL_MS: ${{ vars.AI_GEMINI_MIN_INTERVAL_MS || '6000' }}
