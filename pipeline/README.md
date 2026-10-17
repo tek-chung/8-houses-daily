@@ -269,6 +269,23 @@ Renamed roles: `--same "New title=Old title"` keeps the existing id and links.
 Then commit `data/` and push; Cloudflare deploys it. Close the PR without
 merging. Do not loosen the gate to reduce the queue.
 
+## Platform boards and role places
+
+Some charities list roles on client-rendered platforms the HTML fetcher cannot
+see (Crisis on Rosterfy; Centrepoint and Thames Reach on Assemble). Give the org
+a `board` (`type`, `base_url`, `region: "london"`) and `boards.py` reads the
+platform's public JSON feed instead, keeps London offers, and sends them through
+the same gate (new roles always go to review; the board is only replaced when the
+whole feed was read). Roles from a platform we have no reader for (Better Impact,
+Simply Volunteer) are reported in the status issue under "Roles we cannot see"
+until a person adds the host to `platforms_acknowledged`.
+
+Every role's `stated_places` are the towns or boroughs the page names for that
+role. Each must occur near the role's title in the page (`extract.check_places`)
+and is a critical field, so a change never auto-publishes. The site hides roles
+whose places are all outside London and falls back to charity boroughs only when
+a role names no place.
+
 ## Setup
 
 1. Follow [AI setup](../docs/ai-setup.md) using the intended Google account.

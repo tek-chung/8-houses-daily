@@ -66,6 +66,25 @@ def test_one_bad_page_is_information_not_an_alarm():
     assert a.level == "ok"
 
 
+def test_roles_on_a_platform_we_cannot_read_are_never_silent():
+    """Crisis held 4 of 80 offers for weeks because nothing said its board was unread."""
+    gap = {**result("shelter", "confirmed"), "unread_platforms": ["app.betterimpact.com"]}
+    a = assess_refresh(review(results=[gap, result("akt", "confirmed")]), "success")
+    body = render(a, RUN, REPO)
+    assert a.level == "attention" and "Roles we cannot see" in body
+    section = body.split("Roles we cannot see")[1].split("###")[0]
+    assert "Shelter" in section and "app.betterimpact.com" in section
+    assert "platforms_acknowledged" in section and "Akt" not in section
+
+
+def test_an_unreadable_board_is_reported_and_leaves_roles_alone():
+    a = assess_refresh(review(results=[result("crisis", "board_failed",
+                                              ["board not read: board feed answered HTTP 503"])]),
+                       "success")
+    body = render(a, RUN, REPO)
+    assert a.level == "attention" and "could not be read" in body and "HTTP 503" in body
+
+
 def test_failing_links_need_a_person():
     a = assess_refresh(review(results=[result("ace-of-clubs", "source_failed",
                                               ["certificate has expired"])]), "success")

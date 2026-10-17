@@ -162,8 +162,19 @@ def load():
         o = d["organisation"]
         if not d["opportunities"]:
             continue                       # a charity page with no roles is a dead end
+        shown = []
+        for op in d["opportunities"]:
+            # Kept in the data, not shown: the charity names places for this role
+            # and none of them is in London.
+            if not locations.in_london(op):
+                print(f"  not shown (not recruiting in London): {op['id']} "
+                      f"{op.get('stated_places')}")
+                continue
+            shown.append(as_of_today(op))
+        if not shown:
+            continue                       # nothing here a Londoner could sign up to
         orgs[o["id"]] = o
-        opps += [as_of_today(op) for op in d["opportunities"]]
+        opps += shown
     # Recompute on every build: a saved report can be absent or out of date.
     # The pipeline's decay calculation needs only the standard library.
     sys.path.insert(0, str(ROOT / "pipeline"))
@@ -176,8 +187,17 @@ def load():
 def areas_of(op, orgs):
     if op["location_type"] in ("remote", "own_home"):
         return []
-    return [op["postcode_district"]] if op["postcode_district"] \
-        else orgs[op["org_id"]].get("boroughs", [])
+    if op["postcode_district"]:
+        return [op["postcode_district"]]
+    # What the page names for this role beats the charity's general coverage. A role
+    # the page places only "in London", or only in named areas, must not inherit the
+    # charity's boroughs: that is how a Bournemouth role came to read as Westminster.
+    boroughs, london_only, _ = locations.stated(op)
+    if boroughs:
+        return boroughs
+    if london_only or op.get("role_zones"):
+        return []
+    return orgs[op["org_id"]].get("boroughs", [])
 
 
 DISTRICT_BOROUGH = {
@@ -642,7 +662,7 @@ def card(op, orgs, fresh):
     where = ("At your own home" if op["location_type"] == "own_home"
              else "Anywhere &mdash; remote" if op["location_type"] == "remote"
              else (", ".join(e(x) for x in bs) + (" &middot; part remote" if op["location_type"] == "hybrid" else ""))
-             if bs else "Location not stated")
+             if bs else e(locations.area_label(op, orgs) or "Location not stated"))
     if op.get('postcode_district') and op['location_type'] not in ('remote', 'own_home'):
         district = op['postcode_district']
         where = e(district) + (' &middot; ' + where if bs != [district] else '')
@@ -1139,9 +1159,13 @@ def build_roles(orgs, opps, fresh):
         rows.append(("Term", term))
         precise_where = (op['postcode_district'] + ' · ' + ', '.join(bs)
                          if op.get('postcode_district') and bs != [op['postcode_district']]
-                         else ', '.join(bs) if bs else 'Not stated')
-        if locations.location_basis(op, orgs) == 'charity_coverage':
+                         else ', '.join(bs) if bs
+                         else locations.area_label(op, orgs) or 'Not stated')
+        basis = locations.location_basis(op, orgs)
+        if basis == 'charity_coverage':
             precise_where += ' · charity coverage; confirm venue'
+        elif basis == 'role_areas':
+            precise_where += ' · areas named by the charity; confirm venue'
         rows.append(("Where", "Your own home" if op["location_type"] == "own_home"
                      else "Remote" if op["location_type"] == "remote"
                      else precise_where))
@@ -1505,6 +1529,9 @@ def build_assets(orgs, opps, fresh):
                        "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d")}}
     bundle['volunteer_areas'] = locations.ZONES
     bundle['location_zones'] = {op['id']: locations.zones_for(op, orgs, DISTRICT_BOROUGH) for op in opps}
+    # The page's own areas, computed once here so the browser never re-derives them
+    # from the charity's coverage (which is what let a role inherit the wrong place).
+    bundle['location_areas'] = {op['id']: areas_of(op, orgs) for op in opps}
     # Ship only what the client reads. app.js filters server-rendered notices by
     # data-id rather than rebuilding them, so it needs the fields match() tests
     # plus the title for the lookup field — nine of twenty-three. Provenance

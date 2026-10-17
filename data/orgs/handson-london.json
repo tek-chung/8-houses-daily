@@ -80,7 +80,10 @@
           "screening.dbs",
           "screening.min_age"
         ]
-      }
+      },
+      "role_zones": [
+        "central"
+      ]
     },
     {
       "id": "handson-london-community-day",
@@ -131,7 +134,8 @@
           "screening.min_age",
           "postcode_district"
         ]
-      }
+      },
+      "london_wide": true
     }
   ]
 }

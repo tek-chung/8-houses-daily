@@ -75,6 +75,14 @@ _OPPORTUNITY_CORE = {
     "who_can_apply": {"type": "string", "enum": WHO_CAN_APPLY},
     "postcode_district": {"type": ["string", "null"],
                           "pattern": "^[A-Z]{1,2}[0-9][0-9A-Z]?$"},
+    # The towns, cities or London boroughs the page names for THIS role, exactly as
+    # written ("Bournemouth", "Hackney"). Added after St Mungo's Outreach Volunteer,
+    # which the page offers in Bournemouth and Reading only, was shown as a London
+    # role because it silently inherited the charity's boroughs. Every entry must
+    # occur verbatim in the page (extract.check_places); a role whose places are all
+    # outside London is kept in the data but not shown. Empty = the page names none.
+    "stated_places": {"type": "array", "maxItems": 8,
+                      "items": {"type": "string", "minLength": 2, "maxLength": 60}},
     "screening": _SCREENING,
     "skills": {"type": "array", "items": {"type": "string", "maxLength": 40},
                "maxItems": 6},
@@ -134,7 +142,8 @@ _PROVENANCE = {
                  "source_url"],
     "properties": {
         "extracted_at": {"type": "string"},
-        "method": {"type": "string", "enum": ["llm", "human", "placeholder"]},
+        # "platform": read from fields of the charity's own volunteering platform.
+        "method": {"type": "string", "enum": ["llm", "human", "placeholder", "platform"]},
         "reviewed_by_human": {"type": "boolean"},
         "confidence": {"type": "number", "minimum": 0, "maximum": 1},
         "source_url": {"type": "string"},
@@ -146,13 +155,27 @@ _PROVENANCE = {
 RECORD_SCHEMA = {
     "type": "object",
     "additionalProperties": False,
-    "required": list(_OPPORTUNITY_CORE.keys()) + ["id", "org_id", "provenance"],
+    # stated_places is optional on stored records: records written before it
+    # existed simply have none, which means "the page named no place".
+    "required": [k for k in _OPPORTUNITY_CORE if k != "stated_places"]
+                + ["id", "org_id", "provenance"],
     "properties": {
         **_OPPORTUNITY_CORE,
         "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
         "org_id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
         "coords": {"type": ["array", "null"], "items": {"type": "number"},
                    "minItems": 2, "maxItems": 2},
+        # Hand-curated, never extracted (so not in _OPPORTUNITY_CORE and invisible to
+        # the model and the gate). Both record what the charity's own page says about
+        # a role that has no single postcode:
+        #   role_zones  - browsing-area ids the page names ("north, north-east and
+        #                 south-east London"), for roles that span several areas.
+        #   london_wide - the page says the role runs across London.
+        "role_zones": {"type": "array", "uniqueItems": True, "maxItems": 7,
+                       "items": {"type": "string",
+                                 "enum": ["central", "north", "north-west", "east",
+                                          "south-east", "south-west", "west"]}},
+        "london_wide": {"type": "boolean"},
         "provenance": _PROVENANCE,
     },
 }
@@ -173,6 +196,16 @@ ORG_SCHEMA = {
                      "enum": ["borough", "multi_borough", "london_wide"]},
         "boroughs": {"type": "array", "items": {"type": "string"}},
         "focus_groups": {"type": "array", "items": {"type": "string"}},
+        # A charity whose roles live on a platform the page does not render (see
+        # pipeline/boards.py). Roles are then read from the platform's own feed.
+        "board": {"type": "object", "additionalProperties": False,
+                  "required": ["type", "base_url"],
+                  "properties": {"type": {"type": "string", "enum": ["rosterfy", "assemble"]},
+                                 "base_url": {"type": "string", "pattern": "^https://"},
+                                 "region": {"type": "string", "enum": ["london"]}}},
+        # Platform hosts a person has looked at and decided not to read automatically
+        # (they stop being reported as unread roles).
+        "platforms_acknowledged": {"type": "array", "items": {"type": "string"}},
         "lived_experience_roles": {"type": "boolean"},
         "robots_allowed": {"type": "boolean"},
         "check": {

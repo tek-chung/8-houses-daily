@@ -171,6 +171,58 @@ def role_text(page_text: str, role: dict) -> str:
     return "\n\n".join([sections[0], *mine]) if mine else page_text
 
 
+# --------------------------------------------------------------- stated places
+#
+# A role's place is checked mechanically, not by asking a model whether it agrees:
+# every place must occur in the page text, close after the role's own title when
+# the title is on the page (a listing page names places for every role, and a
+# place that belongs to a different role must not "support" this one).
+
+_LONDON_ONLY = {"london", "greater london", "across london", "london wide",
+                "london-wide", "all of london", "all london"}
+_PLACE_WINDOW = 600   # characters after the title in which its places must appear
+
+
+def norm_place(value: str) -> str:
+    return " ".join(value.casefold().replace("&", " and ").replace("’", "'").split()).strip(" ,.;:")
+
+
+def place_set(places) -> set[str]:
+    """Normalised places, with bare "London" dropped: it names no place a role has
+    to be compared on."""
+    return {n for n in (norm_place(p) for p in places or []) if n and n not in _LONDON_ONLY}
+
+
+def places_found(place: str, title: str, text: str) -> bool:
+    """Is the place on the page, near this role's title where the title is there?"""
+    flat = norm_place(text)
+    needle = norm_place(place)
+    if not needle or needle not in flat:
+        return False
+    name = norm_place(title or "")
+    starts = [m.start() for m in re.finditer(re.escape(name), flat)] if name else []
+    if not starts:
+        return True       # role's title not on the page: the page-wide check is all there is
+    return any(needle in flat[s:s + len(name) + _PLACE_WINDOW] for s in starts)
+
+
+def check_places(role: dict, text: str) -> bool:
+    """Keep a role's stated_places only if every one is on the page for this role.
+
+    All or nothing: a partial list could make a role look London-only, or elsewhere
+    only, when the page said otherwise. Returns True when the places stand.
+    """
+    places = role.get("stated_places") or []
+    if not places:
+        role["stated_places"] = []
+        return True
+    if all(places_found(p, role.get("title", ""), text) for p in places):
+        role["stated_places"] = [" ".join(p.split()) for p in places]
+        return True
+    role["stated_places"] = []
+    return False
+
+
 def _verify(client, url: str, page_text: str,
             role: dict) -> tuple[list[str], list[str], str | None]:
     claims = {}
@@ -239,6 +291,10 @@ def extract(client, org_name: str, url: str, page_text: str) -> Extraction:
 
     all_ok, all_bad, verify_errs = [], [], []
     for r in roles:
+        had_places = bool(r.get("stated_places"))
+        places_ok = check_places(r, role_text(page_text, r))
+        if had_places:
+            (all_ok if places_ok else all_bad).append(f"{r.get('title')}::stated_places")
         ok, bad, verr = _verify(client, url, role_text(page_text, r), r)
         if verr:
             verify_errs.append(verr)
@@ -338,6 +394,12 @@ role decide:
 For every supported item give a short exact quotation from the supplied page as
 evidence. Unsupported items use null evidence.
 
+Also, for each listed role, give in "places" the towns, cities or London boroughs
+the page names as where THAT role is recruiting or takes place, exactly as the page
+writes them (for example "Bournemouth" or "Hackney"). Use the place named for that
+role itself, not another role's and not the charity's head office. Use an empty list
+if the page names no place for it. Do not guess from the charity's usual area.
+
 Then list in "other_roles" the titles of any other volunteering roles the page
 describes that are not in the listing. Only roles a person could volunteer for:
 not donation appeals, sponsored challenge events, or paid jobs. Use an empty list
@@ -396,8 +458,11 @@ def confirm_schema(roles: list[dict]) -> dict:
         properties['roles'] = {
             'type': 'object', 'additionalProperties': False, 'required': list(claims),
             'properties': {rid: {'type': 'object', 'additionalProperties': False,
-                                 'required': ['listed', *fields],
-                                 'properties': {k: _VERDICT for k in ['listed', *fields]}}
+                                 'required': ['listed', *fields, 'places'],
+                                 'properties': {**{k: _VERDICT for k in ['listed', *fields]},
+                                                'places': {'type': 'array', 'maxItems': 8,
+                                                           'items': {'type': 'string',
+                                                                     'maxLength': 60}}}}
                            for rid, fields in claims.items()}}
     return {'type': 'object', 'additionalProperties': False,
             'required': list(properties), 'properties': properties}
@@ -435,6 +500,15 @@ def confirm(client, org_name: str, url: str, page_text: str,
 
     unsupported = [f"{rid}::{f}" for rid, fields in claims.items()
                    for f in ['listed', *fields] if not backed(rid, f)]
+    # Where each role happens must match what the page says, in both directions:
+    # a place the page names that the listing lacks (St Mungo's Outreach Volunteer is
+    # Bournemouth and Reading, but was listed with the charity's London boroughs) and
+    # a listed place the page no longer names. Either way nothing is confirmed.
+    for r in roles:
+        said = [p for p in verdicts.get(r["id"], {}).get('places', [])
+                if isinstance(p, str) and places_found(p, r["title"], page_text)]
+        if place_set(said) != place_set(r.get("stated_places")):
+            unsupported.append(f"{r['id']}::stated_places")
     others = [t.strip() for t in response.json.get('other_roles', []) if t.strip()]
     return Confirmation(confirmed=not unsupported, other_roles=others,
                         unsupported=unsupported,

@@ -29,6 +29,72 @@ def test_multi_area_coverage_is_explicit_and_unknown_district_is_not_guessed():
     assert locations.zones_for(role(), {'sample': {'boroughs': []}}, DISTRICTS) == []
 
 
+def test_role_zones_come_from_the_page_and_beat_charity_coverage():
+    op = {**role(), 'role_zones': ['north', 'east', 'south-east']}
+    assert locations.zones_for(op, ORGS, DISTRICTS) == ['east', 'north', 'south-east']
+    assert locations.location_basis(op, ORGS) == 'role_areas'
+    assert locations.area_label({**op, 'org_id': 'bare'}, {'bare': {}}) == \
+        'East London, North London, South-east London'
+    # A stated postcode still wins, and remote roles ignore areas entirely.
+    assert locations.zones_for({**op, 'postcode_district': 'E1'}, ORGS, DISTRICTS) == ['east']
+    assert locations.zones_for({**op, 'location_type': 'remote'}, ORGS, DISTRICTS) == []
+
+
+def test_london_wide_is_only_said_when_the_page_said_it():
+    bare = {'bare': {'boroughs': []}}
+    plain = {'org_id': 'bare', 'postcode_district': None, 'location_type': 'in_person'}
+    assert locations.area_label(plain, bare) is None
+    assert locations.location_basis(plain, bare) == 'unknown'
+    wide = {**plain, 'london_wide': True}
+    assert locations.area_label(wide, bare) == 'Across London'
+    assert locations.location_basis(wide, bare) == 'london_wide'
+    assert locations.zones_for(wide, bare, DISTRICTS) == []
+    # Charity coverage, when present, is the more specific statement.
+    assert locations.area_label({**wide, 'org_id': 'sample'}, ORGS) is None
+
+
+def stated(places, kind='in_person', district=None):
+    return {'org_id': 'sample', 'postcode_district': district, 'location_type': kind,
+            'stated_places': places}
+
+
+def test_places_the_page_names_beat_the_charitys_coverage():
+    """Workshop Assistant is Hammersmith and Fulham and Hackney, not the charity's
+    Westminster, Haringey and Hackney."""
+    op = stated(['Hammersmith and Fulham', 'Hackney'])
+    assert locations.stated_boroughs(op) == ['Hackney', 'Hammersmith and Fulham']
+    assert locations.zones_for(op, ORGS, DISTRICTS) == ['east', 'west']
+    assert locations.location_basis(op, ORGS) == 'role_areas'
+    assert locations.in_london(op)
+    assert locations.zones_for(stated(['hammersmith & fulham']), ORGS, DISTRICTS) == ['west']
+
+
+def test_a_role_placed_only_outside_london_is_not_a_london_role():
+    """The St Mungo's Outreach Volunteer: Bournemouth and Reading."""
+    op = stated(['Bournemouth', 'Reading'])
+    assert not locations.in_london(op)
+    # One London place is enough to keep it, and only that place is its area.
+    mixed = stated(['Bournemouth', 'Reading', 'Oxford', 'Westminster'])
+    assert locations.in_london(mixed) and locations.stated_boroughs(mixed) == ['Westminster']
+    # Nothing stated: nothing says it is elsewhere, so it stays.
+    assert locations.in_london(stated([])) and locations.in_london(role())
+    # Remote work can be done from anywhere.
+    assert locations.in_london(stated(['Bristol'], kind='remote'))
+
+
+def test_bare_london_does_not_inherit_the_charitys_boroughs():
+    op = stated(['London'])
+    assert locations.in_london(op)
+    assert locations.zones_for(op, ORGS, DISTRICTS) == []
+    assert locations.location_basis(op, ORGS) == 'london_wide'
+    assert locations.area_label(op, ORGS) == 'London'
+
+
+def test_a_stated_postcode_still_beats_stated_places():
+    assert locations.zones_for(stated(['Hackney'], district='SW4'), ORGS, DISTRICTS) == ['south-west']
+    assert locations.stated_boroughs(stated(['Hackney'], district='SW4')) == []
+
+
 def test_remote_and_hosting_do_not_inherit_charity_locations():
     for kind in ('remote', 'own_home'):
         assert locations.zones_for(role('E1', kind), ORGS, DISTRICTS) == []

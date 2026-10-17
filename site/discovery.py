@@ -7,18 +7,22 @@ def notice(b, op, orgs, fresh):
     """A beginner's decision card; secondary particulars expand on demand."""
     org = orgs[op['org_id']]
     stale = b.suppressed(op, fresh)
-    title, description = b.e(op['title']), b.e(op['what_youd_do'])
+    title = b.e(op['title'])
+    # The whole description is shown on the card, never cut and repeated below.
     text = op['what_youd_do']
-    lead = text if len(text) <= 140 else text[:137].rsplit(' ', 1)[0] + '…'
+    lead = text
     where = ('Your own home' if op['location_type'] == 'own_home'
              else 'Remote' if op['location_type'] == 'remote'
-             else ', '.join(b.boroughs_of(op, orgs)) or 'Location not stated')
+             else ', '.join(b.boroughs_of(op, orgs))
+             or locations.area_label(op, orgs) or 'Location not stated')
     if op.get('postcode_district') and op['location_type'] not in ('remote', 'own_home'):
         district = op['postcode_district']
         where = district + (' · ' + where if where != district else '')
     basis = locations.location_basis(op, orgs)
-    location_note = ('<p class="role-location-note">Charity coverage area; confirm the venue.</p>'
-                     if basis == 'charity_coverage' else '')
+    location_note = {
+        'charity_coverage': '<p class="role-location-note">Charity coverage area; confirm the venue.</p>',
+        'role_areas': '<p class="role-location-note">Areas named by the charity; confirm the venue.</p>',
+    }.get(basis, '')
     frequency = {'one_off': 'One-off', 'flexible': 'Flexible frequency',
                  'weekly': 'Weekly', 'fortnightly': 'Every fortnight',
                  'monthly': 'Monthly', 'long_term': 'Ongoing commitment',
@@ -34,7 +38,7 @@ def notice(b, op, orgs, fresh):
     eligibility = (f'<p class="role-eligibility"><b>Before you save:</b> {b.e(" · ".join(requirements))}</p>'
                    if requirements else '')
     screening = 'Screening needs a fresh check' if stale else b.DBS_LABEL[op['screening']['dbs']]
-    details = ('<p>' + description + '</p>' if lead != text else '') + '<dl><dt>Screening</dt><dd>' + b.e(screening) + '</dd>'
+    details = '<dl><dt>Screening</dt><dd>' + b.e(screening) + '</dd>'
     if not stale:
         for key, label in [('induction', 'Training'), ('references', 'References'), ('interview', 'Interview')]:
             value = op['screening'].get(key)

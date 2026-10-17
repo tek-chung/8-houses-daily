@@ -18,14 +18,16 @@ import json
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import urlparse
 
 from ai import AIClient
 from jsonschema import ValidationError, validate
 
+import boards
 import decay
 from config import (CONFIRM_EXISTING_LISTINGS, CRITICAL_FIELDS, DEAD_LINK_AFTER_FAILURES,
                     ORGS_DIR, ROUTE_REVIEW, STATE)
-from extract import confirm, extract, finalise
+from extract import confirm, extract, finalise, reproduces_source
 from fetchpage import fetch
 from gate import classify_fetch_failure, diff_fields, pair_roles, route_org
 from schema import ORG_SCHEMA, RECORD_SCHEMA
@@ -73,7 +75,7 @@ def disagreements(pairs) -> list[str]:
     out = []
     for old, new in pairs:
         for f in diff_fields(old, new):
-            if f in DISAGREE_ON and _value(new, f) not in (None, "unknown"):
+            if f in DISAGREE_ON and _value(new, f) not in (None, "unknown", []):
                 out.append(f"{old.get('title')}: {f} {json.dumps(_value(old, f))} → "
                            f"{json.dumps(_value(new, f))}")
     return out
@@ -154,6 +156,17 @@ def process(path: Path, doc: dict, client, dry: bool, site_check=record_errors) 
     report['fetched_content_hash'] = res.content_hash
     report['pages_read'] = list(res.pages_read)
     report['checked_at'] = check['last_attempt']
+    # Volunteer platforms the page links to that no reader of ours covers: roles
+    # there are invisible to this check, and the report must say so.
+    covered = {urlparse(org.get("board", {}).get("base_url", "")).netloc,
+               *org.get("platforms_acknowledged", [])}
+    report['unread_platforms'] = [h for h in getattr(res, "platforms", []) or [] if h not in covered]
+
+    if org.get("board"):
+        # The landing page tells us the link works; the roles are on a board the page
+        # does not render, so they are read from the board's own feed instead.
+        return process_board(path, doc, old_roles, client, dry, site_check, report,
+                             save_check, res.content_hash)
 
     if res.status == "unchanged":
         report['outcome'] = 'unchanged'
@@ -256,6 +269,9 @@ def process(path: Path, doc: dict, client, dry: bool, site_check=record_errors) 
     pairs, added, _ = pair_roles(old_roles, new_roles)
     for old, new in pairs:
         new['id'] = old['id']  # retain published links and visitors' saved IDs
+        for hand_curated in ('role_zones', 'london_wide'):  # never extracted; keep them
+            if hand_curated in old and hand_curated not in new:
+                new[hand_curated] = old[hand_curated]
         if (old.get('postcode_district'), old.get('location_type')) == \
                 (new.get('postcode_district'), new.get('location_type')):
             new['coords'] = old.get('coords')
@@ -289,13 +305,27 @@ def process(path: Path, doc: dict, client, dry: bool, site_check=record_errors) 
         if old_roles:
             report["reasons_prefix"] = ["current listing confirmed against the page"]
 
-    route, decisions = route_org(old_roles, new_roles, ex.confidence)
+    return route_and_publish(
+        path, doc, old_roles, new_roles, ex.confidence, report, save_check, dry,
+        site_check, res.content_hash, model=ex.model_used, page_notes=ex.page_notes,
+        unsupported=ex.unsupported)
+
+
+def route_and_publish(path, doc, old_roles, new_roles, confidence, report, save_check, dry,
+                      site_check, content_hash, model=None, page_notes=None,
+                      unsupported=None) -> dict:
+    """The gate, then the site-build check, then publish or hold. One path for every
+    source of roles (an extracted page or a platform board): no source gets a
+    shorter route to a visitor."""
+    org = doc["organisation"]
+    check = org["check"]
+    route, decisions = route_org(old_roles, new_roles, confidence)
     report.update(
         route=route,
-        confidence=ex.confidence,
-        model=ex.model_used,
-        page_notes=ex.page_notes,
-        unsupported=ex.unsupported,
+        confidence=confidence,
+        model=model,
+        page_notes=page_notes,
+        unsupported=unsupported or [],
         roles_after=len(new_roles),
         reasons=report.pop("reasons_prefix", []) + [r for d in decisions for r in d.reasons],
         changed_fields=sorted({f for d in decisions for f in d.changed_fields}),
@@ -318,11 +348,91 @@ def process(path: Path, doc: dict, client, dry: bool, site_check=record_errors) 
 
     check["last_success"] = NOW()
     report['outcome'] = 'published'
-    check["content_hash"] = res.content_hash
+    check["content_hash"] = content_hash
     doc["opportunities"] = new_roles
     if not dry:
         path.write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
     return report
+
+
+def board_summariser(client, report):
+    """A summary in the model's own words for a role new to the listing, or None.
+
+    One call per new role and never for roles already listed, so a board does not
+    use the daily AI allowance each week. The result is checked like any extraction:
+    no run of eight words from the description.
+    """
+    if client is None or getattr(client, "budget_exhausted", False):
+        return None
+    schema = {'type': 'object', 'additionalProperties': False, 'required': ['summary'],
+              'properties': {'summary': {'type': 'string', 'minLength': 15, 'maxLength': 200}}}
+
+    def summarise(offer):
+        if getattr(client, "budget_exhausted", False) or len(offer.description) < 40:
+            return None
+        system, user = boards.paraphrase_prompt(offer)
+        try:
+            text = client.generate_structured(system, user, schema).json["summary"].strip()
+        except Exception as exc:
+            report.setdefault("summaries_skipped", []).append(f"{offer.id}: {type(exc).__name__}")
+            return None
+        if reproduces_source(text, offer.description):
+            report.setdefault("summaries_skipped", []).append(f"{offer.id}: repeated source wording")
+            return None
+        return text
+    return summarise
+
+
+def process_board(path, doc, old_roles, client, dry, site_check, report, save_check, content_hash,
+                  get=None) -> dict:
+    """Roles read from the charity's platform feed. Same gate, same publish path."""
+    org = doc["organisation"]
+    board = org["board"]
+    check = org["check"]
+    try:
+        offers = boards.load_offers(board, get=get)
+    except boards.BoardError as exc:
+        # Nothing changes and nothing is confirmed: a board we could not read says
+        # nothing about its roles.
+        report.update(route="auto", outcome='board_failed', reasons=[f"board not read: {exc}"])
+        save_check()
+        return report
+
+    now_iso = NOW()
+    paired_titles = {r["title"].casefold() for r in old_roles}
+    summarise = board_summariser(client, report)
+    # Summaries only for roles the listing does not already carry.
+    only_new = (lambda offer: summarise(offer) if summarise and offer.title.casefold()
+                not in paired_titles else None)
+    new_roles, set_aside = boards.london_records(
+        offers, org["id"], now_iso, org["volunteer_url"], only_new)
+    report.update(board_offers=len(offers), board_set_aside=set_aside)
+    for rec in new_roles:
+        try:
+            validate(rec, RECORD_SCHEMA)
+        except ValidationError as exc:
+            report.update(route=ROUTE_REVIEW, outcome='invalid_extraction',
+                          reasons=[f"board record {rec['id']} failed schema: {exc.message}"])
+            save_check()
+            return report
+
+    pairs, added, _ = pair_roles(old_roles, new_roles)
+    for old, new in pairs:
+        new['id'] = old['id']                   # keep published links and saved IDs
+        if new["provenance"]["unsupported_fields"] and old.get("what_youd_do"):
+            new["what_youd_do"] = old["what_youd_do"]    # unchanged wording, no churn
+        for kept in ('role_zones', 'london_wide', 'coords'):
+            if kept in old and (kept not in new or new[kept] is None):
+                new[kept] = old[kept]
+    taken = {r["id"] for r in old_roles} | {n["id"] for o, n in pairs}
+    for new in added:
+        base, n = new["id"], 2
+        while new["id"] in taken:
+            new["id"], n = f"{base}-{n}", n + 1
+        taken.add(new["id"])
+    check["last_extraction"] = now_iso
+    return route_and_publish(path, doc, old_roles, new_roles, 1.0, report, save_check, dry,
+                             site_check, content_hash, model="platform feed")
 
 
 def main() -> int:

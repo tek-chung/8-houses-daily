@@ -57,6 +57,9 @@ CRITICAL_FIELDS = frozenset({
     "screening.induction",
     "status",
     "next_intake",
+    # Where the role happens. A wrong place sends someone to a town the charity is
+    # not recruiting in, so a change to it always goes to a person.
+    "stated_places",
 })
 
 # Confidence below this routes to human review even for non-critical fields.

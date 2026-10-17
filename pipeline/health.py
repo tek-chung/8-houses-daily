@@ -172,6 +172,29 @@ def assess_refresh(review: dict | None, job_status: str) -> Assessment:
             [f"- {_name(r)}: {r.get('roles_before')} → {r.get('roles_after')} roles — "
              f"{_short(r.get('reasons', []))}" for r in waiting]))
 
+    broken_boards = by("board_failed")
+    if broken_boards:
+        level = max(level, "attention", key=LEVELS.get)
+        if headline == "Nothing needs you.":
+            headline = "A volunteering platform could not be read."
+        sections.append(("Platform boards that could not be read", [
+            "Their roles are left exactly as they were and nothing was confirmed. It "
+            "usually clears by itself; if the same board is here two weeks running, open "
+            "it in a browser and check the address in the charity's `board` setting.", ""] +
+            [f"- {_name(r)}: {_short(r.get('reasons', []))}" for r in broken_boards]))
+
+    gaps = [r for r in results if r.get("unread_platforms")]
+    if gaps:
+        level = max(level, "attention", key=LEVELS.get)
+        if headline == "Nothing needs you.":
+            headline = "Some charities keep roles on platforms the check cannot read."
+        sections.append(("Roles we cannot see", [
+            "These charities link to a volunteering platform that the check does not read, "
+            "so any roles there are missing from the listing. Check each by hand, and "
+            "either add a `board` reader for it or list the host under "
+            "`platforms_acknowledged` in `data/orgs/<id>.json` once you have looked.", ""] +
+            [f"- {_name(r)}: {', '.join(r['unread_platforms'])}" for r in gaps]))
+
     dead = by("source_failed")
     if dead:
         level = max(level, "attention", key=LEVELS.get)

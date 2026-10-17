@@ -56,7 +56,19 @@ assert.equal(JSON.parse(dom.window.localStorage.getItem(key)).preferences.commit
 assert.deepEqual(JSON.parse(dom.window.localStorage.getItem(key)).preferences.zones,['central','east']);
 assert.match(d.querySelector('#journey-progress').textContent,/Suggestions/);
 assert(d.querySelector('#journey-progress').hidden,'Suggestions are moved out of the top toolbar');
-assert.match(d.querySelector('.matching-answers').textContent,/Suggestions based on your answers.*Change my answers/);
+assert.equal(d.querySelector('.fit-reasons summary').textContent,'Suggestions based on your answers');
+assert.doesNotMatch(d.body.textContent,/Why this role/);
+assert.match(d.querySelector('.matching-answers').textContent,/Change my answers/);
+{ // Order under the card: suggestions, then Change my answers, then Browse all roles.
+  const s=d.querySelector('.fit-reasons'),c=d.querySelector('.matching-answers'),b=d.querySelector('.matching-navigation a');
+  assert(s.compareDocumentPosition(c)&4 && c.compareDocumentPosition(b)&4,'Suggestions, Change my answers, Browse all roles');
+  assert.equal(b.textContent,'Browse all roles →');
+}
+{ // No description is cut and repeated under requirements.
+  const card=d.querySelector('.discovery-notice .role-notice');
+  assert.doesNotMatch(card.querySelector('.role-lead').textContent,/…$/);
+  assert.equal(card.querySelectorAll('.role-details > p').length,card.querySelectorAll('.role-details > p.role-recruitment,.role-details > p.role-uncertainty,.role-details > p.role-source').length);
+}
 assert(d.querySelector('.discovery-notice a.apply').href.startsWith('https://'));
 
 const payload=JSON.parse(d.querySelector('#discovery-data').textContent);

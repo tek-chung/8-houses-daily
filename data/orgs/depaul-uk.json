@@ -123,7 +123,8 @@
           "typical_shift_hours",
           "specific_times"
         ]
-      }
+      },
+      "london_wide": true
     }
   ]
 }

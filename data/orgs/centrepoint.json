@@ -15,6 +15,11 @@
     "focus_groups": [
       "youth"
     ],
+    "board": {
+      "type": "assemble",
+      "base_url": "https://centrepoint.goassemble.com",
+      "region": "london"
+    },
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {

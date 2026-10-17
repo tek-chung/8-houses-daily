@@ -192,7 +192,7 @@ def _site_errors(org_id: str) -> list[str]:
 # status, next_intake) are deliberately not carried: unknown is the safe value.
 CARRY_FORWARD = ("commitment", "min_term_months", "typical_shift_hours", "specific_times",
                  "postcode_district", "who_can_apply", "skills", "eligibility",
-                 "seasonal_window")
+                 "seasonal_window", "role_zones", "london_wide")
 _BLANK = (None, "unknown", [], "")
 
 

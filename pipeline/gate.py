@@ -43,6 +43,8 @@ def _flatten(rec: dict, prefix: str = "") -> dict:
         if isinstance(v, dict):
             out.update(_flatten(v, f"{key}."))
         elif isinstance(v, list):
+            if key == "stated_places" and not v:
+                continue      # "names no place" is the same as the field not existing yet
             out[key] = tuple(sorted(str(x) for x in v))
         else:
             out[key] = v

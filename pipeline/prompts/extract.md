@@ -131,6 +131,17 @@ that is not eligibility and belongs nowhere.
 `postcode_district` — the outward code only (`SE1`, `E8`, `N16`), and only if the
 page gives an address or clear location. Null for remote roles and when unstated.
 
+`stated_places` — the towns, cities or London boroughs the page names for **this
+role**, each exactly as the page writes it ("Bournemouth", "Hackney", "Hammersmith
+and Fulham"). Many pages list a "Location" beside every role, and a charity that
+works in several cities may recruit for one role in Bournemouth and Reading and for
+another in Camden. Copy only the places given for this role, not another role's, not
+the charity's head office, and nothing you infer from the charity's usual area or its
+name. If the page names no place for the role, return an empty list. Every entry is
+checked against the page text, and a role whose places are all outside London is not
+shown on the site, so a wrong or invented place hides a real role or shows an
+unavailable one.
+
 `apply_url` with `url_specificity` — if there is a link or form specific to this
 role, use it and set `role`. If the only link is the general volunteering page, use
 that and set `org_volunteer_page`. If neither, use the page you are reading and set

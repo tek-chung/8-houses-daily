@@ -56,9 +56,10 @@ class FakeClient:
         return SimpleNamespace(json=data, provider='gemini', model='test')
 
 
-def verdicts(evidence, others=()):
-    return {'roles': {'x-kitchen': {k: {'supported': v is not None, 'evidence': v}
-                                    for k, v in evidence.items()}},
+def verdicts(evidence, others=(), places=()):
+    return {'roles': {'x-kitchen': {**{k: {'supported': v is not None, 'evidence': v}
+                                       for k, v in evidence.items()},
+                                    'places': list(places)}},
             'other_roles': list(others)}
 
 
@@ -70,7 +71,65 @@ def test_every_quotation_found_confirms_the_listing():
     assert result.confirmed and not result.unsupported and result.other_roles == []
     asked = client.sent[0].schema['properties']['roles']['properties']['x-kitchen']['required']
     # unknown and null assert nothing, so they are not asked about
-    assert sorted(asked) == ['listed', 'screening.min_age', 'specific_times', 'status']
+    assert sorted(asked) == ['listed', 'places', 'screening.min_age', 'specific_times', 'status']
+
+
+# ------------------------------------------------------------- where a role happens
+# St Mungo's Outreach Volunteer was published as a London role while the page offered
+# it in Bournemouth and Reading only. A confirmation must compare places both ways.
+
+LISTING = ("Outreach Volunteer. Location: Bournemouth, Reading. Join outreach shifts. "
+           "Gardening Group Volunteer. Location: Camden. Garden with clients.")
+
+
+def test_a_place_the_page_names_but_the_listing_lacks_is_not_confirmed():
+    role = {**ROLE, 'id': 'x-kitchen', 'title': 'Outreach Volunteer', 'status': 'unknown',
+            'specific_times': None, 'screening': {**ROLE['screening'], 'min_age': None}}
+    verdict = {'roles': {'x-kitchen': {'listed': {'supported': True,
+                                                  'evidence': 'Outreach Volunteer. Location'},
+                                       'places': ['Bournemouth', 'Reading']}},
+               'other_roles': []}
+    result = confirm(FakeClient(verdict), 'St Mungo', 'https://e.org', LISTING, [role])
+    assert not result.confirmed and result.unsupported == ['x-kitchen::stated_places']
+
+
+def test_matching_places_confirm_and_bare_london_is_ignored():
+    role = {**ROLE, 'title': 'Outreach Volunteer', 'status': 'unknown', 'specific_times': None,
+            'stated_places': ['Bournemouth', 'Reading'],
+            'screening': {**ROLE['screening'], 'min_age': None}}
+    verdict = {'roles': {'x-kitchen': {'listed': {'supported': True,
+                                                  'evidence': 'Outreach Volunteer. Location'},
+                                       'places': ['reading', 'Bournemouth', 'London']}},
+               'other_roles': []}
+    # "London" is not on this page, so it is dropped before comparing; the rest match
+    assert confirm(FakeClient(verdict), 'St Mungo', 'https://e.org', LISTING, [role]).confirmed
+
+
+def test_a_listed_place_the_page_no_longer_names_is_not_confirmed():
+    role = {**ROLE, 'title': 'Outreach Volunteer', 'status': 'unknown', 'specific_times': None,
+            'stated_places': ['Ealing'],
+            'screening': {**ROLE['screening'], 'min_age': None}}
+    verdict = {'roles': {'x-kitchen': {'listed': {'supported': True,
+                                                  'evidence': 'Outreach Volunteer. Location'},
+                                       'places': []}},
+               'other_roles': []}
+    assert not confirm(FakeClient(verdict), 'St Mungo', 'https://e.org', LISTING, [role]).confirmed
+
+
+def test_a_place_that_belongs_to_another_role_does_not_count():
+    from extract import places_found
+    long_gap = "Outreach Volunteer. " + "word " * 200 + "Gardening Group Volunteer. Location: Camden."
+    assert not places_found('Camden', 'Outreach Volunteer', long_gap)
+    assert places_found('Camden', 'Gardening Group Volunteer', long_gap)
+    assert places_found('Camden', 'Role not on the page', long_gap)   # page-wide fallback
+
+
+def test_extraction_drops_places_it_cannot_find_and_says_so():
+    from extract import check_places
+    role = {'title': 'Gardening Group Volunteer', 'stated_places': ['Camden', 'Bristol']}
+    assert not check_places(role, LISTING) and role['stated_places'] == []
+    role = {'title': 'Gardening Group Volunteer', 'stated_places': ['camden']}
+    assert check_places(role, LISTING) and role['stated_places'] == ['camden']
 
 
 @pytest.mark.parametrize('field', list(GOOD))
@@ -469,12 +528,14 @@ def test_season_eligibility_and_commitment_are_confirmed_too():
     page = PAGE + ' The shelter runs from November to April. Women only. Teams of six, weekly.'
     ev = {**GOOD, 'seasonal_window': 'runs from November to April', 'eligibility': 'Women only',
           'commitment': 'Teams of six, weekly', 'who_can_apply': 'Teams of six'}
-    client = FakeClient({'roles': {'x-kitchen': {k: {'supported': True, 'evidence': v}
-                                                 for k, v in ev.items()}}, 'other_roles': []})
+    client = FakeClient({'roles': {'x-kitchen': {**{k: {'supported': True, 'evidence': v}
+                                                    for k, v in ev.items()}, 'places': []}},
+                         'other_roles': []})
     assert confirm(client, 'E', 'https://e.org', page, [role]).confirmed
     ev['seasonal_window'] = 'The shelter runs from November'          # April missing
-    client = FakeClient({'roles': {'x-kitchen': {k: {'supported': True, 'evidence': v}
-                                                 for k, v in ev.items()}}, 'other_roles': []})
+    client = FakeClient({'roles': {'x-kitchen': {**{k: {'supported': True, 'evidence': v}
+                                                    for k, v in ev.items()}, 'places': []}},
+                         'other_roles': []})
     assert confirm(client, 'E', 'https://e.org', page, [role]).unsupported == ['x-kitchen::seasonal_window']
 
 

@@ -78,7 +78,12 @@
           "screening.dbs",
           "screening.min_age"
         ]
-      }
+      },
+      "role_zones": [
+        "north",
+        "east",
+        "south-east"
+      ]
     },
     {
       "id": "housing-justice-host",
@@ -187,7 +192,8 @@
           "typical_shift_hours",
           "the January to April window and the Croydon venue come from londonslifelines.org, a partner site, for the 2026 season"
         ]
-      }
+      },
+      "london_wide": true
     }
   ]
 }

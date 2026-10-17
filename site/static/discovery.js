@@ -184,10 +184,11 @@
       } else if(role.location_type==='remote' && p.zones.length){score+=15;reasons.push('Remote: no journey to a venue.');}
       else if(role.location_type==='own_home' && p.zones.length){cautions.push('Hosting takes place at home; check whether your address is covered.');}
       else if(overlaps.length){
-        const coverage=role.location_basis==='charity_coverage';score+=coverage?12:25;
+        const coverage=['charity_coverage','role_areas'].includes(role.location_basis);score+=coverage?12:25;
         reasons.push((coverage?'The charity covers ':'The listed postcode is in ')+overlaps.map(id=>zoneLabels.get(id)).join(' or ')+'.');
         if(coverage)cautions.push('Coverage does not confirm a venue in your chosen area.');
       } else if(p.remote && !p.zones.length){conflicts++;cautions.push('This role is not listed as remote.');}
+      else if(role.location_basis==='london_wide' && !['remote','own_home'].includes(role.location_type)) reasons.push('The charity says this runs across London.');
       else if(!(role.zones||[]).length && !['remote','own_home'].includes(role.location_type)) cautions.push('The location needs checking with the charity.');
       else {conflicts++;cautions.push('The listed location is outside your chosen areas.');}
     }
@@ -202,7 +203,7 @@
   function reasons(role) {
     const f = fit(role), box = el('details','','fit-reasons');
     if (!preferences) return el('div');
-    box.append(el('summary','Why this role?'));
+    box.append(el('summary','Suggestions based on your answers'));
     if(f.conflicts)box.open=true;
     box.append(el('p', f.reasons.length ? 'Why this may fit: '+f.reasons.join(' ') : 'Explore this role and check the particulars below.'));
     if (f.cautions.length) box.append(el('p','Before enquiring: '+f.cautions.join(' ')));
@@ -288,10 +289,10 @@
       timer=setTimeout(finished,560);
     }
     actions.append(button('Skip',()=>tear(false)),button('Save role',()=>tear(true),'primary'));
-    box.append(reasons(role),actions);
+    // Order under the card: Skip/Save, the suggestions, Change my answers, then Browse all roles.
+    box.append(actions,reasons(role));
     const navigation=el('div','','matching-navigation');
     const answers=el('div','','matching-answers');
-    if(phase!=='examples')answers.append(el('span','Suggestions based on your answers'));
     answers.append(button(phase === 'examples' ? 'Answer the questions now' : 'Change my answers',questions,'discovery-text-button'));
     const browse=el('a','Browse all roles →');browse.href='/all/';
     navigation.append(answers,browse);box.append(navigation);

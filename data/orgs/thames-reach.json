@@ -13,6 +13,11 @@
     "coverage": "london_wide",
     "boroughs": [],
     "focus_groups": [],
+    "board": {
+      "type": "assemble",
+      "base_url": "https://thames-reach.goassemble.com",
+      "region": "london"
+    },
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {

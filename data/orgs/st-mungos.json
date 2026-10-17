@@ -71,15 +71,19 @@
       "provenance": {
         "extracted_at": "2026-10-17T18:54:49+00:00",
         "method": "llm",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
         "verified_fields": [
           "screening.dbs",
+          "stated_places",
           "status"
         ],
         "unsupported_fields": []
-      }
+      },
+      "stated_places": [
+        "London"
+      ]
     },
     {
       "title": "Workshop Assistant Volunteer",
@@ -115,18 +119,23 @@
       "provenance": {
         "extracted_at": "2026-10-17T18:54:49+00:00",
         "method": "llm",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
         "verified_fields": [
           "screening.dbs",
+          "stated_places",
           "status"
         ],
         "unsupported_fields": []
-      }
+      },
+      "stated_places": [
+        "Hammersmith and Fulham",
+        "Hackney"
+      ]
     },
     {
-      "title": "Digital Skills Volunteer",
+      "title": "Digital Learning Volunteer",
       "what_youd_do": "Design online learning materials and build digital training tools to give clients better access to education.",
       "commitment": "long_term",
       "min_term_months": 6,
@@ -163,29 +172,32 @@
       "provenance": {
         "extracted_at": "2026-10-17T18:54:49+00:00",
         "method": "llm",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
         "verified_fields": [
           "screening.dbs",
+          "stated_places",
           "status"
         ],
         "unsupported_fields": []
-      }
+      },
+      "stated_places": [
+        "Islington"
+      ]
     },
     {
       "id": "st-mungos-outreach-westminster",
       "org_id": "st-mungos",
-      "title": "Outreach Volunteer, Westminster",
-      "what_youd_do": "Walk shifts with the outreach workers in Westminster \u2014 navigating, assessing, taking notes, and helping people towards immigration, work or a bed. Expect long distances.",
-      "commitment": "monthly",
+      "title": "Outreach Volunteer",
+      "what_youd_do": "Assist outreach workers on their shifts, adding capacity so the team can reach more people sleeping rough, including people referred through StreetLink.",
+      "commitment": "unknown",
       "min_term_months": null,
-      "typical_shift_hours": 4,
+      "typical_shift_hours": null,
       "when": [
-        "weekday_daytime",
-        "overnight"
+        "flexible"
       ],
-      "specific_times": "Early 6am to 10am or late 8.30pm to midnight, any day; one shift a month minimum",
+      "specific_times": null,
       "activity": "outreach",
       "location_type": "in_person",
       "postcode_district": null,
@@ -195,94 +207,39 @@
         "references": null,
         "interview": null,
         "min_age": null,
-        "induction": "Two-hour online core training. They ask about spent convictions. Travel refunded to zones 1-6."
+        "induction": null
       },
       "skills": [],
       "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
-      "status": "unknown",
+      "status": "open",
       "apply_url": "https://www.mungos.org/volunteer_role/outreach-volunteer/",
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-09-02T00:00:00+00:00",
-        "method": "human",
-        "reviewed_by_human": true,
-        "confidence": 1.0,
-        "source_url": "https://www.mungos.org/volunteer_role/outreach-volunteer/",
+        "extracted_at": "2026-10-17T21:00:00+00:00",
+        "method": "llm",
+        "reviewed_by_human": false,
+        "confidence": 0.9,
+        "source_url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
         "verified_fields": [
-          "specific_times",
-          "commitment",
-          "activity",
-          "screening.induction",
-          "typical_shift_hours"
+          "stated_places",
+          "status"
         ],
         "unsupported_fields": [
-          "screening.dbs",
-          "screening.min_age",
-          "recruitment may close early depending on the volume of applications"
+          "schedule and training details removed: the old Westminster and Ealing wording was not on the page"
         ]
-      }
-    },
-    {
-      "id": "st-mungos-outreach-ealing",
-      "org_id": "st-mungos",
-      "title": "Outreach Volunteer, Ealing",
-      "what_youd_do": "Outreach in Ealing, either a Monday late shift or a Wednesday and Friday very early one. You need to be able to drive for this one.",
-      "commitment": "weekly",
-      "min_term_months": null,
-      "typical_shift_hours": 4,
-      "when": [
-        "weekday_evening",
-        "overnight"
-      ],
-      "specific_times": "Monday 10pm to 2am, or Wednesday and Friday 5am to 8am",
-      "activity": "outreach",
-      "location_type": "in_person",
-      "postcode_district": null,
-      "who_can_apply": "individual",
-      "screening": {
-        "dbs": "unknown",
-        "references": null,
-        "interview": null,
-        "min_age": null,
-        "induction": "Two-hour online core training. They ask about spent convictions. Travel refunded to zones 1-6."
       },
-      "skills": [
-        "a driving licence"
-      ],
-      "eligibility": [],
-      "seasonal_window": null,
-      "next_intake": null,
-      "status": "unknown",
-      "apply_url": "https://www.mungos.org/volunteer_role/outreach-volunteer/",
-      "url_specificity": "role",
-      "coords": null,
-      "provenance": {
-        "extracted_at": "2026-09-02T00:00:00+00:00",
-        "method": "human",
-        "reviewed_by_human": true,
-        "confidence": 1.0,
-        "source_url": "https://www.mungos.org/volunteer_role/outreach-volunteer/",
-        "verified_fields": [
-          "specific_times",
-          "commitment",
-          "activity",
-          "screening.induction",
-          "typical_shift_hours"
-        ],
-        "unsupported_fields": [
-          "screening.dbs",
-          "screening.min_age",
-          "recruitment may close early depending on the volume of applications"
-        ]
-      }
+      "stated_places": [
+        "Bournemouth",
+        "Reading"
+      ]
     },
     {
       "id": "st-mungos-first-response",
       "org_id": "st-mungos",
-      "title": "First Response",
+      "title": "First Response Volunteer",
       "what_youd_do": "Go out with a partner volunteer to find people reported sleeping rough through StreetLink, and pass what you learn to the outreach team so they can act faster.",
       "commitment": "unknown",
       "min_term_months": null,
@@ -306,33 +263,35 @@
       "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
-      "status": "unknown",
+      "status": "open",
       "apply_url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
       "url_specificity": "org_volunteer_page",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-09-02T00:00:00+00:00",
-        "method": "human",
-        "reviewed_by_human": true,
-        "confidence": 0.8,
+        "extracted_at": "2026-10-17T21:00:00+00:00",
+        "method": "llm",
+        "reviewed_by_human": false,
+        "confidence": 0.9,
         "source_url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
         "verified_fields": [
-          "activity",
-          "who_can_apply",
-          "screening.induction"
+          "stated_places",
+          "status"
         ],
         "unsupported_fields": [
-          "screening.dbs",
-          "screening.min_age",
-          "specific_times",
-          "typical_shift_hours"
+          "the other fields were not re-read from the role page"
         ]
-      }
+      },
+      "stated_places": [
+        "Bournemouth",
+        "Reading",
+        "Oxford",
+        "Westminster"
+      ]
     },
     {
       "id": "st-mungos-gardening",
       "org_id": "st-mungos",
-      "title": "Gardening Sessions",
+      "title": "Gardening Group Volunteer",
       "what_youd_do": "Run regular gardening sessions for their clients. Somewhere between horticulture and company, and it counts as both.",
       "commitment": "weekly",
       "min_term_months": null,
@@ -358,25 +317,76 @@
       "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
-      "status": "unknown",
+      "status": "open",
       "apply_url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
       "url_specificity": "org_volunteer_page",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-09-02T00:00:00+00:00",
-        "method": "human",
-        "reviewed_by_human": true,
-        "confidence": 0.8,
+        "extracted_at": "2026-10-17T21:00:00+00:00",
+        "method": "llm",
+        "reviewed_by_human": false,
+        "confidence": 0.9,
         "source_url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
         "verified_fields": [
-          "activity",
-          "screening.induction"
+          "stated_places",
+          "status"
         ],
         "unsupported_fields": [
-          "screening.dbs",
-          "screening.min_age",
-          "specific_times",
-          "typical_shift_hours"
+          "the other fields were not re-read from the role page"
+        ]
+      },
+      "stated_places": [
+        "Brent",
+        "Camden",
+        "Haringey"
+      ]
+    },
+    {
+      "title": "Cooking Group Volunteer",
+      "what_youd_do": "Cook alongside clients, helping choose recipes and buy ingredients so people can socialise over a meal.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "cooking_serving",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [
+        "Southwark"
+      ],
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://www.mungos.org/volunteer_role/cooking-group-volunteer/",
+      "url_specificity": "role",
+      "id": "st-mungos-cooking-group-volunteer",
+      "org_id": "st-mungos",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T21:00:00+00:00",
+        "method": "llm",
+        "reviewed_by_human": false,
+        "confidence": 0.9,
+        "source_url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+        "verified_fields": [
+          "stated_places",
+          "status"
+        ],
+        "unsupported_fields": [
+          "commitment, times and screening not read from the role page"
         ]
       }
     }

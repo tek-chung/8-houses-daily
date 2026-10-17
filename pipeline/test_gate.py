@@ -51,6 +51,7 @@ def role(**over):
     {"status": "closed"},
     {"status": "oversubscribed"},
     {"next_intake": "2026-10-01"},
+    {"stated_places": ["Bournemouth", "Reading"]},
 ])
 def test_critical_change_never_auto_publishes(change):
     """No confidence score sends a critical change down the auto path."""
@@ -58,12 +59,21 @@ def test_critical_change_never_auto_publishes(change):
     assert d.route == ROUTE_REVIEW
 
 
+def test_naming_no_place_is_not_a_change_from_a_record_that_predates_the_field():
+    """Otherwise the first run after stated_places was added would hold every role."""
+    assert classify_update(role(), role(stated_places=[]), 1.0).route == ROUTE_AUTO
+    assert classify_update(role(stated_places=["Hackney"]),
+                           role(stated_places=["hackney"]), 1.0).route == ROUTE_REVIEW
+    assert classify_update(role(stated_places=["Hackney", "Camden"]),
+                           role(stated_places=["Camden", "Hackney"]), 1.0).route == ROUTE_AUTO
+
+
 def test_every_declared_critical_field_is_actually_gated():
     """Guards against a field being added to CRITICAL_FIELDS but never compared."""
     values = {"screening.dbs": "enhanced", "screening.references": True,
               "screening.interview": True, "screening.min_age": 25,
               "screening.induction": "New training", "status": "closed",
-              "next_intake": "2027-01-01"}
+              "next_intake": "2027-01-01", "stated_places": ["Bournemouth"]}
     assert set(values) == set(CRITICAL_FIELDS), "test fixture out of sync with config"
     for dotted, val in values.items():
         new = role()

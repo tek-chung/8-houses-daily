@@ -141,7 +141,8 @@
           "closing date 10 Dec 2026 (rolling applications) has no schema field",
           "minimum 3 clinical hours a week plus admin has no schema field"
         ]
-      }
+      },
+      "london_wide": true
     }
   ]
 }

@@ -74,6 +74,26 @@ _UPDATED_RE = re.compile(
     r"(\d{1,2}(?:st|nd|rd|th)?\s+\w+,?\s+\d{4}|\d{4}-\d{2}-\d{2})", re.I)
 
 
+# Volunteer-management platforms charities link their roles from. Their pages are
+# usually built in the browser, so a link to one means roles our page reader cannot
+# see. Seeing the link lets the weekly report say so instead of quietly holding a
+# short listing (Crisis held 4 of its 80 offers for weeks).
+_PLATFORM_HOST = re.compile(
+    r"(goassemble|rosterfy|betterimpact|simplyvolunteer|teamkinetic|volunteerplus|"
+    r"volunteer|volunteering|do-it\.org|assemblevolunteering)", re.I)
+
+
+def platform_hosts(html: str, page_url: str) -> list[str]:
+    """Hosts of volunteer platforms a page links to, other than the page's own site."""
+    own = urlparse(page_url).netloc.replace("www.", "").lower()
+    found = set()
+    for match in re.finditer(r'href\s*=\s*["\']([^"\']+)["\']', html or "", re.I):
+        host = urlparse(urljoin(page_url, match.group(1))).netloc.replace("www.", "").lower()
+        if host and host != own and _PLATFORM_HOST.search(host):
+            found.add(host)
+    return sorted(found)
+
+
 @dataclass
 class FetchResult:
     status: str            # changed | unchanged | blocked | failed
@@ -90,6 +110,8 @@ class FetchResult:
     # A site that answers but refuses us (bot protection, TLS it cannot complete
     # with a standard client) is not a dead link: visitors' browsers still work.
     refused: bool = False
+    # Volunteer platforms the landing page links to (see platform_hosts).
+    platforms: list[str] = field(default_factory=list)
 
 
 # 401/403/429/451 from a page that loads in a browser is a WAF or rate limit aimed
@@ -412,4 +434,5 @@ def fetch(url: str, known_hash: str | None = None,
         final_url=final, redirected=final.rstrip("/") != url.rstrip("/"),
         pages_read=pages, cms_updated=cms_updated(html),
         boilerplate_ratio=round(ratio, 3) if ratio is not None else None,
+        platforms=platform_hosts(html, url),
     )

@@ -29,6 +29,8 @@ const ACT = [
    district uses that; otherwise it inherits the organisation's coverage. Roles with
    neither are location-unspecified and match any borough, and their card says so. */
 function roleAreas(o){
+  // The build computes each role's areas from what the charity's page names for it.
+  if(BUNDLE.location_areas && Object.prototype.hasOwnProperty.call(BUNDLE.location_areas,o.id)) return BUNDLE.location_areas[o.id];
   if(o.postcode_district) return [o.postcode_district];
   const b = ORGS[o.org_id].b || [];
   return b.length ? b : [];
@@ -84,7 +86,9 @@ function match(s){
     // Same rule as the borough filter above: a role with no location at all (no
     // postcode, and a charity with no stated coverage) has nothing to contradict
     // the chosen zone, so it stays visible and its card says "Across London".
-    if(s.z && !['remote','own_home'].includes(o.location_type) && o.areas.length
+    // A role that names only areas (role_zones) has zones but no borough, so it is
+    // filtered by zone; one with neither is "Across London" and always stays.
+    if(s.z && !['remote','own_home'].includes(o.location_type) && (o.areas.length||o.zones.length)
        && !s.z.split(',').some(id=>o.zones.includes(id)))return false;
     // A "varies" role is a rotating calendar. When someone asks for a specific
     // activity we exclude it rather than promise a match we cannot support.

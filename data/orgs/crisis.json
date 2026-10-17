@@ -18,6 +18,11 @@
       "Brent"
     ],
     "focus_groups": [],
+    "board": {
+      "type": "rosterfy",
+      "base_url": "https://mycrisisvolunteering.crisis.org.uk",
+      "region": "london"
+    },
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {

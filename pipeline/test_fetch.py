@@ -200,6 +200,20 @@ def test_nav_links_are_not_followed_as_roles():
 
 # ------------------------------------------------- thin vs client-rendered
 
+def test_links_to_volunteer_platforms_are_detected_so_unread_roles_are_reported():
+    from fetchpage import platform_hosts
+    html = ('<a href="/about">About</a>'
+            '<a href="https://mycrisisvolunteering.crisis.org.uk/roles/list">Roles</a>'
+            '<a href="https://centrepoint.goassemble.com/opportunities/">Apply</a>'
+            '<a href="https://app.betterimpact.com/Application?x=1">Shop</a>'
+            '<a href="https://www.facebook.com/crisis">Facebook</a>'
+            '<a href="https://www.crisis.org.uk/get-involved/">Own site</a>'
+            '<a href="https://mycrisisvolunteering.crisis.org.uk/roles/list">Roles again</a>')
+    assert platform_hosts(html, "https://www.crisis.org.uk/get-involved/volunteer/") == [
+        "app.betterimpact.com", "centrepoint.goassemble.com", "mycrisisvolunteering.crisis.org.uk"]
+    assert platform_hosts("<a href='https://www.crisis.org.uk/x'>x</a>", "https://www.crisis.org.uk/") == []
+
+
 def test_react_shell_is_client_rendered():
     html = ('<!doctype html><html><body><div id="root"></div>'
             '<script src="/app.js"></script></body></html>')
