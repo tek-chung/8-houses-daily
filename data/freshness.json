@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-17T18:57:51+00:00",
+  "generated_at": "2026-10-17T21:17:26+00:00",
   "median_days_since_check": 45,
   "oldest_days_since_check": 53,
   "orgs_total": 30,
-  "orgs_suppressed": 24,
+  "orgs_suppressed": 20,
   "site_banner": false,
   "site_banner_copy": null,
   "thresholds": {
@@ -12,16 +12,11 @@
   },
   "orgs": {
     "ace-of-clubs": {
-      "days_since_check": 45,
-      "state": "stale",
+      "days_since_check": 0,
+      "state": "fresh",
       "link_status": "ok",
-      "suppress_assertive": true,
-      "suppress_fields": [
-        "screening",
-        "status",
-        "next_intake",
-        "specific_times"
-      ]
+      "suppress_assertive": false,
+      "suppress_fields": []
     },
     "akt": {
       "days_since_check": 45,
@@ -48,16 +43,11 @@
       ]
     },
     "crisis": {
-      "days_since_check": 45,
-      "state": "stale",
+      "days_since_check": 0,
+      "state": "fresh",
       "link_status": "ok",
-      "suppress_assertive": true,
-      "suppress_fields": [
-        "screening",
-        "status",
-        "next_intake",
-        "specific_times"
-      ]
+      "suppress_assertive": false,
+      "suppress_fields": []
     },
     "depaul-uk": {
       "days_since_check": 0,
@@ -203,16 +193,11 @@
       ]
     },
     "spear": {
-      "days_since_check": 45,
-      "state": "stale",
+      "days_since_check": 0,
+      "state": "fresh",
       "link_status": "ok",
-      "suppress_assertive": true,
-      "suppress_fields": [
-        "screening",
-        "status",
-        "next_intake",
-        "specific_times"
-      ]
+      "suppress_assertive": false,
+      "suppress_fields": []
     },
     "spires": {
       "days_since_check": 45,
@@ -239,16 +224,11 @@
       ]
     },
     "st-mungos": {
-      "days_since_check": 45,
-      "state": "stale",
+      "days_since_check": 0,
+      "state": "fresh",
       "link_status": "ok",
-      "suppress_assertive": true,
-      "suppress_fields": [
-        "screening",
-        "status",
-        "next_intake",
-        "specific_times"
-      ]
+      "suppress_assertive": false,
+      "suppress_fields": []
     },
     "stonewall-housing": {
       "days_since_check": 45,
@@ -325,7 +305,7 @@
     "west-london-mission": {
       "days_since_check": 45,
       "state": "stale",
-      "link_status": "dead",
+      "link_status": "ok",
       "suppress_assertive": true,
       "suppress_fields": [
         "screening",
