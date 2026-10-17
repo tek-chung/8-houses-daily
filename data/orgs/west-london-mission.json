@@ -4,11 +4,12 @@
     "name": "West London Mission",
     "aliases": [
       "wlm",
-      "west london mission wlm"
+      "west london mission wlm",
+      "strides"
     ],
-    "charity_number": null,
-    "website_url": "https://www.wlm.org.uk/",
-    "volunteer_url": "https://www.wlm.org.uk/pages/category/volunteer-opportunities",
+    "charity_number": "1133739",
+    "website_url": "https://strides.org.uk/",
+    "volunteer_url": "https://strides.org.uk/work-for-us/",
     "summary": "Working with people affected by homelessness, poverty and trauma since 1887. Runs The Haven day centre, St Luke's, hostels and supported housing, helping around 100 people a day.",
     "coverage": "multi_borough",
     "boroughs": [
@@ -23,9 +24,9 @@
     "check": {
       "last_attempt": "2026-10-17T18:48:46+00:00",
       "last_success": "2026-09-02T00:00:00+00:00",
-      "link_status": "dead",
+      "link_status": "redirected",
       "content_hash": null,
-      "consecutive_failures": 3,
+      "consecutive_failures": 0,
       "etag": null,
       "last_modified": null
     }
@@ -59,7 +60,7 @@
       "seasonal_window": null,
       "next_intake": null,
       "status": "closed",
-      "apply_url": "https://www.wlm.org.uk/pages/category/volunteer-opportunities",
+      "apply_url": "https://strides.org.uk/work-for-us/",
       "url_specificity": "org_volunteer_page",
       "coords": null,
       "provenance": {
@@ -78,7 +79,8 @@
           "screening.min_age",
           "specific_times",
           "typical_shift_hours",
-          "status: the closure notice is headed 'COVID-19 update' and may be years old \u2014 worth ringing the service"
+          "status: the closure notice is headed 'COVID-19 update' and may be years old \u2014 worth ringing the service",
+          "source wlm.org.uk: the former site, now strides.org.uk, which has no volunteering page"
         ]
       }
     }

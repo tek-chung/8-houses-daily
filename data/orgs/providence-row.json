@@ -127,6 +127,161 @@
           "commitment"
         ]
       }
+    },
+    {
+      "id": "providence-row-kitchen",
+      "org_id": "providence-row",
+      "title": "Kitchen Assistant",
+      "what_youd_do": "Help the chefs prepare hot food, then serve it and talk with guests at breakfast.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "weekday_daytime"
+      ],
+      "specific_times": null,
+      "activity": "cooking_serving",
+      "location_type": "in_person",
+      "postcode_district": "E1",
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "A phone call, a tour, then a taster day before you start."
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "unknown",
+      "apply_url": "https://www.providencerow.org.uk/pages/421-welcome-area-volunteer",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T00:00:00+00:00",
+        "method": "llm",
+        "reviewed_by_human": false,
+        "confidence": 0.7,
+        "source_url": "https://www.providencerow.org.uk/pages/421-welcome-area-volunteer",
+        "verified_fields": [
+          "activity",
+          "screening.induction"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "typical_shift_hours",
+          "commitment",
+          "when",
+          "status"
+        ]
+      }
+    },
+    {
+      "id": "providence-row-art",
+      "org_id": "providence-row",
+      "title": "Creative Lead - Art Volunteer",
+      "what_youd_do": "Help run a welcoming creative space where people can make art and find support.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "weekday_daytime"
+      ],
+      "specific_times": null,
+      "activity": "varies",
+      "location_type": "in_person",
+      "postcode_district": "E1",
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "A phone call, a tour, then a taster day before you start."
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "unknown",
+      "apply_url": "https://www.providencerow.org.uk/pages/421-welcome-area-volunteer",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T00:00:00+00:00",
+        "method": "llm",
+        "reviewed_by_human": false,
+        "confidence": 0.7,
+        "source_url": "https://www.providencerow.org.uk/pages/421-welcome-area-volunteer",
+        "verified_fields": [
+          "screening.induction"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "typical_shift_hours",
+          "commitment",
+          "when",
+          "status",
+          "activity: no schema value fits art sessions"
+        ]
+      }
+    },
+    {
+      "id": "providence-row-it",
+      "org_id": "providence-row",
+      "title": "IT Volunteer",
+      "what_youd_do": "Support staff at the computer drop-in: email set-up, online courses and handing out supplies.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "weekday_daytime"
+      ],
+      "specific_times": null,
+      "activity": "advice",
+      "location_type": "in_person",
+      "postcode_district": "E1",
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "A phone call, a tour, then a taster day before you start."
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "unknown",
+      "apply_url": "https://www.providencerow.org.uk/pages/421-welcome-area-volunteer",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T00:00:00+00:00",
+        "method": "llm",
+        "reviewed_by_human": false,
+        "confidence": 0.7,
+        "source_url": "https://www.providencerow.org.uk/pages/421-welcome-area-volunteer",
+        "verified_fields": [
+          "screening.induction"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "typical_shift_hours",
+          "commitment",
+          "when",
+          "status"
+        ]
+      }
     }
   ]
 }

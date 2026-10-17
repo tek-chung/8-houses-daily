@@ -84,13 +84,13 @@
       "org_id": "the-connection-at-st-martins",
       "title": "Day Centre, for Partner Companies",
       "what_youd_do": "Serve food in the catering service, run artistic activities with the people they support, or help at Christmas. 627 corporate volunteers did this last year.",
-      "commitment": "one_off",
+      "commitment": "weekly",
       "min_term_months": null,
       "typical_shift_hours": null,
       "when": [
         "weekday_daytime"
       ],
-      "specific_times": null,
+      "specific_times": "Breakfast 9-11am or lunch 10.45am-12.45pm, one day a week for a month",
       "activity": "varies",
       "location_type": "in_person",
       "postcode_district": "WC2N",
@@ -109,8 +109,8 @@
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
-      "apply_url": "https://www.connection-at-stmartins.org.uk/volunteer/",
-      "url_specificity": "org_volunteer_page",
+      "apply_url": "https://www.connection-at-stmartins.org.uk/corporate_partnerships/",
+      "url_specificity": "role",
       "coords": null,
       "provenance": {
         "extracted_at": "2026-09-02T00:00:00+00:00",

@@ -113,12 +113,15 @@ A one-off setup. Until it is done, nothing reaches readers unless you run
 `npx wrangler deploy` yourself, and that includes the daily rebuild that keeps the
 date and freshness rules true.
 
-1. Cloudflare dashboard → My Profile → API Tokens → Create Token → template
-   **Edit Cloudflare Workers** → your account → Create.
-2. GitHub → Settings → Secrets and variables → Actions → Secrets → New:
-   `CLOUDFLARE_API_TOKEN`.
-3. Same page → Variables → New: `CLOUDFLARE_ACCOUNT_ID` (shown on Cloudflare's
-   Workers & Pages overview).
+1. **Token:** Cloudflare dashboard → [Account API tokens](https://dash.cloudflare.com/?to=/:account/api-tokens)
+   → **Create Token** → under *Permission policies*, open **Custom** → **Edit
+   Cloudflare Workers** → limit it to your account → create, and copy the token
+   (Cloudflare shows it only once).
+2. **Account ID:** Cloudflare dashboard → **Workers & Pages** → *Account
+   Details* → copy **Account ID**. Or press Ctrl+K and search "Copy account ID".
+3. **GitHub:** repository → Settings → Secrets and variables → Actions → **New
+   repository secret**, twice: `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
+   (A repository *variable* for the account ID works too.)
 4. Actions → Build and deploy → Run workflow. The issue closes itself.
 
 ### "Listings are going stale" / "publication suspended"

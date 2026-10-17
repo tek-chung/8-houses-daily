@@ -86,6 +86,62 @@
           "specific_times: they state half a day a week but no time of day"
         ]
       }
+    },
+    {
+      "id": "solace-staff-counsellor",
+      "org_id": "solace-womens-aid",
+      "title": "Volunteer Staff Counsellor",
+      "what_youd_do": "Give weekly one-to-one therapeutic support to Solace staff, online, by phone and in person.",
+      "commitment": "weekly",
+      "min_term_months": 12,
+      "typical_shift_hours": null,
+      "when": [
+        "weekday_daytime"
+      ],
+      "specific_times": null,
+      "activity": "advice",
+      "location_type": "hybrid",
+      "postcode_district": null,
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [
+        "Qualified counsellors, or final-years trainees with over 150 clinical hours"
+      ],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://solacewomensaid.org/vacancy/volunteer-staff-counsellor/",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T00:00:00+00:00",
+        "method": "llm",
+        "reviewed_by_human": false,
+        "confidence": 0.7,
+        "source_url": "https://solacewomensaid.org/vacancy/volunteer-staff-counsellor/",
+        "verified_fields": [
+          "status",
+          "commitment",
+          "min_term_months",
+          "location_type",
+          "eligibility"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "when",
+          "closing date 10 Dec 2026 (rolling applications) has no schema field",
+          "minimum 3 clinical hours a week plus admin has no schema field"
+        ]
+      }
     }
   ]
 }

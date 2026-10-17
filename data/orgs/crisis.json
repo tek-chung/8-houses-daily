@@ -22,9 +22,9 @@
     "robots_allowed": true,
     "check": {
       "last_attempt": "2026-10-17T18:50:01+00:00",
-      "last_success": "2026-09-02T00:00:00+00:00",
+      "last_success": "2026-10-17T18:50:01+00:00",
       "link_status": "ok",
-      "content_hash": null,
+      "content_hash": "fa64f2cab592b90cf25dbc11458249860a2e7ab9d6462081e0f04e0148f87f66",
       "consecutive_failures": 0,
       "etag": null,
       "last_modified": null,
@@ -32,6 +32,57 @@
     }
   },
   "opportunities": [
+    {
+      "title": "Crisis at Christmas Volunteer",
+      "what_youd_do": "Deliver festive hampers, prepare and serve meals, and welcome guests at seasonal day centres.",
+      "commitment": "long_term",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "weekday_daytime",
+        "weekday_evening",
+        "weekend_daytime"
+      ],
+      "specific_times": "Christmas period",
+      "activity": "cooking_serving",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": false,
+        "min_age": 18,
+        "induction": "Basic training and support provided prior to shift."
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": {
+        "start_month": 12,
+        "end_month": 12
+      },
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://www.crisis.org.uk/get-involved/volunteer/volunteer-at-christmas/",
+      "url_specificity": "role",
+      "id": "crisis-crisis-at-christmas-volunteer",
+      "org_id": "crisis",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T18:50:40+00:00",
+        "method": "llm",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
+        "verified_fields": [
+          "screening.min_age",
+          "screening.interview",
+          "screening.induction",
+          "status"
+        ],
+        "unsupported_fields": []
+      }
+    },
     {
       "id": "crisis-skylight-welcome",
       "org_id": "crisis",
@@ -114,7 +165,7 @@
       "seasonal_window": null,
       "next_intake": null,
       "status": "unknown",
-      "apply_url": "https://volunteer.crisis.org.uk/",
+      "apply_url": "https://www.crisis.org.uk/get-involved/volunteer/volunteer-in-our-local-services/",
       "url_specificity": "org_volunteer_page",
       "coords": null,
       "provenance": {
@@ -141,52 +192,56 @@
     {
       "id": "crisis-charity-shop",
       "org_id": "crisis",
-      "title": "Charity Shop Volunteer",
-      "what_youd_do": "Style the displays, sort stock, serve customers, make content for their social media. No references needed for this one.",
-      "commitment": "flexible",
+      "title": "Retail Volunteer",
+      "what_youd_do": "Serve customers, process stock, dress the windows and run the till in a Crisis charity shop. Open at many London shops.",
+      "commitment": "weekly",
       "min_term_months": null,
-      "typical_shift_hours": null,
+      "typical_shift_hours": 4,
       "when": [
-        "flexible"
+        "weekday_daytime"
       ],
-      "specific_times": null,
+      "specific_times": "At least 4 hours or one full day a week",
       "activity": "shop_warehouse",
       "location_type": "in_person",
       "postcode_district": null,
       "who_can_apply": "individual",
       "screening": {
-        "dbs": "unknown",
-        "references": false,
+        "dbs": "none",
+        "references": null,
         "interview": null,
         "min_age": null,
-        "induction": "Essential learning first: safeguarding, equality and diversity, data protection. A named supervisor throughout."
+        "induction": "Induction and on-the-job training, with a supervisor to support you."
       },
-      "skills": [],
+      "skills": [
+        "Customer service, or willing to learn",
+        "Good time-keeping and reliability"
+      ],
       "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
-      "status": "unknown",
-      "apply_url": "https://www.crisis.org.uk/get-involved/volunteer/",
+      "status": "open",
+      "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/list?sortBy=start_timestamp&filter=%7B%22filter%22%3A%5B%7B%22attr%22%3A%22custom_department%22%2C%22operator%22%3A%22in%22%2C%22value%22%3A%5B21111%2C21113%5D%7D%5D%7D",
       "url_specificity": "org_volunteer_page",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-09-02T00:00:00+00:00",
-        "method": "human",
-        "reviewed_by_human": true,
+        "extracted_at": "2026-10-17T00:00:00+00:00",
+        "method": "llm",
+        "reviewed_by_human": false,
         "confidence": 0.8,
-        "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
+        "source_url": "https://mycrisisvolunteering.crisis.org.uk/roles/8R3Ugx1uVEHqYz7tgCLh6wJLmI3C7H",
         "verified_fields": [
-          "screening.references",
-          "screening.induction",
+          "status",
+          "commitment",
+          "specific_times",
+          "typical_shift_hours",
+          "screening.dbs",
           "activity"
         ],
         "unsupported_fields": [
-          "screening.min_age",
-          "specific_times",
-          "typical_shift_hours",
+          "when",
           "postcode_district",
-          "status: their page says roles appear on the live board only when a Skylight has vacancies, so availability is not stated here",
-          "screening.dbs: their policy says only some roles need a check; it does not say shop roles need none"
+          "screening.min_age",
+          "source mycrisisvolunteering.crisis.org.uk: Crisis's own role system, which the weekly check does not read"
         ]
       }
     }

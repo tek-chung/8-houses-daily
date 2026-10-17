@@ -49,8 +49,8 @@
       "postcode_district": "SE18",
       "who_can_apply": "individual",
       "screening": {
-        "dbs": "unknown",
-        "references": null,
+        "dbs": "basic",
+        "references": true,
         "interview": null,
         "min_age": 18,
         "induction": "A full induction including health and safety, then ongoing support from your manager and the companions."
@@ -90,21 +90,20 @@
       "org_id": "emmaus",
       "title": "Street Souls Outreach",
       "what_youd_do": "Go out with Street Souls, their outreach service for people sleeping rough or struggling with poverty across London.",
-      "commitment": "unknown",
-      "min_term_months": null,
+      "commitment": "fortnightly",
+      "min_term_months": 6,
       "typical_shift_hours": null,
       "when": [
-        "weekday_daytime",
-        "weekend_daytime"
+        "weekday_evening"
       ],
-      "specific_times": null,
+      "specific_times": "Monday, Thursday or Friday evenings; at least two a month",
       "activity": "outreach",
       "location_type": "in_person",
       "postcode_district": "SE18",
       "who_can_apply": "individual",
       "screening": {
-        "dbs": "unknown",
-        "references": null,
+        "dbs": "basic",
+        "references": true,
         "interview": null,
         "min_age": 18,
         "induction": "A full induction including health and safety, then ongoing support from your manager and the companions."
@@ -156,8 +155,8 @@
       "postcode_district": "SE18",
       "who_can_apply": "individual",
       "screening": {
-        "dbs": "unknown",
-        "references": null,
+        "dbs": "basic",
+        "references": true,
         "interview": null,
         "min_age": 18,
         "induction": "A full induction including health and safety, then ongoing support from your manager and the companions."
@@ -168,7 +167,7 @@
       ],
       "seasonal_window": null,
       "next_intake": null,
-      "status": "open",
+      "status": "unknown",
       "apply_url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
       "url_specificity": "org_volunteer_page",
       "coords": null,
@@ -187,6 +186,227 @@
         "unsupported_fields": [
           "screening.dbs",
           "specific_times",
+          "typical_shift_hours"
+        ]
+      }
+    },
+    {
+      "id": "emmaus-greenwich-kitchen",
+      "org_id": "emmaus",
+      "title": "Kitchen Volunteer",
+      "what_youd_do": "Prepare healthy meals alongside residents for Emmaus Greenwich's community and its Street Souls outreach visitors.",
+      "commitment": "weekly",
+      "min_term_months": 6,
+      "typical_shift_hours": null,
+      "when": [
+        "weekday_daytime"
+      ],
+      "specific_times": "One day a week; Mondays, Thursdays and Fridays preferred",
+      "activity": "cooking_serving",
+      "location_type": "in_person",
+      "postcode_district": "SE18",
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "basic",
+        "references": true,
+        "interview": null,
+        "min_age": 18,
+        "induction": "Full induction when you start, with a staff member and a companion supporting you."
+      },
+      "skills": [],
+      "eligibility": [
+        "People aged 18 or over"
+      ],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://emmaus.org.uk/greenwich/volunteer-role/kitchen-volunteer/",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T00:00:00+00:00",
+        "method": "llm",
+        "reviewed_by_human": false,
+        "confidence": 0.7,
+        "source_url": "https://emmaus.org.uk/greenwich/volunteer-role/kitchen-volunteer/",
+        "verified_fields": [
+          "commitment",
+          "min_term_months",
+          "specific_times",
+          "status",
+          "activity"
+        ],
+        "unsupported_fields": [
+          "screening.interview",
+          "screening.dbs/references/min_age: stated on the general volunteer page for all volunteers, not on the role page",
+          "typical_shift_hours"
+        ]
+      }
+    },
+    {
+      "id": "emmaus-greenwich-van-crew",
+      "org_id": "emmaus",
+      "title": "Van Crew Volunteer",
+      "what_youd_do": "Help collect and deliver donated items by van, then load, unload and process them at the site.",
+      "commitment": "weekly",
+      "min_term_months": null,
+      "typical_shift_hours": 6.5,
+      "when": [
+        "weekday_daytime",
+        "weekend_daytime"
+      ],
+      "specific_times": "At least one day a week, 9.30am to 4pm, Monday to Saturday",
+      "activity": "practical",
+      "location_type": "in_person",
+      "postcode_district": null,
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "basic",
+        "references": true,
+        "interview": null,
+        "min_age": 18,
+        "induction": "Full induction when you start, with a staff member and a companion supporting you."
+      },
+      "skills": [
+        "Manual handling experience",
+        "Physically fit"
+      ],
+      "eligibility": [
+        "People aged 18 or over"
+      ],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://emmaus.org.uk/greenwich/volunteer-role/van-crew-volunteer/",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T00:00:00+00:00",
+        "method": "llm",
+        "reviewed_by_human": false,
+        "confidence": 0.7,
+        "source_url": "https://emmaus.org.uk/greenwich/volunteer-role/van-crew-volunteer/",
+        "verified_fields": [
+          "commitment",
+          "specific_times",
+          "typical_shift_hours",
+          "status",
+          "activity"
+        ],
+        "unsupported_fields": [
+          "screening.interview",
+          "screening.dbs/references/min_age: stated on the general volunteer page for all volunteers, not on the role page",
+          "postcode_district: role says Greenwich only"
+        ]
+      }
+    },
+    {
+      "id": "emmaus-greenwich-van-driver",
+      "org_id": "emmaus",
+      "title": "Van Driver Volunteer",
+      "what_youd_do": "Drive the Emmaus van for furniture and goods collections and deliveries around south-east London.",
+      "commitment": "weekly",
+      "min_term_months": null,
+      "typical_shift_hours": 8,
+      "when": [
+        "weekday_daytime",
+        "weekend_daytime"
+      ],
+      "specific_times": "At least one day a week, 9am to 5pm, Monday to Saturday",
+      "activity": "practical",
+      "location_type": "in_person",
+      "postcode_district": null,
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "basic",
+        "references": true,
+        "interview": null,
+        "min_age": 18,
+        "induction": "Full induction when you start, with a staff member and a companion supporting you."
+      },
+      "skills": [
+        "Full, clean driving licence",
+        "Large van driving experience",
+        "Knowledge of south-east London"
+      ],
+      "eligibility": [
+        "People aged 18 or over"
+      ],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://emmaus.org.uk/greenwich/volunteer-role/van-driver-volunteer/",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T00:00:00+00:00",
+        "method": "llm",
+        "reviewed_by_human": false,
+        "confidence": 0.7,
+        "source_url": "https://emmaus.org.uk/greenwich/volunteer-role/van-driver-volunteer/",
+        "verified_fields": [
+          "commitment",
+          "specific_times",
+          "typical_shift_hours",
+          "status",
+          "activity"
+        ],
+        "unsupported_fields": [
+          "screening.interview",
+          "screening.dbs/references/min_age: stated on the general volunteer page for all volunteers, not on the role page",
+          "postcode_district: role says Greenwich only"
+        ]
+      }
+    },
+    {
+      "id": "emmaus-greenwich-trustee",
+      "org_id": "emmaus",
+      "title": "Trustee",
+      "what_youd_do": "Join the board that sets the direction of Emmaus Greenwich, meeting five times a year, based at Plumstead.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "weekday_daytime"
+      ],
+      "specific_times": "Board meets five times a year",
+      "activity": "governance",
+      "location_type": "in_person",
+      "postcode_district": "SE18",
+      "who_can_apply": "individual",
+      "screening": {
+        "dbs": "basic",
+        "references": true,
+        "interview": null,
+        "min_age": 18,
+        "induction": "Full induction when you start, with a staff member and a companion supporting you."
+      },
+      "skills": [],
+      "eligibility": [
+        "People aged 18 or over"
+      ],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://emmaus.org.uk/greenwich/volunteer-role/trustee/",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T00:00:00+00:00",
+        "method": "llm",
+        "reviewed_by_human": false,
+        "confidence": 0.7,
+        "source_url": "https://emmaus.org.uk/greenwich/volunteer-role/trustee/",
+        "verified_fields": [
+          "status",
+          "activity",
+          "specific_times"
+        ],
+        "unsupported_fields": [
+          "screening.interview",
+          "screening.dbs/references/min_age: stated on the general volunteer page for all volunteers, not on the role page",
+          "commitment",
+          "when: meeting times not stated",
           "typical_shift_hours"
         ]
       }

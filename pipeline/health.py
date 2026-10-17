@@ -229,12 +229,16 @@ def assess_deploy(job_status: str, cloudflare: bool) -> Assessment:
             "Builds pass, but GitHub has no Cloudflare credentials, so the live site "
             "changes only when you deploy it by hand.", [
             ("What to do, once", [
-                "1. Cloudflare dashboard → My Profile → API Tokens → Create Token → "
-                "template **Edit Cloudflare Workers** → limit it to your account → Create.",
-                "2. GitHub → Settings → Secrets and variables → Actions → **Secrets** → "
-                "New: `CLOUDFLARE_API_TOKEN` = that token.",
-                "3. Same page → **Variables** → New: `CLOUDFLARE_ACCOUNT_ID` = the Account "
-                "ID shown on the Cloudflare dashboard's Workers & Pages overview.",
+                "1. Token: open https://dash.cloudflare.com/?to=/:account/api-tokens "
+                "(Account API tokens) → **Create Token** → under *Permission policies* "
+                "open **Custom** → **Edit Cloudflare Workers** → limit it to your one "
+                "account → create it and copy the token. Cloudflare shows it only once.",
+                "2. Account ID: Cloudflare dashboard → **Workers & Pages** → *Account "
+                "Details* → copy **Account ID** (or press Ctrl+K and search "
+                "“Copy account ID”).",
+                "3. This repository → **Settings** → **Secrets and variables** → "
+                "**Actions** → **New repository secret**, twice: `CLOUDFLARE_API_TOKEN` "
+                "= the token, `CLOUDFLARE_ACCOUNT_ID` = the account ID.",
                 "4. Actions → Build and deploy → Run workflow. This issue closes itself "
                 "when the deploy succeeds.",
                 "Until then, every approval and every daily rebuild (which keeps the "

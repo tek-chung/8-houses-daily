@@ -1,0 +1,147 @@
+[
+  {
+    "id": "emmaus-greenwich-outreach",
+    "org_id": "emmaus",
+    "changes": {
+      "when": {
+        "old": [
+          "weekday_daytime",
+          "weekend_daytime"
+        ],
+        "new": [
+          "weekday_evening"
+        ]
+      },
+      "commitment": {
+        "old": "unknown",
+        "new": "fortnightly"
+      },
+      "min_term_months": {
+        "old": null,
+        "new": 6
+      },
+      "specific_times": {
+        "old": null,
+        "new": "Monday, Thursday or Friday evenings; at least two a month"
+      },
+      "screening.dbs": {
+        "old": "unknown",
+        "new": "basic"
+      },
+      "screening.references": {
+        "old": null,
+        "new": true
+      }
+    },
+    "evidence": "https://emmaus.org.uk/greenwich/volunteer-role/outreach-volunteer/: at least two evenings a month for six months; Street Souls runs Mon/Thu/Fri. Record said daytime. 'fortnightly' is the nearest value to 'two a month'. https://emmaus.org.uk/greenwich/support-us/volunteer/: all volunteers complete a basic DBS and give two references",
+    "critical_field_change_needs_human": true
+  },
+  {
+    "id": "emmaus-greenwich-retail",
+    "org_id": "emmaus",
+    "changes": {
+      "screening.dbs": {
+        "old": "unknown",
+        "new": "basic"
+      },
+      "screening.references": {
+        "old": null,
+        "new": true
+      }
+    },
+    "evidence": "https://emmaus.org.uk/greenwich/support-us/volunteer/: all volunteers complete a basic DBS and give two references",
+    "critical_field_change_needs_human": true
+  },
+  {
+    "id": "emmaus-greenwich-workshop",
+    "org_id": "emmaus",
+    "changes": {
+      "status": {
+        "old": "open",
+        "new": "unknown"
+      },
+      "screening.dbs": {
+        "old": "unknown",
+        "new": "basic"
+      },
+      "screening.references": {
+        "old": null,
+        "new": true
+      }
+    },
+    "evidence": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/: no furniture or upcycling role is listed; the record's source is the general page. https://emmaus.org.uk/greenwich/support-us/volunteer/: all volunteers complete a basic DBS and give two references",
+    "critical_field_change_needs_human": true
+  },
+  {
+    "id": "cstm-corporate-day-centre",
+    "org_id": "the-connection-at-st-martins",
+    "changes": {
+      "commitment": {
+        "old": "one_off",
+        "new": "weekly"
+      },
+      "specific_times": {
+        "old": null,
+        "new": "Breakfast 9-11am or lunch 10.45am-12.45pm, one day a week for a month"
+      },
+      "apply_url": {
+        "old": "https://www.connection-at-stmartins.org.uk/volunteer/",
+        "new": "https://www.connection-at-stmartins.org.uk/corporate_partnerships/"
+      },
+      "url_specificity": {
+        "old": "org_volunteer_page",
+        "new": "role"
+      }
+    },
+    "evidence": "https://www.connection-at-stmartins.org.uk/corporate_partnerships/: one day a week during a chosen month, 2-4 volunteers per meal. Record said one_off.",
+    "critical_field_change_needs_human": true
+  },
+  {
+    "id": "whitechapel-mission-breakfast-challenge",
+    "org_id": "the-whitechapel-mission",
+    "changes": {
+      "typical_shift_hours": {
+        "old": 4,
+        "new": 5.5
+      },
+      "specific_times": {
+        "old": "From 5.45am, any day of the year",
+        "new": "On site by 5.45am, finished by 11.15am, any day of the year"
+      }
+    },
+    "evidence": "https://whitechapel.org.uk/volunteering/breakfast-challenge and https://whitechapel.org.uk/volunteering/booking: on site by 5.45am, done by 11.15am; teams of 7-9.",
+    "critical_field_change_needs_human": false
+  },
+  {
+    "id": "whitechapel-mission-clothing-challenge",
+    "org_id": "the-whitechapel-mission",
+    "changes": {
+      "typical_shift_hours": {
+        "old": 4,
+        "new": 3.5
+      },
+      "specific_times": {
+        "old": null,
+        "new": "On site by 8.45am, finished by 12.15pm"
+      }
+    },
+    "evidence": "https://whitechapel.org.uk/volunteering/clothing-challenge: on site by 8.45am, done by 12.15pm; teams of 10-20.",
+    "critical_field_change_needs_human": false
+  },
+  {
+    "id": "groundswell-homeless-health-peer-advocate",
+    "org_id": "groundswell",
+    "changes": {
+      "eligibility": {
+        "old": [
+          "People with lived experience of homelessness, addiction, recovery or prison"
+        ],
+        "new": [
+          "People with lived experience of homelessness, addiction, recovery, mental health or prison"
+        ]
+      }
+    },
+    "evidence": "https://groundswell.org.uk/volunteer-opportunities/: lived experience list includes mental health.",
+    "critical_field_change_needs_human": false
+  }
+]

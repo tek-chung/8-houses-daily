@@ -344,6 +344,10 @@ def test_one_long_page_cannot_crowd_out_the_others(monkeypatch):
 
 def test_known_role_pages_come_from_the_listing(record):
     path, doc = record
+    # The fixture takes the first charity file that has any roles. This test needs
+    # two, so do not depend on how many that charity happens to list.
+    if len(doc['opportunities']) < 2:
+        doc['opportunities'].append(copy.deepcopy(doc['opportunities'][0]))
     landing = doc['organisation']['volunteer_url']
     doc['opportunities'][0]['apply_url'] = 'https://example.org/roles/kitchen/'
     doc['opportunities'][0]['provenance']['source_url'] = landing

@@ -35,12 +35,12 @@
       "what_youd_do": "Bring a group from your workplace to prepare and serve the morning meal alongside regular staff. Very early start.",
       "commitment": "one_off",
       "min_term_months": null,
-      "typical_shift_hours": 4,
+      "typical_shift_hours": 5.5,
       "when": [
         "weekday_daytime",
         "weekend_daytime"
       ],
-      "specific_times": "From 5.45am, any day of the year",
+      "specific_times": "On site by 5.45am, finished by 11.15am, any day of the year",
       "activity": "cooking_serving",
       "location_type": "in_person",
       "postcode_district": "E1",
@@ -84,11 +84,11 @@
       "what_youd_do": "Bring a group to work through sacks of donated clothing \u2014 sorting, measuring, tagging and hanging items ready to be given out.",
       "commitment": "one_off",
       "min_term_months": null,
-      "typical_shift_hours": 4,
+      "typical_shift_hours": 3.5,
       "when": [
         "weekday_daytime"
       ],
-      "specific_times": null,
+      "specific_times": "On site by 8.45am, finished by 12.15pm",
       "activity": "shop_warehouse",
       "location_type": "in_person",
       "postcode_district": "E1",
@@ -122,6 +122,59 @@
           "screening.dbs",
           "screening.min_age",
           "specific_times"
+        ]
+      }
+    },
+    {
+      "id": "whitechapel-mission-advice-challenge",
+      "org_id": "the-whitechapel-mission",
+      "title": "Advice Challenge",
+      "what_youd_do": "A team of one or two supports guests at the Advice Centre with benefits, housing and employment questions.",
+      "commitment": "one_off",
+      "min_term_months": null,
+      "typical_shift_hours": 4,
+      "when": [
+        "weekday_daytime"
+      ],
+      "specific_times": "8am to 12pm on weekdays",
+      "activity": "advice",
+      "location_type": "in_person",
+      "postcode_district": "E1",
+      "who_can_apply": "team_only",
+      "screening": {
+        "dbs": "required_unspecified",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "Book at least two weeks ahead so the checks can be done and the role explained."
+      },
+      "skills": [],
+      "eligibility": [
+        "Only volunteers the Mission already knows; partner-company staff come first"
+      ],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://whitechapel.org.uk/volunteering/advice-challenge",
+      "url_specificity": "role",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T00:00:00+00:00",
+        "method": "llm",
+        "reviewed_by_human": false,
+        "confidence": 0.7,
+        "source_url": "https://whitechapel.org.uk/volunteering/advice-challenge",
+        "verified_fields": [
+          "who_can_apply",
+          "specific_times",
+          "typical_shift_hours",
+          "status",
+          "screening.dbs",
+          "eligibility"
+        ],
+        "unsupported_fields": [
+          "screening.min_age",
+          "which DBS level"
         ]
       }
     }
