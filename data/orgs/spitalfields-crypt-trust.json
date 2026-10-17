@@ -27,7 +27,7 @@
       "last_attempt": "2026-10-17T18:53:41+00:00",
       "last_success": "2026-09-02T00:00:00+00:00",
       "link_status": "ok",
-      "content_hash": null,
+      "content_hash": "fb4bae959d4bd0b0da94a943e64355265f05cd0c7d3336526e053fdd67aaf43e",
       "consecutive_failures": 0,
       "etag": "\"8176-1791898684;gz\"",
       "last_modified": null,
