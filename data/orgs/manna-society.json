@@ -43,7 +43,7 @@
       "activity": "cooking_serving",
       "location_type": "in_person",
       "who_can_apply": "unknown",
-      "postcode_district": null,
+      "postcode_district": "SE1",
       "screening": {
         "dbs": "unknown",
         "references": null,
@@ -68,9 +68,7 @@
         "confidence": 0.5,
         "source_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
         "verified_fields": [],
-        "unsupported_fields": [
-          "status"
-        ]
+        "unsupported_fields": ["status", "commitment", "min_term_months", "who_can_apply"]
       }
     },
     {
@@ -86,7 +84,7 @@
       "activity": "teaching",
       "location_type": "in_person",
       "who_can_apply": "unknown",
-      "postcode_district": null,
+      "postcode_district": "SE1",
       "screening": {
         "dbs": "unknown",
         "references": null,
@@ -100,7 +98,7 @@
       "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
-      "status": "open",
+      "status": "unknown",
       "apply_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
       "url_specificity": "org_volunteer_page",
       "id": "manna-society-computer-suite",
@@ -112,10 +110,8 @@
         "reviewed_by_human": true,
         "confidence": 0.5,
         "source_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
-        "verified_fields": [
-          "status"
-        ],
-        "unsupported_fields": []
+        "verified_fields": [],
+        "unsupported_fields": ["status", "commitment", "who_can_apply"]
       }
     }
   ]

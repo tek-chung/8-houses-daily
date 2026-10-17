@@ -7,10 +7,11 @@
     python pipeline/review.py approve watw --same "Kitchen Volunteer=Drop-In Kitchen"
     python pipeline/review.py reject crisis        the current listing stays
 
-Work on main. The proposals are read from pipeline/state/review.json; if there is
-none, from the newest freshness/review-* branch on origin (run `git fetch` first).
+Work on main, after `git fetch`. The proposals are read from the freshness/review
+branch on origin or the local pipeline/state/review.json, whichever run is newer.
 Decisions are written to data/orgs/*.json and noted in the local review.json. Then
-commit data/ and push; Cloudflare deploys it. Close the review PR afterwards.
+commit data/ and push; the deploy runs. Without a terminal, use the "Review a
+proposal" workflow in GitHub Actions, which does the same thing.
 
 Approving is a human claim: every record you approve is marked
 provenance.reviewed_by_human. Read the charity's page before you approve.
@@ -19,17 +20,18 @@ from __future__ import annotations
 
 import argparse
 import copy
-import importlib.util
 import json
 import subprocess
 import sys
 from pathlib import Path
+from urllib.parse import urlparse
 
 from jsonschema import ValidationError, validate
 
 from config import ORGS_DIR, ROOT, STATE
 from gate import diff_fields, pair_roles
 from schema import ORG_SCHEMA, RECORD_SCHEMA
+from sitecheck import site_errors
 
 REVIEW = STATE / "review.json"
 
@@ -40,6 +42,11 @@ class ReviewError(Exception):
 
 # ------------------------------------------------------------------ loading
 
+# The weekly job keeps one rolling branch and one PR. Older runs used a branch
+# per date; those are still read if the rolling branch does not exist yet.
+ROLLING_BRANCH = "refs/remotes/origin/freshness/review"
+
+
 def _latest_review_branch() -> str | None:
     try:
         out = subprocess.run(
@@ -48,23 +55,42 @@ def _latest_review_branch() -> str | None:
             cwd=ROOT, capture_output=True, text=True, encoding="utf-8", check=True).stdout
     except (OSError, subprocess.CalledProcessError):
         return None
-    refs = [r for r in out.splitlines() if r.strip()]
-    return refs[0] if refs else None
+    refs = [r.strip() for r in out.splitlines() if r.strip()]
+    if ROLLING_BRANCH in refs:
+        return ROLLING_BRANCH
+    dated = [r for r in refs if r.startswith(ROLLING_BRANCH + "-")]
+    return dated[0] if dated else None
 
 
-def load_review(path: Path = REVIEW) -> dict:
-    if not path.exists():
-        ref = _latest_review_branch()
-        if not ref:
-            raise ReviewError("No pipeline/state/review.json and no freshness/review-* "
-                              "branch on origin. Run `git fetch` first.")
+def _read_branch(ref: str) -> dict | None:
+    try:
         text = subprocess.run(["git", "show", f"{ref}:pipeline/state/review.json"],
                               cwd=ROOT, capture_output=True, text=True, encoding="utf-8",
                               check=True).stdout
+        return json.loads(text)
+    except (OSError, subprocess.CalledProcessError, ValueError):
+        return None
+
+
+def load_review(path: Path = REVIEW, prefer_newer: bool = True) -> dict:
+    """The proposals to decide on: the local copy or the review branch, whichever
+    is newer. A local copy used to win unconditionally, so after a week away the
+    previous run's proposals were offered as if they were current."""
+    local = json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
+    ref = _latest_review_branch() if (prefer_newer or local is None) else None
+    remote = _read_branch(ref) if ref else None
+    if remote is not None and (local is None or
+                               remote.get("generated_at", "") > local.get("generated_at", "")):
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(text, encoding="utf-8")
-        print(f"Loaded proposals from {ref.removeprefix('refs/remotes/')}")
-    review = json.loads(path.read_text(encoding="utf-8"))
+        path.write_text(json.dumps(remote, indent=2) + "\n", encoding="utf-8")
+        print(f"Loaded proposals from {ref.removeprefix('refs/remotes/')} "
+              f"(run of {remote.get('generated_at', 'unknown date')})")
+        review = remote
+    elif local is not None:
+        review = local
+    else:
+        raise ReviewError("No pipeline/state/review.json and no freshness/review branch "
+                          "on origin. Run `git fetch` first.")
     if "results" not in review:
         raise ReviewError("This review.json predates per-charity results; "
                           "wait for the next refresh.")
@@ -156,20 +182,61 @@ def describe(result: dict, doc: dict) -> str:
 
 def _site_errors(org_id: str) -> list[str]:
     """Run the site build's own data checks, so an approval cannot break the build."""
-    spec = importlib.util.spec_from_file_location("site_build", ROOT / "site" / "build.py")
-    build = importlib.util.module_from_spec(spec)
-    sys.path.insert(0, str(ROOT / "site"))
-    try:
-        spec.loader.exec_module(build)
-        orgs, opps, fresh, _ = build.load()
-        errors = build.check(orgs, opps, fresh)
-    finally:
-        sys.path.remove(str(ROOT / "site"))
-    return [e for e in errors if e.startswith(org_id)]
+    return site_errors(org_id)
+
+
+# Descriptive facts a reader relies on but the gate does not treat as critical. A
+# re-extraction that leaves one blank usually means "this page does not say", not
+# "this is no longer true": the first approvals (8 Oct 2026) erased hand-researched
+# postcodes, commitments and eligibility that way. Critical fields (screening,
+# status, next_intake) are deliberately not carried: unknown is the safe value.
+CARRY_FORWARD = ("commitment", "min_term_months", "typical_shift_hours", "specific_times",
+                 "postcode_district", "who_can_apply", "skills", "eligibility",
+                 "seasonal_window")
+_BLANK = (None, "unknown", [], "")
+
+
+def carry_forward(old: dict, new: dict) -> list[str]:
+    """Keep the current value of each descriptive field the new reading left blank."""
+    kept = []
+    for field in CARRY_FORWARD:
+        if new.get(field) in _BLANK and old.get(field) not in _BLANK:
+            if field == "postcode_district" and old.get("location_type") != new.get("location_type"):
+                continue
+            new[field] = copy.deepcopy(old[field])
+            kept.append(field)
+    if "postcode_district" in kept and new.get("coords") is None:
+        new["coords"] = old.get("coords")
+    return kept
+
+
+def _domain(url: str | None) -> str:
+    return urlparse(url or "").netloc.replace("www.", "")
+
+
+def carry_platform_note(old: dict, new: dict) -> bool:
+    """Keep a reviewer's note that this charity recruits on another domain.
+
+    The build refuses an apply link off the charity's own domain unless a person
+    reviewed the record and named that domain in provenance.unsupported_fields
+    (Shelter on app.betterimpact.com, Big Issue on bigissue.com). A re-extraction
+    cannot carry that note, so without this every approval for those charities
+    was refused by the site check however correct the proposal was.
+    """
+    domain = _domain(new.get("apply_url"))
+    if not domain or domain != _domain(old.get("apply_url")):
+        return False
+    notes = [n for n in old.get("provenance", {}).get("unsupported_fields", [])
+             if domain in n]
+    fields = new.setdefault("provenance", {}).setdefault("unsupported_fields", [])
+    missing = [n for n in notes if n not in fields]
+    fields.extend(missing)
+    return bool(missing)
 
 
 def approve(result: dict, path: Path, drop: list[str] = (), keep_missing: bool = False,
-            site_check=None, same: list[str] = ()) -> dict:
+            site_check=None, same: list[str] = (), take_blanks: bool = False,
+            carried: list | None = None) -> dict:
     original = path.read_text(encoding="utf-8")
     doc = json.loads(original)
     _assert_current(doc, result)
@@ -201,6 +268,17 @@ def approve(result: dict, path: Path, drop: list[str] = (), keep_missing: bool =
                 (new.get("postcode_district"), new.get("location_type")):
             new["coords"] = old.get("coords")
         renamed.add(old["id"])
+
+    by_id = {r["id"]: r for r in old_roles}
+    for record in proposed:
+        if record["id"] in by_id:
+            carry_platform_note(by_id[record["id"]], record)
+    if not take_blanks:
+        for record in proposed:
+            if record["id"] in by_id:
+                kept = carry_forward(by_id[record["id"]], record)
+                if kept and carried is not None:
+                    carried.append((record["title"], kept))
 
     for record in proposed:
         record["provenance"]["reviewed_by_human"] = True
@@ -249,6 +327,20 @@ def _note(review: dict, org_id: str, decision: str, path: Path = REVIEW) -> None
     for r in review["results"]:
         if r["org_id"] == org_id and r.get("outcome") == "review_required":
             r["outcome"] = decision
+    results = review["results"]
+    human = [r for r in results if r.get("outcome") == "review_required"]
+    source_failures = [r for r in results if r.get("outcome") == "source_failed"]
+    ai_failures = [r for r in results if r.get("outcome") in (
+        "ai_unavailable", "extraction_failed", "invalid_extraction")]
+    unresolved = {"review_required", "source_failed", "ai_unavailable",
+                  "extraction_failed", "invalid_extraction"}
+    review["items"] = [r for r in results if r.get("route", "review") == "review"
+                       and r.get("outcome") in unresolved]
+    review["human_review_count"] = len(human)
+    review["source_failed_count"] = len(source_failures)
+    review["ai_failed_count"] = len(ai_failures)
+    review["failed_count"] = len(source_failures) + len(ai_failures)
+    review["needs_review"] = len(review["items"])
     path.write_text(json.dumps(review, indent=2) + "\n", encoding="utf-8")
 
 
@@ -268,10 +360,14 @@ def main(argv=None) -> int:
                            help="keep roles no longer found, with status unknown")
             p.add_argument("--same", action="append", default=[], metavar="NEW=OLD",
                            help="a proposed role is a renamed current one; keep its id")
+            p.add_argument("--take-blanks", action="store_true",
+                           help="accept blank descriptive fields instead of keeping current values")
     args = ap.parse_args(argv)
 
     try:
-        review = load_review(args.path)
+        # An explicit --path means exactly that file; the default is compared with
+        # the review branch and the newer run wins.
+        review = load_review(args.path, prefer_newer=args.path == REVIEW)
         if args.command == "list":
             waiting = proposals(review)
             if not waiting:
@@ -286,7 +382,12 @@ def main(argv=None) -> int:
             print(describe(result, json.loads(path.read_text(encoding="utf-8"))))
             return 0
         if args.command == "approve":
-            doc = approve(result, path, args.drop, args.keep_missing, same=args.same)
+            carried = []
+            doc = approve(result, path, args.drop, args.keep_missing, same=args.same,
+                          take_blanks=args.take_blanks, carried=carried)
+            for title, fields in carried:
+                print(f"  kept current {', '.join(fields)} for {title} (page silent; "
+                      f"--take-blanks to clear)")
             _note(review, args.org_id, "approved", args.path)
             print(f"Approved: {len(doc['opportunities'])} roles written to "
                   f"data/orgs/{path.name}. Commit data/ and push to publish.")

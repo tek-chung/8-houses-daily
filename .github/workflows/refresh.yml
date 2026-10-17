@@ -22,6 +22,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  issues: write    # the self-managing status issue (pipeline/health.py)
   actions: write   # dispatch the deploy workflow; pushes made with GITHUB_TOKEN do not trigger it
 
 concurrency:
@@ -156,28 +157,51 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run deploy.yml --ref main
 
-      # Anything the gate held back becomes a PR. Uses the preinstalled gh CLI
-      # rather than a third-party action, so there's no supply chain to pin.
-      - name: Open a review PR
-        if: inputs.census_only != true && steps.run.outputs.review_count != '' && steps.run.outputs.review_count != '0' && inputs.dry_run != true
+      # Anything the gate held back goes in ONE rolling pull request, updated each
+      # week, rather than a new branch and PR per run that pile up unread. The PR
+      # is never merged: it carries the proposals, shown field by field, and
+      # decisions are made with the "Review a proposal" workflow or review.py.
+      # Uses the preinstalled gh CLI rather than a third-party action, so there's
+      # no supply chain to pin.
+      # Skipped for a subset run (`only`): its report covers only that subset, and
+      # would replace everyone else's proposals and close the status issue.
+      - name: Update the review PR
+        if: inputs.census_only != true && inputs.dry_run != true && !inputs.only && steps.run.outputs.review_count != ''
         env:
           GH_TOKEN: ${{ github.token }}
+          PYTHONPATH: pipeline
+          WAITING: ${{ steps.run.outputs.review_count }}
         run: |
-          BRANCH="freshness/review-$(date +%Y-%m-%d)"
+          BRANCH="freshness/review"
+          # Dated PRs from before the rolling branch: superseded.
+          gh pr list --state open --json number,headRefName \
+            --jq '.[] | select(.headRefName | startswith("freshness/review-")) | .number' |
+            while read -r n; do
+              gh pr close "$n" --comment "Superseded by the rolling freshness/review pull request." || true
+            done
+          open_pr=$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number // empty')
+          if [ "$WAITING" = "0" ]; then
+            if [ -n "$open_pr" ]; then
+              gh pr close "$open_pr" --comment "Nothing is waiting for review after this run." || true
+            fi
+            exit 0
+          fi
+
           git checkout -B "$BRANCH"
           git add -f pipeline/state/review.json
           git commit -m "Freshness check: items needing review" || true
           git push -f -u origin "$BRANCH"
 
           python pipeline/report.py pr > body.md
-
-          if ! gh pr create --title "Freshness review — $(date '+%d %b %Y')" \
-               --body-file body.md --base "${{ github.ref_name }}" --head "$BRANCH"; then
-            if ! gh pr edit "$BRANCH" --body-file body.md; then
-              echo "::warning::Review PR could not be created or updated. The review report is available in the freshness-run artifact. Check repository Actions PR permissions."
-              cat body.md >> "$GITHUB_STEP_SUMMARY"
-            fi
+          TITLE="Freshness review — $WAITING waiting ($(date '+%d %b %Y'))"
+          if [ -n "$open_pr" ]; then
+            gh pr edit "$open_pr" --title "$TITLE" --body-file body.md && exit 0
+          elif gh pr create --title "$TITLE" --body-file body.md \
+                 --base "${{ github.ref_name }}" --head "$BRANCH"; then
+            exit 0
           fi
+          echo "::warning::Review PR could not be created or updated. The proposals are in the freshness-run artifact and below. Settings → Actions → General → allow GitHub Actions to create pull requests."
+          cat body.md >> "$GITHUB_STEP_SUMMARY"
 
       - uses: actions/upload-artifact@v6
         if: always()
@@ -196,9 +220,31 @@ jobs:
         run: |
           echo "::warning::${{ steps.run.outputs.source_failed_count }} charity page(s) could not be read. See the job summary. Existing listings were retained."
 
-      # AI or extraction failures mean the pipeline itself is not working.
-      - name: Flag incomplete AI checks
-        if: inputs.census_only != true && inputs.dry_run != true && steps.run.outputs.ai_failed_count != '' && steps.run.outputs.ai_failed_count != '0'
+      # One page the AI could not read is retried next week and noted in the
+      # status issue. Only a broken integration (not configured, or every
+      # request failed) turns the job red: a red cross every week for one
+      # awkward page teaches you to ignore red crosses.
+      - name: Note incomplete AI checks
+        if: inputs.census_only != true && inputs.dry_run != true && steps.run.outputs.ai_failed_count != '' && steps.run.outputs.ai_failed_count != '0' && steps.run.outputs.ai_broken != 'true'
         run: |
-          echo "::error::AI extraction failed for ${{ steps.run.outputs.ai_failed_count }} page(s). See provider diagnostics in the job summary. Existing listings were retained."
+          echo "::warning::${{ steps.run.outputs.ai_failed_count }} page(s) could not be read by the AI this week; they are retried next week. Existing listings were retained."
+
+      - name: Flag a broken AI integration
+        if: inputs.census_only != true && inputs.dry_run != true && steps.run.outputs.ai_broken == 'true'
+        run: |
+          echo "::error::The AI check is not working: no provider is enabled, or every request failed. The status issue says what to do. Existing listings were retained."
           exit 1
+
+      # Last, and whatever happened above: open, update or close the status
+      # issue. GitHub emails you when it opens or gets a comment, so no open
+      # issue means nothing needs you. See docs/operations.md.
+      - name: Report to the status issue
+        if: always() && inputs.census_only != true && inputs.dry_run != true && !inputs.only
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PYTHONPATH: pipeline
+        run: |
+          python pipeline/health.py refresh --job-status "${{ job.status }}" \
+            --run-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            --repo-url "${{ github.server_url }}/${{ github.repository }}"

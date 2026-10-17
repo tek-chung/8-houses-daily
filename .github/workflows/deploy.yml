@@ -3,10 +3,18 @@ name: Build and deploy
 on:
   push:
     branches: [main]
+  # Every morning, whether or not anything changed. The masthead carries the
+  # date, and the freshness rules (21-day suppression, the 60-day banner, closed
+  # for the season) are applied when the paper is built. Built only on push, the
+  # live site still said "Thursday, 8 October 2026" on the 16th, and could never
+  # notice its own neglect: decay must keep working after everything else stops.
+  schedule:
+    - cron: "17 5 * * *"
   workflow_dispatch:
 
 permissions:
   contents: read
+  issues: write    # the self-managing status issue (pipeline/health.py)
 
 concurrency:
   group: cloudflare-production
@@ -70,3 +78,18 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID || secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: npm run deploy
+
+      # Opens an issue if the build fails or GitHub cannot publish, closes it
+      # once a deploy succeeds. Comments only when things get worse, so a daily
+      # schedule does not mean daily email.
+      - name: Report to the status issue
+        if: always()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PYTHONPATH: pipeline
+        run: |
+          python pipeline/health.py deploy --job-status "${{ job.status }}" \
+            --cloudflare "${{ steps.cloudflare.outputs.enabled || 'false' }}" \
+            --run-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            --repo-url "${{ github.server_url }}/${{ github.repository }}"

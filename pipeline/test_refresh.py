@@ -9,7 +9,7 @@ import pytest
 
 import fetchpage
 import run as runner
-from extract import finalise
+from extract import Confirmation, finalise
 from fetchpage import FetchResult
 
 
@@ -23,6 +23,9 @@ def record(tmp_path, monkeypatch):
     path.parent.mkdir()
     path.write_text(json.dumps(doc), encoding='utf-8')
     monkeypatch.setattr(runner, 'NOW', lambda: '2026-10-05T00:00:00+00:00')
+    # These tests cover the extraction path. Confirmation has its own tests in
+    # test_confirm.py; here it declines, exactly as when a page has changed.
+    monkeypatch.setattr(runner, 'confirm', lambda *a: Confirmation(error='not under test'))
     return path, doc
 
 

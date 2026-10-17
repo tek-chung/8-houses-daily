@@ -118,7 +118,8 @@ Gemini accepts a subset of JSON Schema. `minLength`, `maxLength`, `pattern`,
 in each field's description. Every response is still validated locally against
 the full schema. If Gemini starts rejecting requests again, run
 `python pipeline/ai.py schema-check`: it sends the real schemas and variants
-without each keyword family, and shows which one the model refuses (8 calls).
+without each keyword family, and shows which one the model refuses (9 calls,
+including the confirmation schema the weekly check sends first).
 
 Dry runs never call AI, so they neither change the ledger nor push checkpoints.
 Provider failures, failed generations and the single bounded 429 retry consume

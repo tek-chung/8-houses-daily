@@ -40,10 +40,10 @@
         "overnight",
         "flexible"
       ],
-      "specific_times": null,
+      "specific_times": "Nights you pick yourself, on a flexible rota",
       "activity": "hosting",
       "location_type": "own_home",
-      "who_can_apply": "unknown",
+      "who_can_apply": "individual",
       "postcode_district": null,
       "screening": {
         "dbs": "required_unspecified",
@@ -91,7 +91,7 @@
       "specific_times": null,
       "activity": "outreach",
       "location_type": "in_person",
-      "who_can_apply": "unknown",
+      "who_can_apply": "individual",
       "postcode_district": null,
       "screening": {
         "dbs": "unknown",
@@ -104,9 +104,9 @@
       "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
-      "status": "open",
-      "apply_url": "https://www.depaul.org.uk/nightstop-volunteer/",
-      "url_specificity": "org_volunteer_page",
+      "status": "unknown",
+      "apply_url": "https://www.depaul.org.uk/nightstop-faqs/",
+      "url_specificity": "role",
       "id": "depaul-uk-nightstop-driver",
       "org_id": "depaul-uk",
       "coords": null,
@@ -115,11 +115,9 @@
         "method": "llm",
         "reviewed_by_human": true,
         "confidence": 1.0,
-        "source_url": "https://www.depaul.org.uk/nightstop-volunteer/",
-        "verified_fields": [
-          "status"
-        ],
-        "unsupported_fields": []
+        "source_url": "https://www.depaul.org.uk/nightstop-faqs/",
+        "verified_fields": [],
+        "unsupported_fields": ["status", "commitment", "typical_shift_hours", "specific_times"]
       }
     }
   ]

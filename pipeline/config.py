@@ -54,6 +54,14 @@ CRITICAL_FIELDS = frozenset({
 # Confidence below this routes to human review even for non-critical fields.
 CONFIDENCE_THRESHOLD = 0.85
 
+# Before re-extracting a changed (or never-baselined) page, check whether the page
+# still supports the listing already published (extract.confirm). If every role is
+# still described and every assertive claim has a verbatim quotation, the check
+# succeeds without changing a record and without a person. Anything less falls
+# through to the ordinary extract → gate → review path. Set False to go back to
+# re-extracting every time.
+CONFIRM_EXISTING_LISTINGS = True
+
 # Two consecutive fetch failures marks a link dead.
 DEAD_LINK_AFTER_FAILURES = 2
 

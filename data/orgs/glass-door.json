@@ -117,7 +117,7 @@
         "verified_fields": [
           "status"
         ],
-        "unsupported_fields": []
+        "unsupported_fields": ["commitment"]
       }
     },
     {
@@ -158,7 +158,7 @@
         "method": "llm",
         "reviewed_by_human": true,
         "confidence": 1.0,
-        "source_url": "https://www.glassdoor.org.uk/listing/category/volunteer-roles",
+        "source_url": "https://www.glassdoor.org.uk/lived-experience-group",
         "verified_fields": [
           "status"
         ],

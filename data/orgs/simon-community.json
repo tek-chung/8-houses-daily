@@ -40,11 +40,11 @@
       "when": [
         "flexible"
       ],
-      "specific_times": null,
+      "specific_times": "Full time, living on site",
       "activity": "outreach",
       "location_type": "in_person",
       "who_can_apply": "individual",
-      "postcode_district": null,
+      "postcode_district": "NW5",
       "screening": {
         "dbs": "unknown",
         "references": null,
@@ -53,11 +53,13 @@
         "induction": null
       },
       "skills": [],
-      "eligibility": [],
+      "eligibility": [
+        "people based in the UK or able to relocate at their own expense"
+      ],
       "seasonal_window": null,
       "next_intake": null,
-      "status": "open",
-      "apply_url": "https://www.simoncommunity.org.uk/volunteering/",
+      "status": "unknown",
+      "apply_url": "https://www.simoncommunity.org.uk/contact/",
       "url_specificity": "org_volunteer_page",
       "id": "simon-community-live-in",
       "org_id": "simon-community",
@@ -70,27 +72,26 @@
         "source_url": "https://www.simoncommunity.org.uk/volunteering/",
         "verified_fields": [
           "screening.min_age",
-          "screening.interview",
-          "status"
+          "screening.interview"
         ],
-        "unsupported_fields": []
+        "unsupported_fields": ["status"]
       }
     },
     {
       "title": "Part-time Outreach Volunteer",
       "what_youd_do": "Walk designated central London routes to distribute hot drinks, food, clothing, and toiletries to rough sleepers.",
-      "commitment": "unknown",
+      "commitment": "flexible",
       "min_term_months": null,
       "typical_shift_hours": 2,
       "when": [
         "weekday_evening",
         "weekend_evening"
       ],
-      "specific_times": "Evening services",
+      "specific_times": "Evening services; a weekly or fortnightly commitment is recommended",
       "activity": "outreach",
       "location_type": "in_person",
       "who_can_apply": "individual",
-      "postcode_district": null,
+      "postcode_district": "NW5",
       "screening": {
         "dbs": "unknown",
         "references": null,
@@ -99,11 +100,13 @@
         "induction": null
       },
       "skills": [],
-      "eligibility": [],
+      "eligibility": [
+        "people based in the UK or able to relocate at their own expense"
+      ],
       "seasonal_window": null,
       "next_intake": null,
-      "status": "open",
-      "apply_url": "https://www.simoncommunity.org.uk/volunteering/",
+      "status": "unknown",
+      "apply_url": "https://www.simoncommunity.org.uk/contact/",
       "url_specificity": "org_volunteer_page",
       "id": "simon-community-street-work",
       "org_id": "simon-community",
@@ -114,44 +117,41 @@
         "reviewed_by_human": true,
         "confidence": 1.0,
         "source_url": "https://www.simoncommunity.org.uk/volunteering/",
-        "verified_fields": [
-          "status"
-        ],
-        "unsupported_fields": []
+        "verified_fields": [],
+        "unsupported_fields": ["status", "commitment"]
       }
     },
     {
       "title": "Minibus Driver",
       "what_youd_do": "Drive the community minibus to support evening outreach operations.",
-      "commitment": "unknown",
+      "commitment": "flexible",
       "min_term_months": null,
-      "typical_shift_hours": 2,
+      "typical_shift_hours": null,
       "when": [
         "weekday_evening",
         "weekend_evening"
       ],
-      "specific_times": "Evening services",
+      "specific_times": "Evening services; a weekly or fortnightly commitment is recommended",
       "activity": "practical",
       "location_type": "in_person",
       "who_can_apply": "individual",
-      "postcode_district": null,
+      "postcode_district": "NW5",
       "screening": {
         "dbs": "unknown",
         "references": null,
         "interview": null,
-        "min_age": 25,
+        "min_age": null,
         "induction": null
       },
-      "skills": [
-        "Driving licence"
-      ],
+      "skills": [],
       "eligibility": [
-        "Must be over 25 with a clean driving licence"
+        "people over 25 with a clean driving licence",
+        "people based in the UK or able to relocate at their own expense"
       ],
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
-      "apply_url": "https://www.simoncommunity.org.uk/volunteering/",
+      "apply_url": "https://www.simoncommunity.org.uk/contact/",
       "url_specificity": "org_volunteer_page",
       "id": "simon-community-minibus-driver",
       "org_id": "simon-community",
@@ -162,11 +162,8 @@
         "reviewed_by_human": true,
         "confidence": 1.0,
         "source_url": "https://www.simoncommunity.org.uk/volunteering/",
-        "verified_fields": [
-          "screening.min_age",
-          "status"
-        ],
-        "unsupported_fields": []
+        "verified_fields": ["status"],
+        "unsupported_fields": ["commitment"]
       }
     }
   ]

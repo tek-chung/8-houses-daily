@@ -306,20 +306,24 @@ class AIClient:
                 if provider.name == 'openrouter' and not model.endswith(':free'):
                     self.diagnostics.append({'provider': provider.name, 'model': model, 'reason': 'priced_model_blocked'})
                     continue
+                correction = None
                 for attempt in range(2):
                     delay = provider.interval - (time.monotonic() - self.last_started.get(provider.name, -math.inf))
                     if delay > 0:
                         self.sleep(delay)
                     try:
                         self._reserve(provider)
-                    except AIUnavailable:
+                    except AIUnavailable as exc:
                         self.budget_exhausted = True
-                        self.diagnostics.append({'provider': provider.name, 'model': model, 'reason': 'budget_exhausted'})
+                        # Our own fixed messages (ledger, checkpoint), never provider text.
+                        self.diagnostics.append({'provider': provider.name, 'model': model,
+                                                 'reason': 'budget_exhausted', 'message': str(exc)})
                         self.disabled.update((provider.name, m) for m in provider.models)
                         break
                     self.last_started[provider.name] = time.monotonic()
                     try:
-                        result = self._request(provider, model, instruction, input, schema)
+                        sent = instruction if correction is None else f'{instruction}\n\n{correction}'
+                        result = self._request(provider, model, sent, input, schema)
                         validate(result.json, schema)
                         self.successful_calls += 1
                         return result
@@ -329,13 +333,25 @@ class AIClient:
                         where = '/'.join(str(p) for p in exc.absolute_path) or 'response'
                         failure = ProviderFailure('malformed',
                                                   message=f'{where} failed {exc.validator}')
+                        rule = exc.validator_value
                     except ProviderFailure as exc:
-                        failure = exc
+                        failure, rule = exc, None
                     self.diagnostics.append({'provider': provider.name, 'model': model,
                                              'reason': failure.kind, 'status': failure.status,
                                              'message': failure.message})
                     if failure.kind == 'rate_limited' and attempt == 0 and max(failure.retry_after, provider.interval) <= self.max_wait:
                         self.sleep(max(provider.interval, failure.retry_after))
+                        continue
+                    # Gemini is not sent length and item limits (it rejects them),
+                    # so it sometimes exceeds one. Say which, once, on the same
+                    # model: The Passage's eight roles failed on both models on 8
+                    # October 2026 without either being told what was wrong.
+                    if failure.kind == 'malformed' and failure.message and attempt == 0:
+                        limit = (f' (limit {rule})' if isinstance(rule, (int, float))
+                                 and not isinstance(rule, bool) else '')
+                        correction = (f'Your previous reply was rejected: {failure.message}{limit}. '
+                                      'Reply again in full, keeping every field within the '
+                                      'limits stated in its description.')
                         continue
                     # A malformed or truncated answer is about this one page, not the
                     # model; disabling it here would end AI for the rest of the run.
@@ -453,9 +469,15 @@ def schema_check(client) -> int:
                                         'maxLength': 600}}}}})
     everything = {'minimum', 'maximum', 'minItems', 'maxItems', 'additionalProperties',
                   'enum', 'description'}
+    from extract import confirm_schema
+    sample = {'id': 'example-kitchen', 'status': 'open', 'next_intake': None,
+              'specific_times': 'Saturdays 8am to 11am',
+              'screening': {'dbs': 'enhanced', 'references': None, 'interview': None,
+                            'min_age': 18, 'induction': None}}
     variants = [
         ('extraction schema as sent', full),
         ('verification schema as sent', verify),
+        ('confirmation schema as sent', gemini_schema(confirm_schema([sample]))),
         ('extraction without null unions', _variant(full, flatten_null=True)),
         ('extraction without minimum/maximum', _variant(full, {'minimum', 'maximum'})),
         ('extraction without minItems/maxItems', _variant(full, {'minItems', 'maxItems'})),

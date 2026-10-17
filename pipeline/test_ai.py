@@ -66,9 +66,10 @@ def test_missing_key_or_unconfirmed_free_tier_skips_provider(factory, disabled):
     assert len(seen) == 1
 
 
+# A schema-invalid answer is first corrected on the same model; see
+# test_schema_breach_is_corrected_once_on_the_same_model.
 @pytest.mark.parametrize('bad', [httpx.Response(404),
     httpx.Response(200, json=answer(raw='not-json')),
-    httpx.Response(200, json=answer(raw='{"ok":"invalid"}')),
     httpx.Response(200, json=answer(finish='MAX_TOKENS')),
     httpx.Response(200, json={'candidates': []})])
 def test_invalid_or_retired_model_falls_back(factory, bad):
@@ -426,7 +427,7 @@ def test_local_validation_still_enforces_dropped_keywords(factory):
 
 
 def test_one_malformed_answer_does_not_disable_the_model_for_the_run(factory):
-    replies = iter(['{"ok": "nope"}', '{"ok": true}'])
+    replies = iter(['{"ok": "nope"}', '{"ok": "still nope"}', '{"ok": true}'])
     client = factory(lambda r: httpx.Response(200, json=answer(raw=next(replies))),
                      providers=[replace(GEMINI, models=('only',))])
     with pytest.raises(AIUnavailable):
@@ -546,3 +547,34 @@ def test_malformed_answer_reports_which_rule_failed_without_the_value(factory):
     with pytest.raises(AIUnavailable, match='roles/1/what failed maxLength'):
         client.generate_structured('I', 'X', schema)
     assert 'far too long' not in json.dumps(client.diagnostics)
+
+
+def test_schema_breach_is_corrected_once_on_the_same_model(factory, monkeypatch):
+    """8 Oct 2026: The Passage failed on both models with no hint of what was wrong.
+    Gemini is not sent maxLength, so it is told the broken rule and its limit once."""
+    monkeypatch.setenv('AI_MAX_RUN_CALLS', '5')
+    schema = {'type': 'object', 'additionalProperties': False, 'required': ['what'],
+              'properties': {'what': {'type': 'string', 'maxLength': 5}}}
+    sent = []
+    def handler(request):
+        payload = json.loads(request.content)
+        sent.append((request.url.path, payload['systemInstruction']['parts'][0]['text']))
+        return httpx.Response(200, json=answer(raw='{"what": "far too long"}' if len(sent) == 1
+                                               else '{"what": "short"}'))
+    client = factory(handler)
+    result = client.generate_structured('Instruction', 'X', schema)
+    assert result.model == 'first' and result.json == {'what': 'short'}
+    assert sent[0][1] == 'Instruction'
+    assert 'what failed maxLength (limit 5)' in sent[1][1] and 'first' in sent[1][0]
+    assert 'far too long' not in sent[1][1]          # never echo model output back
+
+
+def test_repeated_schema_breach_moves_to_the_next_model(factory, monkeypatch):
+    monkeypatch.setenv('AI_MAX_RUN_CALLS', '5')
+    seen = []
+    def handler(request):
+        seen.append(request.url.path)
+        return httpx.Response(200, json=answer(raw='{"ok": "bad"}' if len(seen) <= 2 else '{"ok": true}'))
+    client = factory(handler)
+    assert client.generate_structured('I', 'X', SCHEMA).model == 'second'
+    assert [p.split('/')[-1] for p in seen] == ['first:generateContent'] * 2 + ['second:generateContent']

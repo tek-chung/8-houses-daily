@@ -1,0 +1,173 @@
+name: Review a proposal
+
+# Decide on the weekly proposals from the browser, with no checkout or terminal.
+# Works from a phone: Actions → Review a proposal → Run workflow.
+#
+# Read the changes in the open "Freshness review" pull request first, and the
+# charity's own page. The rules are review.py's own: it refuses stale or repeated
+# decisions, schema-invalid records, duplicate ids and anything the site build
+# would reject, and writes nothing in those cases. Approving marks the records as
+# reviewed by a human, so it is a claim that you looked.
+on:
+  workflow_dispatch:
+    inputs:
+      decision:
+        description: "approve publishes the proposal as reviewed · reject keeps the current listing"
+        type: choice
+        options: [approve, reject]
+        required: true
+      charities:
+        description: "Charity id(s), comma-separated, e.g. crisis,shelter (shown in the PR and the status issue)"
+        required: true
+      drop:
+        description: "approve, one charity only: proposed role titles to leave out, separated by |"
+        required: false
+        default: ""
+      same:
+        description: "approve, one charity only: renamed roles as New title=Old title, separated by |"
+        required: false
+        default: ""
+      keep_missing:
+        description: "approve: keep roles no longer found on the page, as status unknown"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write    # bring the status issue up to date with what is still waiting
+  actions: write   # start the deploy; pushes made with GITHUB_TOKEN do not
+
+# Shares the refresh's group, so a decision never lands in the middle of a run.
+# GitHub keeps only one run waiting per group and cancels the one before it, so
+# put several charities in one run rather than starting several runs at once.
+concurrency:
+  group: freshness
+  cancel-in-progress: false
+
+jobs:
+  decide:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r pipeline/requirements.txt
+
+      - name: Fetch the proposals
+        run: git fetch --no-tags origin "+refs/heads/freshness/*:refs/remotes/origin/freshness/*"
+
+      - name: Apply the decision
+        id: decide
+        env:
+          PYTHONPATH: pipeline
+          DECISION: ${{ inputs.decision }}
+          CHARITIES: ${{ inputs.charities }}
+          DROP: ${{ inputs.drop }}
+          SAME: ${{ inputs.same }}
+          KEEP_MISSING: ${{ inputs.keep_missing }}
+        run: |
+          trim() { local s="$1"; s="${s#"${s%%[![:space:]]*}"}"; printf '%s' "${s%"${s##*[![:space:]]}"}"; }
+          IFS=',' read -ra ids <<< "$CHARITIES"
+          extra=()
+          if [ "$DECISION" = "approve" ]; then
+            if [ -n "$DROP$SAME" ] && [ "${#ids[@]}" -ne 1 ]; then
+              echo "::error::'drop' and 'same' apply to one charity at a time."
+              exit 1
+            fi
+            IFS='|' read -ra drops <<< "$DROP"
+            for t in "${drops[@]}"; do t="$(trim "$t")"; [ -n "$t" ] && extra+=(--drop "$t"); done
+            IFS='|' read -ra sames <<< "$SAME"
+            for t in "${sames[@]}"; do t="$(trim "$t")"; [ -n "$t" ] && extra+=(--same "$t"); done
+            [ "$KEEP_MISSING" = "true" ] && extra+=(--keep-missing)
+          fi
+          ok=0; failed=0
+          printf '## %s\n\n' "$DECISION" >> "$GITHUB_STEP_SUMMARY"
+          for raw in "${ids[@]}"; do
+            id="$(trim "$raw")"
+            [ -z "$id" ] && continue
+            if out=$(python pipeline/review.py "$DECISION" "$id" "${extra[@]}" 2>&1); then
+              ok=$((ok+1)); mark="done"
+            else
+              failed=$((failed+1)); mark="NOT done"
+            fi
+            printf '%s\n' "$out"
+            printf '**%s — %s**\n\n```\n%s\n```\n\n' "$id" "$mark" "$out" >> "$GITHUB_STEP_SUMMARY"
+          done
+          echo "ok=$ok" >> "$GITHUB_OUTPUT"
+          echo "failed=$failed" >> "$GITHUB_OUTPUT"
+
+      - name: Publish the decision
+        if: steps.decide.outputs.ok != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DECISION: ${{ inputs.decision }}
+          CHARITIES: ${{ inputs.charities }}
+        run: |
+          git config user.name  "freshness-bot"
+          git config user.email "freshness-bot@users.noreply.github.com"
+          git add data/orgs
+          if git diff --cached --quiet; then
+            echo "No listing changed."
+            exit 0
+          fi
+          git commit -m "Review: $DECISION $CHARITIES"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          gh workflow run deploy.yml --ref main
+
+      # Keeps the PR and `review.py list` honest about what is still waiting.
+      - name: Record the decision on the review PR
+        if: steps.decide.outputs.ok != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PYTHONPATH: pipeline
+          DECISION: ${{ inputs.decision }}
+          CHARITIES: ${{ inputs.charities }}
+        run: |
+          git rev-parse -q --verify refs/remotes/origin/freshness/review >/dev/null || exit 0
+          cp pipeline/state/review.json "$RUNNER_TEMP/review.json"
+          python pipeline/report.py pr --path "$RUNNER_TEMP/review.json" > "$RUNNER_TEMP/body.md"
+          left=$(python -c "import json,sys; print(json.load(open(sys.argv[1], encoding='utf-8'))['human_review_count'])" "$RUNNER_TEMP/review.json")
+          rm -f pipeline/state/review.json   # untracked on main, tracked on the branch
+          git checkout -B freshness/review refs/remotes/origin/freshness/review
+          cp "$RUNNER_TEMP/review.json" pipeline/state/review.json
+          git add -f pipeline/state/review.json
+          git commit -m "Record review decisions: $DECISION $CHARITIES" || exit 0
+          git push origin freshness/review
+          n=$(gh pr list --head freshness/review --state open --json number --jq '.[0].number // empty')
+          [ -z "$n" ] && exit 0
+          if [ "$left" = "0" ]; then
+            gh pr close "$n" --comment "Every proposal in this review has been decided."
+          else
+            gh pr edit "$n" --title "Freshness review — $left waiting" --body-file "$RUNNER_TEMP/body.md"
+          fi
+
+      # What is still waiting, from the same report. Never clears a "broken"
+      # issue: a decision says nothing about whether the refresh itself works.
+      - name: Update the status issue
+        if: steps.decide.outputs.ok != '0'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PYTHONPATH: pipeline
+        run: |
+          # The decided report: main's copy, or the review branch's after the step above.
+          [ -f pipeline/state/review.json ] || exit 0
+          python pipeline/health.py refresh --job-status success --keep-broken \
+            --review pipeline/state/review.json \
+            --run-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            --repo-url "${{ github.server_url }}/${{ github.repository }}"
+
+      - name: Say if anything was refused
+        if: steps.decide.outputs.failed != '0'
+        run: |
+          echo "::error::${{ steps.decide.outputs.failed }} decision(s) were refused and nothing was written for them. The job summary says why."
+          exit 1

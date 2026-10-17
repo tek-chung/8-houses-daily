@@ -6,10 +6,14 @@ role data, and decides what may go live without a human and what may not.
 ## The shape of it
 
 ```
-fetch ──▶ isolate main content ──▶ follow role sub-pages ──▶ extract
-      ──▶ verify ──▶ copyright guard ──▶ gate ──┬─▶ commit to main
-                                                └─▶ pull request
+fetch ──▶ isolate main content ──▶ follow role sub-pages ──▶ unchanged? ── done
+      ──▶ confirm the published listing ── still supported? ── done, nothing changes
+      ──▶ extract ──▶ verify ──▶ copyright guard ──▶ gate ──┬─▶ site check ─▶ commit to main
+                                                            └─▶ pull request
 ```
+
+Operating it day to day, and what each status-issue message means:
+[docs/operations.md](../docs/operations.md).
 
 | File | Does |
 |---|---|
@@ -23,6 +27,9 @@ fetch ──▶ isolate main content ──▶ follow role sub-pages ──▶ e
 | `test_fetch.py` | 10 tests on content isolation and hash stability |
 | `decay.py` | Freshness state → `data/freshness.json` |
 | `run.py` | Orchestrator |
+| `sitecheck.py` | The site build's invariants, run before anything is written |
+| `health.py` | The self-managing status issue: opens, updates, closes itself |
+| `review.py` | Approve or reject held proposals (also the "Review a proposal" workflow) |
 | `seed.py` | Creates org stubs from the PoC research, with editorial triage |
 | `census.py` | **Scrapability survey. No API key needed — run this first.** |
 | `reach.py` | One-off OTP precompute of the travel-time index (Phase 2) |
@@ -65,8 +72,32 @@ python -m pytest pipeline/test_gate.py -q
 
 Exit codes: `0` complete with no attention needed · `1` held proposals or incomplete
 checks · `2` the run itself broke. The workflow uploads the report, publishes safe
-updates, opens a PR only for real proposals, then fails the job if checks remain
-incomplete. Configuration alone is not labelled a working AI integration.
+updates, keeps one rolling review PR for real proposals, and updates the status
+issue. It fails the job only when the AI integration itself is broken (`ai_broken`:
+not configured, or every request failed). One page the AI could not read is
+retried next week and noted in the issue rather than turning the job red.
+Configuration alone is not labelled a working AI integration.
+
+**Confirmation** (`extract.confirm`, added 17 October 2026). A changed or
+never-approved page is first checked against the listing already published: each
+role must still be described, and each screening, status, intake, times, season,
+commitment, eligibility and team-only claim needs a quotation found verbatim in the
+page that contains the fact (`extract._quote_backs`). If everything holds,
+`last_success` and the baseline hash advance and **no record changes**; the gate is
+not consulted because nothing is proposed. If the page also lists roles we do not
+carry, a fresh extraction is a second opinion: only the extra roles are proposed,
+beside the current records unchanged, and if it contradicts a listed role on a
+critical fact or `who_can_apply` (`run.disagreements`), nothing is confirmed and
+the gate sees the full extraction. Anything short of full
+support falls through to the extract → gate path exactly as before. The first live
+run (8 Oct) published nothing on its own because hand-researched listings never
+matched a fresh extraction word for word; without this the paper would have
+suspended itself around 1 November. Off switch: `CONFIRM_EXISTING_LISTINGS`.
+
+**Never publish a build break.** Before an auto-publish is written, `sitecheck.py`
+runs the site build's own invariants on it. A record the build would refuse goes to
+review instead, because one such record stops the deploy and, through the tests,
+the next refresh.
 
 The weekly workflow treats review-needed as a completed check, and unexpected
 exit codes as failures. Both standard output and errors are saved in the
@@ -192,9 +223,11 @@ quoting — we're restating in our own words.
 
 ## Weekly review
 
-The Action opens one PR listing what it held back. Decide on `main`, after
-`git fetch`, with `pipeline/review.py`. It reads the newest `freshness/review-*`
-branch (or a local `pipeline/state/review.json`):
+The Action keeps one rolling PR (`freshness/review`) listing what it held back,
+field by field. Never merge it. Decide from the browser with **Actions → Review a
+proposal → Run workflow**, or on `main` after `git fetch` with
+`pipeline/review.py`. It reads the review branch or a local
+`pipeline/state/review.json`, whichever run is newer:
 
 ```bash
 python pipeline/review.py list                # what is waiting
@@ -212,6 +245,11 @@ records, duplicate ids and anything the site build would reject; it writes
 nothing in those cases. `reject` keeps the current listing and records the page
 version, meaning "the listing is still right for this page". Roles no longer found
 are removed on approval unless `--keep-missing` keeps them as status unknown.
+Where a re-read leaves a descriptive field blank (postcode, commitment, timings,
+who can apply, skills, eligibility) because the page does not say, `approve` keeps
+the current value and says so; `--take-blanks` accepts the blanks instead.
+Screening, status and intake are never carried forward: unknown is the safe value.
+Renamed roles: `--same "New title=Old title"` keeps the existing id and links.
 
 Then commit `data/` and push; Cloudflare deploys it. Close the PR without
 merging. Do not loosen the gate to reduce the queue.

@@ -13,6 +13,7 @@ Exit codes: 0 nothing needs review · 1 review needed · 2 the run itself broke.
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 import sys
 from datetime import datetime, timezone
@@ -22,11 +23,13 @@ from ai import AIClient
 from jsonschema import ValidationError, validate
 
 import decay
-from config import (DEAD_LINK_AFTER_FAILURES, ORGS_DIR, ROUTE_REVIEW, STATE)
-from extract import extract, finalise
+from config import (CONFIRM_EXISTING_LISTINGS, CRITICAL_FIELDS, DEAD_LINK_AFTER_FAILURES,
+                    ORGS_DIR, ROUTE_REVIEW, STATE)
+from extract import confirm, extract, finalise
 from fetchpage import fetch
-from gate import classify_fetch_failure, pair_roles, route_org
+from gate import classify_fetch_failure, diff_fields, pair_roles, route_org
 from schema import ORG_SCHEMA, RECORD_SCHEMA
+from sitecheck import record_errors
 
 REVIEW_OUT = STATE / "review.json"
 NOW = lambda: datetime.now(timezone.utc).isoformat(timespec="seconds")
@@ -46,7 +49,37 @@ def log(*a):
     print(*a, flush=True)
 
 
-def process(path: Path, doc: dict, client, dry: bool) -> dict:
+PROVIDER_FAILURES = frozenset({'auth', 'rejected', 'model_unavailable', 'rate_limited',
+                               'network', 'provider_unavailable', 'input_too_large'})
+
+# Facts on which a fresh reading may not quietly differ from a confirmed listing.
+DISAGREE_ON = CRITICAL_FIELDS | {"who_can_apply"}
+
+
+def _value(record: dict, dotted: str):
+    cur = record
+    for part in dotted.split("."):
+        cur = cur.get(part) if isinstance(cur, dict) else None
+    return cur
+
+
+def disagreements(pairs) -> list[str]:
+    """Critical facts a fresh extraction states differently from the listing.
+
+    A fresh reading that asserts nothing (unknown, null) does not contradict a
+    value the confirmation pass found quoted on the page; one that asserts a
+    different value does, and that goes to a person.
+    """
+    out = []
+    for old, new in pairs:
+        for f in diff_fields(old, new):
+            if f in DISAGREE_ON and _value(new, f) not in (None, "unknown"):
+                out.append(f"{old.get('title')}: {f} {json.dumps(_value(old, f))} → "
+                           f"{json.dumps(_value(new, f))}")
+    return out
+
+
+def process(path: Path, doc: dict, client, dry: bool, site_check=record_errors) -> dict:
     org = doc["organisation"]
     old_roles = doc.get("opportunities", [])
     check = org.setdefault("check", {})
@@ -120,17 +153,64 @@ def process(path: Path, doc: dict, client, dry: bool) -> dict:
         return report
 
     previous_extraction = check.get("last_extraction")
-    check["last_extraction"] = NOW()
-    ex = extract(client, org["name"], url, res.text)
-    if getattr(ex, "deferred", False):
+
+    def defer(reason):
         if previous_extraction is None:
             check.pop("last_extraction", None)
         else:
             check["last_extraction"] = previous_extraction
         report.update(route="auto", outcome='ai_deferred', reasons=[
-            f"deferred to next run: {ex.error}"])
+            f"deferred to next run: {reason}"])
         save_check()
         return report
+
+    def confirmed(reasons, advance_baseline):
+        # The checked time, not "now", so a proposal from this same run is not
+        # "out of date" when someone reviews it.
+        check["last_success"] = check["last_attempt"]
+        if advance_baseline:
+            check["content_hash"] = res.content_hash
+        report.update(route="auto", outcome="confirmed", reasons=reasons)
+        save_check()
+        return report
+
+    check["last_extraction"] = NOW()
+
+    # Does the page still support what we already publish? See extract.confirm.
+    # A full confirmation of a listing, with nothing else on the page, ends here
+    # and changes no record. When the page also lists other roles, or nothing is
+    # listed, a fresh extraction is a second opinion: it reads the extra roles,
+    # and if it contradicts a listed role on a critical fact nothing is confirmed
+    # and the ordinary gate path decides.
+    second_opinion, others = False, []
+    if CONFIRM_EXISTING_LISTINGS:
+        conf = confirm(client, org["name"], url, res.text, old_roles)
+        if conf.deferred:
+            return defer(conf.error)
+        if conf.confirmed:
+            report.update(model=conf.model_used, other_roles=conf.other_roles)
+            if old_roles and not conf.other_roles:
+                return confirmed([f"page still supports all {len(old_roles)} listed "
+                                  "roles; nothing changed"], advance_baseline=True)
+            second_opinion, others = True, conf.other_roles
+        else:
+            report["confirmation"] = (conf.error or "not confirmed: "
+                                      + ", ".join(conf.unsupported))[:400]
+
+    ex = extract(client, org["name"], url, res.text)
+    if second_opinion and old_roles and (getattr(ex, "deferred", False) or ex.error):
+        # The listing itself stands. The extra roles are read first next run: the
+        # baseline does not move and the queue position is kept.
+        if previous_extraction is None:
+            check.pop("last_extraction", None)
+        else:
+            check["last_extraction"] = previous_extraction
+        report["additions_unread"] = ex.error
+        return confirmed([f"page still supports all {len(old_roles)} listed roles; it "
+                          f"also mentions {', '.join(others)}, not read this run: "
+                          f"{ex.error}"], advance_baseline=False)
+    if getattr(ex, "deferred", False):
+        return defer(ex.error)
     if ex.error:
         report.update(route=ROUTE_REVIEW, outcome='extraction_failed', reasons=[f"extraction failed: {ex.error}"])
         save_check()
@@ -148,12 +228,42 @@ def process(path: Path, doc: dict, client, dry: bool) -> dict:
             return report
         new_roles.append(rec)
 
-    pairs, _, _ = pair_roles(old_roles, new_roles)
+    pairs, added, _ = pair_roles(old_roles, new_roles)
     for old, new in pairs:
         new['id'] = old['id']  # retain published links and visitors' saved IDs
         if (old.get('postcode_district'), old.get('location_type')) == \
                 (new.get('postcode_district'), new.get('location_type')):
             new['coords'] = old.get('coords')
+
+    conflicts = disagreements(pairs) if second_opinion else []
+    if conflicts:
+        # Two readings of the page disagree on a fact that decides whether
+        # someone can volunteer. Nothing is confirmed; the gate sees the full
+        # extraction, and every critical change goes to a person as before.
+        report["confirmation"] = ("confirmed, but a fresh reading disagrees on "
+                                  + "; ".join(conflicts))[:400]
+    elif second_opinion:
+        # Only the roles the listing does not yet carry are proposed, beside the
+        # current records unchanged, so approving adds and replaces nothing. The
+        # gate still decides: a new role always needs a person.
+        if not added:
+            what = (f"page still supports all {len(old_roles)} listed roles; the others "
+                    f"it mentions ({', '.join(others)}) are ones already listed"
+                    if old_roles else "page still lists no roles")
+            # Advance only when the two readings agree there is nothing new.
+            return confirmed([what], advance_baseline=bool(old_roles) or not others)
+        if old_roles:
+            check["last_success"] = check["last_attempt"]
+        taken = {r["id"] for r in old_roles}
+        for new in added:
+            base, n = new["id"], 2
+            while new["id"] in taken:
+                new["id"], n = f"{base}-{n}", n + 1
+            taken.add(new["id"])
+        new_roles = copy.deepcopy(old_roles) + added
+        if old_roles:
+            report["reasons_prefix"] = ["current listing confirmed against the page"]
+
     route, decisions = route_org(old_roles, new_roles, ex.confidence)
     report.update(
         route=route,
@@ -162,9 +272,18 @@ def process(path: Path, doc: dict, client, dry: bool) -> dict:
         page_notes=ex.page_notes,
         unsupported=ex.unsupported,
         roles_after=len(new_roles),
-        reasons=[r for d in decisions for r in d.reasons],
+        reasons=report.pop("reasons_prefix", []) + [r for d in decisions for r in d.reasons],
         changed_fields=sorted({f for d in decisions for f in d.changed_fields}),
     )
+
+    if route != ROUTE_REVIEW:
+        # Never auto-publish what the site build would refuse. One such record
+        # stops the deploy and, through the tests, next week's refresh too.
+        errors = site_check(org, new_roles)
+        if errors:
+            route = ROUTE_REVIEW
+            report.update(route=route, reasons=report["reasons"] + [
+                "the site build would refuse this update: " + "; ".join(errors)[:400]])
 
     if route == ROUTE_REVIEW:
         report['outcome'] = 'review_required'
@@ -217,15 +336,23 @@ def main() -> int:
         try:
             rep = process(path, doc, client, args.dry_run)
         except Exception as exc:
-            log(f"Internal refresh error: {type(exc).__name__}. Stopping without publishing.")
+            # Name the charity and keep the traceback: "Internal refresh error:
+            # KeyError" alone left nothing to act on.
+            import traceback
+            log(f"Internal refresh error while checking {name}: {type(exc).__name__}: "
+                f"{exc}. Stopping without publishing.")
+            log(traceback.format_exc())
             return 2
         reports.append(rep)
         mark = "REVIEW" if rep["route"] == ROUTE_REVIEW else "ok    "
         log(f"{mark}  {name:<38} {'; '.join(rep['reasons'])[:88]}")
 
-    all_orgs = [json.loads(p.read_text(encoding="utf-8"))["organisation"]
-                for p in sorted(ORGS_DIR.glob("*.json"))]
-    fresh = decay.compute(all_orgs) if args.dry_run else decay.write(all_orgs)
+    # Freshness as the site computes it: only charities that place notices
+    # (site/build.py load() skips the rest), so the median the run reports is the
+    # one that decides the banner readers see.
+    docs = [json.loads(p.read_text(encoding="utf-8")) for p in sorted(ORGS_DIR.glob("*.json"))]
+    listed = [d["organisation"] for d in docs if d.get("opportunities")]
+    fresh = decay.compute(listed) if args.dry_run else decay.write(listed)
 
     needs = [r for r in reports if r["route"] == ROUTE_REVIEW]
     source_failures = [r for r in reports if r.get('outcome') == 'source_failed']
@@ -233,10 +360,30 @@ def main() -> int:
         'ai_unavailable', 'extraction_failed', 'invalid_extraction')]
     failures = source_failures + ai_failures
     human_review = [r for r in reports if r.get('outcome') == 'review_required']
+    # Broken means the AI integration itself, not one awkward page: AI was needed
+    # and not configured; every request failed for a provider-level reason (key,
+    # model, quota, network); or no request could be sent at all for a reason
+    # other than a used-up daily allowance (the allowance checkpoint could not be
+    # pushed). One malformed answer or a failed copyright retry is an incomplete
+    # check for the report, and no longer turns the whole job red.
+    diags = configured_client.diagnostics
+    ai_broken = (not args.dry_run and (
+        (client is None and any(r.get('outcome') == 'ai_unavailable' for r in reports))
+        or (client is not None and configured_client.calls > 0
+            and configured_client.successful_calls == 0
+            and any(d.get('reason') in PROVIDER_FAILURES for d in diags))
+        or (client is not None and configured_client.calls == 0
+            and any(r.get('outcome') == 'ai_deferred' for r in reports)
+            and any(d.get('reason') == 'budget_exhausted'
+                    and 'daily AI allowance exhausted' not in (d.get('message') or '')
+                    for d in diags))))
     review = {"generated_at": NOW(), "dry_run": args.dry_run,
          "ai_configured": client is not None,
          "extraction_available": client is not None,
+         "ai_broken": ai_broken,
+         "ai_calls": configured_client.calls,
          "ai_successful_calls": configured_client.successful_calls,
+         "confirmed_count": sum(r.get('outcome') == 'confirmed' for r in reports),
          "human_review_count": len(human_review), "failed_count": len(failures),
          "source_failed_count": len(source_failures), "ai_failed_count": len(ai_failures),
          "refused_count": sum(r.get('outcome') == 'source_refused' for r in reports),
@@ -252,7 +399,8 @@ def main() -> int:
         STATE.mkdir(parents=True, exist_ok=True)
         REVIEW_OUT.write_text(json.dumps(review, indent=2) + "\n", encoding="utf-8")
 
-    log(f"\n{len(reports)} checked · {len(human_review)} proposals need review · "
+    log(f"\n{len(reports)} checked · {review['confirmed_count']} confirmed · "
+        f"{review['unchanged_count']} unchanged · {len(human_review)} proposals need review · "
         f"{len(failures)} checks incomplete · {review['refused_count']} refused · "
         f"{review['deferred_count']} deferred · "
         f"median freshness {fresh['median_days_since_check']} days"

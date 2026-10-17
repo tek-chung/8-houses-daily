@@ -129,6 +129,32 @@ slug = lambda s: re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 
 # ------------------------------------------------------------------ data
 
+TODAY = lambda: datetime.now(timezone.utc).date()
+
+
+def in_season(window, month):
+    """Whether a month falls inside a seasonal window. Windows may wrap the year:
+    a November-to-April night shelter is in season in January."""
+    start, end = window["start_month"], window["end_month"]
+    return start <= month <= end if start <= end else month >= start or month <= end
+
+
+def as_of_today(op, today=None):
+    """The status we can still stand behind on the day the paper is printed.
+
+    "Closed for the season" is true only outside the season. Once the season it
+    names has begun, the record says nothing about whether they are taking people
+    now, so it prints as not stated until the next check reads the page. HandsOn
+    London's Wrap Up London (November to December) would otherwise have told
+    readers it was out of season for the whole of its season.
+    """
+    w = op.get("seasonal_window")
+    if op.get("status") == "seasonal_closed" and w and \
+            in_season(w, (today or TODAY()).month):
+        return {**op, "status": "unknown"}
+    return op
+
+
 def load():
     orgs, opps = {}, []
     for f in sorted((DATA / "orgs").glob("*.json")):
@@ -137,7 +163,7 @@ def load():
         if not d["opportunities"]:
             continue                       # a charity page with no roles is a dead end
         orgs[o["id"]] = o
-        opps += d["opportunities"]
+        opps += [as_of_today(op) for op in d["opportunities"]]
     # Recompute on every build: a saved report can be absent or out of date.
     # The pipeline's decay calculation needs only the standard library.
     sys.path.insert(0, str(ROOT / "pipeline"))

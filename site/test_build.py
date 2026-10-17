@@ -48,7 +48,29 @@ def data():
     on, so provenance, screening and the rest are absent from it by design. Tests
     that assert on what a reader is told need the whole record.
     """
-    return json.loads((ROOT / "data" / "site-bundle.json").read_text(encoding="utf-8"))
+    # Through build.load() itself. This used to read data/site-bundle.json, a
+    # Phase 0 snapshot, so every approved or published change to data/orgs failed
+    # a dozen tests and stopped both the deploy and the weekly refresh (8-16
+    # October 2026). A copy of load() would drift the same way, more slowly: it
+    # already would have, on the day a seasonal role's season began.
+    orgs, opps, _, _ = builder().load()
+    return {"orgs": orgs, "opps": opps}
+
+
+_BUILDER = []
+
+
+def builder():
+    """site/build.py as a module. By path: `import build` can find PyPA's build."""
+    if not _BUILDER:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("site_build_under_test",
+                                                      ROOT / "site" / "build.py")
+        module = importlib.util.module_from_spec(spec)
+        sys.path.insert(0, str(ROOT / "site"))
+        spec.loader.exec_module(module)
+        _BUILDER.append(module)
+    return _BUILDER[0]
 
 
 def shipped():
@@ -95,7 +117,10 @@ def test_unknown_screening_is_shown_as_unknown_not_as_none(built):
     people will turn up unable to volunteer."""
     unknown = [o["id"] for o in data()["opps"]
                if o["screening"]["dbs"] == "unknown"]
-    assert unknown, "fixture drift: expected some unknowns"
+    if not unknown:
+        # Better data is not a failure; the rendering rule is held regardless by
+        # test_unknown_screening_never_renders_as_no_dbs_on_a_card.
+        pytest.skip("no role currently has unknown DBS")
     for rid in unknown:
         h = built[f"/role/{rid}/"]
         assert "No DBS needed" not in h, rid
@@ -1487,7 +1512,9 @@ def test_unconfirmed_notices_say_so_on_the_classified_not_just_the_article():
     page only is disclosure to the people who were already going to read it.
     """
     low = [op for op in data()["opps"] if op["provenance"]["confidence"] < 0.7]
-    assert low, "no low-confidence roles — this test needs one to be meaningful"
+    if not low:
+        # Held regardless by test_low_confidence_card_says_so_whatever_the_data.
+        pytest.skip("no low-confidence roles in the current data")
     h = built_pages_all()
     for op in low:
         card = re.search(
@@ -1614,3 +1641,75 @@ def test_page_keys_are_urls_not_filesystem_paths(built):
     for u in built:
         assert u.startswith("/"), f"{u} is not a URL path"
         assert u == "/" or u.endswith("/"), f"{u} does not end in a slash"
+
+
+# ------------------------------------------- data-independent rules (17 Oct 2026)
+#
+# The tests above check what readers are told about the records we hold today.
+# These hold the same rules on synthetic records, so a rule cannot go untested
+# just because the data improved, and better data cannot stop the weekly refresh.
+
+def _synthetic(**changes):
+    b = builder()
+    op = json.loads(json.dumps(data()["opps"][0]))
+    op.update(changes)
+    org = data()["orgs"][op["org_id"]]
+    fresh = {"orgs": {org["id"]: {"suppress_assertive": False}}}
+    return b, op, {org["id"]: org}, fresh
+
+
+def test_unknown_screening_never_renders_as_no_dbs_on_a_card():
+    b, op, orgs, fresh = _synthetic()
+    op["screening"] = dict(op["screening"], dbs="unknown")
+    card = b.card(op, orgs, fresh)
+    assert "No DBS needed" not in card and "Not stated" in card
+
+
+def test_low_confidence_card_says_so_whatever_the_data():
+    b, op, orgs, fresh = _synthetic()
+    op["provenance"] = dict(op["provenance"], confidence=0.5)
+    assert "could not confirm" in b.card(op, orgs, fresh)
+    op["provenance"] = dict(op["provenance"], confidence=0.9)
+    assert "could not confirm" not in b.card(op, orgs, fresh)
+
+
+@pytest.mark.parametrize("window,month,in_", [
+    ((11, 12), 11, True), ((11, 12), 10, False), ((11, 12), 1, False),
+    ((11, 4), 1, True), ((11, 4), 4, True), ((11, 4), 5, False), ((11, 4), 10, False)])
+def test_seasonal_windows_wrap_the_year(window, month, in_):
+    assert builder().in_season({"start_month": window[0], "end_month": window[1]}, month) is in_
+
+
+def test_closed_for_the_season_is_not_printed_during_the_season():
+    """HandsOn London's Wrap Up London is stored as closed for the season, with a
+    November-to-December season. From 1 November that sentence would be false."""
+    from datetime import date
+    b, op, orgs, fresh = _synthetic(status="seasonal_closed",
+                                    seasonal_window={"start_month": 11, "end_month": 12})
+    october = b.as_of_today(op, date(2026, 10, 31))
+    assert october["status"] == "seasonal_closed"
+    assert "Closed for" in b.card(october, orgs, fresh)
+    november = b.as_of_today(op, date(2026, 11, 1))
+    assert november["status"] == "unknown" and op["status"] == "seasonal_closed"
+    card = b.card(november, orgs, fresh)
+    assert "Closed for" not in card and "Recruiting<br>not stated" in card
+    assert "November to December" in card          # the season is still printed
+
+
+def test_the_build_applies_the_date_to_every_record(monkeypatch, tmp_path):
+    from datetime import date
+    b = builder()
+    (tmp_path / "orgs").mkdir()
+    src = next(p for p in sorted((ROOT / "data" / "orgs").glob("*.json"))
+               if json.loads(p.read_text(encoding="utf-8"))["opportunities"])
+    doc = json.loads(src.read_text(encoding="utf-8"))
+    doc["opportunities"][0].update(status="seasonal_closed",
+                                   seasonal_window={"start_month": 1, "end_month": 4})
+    (tmp_path / "orgs" / src.name).write_text(json.dumps(doc), encoding="utf-8")
+    monkeypatch.setattr(b, "DATA", tmp_path)
+    monkeypatch.setattr(b, "TODAY", lambda: date(2027, 2, 1))
+    _, opps, _, _ = b.load()
+    assert opps[0]["status"] == "unknown"
+    monkeypatch.setattr(b, "TODAY", lambda: date(2026, 10, 17))
+    _, opps, _, _ = b.load()
+    assert opps[0]["status"] == "seasonal_closed"
