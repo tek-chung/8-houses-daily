@@ -40,14 +40,16 @@ for(const route of ['one-day','weekly','bigger','all']){
     map.querySelector('.zone-button[data-zone=central]').click();
     const ids=[...dom.window.document.querySelectorAll('.ad:not([hidden])')].map(card=>card.dataset.id);
     assert(ids.length>0);
-    assert.equal(dom.window.eval('match(S).every(o => o.zones.includes("central") || ["remote","own_home"].includes(o.location_type))'),true);
+    assert.equal(dom.window.eval('match(S).every(o => o.zones.includes("central") || !o.areas.length || ["remote","own_home"].includes(o.location_type))'),true);
+    assert.equal(dom.window.eval('OPPS.filter(o=>!o.areas.length && !["remote","own_home"].includes(o.location_type)).every(o=>match(S).some(m=>m.id===o.id))'),true,
+      'Roles with no location stay visible under a zone filter');
     assert.equal(ids.length,dom.window.eval('match(S).length'));
     assert.equal(dom.window.location.search,'?area=central');
     assert.equal(dom.window.eval('canonicalPath(S)'),'/all/?area=central');
     const root=dom.window.document.querySelector('#area-map');
     root.querySelector('.zone-button[data-zone=east]').click();
     assert.equal(dom.window.eval('S.z'),'central,east');
-    assert.equal(dom.window.eval('match(S).every(o=>o.zones.some(z=>["central","east"].includes(z)) || ["remote","own_home"].includes(o.location_type))'),true);
+    assert.equal(dom.window.eval('match(S).every(o=>o.zones.some(z=>["central","east"].includes(z)) || !o.areas.length || ["remote","own_home"].includes(o.location_type))'),true);
     assert.equal(root.querySelectorAll('.zone-button[aria-pressed=true]').length,2);
     // The SVG survives rerenders: its handlers must not accumulate.
     root.querySelector('svg [data-zone=central]').dispatchEvent(new dom.window.MouseEvent('click',{bubbles:true}));

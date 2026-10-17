@@ -81,7 +81,11 @@ function match(s){
     // contradict, and their cards say so.
     if(s.b && !["remote","own_home"].includes(o.location_type)
        && o.areas.length && !o.areas.includes(s.b) && !boroughsFor(o).includes(s.b)) return false;
-    if(s.z && !['remote','own_home'].includes(o.location_type) && !s.z.split(',').some(id=>o.zones.includes(id)))return false;
+    // Same rule as the borough filter above: a role with no location at all (no
+    // postcode, and a charity with no stated coverage) has nothing to contradict
+    // the chosen zone, so it stays visible and its card says "Across London".
+    if(s.z && !['remote','own_home'].includes(o.location_type) && o.areas.length
+       && !s.z.split(',').some(id=>o.zones.includes(id)))return false;
     // A "varies" role is a rotating calendar. When someone asks for a specific
     // activity we exclude it rather than promise a match we cannot support.
     if(s.act && o.activity!==s.act) return false;
