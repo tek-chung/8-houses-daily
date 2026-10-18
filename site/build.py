@@ -1081,7 +1081,7 @@ def build_filters(orgs, opps, fresh, total):
                  desc=f"All {len(rows)} volunteering roles we've researched at "
                       "London homelessness charities.",
                  heading="Browse all roles",
-                 intro="London only, for now. Every role listed is with a London charity.",
+                 intro=None,
                  rows=rows, orgs=orgs, fresh=fresh,
                  state={}, opps=opps)
     made.append("/all/")

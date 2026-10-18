@@ -119,10 +119,9 @@ def build(b, orgs, opps, fresh, total):
     body = f'''<main class="wrap discovery" id="main">
   <div class="discovery-heading">
     <h1 class="sr">Find your way to help.</h1>
-    <p class="scope-note"><b>London only, for now.</b> Every role listed is with a London charity.</p>
   </div>
   <div class="discovery-bar">
-    <span id="journey-progress">Start with a few examples</span>
+    <span id="journey-progress" hidden>Start with a few examples</span>
     <div class="journey-tools"><button type="button" id="undo-action" disabled>Undo</button>
     <button type="button" id="show-shortlist">Saved roles <span id="saved-count">0</span></button></div>
   </div>

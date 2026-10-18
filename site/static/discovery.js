@@ -255,8 +255,7 @@
     while (phase === 'examples' && saved.includes(examples[exampleIndex])) exampleIndex++;
     if (phase === 'examples' && exampleIndex >= examples.length) {questions();return;}
     const role = phase === 'examples' ? byId.get(examples[exampleIndex]) : ranked()[0];
-    progress.textContent = phase === 'examples' ? `Example ${exampleIndex+1} of ${examples.length}` : 'Suggestions based on your answers';
-    progress.hidden=phase!=='examples';
+    progress.hidden=true;
     if (!role) {
       const box=panel('You’ve seen the roles that may fit.', 'Change your answers or explore beyond them.');
       box.append(button('Change my answers',questions,'primary'),button('Compare saved roles',showShortlist),button('Show skipped roles again',()=>{skipped.clear();render();}));
@@ -304,7 +303,7 @@
     box.append(actions,reasons(role));
     const navigation=el('div','','matching-navigation');
     const answers=el('div','','matching-answers');
-    answers.append(button(phase === 'examples' ? 'Answer the questions now' : 'Change my answers',questions,'discovery-text-button'));
+    answers.append(button(phase === 'examples' ? 'Answer the questions now' : 'Change my answers',questions));
     const browse=el('a','Browse all roles →');browse.href='/all/';
     navigation.append(answers,browse);box.append(navigation);
     card.addEventListener('pointerdown',e=>{

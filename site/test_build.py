@@ -897,9 +897,10 @@ def test_front_page_has_two_clear_browsing_routes(built):
     assert 'class="doorcta"' not in h
 
 
-def test_london_only_is_stated_on_the_entry_pages(built):
-    for url in ("/", "/find/", "/all/"):
-        assert "London only, for now" in built[url], f"{url}: scope not stated"
+def test_london_only_is_stated_on_the_front_page_only(built):
+    assert "London only, for now" in built["/"]
+    for url in ("/find/", "/all/"):
+        assert "London only, for now" not in built[url], f"{url}: scope note repeated"
 
 
 def test_share_image_data_carries_the_card_particulars(built):
