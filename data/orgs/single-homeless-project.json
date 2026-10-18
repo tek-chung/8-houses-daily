@@ -19,11 +19,11 @@
     "lived_experience_roles": true,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-17T21:08:42+00:00",
-      "last_success": "2026-10-17T18:53:08+00:00",
+      "last_attempt": "2026-10-18T08:33:29+00:00",
+      "last_success": "2026-10-18T08:33:33+00:00",
       "link_status": "ok",
       "content_hash": "a56d3670f53d33cfa5459235b88eadcfc2cb7d4640ba5c2b9a37f7b2949233ca",
-      "consecutive_failures": 1,
+      "consecutive_failures": 0,
       "etag": null,
       "last_modified": null,
       "last_extraction": "2026-10-08T10:01:11+00:00"

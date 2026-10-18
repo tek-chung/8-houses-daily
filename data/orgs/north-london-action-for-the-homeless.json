@@ -20,14 +20,14 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-17T21:16:30+00:00",
+      "last_attempt": "2026-10-18T08:44:46+00:00",
       "last_success": "2026-09-02T00:00:00+00:00",
       "link_status": "ok",
       "content_hash": "7677329d05283aee29aa7dba6a72b0d81c6691daac0f76af8ae826ead3c806f4",
       "consecutive_failures": 0,
       "etag": null,
       "last_modified": null,
-      "last_extraction": "2026-10-17T21:16:35+00:00"
+      "last_extraction": "2026-10-18T08:44:50+00:00"
     }
   },
   "opportunities": [

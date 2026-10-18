@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-17T21:17:26+00:00",
-  "median_days_since_check": 45,
-  "oldest_days_since_check": 53,
+  "generated_at": "2026-10-18T08:50:18+00:00",
+  "median_days_since_check": 46,
+  "oldest_days_since_check": 54,
   "orgs_total": 30,
   "orgs_suppressed": 20,
   "site_banner": false,
@@ -19,7 +19,7 @@
       "suppress_fields": []
     },
     "akt": {
-      "days_since_check": 45,
+      "days_since_check": 46,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -31,7 +31,7 @@
       ]
     },
     "centrepoint": {
-      "days_since_check": 45,
+      "days_since_check": 46,
       "state": "stale",
       "link_status": "redirected",
       "suppress_assertive": true,
@@ -57,7 +57,7 @@
       "suppress_fields": []
     },
     "emmaus": {
-      "days_since_check": 45,
+      "days_since_check": 46,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -76,7 +76,7 @@
       "suppress_fields": []
     },
     "groundswell": {
-      "days_since_check": 45,
+      "days_since_check": 46,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -88,7 +88,7 @@
       ]
     },
     "handson-london": {
-      "days_since_check": 53,
+      "days_since_check": 54,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -100,7 +100,7 @@
       ]
     },
     "housing-justice": {
-      "days_since_check": 45,
+      "days_since_check": 46,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -119,7 +119,7 @@
       "suppress_fields": []
     },
     "new-horizon-youth-centre": {
-      "days_since_check": 45,
+      "days_since_check": 46,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -131,7 +131,7 @@
       ]
     },
     "north-london-action-for-the-homeless": {
-      "days_since_check": 45,
+      "days_since_check": 46,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -143,7 +143,7 @@
       ]
     },
     "providence-row": {
-      "days_since_check": 45,
+      "days_since_check": 46,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -155,7 +155,7 @@
       ]
     },
     "shelter": {
-      "days_since_check": 45,
+      "days_since_check": 46,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -181,7 +181,7 @@
       "suppress_fields": []
     },
     "solace-womens-aid": {
-      "days_since_check": 45,
+      "days_since_check": 46,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -200,7 +200,7 @@
       "suppress_fields": []
     },
     "spires": {
-      "days_since_check": 45,
+      "days_since_check": 46,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -212,7 +212,7 @@
       ]
     },
     "spitalfields-crypt-trust": {
-      "days_since_check": 45,
+      "days_since_check": 46,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -231,7 +231,7 @@
       "suppress_fields": []
     },
     "stonewall-housing": {
-      "days_since_check": 45,
+      "days_since_check": 46,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -243,7 +243,7 @@
       ]
     },
     "thames-reach": {
-      "days_since_check": 45,
+      "days_since_check": 46,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -255,7 +255,7 @@
       ]
     },
     "the-big-issue-foundation": {
-      "days_since_check": 45,
+      "days_since_check": 46,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -267,7 +267,7 @@
       ]
     },
     "the-connection-at-st-martins": {
-      "days_since_check": 45,
+      "days_since_check": 46,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -279,7 +279,7 @@
       ]
     },
     "the-passage": {
-      "days_since_check": 45,
+      "days_since_check": 46,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -291,7 +291,7 @@
       ]
     },
     "the-whitechapel-mission": {
-      "days_since_check": 53,
+      "days_since_check": 54,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,
@@ -303,7 +303,7 @@
       ]
     },
     "west-london-mission": {
-      "days_since_check": 45,
+      "days_since_check": 46,
       "state": "stale",
       "link_status": "ok",
       "suppress_assertive": true,

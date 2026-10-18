@@ -19,8 +19,8 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-17T21:08:06+00:00",
-      "last_success": "2026-10-17T21:08:08+00:00",
+      "last_attempt": "2026-10-18T08:33:27+00:00",
+      "last_success": "2026-10-18T08:33:29+00:00",
       "link_status": "ok",
       "content_hash": "9f7d111d63c67323bdefa8fe0d1691ae1c352c05580c8fc0ea10d109555a3e50",
       "consecutive_failures": 0,
