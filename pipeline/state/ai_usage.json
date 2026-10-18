@@ -16,5 +16,11 @@
       "gemini": 300
     },
     "reserved_usd": 0.0
+  },
+  "2026-10-18": {
+    "providers": {
+      "gemini": 150
+    },
+    "reserved_usd": 0.0
   }
 }
