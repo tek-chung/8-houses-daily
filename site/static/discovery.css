@@ -27,9 +27,9 @@ body[data-discovery] .title{font-size:36px;line-height:1.15;padding:14px 0;margi
 .discovery .role-notice{padding:18px;background:var(--paper);border:1px solid var(--ink);overflow:hidden}
 .discovery .role-notice h3{padding-right:0;margin:8px 0 12px;font-family:var(--display);font-size:28px;line-height:1.1}
 .role-topline{font-family:var(--label);font-size:12px;text-transform:uppercase;color:var(--ink-3)}
-.role-logo{float:right;display:grid;place-items:center;width:116px;height:72px;
+.role-logo{float:right;display:grid;place-items:center;width:148px;height:88px;
   margin:10px 0 10px 14px;padding:8px;background:var(--paper-2);border:1px solid var(--rule)}
-.role-logo .charity-logo{max-height:54px}
+.role-logo .charity-logo{max-height:68px}
 .role-lead{font-size:17px;line-height:1.5;margin-bottom:16px}
 .discovery .role-facts{display:grid;grid-template-columns:90px 1fr;gap:8px 14px;padding:14px 0;border-top:1px solid var(--rule);clear:both}
 .discovery .role-facts dt{font-family:var(--label);font-size:12px;line-height:1.5;text-transform:uppercase}
@@ -130,7 +130,7 @@ body[data-discovery] .title{font-size:36px;line-height:1.15;padding:14px 0;margi
 .scrapbook .shortlist-item .ad{margin:12px 0}
 .scrapbook .clipping-note{color:var(--red);font-size:17px;margin:8px 0 18px;transform:rotate(-2deg)}
 .scrapbook .shortlist-item>button{background:transparent;border-color:var(--rule);font-size:14px}
-@media(min-width:640px){.scrapbook .shortlist-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.scrapbook .role-notice h3{font-size:24px}.scrapbook .role-facts{grid-template-columns:1fr;gap:4px}.scrapbook .role-facts dd{margin-bottom:8px}.scrapbook .role-logo{width:86px;height:56px}.scrapbook .role-logo .charity-logo{max-height:38px}}
+@media(min-width:640px){.scrapbook .shortlist-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.scrapbook .role-notice h3{font-size:24px}.scrapbook .role-facts{grid-template-columns:1fr;gap:4px}.scrapbook .role-facts dd{margin-bottom:8px}.scrapbook .role-logo{width:112px;height:68px}.scrapbook .role-logo .charity-logo{max-height:50px}}
 @media(prefers-reduced-motion:reduce){.paper-slot .discovery-notice,.paper-slot .role-notice{animation:none!important;transition:none!important}.paper-slot .discovery-notice.paper-dragging{transform:translateX(var(--drag-x,0px))}}
 @media (max-width:480px){
   .discovery{padding-bottom:100px}
@@ -149,13 +149,13 @@ body[data-discovery] .title{font-size:36px;line-height:1.15;padding:14px 0;margi
   .discovery-actions{flex-wrap:nowrap}
   .discovery-actions>*{min-width:0;padding-left:8px;padding-right:8px;font-size:16px}
   .role-actions{position:fixed;bottom:0;left:0;right:0;z-index:20;margin:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--ink);background:var(--paper)}
-  .role-logo{width:90px;height:56px}
+  .role-logo{width:112px;height:64px}
   .discovery .role-notice h3{font-size:24px}
   .discovery .role-notice{padding:14px}
   .role-lead{font-size:16px;line-height:1.45;margin-bottom:10px}
   .discovery .role-facts{gap:5px 10px;padding:10px 0}
   .discovery .role-facts dd{font-size:15px}
-  .discovery .role-logo{height:42px;margin:6px 0 4px 12px}
-  .discovery .role-logo .charity-logo{max-height:36px}
+  .discovery .role-logo{height:54px;margin:6px 0 4px 12px}
+  .discovery .role-logo .charity-logo{max-height:40px}
   .discovery .role-topline{font-size:11px}
 }

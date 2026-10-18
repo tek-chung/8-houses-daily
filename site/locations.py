@@ -44,19 +44,79 @@ _BOROUGH_NAMES.update({'richmond': 'Richmond upon Thames', 'kingston': 'Kingston
 _LONDON_WORDS = {'london', 'greater london', 'across london', 'london wide', 'london-wide',
                  'all of london', 'all london'}
 
+# Neighbourhoods and towns a charity's page may name instead of a borough. Without
+# this, a role "in Plumstead" or "at Clapham" read as outside London and was hidden.
+# Only places that sit wholly (or overwhelmingly) in one borough are listed; anywhere
+# that straddles two boroughs (Blackheath, Finsbury Park, Kilburn, Crystal Palace,
+# Hayes) is left out rather than guessed. Anything not here, and not a borough, still
+# counts as "elsewhere" (Bournemouth, Reading, Caterham).
+_LOCALITIES = {
+    'Barking and Dagenham': ['dagenham', 'becontree'],
+    'Barnet': ['finchley', 'golders green', 'edgware', 'hendon', 'high barnet', 'chipping barnet', 'cockfosters', 'mill hill'],
+    'Bexley': ['sidcup', 'bexleyheath', 'erith', 'welling', 'crayford'],
+    'Brent': ['wembley', 'willesden', 'harlesden', 'neasden', 'kingsbury', 'cricklewood'],
+    'Bromley': ['beckenham', 'orpington', 'penge', 'biggin hill'],
+    'Camden': ["king's cross", 'kings cross', 'holborn', 'euston', 'camden town', 'hampstead', 'kentish town',
+               'bloomsbury', 'somers town', 'swiss cottage', 'belsize park'],
+    'Croydon': ['purley', 'addiscombe', 'lower addiscombe road', 'thornton heath', 'norbury', 'south norwood',
+                'selhurst', 'coulsdon', 'new addington', 'sanderstead'],
+    'Ealing': ['acton', 'southall', 'hanwell', 'greenford', 'northolt', 'perivale'],
+    'Enfield': ['edmonton', 'enfield town', 'southgate', 'palmers green', 'ponders end', 'enfield lock'],
+    'Greenwich': ['plumstead', 'woolwich', 'eltham', 'charlton', 'abbey wood', 'kidbrooke', 'new eltham'],
+    'Hackney': ['dalston', 'shoreditch', 'homerton', 'clapton', 'stoke newington', 'hoxton', 'hackney wick', 'london fields'],
+    'Hammersmith and Fulham': ['fulham', "shepherd's bush", "shepherds bush", 'white city', 'barons court', "baron's court"],
+    'Haringey': ['tottenham', 'wood green', 'muswell hill', 'crouch end', 'hornsey', 'seven sisters', 'bruce grove'],
+    'Harrow': ['wealdstone', 'pinner', 'stanmore', 'harrow on the hill', 'rayners lane'],
+    'Havering': ['romford', 'hornchurch', 'upminster'],
+    'Hillingdon': ['uxbridge', 'ruislip', 'northwood', 'harefield', 'west drayton'],
+    'Hounslow': ['chiswick', 'brentford', 'feltham', 'isleworth', 'bedfont'],
+    'Islington': ['angel', 'archway', 'holloway', 'highbury', 'clerkenwell', 'barnsbury'],
+    'Kensington and Chelsea': ['chelsea', 'kensington', 'notting hill', 'north kensington', 'holland park'],
+    'Kingston upon Thames': ['surbiton', 'new malden', 'norbiton', 'tolworth', 'chessington'],
+    'Lambeth': ['brixton', 'clapham', 'streatham', 'west norwood', 'norwood', 'vauxhall', 'stockwell', 'kennington',
+                'herne hill', 'tulse hill', 'waterloo', 'lambeth outreach'],
+    'Lewisham': ['deptford', 'catford', 'brockley', 'sydenham', 'forest hill', 'new cross', 'lee green', 'downham'],
+    'Merton': ['wimbledon', 'mitcham', 'morden', 'colliers wood'],
+    'Newham': ['stratford', 'east ham', 'west ham', 'canning town', 'forest gate', 'plaistow', 'royal docks',
+               'canning town warehouse/office', 'beckton', 'silvertown'],
+    'Redbridge': ['ilford', 'wanstead', 'woodford', 'barkingside'],
+    'Richmond upon Thames': ['east sheen', 'twickenham', 'teddington', 'barnes', 'kew', 'hampton', 'whitton', 'mortlake'],
+    'Southwark': ['peckham', 'camberwell', 'dulwich', 'bermondsey', 'elephant and castle', 'london bridge', 'walworth',
+                  'rotherhithe', 'nunhead'],
+    'Sutton': ['wallington', 'carshalton', 'cheam', 'belmont'],
+    'Tower Hamlets': ['whitechapel', 'poplar', 'bow', 'stepney', 'canary wharf', 'limehouse', 'bethnal green',
+                      'spitalfields', 'mile end', 'wapping', 'isle of dogs'],
+    'Waltham Forest': ['walthamstow', 'leyton', 'leytonstone', 'chingford'],
+    'Wandsworth': ['battersea', 'putney', 'tooting', 'balham', 'earlsfield', 'roehampton'],
+    'Westminster': ['victoria', 'soho', 'pimlico', 'marylebone', 'paddington', 'westbourne park', 'covent garden',
+                    'mayfair', 'st john\'s wood', 'maida vale', 'bayswater'],
+}
+_LOCALITY_BOROUGH = {_norm(p): b for b, places in _LOCALITIES.items() for p in places}
+_LONDON_LABEL = re.compile(r'^(?:(?:north|south|east|west|central|north-west|north-east|south-east|south-west|greater) )?'
+                           r'london(?![a-z])')
+
+
+def _canon(place):
+    n = _norm(place)
+    return n[4:] if n.startswith('the ') else n
+
 
 def stated(op):
     """What the charity's page names as this role's places (the stated_places field).
 
-    Returns (boroughs, london_only, elsewhere): London boroughs named, whether the page
-    says just "London", and any other places named (Bournemouth, Reading ...).
+    Returns (boroughs, london_only, elsewhere): London boroughs named (a neighbourhood
+    such as "Plumstead" counts as its borough), whether the page says just "London"
+    (including "South London" or "London - Skylight"), and any other places named
+    (Bournemouth, Reading ...).
     """
     boroughs, elsewhere, london_word = set(), [], False
     for place in op.get('stated_places') or []:
-        n = _norm(place)
+        n = _canon(place)
         if n in _BOROUGH_NAMES:
             boroughs.add(_BOROUGH_NAMES[n])
-        elif n in _LONDON_WORDS:
+        elif n in _LOCALITY_BOROUGH:
+            boroughs.add(_LOCALITY_BOROUGH[n])
+        elif n in _LONDON_WORDS or (_LONDON_LABEL.match(n) and not n.startswith('london colney')):
             london_word = True
         else:
             elsewhere.append(place)

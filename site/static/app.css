@@ -61,6 +61,8 @@
 #home .discovery-entry>a{min-height:44px;display:inline-flex;align-items:center}
 #home .guided-cta{font-size:20px;gap:18px;padding:16px 28px;min-height:58px;background:var(--red);border-color:var(--red)}
 #home .guided-cta span{font-size:28px;line-height:1}
+.scope-note{margin-top:22px;text-align:center;font-family:var(--label);font-size:15px;color:var(--ink-3)}
+.scope-note b{color:var(--red)}
 .streetlink-advice{border-top:3px double var(--ink);padding:20px 0;text-align:center;font-size:14px;line-height:1.6}
 .streetlink-advice p+p{margin-top:6px;color:var(--ink-3)}
 .streetlink-advice+*{margin-top:0}
@@ -449,15 +451,15 @@ h2.coupon-head,.coupon-head{
 }
 .ad-org a{color:inherit;border-bottom:0}
 .ad-org a:hover{color:var(--red)}
-.ad-logo{display:grid;place-items:center;width:76px;height:38px;flex:0 0 76px;
+.ad-logo{display:grid;place-items:center;width:104px;height:52px;flex:0 0 104px;
   padding-right:8px;border-right:1px solid var(--rule)!important}
-.charity-logo{display:block;max-width:100%;max-height:34px;width:auto;height:auto;
+.charity-logo{display:block;max-width:100%;max-height:44px;width:auto;height:auto;
   object-fit:contain;filter:grayscale(1) contrast(1.08);mix-blend-mode:multiply}
 .ad-charity{flex:1 1 130px}
 .ad-place{flex:1 1 130px;text-align:right}
-.charity-plate{display:grid;place-items:center;min-height:150px;border:1px solid var(--ink);
-  padding:20px;background:var(--paper-2);margin:0 0 18px}
-.charity-logo-large{display:block;max-width:min(310px,75%);max-height:100px;width:auto;height:auto;
+.charity-plate{display:grid;place-items:center;min-height:190px;border:1px solid var(--ink);
+  padding:26px 22px 20px;background:var(--paper-2);margin:0 0 18px}
+.charity-logo-large{display:block;max-width:min(380px,82%);max-height:130px;width:auto;height:auto;
   object-fit:contain;filter:grayscale(1) contrast(1.08);mix-blend-mode:multiply}
 .charity-plate figcaption{width:100%;font-family:var(--label);font-size:11px;
   letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);text-align:center;

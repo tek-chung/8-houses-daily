@@ -104,3 +104,33 @@ def test_every_london_borough_has_one_browsing_area():
     assert len(locations.BOROUGH_ZONES) == 33
     assert len(locations.ZONES) == 7
     assert set(locations.BOROUGH_ZONES.values()) == {zone['id'] for zone in locations.ZONES}
+
+
+def test_london_neighbourhoods_count_as_their_borough():
+    """A role "in Plumstead" or "at Clapham" is a London role. These were read as
+    elsewhere and hidden until the neighbourhood names were taught."""
+    for place, borough in [('Plumstead', 'Greenwich'), ('Clapham', 'Lambeth'), ('East Sheen', 'Richmond upon Thames'),
+                           ('Wallington', 'Sutton'), ("King's Cross", 'Camden'), ('the City of London', 'City of London')]:
+        op = stated([place])
+        assert locations.in_london(op), place
+        assert locations.stated_boroughs(op) == [borough], place
+    mixed = stated(['West Norwood', 'Wallington', 'Caterham-on-the-Hill'])
+    assert locations.in_london(mixed)
+    assert locations.stated_boroughs(mixed) == ['Lambeth', 'Sutton']
+
+
+def test_london_labels_say_london_without_naming_an_area():
+    for label in ('South London', 'London - Croydon Skylight', 'London-wide Services team', 'West London'):
+        op = stated([label])
+        assert locations.in_london(op), label
+        assert locations.stated_boroughs(op) == [], label
+        assert locations.location_basis(op, ORGS) == 'london_wide', label
+
+
+def test_places_outside_london_stay_outside():
+    """Teaching the neighbourhoods must not let Surrey or the south coast in."""
+    for place in ('Bournemouth', 'Reading', 'Caterham', 'Bristol', 'London Colney', 'Watford'):
+        assert not locations.in_london(stated([place])), place
+    # Places that straddle two boroughs are not guessed.
+    for place in ('Blackheath', 'Finsbury Park', 'Kilburn', 'Crystal Palace'):
+        assert not locations.in_london(stated([place])), place

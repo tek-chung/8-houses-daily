@@ -596,8 +596,25 @@ def test_every_article_carries_its_charity_logo(built):
     for op in data()["opps"]:
         h = built[f"/role/{op['id']}/"]
         assert 'class="charity-plate"' in h, f"{op['id']}: no charity logo plate"
-        assert f'/assets/logos/{op["org_id"]}.' in h, \
-            f"{op['id']}: wrong charity logo"
+        # A charity with no logo file keeps a blank plate; one with a file must show it.
+        if list((ROOT / "site" / "static" / "logos").glob(f"{op['org_id']}.*")):
+            assert f'/assets/logos/{op["org_id"]}.' in h, \
+                f"{op['id']}: wrong charity logo"
+        else:
+            assert "<img" not in h.split('class="charity-plate"')[1].split("</figure>")[0], \
+                f"{op['id']}: a plate with no logo file must stay blank"
+
+
+def test_every_logo_file_is_mapped_and_every_mapping_has_a_file():
+    """A logo dropped into site/static/logos but not named in LOGO_FILE is silently
+    never shown; a LOGO_FILE entry with no file stops the build copying assets."""
+    import importlib
+    sys.path.insert(0, str(ROOT / "site"))
+    b = importlib.import_module("build")
+    on_disk = {p.name for p in (ROOT / "site" / "static" / "logos").iterdir() if p.is_file()}
+    mapped = set(b.LOGO_FILE.values())
+    assert not (mapped - on_disk), f"mapped but missing: {sorted(mapped - on_disk)}"
+    assert not (on_disk - mapped), f"on disk but not in LOGO_FILE: {sorted(on_disk - mapped)}"
 
 
 def test_classifieds_carry_local_charity_logos(built):
@@ -876,8 +893,24 @@ def test_front_page_has_two_clear_browsing_routes(built):
     nav = re.search(r'<nav class="discovery-entry".*?</nav>', h, re.S).group(0)
     assert re.findall(r'href="([^"]+)"', nav) == ['/find/', '/all/']
     assert "Let's find a role" in nav
-    assert "Browse all opportunities" in nav
+    assert "Or browse all opportunities" in nav
     assert 'class="doorcta"' not in h
+
+
+def test_london_only_is_stated_on_the_entry_pages(built):
+    for url in ("/", "/find/", "/all/"):
+        assert "London only, for now" in built[url], f"{url}: scope not stated"
+
+
+def test_share_image_data_carries_the_card_particulars(built):
+    """The share image repeats what the role card prints; it must be fed the same
+    fields from the same source."""
+    h = built["/find/"]
+    payload = json.loads(re.search(
+        r'id="discovery-data">(.*?)</script>', h, re.S).group(1))
+    for role in payload:
+        for key in ("where", "frequency", "timing", "requirements", "screening", "state"):
+            assert key in role, f"{role['id']}: {key} missing from share data"
 
 
 def test_heading_outline_is_valid(built):
@@ -1543,7 +1576,8 @@ def built_pages_all():
 
 
 def test_the_organisation_set_matches_the_seed_exactly():
-    """Scope is fixed at the 32 organisations in seed.py (spec §2 A5).
+    """Scope is fixed at the 47 organisations in seed.py (spec §2 A5 said 32; 15 were
+    added on 17 October 2026 at Tek's request).
 
     Added because I broke it: writing a record as `big-issue-foundation.json`
     while seed.py had already created `the-big-issue-foundation.json` took the
@@ -1572,14 +1606,14 @@ def test_the_organisation_set_matches_the_seed_exactly():
     spec.loader.exec_module(seedmod)
     seeded = {seedmod.slug(name) for name, _area, _url in seedmod.SEED
               if name not in seedmod.NOT_A_ROLE_SOURCE}
-    assert len(seeded) == 32, \
-        f"seed.py yields {len(seeded)} in-scope organisations, expected 32"
+    assert len(seeded) == 47, \
+        f"seed.py yields {len(seeded)} in-scope organisations, expected 47"
 
     extra = ids_on_disk - seeded
     missing = seeded - ids_on_disk
     assert not extra, f"organisations on disk that seed.py does not know: {sorted(extra)}"
     assert not missing, f"seeded organisations with no file: {sorted(missing)}"
-    assert len(ids_on_disk) == 32, f"{len(ids_on_disk)} organisations, expected 32"
+    assert len(ids_on_disk) == 47, f"{len(ids_on_disk)} organisations, expected 47"
 
 
 def test_every_role_id_belongs_to_its_organisation():

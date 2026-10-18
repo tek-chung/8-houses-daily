@@ -91,28 +91,39 @@
     function text(value,y,size=32,font='Georgia',colour='#201c16'){
       ctx.font=`${size}px ${font}`;ctx.fillStyle=colour;ctx.fillText(value,86,y);
     }
-    function wrapped(value,y,size,maxLines,font='Georgia'){
+    function wrapped(value,y,size,maxLines,font='Georgia',x=86,width=900){
       ctx.font=`${size}px ${font}`;ctx.fillStyle='#201c16';
-      const words=value.split(/\s+/);let row='',rows=[];
+      const words=String(value).split(/\s+/);let row='',rows=[];
       for(const word of words){const candidate=row?row+' '+word:word;
-        if(ctx.measureText(candidate).width>900 && row){rows.push(row);row=word;}else row=candidate;}
+        if(ctx.measureText(candidate).width>width && row){rows.push(row);row=word;}else row=candidate;}
       if(row)rows.push(row);
       rows.slice(0,maxLines).forEach((row,i)=>{
         if(i===maxLines-1 && rows.length>maxLines){
-          while(ctx.measureText(row+'…').width>900)row=row.slice(0,-1);row+='…';
+          while(ctx.measureText(row+'…').width>width)row=row.slice(0,-1);row+='…';
         }
-        ctx.fillText(row,86,y+i*size*1.22);
+        ctx.fillText(row,x,y+i*size*1.22);
       });return y+Math.min(rows.length,maxLines)*size*1.22;
     }
+    // Same particulars as the role card on the page: where, when, commitment,
+    // screening, requirements and recruitment status.
+    function fact(label,value,x,y,width,maxLines=2){
+      ctx.font='bold 19px Arial';ctx.fillStyle='#8c392b';ctx.fillText(label.toUpperCase(),x,y);
+      return wrapped(value,y+34,26,maxLines,'Georgia',x,width);
+    }
     text('THE 8 HOUSES DAILY',124,48,'Georgia');line(159);
-    text('A SMALL STEP. A REAL DIFFERENCE.',220,25,'Arial','#8c392b');
-    let y=wrapped(role.title,328,64,3);y+=42;
-    y=wrapped(role.charity,y,30,2,'Arial')+48;
-    y=wrapped(role.summary,y,34,3)+35;line(y);y+=54;
-    const frequency={one_off:'One-off',weekly:'Weekly',fortnightly:'Fortnightly',monthly:'Monthly',long_term:'Ongoing',flexible:'Flexible frequency',unknown:'Confirm commitment'}[role.commitment];
-    y=wrapped(frequency+(role.min_term_months?' · at least '+role.min_term_months+' months':''),y,29,2,'Arial')+14;
-    const area=role.location_type==='own_home'?'Your own home':role.location_type==='remote'?'Remote':role.areas.join(', ')||'Confirm location';
-    wrapped(area,y,29,2,'Arial');
+    text('LONDON VOLUNTEERING · A SMALL STEP. A REAL DIFFERENCE.',214,22,'Arial','#8c392b');
+    let y=wrapped(role.title,292,52,3);y+=16;
+    y=wrapped(role.charity,y+14,28,1,'Arial')+10;
+    ctx.font='bold 20px Arial';ctx.fillStyle='#8c392b';ctx.fillText((role.state||'').toUpperCase(),86,y+14);y+=50;
+    y=wrapped(role.summary,y,28,4)+22;line(y);y+=44;
+    const colWidth=430,rightX=86+colWidth+48;
+    const rowOne=Math.max(fact('Where',role.where||'Confirm location',86,y,colWidth),
+      fact('When',role.timing||'Times not stated',rightX,y,colWidth));
+    y=rowOne+24;
+    const rowTwo=Math.max(fact('Commitment',role.frequency||'Confirm commitment',86,y,colWidth),
+      fact('Screening',role.screening||'Not stated',rightX,y,colWidth));
+    y=rowTwo+24;
+    if(role.requirements&&role.requirements.length)fact('Before you save',role.requirements.join(' · '),86,y,900);
     line(1120);text('Interested? Enquire with the charity.',1180,32);
     const preview=['localhost','127.0.0.1','[::1]'].includes(location.hostname);
     text(preview?'LOCAL PREVIEW · PUBLIC LINK AVAILABLE AFTER LAUNCH':location.host+' · role link in caption',1233,preview?21:24,'Arial');

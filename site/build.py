@@ -322,6 +322,20 @@ LOGO_FILE = {
     "the-whitechapel-mission": "the-whitechapel-mission.png",
     "west-london-mission": "west-london-mission.png",
     "women-at-the-well": "women-at-the-well.webp",
+    # Added 18 October 2026. Evolve Housing + Support has none: its mark is a white icon
+    # with no wordmark, and a charity with no logo here simply shows a blank plate.
+    "999-club": "999-club.png",
+    "all-people-all-places": "all-people-all-places.png",
+    "barons-court-project": "barons-court-project.png",
+    "bench-outreach": "bench-outreach.png",
+    "c4ws-homeless-project": "c4ws-homeless-project.png",
+    "emmaus-slc": "emmaus-slc.png",
+    "kingston-churches-action-on-homelessness": "kingston-churches-action-on-homelessness.png",
+    "shelter-from-the-storm": "shelter-from-the-storm.png",
+    "the-upper-room": "the-upper-room.png",
+    "ymca-london-city-and-north": "ymca-london-city-and-north.png",
+    "ymca-st-pauls-group": "ymca-st-pauls-group.png",
+    "your-place": "your-place.png",
 }
 
 
@@ -1033,8 +1047,9 @@ def build_home(orgs, opps, fresh, total):
   <div class="lead"><h1>Everyone deserves a good home</h1></div>
   <nav class="discovery-entry" aria-label="Choose how to find a role">
     <a class="guided-cta" href="/find/">Let's find a role <span aria-hidden="true">&rarr;</span></a>
-    <a href="/all/">Browse all opportunities</a>
+    <a href="/all/">Or browse all opportunities</a>
   </nav>
+  <p class="scope-note"><b>London only, for now.</b> Every role listed is with a London charity.</p>
 </section>
 {suspension}
 <aside class="streetlink-advice" aria-label="Help someone sleeping rough">
@@ -1066,7 +1081,8 @@ def build_filters(orgs, opps, fresh, total):
                  desc=f"All {len(rows)} volunteering roles we've researched at "
                       "London homelessness charities.",
                  heading="Browse all roles",
-                 intro=None, rows=rows, orgs=orgs, fresh=fresh,
+                 intro="London only, for now. Every role listed is with a London charity.",
+                 rows=rows, orgs=orgs, fresh=fresh,
                  state={}, opps=opps)
     made.append("/all/")
 

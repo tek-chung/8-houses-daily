@@ -3,14 +3,10 @@ import json
 import locations
 
 
-def notice(b, op, orgs, fresh):
-    """A beginner's decision card; secondary particulars expand on demand."""
-    org = orgs[op['org_id']]
+def particulars(b, op, orgs, fresh):
+    """The facts printed on a role card. One source for the card and the share image,
+    so the image can never say something the page does not."""
     stale = b.suppressed(op, fresh)
-    title = b.e(op['title'])
-    # The whole description is shown on the card, never cut and repeated below.
-    text = op['what_youd_do']
-    lead = text
     where = ('Your own home' if op['location_type'] == 'own_home'
              else 'Remote' if op['location_type'] == 'remote'
              else ', '.join(b.boroughs_of(op, orgs))
@@ -18,11 +14,6 @@ def notice(b, op, orgs, fresh):
     if op.get('postcode_district') and op['location_type'] not in ('remote', 'own_home'):
         district = op['postcode_district']
         where = district + (' · ' + where if where != district else '')
-    basis = locations.location_basis(op, orgs)
-    location_note = {
-        'charity_coverage': '<p class="role-location-note">Charity coverage area; confirm the venue.</p>',
-        'role_areas': '<p class="role-location-note">Areas named by the charity; confirm the venue.</p>',
-    }.get(basis, '')
     frequency = {'one_off': 'One-off', 'flexible': 'Flexible frequency',
                  'weekly': 'Weekly', 'fortnightly': 'Every fortnight',
                  'monthly': 'Monthly', 'long_term': 'Ongoing commitment',
@@ -35,9 +26,29 @@ def notice(b, op, orgs, fresh):
     requirements = list(op.get('eligibility') or [])
     if not stale and op['screening'].get('min_age'):
         requirements.append(f'Aged {op["screening"]["min_age"]} or over')
+    screening = 'Screening needs a fresh check' if stale else b.DBS_LABEL[op['screening']['dbs']]
+    state = 'Check current availability' if stale else b.STATUS_LABEL[op['status']]
+    return {'stale': stale, 'where': where, 'frequency': frequency, 'timing': timing,
+            'requirements': requirements, 'screening': screening, 'state': state}
+
+
+def notice(b, op, orgs, fresh):
+    """A beginner's decision card; secondary particulars expand on demand."""
+    org = orgs[op['org_id']]
+    p = particulars(b, op, orgs, fresh)
+    stale, where, frequency, timing = p['stale'], p['where'], p['frequency'], p['timing']
+    requirements, screening = p['requirements'], p['screening']
+    title = b.e(op['title'])
+    # The whole description is shown on the card, never cut and repeated below.
+    text = op['what_youd_do']
+    lead = text
+    basis = locations.location_basis(op, orgs)
+    location_note = {
+        'charity_coverage': '<p class="role-location-note">Charity coverage area; confirm the venue.</p>',
+        'role_areas': '<p class="role-location-note">Areas named by the charity; confirm the venue.</p>',
+    }.get(basis, '')
     eligibility = (f'<p class="role-eligibility"><b>Before you save:</b> {b.e(" · ".join(requirements))}</p>'
                    if requirements else '')
-    screening = 'Screening needs a fresh check' if stale else b.DBS_LABEL[op['screening']['dbs']]
     details = '<dl><dt>Screening</dt><dd>' + b.e(screening) + '</dd>'
     if not stale:
         for key, label in [('induction', 'Training'), ('references', 'References'), ('interview', 'Interview')]:
@@ -56,7 +67,7 @@ def notice(b, op, orgs, fresh):
             source = 'Recorded source check: ' + b.short_date(b.datetime.fromisoformat(checked.replace('Z', '+00:00')))
         except ValueError:
             pass
-    state = 'Check current availability' if stale else b.STATUS_LABEL[op['status']]
+    state = p['state']
     uncertain = '<p class="role-uncertainty">Some particulars could not be confirmed. Check the charity’s own page.</p>' if op['provenance']['confidence'] < .7 else ''
     picture = f'<div class="role-logo">{b.logo_img(org)}</div>'
     href = op.get('apply_url') or org['volunteer_url']
@@ -84,8 +95,13 @@ def build(b, orgs, opps, fresh, total):
         if op['who_can_apply'] == 'team_only' or op['status'] == 'closed':
             continue
         stale = b.suppressed(op, fresh)
+        p = particulars(b, op, orgs, fresh)
         roles.append({
             'id': op['id'], 'title': op['title'], 'charity': orgs[op['org_id']]['name'],
+            # Printed on the role card, so repeated on the share image.
+            'where': p['where'], 'frequency': p['frequency'], 'timing': p['timing'],
+            'requirements': p['requirements'], 'screening': p['screening'],
+            'state': p['state'],
             'activity': op['activity'],
             'summary': op['what_youd_do'],
             'commitment': op['commitment'], 'when': [] if stale else op['when'],
@@ -103,6 +119,7 @@ def build(b, orgs, opps, fresh, total):
     body = f'''<main class="wrap discovery" id="main">
   <div class="discovery-heading">
     <h1 class="sr">Find your way to help.</h1>
+    <p class="scope-note"><b>London only, for now.</b> Every role listed is with a London charity.</p>
   </div>
   <div class="discovery-bar">
     <span id="journey-progress">Start with a few examples</span>
