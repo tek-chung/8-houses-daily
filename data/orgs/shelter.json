@@ -6,10 +6,10 @@
       "shelter england",
       "shelter charity"
     ],
-    "charity_number": null,
+    "charity_number": "263710",
     "website_url": "https://england.shelter.org.uk/",
     "volunteer_url": "https://england.shelter.org.uk/support_us/volunteer",
-    "summary": "The national housing and homelessness charity, with advice, support and legal services alongside campaigning. Twelve community shops across north and west London.",
+    "summary": "National housing and homelessness charity with advice, support and campaigning. London volunteers staff community shops, ride on donation vans, fundraise and help run lived experience groups.",
     "coverage": "multi_borough",
     "boroughs": [
       "Camden",
@@ -22,7 +22,7 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-18T08:45:03+00:00",
+      "last_attempt": "2026-10-17T18:52:27+00:00",
       "last_success": "2026-09-02T00:00:00+00:00",
       "link_status": "ok",
       "content_hash": "4e9ef762c5aaacfa038b3999a1939a7a0cfbb24f5663d640dc4e1b6618634269",
@@ -55,14 +55,14 @@
       "id": "shelter-shop-volunteer",
       "org_id": "shelter",
       "title": "Community Shop Volunteer",
-      "what_youd_do": "Serve customers, sort stock, dress the window, or go out in the van collecting donations. Twelve shops across north and west London, from Crouch End to Turnham Green.",
+      "what_youd_do": "Serve customers, sort donated stock, dress the shop window or help collect donations, in one of Shelter's community shops across London.",
       "commitment": "flexible",
       "min_term_months": null,
       "typical_shift_hours": null,
       "when": [
         "flexible"
       ],
-      "specific_times": "A few hours a week, or a one-off event",
+      "specific_times": "From an hour a week upwards; many give a morning or afternoon",
       "activity": "shop_warehouse",
       "location_type": "in_person",
       "postcode_district": null,
@@ -72,7 +72,7 @@
         "references": null,
         "interview": null,
         "min_age": 14,
-        "induction": "Full training, an induction and a volunteer agreement. Expenses reimbursed; volunteering does not affect benefits."
+        "induction": "Training, induction and ongoing support from your Shop Manager; out-of-pocket expenses refunded."
       },
       "skills": [],
       "eligibility": [
@@ -86,32 +86,31 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-09-02T00:00:00+00:00",
-        "method": "human",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "platform",
         "reviewed_by_human": true,
         "confidence": 1.0,
-        "source_url": "https://app.betterimpact.com/PublicEnterprise/3649308b-8a14-4513-8a59-a4087e2a2ee8",
+        "source_url": "https://england.shelter.org.uk/support_us/volunteer",
         "verified_fields": [
+          "status",
           "screening.dbs",
           "screening.min_age",
-          "eligibility",
-          "screening.induction",
-          "activity",
-          "specific_times"
+          "specific_times",
+          "commitment",
+          "eligibility"
         ],
         "unsupported_fields": [
-          "screening.references",
-          "typical_shift_hours",
-          "the shop opportunity list is on app.betterimpact.com, the volunteering platform they use, not their own page"
+          "app.betterimpact.com: facts read from the charity's volunteering platform"
         ]
-      }
+      },
+      "stated_places": []
     },
     {
       "id": "shelter-shop-supervisor",
       "org_id": "shelter",
       "title": "Shop Volunteer Supervisor",
-      "what_youd_do": "Help run one of the shops \u2014 supporting the other volunteers, working the till systems, being the person people ask. No shop experience needed.",
-      "commitment": "weekly",
+      "what_youd_do": "Help run one of the shops — supporting the other volunteers, working the till systems, being the person people ask. No shop experience needed.",
+      "commitment": "flexible",
       "min_term_months": null,
       "typical_shift_hours": null,
       "when": [
@@ -123,15 +122,14 @@
       "postcode_district": null,
       "who_can_apply": "individual",
       "screening": {
-        "dbs": "none",
+        "dbs": "basic",
         "references": null,
-        "interview": null,
-        "min_age": 18,
-        "induction": "Full training, an induction and a volunteer agreement. Expenses reimbursed; volunteering does not affect benefits."
+        "interview": true,
+        "min_age": null,
+        "induction": "Learning, a full induction and an on-the-job induction before starting; out-of-pocket expenses paid."
       },
       "skills": [],
       "eligibility": [
-        "People aged 18 or over",
         "People based in England, Scotland or Wales"
       ],
       "seasonal_window": null,
@@ -141,25 +139,28 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-09-02T00:00:00+00:00",
-        "method": "human",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "platform",
         "reviewed_by_human": true,
-        "confidence": 0.9,
+        "confidence": 1.0,
         "source_url": "https://app.betterimpact.com/PublicEnterprise/3649308b-8a14-4513-8a59-a4087e2a2ee8",
         "verified_fields": [
+          "status",
           "screening.dbs",
-          "eligibility",
-          "screening.induction",
-          "activity"
+          "screening.interview",
+          "commitment",
+          "eligibility"
         ],
         "unsupported_fields": [
-          "screening.references",
+          "screening.min_age",
           "specific_times",
-          "typical_shift_hours",
-          "screening.min_age: 18 is their stated floor for supervisory roles rather than shop floor",
-          "the opportunity list is on app.betterimpact.com, the volunteering platform they use, not their own page"
+          "app.betterimpact.com: facts read from the charity's volunteering platform"
         ]
-      }
+      },
+      "stated_places": [
+        "East Sheen",
+        "Streatham"
+      ]
     },
     {
       "id": "shelter-community-volunteer",
@@ -181,12 +182,12 @@
         "dbs": "unknown",
         "references": null,
         "interview": null,
-        "min_age": 18,
-        "induction": "Full training, an induction and a volunteer agreement. Expenses reimbursed; volunteering does not affect benefits."
+        "min_age": null,
+        "induction": null
       },
       "skills": [],
       "eligibility": [
-        "People aged 18 or over",
+        "You need to be an adult to volunteer in Community Fundraising",
         "People based in England, Scotland or Wales"
       ],
       "seasonal_window": null,
@@ -196,30 +197,28 @@
       "url_specificity": "org_volunteer_page",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-09-02T00:00:00+00:00",
-        "method": "human",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "platform",
         "reviewed_by_human": true,
-        "confidence": 1.0,
+        "confidence": 0.75,
         "source_url": "https://england.shelter.org.uk/support_us/volunteer",
         "verified_fields": [
-          "screening.min_age",
-          "eligibility",
-          "specific_times",
-          "screening.induction",
-          "activity"
+          "status",
+          "commitment",
+          "eligibility"
         ],
         "unsupported_fields": [
           "screening.dbs",
-          "screening.references",
-          "typical_shift_hours"
+          "screening.min_age"
         ]
-      }
+      },
+      "stated_places": []
     },
     {
       "id": "shelter-hub-support",
       "org_id": "shelter",
       "title": "Hub Support",
-      "what_youd_do": "Work inside a local hub with their legal, housing rights or support services teams \u2014 admin or direct client support.",
+      "what_youd_do": "Work inside a local hub with their legal, housing rights or support services teams — admin or direct client support.",
       "commitment": "weekly",
       "min_term_months": null,
       "typical_shift_hours": null,
@@ -235,37 +234,247 @@
         "dbs": "unknown",
         "references": null,
         "interview": null,
-        "min_age": 18,
-        "induction": "Full training, an induction and a volunteer agreement. Expenses reimbursed; volunteering does not affect benefits."
+        "min_age": null,
+        "induction": null
       },
       "skills": [],
       "eligibility": [
-        "People aged 18 or over",
+        "You need to be an adult to volunteer in Services",
         "People based in England, Scotland or Wales"
       ],
       "seasonal_window": null,
       "next_intake": null,
-      "status": "open",
+      "status": "unknown",
       "apply_url": "https://england.shelter.org.uk/support_us/volunteer",
       "url_specificity": "org_volunteer_page",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-09-02T00:00:00+00:00",
-        "method": "human",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "platform",
         "reviewed_by_human": true,
-        "confidence": 0.9,
+        "confidence": 0.5,
         "source_url": "https://england.shelter.org.uk/support_us/volunteer",
         "verified_fields": [
-          "screening.min_age",
-          "eligibility",
-          "screening.induction",
-          "activity"
+          "eligibility"
         ],
         "unsupported_fields": [
           "screening.dbs",
-          "screening.references",
+          "screening.min_age",
           "specific_times",
-          "typical_shift_hours"
+          "status"
+        ]
+      },
+      "stated_places": []
+    },
+    {
+      "id": "shelter-winter-bucket-collection",
+      "title": "Winter Bucket Collection Volunteer",
+      "what_youd_do": "Hold collection buckets at community events and in public spaces across London to raise money for Shelter, picking the events that suit you.",
+      "commitment": "flexible",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "Winter; varied days, evenings and weekends, you choose",
+      "activity": "fundraising",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [
+        "London"
+      ],
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "Induction, access to learning and a volunteer handbook; reasonable expenses can be claimed."
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=09564b8a-d5c7-4f2e-8ad5-795033944f9a",
+      "url_specificity": "role",
+      "org_id": "shelter",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "platform",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://england.shelter.org.uk/support_us/volunteer",
+        "verified_fields": [
+          "status",
+          "specific_times",
+          "commitment"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "app.betterimpact.com: facts read from the charity's volunteering platform"
+        ]
+      }
+    },
+    {
+      "id": "shelter-walk-for-home-marshal-2026",
+      "title": "Marshalling and Cheering at Walk for Home (London, 2026)",
+      "what_youd_do": "Marshal and cheer on Shelter's fundraising walkers at an evening event at Leake Street Arches, keeping spirits high for them on the route.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": 6.5,
+      "when": [
+        "weekday_evening"
+      ],
+      "specific_times": "Tuesday 8 December 2026, 4pm-10:30pm",
+      "activity": "fundraising",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": "SE1",
+      "stated_places": [
+        "London"
+      ],
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": "2026-12-08",
+      "status": "open",
+      "apply_url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=f0d5924e-d33a-4bdf-ab27-e37a377d121e",
+      "url_specificity": "role",
+      "org_id": "shelter",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "platform",
+        "reviewed_by_human": true,
+        "confidence": 0.75,
+        "source_url": "https://england.shelter.org.uk/support_us/volunteer",
+        "verified_fields": [
+          "status",
+          "next_intake",
+          "specific_times"
+        ],
+        "unsupported_fields": [
+          "commitment",
+          "screening.dbs",
+          "screening.min_age",
+          "app.betterimpact.com: facts read from the charity's volunteering platform"
+        ]
+      }
+    },
+    {
+      "id": "shelter-lived-experience-coordination",
+      "title": "Lived Experience Coordination Volunteer",
+      "what_youd_do": "Help run lived experience groups: schedule meetings, handle room bookings and logistics, keep attendance records current and help write reports and newsletters.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "weekday_daytime"
+      ],
+      "specific_times": "Mon-Fri 9am-5pm; about 7-14 hours a month, to be agreed",
+      "activity": "admin",
+      "location_type": "hybrid",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [
+        "London"
+      ],
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "Induction, access to learning and a copy of the volunteer handbook; reasonable expenses can be claimed."
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=7e531ffc-a10e-4d58-ad2c-489dff161be7",
+      "url_specificity": "role",
+      "org_id": "shelter",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "platform",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://england.shelter.org.uk/support_us/volunteer",
+        "verified_fields": [
+          "status",
+          "specific_times"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "commitment",
+          "app.betterimpact.com: facts read from the charity's volunteering platform"
+        ]
+      }
+    },
+    {
+      "id": "shelter-van-drivers-mate",
+      "title": "Volunteer Van Driver's Mate",
+      "what_youd_do": "Ride with a Shelter van driver around south London, collecting donated stock and furniture and delivering it between shops and pick-ups.",
+      "commitment": "flexible",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "weekday_daytime"
+      ],
+      "specific_times": "Any time Monday-Friday, 10am-6pm",
+      "activity": "shop_warehouse",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [
+        "South London"
+      ],
+      "screening": {
+        "dbs": "basic",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "Training, induction and ongoing support from your Shop Manager; out-of-pocket expenses refunded."
+      },
+      "skills": [],
+      "eligibility": [
+        "Must be able to lift heavy items of furniture"
+      ],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=b1fed740-bf07-421c-b57c-aca4443997b4",
+      "url_specificity": "role",
+      "org_id": "shelter",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "platform",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://england.shelter.org.uk/support_us/volunteer",
+        "verified_fields": [
+          "status",
+          "screening.dbs",
+          "specific_times",
+          "commitment",
+          "eligibility"
+        ],
+        "unsupported_fields": [
+          "screening.min_age",
+          "app.betterimpact.com: facts read from the charity's volunteering platform"
         ]
       }
     }

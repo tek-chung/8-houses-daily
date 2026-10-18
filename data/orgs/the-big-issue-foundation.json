@@ -17,14 +17,14 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-18T08:50:00+00:00",
-      "last_success": "2026-09-02T00:00:00+00:00",
+      "last_attempt": "2026-10-17T22:08:14+00:00",
+      "last_success": "2026-10-17T22:08:14+00:00",
       "link_status": "ok",
       "content_hash": null,
       "consecutive_failures": 0,
       "etag": null,
       "last_modified": null,
-      "last_extraction": "2026-10-18T08:50:01+00:00"
+      "last_extraction": "2026-10-17T18:55:33+00:00"
     }
   },
   "opportunities": [
@@ -32,7 +32,7 @@
       "id": "the-big-issue-frontline-office",
       "org_id": "the-big-issue-foundation",
       "title": "Frontline Office Volunteer",
-      "what_youd_do": "Work in their London frontline office \u2014 admin, and the front desk where vendors come in for magazines and for help with whatever else is going on.",
+      "what_youd_do": "Work in their London frontline office — admin, and the front desk where vendors come in for magazines and for help with whatever else is going on.",
       "commitment": "weekly",
       "min_term_months": null,
       "typical_shift_hours": null,

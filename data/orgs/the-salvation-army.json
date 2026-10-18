@@ -1,0 +1,28 @@
+{
+  "organisation": {
+    "id": "the-salvation-army",
+    "name": "The Salvation Army",
+    "aliases": [
+      "salvation army",
+      "st anns"
+    ],
+    "charity_number": "214779",
+    "website_url": "https://www.salvationarmy.org.uk/",
+    "volunteer_url": "https://www.salvationarmy.org.uk/volunteer",
+    "summary": "Runs homelessness accommodation in London, including St Ann's in Westminster. This links to the national volunteering page.",
+    "coverage": "multi_borough",
+    "boroughs": [],
+    "focus_groups": [],
+    "lived_experience_roles": false,
+    "check": {
+      "last_attempt": "2026-10-17T22:08:14+00:00",
+      "last_success": "2026-10-17T22:08:14+00:00",
+      "link_status": "ok",
+      "content_hash": null,
+      "consecutive_failures": 0,
+      "etag": null,
+      "last_modified": null
+    }
+  },
+  "opportunities": []
+}

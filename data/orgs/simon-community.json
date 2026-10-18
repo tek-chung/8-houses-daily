@@ -6,7 +6,7 @@
       "the simon community",
       "simon community london"
     ],
-    "charity_number": "1090938",
+    "charity_number": "283938",
     "website_url": "https://www.simoncommunity.org.uk/",
     "volunteer_url": "https://www.simoncommunity.org.uk/volunteering/",
     "summary": "Founded 1963 and run almost entirely by volunteers. Previously homeless residents and live-in volunteers share a house in Camden and run nine outreach services a week between them.",
@@ -20,14 +20,14 @@
     "lived_experience_roles": true,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-18T08:36:36+00:00",
-      "last_success": "2026-10-17T18:53:04+00:00",
+      "last_attempt": "2026-10-17T22:08:14+00:00",
+      "last_success": "2026-10-17T22:08:14+00:00",
       "link_status": "ok",
       "content_hash": "5fd9b31ddb50eda409f25c4e18f5fed3a41c8ce68a04aac9e77336445acd0fe5",
       "consecutive_failures": 0,
       "etag": "\"19f2580d83ceb0712d2c9dcccbd4f665-ssl-df\"",
       "last_modified": null,
-      "last_extraction": "2026-10-18T08:36:39+00:00"
+      "last_extraction": "2026-10-08T10:00:46+00:00"
     }
   },
   "opportunities": [
@@ -40,7 +40,7 @@
       "when": [
         "flexible"
       ],
-      "specific_times": "Full time, living on site",
+      "specific_times": "Full-time, living in the community",
       "activity": "outreach",
       "location_type": "in_person",
       "who_can_apply": "individual",
@@ -53,9 +53,7 @@
         "induction": null
       },
       "skills": [],
-      "eligibility": [
-        "people based in the UK or able to relocate at their own expense"
-      ],
+      "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
       "status": "unknown",
@@ -65,19 +63,23 @@
       "org_id": "simon-community",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-08T10:01:08+00:00",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
         "method": "llm",
         "reviewed_by_human": true,
         "confidence": 1.0,
-        "source_url": "https://www.simoncommunity.org.uk/volunteering/",
+        "source_url": "https://www.simoncommunity.org.uk/contact/",
         "verified_fields": [
+          "screening.interview",
           "screening.min_age",
-          "screening.interview"
+          "specific_times",
+          "commitment"
         ],
         "unsupported_fields": [
+          "screening.dbs",
           "status"
         ]
-      }
+      },
+      "stated_places": []
     },
     {
       "title": "Part-time Outreach Volunteer",
@@ -89,11 +91,11 @@
         "weekday_evening",
         "weekend_evening"
       ],
-      "specific_times": "Evening services; a weekly or fortnightly commitment is recommended",
+      "specific_times": "Evening services; at least once every week or two is suggested",
       "activity": "outreach",
       "location_type": "in_person",
       "who_can_apply": "individual",
-      "postcode_district": "NW5",
+      "postcode_district": null,
       "screening": {
         "dbs": "unknown",
         "references": null,
@@ -102,9 +104,7 @@
         "induction": null
       },
       "skills": [],
-      "eligibility": [
-        "people based in the UK or able to relocate at their own expense"
-      ],
+      "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
       "status": "unknown",
@@ -114,17 +114,22 @@
       "org_id": "simon-community",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-08T10:01:08+00:00",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
         "method": "llm",
         "reviewed_by_human": true,
         "confidence": 1.0,
-        "source_url": "https://www.simoncommunity.org.uk/volunteering/",
-        "verified_fields": [],
-        "unsupported_fields": [
-          "status",
+        "source_url": "https://www.simoncommunity.org.uk/contact/",
+        "verified_fields": [
+          "specific_times",
           "commitment"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "status"
         ]
-      }
+      },
+      "stated_places": []
     },
     {
       "title": "Minibus Driver",
@@ -136,11 +141,11 @@
         "weekday_evening",
         "weekend_evening"
       ],
-      "specific_times": "Evening services; a weekly or fortnightly commitment is recommended",
+      "specific_times": null,
       "activity": "practical",
       "location_type": "in_person",
       "who_can_apply": "individual",
-      "postcode_district": "NW5",
+      "postcode_district": null,
       "screening": {
         "dbs": "unknown",
         "references": null,
@@ -150,8 +155,7 @@
       },
       "skills": [],
       "eligibility": [
-        "people over 25 with a clean driving licence",
-        "people based in the UK or able to relocate at their own expense"
+        "people over 25 with a clean licence"
       ],
       "seasonal_window": null,
       "next_intake": null,
@@ -162,16 +166,73 @@
       "org_id": "simon-community",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-08T10:01:08+00:00",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
         "method": "llm",
         "reviewed_by_human": true,
-        "confidence": 1.0,
+        "confidence": 0.75,
         "source_url": "https://www.simoncommunity.org.uk/volunteering/",
         "verified_fields": [
-          "status"
+          "status",
+          "commitment",
+          "eligibility"
         ],
         "unsupported_fields": [
-          "commitment"
+          "specific_times",
+          "screening.dbs",
+          "screening.min_age"
+        ]
+      },
+      "stated_places": []
+    },
+    {
+      "id": "simon-community-skills-support",
+      "title": "Skilled Support (social media, procurement, bid writing)",
+      "what_youd_do": "Lend professional experience in social media, procurement or bid writing to the charity, in a few spare hours alongside its outreach work.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "admin",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [],
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "skills": [
+        "social media",
+        "procurement",
+        "bid writing"
+      ],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "unknown",
+      "apply_url": "https://www.simoncommunity.org.uk/contact/",
+      "url_specificity": "org_volunteer_page",
+      "org_id": "simon-community",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "llm",
+        "reviewed_by_human": true,
+        "confidence": 0.7,
+        "source_url": "https://www.simoncommunity.org.uk/contact/",
+        "verified_fields": [],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "commitment",
+          "status"
         ]
       }
     }

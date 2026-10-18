@@ -1,0 +1,187 @@
+{
+  "organisation": {
+    "id": "all-people-all-places",
+    "name": "All People All Places",
+    "aliases": [
+      "apap",
+      "all people all places london"
+    ],
+    "charity_number": "1139885",
+    "website_url": "https://allpeopleallplaces.org/",
+    "volunteer_url": "https://allpeopleallplaces.org/support-us/volunteer",
+    "summary": "Edmonton-based community charity giving face-to-face support to people in housing crisis in Enfield and Haringey, with a day centre at Pymmes Park.",
+    "coverage": "multi_borough",
+    "boroughs": [
+      "Enfield",
+      "Haringey"
+    ],
+    "focus_groups": [],
+    "lived_experience_roles": false,
+    "check": {
+      "last_attempt": "2026-10-17T23:30:00+00:00",
+      "last_success": "2026-10-17T23:30:00+00:00",
+      "link_status": "ok",
+      "content_hash": null,
+      "consecutive_failures": 0,
+      "etag": null,
+      "last_modified": null
+    }
+  },
+  "opportunities": [
+    {
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [],
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "apply_url": "https://allpeopleallplaces.org/support-us/volunteer",
+      "url_specificity": "org_volunteer_page",
+      "coords": null,
+      "org_id": "all-people-all-places",
+      "id": "all-people-all-places-day-centre-support",
+      "title": "Day Centre Support Volunteer",
+      "what_youd_do": "Help at the Pymmes Park day centre: serve breakfast, run activity clubs, sort laundry and showers, hand out essentials and log what the centre provides.",
+      "commitment": "weekly",
+      "specific_times": "Flexible hours within day centre hours, 8:00am to 3:00pm",
+      "activity": "hosting",
+      "status": "open",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "provenance": {
+        "extracted_at": "2026-10-17T23:30:00+00:00",
+        "method": "llm",
+        "reviewed_by_human": true,
+        "confidence": 0.7,
+        "source_url": "https://allpeopleallplaces.org/support-us/volunteer",
+        "verified_fields": [
+          "commitment",
+          "specific_times",
+          "status"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "postcode_district",
+          "posted 23 Sept 2025, over a year ago"
+        ]
+      }
+    },
+    {
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [],
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "apply_url": "https://allpeopleallplaces.org/support-us/volunteer",
+      "url_specificity": "org_volunteer_page",
+      "coords": null,
+      "org_id": "all-people-all-places",
+      "id": "all-people-all-places-kitchen-support",
+      "title": "Kitchen Support Volunteer",
+      "what_youd_do": "Prepare and serve meals for rough sleepers and day centre visitors, tidy the kitchen and dining space and make guests feel welcome at mealtimes.",
+      "commitment": "weekly",
+      "specific_times": "Flexible hours within day centre hours, 8:00am to 3:00pm",
+      "activity": "cooking_serving",
+      "status": "open",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "provenance": {
+        "extracted_at": "2026-10-17T23:30:00+00:00",
+        "method": "llm",
+        "reviewed_by_human": true,
+        "confidence": 0.7,
+        "source_url": "https://allpeopleallplaces.org/support-us/volunteer",
+        "verified_fields": [
+          "commitment",
+          "specific_times",
+          "status"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "postcode_district",
+          "posted 23 Sept 2025, over a year ago"
+        ]
+      }
+    },
+    {
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [],
+      "skills": [
+        "experienced barber"
+      ],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "apply_url": "https://allpeopleallplaces.org/support-us/volunteer",
+      "url_specificity": "org_volunteer_page",
+      "coords": null,
+      "org_id": "all-people-all-places",
+      "id": "all-people-all-places-community-barber",
+      "title": "Community Barber",
+      "what_youd_do": "Give free haircuts to day centre clients as an experienced barber, a few hours at a time, to lift their confidence and dignity.",
+      "commitment": "flexible",
+      "specific_times": "A few hours per session",
+      "activity": "practical",
+      "status": "open",
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "provenance": {
+        "extracted_at": "2026-10-17T23:30:00+00:00",
+        "method": "llm",
+        "reviewed_by_human": true,
+        "confidence": 0.7,
+        "source_url": "https://allpeopleallplaces.org/support-us/volunteer",
+        "verified_fields": [
+          "commitment",
+          "specific_times",
+          "status"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "postcode_district",
+          "posted 23 Sept 2025, over a year ago"
+        ]
+      }
+    }
+  ]
+}

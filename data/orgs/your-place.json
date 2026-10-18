@@ -1,0 +1,276 @@
+{
+  "organisation": {
+    "id": "your-place",
+    "name": "Your Place",
+    "aliases": [
+      "your place london"
+    ],
+    "charity_number": "1147794",
+    "website_url": "https://your-place.org.uk/",
+    "volunteer_url": "https://your-place.org.uk/volunteer/",
+    "summary": "Newham. Accommodation with one-to-one support for people moving on from homelessness. Based at Anchor House, Canning Town.",
+    "coverage": "borough",
+    "boroughs": [
+      "Newham"
+    ],
+    "focus_groups": [],
+    "lived_experience_roles": false,
+    "check": {
+      "last_attempt": null,
+      "last_success": null,
+      "link_status": "ok",
+      "content_hash": null,
+      "consecutive_failures": 0,
+      "etag": null,
+      "last_modified": null
+    }
+  },
+  "opportunities": [
+    {
+      "id": "your-place-corporate-volunteering",
+      "title": "Corporate Volunteering",
+      "what_youd_do": "Bring a company team to give a day of practical help or professional skills to Your Place, such as clearing space, outdoor work or food bank tasks.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "varies",
+      "location_type": "in_person",
+      "who_can_apply": "team_only",
+      "postcode_district": null,
+      "stated_places": [],
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": "Role description, named contact, induction and training for the chosen activity"
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://your-place.org.uk/volunteer-role-corporate-volunteer/",
+      "url_specificity": "role",
+      "org_id": "your-place",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "llm",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://your-place.org.uk/volunteer-role-corporate-volunteer/",
+        "verified_fields": [
+          "status",
+          "who_can_apply"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "commitment"
+        ]
+      }
+    },
+    {
+      "id": "your-place-engagement-participation-volunteer",
+      "title": "Engagement and Participation Volunteer",
+      "what_youd_do": "Help organise and staff community events and activities that get residents and neighbours involved.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "varies",
+      "location_type": "in_person",
+      "who_can_apply": "unknown",
+      "postcode_district": null,
+      "stated_places": [],
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://your-place.org.uk/volunteer/",
+      "url_specificity": "org_volunteer_page",
+      "org_id": "your-place",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "llm",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://your-place.org.uk/volunteer/",
+        "verified_fields": [
+          "status"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "commitment"
+        ]
+      }
+    },
+    {
+      "id": "your-place-administration-volunteer",
+      "title": "Administration Volunteer",
+      "what_youd_do": "Back up the resident engagement and Community Hub staff with general office work, drafting reports and arranging events.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "admin",
+      "location_type": "in_person",
+      "who_can_apply": "unknown",
+      "postcode_district": null,
+      "stated_places": [],
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://your-place.org.uk/volunteer/",
+      "url_specificity": "org_volunteer_page",
+      "org_id": "your-place",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "llm",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://your-place.org.uk/volunteer/",
+        "verified_fields": [
+          "status"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "commitment"
+        ]
+      }
+    },
+    {
+      "id": "your-place-esol-volunteer",
+      "title": "English for Speakers of Other Languages (ESOL) Volunteer",
+      "what_youd_do": "Help residents practise and grow their English in speaking, reading and writing so they feel more confident using it.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "teaching",
+      "location_type": "in_person",
+      "who_can_apply": "unknown",
+      "postcode_district": null,
+      "stated_places": [],
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://your-place.org.uk/volunteer/",
+      "url_specificity": "org_volunteer_page",
+      "org_id": "your-place",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "llm",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://your-place.org.uk/volunteer/",
+        "verified_fields": [
+          "status"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "commitment"
+        ]
+      }
+    },
+    {
+      "id": "your-place-food-safety-donations-volunteer",
+      "title": "Food Safety and Donations Volunteer",
+      "what_youd_do": "Work with the facilities team on food safety record keeping, sorting and handing out donated goods, and helping run the food bank.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "practical",
+      "location_type": "in_person",
+      "who_can_apply": "unknown",
+      "postcode_district": null,
+      "stated_places": [],
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://your-place.org.uk/volunteer/",
+      "url_specificity": "org_volunteer_page",
+      "org_id": "your-place",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "llm",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://your-place.org.uk/volunteer/",
+        "verified_fields": [
+          "status"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "commitment"
+        ]
+      }
+    }
+  ]
+}

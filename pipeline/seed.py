@@ -43,6 +43,16 @@ URL_SUSPECT = {
     "The Big Issue Foundation": "points at reachvolunteering.org.uk, a third-party "
                                 "platform — the freshness check would be watching "
                                 "Reach rather than the charity",
+    "The Upper Room": "homepage only — its own site returned nothing when fetched, so "
+                      "the volunteering page is unconfirmed",
+    "FirmFoundation": "no volunteering page; the homepage's 'Volunteer' link goes to "
+                      "the contact page",
+    "Bench Outreach": "no volunteering page; points at a single volunteer role posted "
+                      "as a news item, which will go dead once filled",
+    "The Salvation Army": "national volunteering page, not St Ann's (Westminster) — "
+                          "London roles will need filtering by place",
+    "Shelter from the Storm": "not yet checked that the /volunteer/ page lists roles "
+                              "(linked from its menu)",
 }
 
 # name, area, volunteer_url — from the PoC.
@@ -73,7 +83,7 @@ SEED = [
     ("The Passage", "central london", "https://passage.org.uk/volunteering/"),
     ("The Connection at St Martin's", "central london", "https://www.connection-at-stmartins.org.uk/volunteer/"),
     ("Spires", "south london", "https://www.spires.org.uk/"),
-    ("Providence Row", "east london", "https://www.providencerow.org.uk/pages/68-volunteering-opportunities"),
+    ("Providence Row", "east london", "https://www.providencerow.org.uk/pages/16-volunteer-for-us"),
     ("The Whitechapel Mission", "east london", "https://whitechapel.org.uk/volunteering"),
     ("SPEAR", "south-west london", "https://www.spearlondon.org/get-involved/be-a-volunteer/"),
     ("Ace of Clubs", "south london", "https://aceofclubs.org.uk/volunteer/"),
@@ -81,6 +91,25 @@ SEED = [
     ("Manna Society", "south london", "https://mannasociety.org.uk/support-us/volunteer-for-us/"),
     ("Spitalfields Crypt Trust", "east london", "https://sct.org.uk/support-us/volunteer/"),
     ("West London Mission", "central london", "https://www.wlm.org.uk/pages/category/volunteer-opportunities"),
+    # Added 17 October 2026 at Tek's request (a scope change beyond spec §2 A5: 32 -> 46).
+    # URLs read from each charity's own navigation, not guessed. NEWway Project (Newham)
+    # was requested but is held back: its homepage served casino spam when fetched, so
+    # it looks compromised. Add it once the site is confirmed clean.
+    ("999 Club", "south london", "https://999club.org/volunteer/"),
+    ("Shelter from the Storm", "london-wide", "https://sfts.org.uk/volunteer/"),
+    ("C4WS Homeless Project", "north london", "https://c4wshomelessproject.org/winter-shelter-1"),
+    ("Evolve Housing + Support", "london-wide", "https://www.evolvehousing.org.uk/get-involved/volunteer-opportunities/"),
+    ("Your Place", "east london", "https://your-place.org.uk/volunteer/"),
+    ("Barons Court Project", "west london", "https://baronscourtproject.org/volunteer/"),
+    ("The Upper Room", "west london", "https://theupperroom.org.uk/"),
+    ("Kingston Churches Action on Homelessness", "south-west london", "https://kcah.org.uk/volunteer-roles/"),
+    ("FirmFoundation", "north-west london", "https://firmfoundation.org.uk/contact-us/"),
+    ("Bench Outreach", "south london", "https://benchoutreach.com/volunteer-housing-benefits-support-assistant/"),
+    ("The Salvation Army", "london-wide", "https://www.salvationarmy.org.uk/volunteer"),
+    ("YMCA London City and North", "north london", "https://www.ymcalondoncan.org/engage/volunteer/"),
+    ("YMCA St Paul's Group", "west london", "https://ymcastpaulsgroup.org/volunteering/"),
+    ("Emmaus SLC", "south london", "https://emmaus.org.uk/slc/volunteering-at-emmaus-slc/"),
+    ("All People All Places", "north london", "https://allpeopleallplaces.org/support-us/volunteer"),
 ]
 
 

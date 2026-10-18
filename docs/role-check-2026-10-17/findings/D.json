@@ -1,0 +1,1300 @@
+{
+  "agent": "D",
+  "checked_at": "2026-10-17",
+  "orgs": [
+    {
+      "org_id": "ace-of-clubs",
+      "read_status": "ok",
+      "pages_read": [
+        "https://aceofclubs.org.uk/volunteer/",
+        "https://volunteer.lambeth.gov.uk/volunteers/opportunity/10200483 (returned empty)"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Own page has one generic Volunteer Application Form (Jotform) and describes tasks (food prep, welcoming, washing up, cleaning, serving, laundry). No days, hours, DBS or age stated. Page also carries a stale 'Are you free on Sat 9th March?' event link. The Lambeth listing the old times came from returned nothing.",
+      "org_fields": {
+        "summary": "A day centre on St Alphonsus Road in Clapham where typically 180 people a day come for food, with showers, laundry and other help alongside."
+      },
+      "roles": [
+        {
+          "match": "existing",
+          "id": "ace-of-clubs-lunch-service",
+          "title": "Lunch Service Volunteer",
+          "what_youd_do": "Prepare vegetables and tables before lunch, serve meals, wash up and clean the kitchen, showers and dining room, and sometimes help with laundry or toiletries.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": "SW4",
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "The head chef shows you the ropes if you have never worked in a kitchen."
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://aceofclubs.org.uk/volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {
+            "status": {
+              "url": "https://aceofclubs.org.uk/volunteer/",
+              "quote": "Volunteer Application Form"
+            },
+            "screening.induction": {
+              "url": "https://aceofclubs.org.uk/volunteer/",
+              "quote": "If you’ve never worked in a kitchen before, don’t worry. Our friendly head chef will show you the ropes."
+            },
+            "postcode_district": {
+              "url": "https://aceofclubs.org.uk/volunteer/",
+              "quote": "SW4 7AS"
+            }
+          },
+          "changes_vs_current": [
+            "commitment weekly -> unknown (page gives no frequency)",
+            "specific_times and typical_shift_hours (9.30am-3pm Mon-Fri, 5.5h) removed: they came from the Lambeth listing, not Ace's page, and could not be re-read",
+            "when weekday_daytime -> flexible (page states no days)",
+            "skills 'friendly and confident with people' removed (not on page)",
+            "what_youd_do widened to the tasks the page lists",
+            "status kept open: page offers a live application form, but states no explicit vacancy; judgement call"
+          ]
+        }
+      ],
+      "retire": []
+    },
+    {
+      "org_id": "akt",
+      "read_status": "ok",
+      "pages_read": [
+        "https://www.akt.org.uk/volunteer/"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Opportunities section is empty ('new volunteering opportunities coming soon...'), so both roles are closed. Prose describes mentoring, Pride, fundraising and school talks; none is offered right now. No screening level (DBS/age) stated on the page.",
+      "org_fields": {},
+      "roles": [
+        {
+          "match": "existing",
+          "id": "akt-volunteer-mentor",
+          "title": "Volunteer Mentor",
+          "what_youd_do": "Meet one LGBTQ+ young person for an hour a week. Their volunteers say empathy and being reliably there matters more than having lived it yourself.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 1,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": "About an hour a week",
+          "activity": "mentoring",
+          "location_type": "hybrid",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "Induction to the organisation plus role-specific training"
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "closed",
+          "apply_url": "https://www.akt.org.uk/volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {
+            "status": {
+              "url": "https://www.akt.org.uk/volunteer/",
+              "quote": "new volunteering opportunities coming soon..."
+            },
+            "commitment": {
+              "url": "https://www.akt.org.uk/volunteer/",
+              "quote": "meeting with a young person for an hour a week as a mentor"
+            },
+            "screening.induction": {
+              "url": "https://www.akt.org.uk/volunteer/",
+              "quote": "You’ll receive an induction to the organisation and any necessary role specific training."
+            }
+          },
+          "changes_vs_current": []
+        },
+        {
+          "match": "existing",
+          "id": "akt-pride-and-events",
+          "title": "Pride and Fundraising Events",
+          "what_youd_do": "Walk with them in a Pride parade, represent them at an event, or talk about their work at your local school.",
+          "commitment": "one_off",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": "Once a year for a Pride parade",
+          "activity": "fundraising",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "closed",
+          "apply_url": "https://www.akt.org.uk/volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {
+            "status": {
+              "url": "https://www.akt.org.uk/volunteer/",
+              "quote": "new volunteering opportunities coming soon..."
+            },
+            "commitment": {
+              "url": "https://www.akt.org.uk/volunteer/",
+              "quote": "walking with us in a Pride parade once a year"
+            }
+          },
+          "changes_vs_current": [
+            "when weekend_daytime -> flexible (page states no day or time)"
+          ]
+        }
+      ],
+      "retire": []
+    },
+    {
+      "org_id": "cardboard-citizens",
+      "read_status": "ok",
+      "pages_read": [
+        "https://cardboardcitizens.org.uk/",
+        "https://cardboardcitizens.org.uk/get-involved/",
+        "https://cardboardcitizens.org.uk/get-involved/support-us/",
+        "https://cardboardcitizens.org.uk/work-with-us/"
+      ],
+      "volunteer_url_suggestion": "https://cardboardcitizens.org.uk/get-involved/ (current volunteer_url is the homepage; the get-involved page is the real route, but it lists membership, workshops, paid vacancies and donating, no volunteering)",
+      "org_notes": "Zero volunteering roles, correctly. Get Involved offers Membership, free workshops for ages 18+ with lived experience, Work With Us (paid vacancies, actor casting) and Support Us (donating). Work With Us meta text mentions 'volunteering' but the page has no volunteer content. Current summary's 'sponsored events' is not on these pages.",
+      "org_fields": {},
+      "roles": [],
+      "retire": []
+    },
+    {
+      "org_id": "emmaus",
+      "read_status": "ok",
+      "pages_read": [
+        "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+        "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
+        "https://emmaus.org.uk/greenwich/volunteer-role/retail-volunteer/",
+        "https://emmaus.org.uk/greenwich/volunteer-role/outreach-volunteer/",
+        "https://emmaus.org.uk/greenwich/volunteer-role/kitchen-volunteer/",
+        "https://emmaus.org.uk/greenwich/volunteer-role/van-crew-volunteer/",
+        "https://emmaus.org.uk/greenwich/volunteer-role/van-driver-volunteer/",
+        "https://emmaus.org.uk/greenwich/volunteer-role/trustee/"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Roles page lists six roles, all 'CLOSING DATE: Ongoing'. Van Crew page's form link points at the Preston branch (/preston/online-volunteer-form/); Outreach has its own Apply link (street-souls-main). General page gives shift hours Tue-Sat 10am-5pm, which differs from role pages' 9-5 (Mon-Sat); DBS basic/refs/age 18 come from the general page.",
+      "org_fields": {},
+      "roles": [
+        {
+          "match": "existing",
+          "id": "emmaus-greenwich-retail",
+          "title": "Retail Volunteer",
+          "what_youd_do": "Serve customers and refresh the displays in their charity shops — preloved fashion and retro furniture. Good if you like vintage, antiques or sustainability.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 8,
+          "when": [
+            "weekday_daytime",
+            "weekend_daytime"
+          ],
+          "specific_times": "At least one full day a week, 9am to 5pm, on a day that suits you",
+          "activity": "shop_warehouse",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": "SE18",
+          "stated_places": [
+            "Poplar",
+            "Plumstead",
+            "Lewisham"
+          ],
+          "screening": {
+            "dbs": "basic",
+            "references": true,
+            "interview": null,
+            "min_age": 18,
+            "induction": "A full induction including health and safety, then ongoing support from your manager and the companions."
+          },
+          "skills": [],
+          "eligibility": [
+            "People aged 18 or over"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://emmaus.org.uk/greenwich/volunteer-role/retail-volunteer/",
+          "url_specificity": "role",
+          "evidence": {
+            "screening.dbs": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "required to complete a basic DBS (Disclosure and Barring Service) check"
+            },
+            "screening.references": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "We ask for two references, these can be from an employer, teacher, colleague, or neighbour."
+            },
+            "screening.min_age": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "Yes, you must be 18 or over to volunteer with Emmaus Greenwich."
+            },
+            "eligibility": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "Yes, you must be 18 or over to volunteer with Emmaus Greenwich."
+            },
+            "status": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
+              "quote": "CLOSING DATE: Ongoing Retail Volunteer Location: Poplar, Plumstead and Lewisham Work Location: On Site"
+            },
+            "stated_places": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
+              "quote": "CLOSING DATE: Ongoing Retail Volunteer Location: Poplar, Plumstead and Lewisham Work Location: On Site"
+            },
+            "commitment": {
+              "url": "https://emmaus.org.uk/greenwich/volunteer-role/retail-volunteer/",
+              "quote": "We are looking for volunteers who can commit to at least one full day (9am-5pm) per week"
+            },
+            "when": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "Volunteer shifts take place during our opening hours: Tuesday to Saturday, 10am-5pm"
+            },
+            "specific_times": {
+              "url": "https://emmaus.org.uk/greenwich/volunteer-role/retail-volunteer/",
+              "quote": "at least one full day (9am-5pm) per week, but we can be flexible when this day can be"
+            }
+          },
+          "changes_vs_current": [
+            "added stated_places Poplar, Plumstead, Lewisham (role page names three shops; postcode SE18 kept as the Plumstead site)"
+          ]
+        },
+        {
+          "match": "existing",
+          "id": "emmaus-greenwich-outreach",
+          "title": "Street Souls Outreach",
+          "what_youd_do": "Help run Street Souls solidarity points: set up and close down, serve food and drinks, hand out clothing and toiletries, and signpost visitors to local services.",
+          "commitment": "fortnightly",
+          "min_term_months": 6,
+          "typical_shift_hours": null,
+          "when": [
+            "weekday_evening"
+          ],
+          "specific_times": "Monday, Thursday or Friday evenings; at least two a month",
+          "activity": "outreach",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": "SE18",
+          "stated_places": [
+            "Westminster",
+            "Woolwich"
+          ],
+          "screening": {
+            "dbs": "basic",
+            "references": true,
+            "interview": null,
+            "min_age": 18,
+            "induction": "A full induction including health and safety, then ongoing support from your manager and the companions."
+          },
+          "skills": [],
+          "eligibility": [
+            "People aged 18 or over"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://emmaus.org.uk/greenwich/volunteer-role/outreach-volunteer/",
+          "url_specificity": "role",
+          "evidence": {
+            "screening.dbs": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "required to complete a basic DBS (Disclosure and Barring Service) check"
+            },
+            "screening.references": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "We ask for two references, these can be from an employer, teacher, colleague, or neighbour."
+            },
+            "screening.min_age": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "Yes, you must be 18 or over to volunteer with Emmaus Greenwich."
+            },
+            "eligibility": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "Yes, you must be 18 or over to volunteer with Emmaus Greenwich."
+            },
+            "status": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
+              "quote": "CLOSING DATE: Ongoing Outreach Volunteer Location: Westminster and Woolwich Work Location: On Site"
+            },
+            "stated_places": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
+              "quote": "CLOSING DATE: Ongoing Outreach Volunteer Location: Westminster and Woolwich Work Location: On Site"
+            },
+            "commitment": {
+              "url": "https://emmaus.org.uk/greenwich/volunteer-role/outreach-volunteer/",
+              "quote": "commit to at least two evenings each month for at least six months"
+            },
+            "when": {
+              "url": "https://emmaus.org.uk/greenwich/volunteer-role/outreach-volunteer/",
+              "quote": "commit to at least two evenings each month"
+            },
+            "specific_times": {
+              "url": "https://emmaus.org.uk/greenwich/volunteer-role/outreach-volunteer/",
+              "quote": "Our Street Souls solidarity points operate on Mondays, Thursdays and Fridays each week."
+            }
+          },
+          "changes_vs_current": [
+            "what_youd_do rewritten: the role is staffing Street Souls solidarity points, not walking out with a team",
+            "added stated_places Westminster, Woolwich (page lists these as the role's location; postcode SE18 only covers Woolwich)"
+          ]
+        },
+        {
+          "match": "existing",
+          "id": "emmaus-greenwich-kitchen",
+          "title": "Kitchen Volunteer",
+          "what_youd_do": "Prepare healthy meals alongside residents for Emmaus Greenwich's community and its Street Souls outreach visitors.",
+          "commitment": "weekly",
+          "min_term_months": 6,
+          "typical_shift_hours": null,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "One day a week; Mondays, Thursdays and Fridays preferred",
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": "SE18",
+          "stated_places": [
+            "Plumstead"
+          ],
+          "screening": {
+            "dbs": "basic",
+            "references": true,
+            "interview": null,
+            "min_age": 18,
+            "induction": "Full induction when you start, with a staff member and a companion supporting you."
+          },
+          "skills": [],
+          "eligibility": [
+            "People aged 18 or over"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://emmaus.org.uk/greenwich/volunteer-role/kitchen-volunteer/",
+          "url_specificity": "role",
+          "evidence": {
+            "screening.dbs": {
+              "url": "https://emmaus.org.uk/greenwich/volunteer-role/kitchen-volunteer/",
+              "quote": "Please note: the role is subject to a satisfactory DBS check."
+            },
+            "screening.references": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "We ask for two references, these can be from an employer, teacher, colleague, or neighbour."
+            },
+            "screening.min_age": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "Yes, you must be 18 or over to volunteer with Emmaus Greenwich."
+            },
+            "eligibility": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "Yes, you must be 18 or over to volunteer with Emmaus Greenwich."
+            },
+            "status": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
+              "quote": "CLOSING DATE: Ongoing Kitchen volunteer Location: Plumstead Work Location: On Site"
+            },
+            "commitment": {
+              "url": "https://emmaus.org.uk/greenwich/volunteer-role/kitchen-volunteer/",
+              "quote": "We are looking for a volunteer who can commit one day a week for at least six months."
+            },
+            "specific_times": {
+              "url": "https://emmaus.org.uk/greenwich/volunteer-role/kitchen-volunteer/",
+              "quote": "we are particularly keen to find people able to volunteer on Mondays, Thursdays and Fridays"
+            },
+            "when": {
+              "url": "https://emmaus.org.uk/greenwich/volunteer-role/kitchen-volunteer/",
+              "quote": "we are particularly keen to find people able to volunteer on Mondays, Thursdays and Fridays"
+            }
+          },
+          "changes_vs_current": [
+            "added stated_places Plumstead; DBS level 'basic' comes from the general volunteer page (role page only says DBS check)"
+          ]
+        },
+        {
+          "match": "existing",
+          "id": "emmaus-greenwich-van-crew",
+          "title": "Van Crew Volunteer",
+          "what_youd_do": "Help collect and deliver donated items by van, then load, unload and process them at the site.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 6.5,
+          "when": [
+            "weekday_daytime",
+            "weekend_daytime"
+          ],
+          "specific_times": "At least one day a week, 9.30am to 4pm, Monday to Saturday",
+          "activity": "practical",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "stated_places": [
+            "Greenwich"
+          ],
+          "screening": {
+            "dbs": "basic",
+            "references": true,
+            "interview": null,
+            "min_age": 18,
+            "induction": "Full induction when you start, with a staff member and a companion supporting you."
+          },
+          "skills": [
+            "Manual handling experience",
+            "Physically fit"
+          ],
+          "eligibility": [
+            "People aged 18 or over"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://emmaus.org.uk/greenwich/volunteer-role/van-crew-volunteer/",
+          "url_specificity": "role",
+          "evidence": {
+            "screening.dbs": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "required to complete a basic DBS (Disclosure and Barring Service) check"
+            },
+            "screening.references": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "We ask for two references, these can be from an employer, teacher, colleague, or neighbour."
+            },
+            "screening.min_age": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "Yes, you must be 18 or over to volunteer with Emmaus Greenwich."
+            },
+            "eligibility": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "Yes, you must be 18 or over to volunteer with Emmaus Greenwich."
+            },
+            "status": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
+              "quote": "CLOSING DATE: Ongoing Van Crew Volunteer Location: Greenwich Work Location: On Site"
+            },
+            "stated_places": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
+              "quote": "CLOSING DATE: Ongoing Van Crew Volunteer Location: Greenwich Work Location: On Site"
+            },
+            "commitment": {
+              "url": "https://emmaus.org.uk/greenwich/volunteer-role/van-crew-volunteer/",
+              "quote": "We are looking for volunteers who can commit a minimum of one day per week (9:30am-4pm)."
+            },
+            "specific_times": {
+              "url": "https://emmaus.org.uk/greenwich/volunteer-role/van-crew-volunteer/",
+              "quote": "The days will need to fall between Monday and Saturday"
+            },
+            "when": {
+              "url": "https://emmaus.org.uk/greenwich/volunteer-role/van-crew-volunteer/",
+              "quote": "The days will need to fall between Monday and Saturday"
+            },
+            "skills": {
+              "url": "https://emmaus.org.uk/greenwich/volunteer-role/van-crew-volunteer/",
+              "quote": "Are you physically fit and have knowledge of manual handling techniques?"
+            }
+          },
+          "changes_vs_current": [
+            "added stated_places Greenwich"
+          ]
+        },
+        {
+          "match": "existing",
+          "id": "emmaus-greenwich-van-driver",
+          "title": "Van Driver Volunteer",
+          "what_youd_do": "Drive the Emmaus van for furniture and goods collections and deliveries around south-east London.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 8,
+          "when": [
+            "weekday_daytime",
+            "weekend_daytime"
+          ],
+          "specific_times": "At least one day a week, 9am to 5pm, Monday to Saturday",
+          "activity": "practical",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "stated_places": [
+            "Greenwich"
+          ],
+          "screening": {
+            "dbs": "basic",
+            "references": true,
+            "interview": null,
+            "min_age": 18,
+            "induction": "Full induction when you start, with a staff member and a companion supporting you."
+          },
+          "skills": [
+            "Full, clean driving licence",
+            "Large van driving experience",
+            "Knowledge of south-east London"
+          ],
+          "eligibility": [
+            "People aged 18 or over"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://emmaus.org.uk/greenwich/volunteer-role/van-driver-volunteer/",
+          "url_specificity": "role",
+          "evidence": {
+            "screening.dbs": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "required to complete a basic DBS (Disclosure and Barring Service) check"
+            },
+            "screening.references": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "We ask for two references, these can be from an employer, teacher, colleague, or neighbour."
+            },
+            "screening.min_age": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "Yes, you must be 18 or over to volunteer with Emmaus Greenwich."
+            },
+            "eligibility": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "Yes, you must be 18 or over to volunteer with Emmaus Greenwich."
+            },
+            "status": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
+              "quote": "CLOSING DATE: Ongoing Van Driver Volunteer Location: Greenwich Work Location: On Site"
+            },
+            "stated_places": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
+              "quote": "CLOSING DATE: Ongoing Van Driver Volunteer Location: Greenwich Work Location: On Site"
+            },
+            "commitment": {
+              "url": "https://emmaus.org.uk/greenwich/volunteer-role/van-driver-volunteer/",
+              "quote": "commit to at least 1 day per week (9:00am-5pm)"
+            },
+            "specific_times": {
+              "url": "https://emmaus.org.uk/greenwich/volunteer-role/van-driver-volunteer/",
+              "quote": "The days will need to fall between Monday and Saturday"
+            },
+            "when": {
+              "url": "https://emmaus.org.uk/greenwich/volunteer-role/van-driver-volunteer/",
+              "quote": "The days will need to fall between Monday and Saturday"
+            },
+            "skills": {
+              "url": "https://emmaus.org.uk/greenwich/volunteer-role/van-driver-volunteer/",
+              "quote": "Full, clean driving licence and knowledge of South East London"
+            }
+          },
+          "changes_vs_current": [
+            "added stated_places Greenwich"
+          ]
+        },
+        {
+          "match": "existing",
+          "id": "emmaus-greenwich-trustee",
+          "title": "Trustee",
+          "what_youd_do": "Join the board that sets the direction of Emmaus Greenwich, meeting five times a year, based at Plumstead.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": "Board meets five times a year",
+          "activity": "governance",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": "SE18",
+          "stated_places": [
+            "Plumstead"
+          ],
+          "screening": {
+            "dbs": "basic",
+            "references": true,
+            "interview": null,
+            "min_age": 18,
+            "induction": "Induction and training"
+          },
+          "skills": [],
+          "eligibility": [
+            "People aged 18 or over"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://emmaus.org.uk/greenwich/volunteer-role/trustee/",
+          "url_specificity": "role",
+          "evidence": {
+            "screening.dbs": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "required to complete a basic DBS (Disclosure and Barring Service) check"
+            },
+            "screening.references": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "We ask for two references, these can be from an employer, teacher, colleague, or neighbour."
+            },
+            "screening.min_age": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "Yes, you must be 18 or over to volunteer with Emmaus Greenwich."
+            },
+            "eligibility": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+              "quote": "Yes, you must be 18 or over to volunteer with Emmaus Greenwich."
+            },
+            "status": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
+              "quote": "CLOSING DATE: Ongoing Become a Trustee Location: Plumstead Work Location: On Site"
+            },
+            "stated_places": {
+              "url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
+              "quote": "CLOSING DATE: Ongoing Become a Trustee Location: Plumstead Work Location: On Site"
+            },
+            "specific_times": {
+              "url": "https://emmaus.org.uk/greenwich/volunteer-role/trustee/",
+              "quote": "Trustees meet five times a year"
+            },
+            "screening.induction": {
+              "url": "https://emmaus.org.uk/greenwich/volunteer-role/trustee/",
+              "quote": "Induction and training"
+            }
+          },
+          "changes_vs_current": [
+            "induction corrected to the trustee page's own wording (old text was copied from the van roles)",
+            "when weekday_daytime -> flexible (meeting times not stated)",
+            "added stated_places Plumstead"
+          ]
+        }
+      ],
+      "retire": [
+        {
+          "id": "emmaus-greenwich-workshop",
+          "reason": "Furniture and Upcycling is not among the six roles on the live volunteer roles page; the general page only mentions upcycling and woodwork in its introduction.",
+          "evidence": {
+            "url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
+            "quote": "CLOSING DATE: Ongoing Van Driver Volunteer Location: Greenwich Work Location: On Site"
+          }
+        }
+      ]
+    },
+    {
+      "org_id": "groundswell",
+      "read_status": "ok",
+      "pages_read": [
+        "https://groundswell.org.uk/volunteer-opportunities/",
+        "https://groundswell.org.uk/become-a-volunteer/"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Volunteer page gives role profiles but no vacancy statement; Enquire form (become-a-volunteer) promises a reply within two weeks. DBS level not named. Last modified 2026-03-19.",
+      "org_fields": {},
+      "roles": [
+        {
+          "match": "existing",
+          "id": "groundswell-homeless-health-peer-advocate",
+          "title": "Homeless Health Peer Advocate",
+          "what_youd_do": "Accompany someone to health appointments, speak up for them, explain what is said and support their choices about treatment. Open to people with relevant lived experience.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": "At least two days a week, plus monthly team meetings",
+          "activity": "advice",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "stated_places": [],
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "Four weeks of training first, then monthly team meetings and supervision"
+          },
+          "skills": [
+            "confident travelling round London"
+          ],
+          "eligibility": [
+            "People with lived experience of homelessness, addiction, recovery, mental health or prison"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://groundswell.org.uk/become-a-volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {
+            "commitment": {
+              "url": "https://groundswell.org.uk/volunteer-opportunities/",
+              "quote": "To commit to at least 2 days of volunteering per week."
+            },
+            "specific_times": {
+              "url": "https://groundswell.org.uk/volunteer-opportunities/",
+              "quote": "To attend monthly team meeting and supervisions."
+            },
+            "screening.dbs": {
+              "url": "https://groundswell.org.uk/volunteer-opportunities/",
+              "quote": "To complete a DBS check."
+            },
+            "screening.induction": {
+              "url": "https://groundswell.org.uk/volunteer-opportunities/",
+              "quote": "To commit to the initial 4 weeks of training."
+            },
+            "eligibility": {
+              "url": "https://groundswell.org.uk/volunteer-opportunities/",
+              "quote": "Lived experience of any of the following – homelessness, drug & alcohol, addictions, recovery, mental health, prison/offending."
+            },
+            "skills": {
+              "url": "https://groundswell.org.uk/volunteer-opportunities/",
+              "quote": "Confident travelling around London using tubes, trains & buses."
+            }
+          },
+          "changes_vs_current": [
+            "status open -> unknown: page describes the role and offers an enquiry form (BV) but states no vacancy; judgement call, reverse if the maintainer treats the enquiry form as an apply route",
+            "screening.interview true -> null (not stated on the page)",
+            "when weekday_daytime -> flexible (days not stated)",
+            "postcode_district SW9 -> null (role is London-wide travel; SW9 is only the head office)",
+            "what_youd_do reworded (old text said 'people who have been homeless themselves'; page lists wider lived experience)"
+          ]
+        },
+        {
+          "match": "existing",
+          "id": "groundswell-participation-volunteer",
+          "title": "Participation Volunteer",
+          "what_youd_do": "Sit on a group that uses its own experience of homelessness to change how services work — sharing insight with partners, designing solutions, building campaigns.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": "A regular group meeting",
+          "activity": "campaigning",
+          "location_type": "hybrid",
+          "who_can_apply": "individual",
+          "postcode_district": null,
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "You can step back at any point, and your benefits will not be affected"
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://groundswell.org.uk/become-a-volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {
+            "specific_times": {
+              "url": "https://groundswell.org.uk/volunteer-opportunities/",
+              "quote": "usually involve attending a regular group meeting"
+            }
+          },
+          "changes_vs_current": [
+            "commitment monthly -> unknown (page says only 'a regular group meeting')",
+            "status open -> unknown (no vacancy stated)",
+            "eligibility lived-experience bar removed: the page states no restriction for participation roles",
+            "location_type hybrid is not stated on the page; left unchanged"
+          ]
+        }
+      ],
+      "retire": []
+    },
+    {
+      "org_id": "handson-london",
+      "read_status": "ok",
+      "pages_read": [
+        "https://www.handsonlondon.org.uk/volunteer",
+        "https://www.handsonlondon.org.uk/wrap-uplondon",
+        "https://www.handsonlondon.org.uk/community-volunteering"
+      ],
+      "volunteer_url_suggestion": "https://www.handsonlondon.org.uk/community-volunteering (the current /volunteer page is a board of other charities' roles, not HandsOn's own opportunities)",
+      "org_notes": "/volunteer is a Webflow board of other organisations' roles (page 1 read); it includes Depaul Nightstop and Ensemble Unheard (homelessness-related) but those belong to other orgs. Community events page lists only past-dated events. Wrap Up London 2026: donations 2-22 Nov, deadline to set up a collection 23 Oct.",
+      "org_fields": {},
+      "roles": [
+        {
+          "match": "existing",
+          "id": "handson-london-wrap-up-london",
+          "title": "Wrap Up London Coat Collection",
+          "what_youd_do": "Give your time to the November winter-coat campaign, or set up and run an official coat collection point; contact the team to find out what help is needed.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": "Coat donations 2nd to 22nd November 2026",
+          "activity": "practical",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": {
+            "start_month": 11,
+            "end_month": 11
+          },
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://www.handsonlondon.org.uk/wrap-uplondon",
+          "url_specificity": "role",
+          "evidence": {
+            "seasonal_window": {
+              "url": "https://www.handsonlondon.org.uk/wrap-uplondon",
+              "quote": "Wrap Up London will be accepting warm coat donations from 2nd - 22nd November."
+            },
+            "specific_times": {
+              "url": "https://www.handsonlondon.org.uk/wrap-uplondon",
+              "quote": "Wrap Up London will be accepting warm coat donations from 2nd - 22nd November."
+            }
+          },
+          "changes_vs_current": [
+            "Tube-station collecting (King's Cross, Liverpool Street etc.) is not on the live page, which describes drop-off points and official coat collections; description rewritten",
+            "status seasonal_closed -> unknown: page invites help by email but does not describe a sign-up; campaign runs 2-22 Nov 2026",
+            "commitment one_off, who_can_apply either, weekday day/evening timing removed (not stated)",
+            "seasonal_window 11-12 -> 11-11 (page says 2nd-22nd November)",
+            "activity fundraising -> practical (collecting donated coats, not raising money)",
+            "apply_url now the Wrap Up London page"
+          ]
+        },
+        {
+          "match": "existing",
+          "id": "handson-london-community-day",
+          "title": "Community Day",
+          "what_youd_do": "Sign up for a single Saturday session, such as park and nature-reserve gardening days or helping prepare the Wrap Up London coat campaign.",
+          "commitment": "one_off",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "weekend_daytime"
+          ],
+          "specific_times": "Mainly Saturdays",
+          "activity": "varies",
+          "location_type": "in_person",
+          "who_can_apply": "either",
+          "postcode_district": null,
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "closed",
+          "apply_url": "https://www.handsonlondon.org.uk/community-volunteering",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {
+              "url": "https://www.handsonlondon.org.uk/community-volunteering",
+              "quote": "Wrap Up London Preparation Day Saturday 10 October, 11:00 - 14:00"
+            },
+            "commitment": {
+              "url": "https://www.handsonlondon.org.uk/community-volunteering",
+              "quote": "volunteers can sign-up for one session at a time, with no pressure to commit to a certain number of Saturdays"
+            },
+            "when": {
+              "url": "https://www.handsonlondon.org.uk/community-volunteering",
+              "quote": "give their time to volunteering, mainly on Saturdays"
+            },
+            "specific_times": {
+              "url": "https://www.handsonlondon.org.uk/community-volunteering",
+              "quote": "give their time to volunteering, mainly on Saturdays"
+            },
+            "who_can_apply": {
+              "url": "https://www.handsonlondon.org.uk/community-volunteering",
+              "quote": "open to all individuals, families and friends"
+            }
+          },
+          "changes_vs_current": [
+            "status open -> closed: the four listed community events are all dated before 17 October (latest Saturday 10 October); the programme itself continues, so re-check Eventbrite listings",
+            "when flexible -> weekend_daytime (page says mainly Saturdays)",
+            "apply_url moved from the general board page to the community volunteering page",
+            "induction text about registering an account removed (not on this page)"
+          ]
+        }
+      ],
+      "retire": []
+    },
+    {
+      "org_id": "manna-society",
+      "read_status": "ok",
+      "pages_read": [
+        "https://mannasociety.org.uk/support-us/volunteer-for-us/"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Page names two main roles (kitchen, IT suite) and a contact link but states no vacancy, frequency or screening, so status, commitment and DBS stay unknown. Also mentions possible group volunteering and an open invitation for specific skills (e.g. plumbing); neither is a role.",
+      "org_fields": {},
+      "roles": [
+        {
+          "match": "existing",
+          "id": "manna-society-kitchen-volunteer",
+          "title": "Kitchen Volunteer",
+          "what_youd_do": "Pre-rinse kitchen plates and cookware before loading them into the commercial dishwasher for washing.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": 4,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "9am to 1pm",
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": "SE1",
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {
+            "specific_times": {
+              "url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
+              "quote": "The hours are 9am to 1pm."
+            },
+            "postcode_district": {
+              "url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
+              "quote": "SE1 3QP"
+            }
+          },
+          "changes_vs_current": []
+        },
+        {
+          "match": "existing",
+          "id": "manna-society-computer-suite",
+          "title": "IT Volunteer",
+          "what_youd_do": "Prepare computer equipment in the digital suite, guide visitors through basic tech questions, and maintain an orderly environment.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": 2,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "10.30–11.30am and 12noon–1.00pm",
+          "activity": "teaching",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": "SE1",
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [
+            "Basic computer skills"
+          ],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {
+            "specific_times": {
+              "url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
+              "quote": "from 10.30–11.30am and 12noon–1.00pm"
+            },
+            "skills": {
+              "url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
+              "quote": "Basic computer skills and a friendly attitude are all that’s needed."
+            },
+            "postcode_district": {
+              "url": "https://mannasociety.org.uk/support-us/volunteer-for-us/",
+              "quote": "SE1 3QP"
+            }
+          },
+          "changes_vs_current": []
+        }
+      ],
+      "retire": []
+    },
+    {
+      "org_id": "new-horizon-youth-centre",
+      "read_status": "partial",
+      "pages_read": [
+        "https://nhyouthcentre.org.uk/get-involved/jobs/",
+        "https://studentsunionucl.org/volunteering/organisation/new-horizon-youth-centre"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "NHYC's own 'Jobs & volunteering' page lists three paid vacancies only (Outreach Worker, Youth Worker, Housing Advice Worker) and no volunteer role. The three roles held come from a third-party UCL students' union page (students only, apply by CV email) that points back to this jobs page. Left as unknown; consider retiring. Own page states Registered Charity No. 276943.",
+      "org_fields": {
+        "charity_number": "276943"
+      },
+      "roles": [
+        {
+          "match": "existing",
+          "id": "nhyc-kitchen",
+          "title": "Kitchen Volunteer",
+          "what_youd_do": "Work beside their chef on up to a hundred meals a day, vegetarian and meat, then keep the kitchen straight afterwards.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": null,
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": "NW1",
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [
+            "Students (advertised via Students' Union UCL)"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://nhyouthcentre.org.uk/get-involved/jobs/",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {
+            "eligibility": {
+              "url": "https://studentsunionucl.org/volunteering/organisation/new-horizon-youth-centre",
+              "quote": "We have three brilliant volunteering opportunities for students who are interested in working with young people experiencing homelessness."
+            },
+            "when": {
+              "url": "https://studentsunionucl.org/volunteering/organisation/new-horizon-youth-centre",
+              "quote": "New Horizon Youth Centre runs a busy day centre from Monday to Friday."
+            }
+          },
+          "changes_vs_current": [
+            "commitment weekly -> unknown (page says 'a regular volunteer')",
+            "min_age 18 -> null (not stated)",
+            "eligibility narrowed to 'students' as the UCL page words it (no 'UK or EU university' or age bar stated)",
+            "NHYC's own jobs page lists only paid posts, so status stays unknown"
+          ]
+        },
+        {
+          "match": "existing",
+          "id": "nhyc-esol-tutor",
+          "title": "ESOL Tutor",
+          "what_youd_do": "Run a weekly English conversation class for young people improving their spoken English — planning the topics and pitching them across a wide range of abilities.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "teaching",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": "NW1",
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [
+            "Students (advertised via Students' Union UCL)"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://nhyouthcentre.org.uk/get-involved/jobs/",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {
+            "eligibility": {
+              "url": "https://studentsunionucl.org/volunteering/organisation/new-horizon-youth-centre",
+              "quote": "We have three brilliant volunteering opportunities for students who are interested in working with young people experiencing homelessness."
+            },
+            "commitment": {
+              "url": "https://studentsunionucl.org/volunteering/organisation/new-horizon-youth-centre",
+              "quote": "deliver weekly English conversation classes"
+            }
+          },
+          "changes_vs_current": [
+            "min_age 18 -> null (not stated)",
+            "eligibility narrowed to 'students'",
+            "when weekday_daytime -> flexible (days not stated)"
+          ]
+        },
+        {
+          "match": "existing",
+          "id": "nhyc-sports-assistant",
+          "title": "Sports Assistant",
+          "what_youd_do": "Help run their sports sessions — basketball, yoga, boxing or football. A coaching qualification is welcome, enthusiasm will do.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "teaching",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": "NW1",
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [
+            "Students (advertised via Students' Union UCL)"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://nhyouthcentre.org.uk/get-involved/jobs/",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {
+            "eligibility": {
+              "url": "https://studentsunionucl.org/volunteering/organisation/new-horizon-youth-centre",
+              "quote": "We have three brilliant volunteering opportunities for students who are interested in working with young people experiencing homelessness."
+            }
+          },
+          "changes_vs_current": [
+            "commitment weekly -> unknown (page says sessions run 'across the week')",
+            "min_age 18 -> null (not stated)",
+            "eligibility narrowed to 'students'",
+            "when weekday_daytime -> flexible"
+          ]
+        }
+      ],
+      "retire": []
+    },
+    {
+      "org_id": "north-london-action-for-the-homeless",
+      "read_status": "ok",
+      "pages_read": [
+        "https://www.nlah.org.uk/volunteer/"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Page carries an 'August 2026 UPDATE' (two months old) saying washing-up volunteers are being recruited, Wed 7-9pm and Mon 1-3pm, with a downloadable Word application form. No other roles listed.",
+      "org_fields": {},
+      "roles": [
+        {
+          "match": "existing",
+          "id": "nlah-drop-in-meal-service",
+          "title": "Washing-up Volunteer",
+          "what_youd_do": "Wash up after the drop-in service at one of the listed shifts.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": 2,
+          "when": [
+            "weekday_daytime",
+            "weekday_evening"
+          ],
+          "specific_times": "Mondays 1pm to 3pm; Wednesdays 7pm to 9pm",
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": "N16",
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.nlah.org.uk/volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {
+            "status": {
+              "url": "https://www.nlah.org.uk/volunteer/",
+              "quote": "We are currently recruiting volunteers for washing up."
+            },
+            "specific_times": {
+              "url": "https://www.nlah.org.uk/volunteer/",
+              "quote": "Wednesdays; 7pm to 9pm. Mondays 1pm to 3 pm."
+            },
+            "when": {
+              "url": "https://www.nlah.org.uk/volunteer/",
+              "quote": "Wednesdays; 7pm to 9pm. Mondays 1pm to 3 pm."
+            },
+            "postcode_district": {
+              "url": "https://www.nlah.org.uk/volunteer/",
+              "quote": "Stoke Newington, Hackney (N16)"
+            }
+          },
+          "changes_vs_current": [
+            "screening.induction text ('email it back', 'they tell you which roles are going') is not on the page; cleared. Page links a downloadable application form (.docx)."
+          ]
+        }
+      ],
+      "retire": [
+        {
+          "id": "nlah-supplies-driver",
+          "reason": "Current volunteer page lists only washing-up; the Supplies Driver role is not mentioned.",
+          "evidence": {
+            "url": "https://www.nlah.org.uk/volunteer/",
+            "quote": "We are currently recruiting volunteers for washing up."
+          }
+        }
+      ]
+    }
+  ]
+}

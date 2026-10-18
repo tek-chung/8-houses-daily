@@ -21,12 +21,12 @@
     "lived_experience_roles": true,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-18T08:47:48+00:00",
-      "last_success": "2026-10-17T18:53:58+00:00",
+      "last_attempt": "2026-10-17T22:08:14+00:00",
+      "last_success": "2026-10-17T22:08:14+00:00",
       "link_status": "ok",
       "content_hash": "36e6c9ff570cc1b80ac96c7ef1760fd593adb9af814b31f13f6bbad02110a4f5",
       "consecutive_failures": 0,
-      "etag": "\"25532-1792313273;gz\"",
+      "etag": "\"24200-1792236551;gz\"",
       "last_modified": null,
       "last_extraction": "2026-10-17T18:54:06+00:00"
     },
@@ -41,20 +41,20 @@
       "what_youd_do": "Interpret for clients, assist with completing referrals, and help coordinate casework activities to improve access to support services.",
       "commitment": "long_term",
       "min_term_months": 3,
-      "typical_shift_hours": null,
+      "typical_shift_hours": 6,
       "when": [
-        "flexible"
+        "weekday_daytime"
       ],
-      "specific_times": null,
+      "specific_times": "Mon-Thu, 10am-4pm, 1 day per week",
       "activity": "advice",
       "location_type": "in_person",
       "who_can_apply": "individual",
       "postcode_district": null,
       "screening": {
         "dbs": "required_unspecified",
-        "references": null,
-        "interview": null,
-        "min_age": null,
+        "references": true,
+        "interview": true,
+        "min_age": 18,
         "induction": null
       },
       "skills": [
@@ -73,15 +73,19 @@
       "org_id": "st-mungos",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T18:54:49+00:00",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
         "method": "llm",
-        "reviewed_by_human": false,
+        "reviewed_by_human": true,
         "confidence": 1.0,
-        "source_url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+        "source_url": "https://www.mungos.org/volunteer_role/roma-casework-volunteer/",
         "verified_fields": [
+          "status",
           "screening.dbs",
-          "stated_places",
-          "status"
+          "screening.references",
+          "screening.interview",
+          "screening.min_age",
+          "specific_times",
+          "commitment"
         ],
         "unsupported_fields": []
       },
@@ -91,23 +95,23 @@
     },
     {
       "title": "Workshop Assistant Volunteer",
-      "what_youd_do": "Supervise students during practical building and plumbing classes and help keep the workshop environment orderly and secure.",
+      "what_youd_do": "Support clients in a hands-on building and plumbing workshop, helping keep the space safe and orderly so they can learn.",
       "commitment": "long_term",
       "min_term_months": 6,
-      "typical_shift_hours": null,
+      "typical_shift_hours": 6,
       "when": [
-        "flexible"
+        "weekday_daytime"
       ],
-      "specific_times": null,
+      "specific_times": "Mon-Fri 9:30am-3:30pm, 2 days per week",
       "activity": "practical",
       "location_type": "in_person",
       "who_can_apply": "individual",
       "postcode_district": null,
       "screening": {
         "dbs": "required_unspecified",
-        "references": null,
-        "interview": null,
-        "min_age": null,
+        "references": true,
+        "interview": true,
+        "min_age": 18,
         "induction": null
       },
       "skills": [],
@@ -121,15 +125,19 @@
       "org_id": "st-mungos",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T18:54:49+00:00",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
         "method": "llm",
-        "reviewed_by_human": false,
+        "reviewed_by_human": true,
         "confidence": 1.0,
-        "source_url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+        "source_url": "https://www.mungos.org/volunteer_role/workshop-assistant-volunteer/",
         "verified_fields": [
+          "status",
           "screening.dbs",
-          "stated_places",
-          "status"
+          "screening.references",
+          "screening.interview",
+          "screening.min_age",
+          "specific_times",
+          "commitment"
         ],
         "unsupported_fields": []
       },
@@ -154,9 +162,9 @@
       "postcode_district": null,
       "screening": {
         "dbs": "required_unspecified",
-        "references": null,
-        "interview": null,
-        "min_age": null,
+        "references": true,
+        "interview": true,
+        "min_age": 18,
         "induction": null
       },
       "skills": [
@@ -174,15 +182,19 @@
       "org_id": "st-mungos",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T18:54:49+00:00",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
         "method": "llm",
-        "reviewed_by_human": false,
+        "reviewed_by_human": true,
         "confidence": 1.0,
-        "source_url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+        "source_url": "https://www.mungos.org/volunteer_role/digital-skills-volunteer/",
         "verified_fields": [
+          "status",
           "screening.dbs",
-          "stated_places",
-          "status"
+          "screening.references",
+          "screening.interview",
+          "screening.min_age",
+          "specific_times",
+          "commitment"
         ],
         "unsupported_fields": []
       },
@@ -195,22 +207,24 @@
       "org_id": "st-mungos",
       "title": "Outreach Volunteer",
       "what_youd_do": "Assist outreach workers on their shifts, adding capacity so the team can reach more people sleeping rough, including people referred through StreetLink.",
-      "commitment": "unknown",
-      "min_term_months": null,
+      "commitment": "long_term",
+      "min_term_months": 6,
       "typical_shift_hours": null,
       "when": [
-        "flexible"
+        "weekday_daytime",
+        "weekday_evening",
+        "weekend_daytime"
       ],
-      "specific_times": null,
+      "specific_times": "Bournemouth 6-9am or 9pm-12am weekly; Reading Wed 6-10am, Fri 10:30am-1:30pm",
       "activity": "outreach",
       "location_type": "in_person",
       "postcode_district": null,
       "who_can_apply": "individual",
       "screening": {
-        "dbs": "unknown",
-        "references": null,
-        "interview": null,
-        "min_age": null,
+        "dbs": "required_unspecified",
+        "references": true,
+        "interview": true,
+        "min_age": 18,
         "induction": null
       },
       "skills": [],
@@ -222,18 +236,21 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T21:00:00+00:00",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
         "method": "llm",
-        "reviewed_by_human": false,
-        "confidence": 0.9,
-        "source_url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://www.mungos.org/volunteer_role/outreach-volunteer/",
         "verified_fields": [
-          "stated_places",
-          "status"
+          "status",
+          "screening.dbs",
+          "screening.references",
+          "screening.interview",
+          "screening.min_age",
+          "specific_times",
+          "commitment"
         ],
-        "unsupported_fields": [
-          "schedule and training details removed: the old Westminster and Ealing wording was not on the page"
-        ]
+        "unsupported_fields": []
       },
       "stated_places": [
         "Bournemouth",
@@ -244,46 +261,51 @@
       "id": "st-mungos-first-response",
       "org_id": "st-mungos",
       "title": "First Response Volunteer",
-      "what_youd_do": "Go out with a partner volunteer to find people reported sleeping rough through StreetLink, and pass what you learn to the outreach team so they can act faster.",
-      "commitment": "unknown",
-      "min_term_months": null,
-      "typical_shift_hours": null,
+      "what_youd_do": "Help track down people reported as sleeping rough so outreach workers can spend their time supporting them; not client-facing, so it suits newcomers to the sector.",
+      "commitment": "monthly",
+      "min_term_months": 6,
+      "typical_shift_hours": 4,
       "when": [
-        "flexible"
+        "weekday_evening",
+        "weekend_evening",
+        "weekend_daytime"
       ],
-      "specific_times": null,
+      "specific_times": "Westminster: Tue/Thu/Sun 8pm-12am, Sat 6-10am; 1 shift a month",
       "activity": "outreach",
       "location_type": "in_person",
       "postcode_district": null,
-      "who_can_apply": "either",
+      "who_can_apply": "individual",
       "screening": {
-        "dbs": "unknown",
-        "references": null,
-        "interview": null,
-        "min_age": null,
-        "induction": "Two-hour online core training. They ask about spent convictions. Travel refunded to zones 1-6."
+        "dbs": "required_unspecified",
+        "references": true,
+        "interview": true,
+        "min_age": 18,
+        "induction": null
       },
       "skills": [],
       "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
-      "apply_url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
-      "url_specificity": "org_volunteer_page",
+      "apply_url": "https://www.mungos.org/volunteer_role/first-response-volunteer/",
+      "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T21:00:00+00:00",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
         "method": "llm",
-        "reviewed_by_human": false,
-        "confidence": 0.9,
-        "source_url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://www.mungos.org/volunteer_role/first-response-volunteer/",
         "verified_fields": [
-          "stated_places",
-          "status"
+          "status",
+          "screening.dbs",
+          "screening.references",
+          "screening.interview",
+          "screening.min_age",
+          "specific_times",
+          "commitment"
         ],
-        "unsupported_fields": [
-          "the other fields were not re-read from the role page"
-        ]
+        "unsupported_fields": []
       },
       "stated_places": [
         "Bournemouth",
@@ -296,48 +318,54 @@
       "id": "st-mungos-gardening",
       "org_id": "st-mungos",
       "title": "Gardening Group Volunteer",
-      "what_youd_do": "Run regular gardening sessions for their clients. Somewhere between horticulture and company, and it counts as both.",
+      "what_youd_do": "Lead gardening sessions with clients at a St Mungo's service, letting each person learn at their own speed, and tend the outdoor space there.",
       "commitment": "weekly",
       "min_term_months": null,
       "typical_shift_hours": null,
       "when": [
         "weekday_daytime"
       ],
-      "specific_times": null,
+      "specific_times": "Mon-Fri daytime; Brent 4 hours a week, Camden/Haringey flexible",
       "activity": "practical",
       "location_type": "in_person",
       "postcode_district": null,
       "who_can_apply": "individual",
       "screening": {
-        "dbs": "unknown",
-        "references": null,
-        "interview": null,
-        "min_age": null,
-        "induction": "Two-hour online core training. They ask about spent convictions. Travel refunded to zones 1-6."
+        "dbs": "required_unspecified",
+        "references": true,
+        "interview": true,
+        "min_age": 18,
+        "induction": null
       },
       "skills": [
         "gardening"
       ],
-      "eligibility": [],
+      "eligibility": [
+        "Camden placement is women only"
+      ],
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
-      "apply_url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
-      "url_specificity": "org_volunteer_page",
+      "apply_url": "https://www.mungos.org/volunteer_role/gardening-group-volunteer/",
+      "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T21:00:00+00:00",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
         "method": "llm",
-        "reviewed_by_human": false,
-        "confidence": 0.9,
-        "source_url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://www.mungos.org/volunteer_role/gardening-group-volunteer/",
         "verified_fields": [
-          "stated_places",
-          "status"
+          "status",
+          "screening.dbs",
+          "screening.references",
+          "screening.interview",
+          "screening.min_age",
+          "specific_times",
+          "commitment",
+          "eligibility"
         ],
-        "unsupported_fields": [
-          "the other fields were not re-read from the role page"
-        ]
+        "unsupported_fields": []
       },
       "stated_places": [
         "Brent",
@@ -348,13 +376,14 @@
     {
       "title": "Cooking Group Volunteer",
       "what_youd_do": "Cook alongside clients, helping choose recipes and buy ingredients so people can socialise over a meal.",
-      "commitment": "unknown",
-      "min_term_months": null,
-      "typical_shift_hours": null,
+      "commitment": "weekly",
+      "min_term_months": 6,
+      "typical_shift_hours": 2,
       "when": [
-        "flexible"
+        "weekday_daytime",
+        "weekday_evening"
       ],
-      "specific_times": null,
+      "specific_times": "Mon-Fri between 12pm-7pm, 2 hours per week",
       "activity": "cooking_serving",
       "location_type": "in_person",
       "who_can_apply": "individual",
@@ -363,11 +392,11 @@
         "Southwark"
       ],
       "screening": {
-        "dbs": "unknown",
-        "references": null,
-        "interview": null,
-        "min_age": null,
-        "induction": null
+        "dbs": "required_unspecified",
+        "references": true,
+        "interview": true,
+        "min_age": 18,
+        "induction": "Level 2 food hygiene certificate needed; arranged online by St Mungo's."
       },
       "skills": [],
       "eligibility": [],
@@ -380,18 +409,21 @@
       "org_id": "st-mungos",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T21:00:00+00:00",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
         "method": "llm",
-        "reviewed_by_human": false,
-        "confidence": 0.9,
-        "source_url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://www.mungos.org/volunteer_role/cooking-group-volunteer/",
         "verified_fields": [
-          "stated_places",
-          "status"
+          "status",
+          "screening.dbs",
+          "screening.references",
+          "screening.interview",
+          "screening.min_age",
+          "specific_times",
+          "commitment"
         ],
-        "unsupported_fields": [
-          "commitment, times and screening not read from the role page"
-        ]
+        "unsupported_fields": []
       }
     }
   ]

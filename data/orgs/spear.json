@@ -6,10 +6,10 @@
       "spear london",
       "spear homelessness"
     ],
-    "charity_number": null,
+    "charity_number": "1122206",
     "website_url": "https://www.spearlondon.org/",
     "volunteer_url": "https://www.spearlondon.org/get-involved/be-a-volunteer/",
-    "summary": "Working with homeless people across south-west London since 1987 \u2014 hostels, shared housing, tenancy sustainment and a health link service into primary care.",
+    "summary": "Working with homeless people across south-west London since 1987 — hostels, shared housing, tenancy sustainment and a health link service into primary care.",
     "coverage": "multi_borough",
     "boroughs": [
       "Richmond upon Thames",
@@ -22,8 +22,8 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-18T08:33:35+00:00",
-      "last_success": "2026-10-18T08:33:56+00:00",
+      "last_attempt": "2026-10-17T22:08:14+00:00",
+      "last_success": "2026-10-17T22:08:14+00:00",
       "link_status": "ok",
       "content_hash": "f0c1d29fd9bc12dd5ccc58256bb78d2f8f7614851a480f60a5b09f070b131bfe",
       "consecutive_failures": 0,

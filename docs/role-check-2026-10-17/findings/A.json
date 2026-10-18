@@ -1,0 +1,1699 @@
+{
+ "agent": "A",
+ "checked_at": "2026-10-17",
+ "orgs": [
+  {
+   "org_id": "crisis",
+   "read_status": "ok",
+   "pages_read": [
+    "https://www.crisis.org.uk/get-involved/volunteer/",
+    "https://www.crisis.org.uk/get-involved/volunteer/volunteer-in-our-local-services/",
+    "https://www.crisis.org.uk/get-involved/volunteer/volunteer-in-our-shops/",
+    "https://www.crisis.org.uk/get-involved/volunteer/volunteer-at-christmas/",
+    "https://www.crisis.org.uk/get-involved/volunteer/volunteer-in-skylight-london/",
+    "https://www.crisis.org.uk/get-involved/volunteer/volunteer-in-our-e-commerce-hub/",
+    "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer (14 pages of 6, apps_close_timestamp filter)"
+   ],
+   "volunteer_url_suggestion": null,
+   "org_notes": "Board held 82 open public offers (all Britain); 50 London: 16 shops (collapsed to 1), 28 Christmas (11 roles; AV, IT, sports, performer, resources, operations, mental health, wellbeing, hotel, chef, minibus etc folded in or not listed), 2 Skylight, 2 fundraising, handyperson, e-commerce. Cheer Point omitted (no London place). Role pages not fetched (JS shell).",
+   "org_fields": {},
+   "roles": [
+    {
+     "match": "existing",
+     "id": "crisis-skylight-welcome",
+     "title": "Welcome and Reception",
+     "what_youd_do": "Greet people arriving at a Skylight centre, sign them in, answer phones and point them to activities and appointments.",
+     "commitment": "weekly",
+     "min_term_months": null,
+     "typical_shift_hours": null,
+     "when": [
+      "weekday_daytime"
+     ],
+     "specific_times": "Croydon: Thursdays, ideally 10am to 4pm. London: 4 hours per week",
+     "activity": "befriending",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": null,
+     "stated_places": [
+      "London - Skylight",
+      "London - Croydon Skylight"
+     ],
+     "screening": {
+      "dbs": "basic",
+      "references": true,
+      "interview": true,
+      "min_age": 18,
+      "induction": "Essential learning first: safeguarding, equality and diversity, data protection. A named supervisor throughout."
+     },
+     "skills": [],
+     "eligibility": [],
+     "seasonal_window": null,
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/mld4IypOUVzFh7qSs3IBZ3CDiTz7r6",
+     "url_specificity": "role",
+     "evidence": {
+      "status": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/mld4IypOUVzFh7qSs3IBZ3CDiTz7r6",
+       "quote": "As a Welcome and Reception Volunteer you will be the first point of contact for many people who need to access our services."
+      },
+      "commitment": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/mld4IypOUVzFh7qSs3IBZ3CDiTz7r6",
+       "quote": "4 hours per week"
+      },
+      "when": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/A5LVGChqMGxkdAZQJUggM0o5RaWJ8l",
+       "quote": "Thursdays, ideally betwwen 10am - 4pm"
+      },
+      "specific_times": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/A5LVGChqMGxkdAZQJUggM0o5RaWJ8l",
+       "quote": "Thursdays, ideally betwwen 10am - 4pm"
+      },
+      "screening.dbs": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/mld4IypOUVzFh7qSs3IBZ3CDiTz7r6",
+       "quote": "Basic Disclosure DBS"
+      },
+      "screening.references": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "Not all our roles require references, but those volunteering in our Skylights and Head Office do."
+      },
+      "screening.interview": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/volunteer-in-our-local-services/",
+       "quote": "As part of our recruitment, we will ask you to meet with us, either virtually or in person."
+      },
+      "screening.min_age": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+      },
+      "who_can_apply": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "Find a role that suits you and then click on the apply now button."
+      },
+      "stated_places": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/mld4IypOUVzFh7qSs3IBZ3CDiTz7r6",
+       "quote": "London - Skylight"
+      }
+     },
+     "changes_vs_current": [
+      "status unknown -> open (two live Skylight offers: London, closes 2026-11-11; Croydon, closes 2026-11-13)",
+      "screening.dbs unknown -> basic",
+      "screening.min_age null -> 18 (site-wide FAQ)",
+      "screening.interview null -> true (local services FAQ)",
+      "postcode_district E1 -> null (offers now cover London Skylight E1 and Croydon CR0)",
+      "apply_url now the London role page on the board (role specificity)",
+      "specific_times now states both offers' timings",
+      "stated_places added"
+     ]
+    },
+    {
+     "match": "existing",
+     "id": "crisis-skylight-one-to-one",
+     "title": "One-to-One Member Support",
+     "what_youd_do": "Help members of a Skylight find housing and settle into their area, working alongside their Lead Worker.",
+     "commitment": "unknown",
+     "min_term_months": null,
+     "typical_shift_hours": null,
+     "when": [
+      "weekday_daytime"
+     ],
+     "specific_times": null,
+     "activity": "mentoring",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": null,
+     "stated_places": [],
+     "screening": {
+      "dbs": "unknown",
+      "references": true,
+      "interview": true,
+      "min_age": 18,
+      "induction": "Essential learning first: safeguarding, equality and diversity, data protection. A named supervisor throughout."
+     },
+     "skills": [
+      "good timekeeping",
+      "an understanding of confidentiality"
+     ],
+     "eligibility": [],
+     "seasonal_window": null,
+     "next_intake": null,
+     "status": "closed",
+     "apply_url": "https://www.crisis.org.uk/get-involved/volunteer/volunteer-in-our-local-services/",
+     "url_specificity": "org_volunteer_page",
+     "evidence": {
+      "status": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/volunteer-in-skylight-london/",
+       "quote": "If there are no roles advertised for your Skylight, this means we have no volunteer opportunities available in that service now."
+      },
+      "when": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/volunteer-in-skylight-london/",
+       "quote": "We only currently have volunteer opportunities within our Skylights during operational hours"
+      },
+      "screening.references": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "Not all our roles require references, but those volunteering in our Skylights and Head Office do."
+      },
+      "screening.interview": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/volunteer-in-our-local-services/",
+       "quote": "As part of our recruitment, we will ask you to meet with us, either virtually or in person."
+      },
+      "screening.min_age": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+      },
+      "who_can_apply": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "Find a role that suits you and then click on the apply now button."
+      }
+     },
+     "changes_vs_current": [
+      "status unknown -> closed: board held no 'supporting members' offer in London (only Welcome and Reception at London and Croydon Skylights); page still describes the role type",
+      "commitment weekly -> unknown, min_term_months 3 -> null, screening.dbs required_unspecified -> unknown: those came from a Brent advert that is no longer on the board and no live page states them",
+      "screening.interview null -> true, min_age null -> 18 (general pages)"
+     ]
+    },
+    {
+     "match": "existing",
+     "id": "crisis-charity-shop",
+     "title": "Retail Volunteer",
+     "what_youd_do": "Serve customers and run the till, sort, price and display donated stock, and help dress the shop at a Crisis charity shop in London.",
+     "commitment": "weekly",
+     "min_term_months": null,
+     "typical_shift_hours": 4,
+     "when": [
+      "weekday_daytime"
+     ],
+     "specific_times": "At least 4 hours or one full day a week (some shops set times with management)",
+     "activity": "shop_warehouse",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": null,
+     "stated_places": [
+      "London shops - all"
+     ],
+     "screening": {
+      "dbs": "none",
+      "references": null,
+      "interview": null,
+      "min_age": 18,
+      "induction": "Induction and on-the-job training, with a supervisor to support you."
+     },
+     "skills": [
+      "Customer service, or willing to learn",
+      "Good time-keeping and reliability"
+     ],
+     "eligibility": [],
+     "seasonal_window": null,
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/list?sortBy=start_timestamp&filter=%7B%22filter%22%3A%5B%7B%22attr%22%3A%22custom_department%22%2C%22operator%22%3A%22in%22%2C%22value%22%3A%5B21111%2C21113%5D%7D%5D%7D",
+     "url_specificity": "org_volunteer_page",
+     "evidence": {
+      "status": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/8R3Ugx1uVEHqYz7tgCLh6wJLmI3C7H",
+       "quote": "You will contribute to ending homelessness by Helping our shops and cafés to raise the necessary funds"
+      },
+      "commitment": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/8R3Ugx1uVEHqYz7tgCLh6wJLmI3C7H",
+       "quote": "Minimum 4 hours or 1 full day per week"
+      },
+      "specific_times": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/8R3Ugx1uVEHqYz7tgCLh6wJLmI3C7H",
+       "quote": "Minimum 4 hours or 1 full day per week"
+      },
+      "when": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/volunteer-in-our-shops/",
+       "quote": "We currently have high street charity shops in the most bustling London neighbourhoods."
+      },
+      "screening.dbs": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/8R3Ugx1uVEHqYz7tgCLh6wJLmI3C7H",
+       "quote": "Disclosure check needed: None"
+      },
+      "screening.min_age": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+      },
+      "who_can_apply": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "Find a role that suits you and then click on the apply now button."
+      },
+      "stated_places": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/8R3Ugx1uVEHqYz7tgCLh6wJLmI3C7H",
+       "quote": "London shops - all"
+      }
+     },
+     "changes_vs_current": [
+      "16 London shop offers on the board collapsed into this one record (Camden, Archway, Brick Lane, Camberwell, Dalston, Ealing, Finsbury Park, Hackney, Hammersmith, Islington, Kilburn, Muswell Hill, Peckham, Putney, Streatham, Walthamstow)",
+      "screening.min_age null -> 18 (site-wide FAQ)",
+      "stated_places added"
+     ]
+    },
+    {
+     "match": "new",
+     "id": "crisis-e-commerce-support",
+     "title": "E-Commerce Support Volunteer",
+     "what_youd_do": "Sort and steam donated clothing, log and label items, and pick and pack online orders at the Canning Town e-commerce warehouse.",
+     "commitment": "weekly",
+     "min_term_months": null,
+     "typical_shift_hours": 5,
+     "when": [
+      "flexible"
+     ],
+     "specific_times": "5 hours or 1 full day per week",
+     "activity": "shop_warehouse",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": "E16",
+     "stated_places": [
+      "Canning Town Warehouse/office"
+     ],
+     "screening": {
+      "dbs": "none",
+      "references": null,
+      "interview": null,
+      "min_age": 18,
+      "induction": "Initial induction as well as ongoing training and support."
+     },
+     "skills": [
+      "Strong attention to detail and can-do attitude.",
+      "Good timekeeping and attendance."
+     ],
+     "eligibility": [],
+     "seasonal_window": null,
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/cht11KFauM9LgkjlnzSEmq6iUbaJCj",
+     "url_specificity": "role",
+     "evidence": {
+      "status": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/cht11KFauM9LgkjlnzSEmq6iUbaJCj",
+       "quote": "You will contribute to ending homelessness by Helping out behind the scenes of our growing e-comm business."
+      },
+      "commitment": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/cht11KFauM9LgkjlnzSEmq6iUbaJCj",
+       "quote": "5 hours or 1 full day per week"
+      },
+      "specific_times": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/cht11KFauM9LgkjlnzSEmq6iUbaJCj",
+       "quote": "5 hours or 1 full day per week"
+      },
+      "screening.dbs": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/cht11KFauM9LgkjlnzSEmq6iUbaJCj",
+       "quote": "Disclosure check needed: None"
+      },
+      "screening.min_age": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+      },
+      "who_can_apply": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "Find a role that suits you and then click on the apply now button."
+      },
+      "stated_places": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/cht11KFauM9LgkjlnzSEmq6iUbaJCj",
+       "quote": "Canning Town Warehouse/office"
+      }
+     },
+     "changes_vs_current": []
+    },
+    {
+     "match": "new",
+     "id": "crisis-handyperson",
+     "title": "Handyperson Volunteer",
+     "what_youd_do": "Help Crisis's facilities team with small repairs and decorating at its sites: shelves, taps, door handles, light fittings and painting.",
+     "commitment": "weekly",
+     "min_term_months": null,
+     "typical_shift_hours": null,
+     "when": [
+      "flexible"
+     ],
+     "specific_times": "A few hours a week, preferably for a minimum of six months",
+     "activity": "practical",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": null,
+     "stated_places": [
+      "London-wide Services team"
+     ],
+     "screening": {
+      "dbs": "none",
+      "references": null,
+      "interview": true,
+      "min_age": 18,
+      "induction": null
+     },
+     "skills": [
+      "Experience as a handyperson, plumber, decorator or electrician"
+     ],
+     "eligibility": [],
+     "seasonal_window": null,
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/MrnKFkuk6EvmmSgfjng0oYkpnRKDCZ",
+     "url_specificity": "role",
+     "evidence": {
+      "status": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/MrnKFkuk6EvmmSgfjng0oYkpnRKDCZ",
+       "quote": "As a handyperson volunteer you will use your knowledge, experience, and skills to assist our maintenance technician with a variety of jobs"
+      },
+      "commitment": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/MrnKFkuk6EvmmSgfjng0oYkpnRKDCZ",
+       "quote": "A few hours a week, preferably for a minimum of six months"
+      },
+      "specific_times": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/MrnKFkuk6EvmmSgfjng0oYkpnRKDCZ",
+       "quote": "A few hours a week, preferably for a minimum of six months"
+      },
+      "screening.dbs": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/MrnKFkuk6EvmmSgfjng0oYkpnRKDCZ",
+       "quote": "Disclosure check needed: None"
+      },
+      "screening.interview": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/MrnKFkuk6EvmmSgfjng0oYkpnRKDCZ",
+       "quote": "Interview required for this role? Yes"
+      },
+      "screening.min_age": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+      },
+      "who_can_apply": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "Find a role that suits you and then click on the apply now button."
+      },
+      "stated_places": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/MrnKFkuk6EvmmSgfjng0oYkpnRKDCZ",
+       "quote": "London-wide Services team"
+      }
+     },
+     "changes_vs_current": []
+    },
+    {
+     "match": "new",
+     "id": "crisis-collections-volunteer",
+     "title": "Collections Volunteer, London",
+     "what_youd_do": "Stand at a station or other public spot with a Crisis collecting unit, take cash and card donations and thank passers-by.",
+     "commitment": "unknown",
+     "min_term_months": null,
+     "typical_shift_hours": null,
+     "when": [
+      "flexible"
+     ],
+     "specific_times": null,
+     "activity": "fundraising",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": null,
+     "stated_places": [
+      "London"
+     ],
+     "screening": {
+      "dbs": "unknown",
+      "references": null,
+      "interview": null,
+      "min_age": 18,
+      "induction": "A written brief, with support from a member of the Community & Events team"
+     },
+     "skills": [],
+     "eligibility": [],
+     "seasonal_window": null,
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/dQDaJ8OlOXGRYCGLqAXGfSwzD9H2nB",
+     "url_specificity": "role",
+     "evidence": {
+      "status": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/dQDaJ8OlOXGRYCGLqAXGfSwzD9H2nB",
+       "quote": "The majority of collections will be held at Transport for London stations."
+      },
+      "screening.min_age": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+      },
+      "who_can_apply": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "Find a role that suits you and then click on the apply now button."
+      },
+      "stated_places": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/dQDaJ8OlOXGRYCGLqAXGfSwzD9H2nB",
+       "quote": "Collections Volunteer, London"
+      }
+     },
+     "changes_vs_current": []
+    },
+    {
+     "match": "existing",
+     "id": "crisis-crisis-at-christmas-volunteer",
+     "title": "Crisis at Christmas General Volunteer",
+     "what_youd_do": "Welcome guests, serve meals and hot drinks, keep a Christmas day centre tidy and spend time chatting with guests.",
+     "commitment": "unknown",
+     "min_term_months": null,
+     "typical_shift_hours": 9,
+     "when": [
+      "flexible"
+     ],
+     "specific_times": "9am - 6pm shifts, mid December to early January",
+     "activity": "cooking_serving",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": null,
+     "stated_places": [
+      "London - Christmas venue"
+     ],
+     "screening": {
+      "dbs": "none",
+      "references": null,
+      "interview": null,
+      "min_age": 18,
+      "induction": "Access to relevant Crisis at Christmas training events"
+     },
+     "skills": [],
+     "eligibility": [],
+     "seasonal_window": {
+      "start_month": 12,
+      "end_month": 1
+     },
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/sxgh9KB24R601cY6iuxoCkiE5WnAvU",
+     "url_specificity": "role",
+     "changes_vs_current": [
+      "commitment long_term -> unknown (listing says 1 shift but text says minimum 2 shifts)",
+      "seasonal_window December -> December to January",
+      "screening.interview false -> null (no live quote)",
+      "screening.dbs unknown -> none (board field says None)",
+      "when changed to flexible (days not stated)",
+      "apply_url now the London General Volunteer role page",
+      "status open (2026 applications open); seasonal window now 12-1 from page meta"
+     ],
+     "evidence": {
+      "status": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "Applications to volunteer for Crisis at Christmas 2026 are now open!"
+      },
+      "seasonal_window": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/volunteer-at-christmas/",
+       "quote": "from mid December to early January, including Christmas Day"
+      },
+      "screening.min_age": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+      },
+      "who_can_apply": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/sxgh9KB24R601cY6iuxoCkiE5WnAvU",
+       "quote": "Each person who'd like to volunteer needs to sign up individually"
+      },
+      "stated_places": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/sxgh9KB24R601cY6iuxoCkiE5WnAvU",
+       "quote": "London - Christmas venue"
+      },
+      "screening.dbs": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/sxgh9KB24R601cY6iuxoCkiE5WnAvU",
+       "quote": "Disclosure check needed: None"
+      },
+      "specific_times": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/sxgh9KB24R601cY6iuxoCkiE5WnAvU",
+       "quote": "We expect volunteers to do 1 shift. 9am - 6pm"
+      }
+     }
+    },
+    {
+     "match": "new",
+     "id": "crisis-christmas-night-owl",
+     "title": "Christmas Night Owl Volunteer",
+     "what_youd_do": "Work in a pair through the night at a Christmas hotel, keeping things calm, tidying for the morning and chatting to guests who cannot sleep.",
+     "commitment": "unknown",
+     "min_term_months": null,
+     "typical_shift_hours": 10,
+     "when": [
+      "overnight"
+     ],
+     "specific_times": "22:30-08:30 shifts, minimum 2 shifts",
+     "activity": "befriending",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": null,
+     "stated_places": [
+      "London - Christmas venue"
+     ],
+     "screening": {
+      "dbs": "none",
+      "references": null,
+      "interview": null,
+      "min_age": 18,
+      "induction": "Access to relevant Crisis at Christmas training events"
+     },
+     "skills": [
+      "Positive attitude and a general willingness to get involved"
+     ],
+     "eligibility": [],
+     "seasonal_window": {
+      "start_month": 12,
+      "end_month": 1
+     },
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/aSzfrGxwbAFOs3a3tJmqDnLsVz7BGt",
+     "url_specificity": "role",
+     "changes_vs_current": [],
+     "evidence": {
+      "status": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "Applications to volunteer for Crisis at Christmas 2026 are now open!"
+      },
+      "seasonal_window": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/volunteer-at-christmas/",
+       "quote": "from mid December to early January, including Christmas Day"
+      },
+      "screening.min_age": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+      },
+      "who_can_apply": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/aSzfrGxwbAFOs3a3tJmqDnLsVz7BGt",
+       "quote": "Each person who'd like to volunteer needs to sign up individually"
+      },
+      "stated_places": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/aSzfrGxwbAFOs3a3tJmqDnLsVz7BGt",
+       "quote": "London - Christmas venue"
+      },
+      "screening.dbs": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/aSzfrGxwbAFOs3a3tJmqDnLsVz7BGt",
+       "quote": "Disclosure check needed: None"
+      },
+      "when": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/aSzfrGxwbAFOs3a3tJmqDnLsVz7BGt",
+       "quote": "22:30-08:30"
+      }
+     }
+    },
+    {
+     "match": "new",
+     "id": "crisis-christmas-kitchen",
+     "title": "Christmas Kitchen Volunteer",
+     "what_youd_do": "Prepare vegetables, cook and serve hot meals, including a Christmas dinner, in the kitchen of a Crisis at Christmas day centre.",
+     "commitment": "unknown",
+     "min_term_months": null,
+     "typical_shift_hours": 8.5,
+     "when": [
+      "flexible"
+     ],
+     "specific_times": "8.30am - 5.00pm, 2 shifts",
+     "activity": "cooking_serving",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": null,
+     "stated_places": [
+      "London - Christmas venue"
+     ],
+     "screening": {
+      "dbs": "none",
+      "references": null,
+      "interview": null,
+      "min_age": 18,
+      "induction": "Access to relevant Crisis at Christmas training events"
+     },
+     "skills": [],
+     "eligibility": [
+      "Level 2 Food Safety and Hygiene Certificate needed (no experience needed)"
+     ],
+     "seasonal_window": {
+      "start_month": 12,
+      "end_month": 1
+     },
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/smUcGRFkGAz7FoWYxzAghddOh9zKeb",
+     "url_specificity": "role",
+     "changes_vs_current": [],
+     "evidence": {
+      "status": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "Applications to volunteer for Crisis at Christmas 2026 are now open!"
+      },
+      "seasonal_window": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/volunteer-at-christmas/",
+       "quote": "from mid December to early January, including Christmas Day"
+      },
+      "screening.min_age": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+      },
+      "who_can_apply": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/smUcGRFkGAz7FoWYxzAghddOh9zKeb",
+       "quote": "Each person who'd like to volunteer needs to sign up individually"
+      },
+      "stated_places": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/smUcGRFkGAz7FoWYxzAghddOh9zKeb",
+       "quote": "London - Christmas venue"
+      },
+      "screening.dbs": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/smUcGRFkGAz7FoWYxzAghddOh9zKeb",
+       "quote": "Disclosure check needed: None"
+      },
+      "eligibility": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/smUcGRFkGAz7FoWYxzAghddOh9zKeb",
+       "quote": "You don’t need any experience but you will need a Level 2 Food Safety and Hygiene Certificate."
+      }
+     }
+    },
+    {
+     "match": "new",
+     "id": "crisis-christmas-driver",
+     "title": "Christmas Driver Volunteer",
+     "what_youd_do": "Drive cars, vans or larger vehicles carrying food, supplies, volunteers and guests between Christmas centres, hotels and the warehouse.",
+     "commitment": "unknown",
+     "min_term_months": null,
+     "typical_shift_hours": 8,
+     "when": [
+      "flexible"
+     ],
+     "specific_times": "3 shifts, mostly 9am - 5pm",
+     "activity": "practical",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": null,
+     "stated_places": [
+      "London - Christmas venue"
+     ],
+     "screening": {
+      "dbs": "enhanced",
+      "references": null,
+      "interview": null,
+      "min_age": 23,
+      "induction": "Access to relevant Crisis at Christmas training events"
+     },
+     "skills": [],
+     "eligibility": [
+      "Aged 23 to 75 with a clean licence held at least two years"
+     ],
+     "seasonal_window": {
+      "start_month": 12,
+      "end_month": 1
+     },
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/nOkem7zZOaNvviGg6OcknXoJnc2DaU",
+     "url_specificity": "role",
+     "changes_vs_current": [],
+     "evidence": {
+      "status": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "Applications to volunteer for Crisis at Christmas 2026 are now open!"
+      },
+      "seasonal_window": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/volunteer-at-christmas/",
+       "quote": "from mid December to early January, including Christmas Day"
+      },
+      "screening.min_age": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/nOkem7zZOaNvviGg6OcknXoJnc2DaU",
+       "quote": "drivers must: be between the ages of 23 and 75"
+      },
+      "who_can_apply": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/nOkem7zZOaNvviGg6OcknXoJnc2DaU",
+       "quote": "Each person who'd like to volunteer needs to sign up individually"
+      },
+      "stated_places": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/nOkem7zZOaNvviGg6OcknXoJnc2DaU",
+       "quote": "London - Christmas venue"
+      },
+      "screening.dbs": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/nOkem7zZOaNvviGg6OcknXoJnc2DaU",
+       "quote": "Enhanced DBS"
+      },
+      "eligibility": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/nOkem7zZOaNvviGg6OcknXoJnc2DaU",
+       "quote": "drivers must: be between the ages of 23 and 75"
+      },
+      "specific_times": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/nOkem7zZOaNvviGg6OcknXoJnc2DaU",
+       "quote": "We expect volunteers to do 3 shifts. Shifts are mostly from 9am - 5pm."
+      }
+     }
+    },
+    {
+     "match": "new",
+     "id": "crisis-christmas-warehouse",
+     "title": "Christmas Warehouse Volunteer",
+     "what_youd_do": "Pack, sort, load and unload donated food and supplies at the Crisis at Christmas warehouse.",
+     "commitment": "unknown",
+     "min_term_months": null,
+     "typical_shift_hours": null,
+     "when": [
+      "flexible"
+     ],
+     "specific_times": "3 shifts, 9am - 5pm during the event",
+     "activity": "shop_warehouse",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": null,
+     "stated_places": [
+      "London - Christmas venue"
+     ],
+     "screening": {
+      "dbs": "none",
+      "references": null,
+      "interview": null,
+      "min_age": 18,
+      "induction": "Access to relevant Crisis at Christmas training events"
+     },
+     "skills": [
+      "A reasonable level of fitness as the role involves moving heavy supplies"
+     ],
+     "eligibility": [],
+     "seasonal_window": {
+      "start_month": 12,
+      "end_month": 1
+     },
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/wG3uCMs7A0QDcwkW7WoyYMbSkiigaw",
+     "url_specificity": "role",
+     "changes_vs_current": [],
+     "evidence": {
+      "status": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "Applications to volunteer for Crisis at Christmas 2026 are now open!"
+      },
+      "seasonal_window": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/volunteer-at-christmas/",
+       "quote": "from mid December to early January, including Christmas Day"
+      },
+      "screening.min_age": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+      },
+      "who_can_apply": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/wG3uCMs7A0QDcwkW7WoyYMbSkiigaw",
+       "quote": "Each person who'd like to volunteer needs to sign up individually"
+      },
+      "stated_places": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/wG3uCMs7A0QDcwkW7WoyYMbSkiigaw",
+       "quote": "London - Christmas venue"
+      },
+      "screening.dbs": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/wG3uCMs7A0QDcwkW7WoyYMbSkiigaw",
+       "quote": "Disclosure check needed: None"
+      },
+      "specific_times": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/wG3uCMs7A0QDcwkW7WoyYMbSkiigaw",
+       "quote": "We expect volunteers to do 3 shifts. Pre-event and extension 10am - 4pm. During event 9am - 5pm."
+      }
+     }
+    },
+    {
+     "match": "new",
+     "id": "crisis-christmas-healthcare",
+     "title": "Christmas Healthcare Professional Volunteer",
+     "what_youd_do": "Work in the guest health team at a Christmas centre as a registered doctor, nurse, pharmacist, physiotherapist or podiatrist for a shift.",
+     "commitment": "one_off",
+     "min_term_months": null,
+     "typical_shift_hours": 6,
+     "when": [
+      "flexible"
+     ],
+     "specific_times": "1 shift, 10.30am - 4.30pm",
+     "activity": "advice",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": null,
+     "stated_places": [
+      "London - Christmas venue"
+     ],
+     "screening": {
+      "dbs": "enhanced",
+      "references": null,
+      "interview": null,
+      "min_age": 18,
+      "induction": "Access to relevant Crisis at Christmas training events"
+     },
+     "skills": [],
+     "eligibility": [
+      "Registered healthcare professional (GMC, NMC, GPhC or HCPC number needed)"
+     ],
+     "seasonal_window": {
+      "start_month": 12,
+      "end_month": 1
+     },
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/NOp3oqLd0IuW0Ns2mqpN2SiS5Xn8oo",
+     "url_specificity": "role",
+     "changes_vs_current": [],
+     "evidence": {
+      "status": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "Applications to volunteer for Crisis at Christmas 2026 are now open!"
+      },
+      "seasonal_window": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/volunteer-at-christmas/",
+       "quote": "from mid December to early January, including Christmas Day"
+      },
+      "screening.min_age": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+      },
+      "who_can_apply": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/NOp3oqLd0IuW0Ns2mqpN2SiS5Xn8oo",
+       "quote": "Each person who'd like to volunteer needs to sign up individually"
+      },
+      "stated_places": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/NOp3oqLd0IuW0Ns2mqpN2SiS5Xn8oo",
+       "quote": "London - Christmas venue"
+      },
+      "screening.dbs": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/NOp3oqLd0IuW0Ns2mqpN2SiS5Xn8oo",
+       "quote": "Enhanced DBS"
+      },
+      "specific_times": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/NOp3oqLd0IuW0Ns2mqpN2SiS5Xn8oo",
+       "quote": "We expect volunteers to do 1 shift. 10.30am - 4.30pm"
+      },
+      "commitment": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/NOp3oqLd0IuW0Ns2mqpN2SiS5Xn8oo",
+       "quote": "We expect volunteers to do 1 shift. 10.30am - 4.30pm"
+      },
+      "eligibility": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/NOp3oqLd0IuW0Ns2mqpN2SiS5Xn8oo",
+       "quote": "you will need your GMC number and a copy of your Medical Malpractice Insurance"
+      }
+     }
+    },
+    {
+     "match": "new",
+     "id": "crisis-christmas-guest-welfare",
+     "title": "Christmas Guest Welfare Volunteer",
+     "what_youd_do": "Use mental health or vulnerable-adult experience to support the most distressed guests at a Christmas centre and link them to help available there.",
+     "commitment": "unknown",
+     "min_term_months": null,
+     "typical_shift_hours": null,
+     "when": [
+      "flexible"
+     ],
+     "specific_times": "Minimum 2 shifts; times vary by location",
+     "activity": "befriending",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": null,
+     "stated_places": [
+      "London - Christmas venue"
+     ],
+     "screening": {
+      "dbs": "basic",
+      "references": null,
+      "interview": true,
+      "min_age": 18,
+      "induction": "Access to relevant Crisis at Christmas training events"
+     },
+     "skills": [],
+     "eligibility": [
+      "For mental health professionals, counsellors or people experienced with vulnerable adults"
+     ],
+     "seasonal_window": {
+      "start_month": 12,
+      "end_month": 1
+     },
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/Zx3ludkl7lCal5A73rROOQh5LXEZdB",
+     "url_specificity": "role",
+     "changes_vs_current": [],
+     "evidence": {
+      "status": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "Applications to volunteer for Crisis at Christmas 2026 are now open!"
+      },
+      "seasonal_window": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/volunteer-at-christmas/",
+       "quote": "from mid December to early January, including Christmas Day"
+      },
+      "screening.min_age": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+      },
+      "who_can_apply": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/Zx3ludkl7lCal5A73rROOQh5LXEZdB",
+       "quote": "Each person who'd like to volunteer needs to sign up individually"
+      },
+      "stated_places": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/Zx3ludkl7lCal5A73rROOQh5LXEZdB",
+       "quote": "London - Christmas venue"
+      },
+      "screening.dbs": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/Zx3ludkl7lCal5A73rROOQh5LXEZdB",
+       "quote": "Basic Disclosure DBS"
+      },
+      "screening.interview": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/Zx3ludkl7lCal5A73rROOQh5LXEZdB",
+       "quote": "Interview required for this role? Yes"
+      },
+      "eligibility": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/Zx3ludkl7lCal5A73rROOQh5LXEZdB",
+       "quote": "THIS ROLE IS FOR MENTAL HEALTH PROFESSIONALS, QUALIFIED COUNSELLORS/PSYCHOTHERAPISTS"
+      }
+     }
+    },
+    {
+     "match": "new",
+     "id": "crisis-christmas-hair-and-nails",
+     "title": "Christmas Hairdressing, Barber and Nail Volunteer",
+     "what_youd_do": "Offer haircuts, blow-dries, braiding, barbering or nail treatments to guests in a Christmas centre salon for a shift.",
+     "commitment": "one_off",
+     "min_term_months": null,
+     "typical_shift_hours": null,
+     "when": [
+      "flexible"
+     ],
+     "specific_times": "1 shift: day centres 9:30-5:30, hotels 10:00-17:00",
+     "activity": "practical",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": null,
+     "stated_places": [
+      "London - Christmas venue"
+     ],
+     "screening": {
+      "dbs": "none",
+      "references": null,
+      "interview": null,
+      "min_age": 18,
+      "induction": "Access to relevant Crisis at Christmas training events"
+     },
+     "skills": [],
+     "eligibility": [
+      "Evidence of your qualification or a reference from your employer"
+     ],
+     "seasonal_window": {
+      "start_month": 12,
+      "end_month": 1
+     },
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/AdEvd1pS6jWN5mqN3SbmBUqXN0X67l",
+     "url_specificity": "role",
+     "changes_vs_current": [],
+     "evidence": {
+      "status": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "Applications to volunteer for Crisis at Christmas 2026 are now open!"
+      },
+      "seasonal_window": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/volunteer-at-christmas/",
+       "quote": "from mid December to early January, including Christmas Day"
+      },
+      "screening.min_age": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+      },
+      "who_can_apply": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/AdEvd1pS6jWN5mqN3SbmBUqXN0X67l",
+       "quote": "Each person who'd like to volunteer needs to sign up individually"
+      },
+      "stated_places": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/AdEvd1pS6jWN5mqN3SbmBUqXN0X67l",
+       "quote": "London - Christmas venue"
+      },
+      "screening.dbs": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/AdEvd1pS6jWN5mqN3SbmBUqXN0X67l",
+       "quote": "Disclosure check needed: None"
+      },
+      "specific_times": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/AdEvd1pS6jWN5mqN3SbmBUqXN0X67l",
+       "quote": "We expect volunteers to do 1 shift. Day centres 9:30- 5:30, Hotels 10:00- 17:00"
+      },
+      "commitment": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/AdEvd1pS6jWN5mqN3SbmBUqXN0X67l",
+       "quote": "We expect volunteers to do 1 shift. Day centres 9:30- 5:30, Hotels 10:00- 17:00"
+      },
+      "eligibility": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/AdEvd1pS6jWN5mqN3SbmBUqXN0X67l",
+       "quote": "you will need to provide evidence of your qualification OR a reference from your current employer"
+      }
+     }
+    },
+    {
+     "match": "new",
+     "id": "crisis-christmas-arts",
+     "title": "Christmas Arts Facilitator Volunteer",
+     "what_youd_do": "Lead a creative arts activity such as painting, badge making or knitting for guests at a Christmas centre.",
+     "commitment": "one_off",
+     "min_term_months": null,
+     "typical_shift_hours": null,
+     "when": [
+      "flexible"
+     ],
+     "specific_times": "1 full day shift",
+     "activity": "teaching",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": null,
+     "stated_places": [
+      "London - Christmas venue"
+     ],
+     "screening": {
+      "dbs": "none",
+      "references": null,
+      "interview": true,
+      "min_age": 18,
+      "induction": "Access to relevant Crisis at Christmas training events"
+     },
+     "skills": [],
+     "eligibility": [],
+     "seasonal_window": {
+      "start_month": 12,
+      "end_month": 1
+     },
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/BhrD0niAaRZq92FT2CPVBg1S3eMRod",
+     "url_specificity": "role",
+     "changes_vs_current": [],
+     "evidence": {
+      "status": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "Applications to volunteer for Crisis at Christmas 2026 are now open!"
+      },
+      "seasonal_window": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/volunteer-at-christmas/",
+       "quote": "from mid December to early January, including Christmas Day"
+      },
+      "screening.min_age": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+      },
+      "who_can_apply": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/BhrD0niAaRZq92FT2CPVBg1S3eMRod",
+       "quote": "Each person who'd like to volunteer needs to sign up individually"
+      },
+      "stated_places": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/BhrD0niAaRZq92FT2CPVBg1S3eMRod",
+       "quote": "London - Christmas venue"
+      },
+      "screening.dbs": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/BhrD0niAaRZq92FT2CPVBg1S3eMRod",
+       "quote": "Disclosure check needed: None"
+      },
+      "screening.interview": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/BhrD0niAaRZq92FT2CPVBg1S3eMRod",
+       "quote": "Interview required for this role? Yes"
+      },
+      "specific_times": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/BhrD0niAaRZq92FT2CPVBg1S3eMRod",
+       "quote": "1 full day shift.  Shift times will vary depending on where you are volunteering."
+      },
+      "commitment": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/BhrD0niAaRZq92FT2CPVBg1S3eMRod",
+       "quote": "1 full day shift.  Shift times will vary depending on where you are volunteering."
+      }
+     }
+    },
+    {
+     "match": "new",
+     "id": "crisis-christmas-shift-office",
+     "title": "Christmas Shift Office Coordinator Volunteer",
+     "what_youd_do": "Run the shift office at a Christmas centre: handle requests, manage the Teams channel and email, and look after petty cash and valuables.",
+     "commitment": "unknown",
+     "min_term_months": null,
+     "typical_shift_hours": null,
+     "when": [
+      "flexible"
+     ],
+     "specific_times": "Minimum 4 shifts; hotel and day centre shifts",
+     "activity": "admin",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": null,
+     "stated_places": [
+      "London - Christmas venue"
+     ],
+     "screening": {
+      "dbs": "basic",
+      "references": null,
+      "interview": true,
+      "min_age": 18,
+      "induction": "Access to relevant Crisis at Christmas training events"
+     },
+     "skills": [
+      "Familiar with Microsoft Teams and Office 365, or quick to learn"
+     ],
+     "eligibility": [],
+     "seasonal_window": {
+      "start_month": 12,
+      "end_month": 1
+     },
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/XUfmAleq9uakRLWGk6QLU9RYzIZpUk",
+     "url_specificity": "role",
+     "changes_vs_current": [],
+     "evidence": {
+      "status": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "Applications to volunteer for Crisis at Christmas 2026 are now open!"
+      },
+      "seasonal_window": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/volunteer-at-christmas/",
+       "quote": "from mid December to early January, including Christmas Day"
+      },
+      "screening.min_age": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+      },
+      "who_can_apply": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/XUfmAleq9uakRLWGk6QLU9RYzIZpUk",
+       "quote": "Each person who'd like to volunteer needs to sign up individually"
+      },
+      "stated_places": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/XUfmAleq9uakRLWGk6QLU9RYzIZpUk",
+       "quote": "London - Christmas venue"
+      },
+      "screening.dbs": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/XUfmAleq9uakRLWGk6QLU9RYzIZpUk",
+       "quote": "Basic Disclosure DBS"
+      },
+      "screening.interview": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/XUfmAleq9uakRLWGk6QLU9RYzIZpUk",
+       "quote": "Interview required for this role? Yes"
+      }
+     }
+    },
+    {
+     "match": "new",
+     "id": "crisis-christmas-advice-caseworker-support",
+     "title": "Christmas Advice and Caseworker Support Volunteer",
+     "what_youd_do": "Support Christmas caseworkers with guests' benefit claims, forms, private rented accommodation searches and appointments.",
+     "commitment": "unknown",
+     "min_term_months": null,
+     "typical_shift_hours": 8,
+     "when": [
+      "flexible"
+     ],
+     "specific_times": "2 shifts, 10am - 6pm",
+     "activity": "advice",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": null,
+     "stated_places": [
+      "London - Christmas venue"
+     ],
+     "screening": {
+      "dbs": "enhanced",
+      "references": null,
+      "interview": true,
+      "min_age": 18,
+      "induction": "Access to relevant Crisis at Christmas training events"
+     },
+     "skills": [],
+     "eligibility": [],
+     "seasonal_window": {
+      "start_month": 12,
+      "end_month": 1
+     },
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/N6qHNL0pJlECqexv2FFbtCTEznETY9",
+     "url_specificity": "role",
+     "changes_vs_current": [],
+     "evidence": {
+      "status": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "Applications to volunteer for Crisis at Christmas 2026 are now open!"
+      },
+      "seasonal_window": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/volunteer-at-christmas/",
+       "quote": "from mid December to early January, including Christmas Day"
+      },
+      "screening.min_age": {
+       "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+       "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+      },
+      "who_can_apply": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/N6qHNL0pJlECqexv2FFbtCTEznETY9",
+       "quote": "Each person who'd like to volunteer needs to sign up individually"
+      },
+      "stated_places": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/N6qHNL0pJlECqexv2FFbtCTEznETY9",
+       "quote": "London - Christmas venue"
+      },
+      "screening.dbs": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/N6qHNL0pJlECqexv2FFbtCTEznETY9",
+       "quote": "Enhanced DBS"
+      },
+      "screening.interview": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/N6qHNL0pJlECqexv2FFbtCTEznETY9",
+       "quote": "Interview required for this role? Yes"
+      },
+      "specific_times": {
+       "url": "https://mycrisisvolunteering.crisis.org.uk/roles/N6qHNL0pJlECqexv2FFbtCTEznETY9",
+       "quote": "We expect volunteers to do 2 shifts. Shifts are 10am - 6pm"
+      }
+     }
+    }
+   ],
+   "retire": []
+  },
+  {
+   "org_id": "centrepoint",
+   "read_status": "ok",
+   "pages_read": [
+    "https://centrepoint.org.uk/get-involved/volunteer/ (redirects to /support-us/volunteer)",
+    "https://centrepoint.goassemble.com/api/opportunities (page 1 of 1, 3 offers)"
+   ],
+   "volunteer_url_suggestion": "https://centrepoint.org.uk/support-us/volunteer (the current /get-involved/volunteer/ URL redirects there)",
+   "org_notes": "Board holds 3 offers: 2 London gardening, 1 Bradford minibus driver (omitted, not London). Page also lists types with no detail or vacancy (independent living skills, learner support, researcher, music tutor, fundraising, corporate), not recorded. Charity number from footer: 'Registered charity number 292411'.",
+   "org_fields": {
+    "charity_number": "292411"
+   },
+   "roles": [
+    {
+     "match": "new",
+     "id": "centrepoint-gardening-volunteer-hammersmith-and-fulham",
+     "title": "Gardening Volunteer (Hammersmith and Fulham)",
+     "what_youd_do": "Weed, dig, prune and plant to look after a garden at a Centrepoint service, including starting a new vegetable patch.",
+     "commitment": "long_term",
+     "min_term_months": 6,
+     "typical_shift_hours": null,
+     "when": [
+      "flexible"
+     ],
+     "specific_times": null,
+     "activity": "practical",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": "W12",
+     "stated_places": [
+      "Hammersmith and Fulham"
+     ],
+     "screening": {
+      "dbs": "required_unspecified",
+      "references": true,
+      "interview": true,
+      "min_age": 18,
+      "induction": "Structured induction and training"
+     },
+     "skills": [
+      "Be reliable and have a positive outlook"
+     ],
+     "eligibility": [],
+     "seasonal_window": null,
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://centrepoint.goassemble.com/opportunities/125242-gardening-volunteer-hammersmith-and-fulham-2026-10-02",
+     "url_specificity": "role",
+     "evidence": {
+      "status": {
+       "url": "https://centrepoint.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "\"advert_end_date\":\"2026-10-30\",\"status\":\"Published\""
+      },
+      "commitment": {
+       "url": "https://centrepoint.org.uk/get-involved/volunteer/",
+       "quote": "We ask you for a minimum of six months commitment."
+      },
+      "min_term_months": {
+       "url": "https://centrepoint.org.uk/get-involved/volunteer/",
+       "quote": "We ask you for a minimum of six months commitment."
+      },
+      "screening.dbs": {
+       "url": "https://centrepoint.org.uk/get-involved/volunteer/",
+       "quote": "DBS clearance and reference checks"
+      },
+      "screening.references": {
+       "url": "https://centrepoint.org.uk/get-involved/volunteer/",
+       "quote": "DBS clearance and reference checks"
+      },
+      "screening.interview": {
+       "url": "https://centrepoint.org.uk/get-involved/volunteer/",
+       "quote": "Attend interview or selection evening"
+      },
+      "screening.min_age": {
+       "url": "https://centrepoint.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "\"recruitable\":true,\"minimum_age\":18"
+      },
+      "stated_places": {
+       "url": "https://centrepoint.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "Hammersmith and Fulham"
+      },
+      "postcode_district": {
+       "url": "https://centrepoint.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "Woodstock Grove, W12"
+      }
+     },
+     "changes_vs_current": []
+    },
+    {
+     "match": "new",
+     "id": "centrepoint-gardening-volunteer-westminster",
+     "title": "Gardening Volunteer (Westminster)",
+     "what_youd_do": "Weed, dig, prune and plant to look after the garden spaces at a Centrepoint service in Westminster, with times set around your availability.",
+     "commitment": "long_term",
+     "min_term_months": 6,
+     "typical_shift_hours": null,
+     "when": [
+      "flexible"
+     ],
+     "specific_times": "Flexible to your availability; Mondays or Fridays preferred",
+     "activity": "practical",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": null,
+     "stated_places": [
+      "Westminster"
+     ],
+     "screening": {
+      "dbs": "required_unspecified",
+      "references": true,
+      "interview": true,
+      "min_age": 18,
+      "induction": "Structured induction and training"
+     },
+     "skills": [
+      "Be reliable and have a positive outlook"
+     ],
+     "eligibility": [],
+     "seasonal_window": null,
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://centrepoint.goassemble.com/opportunities/125244-gardening-volunteer-westminister-2026-10-02",
+     "url_specificity": "role",
+     "evidence": {
+      "status": {
+       "url": "https://centrepoint.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "\"advert_end_date\":\"2026-10-30\",\"status\":\"Published\""
+      },
+      "commitment": {
+       "url": "https://centrepoint.org.uk/get-involved/volunteer/",
+       "quote": "We ask you for a minimum of six months commitment."
+      },
+      "min_term_months": {
+       "url": "https://centrepoint.org.uk/get-involved/volunteer/",
+       "quote": "We ask you for a minimum of six months commitment."
+      },
+      "screening.dbs": {
+       "url": "https://centrepoint.org.uk/get-involved/volunteer/",
+       "quote": "DBS clearance and reference checks"
+      },
+      "screening.references": {
+       "url": "https://centrepoint.org.uk/get-involved/volunteer/",
+       "quote": "DBS clearance and reference checks"
+      },
+      "screening.interview": {
+       "url": "https://centrepoint.org.uk/get-involved/volunteer/",
+       "quote": "Attend interview or selection evening"
+      },
+      "screening.min_age": {
+       "url": "https://centrepoint.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "\"recruitable\":true,\"minimum_age\":18"
+      },
+      "stated_places": {
+       "url": "https://centrepoint.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "Westminster"
+      },
+      "when": {
+       "url": "https://centrepoint.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "This role is flexible based on the volunteers availability - Mondays or Fridays would be preferred if possible."
+      },
+      "specific_times": {
+       "url": "https://centrepoint.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "This role is flexible based on the volunteers availability - Mondays or Fridays would be preferred if possible."
+      }
+     },
+     "changes_vs_current": []
+    },
+    {
+     "match": "existing",
+     "id": "centrepoint-helpline",
+     "title": "Helpline Volunteer",
+     "what_youd_do": "Help with Centrepoint's helpline for young people facing homelessness; the page lists helpline support as a volunteer role but gives no further detail.",
+     "commitment": "long_term",
+     "min_term_months": 6,
+     "typical_shift_hours": null,
+     "when": [
+      "flexible"
+     ],
+     "specific_times": null,
+     "activity": "advice",
+     "location_type": "hybrid",
+     "who_can_apply": "individual",
+     "postcode_district": null,
+     "stated_places": [],
+     "screening": {
+      "dbs": "required_unspecified",
+      "references": true,
+      "interview": true,
+      "min_age": null,
+      "induction": "Investing in Volunteers accredited since 2024. A discussion meeting about the role before you start."
+     },
+     "skills": [],
+     "eligibility": [],
+     "seasonal_window": null,
+     "next_intake": null,
+     "status": "closed",
+     "apply_url": "https://centrepoint.org.uk/get-involved/volunteer/",
+     "url_specificity": "org_volunteer_page",
+     "evidence": {
+      "status": {
+       "url": "https://centrepoint.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "\"pagination\":{\"total\":3,\"count\":3,\"per_page\":100"
+      },
+      "commitment": {
+       "url": "https://centrepoint.org.uk/get-involved/volunteer/",
+       "quote": "We ask you for a minimum of six months commitment."
+      },
+      "min_term_months": {
+       "url": "https://centrepoint.org.uk/get-involved/volunteer/",
+       "quote": "We ask you for a minimum of six months commitment."
+      },
+      "screening.dbs": {
+       "url": "https://centrepoint.org.uk/get-involved/volunteer/",
+       "quote": "DBS clearance and reference checks"
+      },
+      "screening.references": {
+       "url": "https://centrepoint.org.uk/get-involved/volunteer/",
+       "quote": "DBS clearance and reference checks"
+      },
+      "screening.interview": {
+       "url": "https://centrepoint.org.uk/get-involved/volunteer/",
+       "quote": "Attend interview or selection evening"
+      }
+     },
+     "changes_vs_current": [
+      "status unknown -> closed: the board holds 3 public offers (2 London gardening, 1 Bradford minibus) and none is helpline",
+      "commitment weekly -> long_term and min_term_months null -> 6 (page asks for a minimum of six months; no weekly pattern stated)",
+      "screening.dbs unknown -> required_unspecified, references null -> true (page's generic application process)",
+      "when weekday_daytime -> flexible (no timing stated)",
+      "what_youd_do reworded: the old detail (under-25s, calls, emails and web chats) came from vInspired and is not on the live page",
+      "activity and location_type kept from the old record; the page states neither"
+     ]
+    }
+   ],
+   "retire": [
+    {
+     "id": "centrepoint-mentor",
+     "reason": "Not among the role types on the live volunteer page and not on the Assemble board; the old record rested on an NCVO case study. Reinstate if mentoring reappears.",
+     "evidence": {
+      "url": "https://centrepoint.org.uk/get-involved/volunteer/",
+      "quote": "Our volunteering opportunities can include:"
+     }
+    }
+   ]
+  },
+  {
+   "org_id": "thames-reach",
+   "read_status": "ok",
+   "pages_read": [
+    "https://thamesreach.org.uk/support-us/volunteer/",
+    "https://thames-reach.goassemble.com/api/opportunities (page 1 of 1, 3 offers)"
+   ],
+   "volunteer_url_suggestion": null,
+   "org_notes": "Board holds 3 offers, all London. Fundraising role covers events on 9 and 10 Oct (past), so closed though the advert runs to 2027-03-28. Footer: 'charity registered in England and Wales (number 1166311)'. Page promises travel expenses and lunch up to 6 pounds a day.",
+   "org_fields": {
+    "charity_number": "1166311"
+   },
+   "roles": [
+    {
+     "match": "new",
+     "id": "thames-reach-hounslow-reach-volunteer",
+     "title": "Volunteer - Hounslow Reach",
+     "what_youd_do": "Make welfare phone calls to people in Hounslow, look up local support services for them and join colleagues on home or community visits, writing up contact notes.",
+     "commitment": "unknown",
+     "min_term_months": null,
+     "typical_shift_hours": null,
+     "when": [
+      "flexible"
+     ],
+     "specific_times": null,
+     "activity": "advice",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": "TW3",
+     "stated_places": [
+      "Hounslow"
+     ],
+     "screening": {
+      "dbs": "unknown",
+      "references": null,
+      "interview": null,
+      "min_age": 18,
+      "induction": null
+     },
+     "skills": [
+      "Listening and empathy",
+      "Respect for confidentiality"
+     ],
+     "eligibility": [],
+     "seasonal_window": null,
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://thames-reach.goassemble.com/opportunities/122191-volunteer-hounslow-reach-2026-08-19",
+     "url_specificity": "role",
+     "evidence": {
+      "status": {
+       "url": "https://thames-reach.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "\"advert_end_date\":\"2027-02-19\",\"status\":\"Published\""
+      },
+      "screening.min_age": {
+       "url": "https://thames-reach.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "\"recruitable\":true,\"minimum_age\":18"
+      },
+      "stated_places": {
+       "url": "https://thames-reach.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "Hounslow"
+      },
+      "postcode_district": {
+       "url": "https://thames-reach.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "Hounslow, TW3 1NH"
+      }
+     },
+     "changes_vs_current": []
+    },
+    {
+     "match": "new",
+     "id": "thames-reach-data-it-support-lambeth",
+     "title": "Data and IT Support Volunteer (Lambeth Outreach)",
+     "what_youd_do": "Update and tidy the staff Team Handbook on SharePoint, check spreadsheets and data tools, and occasionally shadow an early morning outreach shift.",
+     "commitment": "unknown",
+     "min_term_months": null,
+     "typical_shift_hours": null,
+     "when": [
+      "flexible"
+     ],
+     "specific_times": null,
+     "activity": "admin",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": "SW9",
+     "stated_places": [
+      "Lambeth Outreach"
+     ],
+     "screening": {
+      "dbs": "unknown",
+      "references": null,
+      "interview": null,
+      "min_age": 18,
+      "induction": null
+     },
+     "skills": [
+      "Confidence using Excel",
+      "Attention to detail"
+     ],
+     "eligibility": [],
+     "seasonal_window": null,
+     "next_intake": null,
+     "status": "open",
+     "apply_url": "https://thames-reach.goassemble.com/opportunities/122219-data-and-it-support-volunteer-lambeth-outreach-2026-08-19",
+     "url_specificity": "role",
+     "evidence": {
+      "status": {
+       "url": "https://thames-reach.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "\"advert_end_date\":\"2027-02-19\",\"status\":\"Published\""
+      },
+      "screening.min_age": {
+       "url": "https://thames-reach.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "\"recruitable\":true,\"minimum_age\":18"
+      },
+      "stated_places": {
+       "url": "https://thames-reach.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "Lambeth Outreach"
+      },
+      "postcode_district": {
+       "url": "https://thames-reach.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "SW9 9JF"
+      }
+     },
+     "changes_vs_current": []
+    },
+    {
+     "match": "new",
+     "id": "thames-reach-fundraising-events-volunteer",
+     "title": "Fundraising Events Volunteer",
+     "what_youd_do": "Help at Thames Reach awareness and fundraising stands around World Homelessness Day, taking bucket collections in Camberwell and King's Cross.",
+     "commitment": "one_off",
+     "min_term_months": null,
+     "typical_shift_hours": null,
+     "when": [
+      "weekday_daytime",
+      "weekend_daytime"
+     ],
+     "specific_times": "Fri 9 October (Camberwell) and Sat 10 October (King's Cross)",
+     "activity": "fundraising",
+     "location_type": "in_person",
+     "who_can_apply": "individual",
+     "postcode_district": null,
+     "stated_places": [
+      "Camberwell",
+      "King's Cross"
+     ],
+     "screening": {
+      "dbs": "unknown",
+      "references": null,
+      "interview": null,
+      "min_age": 18,
+      "induction": null
+     },
+     "skills": [],
+     "eligibility": [],
+     "seasonal_window": null,
+     "next_intake": null,
+     "status": "closed",
+     "apply_url": "https://thames-reach.goassemble.com/opportunities/124961-fundraising-events-volunteer-2026-09-28",
+     "url_specificity": "role",
+     "evidence": {
+      "status": {
+       "url": "https://thames-reach.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "Friday 9 October in Camberwell, Morrisons"
+      },
+      "screening.min_age": {
+       "url": "https://thames-reach.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "\"recruitable\":true,\"minimum_age\":18"
+      },
+      "commitment": {
+       "url": "https://thames-reach.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "two awareness and fundraising events taking place around World Homelessness Day"
+      },
+      "when": {
+       "url": "https://thames-reach.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "Friday 9 October in Camberwell, Morrisons"
+      },
+      "specific_times": {
+       "url": "https://thames-reach.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "Saturday 10 October,  King's Cross Underground Station"
+      },
+      "stated_places": {
+       "url": "https://thames-reach.goassemble.com/api/opportunities?display=grid&limit=100&o=desc&page=1&public_search=true&s=date_advertised",
+       "quote": "Camberwell"
+      }
+     },
+     "changes_vs_current": []
+    }
+   ],
+   "retire": [
+    {
+     "id": "thames-reach-services",
+     "reason": "Umbrella record with no activity of its own; the page now sends people to a board of specific roles (e.g. Hounslow Reach, Lambeth data and IT), which are recorded separately. Its training and expenses detail came from an old Team London listing.",
+     "evidence": {
+      "url": "https://thamesreach.org.uk/support-us/volunteer/",
+      "quote": "Find the right role for you by viewing our vacancies."
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -8,7 +8,7 @@
       "paper and cup",
       "restoration station"
     ],
-    "charity_number": null,
+    "charity_number": "1075947",
     "website_url": "https://sct.org.uk/",
     "volunteer_url": "https://sct.org.uk/support-us/volunteer/",
     "summary": "East London charity founded in 1965, working with people recovering from addiction and homelessness through a recovery hostel, a training centre, two social enterprises and eight charity shops.",
@@ -24,27 +24,27 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-18T08:47:17+00:00",
+      "last_attempt": "2026-10-17T18:53:41+00:00",
       "last_success": "2026-09-02T00:00:00+00:00",
       "link_status": "ok",
       "content_hash": "fb4bae959d4bd0b0da94a943e64355265f05cd0c7d3336526e053fdd67aaf43e",
       "consecutive_failures": 0,
       "etag": "\"8176-1791898684;gz\"",
       "last_modified": null,
-      "last_extraction": "2026-10-18T08:47:23+00:00"
+      "last_extraction": "2026-10-17T18:53:45+00:00"
     }
   },
   "opportunities": [
     {
       "id": "sct-paper-and-cup-retail",
       "org_id": "spitalfields-crypt-trust",
-      "title": "Paper and Cup Coffee Shop",
-      "what_youd_do": "Front of house at their coffee shop in Shoreditch \u2014 making drinks and working the till. It doubles as a training ground for baristas in recovery from addiction.",
-      "commitment": "weekly",
+      "title": "Paper and Cup Barista",
+      "what_youd_do": "Work front of house at the Paper and Cup coffee shop, making drinks and operating the till.",
+      "commitment": "unknown",
       "min_term_months": null,
       "typical_shift_hours": null,
       "when": [
-        "weekday_daytime"
+        "flexible"
       ],
       "specific_times": null,
       "activity": "shop_warehouse",
@@ -67,37 +67,36 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-09-02T00:00:00+00:00",
-        "method": "human",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "llm",
         "reviewed_by_human": true,
         "confidence": 1.0,
-        "source_url": "https://sct.org.uk/volunteer-in-retail/",
+        "source_url": "https://sct.org.uk/support-us/volunteer/",
         "verified_fields": [
-          "screening.dbs",
-          "screening.induction",
-          "activity"
+          "status",
+          "screening.dbs"
         ],
         "unsupported_fields": [
           "screening.min_age",
           "specific_times",
-          "typical_shift_hours",
-          "postcode_district"
+          "commitment"
         ]
-      }
+      },
+      "stated_places": []
     },
     {
       "id": "sct-restoration-station",
       "org_id": "spitalfields-crypt-trust",
-      "title": "Restoration Station",
-      "what_youd_do": "Restore and upcycle furniture alongside people in recovery, in a workshop that also collaborates with local artists.",
-      "commitment": "weekly",
+      "title": "Restoration Station Volunteer",
+      "what_youd_do": "Support the Restoration Station furniture social enterprise with social media, sourcing donated pieces and building relationships that help its work.",
+      "commitment": "unknown",
       "min_term_months": null,
       "typical_shift_hours": null,
       "when": [
-        "weekday_daytime"
+        "flexible"
       ],
       "specific_times": null,
-      "activity": "practical",
+      "activity": "admin",
       "location_type": "in_person",
       "postcode_district": null,
       "who_can_apply": "individual",
@@ -108,45 +107,48 @@
         "min_age": null,
         "induction": "Induction and training. A caution or conviction does not necessarily bar you."
       },
-      "skills": [],
+      "skills": [
+        "social media",
+        "sourcing donations",
+        "relationship building"
+      ],
       "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
-      "apply_url": "https://sct.org.uk/support-us/volunteer/",
-      "url_specificity": "org_volunteer_page",
+      "apply_url": "https://sct.org.uk/support-us/volunteer/other-volunteering-opportunities/",
+      "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-09-02T00:00:00+00:00",
-        "method": "human",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "llm",
         "reviewed_by_human": true,
         "confidence": 1.0,
-        "source_url": "https://sct.org.uk/support-us/volunteer/",
+        "source_url": "https://sct.org.uk/support-us/volunteer/other-volunteering-opportunities/",
         "verified_fields": [
-          "screening.dbs",
-          "screening.induction",
-          "activity"
+          "status",
+          "screening.dbs"
         ],
         "unsupported_fields": [
           "screening.min_age",
           "specific_times",
-          "typical_shift_hours",
-          "postcode_district"
+          "commitment"
         ]
-      }
+      },
+      "stated_places": []
     },
     {
       "id": "sct-charity-shops",
       "org_id": "spitalfields-crypt-trust",
       "title": "Charity Shop Volunteer",
-      "what_youd_do": "Till, stockroom and sorting in one of their eight East London shops \u2014 Hackney, Bethnal Green, Roman Road, Aldgate East, Watney Market or Leytonstone. A few hours is enough.",
-      "commitment": "flexible",
+      "what_youd_do": "Take in and sort donated goods, price stock, set out displays and serve customers in an SCT charity shop, or work in the backroom.",
+      "commitment": "unknown",
       "min_term_months": null,
       "typical_shift_hours": null,
       "when": [
         "flexible"
       ],
-      "specific_times": "A few hours, whenever suits",
+      "specific_times": "A few hours",
       "activity": "shop_warehouse",
       "location_type": "in_person",
       "postcode_district": null,
@@ -163,38 +165,37 @@
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
-      "apply_url": "https://sct.org.uk/charity-shops/",
+      "apply_url": "https://sct.org.uk/volunteer-in-retail/",
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-09-02T00:00:00+00:00",
-        "method": "human",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "llm",
         "reviewed_by_human": true,
-        "confidence": 0.9,
+        "confidence": 1.0,
         "source_url": "https://sct.org.uk/charity-shops/",
         "verified_fields": [
-          "specific_times",
-          "activity",
-          "screening.induction"
+          "status",
+          "specific_times"
         ],
         "unsupported_fields": [
           "screening.dbs",
           "screening.min_age",
-          "typical_shift_hours",
-          "postcode_district"
+          "commitment"
         ]
-      }
+      },
+      "stated_places": []
     },
     {
       "id": "sct-office-and-fundraising",
       "org_id": "spitalfields-crypt-trust",
       "title": "Head Office, Fundraising or Communications",
-      "what_youd_do": "Put a professional skill to work behind the scenes \u2014 their head office, fundraising and communications teams all take volunteers.",
+      "what_youd_do": "Put a professional skill to work behind the scenes — their head office, fundraising and communications teams all take volunteers.",
       "commitment": "unknown",
       "min_term_months": null,
       "typical_shift_hours": null,
       "when": [
-        "weekday_daytime"
+        "flexible"
       ],
       "specific_times": null,
       "activity": "admin",
@@ -217,21 +218,121 @@
       "url_specificity": "org_volunteer_page",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-09-02T00:00:00+00:00",
-        "method": "human",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "llm",
         "reviewed_by_human": true,
-        "confidence": 0.7,
+        "confidence": 1.0,
         "source_url": "https://sct.org.uk/support-us/volunteer/",
         "verified_fields": [
-          "activity",
-          "screening.induction"
+          "status"
         ],
         "unsupported_fields": [
           "screening.dbs",
           "screening.min_age",
           "specific_times",
-          "typical_shift_hours",
-          "postcode_district"
+          "commitment"
+        ]
+      },
+      "stated_places": []
+    },
+    {
+      "id": "spitalfields-crypt-trust-womens-group-volunteer",
+      "title": "Women's Group Volunteer",
+      "what_youd_do": "Run workshops for women in recovery from addiction at a weekly women-only group in a safe, supportive setting.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": 3,
+      "when": [
+        "weekday_evening"
+      ],
+      "specific_times": "Wednesdays 4pm-7pm",
+      "activity": "teaching",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [],
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://sct.org.uk/support-us/volunteer/other-volunteering-opportunities/",
+      "url_specificity": "role",
+      "org_id": "spitalfields-crypt-trust",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "llm",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://sct.org.uk/support-us/volunteer/other-volunteering-opportunities/",
+        "verified_fields": [
+          "status",
+          "specific_times"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "commitment"
+        ]
+      }
+    },
+    {
+      "id": "spitalfields-crypt-trust-yoga-movement",
+      "title": "Yoga and Movement Volunteer",
+      "what_youd_do": "Lead yoga and movement sessions that help people on the Training and Development programme look after their physical and mental wellbeing.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "teaching",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [],
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "skills": [
+        "yoga",
+        "movement"
+      ],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://sct.org.uk/support-us/volunteer/other-volunteering-opportunities/",
+      "url_specificity": "role",
+      "org_id": "spitalfields-crypt-trust",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "llm",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://sct.org.uk/support-us/volunteer/",
+        "verified_fields": [
+          "status"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "commitment"
         ]
       }
     }

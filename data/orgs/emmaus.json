@@ -21,8 +21,8 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-18T08:33:15+00:00",
-      "last_success": "2026-09-02T00:00:00+00:00",
+      "last_attempt": "2026-10-17T22:08:14+00:00",
+      "last_success": "2026-10-17T22:08:14+00:00",
       "link_status": "ok",
       "content_hash": null,
       "consecutive_failures": 0,
@@ -35,7 +35,7 @@
       "id": "emmaus-greenwich-retail",
       "org_id": "emmaus",
       "title": "Retail Volunteer",
-      "what_youd_do": "Serve customers and refresh the displays in their charity shops \u2014 preloved fashion and retro furniture. Good if you like vintage, antiques or sustainability.",
+      "what_youd_do": "Serve customers and refresh the displays in their charity shops — preloved fashion and retro furniture. Good if you like vintage, antiques or sustainability.",
       "commitment": "weekly",
       "min_term_months": null,
       "typical_shift_hours": 8,
@@ -66,30 +66,33 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-09-02T00:00:00+00:00",
-        "method": "human",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "llm",
         "reviewed_by_human": true,
         "confidence": 1.0,
-        "source_url": "https://emmaus.org.uk/greenwich/volunteer-role/retail-volunteer/",
+        "source_url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
         "verified_fields": [
+          "status",
+          "screening.dbs",
+          "screening.references",
           "screening.min_age",
-          "screening.induction",
           "specific_times",
-          "typical_shift_hours",
-          "activity",
+          "commitment",
           "eligibility"
         ],
-        "unsupported_fields": [
-          "screening.dbs",
-          "screening.references"
-        ]
-      }
+        "unsupported_fields": []
+      },
+      "stated_places": [
+        "Poplar",
+        "Plumstead",
+        "Lewisham"
+      ]
     },
     {
       "id": "emmaus-greenwich-outreach",
       "org_id": "emmaus",
       "title": "Street Souls Outreach",
-      "what_youd_do": "Go out with Street Souls, their outreach service for people sleeping rough or struggling with poverty across London.",
+      "what_youd_do": "Help run Street Souls solidarity points: set up and close down, serve food and drinks, hand out clothing and toiletries, and signpost visitors to local services.",
       "commitment": "fortnightly",
       "min_term_months": 6,
       "typical_shift_hours": null,
@@ -119,76 +122,26 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-09-02T00:00:00+00:00",
-        "method": "human",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "llm",
         "reviewed_by_human": true,
-        "confidence": 0.8,
-        "source_url": "https://emmaus.org.uk/greenwich/volunteer-role/outreach-volunteer/",
+        "confidence": 1.0,
+        "source_url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
         "verified_fields": [
+          "status",
+          "screening.dbs",
+          "screening.references",
           "screening.min_age",
-          "screening.induction",
-          "activity",
+          "specific_times",
+          "commitment",
           "eligibility"
         ],
-        "unsupported_fields": [
-          "screening.dbs",
-          "specific_times",
-          "typical_shift_hours"
-        ]
-      }
-    },
-    {
-      "id": "emmaus-greenwich-workshop",
-      "org_id": "emmaus",
-      "title": "Furniture and Upcycling",
-      "what_youd_do": "Restore donated furniture in the workshop alongside the companions who live there. Woodwork and upcycling rather than a shop floor.",
-      "commitment": "weekly",
-      "min_term_months": null,
-      "typical_shift_hours": null,
-      "when": [
-        "weekday_daytime",
-        "weekend_daytime"
-      ],
-      "specific_times": null,
-      "activity": "practical",
-      "location_type": "in_person",
-      "postcode_district": "SE18",
-      "who_can_apply": "individual",
-      "screening": {
-        "dbs": "basic",
-        "references": true,
-        "interview": null,
-        "min_age": 18,
-        "induction": "A full induction including health and safety, then ongoing support from your manager and the companions."
+        "unsupported_fields": []
       },
-      "skills": [],
-      "eligibility": [
-        "People aged 18 or over"
-      ],
-      "seasonal_window": null,
-      "next_intake": null,
-      "status": "unknown",
-      "apply_url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
-      "url_specificity": "org_volunteer_page",
-      "coords": null,
-      "provenance": {
-        "extracted_at": "2026-09-02T00:00:00+00:00",
-        "method": "human",
-        "reviewed_by_human": true,
-        "confidence": 0.8,
-        "source_url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
-        "verified_fields": [
-          "screening.min_age",
-          "screening.induction",
-          "activity",
-          "eligibility"
-        ],
-        "unsupported_fields": [
-          "screening.dbs",
-          "specific_times",
-          "typical_shift_hours"
-        ]
-      }
+      "stated_places": [
+        "Westminster",
+        "Woolwich"
+      ]
     },
     {
       "id": "emmaus-greenwich-kitchen",
@@ -224,24 +177,25 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T00:00:00+00:00",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
         "method": "llm",
-        "reviewed_by_human": false,
-        "confidence": 0.7,
-        "source_url": "https://emmaus.org.uk/greenwich/volunteer-role/kitchen-volunteer/",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
         "verified_fields": [
-          "commitment",
-          "min_term_months",
-          "specific_times",
           "status",
-          "activity"
+          "screening.dbs",
+          "screening.references",
+          "screening.min_age",
+          "specific_times",
+          "commitment",
+          "eligibility"
         ],
-        "unsupported_fields": [
-          "screening.interview",
-          "screening.dbs/references/min_age: stated on the general volunteer page for all volunteers, not on the role page",
-          "typical_shift_hours"
-        ]
-      }
+        "unsupported_fields": []
+      },
+      "stated_places": [
+        "Plumstead"
+      ]
     },
     {
       "id": "emmaus-greenwich-van-crew",
@@ -281,24 +235,25 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T00:00:00+00:00",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
         "method": "llm",
-        "reviewed_by_human": false,
-        "confidence": 0.7,
-        "source_url": "https://emmaus.org.uk/greenwich/volunteer-role/van-crew-volunteer/",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
         "verified_fields": [
-          "commitment",
-          "specific_times",
-          "typical_shift_hours",
           "status",
-          "activity"
+          "screening.dbs",
+          "screening.references",
+          "screening.min_age",
+          "specific_times",
+          "commitment",
+          "eligibility"
         ],
-        "unsupported_fields": [
-          "screening.interview",
-          "screening.dbs/references/min_age: stated on the general volunteer page for all volunteers, not on the role page",
-          "postcode_district: role says Greenwich only"
-        ]
-      }
+        "unsupported_fields": []
+      },
+      "stated_places": [
+        "Greenwich"
+      ]
     },
     {
       "id": "emmaus-greenwich-van-driver",
@@ -339,24 +294,25 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T00:00:00+00:00",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
         "method": "llm",
-        "reviewed_by_human": false,
-        "confidence": 0.7,
-        "source_url": "https://emmaus.org.uk/greenwich/volunteer-role/van-driver-volunteer/",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
         "verified_fields": [
-          "commitment",
-          "specific_times",
-          "typical_shift_hours",
           "status",
-          "activity"
+          "screening.dbs",
+          "screening.references",
+          "screening.min_age",
+          "specific_times",
+          "commitment",
+          "eligibility"
         ],
-        "unsupported_fields": [
-          "screening.interview",
-          "screening.dbs/references/min_age: stated on the general volunteer page for all volunteers, not on the role page",
-          "postcode_district: role says Greenwich only"
-        ]
-      }
+        "unsupported_fields": []
+      },
+      "stated_places": [
+        "Greenwich"
+      ]
     },
     {
       "id": "emmaus-greenwich-trustee",
@@ -367,7 +323,7 @@
       "min_term_months": null,
       "typical_shift_hours": null,
       "when": [
-        "weekday_daytime"
+        "flexible"
       ],
       "specific_times": "Board meets five times a year",
       "activity": "governance",
@@ -379,7 +335,7 @@
         "references": true,
         "interview": null,
         "min_age": 18,
-        "induction": "Full induction when you start, with a staff member and a companion supporting you."
+        "induction": "Induction and training"
       },
       "skills": [],
       "eligibility": [
@@ -392,24 +348,26 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T00:00:00+00:00",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
         "method": "llm",
-        "reviewed_by_human": false,
-        "confidence": 0.7,
-        "source_url": "https://emmaus.org.uk/greenwich/volunteer-role/trustee/",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
         "verified_fields": [
           "status",
-          "activity",
-          "specific_times"
+          "screening.dbs",
+          "screening.references",
+          "screening.min_age",
+          "specific_times",
+          "eligibility"
         ],
         "unsupported_fields": [
-          "screening.interview",
-          "screening.dbs/references/min_age: stated on the general volunteer page for all volunteers, not on the role page",
-          "commitment",
-          "when: meeting times not stated",
-          "typical_shift_hours"
+          "commitment"
         ]
-      }
+      },
+      "stated_places": [
+        "Plumstead"
+      ]
     }
   ]
 }

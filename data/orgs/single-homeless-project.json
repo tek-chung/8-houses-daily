@@ -6,7 +6,7 @@
       "shp",
       "single homeless project london"
     ],
-    "charity_number": null,
+    "charity_number": "287779",
     "website_url": "https://www.shp.org.uk/",
     "volunteer_url": "https://www.shp.org.uk/get-involved/volunteer/",
     "summary": "The largest homelessness charity working solely with Londoners, supporting over 10,000 people a year across prevention, hostels and recovery.",
@@ -19,8 +19,8 @@
     "lived_experience_roles": true,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-18T08:33:29+00:00",
-      "last_success": "2026-10-18T08:33:33+00:00",
+      "last_attempt": "2026-10-17T22:08:14+00:00",
+      "last_success": "2026-10-17T22:08:14+00:00",
       "link_status": "ok",
       "content_hash": "a56d3670f53d33cfa5459235b88eadcfc2cb7d4640ba5c2b9a37f7b2949233ca",
       "consecutive_failures": 0,
@@ -40,7 +40,7 @@
   "opportunities": [
     {
       "title": "Wellbeing and Employment Programme Volunteer",
-      "what_youd_do": "Facilitate activity sessions and workshops covering art, music, gardening, or sports to support client wellbeing.",
+      "what_youd_do": "Lead sessions and workshops in areas such as sport, art, music or gardening for people on SHP's wellbeing and employment programmes.",
       "commitment": "unknown",
       "min_term_months": null,
       "typical_shift_hours": null,
@@ -76,18 +76,25 @@
       "org_id": "single-homeless-project",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-08T10:01:20+00:00",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
         "method": "llm",
         "reviewed_by_human": true,
-        "confidence": 1.0,
+        "confidence": 0.7,
         "source_url": "https://www.shp.org.uk/get-involved/volunteer/",
         "verified_fields": [],
-        "unsupported_fields": []
-      }
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "commitment",
+          "status"
+        ]
+      },
+      "stated_places": []
     },
     {
       "title": "Corporate and Individual Fundraising Support",
-      "what_youd_do": "Assist the internal team with event coordination and fundraising operations.",
+      "what_youd_do": "Help the fundraising team run events, either on a one-off day or regularly.",
       "commitment": "flexible",
       "min_term_months": null,
       "typical_shift_hours": null,
@@ -117,18 +124,27 @@
       "org_id": "single-homeless-project",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-08T10:01:20+00:00",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
         "method": "llm",
         "reviewed_by_human": true,
         "confidence": 1.0,
         "source_url": "https://www.shp.org.uk/get-involved/volunteer/",
-        "verified_fields": [],
-        "unsupported_fields": []
-      }
+        "verified_fields": [
+          "commitment",
+          "who_can_apply"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "status"
+        ]
+      },
+      "stated_places": []
     },
     {
       "title": "Hostel Maintenance and Gardening Volunteer",
-      "what_youd_do": "Carry out hands-on repairs, painting, DIY tasks, and garden upkeep at residential properties.",
+      "what_youd_do": "Help with gardening, repairs and DIY jobs at SHP hostels, including one-day team days.",
       "commitment": "flexible",
       "min_term_months": null,
       "typical_shift_hours": null,
@@ -162,18 +178,27 @@
       "org_id": "single-homeless-project",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-08T10:01:20+00:00",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
         "method": "llm",
         "reviewed_by_human": true,
         "confidence": 1.0,
         "source_url": "https://www.shp.org.uk/get-involved/volunteer/",
-        "verified_fields": [],
-        "unsupported_fields": []
-      }
+        "verified_fields": [
+          "commitment",
+          "who_can_apply"
+        ],
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "status"
+        ]
+      },
+      "stated_places": []
     },
     {
       "title": "Peer Mentor",
-      "what_youd_do": "Use personal recovery experiences to guide, encourage, and support individuals navigating similar life challenges.",
+      "what_youd_do": "Draw on your own experience of recovery, mental health struggles or homelessness to support, guide and encourage other Londoners facing similar challenges.",
       "commitment": "unknown",
       "min_term_months": null,
       "typical_shift_hours": null,
@@ -190,7 +215,7 @@
         "references": null,
         "interview": null,
         "min_age": null,
-        "induction": null
+        "induction": "Accredited training is run throughout the year"
       },
       "skills": [],
       "eligibility": [
@@ -201,22 +226,33 @@
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
-      "apply_url": "https://www.shp.org.uk/get-involved/volunteer/",
-      "url_specificity": "org_volunteer_page",
+      "apply_url": "https://www.shp.org.uk/what-we-do/next-steps/lived-experience/peer-mentoring/",
+      "url_specificity": "role",
       "id": "shp-peer-mentor",
       "org_id": "single-homeless-project",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-08T10:01:20+00:00",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
         "method": "llm",
         "reviewed_by_human": true,
         "confidence": 1.0,
-        "source_url": "https://www.shp.org.uk/get-involved/volunteer/",
+        "source_url": "https://www.shp.org.uk/what-we-do/next-steps/lived-experience/peer-mentoring/",
         "verified_fields": [
-          "status"
+          "status",
+          "eligibility"
         ],
-        "unsupported_fields": []
-      }
+        "unsupported_fields": [
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "commitment"
+        ]
+      },
+      "stated_places": [
+        "Camden",
+        "Islington",
+        "Westminster"
+      ]
     }
   ]
 }

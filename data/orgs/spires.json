@@ -23,29 +23,29 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-18T08:46:53+00:00",
-      "last_success": "2026-09-02T00:00:00+00:00",
+      "last_attempt": "2026-10-17T22:08:14+00:00",
+      "last_success": "2026-10-17T22:08:14+00:00",
       "link_status": "ok",
       "content_hash": "3b86c0ce07a71f95cf9da969f676743f0ad0e966d96fb2d33a73624c9b554bc0",
       "consecutive_failures": 0,
-      "etag": "W/\"21a5947976354ddfc92e07b6ce33059b--gzip\"",
+      "etag": "W/\"21a5947976354ddfc92e07b6ce33059b\"",
       "last_modified": null,
-      "last_extraction": "2026-10-18T08:46:55+00:00"
+      "last_extraction": "2026-10-17T18:53:19+00:00"
     }
   },
   "opportunities": [
     {
       "id": "spires-rough-sleeper-drop-in",
       "org_id": "spires",
-      "title": "Rough Sleeper Drop-In",
-      "what_youd_do": "Cook and serve breakfast at a weekday morning drop-in, in a church hall in Tooting, West Norwood or Streatham. Showers and clothing run alongside it.",
+      "title": "Centre Volunteer",
+      "what_youd_do": "Help support workers at breakfast sessions by serving food and drinks, preparing meals, washing up and sorting donated items.",
       "commitment": "flexible",
       "min_term_months": null,
-      "typical_shift_hours": 2.5,
+      "typical_shift_hours": null,
       "when": [
-        "weekday_daytime"
+        "flexible"
       ],
-      "specific_times": "9am to 11.30am; Mon Tooting, Tue and Fri West Norwood, Thu Streatham",
+      "specific_times": null,
       "activity": "cooking_serving",
       "location_type": "in_person",
       "postcode_district": null,
@@ -55,7 +55,7 @@
         "references": null,
         "interview": null,
         "min_age": null,
-        "induction": "You choose your own days. They ask for at least three hours a month."
+        "induction": null
       },
       "skills": [],
       "eligibility": [],
@@ -66,37 +66,36 @@
       "url_specificity": "org_volunteer_page",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-09-02T00:00:00+00:00",
-        "method": "human",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "llm",
         "reviewed_by_human": true,
-        "confidence": 0.9,
-        "source_url": "https://www.spires.org.uk/",
+        "confidence": 1.0,
+        "source_url": "https://www.spires.org.uk/volunteer",
         "verified_fields": [
-          "specific_times",
-          "typical_shift_hours",
-          "screening.induction",
-          "activity"
+          "status",
+          "commitment"
         ],
         "unsupported_fields": [
           "screening.dbs",
           "screening.min_age",
-          "postcode_district"
+          "specific_times"
         ]
-      }
+      },
+      "stated_places": []
     },
     {
       "id": "spires-womens-outreach",
       "org_id": "spires",
       "title": "Women's Outreach",
-      "what_youd_do": "Night outreach with the women's team, working with women involved in street-based sex work. Four sessions a week, on personal and sexual safety.",
+      "what_youd_do": "Join the women-only night outreach in the Spires vehicle, chatting with and listening to women, giving advice and handing out health and safety kits.",
       "commitment": "flexible",
       "min_term_months": null,
-      "typical_shift_hours": null,
+      "typical_shift_hours": 4,
       "when": [
         "weekday_evening",
         "overnight"
       ],
-      "specific_times": "Four night sessions a week; at least three hours a month",
+      "specific_times": "Mon, Thu, Fri nights 9:30pm-1:30am; Mon mornings 5am-8am",
       "activity": "outreach",
       "location_type": "in_person",
       "postcode_district": null,
@@ -106,10 +105,12 @@
         "references": null,
         "interview": null,
         "min_age": null,
-        "induction": "Health and safety training, then shadowing shifts until both you and the team are ready"
+        "induction": "Health and safety training, then shadow a few shifts before going out on outreach"
       },
       "skills": [],
-      "eligibility": [],
+      "eligibility": [
+        "women only"
+      ],
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
@@ -117,72 +118,25 @@
       "url_specificity": "org_volunteer_page",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-09-02T00:00:00+00:00",
-        "method": "human",
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "llm",
         "reviewed_by_human": true,
-        "confidence": 0.9,
+        "confidence": 1.0,
         "source_url": "https://www.spires.org.uk/volunteer",
         "verified_fields": [
-          "screening.induction",
-          "activity",
-          "specific_times"
-        ],
-        "unsupported_fields": [
-          "screening.dbs",
-          "screening.min_age",
-          "typical_shift_hours",
-          "postcode_district"
-        ]
-      }
-    },
-    {
-      "id": "spires-womens-space",
-      "org_id": "spires",
-      "title": "Women's Space",
-      "what_youd_do": "Support the twice-weekly women-only drop-in at their Stockwell office \u2014 a room where women who would not use a mixed centre will come.",
-      "commitment": "weekly",
-      "min_term_months": null,
-      "typical_shift_hours": 3,
-      "when": [
-        "weekday_daytime"
-      ],
-      "specific_times": "Thursdays, 9am to noon",
-      "activity": "befriending",
-      "location_type": "in_person",
-      "postcode_district": "SW9",
-      "who_can_apply": "individual",
-      "screening": {
-        "dbs": "unknown",
-        "references": null,
-        "interview": null,
-        "min_age": null,
-        "induction": "You choose your own days. They ask for at least three hours a month."
-      },
-      "skills": [],
-      "eligibility": [],
-      "seasonal_window": null,
-      "next_intake": null,
-      "status": "open",
-      "apply_url": "https://www.spires.org.uk/volunteer",
-      "url_specificity": "org_volunteer_page",
-      "coords": null,
-      "provenance": {
-        "extracted_at": "2026-09-02T00:00:00+00:00",
-        "method": "human",
-        "reviewed_by_human": true,
-        "confidence": 0.8,
-        "source_url": "https://www.spires.org.uk/",
-        "verified_fields": [
+          "status",
           "specific_times",
-          "typical_shift_hours",
-          "postcode_district"
+          "commitment",
+          "eligibility"
         ],
         "unsupported_fields": [
           "screening.dbs",
-          "screening.min_age",
-          "activity: their schedule confirms the session, not what a volunteer does in it"
+          "screening.min_age"
         ]
-      }
+      },
+      "stated_places": [
+        "Lambeth"
+      ]
     }
   ]
 }

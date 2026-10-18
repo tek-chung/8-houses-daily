@@ -1,0 +1,140 @@
+{
+  "organisation": {
+    "id": "ymca-london-city-and-north",
+    "name": "YMCA London City and North",
+    "aliases": [
+      "ymca lcan",
+      "landaid house"
+    ],
+    "charity_number": "1053864",
+    "website_url": "https://www.ymcalondoncan.org/",
+    "volunteer_url": "https://www.ymcalondoncan.org/engage/volunteer/",
+    "summary": "Accommodation for young people experiencing homelessness, including the 146-bed LandAid House, plus youth hubs and community outreach.",
+    "coverage": "multi_borough",
+    "boroughs": [],
+    "focus_groups": [],
+    "lived_experience_roles": false,
+    "check": {
+      "last_attempt": "2026-10-17T22:08:14+00:00",
+      "last_success": "2026-10-17T22:08:14+00:00",
+      "link_status": "ok",
+      "content_hash": null,
+      "consecutive_failures": 0,
+      "etag": null,
+      "last_modified": null
+    }
+  },
+  "opportunities": [
+    {
+      "id": "ymca-london-city-and-north-english-language-volunteer",
+      "title": "English Language Volunteer",
+      "what_youd_do": "Run small-group spoken and written English practice with residents who speak English as an additional language.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "teaching",
+      "location_type": "in_person",
+      "who_can_apply": "unknown",
+      "postcode_district": null,
+      "stated_places": [
+        "Crouch End",
+        "Hackney",
+        "the City of London"
+      ],
+      "screening": {
+        "dbs": "required_unspecified",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "skills": [
+        "ESOL teaching"
+      ],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://www.ymcalondoncan.org/engage/volunteer/",
+      "url_specificity": "org_volunteer_page",
+      "org_id": "ymca-london-city-and-north",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "llm",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://www.ymcalondoncan.org/engage/volunteer/",
+        "verified_fields": [
+          "status",
+          "screening.dbs"
+        ],
+        "unsupported_fields": [
+          "screening.min_age",
+          "specific_times",
+          "commitment"
+        ]
+      }
+    },
+    {
+      "id": "ymca-london-city-and-north-money-management-volunteer",
+      "title": "Money Management Volunteer",
+      "what_youd_do": "Lead a weekly budgeting and money-saving workshop in the computer room for up to eight residents at a time.",
+      "commitment": "weekly",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "teaching",
+      "location_type": "in_person",
+      "who_can_apply": "unknown",
+      "postcode_district": null,
+      "stated_places": [
+        "Crouch End",
+        "Hackney",
+        "the City of London"
+      ],
+      "screening": {
+        "dbs": "required_unspecified",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "skills": [
+        "budgeting",
+        "finance"
+      ],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://www.ymcalondoncan.org/engage/volunteer/",
+      "url_specificity": "org_volunteer_page",
+      "org_id": "ymca-london-city-and-north",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "method": "llm",
+        "reviewed_by_human": true,
+        "confidence": 1.0,
+        "source_url": "https://www.ymcalondoncan.org/engage/volunteer/",
+        "verified_fields": [
+          "status",
+          "screening.dbs",
+          "commitment"
+        ],
+        "unsupported_fields": [
+          "screening.min_age",
+          "specific_times"
+        ]
+      }
+    }
+  ]
+}

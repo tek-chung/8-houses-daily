@@ -1,0 +1,29 @@
+{
+  "organisation": {
+    "id": "firmfoundation",
+    "name": "FirmFoundation",
+    "aliases": [
+      "firm foundation"
+    ],
+    "charity_number": "1143823",
+    "website_url": "https://firmfoundation.org.uk/",
+    "volunteer_url": "https://firmfoundation.org.uk/contact-us/",
+    "summary": "Harrow. A Christian charity running a January-to-March night shelter, supported accommodation at Hope Place and Grace House, and signposting drop-ins.",
+    "coverage": "borough",
+    "boroughs": [
+      "Harrow"
+    ],
+    "focus_groups": [],
+    "lived_experience_roles": false,
+    "check": {
+      "last_attempt": null,
+      "last_success": null,
+      "link_status": "ok",
+      "content_hash": null,
+      "consecutive_failures": 0,
+      "etag": null,
+      "last_modified": null
+    }
+  },
+  "opportunities": []
+}

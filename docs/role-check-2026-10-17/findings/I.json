@@ -1,0 +1,83 @@
+{
+  "agent": "claude-direct",
+  "checked_at": "2026-10-17",
+  "orgs": [
+    {
+      "org_id": "kingston-churches-action-on-homelessness",
+      "read_status": "ok",
+      "pages_read": [
+        "https://kcah.org.uk/volunteer-roles/",
+        "https://kcah.org.uk/volunteer-roles/wrecking-crew/",
+        "https://kcah.org.uk/volunteer-roles/housing-crisis-reception/",
+        "https://kcah.org.uk/volunteer-roles/housing-crisis-administrative-support/",
+        "https://kcah.org.uk/about-us/"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Three role pages listed. Wrecking Crew was a one-day project on 10 October 2026 and has passed. Sign-up is by registering as a general volunteer, then applying from a dashboard.",
+      "org_fields": {},
+      "roles": [
+        {
+          "match": "new",
+          "id": "kingston-churches-action-on-homelessness-housing-crisis-reception",
+          "title": "Housing Crisis Reception Volunteer",
+          "what_youd_do": "Welcome people arriving at the housing advice drop-in, hand out registration forms, pass details to advisers and log new cases on the database.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 3,
+          "when": ["weekday_daytime"],
+          "specific_times": "Monday to Friday, 10:00 to 13:00",
+          "activity": "hosting",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": "KT2",
+          "stated_places": [],
+          "screening": {"dbs": "unknown", "references": null, "interview": null, "min_age": null, "induction": null},
+          "skills": ["interpersonal skills", "discretion"],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://kcah.org.uk/volunteer-roles/housing-crisis-reception/",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {"url": "https://kcah.org.uk/volunteer-roles/housing-crisis-reception/", "quote": "You will need to register as a general volunteer, then you can apply for the role from your volunteer dashboard."},
+            "commitment": {"url": "https://kcah.org.uk/volunteer-roles/housing-crisis-reception/", "quote": "Time commitment preference: 1+ mornings a week"},
+            "specific_times": {"url": "https://kcah.org.uk/volunteer-roles/housing-crisis-reception/", "quote": "Shifts: Monday – Friday : 10:00 – 13:00"}
+          },
+          "changes_vs_current": []
+        },
+        {
+          "match": "new",
+          "id": "kingston-churches-action-on-homelessness-housing-crisis-admin-support",
+          "title": "Housing Crisis Admin Support Volunteer",
+          "what_youd_do": "Type handwritten intake and interview notes from new clients into the case database, with training, and greet people arriving for booked appointments.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 4,
+          "when": ["weekday_daytime"],
+          "specific_times": "Monday to Friday, 13:00 to 17:00",
+          "activity": "admin",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": "KT2",
+          "stated_places": [],
+          "screening": {"dbs": "unknown", "references": null, "interview": null, "min_age": null, "induction": "Training provided for the database entry."},
+          "skills": ["reading handwriting", "discretion"],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://kcah.org.uk/volunteer-roles/housing-crisis-administrative-support/",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {"url": "https://kcah.org.uk/volunteer-roles/housing-crisis-administrative-support/", "quote": "You will need to register as a general volunteer, then you can apply for the role from your volunteer dashboard."},
+            "commitment": {"url": "https://kcah.org.uk/volunteer-roles/housing-crisis-administrative-support/", "quote": "Time commitment preference: 2+ afternoons a week"},
+            "specific_times": {"url": "https://kcah.org.uk/volunteer-roles/housing-crisis-administrative-support/", "quote": "Shifts: Monday – Friday : 13:00 – 17:00"}
+          },
+          "changes_vs_current": []
+        }
+      ],
+      "retire": []
+    }
+  ]
+}

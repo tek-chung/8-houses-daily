@@ -1,89 +1,146 @@
 Organisation,Role,Activity,Commitment,When,Location,Postcode,Status,DBS,Last updated
-Ace of Clubs,Lunch Service Volunteer,cooking_serving,weekly,"9.30am to 3pm, Monday to Friday",in_person,SW4,open,unknown,2026-09-02
+999 Club,Gateway Volunteer,befriending,weekly,"Mon-Fri, 8:45am-12:30pm or 12pm-3:15pm, or all day",in_person,,open,required_unspecified,2026-10-17
+999 Club,"Housing, Employment and Advice Team Volunteer",advice,weekly,"Thursdays, 10:00-15:00",in_person,,closed,required_unspecified,2026-10-17
+999 Club,Women's Sanctuary Volunteer,befriending,weekly,"Mon-Fri, 8:45am-12:30pm or 12pm-3:15pm, or all day",in_person,,closed,required_unspecified,2026-10-17
+999 Club,Reception Volunteer,admin,weekly,"Mon-Fri, 8:45am-12:30pm or 12pm-3:15pm, or all day",in_person,,open,required_unspecified,2026-10-17
+999 Club,Volunteer Admin Assistant,admin,weekly,"Mon-Fri, 8:15am-12:30pm or 12pm-3:15pm, or all day",hybrid,,open,unknown,2026-10-17
+999 Club,Project Volunteer,advice,weekly,"Mon-Fri, 8:45am-12:30pm or 12pm-3:15pm, or all day",in_person,,closed,required_unspecified,2026-10-17
+Ace of Clubs,Lunch Service Volunteer,cooking_serving,unknown,,in_person,SW4,open,unknown,2026-10-17
 akt,Volunteer Mentor,mentoring,weekly,About an hour a week,hybrid,,closed,unknown,2026-09-02
-akt,Pride and Fundraising Events,fundraising,one_off,Once a year for a Pride parade,in_person,,closed,unknown,2026-09-02
-Centrepoint,Volunteer Mentor,mentoring,long_term,flexible,in_person,,unknown,unknown,2026-09-02
-Centrepoint,Helpline Volunteer,advice,weekly,weekday_daytime,hybrid,,unknown,unknown,2026-09-02
-Crisis,Crisis at Christmas Volunteer,cooking_serving,long_term,Christmas period,in_person,,open,unknown,2026-10-17
-Crisis,Welcome and Reception,befriending,weekly,"During the Skylight's opening hours, so staff are there if you need them",in_person,E1,unknown,unknown,2026-09-02
-Crisis,One-to-One Member Support,mentoring,weekly,weekday_daytime,in_person,,unknown,required_unspecified,2026-09-02
-Crisis,Retail Volunteer,shop_warehouse,weekly,At least 4 hours or one full day a week,in_person,,open,none,2026-10-17
-Depaul UK,Nightstop Host,hosting,flexible,"Nights you pick yourself, on a flexible rota",own_home,,open,required_unspecified,2026-10-08
-Depaul UK,Nightstop Transport Volunteer,outreach,unknown,flexible,in_person,,unknown,unknown,2026-10-08
-Emmaus Greenwich,Retail Volunteer,shop_warehouse,weekly,"At least one full day a week, 9am to 5pm, on a day that suits you",in_person,SE18,open,basic,2026-09-02
-Emmaus Greenwich,Street Souls Outreach,outreach,fortnightly,"Monday, Thursday or Friday evenings; at least two a month",in_person,SE18,open,basic,2026-09-02
-Emmaus Greenwich,Furniture and Upcycling,practical,weekly,"weekday_daytime, weekend_daytime",in_person,SE18,unknown,basic,2026-09-02
+akt,Pride and Fundraising Events,fundraising,one_off,Once a year for a Pride parade,in_person,,closed,unknown,2026-10-17
+All People All Places,Day Centre Support Volunteer,hosting,weekly,"Flexible hours within day centre hours, 8:00am to 3:00pm",in_person,,open,unknown,2026-10-17
+All People All Places,Kitchen Support Volunteer,cooking_serving,weekly,"Flexible hours within day centre hours, 8:00am to 3:00pm",in_person,,open,unknown,2026-10-17
+All People All Places,Community Barber,practical,flexible,A few hours per session,in_person,,open,unknown,2026-10-17
+Barons Court Project,Corporate Volunteering,varies,unknown,,in_person,,open,unknown,2026-10-17
+Bench Outreach,Housing & Benefits Support Assistant,advice,weekly,Mondays (more days possible later),in_person,SE8,open,unknown,2026-10-17
+C4WS Homeless Project,Winter Shelter Floating Volunteer,practical,unknown,Early November to end of March,in_person,,open,unknown,2026-10-17
+C4WS Homeless Project,Home from Home Host,hosting,unknown,,own_home,,open,unknown,2026-10-17
+C4WS Homeless Project,Wednesday Club Cooking Team,cooking_serving,unknown,Every Wednesday (lunch club),in_person,,open,unknown,2026-10-17
+C4WS Homeless Project,Wednesday Club Front of House Team,practical,unknown,Every Wednesday (lunch club),in_person,,open,unknown,2026-10-17
+C4WS Homeless Project,Jobs Club Mentor,mentoring,unknown,,in_person,,unknown,unknown,2026-10-17
+Centrepoint,Gardening Volunteer (Hammersmith and Fulham),practical,long_term,,in_person,W12,open,required_unspecified,2026-10-17
+Centrepoint,Gardening Volunteer (Westminster),practical,long_term,Flexible to your availability; Mondays or Fridays preferred,in_person,,open,required_unspecified,2026-10-17
+Centrepoint,Helpline Volunteer,advice,long_term,,hybrid,,closed,required_unspecified,2026-10-17
+Crisis,Welcome and Reception,befriending,weekly,"Croydon: Thursdays, ideally 10am to 4pm. London: 4 hours per week",in_person,,open,basic,2026-10-17
+Crisis,One-to-One Member Support,mentoring,unknown,,in_person,,closed,unknown,2026-10-17
+Crisis,Retail Volunteer,shop_warehouse,weekly,At least 4 hours or one full day a week (some shops set times with management),in_person,,open,none,2026-10-17
+Crisis,E-Commerce Support Volunteer,shop_warehouse,weekly,5 hours or 1 full day per week,in_person,E16,open,none,2026-10-17
+Crisis,Handyperson Volunteer,practical,weekly,"A few hours a week, preferably for a minimum of six months",in_person,,open,none,2026-10-17
+Crisis,"Collections Volunteer, London",fundraising,unknown,,in_person,,open,unknown,2026-10-17
+Crisis,Crisis at Christmas General Volunteer,cooking_serving,unknown,"9am - 6pm shifts, mid December to early January",in_person,,open,none,2026-10-17
+Crisis,Christmas Night Owl Volunteer,befriending,unknown,,in_person,,open,none,2026-10-17
+Crisis,Christmas Kitchen Volunteer,cooking_serving,unknown,,in_person,,open,none,2026-10-17
+Crisis,Christmas Driver Volunteer,practical,unknown,"3 shifts, mostly 9am - 5pm",in_person,,open,enhanced,2026-10-17
+Crisis,Christmas Warehouse Volunteer,shop_warehouse,unknown,"3 shifts, 9am - 5pm during the event",in_person,,open,none,2026-10-17
+Crisis,Christmas Healthcare Professional Volunteer,advice,one_off,"1 shift, 10.30am - 4.30pm",in_person,,open,enhanced,2026-10-17
+Crisis,Christmas Guest Welfare Volunteer,befriending,unknown,,in_person,,open,basic,2026-10-17
+Crisis,"Christmas Hairdressing, Barber and Nail Volunteer",practical,one_off,"1 shift: day centres 9:30-5:30, hotels 10:00-17:00",in_person,,open,none,2026-10-17
+Crisis,Christmas Arts Facilitator Volunteer,teaching,one_off,1 full day shift,in_person,,open,none,2026-10-17
+Crisis,Christmas Shift Office Coordinator Volunteer,admin,unknown,,in_person,,open,basic,2026-10-17
+Crisis,Christmas Advice and Caseworker Support Volunteer,advice,unknown,"2 shifts, 10am - 6pm",in_person,,open,enhanced,2026-10-17
+Depaul UK,Nightstop Host,hosting,flexible,Evenings you choose from a rota,own_home,,open,required_unspecified,2026-10-17
+Depaul UK,Nightstop Transport Volunteer,outreach,unknown,,in_person,,unknown,required_unspecified,2026-10-17
+Emmaus SLC,Kitchen Volunteer,cooking_serving,unknown,,in_person,SE27,open,unknown,2026-10-17
+Emmaus SLC,Van Driver / Crew,practical,flexible,"Every day except Sunday, 9-5",in_person,,open,unknown,2026-10-17
+Emmaus SLC,Retail Assistant,shop_warehouse,unknown,,in_person,,open,unknown,2026-10-17
+Emmaus Greenwich,Retail Volunteer,shop_warehouse,weekly,"At least one full day a week, 9am to 5pm, on a day that suits you",in_person,SE18,open,basic,2026-10-17
+Emmaus Greenwich,Street Souls Outreach,outreach,fortnightly,"Monday, Thursday or Friday evenings; at least two a month",in_person,SE18,open,basic,2026-10-17
 Emmaus Greenwich,Kitchen Volunteer,cooking_serving,weekly,"One day a week; Mondays, Thursdays and Fridays preferred",in_person,SE18,open,basic,2026-10-17
 Emmaus Greenwich,Van Crew Volunteer,practical,weekly,"At least one day a week, 9.30am to 4pm, Monday to Saturday",in_person,,open,basic,2026-10-17
 Emmaus Greenwich,Van Driver Volunteer,practical,weekly,"At least one day a week, 9am to 5pm, Monday to Saturday",in_person,,open,basic,2026-10-17
 Emmaus Greenwich,Trustee,governance,unknown,Board meets five times a year,in_person,SE18,open,basic,2026-10-17
-Glass Door Homeless Charity,Winter Night Shelter Volunteer,cooking_serving,weekly,"Around 6pm to 9pm on the same evening weekly, early November to April",in_person,,unknown,unknown,2026-10-08
-Glass Door Homeless Charity,Casework Triage Volunteer,advice,weekly,"One day a week, daytime shifts",in_person,,closed,unknown,2026-10-08
-Glass Door Homeless Charity,Lived Experience Group Member,varies,unknown,Meets five times per year,hybrid,,open,unknown,2026-10-08
-Groundswell,Homeless Health Peer Advocate,advice,weekly,"At least two days a week, plus monthly team meetings",in_person,SW9,open,required_unspecified,2026-09-02
-Groundswell,Participation Volunteer,campaigning,monthly,A regular group meeting,hybrid,,open,unknown,2026-09-02
-HandsOn London,Wrap Up London Coat Collection,fundraising,one_off,November into early December,in_person,,seasonal_closed,unknown,2026-08-25
-HandsOn London,Community Day,varies,one_off,Varies — a couple of hours up to a full day,in_person,,open,unknown,2026-08-25
-Housing Justice,Citadel Volunteer,befriending,weekly,One to two hours a week,in_person,,open,unknown,2026-09-02
-Housing Justice,Volunteer Host,hosting,long_term,overnight,own_home,,open,required_unspecified,2026-09-02
-Housing Justice,Winter Night Shelter,cooking_serving,weekly,Every night through the season,in_person,,seasonal_closed,unknown,2026-09-02
+Evolve Housing + Support,Wellbeing & Activities Volunteer,varies,unknown,"1–2 times a week or fortnight, 2–3 hours",in_person,,open,unknown,2026-10-17
+Glass Door Homeless Charity,Winter Night Shelter Volunteer,cooking_serving,weekly,"Around 6pm to 9pm on the same evening weekly, early November to April",in_person,,seasonal_closed,unknown,2026-10-17
+Glass Door Homeless Charity,Casework Triage Volunteer,advice,weekly,,in_person,,closed,unknown,2026-10-17
+Glass Door Homeless Charity,Lived Experience Group Member,governance,unknown,Meets five times per year,hybrid,,open,unknown,2026-10-17
+Groundswell,Homeless Health Peer Advocate,advice,weekly,"At least two days a week, plus monthly team meetings",in_person,,unknown,required_unspecified,2026-10-17
+Groundswell,Participation Volunteer,campaigning,unknown,A regular group meeting,hybrid,,unknown,unknown,2026-10-17
+HandsOn London,Wrap Up London Coat Collection,practical,unknown,Coat donations 2nd to 22nd November 2026,in_person,,unknown,unknown,2026-10-17
+HandsOn London,Community Day,varies,one_off,Mainly Saturdays,in_person,,unknown,unknown,2026-10-17
+Housing Justice,Citadel Volunteer,befriending,weekly,1-3 hours a week,in_person,,open,required_unspecified,2026-10-17
+Housing Justice,Volunteer Host,hosting,long_term,,own_home,,open,required_unspecified,2026-10-17
+Housing Justice,Winter Night Shelter,cooking_serving,weekly,Every night through the season,in_person,,unknown,unknown,2026-10-17
+Kingston Churches Action on Homelessness,Housing Crisis Reception Volunteer,hosting,weekly,"Monday to Friday, 10:00 to 13:00",in_person,KT2,open,unknown,2026-10-17
+Kingston Churches Action on Homelessness,Housing Crisis Admin Support Volunteer,admin,weekly,"Monday to Friday, 13:00 to 17:00",in_person,KT2,open,unknown,2026-10-17
 Manna Society,Kitchen Volunteer,cooking_serving,unknown,9am to 1pm,in_person,SE1,unknown,unknown,2026-10-08
 Manna Society,IT Volunteer,teaching,unknown,10.30–11.30am and 12noon–1.00pm,in_person,SE1,unknown,unknown,2026-10-08
-New Horizon Youth Centre,Kitchen Volunteer,cooking_serving,weekly,weekday_daytime,in_person,NW1,unknown,unknown,2026-09-02
-New Horizon Youth Centre,ESOL Tutor,teaching,weekly,weekday_daytime,in_person,NW1,unknown,unknown,2026-09-02
-New Horizon Youth Centre,Sports Assistant,teaching,weekly,weekday_daytime,in_person,NW1,unknown,unknown,2026-09-02
-North London Action for the Homeless,Washing-up Volunteer,cooking_serving,unknown,Mondays 1pm to 3pm; Wednesdays 7pm to 9pm,in_person,N16,open,unknown,2026-10-16
-North London Action for the Homeless,Supplies Driver,practical,flexible,"Occasional, as and when they need a run",in_person,N16,unknown,unknown,2026-09-02
-Providence Row,Welcome Host,befriending,weekly,"8.30am to 11.30am or 11.30am to 2.30pm, Monday to Friday",in_person,E1,open,required_unspecified,2026-09-02
-Providence Row,Garden Volunteer,practical,weekly,weekday_daytime,in_person,E1,open,unknown,2026-09-02
-Providence Row,Kitchen Assistant,cooking_serving,unknown,weekday_daytime,in_person,E1,unknown,unknown,2026-10-17
-Providence Row,Creative Lead - Art Volunteer,varies,unknown,weekday_daytime,in_person,E1,unknown,unknown,2026-10-17
-Providence Row,IT Volunteer,advice,unknown,weekday_daytime,in_person,E1,unknown,unknown,2026-10-17
-Shelter,Community Shop Volunteer,shop_warehouse,flexible,"A few hours a week, or a one-off event",in_person,,open,none,2026-09-02
-Shelter,Shop Volunteer Supervisor,shop_warehouse,weekly,flexible,in_person,,open,none,2026-09-02
-Shelter,Community Volunteer,fundraising,flexible,"Weekly, a one-off event, or anywhere between",hybrid,,open,unknown,2026-09-02
-Shelter,Hub Support,advice,weekly,weekday_daytime,in_person,,open,unknown,2026-09-02
-Simon Community,Live-in Volunteer,outreach,long_term,"Full time, living on site",in_person,NW5,unknown,unknown,2026-10-08
-Simon Community,Part-time Outreach Volunteer,outreach,flexible,Evening services; a weekly or fortnightly commitment is recommended,in_person,NW5,unknown,unknown,2026-10-08
-Simon Community,Minibus Driver,practical,flexible,Evening services; a weekly or fortnightly commitment is recommended,in_person,NW5,open,unknown,2026-10-08
-Single Homeless Project,Wellbeing and Employment Programme Volunteer,teaching,unknown,flexible,in_person,,unknown,unknown,2026-10-08
-Single Homeless Project,Corporate and Individual Fundraising Support,fundraising,flexible,flexible,in_person,,unknown,unknown,2026-10-08
-Single Homeless Project,Hostel Maintenance and Gardening Volunteer,practical,flexible,flexible,in_person,,unknown,unknown,2026-10-08
-Single Homeless Project,Peer Mentor,mentoring,unknown,flexible,in_person,,open,unknown,2026-10-08
-Solace Women's Aid,Rape Crisis Helpline,advice,weekly,flexible,hybrid,,unknown,enhanced,2026-09-02
-Solace Women's Aid,Volunteer Staff Counsellor,advice,weekly,weekday_daytime,hybrid,,open,unknown,2026-10-17
-SPEAR,Fundraising Volunteer,fundraising,unknown,flexible,in_person,,closed,unknown,2026-09-02
-Spires,Rough Sleeper Drop-In,cooking_serving,flexible,"9am to 11.30am; Mon Tooting, Tue and Fri West Norwood, Thu Streatham",in_person,,open,unknown,2026-09-02
-Spires,Women's Outreach,outreach,flexible,Four night sessions a week; at least three hours a month,in_person,,open,unknown,2026-09-02
-Spires,Women's Space,befriending,weekly,"Thursdays, 9am to noon",in_person,SW9,open,unknown,2026-09-02
-Spitalfields Crypt Trust,Paper and Cup Coffee Shop,shop_warehouse,weekly,weekday_daytime,in_person,,open,required_unspecified,2026-09-02
-Spitalfields Crypt Trust,Restoration Station,practical,weekly,weekday_daytime,in_person,,open,required_unspecified,2026-09-02
-Spitalfields Crypt Trust,Charity Shop Volunteer,shop_warehouse,flexible,"A few hours, whenever suits",in_person,,open,unknown,2026-09-02
-Spitalfields Crypt Trust,"Head Office, Fundraising or Communications",admin,unknown,weekday_daytime,hybrid,,open,unknown,2026-09-02
-St Mungo's,Roma Casework Volunteer,advice,long_term,flexible,in_person,,open,required_unspecified,2026-10-17
-St Mungo's,Workshop Assistant Volunteer,practical,long_term,flexible,in_person,,open,required_unspecified,2026-10-17
-St Mungo's,Digital Skills Volunteer,teaching,long_term,"Monday-Friday, 10am-4pm, minimum 1 day per week",in_person,,open,required_unspecified,2026-10-17
-St Mungo's,"Outreach Volunteer, Westminster",outreach,monthly,"Early 6am to 10am or late 8.30pm to midnight, any day; one shift a month minimum",in_person,,unknown,unknown,2026-09-02
-St Mungo's,"Outreach Volunteer, Ealing",outreach,weekly,"Monday 10pm to 2am, or Wednesday and Friday 5am to 8am",in_person,,unknown,unknown,2026-09-02
-St Mungo's,First Response,outreach,unknown,flexible,in_person,,unknown,unknown,2026-09-02
-St Mungo's,Gardening Sessions,practical,weekly,weekday_daytime,in_person,,unknown,unknown,2026-09-02
-Stonewall Housing,Online Support Volunteer,advice,weekly,flexible,remote,,open,required_unspecified,2026-09-02
-Thames Reach,Volunteering in their Services,varies,weekly,flexible,in_person,,unknown,unknown,2026-09-02
-The Big Issue Foundation,Frontline Office Volunteer,admin,weekly,weekday_daytime,in_person,,open,unknown,2026-09-02
-The Connection at St Martin's,Events Support,fundraising,one_off,"Half a day to a day, ad hoc through the year",in_person,WC2N,open,unknown,2026-09-02
-The Connection at St Martin's,"Day Centre, for Partner Companies",varies,weekly,"Breakfast 9-11am or lunch 10.45am-12.45pm, one day a week for a month",in_person,WC2N,open,unknown,2026-09-02
-The Passage,Kitchen Support Volunteer,cooking_serving,weekly,weekday_daytime,in_person,SW1P,open,unknown,2026-09-02
-The Passage,Clothing Store and Laundry Volunteer,shop_warehouse,weekly,Shifts booked on an online rota; weekly or fortnightly,in_person,SW1P,open,unknown,2026-09-02
-The Passage,Irish Weekly Group Volunteer,befriending,weekly,"Wednesday afternoons, 1pm to 3pm",in_person,SW1P,open,unknown,2026-09-02
-The Passage,Sports and Activities Volunteer,teaching,flexible,Depends on the activity schedule and your availability,in_person,SW1P,open,unknown,2026-09-02
-The Passage,"Reception Volunteer, Passage House",befriending,weekly,flexible,in_person,SW1P,open,unknown,2026-09-02
-The Passage,"Barber, Afro-Textured Hair Specialist",teaching,monthly,Once a month or fortnight,in_person,SW1P,open,unknown,2026-09-02
-The Passage,Women's Hairdresser,teaching,monthly,flexible,in_person,SW1P,open,unknown,2026-09-02
-The Passage,Station Collector,fundraising,one_off,"Between 7am and 10pm, monthly collections",in_person,SW1P,open,unknown,2026-09-02
-The Whitechapel Mission,Breakfast Challenge,cooking_serving,one_off,"On site by 5.45am, finished by 11.15am, any day of the year",in_person,E1,open,unknown,2026-08-25
-The Whitechapel Mission,Clothing Challenge,shop_warehouse,one_off,"On site by 8.45am, finished by 12.15pm",in_person,E1,open,unknown,2026-08-25
-The Whitechapel Mission,Advice Challenge,advice,one_off,8am to 12pm on weekdays,in_person,E1,open,required_unspecified,2026-10-17
-West London Mission,Volunteering in their Services,befriending,unknown,flexible,in_person,,closed,unknown,2026-09-02
-Women at the Well,Kitchen Volunteer,cooking_serving,weekly,"Monday through Thursday, 12:30pm to 3:30pm",in_person,,open,unknown,2026-10-08
-Women at the Well,Activities Volunteer,teaching,weekly,"Monday through Thursday, 12:30pm to 3:30pm",in_person,,open,unknown,2026-10-08
-Women at the Well,Reception Volunteer,admin,weekly,"Monday through Thursday, 12:30pm to 3:30pm",in_person,,open,unknown,2026-10-08
+New Horizon Youth Centre,Kitchen Volunteer,cooking_serving,unknown,,in_person,NW1,unknown,unknown,2026-10-17
+New Horizon Youth Centre,ESOL Tutor,teaching,weekly,,in_person,NW1,unknown,unknown,2026-10-17
+New Horizon Youth Centre,Sports Assistant,teaching,unknown,,in_person,NW1,unknown,unknown,2026-10-17
+North London Action for the Homeless,Washing-up Volunteer,cooking_serving,unknown,Mondays 1pm to 3pm; Wednesdays 7pm to 9pm,in_person,N16,open,unknown,2026-10-17
+Providence Row,Welcome Host,befriending,unknown,,in_person,E1,unknown,unknown,2026-10-17
+Providence Row,Garden Volunteer,practical,unknown,,in_person,E1,unknown,unknown,2026-10-17
+Providence Row,Kitchen Assistant,cooking_serving,unknown,,in_person,E1,unknown,unknown,2026-10-17
+Providence Row,Creative Lead - Art Volunteer,varies,unknown,,in_person,E1,open,unknown,2026-10-17
+Providence Row,IT Volunteer,advice,unknown,,in_person,E1,unknown,unknown,2026-10-17
+Shelter from the Storm,Evening Shift Volunteer,cooking_serving,unknown,"Evening shift 5pm-9pm, 7 days a week",in_person,,open,unknown,2026-10-17
+Shelter from the Storm,Overnight Volunteer,hosting,unknown,"Overnight shift 9pm-6:30am, 7 days a week",in_person,,open,unknown,2026-10-17
+Shelter from the Storm,Breakfast Volunteer,cooking_serving,unknown,"Breakfast shift 6.30am-8.30am, 7 days a week",in_person,,open,unknown,2026-10-17
+Shelter from the Storm,Group Volunteering Day (teams),practical,unknown,Sessions last 3-4 hours,in_person,,open,unknown,2026-10-17
+Shelter,Community Shop Volunteer,shop_warehouse,flexible,From an hour a week upwards; many give a morning or afternoon,in_person,,open,none,2026-10-17
+Shelter,Shop Volunteer Supervisor,shop_warehouse,flexible,,in_person,,open,basic,2026-10-17
+Shelter,Community Volunteer,fundraising,flexible,"Weekly, a one-off event, or anywhere between",hybrid,,open,unknown,2026-10-17
+Shelter,Hub Support,advice,weekly,,in_person,,unknown,unknown,2026-10-17
+Shelter,Winter Bucket Collection Volunteer,fundraising,flexible,"Winter; varied days, evenings and weekends, you choose",in_person,,open,unknown,2026-10-17
+Shelter,"Marshalling and Cheering at Walk for Home (London, 2026)",fundraising,unknown,"Tuesday 8 December 2026, 4pm-10:30pm",in_person,SE1,open,unknown,2026-10-17
+Shelter,Lived Experience Coordination Volunteer,admin,unknown,"Mon-Fri 9am-5pm; about 7-14 hours a month, to be agreed",hybrid,,open,unknown,2026-10-17
+Shelter,Volunteer Van Driver's Mate,shop_warehouse,flexible,"Any time Monday-Friday, 10am-6pm",in_person,,open,basic,2026-10-17
+Simon Community,Live-in Volunteer,outreach,long_term,"Full-time, living in the community",in_person,NW5,unknown,unknown,2026-10-17
+Simon Community,Part-time Outreach Volunteer,outreach,flexible,Evening services; at least once every week or two is suggested,in_person,,unknown,unknown,2026-10-17
+Simon Community,Minibus Driver,practical,flexible,,in_person,,open,unknown,2026-10-17
+Simon Community,"Skilled Support (social media, procurement, bid writing)",admin,unknown,,in_person,,unknown,unknown,2026-10-17
+Single Homeless Project,Wellbeing and Employment Programme Volunteer,teaching,unknown,,in_person,,unknown,unknown,2026-10-17
+Single Homeless Project,Corporate and Individual Fundraising Support,fundraising,flexible,,in_person,,unknown,unknown,2026-10-17
+Single Homeless Project,Hostel Maintenance and Gardening Volunteer,practical,flexible,,in_person,,unknown,unknown,2026-10-17
+Single Homeless Project,Peer Mentor,mentoring,unknown,,in_person,,open,unknown,2026-10-17
+Solace Women's Aid,Volunteer Staff Counsellor,advice,weekly,,hybrid,,open,required_unspecified,2026-10-17
+Solace Women's Aid,Next Steps Peer Mentor Volunteer,mentoring,weekly,"Min 4 hours a week, Tuesdays, Wednesday or Thursdays",in_person,,closed,required_unspecified,2026-10-17
+SPEAR,Fundraising Volunteer,fundraising,unknown,,in_person,,closed,unknown,2026-09-02
+Spires,Centre Volunteer,cooking_serving,flexible,,in_person,,open,unknown,2026-10-17
+Spires,Women's Outreach,outreach,flexible,"Mon, Thu, Fri nights 9:30pm-1:30am; Mon mornings 5am-8am",in_person,,open,unknown,2026-10-17
+Spitalfields Crypt Trust,Paper and Cup Barista,shop_warehouse,unknown,,in_person,,open,required_unspecified,2026-10-17
+Spitalfields Crypt Trust,Restoration Station Volunteer,admin,unknown,,in_person,,open,required_unspecified,2026-10-17
+Spitalfields Crypt Trust,Charity Shop Volunteer,shop_warehouse,unknown,A few hours,in_person,,open,unknown,2026-10-17
+Spitalfields Crypt Trust,"Head Office, Fundraising or Communications",admin,unknown,,hybrid,,open,unknown,2026-10-17
+Spitalfields Crypt Trust,Women's Group Volunteer,teaching,unknown,Wednesdays 4pm-7pm,in_person,,open,unknown,2026-10-17
+Spitalfields Crypt Trust,Yoga and Movement Volunteer,teaching,unknown,,in_person,,open,unknown,2026-10-17
+St Mungo's,Roma Casework Volunteer,advice,long_term,"Mon-Thu, 10am-4pm, 1 day per week",in_person,,open,required_unspecified,2026-10-17
+St Mungo's,Workshop Assistant Volunteer,practical,long_term,"Mon-Fri 9:30am-3:30pm, 2 days per week",in_person,,open,required_unspecified,2026-10-17
+St Mungo's,Digital Learning Volunteer,teaching,long_term,"Monday-Friday, 10am-4pm, minimum 1 day per week",in_person,,open,required_unspecified,2026-10-17
+St Mungo's,Outreach Volunteer,outreach,long_term,"Bournemouth 6-9am or 9pm-12am weekly; Reading Wed 6-10am, Fri 10:30am-1:30pm",in_person,,open,required_unspecified,2026-10-17
+St Mungo's,First Response Volunteer,outreach,monthly,"Westminster: Tue/Thu/Sun 8pm-12am, Sat 6-10am; 1 shift a month",in_person,,open,required_unspecified,2026-10-17
+St Mungo's,Gardening Group Volunteer,practical,weekly,"Mon-Fri daytime; Brent 4 hours a week, Camden/Haringey flexible",in_person,,open,required_unspecified,2026-10-17
+St Mungo's,Cooking Group Volunteer,cooking_serving,weekly,"Mon-Fri between 12pm-7pm, 2 hours per week",in_person,,open,required_unspecified,2026-10-17
+Stonewall Housing,Live Chat Volunteer,advice,flexible,Live chat runs weekdays 14:00-17:00,remote,,open,required_unspecified,2026-10-17
+Thames Reach,Volunteer - Hounslow Reach,advice,unknown,,in_person,TW3,open,unknown,2026-10-17
+Thames Reach,Data and IT Support Volunteer (Lambeth Outreach),admin,unknown,,in_person,SW9,open,unknown,2026-10-17
+Thames Reach,Fundraising Events Volunteer,fundraising,one_off,Fri 9 October (Camberwell) and Sat 10 October (King's Cross),in_person,,closed,unknown,2026-10-17
+The Big Issue Foundation,Frontline Office Volunteer,admin,weekly,,in_person,,open,unknown,2026-09-02
+The Connection at St Martin's,Events Support,fundraising,one_off,"Half a day to a day, ad hoc through the year",in_person,,open,unknown,2026-10-17
+The Connection at St Martin's,"Day Centre, for Partner Companies",varies,weekly,"Breakfast 9am-11am or lunch 10.45am-12.45pm, one day a week for a month",in_person,WC2N,open,unknown,2026-10-17
+The Passage,Kitchen Support Volunteer,cooking_serving,weekly,"Breakfast 9am-12pm or lunch 12.30pm-3.30pm, Monday to Friday",in_person,SW1P,open,unknown,2026-10-17
+The Passage,"Kitchen Support Volunteer, Passage House",cooking_serving,weekly,"Seven days a week, 4.30pm-6.30pm",in_person,SW1V,open,unknown,2026-10-17
+The Passage,Clothing Store and Laundry Volunteer,shop_warehouse,weekly,"Mon-Fri, 9am-12pm or 1pm-3.30pm; shifts booked on an online rota",in_person,SW1P,open,unknown,2026-10-17
+The Passage,Sports and Activities Volunteer,teaching,flexible,Depends on the activity schedule and your availability,in_person,,open,unknown,2026-10-17
+The Passage,"Reception Volunteer, Passage House",befriending,weekly,"8am-1pm, 1pm-6pm or 6pm-10pm, Monday to Sunday",in_person,SW1V,open,unknown,2026-10-17
+The Passage,"Barber, Afro-Textured Hair Specialist",teaching,monthly,"Once a fortnight or month; Mon-Fri, 9am-12pm or 1.30pm-3.30pm",in_person,SW1P,open,unknown,2026-10-17
+The Passage,Women's Hairdresser,teaching,monthly,"1-2 sessions a month; Mon-Fri, 9am-12pm or 1.30pm-3.30pm",in_person,SW1P,open,unknown,2026-10-17
+The Passage,Station Collector,fundraising,unknown,"Usually Tuesday or Thursday, 7am to 10pm; monthly collections",in_person,,open,unknown,2026-10-17
+The Upper Room,UR4Meals Volunteer,cooking_serving,unknown,,in_person,,unknown,unknown,2026-10-17
+The Whitechapel Mission,Breakfast Challenge,cooking_serving,one_off,"On site by 5:45am, finished around 11:30am; any morning of the year",in_person,E1,open,unknown,2026-10-17
+The Whitechapel Mission,Clothing Challenge,shop_warehouse,one_off,"On site by 8.45am, finished by 12.15pm",in_person,E1,open,unknown,2026-10-17
+The Whitechapel Mission,Advice Challenge,advice,one_off,Advice Centre opens at 8am each weekday,in_person,E1,open,unknown,2026-10-17
+West London Mission,Volunteering in their Services,befriending,unknown,,in_person,,unknown,unknown,2026-10-17
+Women at the Well,Kitchen Volunteer,cooking_serving,weekly,"Monday through Thursday, 12:30pm to 3:30pm",in_person,WC1H,open,unknown,2026-10-17
+Women at the Well,Activities Volunteer,teaching,weekly,"Monday through Thursday, 12:30pm to 3:30pm",in_person,WC1H,open,unknown,2026-10-17
+Women at the Well,Reception Volunteer,admin,weekly,"Monday through Thursday, 12:30pm to 3:30pm",in_person,WC1H,open,unknown,2026-10-17
+YMCA London City and North,English Language Volunteer,teaching,unknown,,in_person,,open,required_unspecified,2026-10-17
+YMCA London City and North,Money Management Volunteer,teaching,weekly,,in_person,,open,required_unspecified,2026-10-17
+YMCA St Paul's Group,Supported Lodgings Host,hosting,long_term,,own_home,,open,required_unspecified,2026-10-17
+YMCA St Paul's Group,Youth Session Volunteer,mentoring,unknown,,in_person,,unknown,unknown,2026-10-17
+YMCA St Paul's Group,Employability Skills Session Volunteer,mentoring,unknown,,in_person,,unknown,unknown,2026-10-17
+Your Place,Corporate Volunteering,varies,unknown,,in_person,,open,unknown,2026-10-17
+Your Place,Engagement and Participation Volunteer,varies,unknown,,in_person,,open,unknown,2026-10-17
+Your Place,Administration Volunteer,admin,unknown,,in_person,,open,unknown,2026-10-17
+Your Place,English for Speakers of Other Languages (ESOL) Volunteer,teaching,unknown,,in_person,,open,unknown,2026-10-17
+Your Place,Food Safety and Donations Volunteer,practical,unknown,,in_person,,open,unknown,2026-10-17
