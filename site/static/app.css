@@ -42,9 +42,9 @@
      reference and by far the most expensive for legibility, and a masthead is
      the most-read type on the site. Roman mastheads are entirely orthodox —
      the FT, the Economist and Le Monde all use one. */
-  --display:'Fraunces',Georgia,'Times New Roman',serif;
-  --body:'Literata',Georgia,'Times New Roman',serif;
-  --label:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --display:'Fraunces',Georgia,serif;
+  --body:'Literata',Georgia,serif;
+  --label:'Archivo',Arial,sans-serif;
   --masthead:'Fraunces',Georgia,serif;
 
   --gut:16px;             /* page gutter, grows with viewport */
@@ -59,7 +59,7 @@
   border:1px solid var(--ink);text-decoration:none}
 .guided-cta:hover{background:var(--red);color:var(--paper)}
 #home{padding:clamp(40px,10vh,100px) 0 clamp(56px,14vh,140px)}
-#home .lead h1{max-width:800px;margin:0 auto;font-size:clamp(38px,7vw,72px);line-height:1.12;text-transform:none}
+#home .lead h1{max-width:800px;margin:0 auto;font-size:clamp(38px,7vw,48px);line-height:1.12;text-transform:none}
 #home .discovery-entry{flex-direction:column;gap:18px;margin:28px 0 0}
 #home .discovery-entry>a{min-height:44px;display:inline-flex;align-items:center}
 #home .guided-cta{font-size:20px;gap:18px;padding:16px 28px;min-height:58px;background:#9e2b23;border-color:#9e2b23}
@@ -78,7 +78,7 @@
 .directory .fillin{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .directory .fillin>.d640,.directory .slot .caret{display:none}
 .directory .slot{display:flex;flex-direction:column;align-items:stretch;gap:6px;border:0;min-width:0;min-height:var(--tap)}
-.directory .slot .lbl{font:13px var(--label)}
+.directory .slot .lbl{font:14px var(--label)}
 .directory .slot select{width:100%;max-width:none;min-width:0;min-height:48px;padding:10px;font:16px var(--label);font-size:16px;border:1px solid var(--rule);background:var(--paper);text-decoration:none;text-transform:none;letter-spacing:0;text-align:left;text-align-last:left;appearance:auto}
 .directory .coupon-foot{display:flex;justify-content:space-between;padding:14px 0;font:14px var(--label)}
 .directory #cdelta{display:none}
@@ -91,10 +91,10 @@
 .browse-questions summary{display:flex;justify-content:space-between;gap:14px;font-weight:600;font-size:16px;padding:16px 0;min-height:56px}
 .browse-questions summary::after{content:'+';color:var(--red)}
 .browse-questions details[open]>summary::after{content:'−'}
-.browse-questions summary span{margin-left:auto;text-align:right;max-width:62%;font-size:13px;font-weight:400;color:var(--ink-3);line-height:1.5}
+.browse-questions summary span{margin-left:auto;text-align:right;max-width:62%;font-size:14px;font-weight:400;color:var(--ink-3);line-height:1.5}
 .browse-questions fieldset{border:0;padding:12px 0 20px;min-width:0}
 .browse-questions legend{font:20px var(--display);padding-top:10px}
-.browse-questions fieldset>label{display:flex;align-items:center;gap:12px;min-height:48px;font:16px var(--body)}
+.browse-questions fieldset>label{display:flex;align-items:center;gap:12px;min-height:48px;font:16px var(--label)}
 .browse-questions input{width:20px;height:20px;accent-color:var(--red);flex-shrink:0}
 .browse-questions fieldset>p{font:14px var(--label);color:var(--ink-3);margin-top:10px}
 .browse-results{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--rule);padding:10px 0;font:14px var(--label)}
@@ -118,11 +118,11 @@
 .zone-map-labels span.selected{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .zone-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .zone-controls .zone-button{padding:10px;min-height:48px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);text-align:left;font:14px/1.4 var(--label);cursor:pointer}
-.zone-button small{display:block;font-size:12px;margin-top:4px}
+.zone-button small{display:block;font-size:14px;margin-top:4px}
 .zone-controls .zone-button[aria-pressed=true]{background:var(--red);color:var(--paper);border-color:var(--red)}
 .zone-controls .zone-button[aria-pressed=true] span::before{content:'✓ ';font-weight:700}
 .zone-button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-.zone-map-note{color:var(--ink-3);font-size:12px}
+.zone-map-note{color:var(--ink-3);font-size:14px}
 .zone-selection{font-weight:600;min-height:42px}
 @media(min-width:700px){.zone-controls{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(prefers-reduced-motion:reduce){.zone-map-picture [data-zone]{transition:none}}
@@ -132,8 +132,8 @@ html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{
   background:var(--paper);
   color:var(--ink);
-  font-family:var(--body);
-  font-size:18px;                /* Literata holds its size; 18 reads as 18 */
+  font-family:var(--label);      /* brand guide: Archivo for everyday copy, forms, buttons */
+  font-size:18px;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
@@ -155,7 +155,7 @@ img,svg{max-width:100%}
 a{color:var(--red);text-decoration:none;
   border-bottom:1px solid rgba(114,58,61,.34)}
 a:hover{border-bottom-color:var(--red)}
-h1,h2,h3{font-weight:inherit}
+h1,h2,h3{font-weight:600}
 [hidden]{display:none!important}
 
 .sr{position:absolute!important;width:1px;height:1px;overflow:hidden;
@@ -163,7 +163,7 @@ h1,h2,h3{font-weight:inherit}
 .skip{
   position:absolute;left:-9999px;top:0;z-index:100;
   background:var(--red);color:var(--paper);padding:12px 18px;
-  font-family:var(--label);font-size:13px;letter-spacing:.14em;
+  font-family:var(--label);font-size:14px;letter-spacing:.14em;
   text-transform:uppercase;border:0;
 }
 .skip:focus{left:0}
@@ -195,7 +195,7 @@ h1,h2,h3{font-weight:inherit}
 .masthead{padding-top:0}
 .earpiece{
   display:flex;align-items:center;justify-content:space-between;gap:10px;
-  font-family:var(--label);font-size:11.5px;font-weight:500;letter-spacing:.1em;
+  font-family:var(--label);font-size:14px;font-weight:500;letter-spacing:.1em;
   text-transform:uppercase;color:var(--ink-3);padding:6px 0 7px;
 }
 .earpiece span{white-space:nowrap}
@@ -205,7 +205,7 @@ h1,h2,h3{font-weight:inherit}
   display:block;text-align:center;padding:10px 0 6px;
   font-family:var(--masthead);font-weight:900;
   font-size:clamp(32px,9.6vw,76px);
-  line-height:.96;letter-spacing:-.02em;text-transform:uppercase;
+  line-height:1.02;letter-spacing:-.015em;text-transform:none;
   font-variation-settings:"SOFT" 0,"WONK" 0;
   border-bottom:0;color:var(--ink);
   text-wrap:balance;
@@ -213,13 +213,13 @@ h1,h2,h3{font-weight:inherit}
 .title:hover{border-bottom:0}
 .title .the{
   display:block;font-family:var(--label);font-weight:500;
-  font-size:clamp(11.5px,2.4vw,15px);letter-spacing:.2em;text-transform:uppercase;
+  font-size:clamp(14px,2.4vw,15px);letter-spacing:.2em;text-transform:uppercase;
   color:var(--ink-2);margin-bottom:5px;
 }
 .dateline{
   display:flex;align-items:center;justify-content:center;
   gap:6px 9px;flex-wrap:wrap;
-  font-family:var(--label);font-size:12px;letter-spacing:.08em;
+  font-family:var(--label);font-size:14px;letter-spacing:.08em;
   text-transform:uppercase;color:var(--ink-2);padding:8px 0;
   text-align:center;
 }
@@ -233,7 +233,7 @@ h1,h2,h3{font-weight:inherit}
   padding:11px 13px;margin:14px 0;font-size:16px;line-height:1.55;
 }
 .notice b{
-  display:block;font-family:var(--label);font-size:11.5px;font-weight:600;
+  display:block;font-family:var(--label);font-size:14px;font-weight:600;
   letter-spacing:.1em;text-transform:uppercase;color:var(--red);
   margin-bottom:4px;
 }
@@ -243,13 +243,13 @@ h1,h2,h3{font-weight:inherit}
 /* ─────────────── lead ─────────────── */
 .lead{padding:18px 0 6px;text-align:center}
 .kicker{
-  font-family:var(--label);font-size:12px;font-weight:600;letter-spacing:.14em;
+  font-family:var(--label);font-size:14px;font-weight:600;letter-spacing:.14em;
   text-transform:uppercase;color:var(--red);margin-bottom:10px;
 }
 .lead h1{
-  font-family:var(--display);font-weight:900;
-  font-size:clamp(30px,8.6vw,74px);line-height:.94;letter-spacing:-.022em;
-  text-transform:uppercase;text-wrap:balance;
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(32px,8.6vw,64px);line-height:1.1;letter-spacing:-.012em;
+  text-transform:none;text-wrap:balance;
 }
 .dek{
   font-family:var(--display);font-weight:400;font-style:italic;
@@ -257,7 +257,7 @@ h1,h2,h3{font-weight:inherit}
   max-width:30em;margin:12px auto 0;text-wrap:pretty;
 }
 .byline{
-  font-family:var(--label);font-size:11.5px;letter-spacing:.08em;
+  font-family:var(--label);font-size:14px;letter-spacing:.08em;
   text-transform:uppercase;color:var(--ink-3);margin-top:12px;line-height:1.9;
 }
 
@@ -273,7 +273,7 @@ h1,h2,h3{font-weight:inherit}
   border:1px solid var(--ink);border-top:3px solid var(--ink);
   background:var(--red-tint);color:var(--red);
   padding:13px 10px;min-height:var(--tap);
-  font-family:var(--label);font-size:13px;font-weight:600;letter-spacing:.09em;
+  font-family:var(--label);font-size:14px;font-weight:600;letter-spacing:.09em;
   text-transform:uppercase;
 }
 .doorcta:hover,.col:hover .doorcta{
@@ -289,22 +289,22 @@ h1,h2,h3{font-weight:inherit}
 .col:first-child{border-top:0}
 .col-head{
   display:flex;justify-content:space-between;gap:8px;
-  font-family:var(--label);font-size:11.5px;font-weight:600;letter-spacing:.1em;
+  font-family:var(--label);font-size:14px;font-weight:600;letter-spacing:.1em;
   text-transform:uppercase;color:var(--ink-3);
   padding-bottom:7px;margin-bottom:11px;border-bottom:1px solid var(--ink);
 }
 .col-head em{font-style:normal;color:var(--red)}
 .col h2{
   font-family:var(--display);font-weight:700;
-  font-size:clamp(22px,6vw,28px);line-height:1.03;letter-spacing:-.016em;
-  text-transform:uppercase;margin-bottom:9px;
+  font-size:clamp(22px,6vw,28px);line-height:1.15;letter-spacing:-.01em;
+  text-transform:none;margin-bottom:9px;
 }
 .col h2 a{color:inherit;border-bottom:0}
 .col h2 a:hover{border-bottom:2px solid var(--red)}
 .col p{font-size:17px;line-height:1.58;color:var(--ink-2)}
 .col .more{
   display:inline-block;margin-top:11px;align-self:flex-start;
-  font-family:var(--label);font-size:12px;font-weight:600;letter-spacing:.1em;
+  font-family:var(--label);font-size:14px;font-weight:600;letter-spacing:.1em;
   text-transform:uppercase;color:var(--red);
   border-bottom:1.5px solid var(--red);padding:4px 0;
   min-height:0;
@@ -315,7 +315,7 @@ h1,h2,h3{font-weight:inherit}
   margin:0 0 12px}
 .plate svg{display:block;width:100%;height:auto}
 .plate figcaption{
-  font-family:var(--label);font-size:11px;letter-spacing:.07em;
+  font-family:var(--label);font-size:14px;letter-spacing:.07em;
   text-transform:uppercase;color:var(--ink-3);text-align:center;
   padding-top:5px;margin-top:5px;border-top:1px solid var(--rule);
 }
@@ -366,7 +366,7 @@ h1,h2,h3{font-weight:inherit}
   letter-spacing:.12em;text-transform:uppercase;
 }
 .section-bar .n{
-  font-family:var(--label);font-size:11.5px;letter-spacing:.07em;
+  font-family:var(--label);font-size:14px;letter-spacing:.07em;
   text-transform:uppercase;color:var(--ink-3);
 }
 
@@ -380,7 +380,7 @@ h1,h2,h3{font-weight:inherit}
   border:1px dashed var(--rule);pointer-events:none}
 h2.coupon-head,.coupon-head{
   display:flex;align-items:center;gap:9px;
-  font-family:var(--label);font-size:11.5px;font-weight:600;letter-spacing:.1em;
+  font-family:var(--label);font-size:14px;font-weight:600;letter-spacing:.1em;
   text-transform:uppercase;color:var(--red);margin-bottom:10px;
   position:relative;z-index:1;
 }
@@ -398,7 +398,7 @@ h2.coupon-head,.coupon-head{
 /* Connective words belong to the prose sentence, not the coupon rows. */
 .d640{display:none}
 .slot > .lbl{
-  font-family:var(--body);font-size:16px;color:var(--ink-2);flex-shrink:0;
+  font-family:var(--label);font-size:16px;color:var(--ink-2);flex-shrink:0;
 }
 .slot select{
   appearance:none;-webkit-appearance:none;
@@ -411,20 +411,20 @@ h2.coupon-head,.coupon-head{
 }
 .slot.filled{border-bottom-style:solid;border-bottom-color:var(--red)}
 .slot.filled select{color:var(--red);background:var(--red-tint)}
-.slot .caret{position:absolute;right:4px;font-size:10px;color:var(--ink-3);
+.slot .caret{position:absolute;right:4px;font-size:14px;color:var(--ink-3);
   pointer-events:none}
 .slot{position:relative}
 .slot.filled .caret{color:var(--red)}
 .coupon-foot{
   display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:12px;
   padding-top:10px;border-top:1px solid var(--rule);position:relative;z-index:1;
-  font-family:var(--label);font-size:11.5px;letter-spacing:.07em;
+  font-family:var(--label);font-size:14px;letter-spacing:.07em;
   text-transform:uppercase;color:var(--ink-3);
 }
-.coupon-foot b{font-weight:600;color:var(--ink);font-size:12.5px}
+.coupon-foot b{font-weight:600;color:var(--ink);font-size:14px}
 .stoppress{color:var(--red);font-weight:600}
 .coupon-foot .rst{margin-left:auto;color:var(--ink-3);
-  border-bottom:1px solid var(--rule);font-family:var(--label);font-size:11.5px;
+  border-bottom:1px solid var(--rule);font-family:var(--label);font-size:14px;
   letter-spacing:.07em;text-transform:uppercase;padding:6px 0;min-height:0}
 .coupon-foot .rst:hover{color:var(--red);border-bottom-color:var(--red)}
 
@@ -441,11 +441,11 @@ h2.coupon-head,.coupon-head{
 .refine select.on{border-color:var(--red);color:var(--red);
   background:var(--red-tint)}
 .linkline{
-  font-family:var(--label);font-size:11px;letter-spacing:.05em;
+  font-family:var(--label);font-size:14px;letter-spacing:.05em;
   text-transform:uppercase;color:var(--ink-3);margin-top:8px;
   word-break:break-all;
 }
-.linkline button{font-family:var(--label);font-size:11.5px;letter-spacing:.05em;
+.linkline button{font-family:var(--label);font-size:14px;letter-spacing:.05em;
   text-transform:uppercase;color:var(--ink-2);
   border-bottom:1px solid var(--rule);padding:6px 0}
 
@@ -464,23 +464,24 @@ h2.coupon-head,.coupon-head{
 .ad:hover{background:var(--paper-2)}
 .ad-org{
   display:flex;align-items:center;gap:8px;
-  font-family:var(--label);font-size:11px;font-weight:500;letter-spacing:.07em;
+  font-family:var(--label);font-size:14px;font-weight:500;letter-spacing:.07em;
   text-transform:uppercase;color:var(--ink-3);
   padding-bottom:6px;margin-bottom:7px;border-bottom:1px solid var(--rule);
 }
 .ad-org a{color:inherit;border-bottom:0}
 .ad-org a:hover{color:var(--red)}
-.ad-logo{display:grid;place-items:center;width:104px;height:52px;flex:0 0 104px;
+.ad-logo{background:#fff;display:grid;place-items:center;width:104px;height:52px;flex:0 0 104px;
   padding-right:8px;border-right:1px solid var(--rule)!important}
 .charity-logo{display:block;max-width:100%;max-height:44px;width:auto;height:auto;
-  object-fit:contain;filter:grayscale(1) contrast(1.08);mix-blend-mode:multiply}
+  object-fit:contain}
 .ad-charity{flex:1 1 130px}
 .ad-place{flex:1 1 130px;text-align:right}
 .charity-plate{display:grid;place-items:center;min-height:190px;border:1px solid var(--ink);
-  padding:26px 22px 20px;background:var(--paper-2);margin:0 0 18px}
+  padding:26px 22px 20px;background:#fff;margin:0 0 18px}
+.charity-logo[data-on-dark],.charity-logo-large[data-on-dark]{background:#30282A;padding:8px 12px}
 .charity-logo-large{display:block;max-width:min(380px,82%);max-height:130px;width:auto;height:auto;
-  object-fit:contain;filter:grayscale(1) contrast(1.08);mix-blend-mode:multiply}
-.charity-plate figcaption{width:100%;font-family:var(--label);font-size:11px;
+  object-fit:contain}
+.charity-plate figcaption{width:100%;font-family:var(--label);font-size:14px;
   letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);text-align:center;
   padding-top:9px;margin-top:12px;border-top:1px solid var(--rule)}
 .ad h3{
@@ -495,20 +496,20 @@ h2.coupon-head,.coupon-head{
 .ad dl{font-size:16px;line-height:1.62;border-top:1px solid var(--rule);
   padding-top:6px;margin:0}
 .ad dt{
-  font-family:var(--label);font-size:11px;font-weight:500;letter-spacing:.06em;
+  font-family:var(--label);font-size:14px;font-weight:500;letter-spacing:.06em;
   text-transform:uppercase;color:var(--ink-3);display:inline;
 }
 .ad dt::after{content:"\00a0"}
 .ad dd{display:inline;color:var(--ink);margin:0}
 .ad dd::after{content:"\A";white-space:pre}
 .unconfirmed{
-  font-size:14.5px;line-height:1.5;font-style:italic;color:var(--red);
+  font-size:14.5px;line-height:1.5;color:var(--red);
   border-top:1px solid var(--rule);margin-top:9px;padding-top:8px;
 }
 .ad .apply{
   display:block;margin-top:10px;padding:11px 8px;
   border:0;border-top:1px solid var(--ink);
-  font-family:var(--label);font-size:12px;font-weight:600;letter-spacing:.09em;
+  font-family:var(--label);font-size:14px;font-weight:600;letter-spacing:.09em;
   text-transform:uppercase;text-align:center;color:var(--red);
   min-height:var(--tap);
 }
@@ -519,7 +520,7 @@ h2.coupon-head,.coupon-head{
    never cover the particulars; from 700px up they are struck across the ad. */
 .stamp{
   display:block;margin:9px 0 0;
-  font-family:var(--label);font-size:12px;font-weight:600;letter-spacing:.08em;
+  font-family:var(--label);font-size:14px;font-weight:600;letter-spacing:.08em;
   text-transform:uppercase;color:var(--red);text-align:center;
   border:2px solid var(--red);border-top-width:1px;border-bottom-width:1px;
   padding:5px 10px;background:rgba(251,247,240,.6);
@@ -541,11 +542,11 @@ h2.coupon-head,.coupon-head{
   padding:13px 13px 10px;margin-top:14px}
 .maphead{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;
   padding-bottom:8px;margin-bottom:11px;border-bottom:1px solid var(--ink)}
-.maphead h2{font-family:var(--label);font-size:12px;font-weight:600;
+.maphead h2{font-family:var(--label);font-size:14px;font-weight:600;
   letter-spacing:.1em;text-transform:uppercase}
-.maphead span{font-family:var(--label);font-size:11px;letter-spacing:.06em;
+.maphead span{font-family:var(--label);font-size:14px;letter-spacing:.06em;
   text-transform:uppercase;color:var(--ink-3)}
-.maphead button{margin-left:auto;font-family:var(--label);font-size:11.5px;
+.maphead button{margin-left:auto;font-family:var(--label);font-size:14px;
   letter-spacing:.06em;text-transform:uppercase;color:var(--red);
   border-bottom:1px solid var(--red);padding:6px 0}
 
@@ -592,7 +593,7 @@ h2.coupon-head,.coupon-head{
   color:var(--red);text-align:left;cursor:pointer;
 }
 .bt-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bt-n{font-weight:600;font-size:13px;line-height:1;background:var(--red);
+.bt-n{font-weight:600;font-size:14px;line-height:1;background:var(--red);
   color:var(--paper);padding:3px 6px;flex-shrink:0}
 .bt:hover{background:var(--red);color:var(--paper)}
 .bt:hover .bt-n{background:var(--paper);color:var(--red)}
@@ -601,7 +602,7 @@ h2.coupon-head,.coupon-head{
 .bt:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 .nodistrict{font-size:15px;color:var(--ink-2);line-height:1.5}
 .maplegend{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:11px;
-  font-family:var(--label);font-size:11px;letter-spacing:.06em;
+  font-family:var(--label);font-size:14px;letter-spacing:.06em;
   text-transform:uppercase;color:var(--ink-3)}
 .maplegend i{display:inline-block;width:11px;height:11px;margin-right:6px;
   vertical-align:-1px;border:1px solid var(--ink-3)}
@@ -611,22 +612,22 @@ h2.coupon-head,.coupon-head{
 .maplegend .sw-river-row{display:none}
 .mapnote{font-size:15px;line-height:1.55;color:var(--ink-2);margin-top:9px;
   padding-top:8px;border-top:1px solid var(--rule)}
-.mapattr{font-family:var(--label);font-size:11px;letter-spacing:.03em;
+.mapattr{font-family:var(--label);font-size:14px;letter-spacing:.03em;
   color:var(--ink-3);margin-top:8px;line-height:1.6}
 
 /* ─────────────── article (role detail) ─────────────── */
 .article{padding-top:16px}
 .article h1{
-  font-family:var(--display);font-weight:900;
-  font-size:clamp(27px,7.4vw,52px);line-height:.96;letter-spacing:-.022em;
-  text-transform:uppercase;text-wrap:balance;
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(32px,7.4vw,48px);line-height:1.1;letter-spacing:-.012em;
+  text-transform:none;text-wrap:balance;
 }
 .article .standfirst{
   font-family:var(--display);font-style:italic;font-weight:400;
   font-size:clamp(16px,4.2vw,21px);line-height:1.34;color:var(--ink-2);
   margin-top:11px;
 }
-.article .prose{margin-top:16px;font-size:18px;line-height:1.65}
+.article .prose{margin-top:16px;font-family:var(--body);font-size:18px;line-height:1.65}
 .article .prose > p + p{margin-top:11px}
 .dropcap::first-letter{
   float:left;font-family:var(--display);font-weight:900;
@@ -638,13 +639,13 @@ h2.coupon-head,.coupon-head{
   background:var(--paper-2);padding:13px 14px;margin:18px 0;
 }
 .particulars h2{
-  font-family:var(--label);font-size:12px;font-weight:600;letter-spacing:.1em;
+  font-family:var(--label);font-size:14px;font-weight:600;letter-spacing:.1em;
   text-transform:uppercase;color:var(--red);
   padding-bottom:7px;margin-bottom:9px;border-bottom:1px solid var(--rule);
 }
 .particulars dl{display:grid;grid-template-columns:1fr;gap:2px 14px;
   font-size:16.5px;line-height:1.58}
-.particulars dt{font-family:var(--label);font-size:11px;font-weight:500;
+.particulars dt{font-family:var(--label);font-size:14px;font-weight:500;
   letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);
   padding-top:7px}
 .particulars dd{margin:0 0 5px}
@@ -652,7 +653,7 @@ h2.coupon-head,.coupon-head{
   border-top:1px solid var(--ink);margin-top:22px;padding-top:11px;
   font-size:15.5px;line-height:1.58;color:var(--ink-2);
 }
-.footnote b{font-family:var(--label);font-size:11.5px;font-weight:600;
+.footnote b{font-family:var(--label);font-size:14px;font-weight:600;
   letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);
   display:block;margin-bottom:5px}
 
@@ -674,7 +675,7 @@ h2.coupon-head,.coupon-head{
   display:block;text-align:center;border:1px solid var(--ink);
   border-top:3px solid var(--ink);background:var(--red-tint);
   padding:14px 12px;margin:18px 0;color:var(--red);
-  font-family:var(--label);font-size:13px;font-weight:600;letter-spacing:.09em;
+  font-family:var(--label);font-size:14px;font-weight:600;letter-spacing:.09em;
   text-transform:uppercase;min-height:var(--tap);
 }
 .applybig:hover{background:var(--red);color:var(--paper);border-color:var(--red)}
@@ -690,15 +691,15 @@ h2.coupon-head,.coupon-head{
    not a period voice. The frame stays; the charm does not. */
 .pubnotice{border:4px double var(--ink);padding:18px 16px;margin:16px 0}
 .pubnotice h1{
-  font-family:var(--display);font-weight:900;
-  font-size:clamp(25px,7vw,42px);line-height:1;letter-spacing:-.02em;
-  text-transform:uppercase;
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(32px,7vw,42px);line-height:1.1;letter-spacing:-.012em;
+  text-transform:none;
 }
 .pubnotice .plain{font-size:19px;line-height:1.6;margin-top:12px}
 .helpitem{border-top:1px solid var(--ink);margin-top:18px;padding-top:14px}
 .helpitem h2{
   font-family:var(--display);font-weight:700;font-size:clamp(19px,5vw,24px);
-  text-transform:uppercase;letter-spacing:-.012em;margin-bottom:6px;
+  text-transform:none;letter-spacing:-.008em;margin-bottom:6px;
 }
 .helpitem p{font-size:18px;line-height:1.6;color:var(--ink-2);margin-bottom:10px}
 .helpitem a.big{
@@ -728,10 +729,10 @@ h2.coupon-head,.coupon-head{
 .ta{position:relative;width:100%;max-width:520px}
 .ta input{
   width:100%;background:var(--paper);border:1px solid var(--ink);
-  padding:11px 12px;font-family:var(--body);font-size:16px;  /* 16 = no iOS zoom */
+  padding:11px 12px;font-family:var(--label);font-size:16px;  /* 16 = no iOS zoom */
   color:var(--ink);min-height:var(--tap);
 }
-.ta input::placeholder{color:var(--ink-3);font-style:italic}
+.ta input::placeholder{color:var(--ink-3)}
 .ta input:focus{outline:2px solid var(--red);outline-offset:-1px}
 .ta ul{
   position:absolute;top:calc(100% - 1px);left:0;right:0;z-index:50;
@@ -745,7 +746,7 @@ h2.coupon-head,.coupon-head{
 }
 .ta li:last-child{border-bottom:0}
 .ta li[aria-selected=true],.ta li:hover{background:var(--red-tint)}
-.ta li em{font-style:normal;font-family:var(--label);font-size:11px;
+.ta li em{font-style:normal;font-family:var(--label);font-size:14px;
   letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);
   flex-shrink:0}
 
@@ -757,7 +758,7 @@ h2.coupon-head,.coupon-head{
 .empty .opts{display:flex;gap:8px;flex-wrap:wrap}
 .empty .opts a,.empty .opts button{
   border:1px solid var(--ink);padding:10px 13px;
-  font-family:var(--label);font-size:11px;letter-spacing:.13em;
+  font-family:var(--label);font-size:14px;letter-spacing:.13em;
   text-transform:uppercase;color:var(--ink);min-height:var(--tap);
   display:inline-flex;align-items:center;
 }
@@ -767,13 +768,13 @@ h2.coupon-head,.coupon-head{
 /* ─────────────── colophon ─────────────── */
 .colophon{
   margin-top:30px;padding:14px 0 46px;border-top:3px double var(--ink);
-  font-family:var(--label);font-size:11.5px;letter-spacing:.07em;
+  font-family:var(--label);font-size:14px;letter-spacing:.07em;
   text-transform:uppercase;color:var(--ink-3);line-height:2.1;text-align:center;
 }
 .colophon a{color:var(--ink-2);border-bottom-color:var(--rule)}
 .colophon a:hover{color:var(--red)}
 .back{
-  display:inline-block;font-family:var(--label);font-size:12px;
+  display:inline-block;font-family:var(--label);font-size:14px;
   letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);
   border-bottom:1px solid var(--rule);margin-bottom:14px;padding:6px 0;
 }
@@ -794,7 +795,7 @@ h2.coupon-head,.coupon-head{
    ════════════════════════════════════════════ */
 @media (min-width:640px){
   .fillin{
-    font-family:var(--display);font-size:20px;line-height:2.1;
+    font-family:var(--label);font-size:18px;line-height:2.1;
     display:block;
   }
   .slot{
@@ -828,7 +829,7 @@ h2.coupon-head,.coupon-head{
   .tilemap{margin-top:13px}
 }
 @media (min-width:900px){
-  .bt{min-height:60px;font-size:12px;padding:9px 5px}
+  .bt{min-height:60px;font-size:14px;padding:9px 5px}
 }
 
 /* ════════════════════════════════════════════
@@ -836,7 +837,7 @@ h2.coupon-head,.coupon-head{
    ════════════════════════════════════════════ */
 @media (min-width:700px){
   :root{--gut:24px}
-  body{font-size:18.5px}
+  body{font-size:18px}
   .cols{grid-template-columns:repeat(3,1fr)}
   .col{border-top:0;border-left:1px solid var(--rule);padding:20px 18px 18px}
   .col:first-child{border-left:0;padding-left:0}
@@ -880,7 +881,7 @@ h2.coupon-head,.coupon-head{
    and iOS focus-zoom cannot apply
    ════════════════════════════════════════════ */
 @media (pointer:fine){
-  .refine select{font-size:12.5px;padding:7px 22px 7px 10px;min-height:0}
+  .refine select{font-size:14px;padding:7px 22px 7px 10px;min-height:0}
   .slot select{font-size:15px}
   .ta li{min-height:0;padding:8px 11px;font-size:14.5px}
 }

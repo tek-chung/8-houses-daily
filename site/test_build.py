@@ -602,8 +602,10 @@ def test_every_article_carries_its_charity_logo(built):
         h = built[f"/role/{op['id']}/"]
         assert 'class="charity-plate"' in h, f"{op['id']}: no charity logo plate"
         # A charity with no logo file keeps a blank plate; one with a file must show it.
-        if list((ROOT / "site" / "static" / "logos").glob(f"{op['org_id']}.*")):
-            assert f'/assets/logos/{op["org_id"]}.' in h, \
+        if list((ROOT / "site" / "static" / "logos").glob(f"{op['org_id']}.*")) \
+                or list((ROOT / "site" / "static" / "logos" / "official").glob(f"{op['org_id']}.*")):
+            assert (f'/assets/logos/{op["org_id"]}.' in h
+                    or f'/assets/logos/official/{op["org_id"]}.' in h), \
                 f"{op['id']}: wrong charity logo"
         else:
             assert "<img" not in h.split('class="charity-plate"')[1].split("</figure>")[0], \
@@ -1759,3 +1761,26 @@ def test_dateline_shows_the_readers_today_not_the_build_date(built):
     """The static date is only a no-JS fallback; a script swaps in today (London)."""
     h = built["/"]
     assert "Europe/London" in h and ".dateline span" in h
+
+
+def test_official_logos_win_over_the_old_ones_and_nothing_recolours_them(tmp_path):
+    """logos/official/<id>.<ext> (from tools/fetch_logos.py) takes precedence, and
+    no stylesheet may recolour a charity mark: they are shown as supplied."""
+    import importlib
+    sys.path.insert(0, str(ROOT / "site"))
+    b = importlib.import_module("build")
+    assert b.logo_path("crisis").endswith(("crisis.png", "crisis.svg", "crisis.webp", "crisis.jpg"))
+    assert b.logo_path("no-such-charity") == ""
+    css = (ROOT / "site" / "static" / "app.css").read_text(encoding="utf-8")
+    for rule in re.findall(r"\.charity-logo[^{]*\{[^}]*\}", css):
+        assert "filter" not in rule and "mix-blend" not in rule, rule
+
+
+def test_logo_sources_manifest_covers_every_charity():
+    import json
+    manifest = json.loads((ROOT / "site" / "logo-sources.json").read_text(encoding="utf-8"))["logos"]
+    ids = {p.stem for p in (ROOT / "data" / "orgs").glob("*.json")}
+    assert {m["id"] for m in manifest} == ids
+    for m in manifest:
+        assert m["status"] in ("use", "review")
+        assert m["logo_url"].startswith("https://") or m["logo_url"] == ""

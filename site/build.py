@@ -339,12 +339,30 @@ LOGO_FILE = {
 }
 
 
+# Marks with white elements that disappear on a light background. They are shown
+# exactly as supplied, on a Charcoal backing, rather than being recoloured.
+LOGO_ON_DARK = {"west-london-mission"}
+
+
+def logo_path(org_id):
+    """Path of a charity's logo under /assets/logos/, or "".
+
+    Official logos fetched by site/tools/fetch_logos.py live in logos/official/
+    as <org id>.<ext> and win over the older files named in LOGO_FILE.
+    """
+    official = sorted((STATIC / "logos" / "official").glob(f"{org_id}.*"))
+    if official:
+        return "official/" + official[0].name
+    return LOGO_FILE.get(org_id, "")
+
+
 def logo_img(org, class_name="charity-logo"):
     """A locally held charity mark; adjacent text supplies its accessible name."""
-    filename = LOGO_FILE.get(org["id"])
+    filename = logo_path(org["id"])
     if not filename:
         return ""
-    return (f'<img class="{e(class_name)}" '
+    dark = ' data-on-dark' if org["id"] in LOGO_ON_DARK else ''
+    return (f'<img class="{e(class_name)}"{dark} '
             f'src="/assets/logos/{e(filename)}" alt="" loading="lazy">')
 
 
@@ -1027,9 +1045,8 @@ def results_page(*, path, title, desc, heading, intro, rows, orgs, fresh,
     <details class="directory-filter-panel"><summary>Advanced filters</summary>{REFINE}</details>'''
     body = f"""<main class="wrap directory" id="main">
   <a class="back" href="/">&larr; Front page</a>
-  <h1 style="font-family:var(--display);font-weight:900;
-     font-size:clamp(26px,7vw,46px);line-height:.96;letter-spacing:-.022em;
-     text-transform:uppercase">{e(heading)}</h1>
+  <h1 style="font-family:var(--display);font-weight:700;
+     font-size:clamp(32px,7vw,46px);line-height:1.1;letter-spacing:-.012em">{e(heading)}</h1>
   {f'<p class="standfirst">{e(intro)}</p>' if intro else ''}
   <div class="r-thin" style="margin:14px 0 0"></div>
   {controls}
@@ -1560,6 +1577,12 @@ def build_assets(orgs, opps, fresh):
     logo_out.mkdir(parents=True, exist_ok=True)
     for filename in LOGO_FILE.values():
         shutil.copy(STATIC / "logos" / filename, logo_out / filename)
+    official_dir = STATIC / "logos" / "official"
+    if official_dir.is_dir():
+        (logo_out / "official").mkdir(exist_ok=True)
+        for official_file in official_dir.iterdir():
+            if official_file.is_file() and official_file.suffix.lower() in (".png", ".svg", ".jpg", ".webp"):
+                shutil.copy(official_file, logo_out / "official" / official_file.name)
     bundle = {"orgs": {k: {"n": v["name"], "u": v["volunteer_url"],
                            "w": v["website_url"], "cn": v.get("charity_number"),
                            "a": v.get("aliases", []), "b": v.get("boroughs", [])}

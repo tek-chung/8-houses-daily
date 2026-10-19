@@ -1,0 +1,476 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "URLs located from each charity's own website. 'use' = confident it is the proper header/brand logo. 'review' = check by eye before use.",
+ "logos": [
+  {
+   "id": "999-club",
+   "name": "999 Club",
+   "logo_url": "https://999club.org/wp-content/uploads/2024/04/new-log-with-strapline.png",
+   "source_page": "https://999club.org/",
+   "colour_note": "unknown",
+   "confidence": 75,
+   "status": "use",
+   "note": "Header logo incl. strapline. Alt square mark: .../2024/03/cropped-999-club-yellow-and-blue-logo.jpg"
+  },
+  {
+   "id": "ace-of-clubs",
+   "name": "Ace of Clubs",
+   "logo_url": "https://aceofclubs.org.uk/wp-content/uploads/2025/08/Ace-of-Clubs-logo-with-banner-1.png",
+   "source_page": "https://aceofclubs.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 70,
+   "status": "use",
+   "note": "Footer logo; name says 'with banner' so check it. Current file is a white-only SVG that vanishes on light backgrounds. Checked by eye after download: correct full-colour logo."
+  },
+  {
+   "id": "akt",
+   "name": "akt",
+   "logo_url": "https://www.akt.org.uk/wp-content/themes/akt/assets/images/logo.png",
+   "source_page": "https://www.akt.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 60,
+   "status": "use",
+   "note": "Official logo saved from the charity's own channels by Tek on 19 Oct 2026 and added to logos/official/ by hand (not scriptable)."
+  },
+  {
+   "id": "all-people-all-places",
+   "name": "All People All Places",
+   "logo_url": "",
+   "source_page": "https://allpeopleallplaces.org/",
+   "colour_note": "unknown",
+   "confidence": 0,
+   "status": "use",
+   "note": "Official logo saved from the charity's own channels by Tek on 19 Oct 2026 and added to logos/official/ by hand (not scriptable)."
+  },
+  {
+   "id": "barons-court-project",
+   "name": "Barons Court Project",
+   "logo_url": "https://baronscourtproject.org/wp-content/uploads/2025/11/barons-court-project-logo.png",
+   "source_page": "https://baronscourtproject.org/",
+   "colour_note": "unknown",
+   "confidence": 65,
+   "status": "use",
+   "note": "Full-size URL inferred by dropping the -150x150 suffix; not seen directly. Checked by eye after download: correct full-colour logo."
+  },
+  {
+   "id": "bench-outreach",
+   "name": "Bench Outreach",
+   "logo_url": "https://benchoutreach.com/wp-content/uploads/2020/11/benchlogo.png",
+   "source_page": "https://benchoutreach.com/",
+   "colour_note": "unknown",
+   "confidence": 85,
+   "status": "use",
+   "note": "Official logo saved from the charity's own channels by Tek on 19 Oct 2026 and added to logos/official/ by hand (not scriptable)."
+  },
+  {
+   "id": "c4ws-homeless-project",
+   "name": "C4WS Homeless Project",
+   "logo_url": "https://images.squarespace-cdn.com/content/v1/5cd5b1bd7a1fbd33a884a4ea/94669fcb-9970-4677-ba35-31fab72e0316/JKR295_C4WS_LOGO_CMYK_10mm.png",
+   "source_page": "https://c4wshomelessproject.org/",
+   "colour_note": "unknown",
+   "confidence": 65,
+   "status": "use",
+   "note": "Looks like the official logo file (JKR design) but not confirmed as the header image. Checked by eye after download: correct full-colour logo."
+  },
+  {
+   "id": "cardboard-citizens",
+   "name": "Cardboard Citizens",
+   "logo_url": "",
+   "source_page": "https://cardboardcitizens.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 0,
+   "status": "use",
+   "note": "Official logo saved from the charity's own channels by Tek on 19 Oct 2026 and added to logos/official/ by hand (not scriptable)."
+  },
+  {
+   "id": "centrepoint",
+   "name": "Centrepoint",
+   "logo_url": "https://centrepoint.org.uk/themes/custom/hc/assets/images/logo-footer.png",
+   "source_page": "https://centrepoint.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 55,
+   "status": "use",
+   "note": "Official logo saved from the charity's own channels by Tek on 19 Oct 2026 and added to logos/official/ by hand (not scriptable)."
+  },
+  {
+   "id": "crisis",
+   "name": "Crisis",
+   "logo_url": "https://www.crisis.org.uk/Content/images/logo_crisis_red_2023.png",
+   "source_page": "https://www.crisis.org.uk/",
+   "colour_note": "full-colour",
+   "confidence": 85,
+   "status": "use",
+   "note": "Header logo."
+  },
+  {
+   "id": "depaul-uk",
+   "name": "Depaul UK",
+   "logo_url": "https://www.depaul.org.uk/wp-content/uploads/2020/07/Depaul_Logo_-_Black.png",
+   "source_page": "https://www.depaul.org.uk/",
+   "colour_note": "single-colour dark",
+   "confidence": 85,
+   "status": "use",
+   "note": "Header logo (black version). First download failed (timeout / HTTP 403): re-run the script, or save the file from a browser into logos/official/<id>.<ext>."
+  },
+  {
+   "id": "emmaus-slc",
+   "name": "Emmaus SLC",
+   "logo_url": "https://emmaus.org.uk/wp-content/uploads/2026/03/EMMAUS-green-and-white-RGB-1.png",
+   "source_page": "https://emmaus.org.uk/",
+   "colour_note": "full-colour",
+   "confidence": 80,
+   "status": "use",
+   "note": "Official Emmaus SLC logo saved by Tek on 19 Oct 2026 and added to logos/official/ by hand."
+  },
+  {
+   "id": "emmaus",
+   "name": "Emmaus Greenwich",
+   "logo_url": "",
+   "source_page": "https://emmaus.org.uk/greenwich/",
+   "colour_note": "unknown",
+   "confidence": 0,
+   "status": "use",
+   "note": "Official logo saved from the charity's own channels by Tek on 19 Oct 2026 and added to logos/official/ by hand (not scriptable)."
+  },
+  {
+   "id": "evolve-housing-support",
+   "name": "Evolve Housing + Support",
+   "logo_url": "",
+   "source_page": "https://www.evolvehousing.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 0,
+   "status": "use",
+   "note": "Official logo saved from the charity's own channels by Tek on 19 Oct 2026 and added to logos/official/ by hand (not scriptable)."
+  },
+  {
+   "id": "firmfoundation",
+   "name": "FirmFoundation",
+   "logo_url": "https://firmfoundation.org.uk/wp-content/uploads/2015/05/ff_final-logo-01.png",
+   "source_page": "https://firmfoundation.org.uk/",
+   "colour_note": "full-colour",
+   "confidence": 90,
+   "status": "use",
+   "note": "Header logo (white variant: ff_final-logo-white-01.png)."
+  },
+  {
+   "id": "glass-door",
+   "name": "Glass Door Homeless Charity",
+   "logo_url": "",
+   "source_page": "https://www.glassdoor.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 0,
+   "status": "use",
+   "note": "Official logo saved from the charity's own channels by Tek on 19 Oct 2026 and added to logos/official/ by hand (not scriptable)."
+  },
+  {
+   "id": "groundswell",
+   "name": "Groundswell",
+   "logo_url": "https://groundswell.org.uk/wp-content/uploads/2025/11/groundswell_logo.svg",
+   "source_page": "https://groundswell.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 88,
+   "status": "use",
+   "note": "Header logo."
+  },
+  {
+   "id": "handson-london",
+   "name": "HandsOn London",
+   "logo_url": "https://cdn.prod.website-files.com/612f675353ca03293e2222c1/61315177e7536591ab55a83e_Navlogo.png",
+   "source_page": "https://www.handsonlondon.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 55,
+   "status": "use",
+   "note": "Official logo saved from the charity's own channels by Tek on 19 Oct 2026 and added to logos/official/ by hand (not scriptable)."
+  },
+  {
+   "id": "housing-justice",
+   "name": "Housing Justice",
+   "logo_url": "https://housingjustice.org.uk/wp-content/themes/hj/img/logo-black.svg",
+   "source_page": "https://housingjustice.org.uk/",
+   "colour_note": "single-colour dark",
+   "confidence": 85,
+   "status": "use",
+   "note": "Footer logo (header version is white)."
+  },
+  {
+   "id": "kingston-churches-action-on-homelessness",
+   "name": "Kingston Churches Action on Homelessness",
+   "logo_url": "https://kcah.org.uk/wp-content/themes/kcah-modular/assets/images/logo.png",
+   "source_page": "https://kcah.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 80,
+   "status": "use",
+   "note": "Header logo."
+  },
+  {
+   "id": "manna-society",
+   "name": "Manna Society",
+   "logo_url": "https://mannasociety.org.uk/2026/wp-content/uploads/2026/03/Manna-logo.png",
+   "source_page": "https://mannasociety.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 90,
+   "status": "use",
+   "note": "Header logo."
+  },
+  {
+   "id": "new-horizon-youth-centre",
+   "name": "New Horizon Youth Centre",
+   "logo_url": "https://nhyouthcentre.org.uk/wp-content/themes/nhyc/images/logo-nhyc.svg",
+   "source_page": "https://nhyouthcentre.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 90,
+   "status": "use",
+   "note": "Header logo."
+  },
+  {
+   "id": "north-london-action-for-the-homeless",
+   "name": "North London Action for the Homeless",
+   "logo_url": "https://www.nlah.org.uk/wp-content/uploads/2020/10/NLAH_logo.png",
+   "source_page": "https://www.nlah.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 85,
+   "status": "use",
+   "note": "Header logo."
+  },
+  {
+   "id": "providence-row",
+   "name": "Providence Row",
+   "logo_url": "https://hubble-live-assets.s3.eu-west-1.amazonaws.com/providencerow/theme/logo/1/logo_logo-nostrap.png",
+   "source_page": "https://www.providencerow.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 80,
+   "status": "use",
+   "note": "Header logo (no strapline)."
+  },
+  {
+   "id": "shelter-from-the-storm",
+   "name": "Shelter from the Storm",
+   "logo_url": "https://sfts.org.uk/wp-content/uploads/2013/08/logo.png",
+   "source_page": "https://sfts.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 70,
+   "status": "use",
+   "note": "Header logo, uploaded 2013 so may be low-res. Checked by eye after download: correct full-colour logo."
+  },
+  {
+   "id": "shelter",
+   "name": "Shelter",
+   "logo_url": "https://images.ctfassets.net/6sxvmndnpn0s/1qQWlJLKM5rpZHETE32eLX/fc3c1d9f75930f9f5e4d4d0754806ec7/logo--d-england.png",
+   "source_page": "https://england.shelter.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 80,
+   "status": "use",
+   "note": "Header logo."
+  },
+  {
+   "id": "simon-community",
+   "name": "Simon Community",
+   "logo_url": "https://images.prismic.io/simon-community/acdb8ce1-6a41-42ea-9e59-07dd5430abbe_Simon_Logo_eps-01-svg.png",
+   "source_page": "https://www.simoncommunity.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 20,
+   "status": "use",
+   "note": "PNG render decoded from the og:image URL; not confirmed as the header logo. Current file is an app icon. Checked by eye after download: correct full-colour logo."
+  },
+  {
+   "id": "single-homeless-project",
+   "name": "Single Homeless Project",
+   "logo_url": "https://www.shp.org.uk/wp-content/themes/shp/images/logo.webp",
+   "source_page": "https://www.shp.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 85,
+   "status": "use",
+   "note": "Header logo (shp.org.uk blocks scripted downloads, so the PNG was saved from the browser by Tek on 19 Oct 2026 and added to logos/official/ by hand)."
+  },
+  {
+   "id": "solace-womens-aid",
+   "name": "Solace Women's Aid",
+   "logo_url": "https://solacewomensaid.org/wp-content/uploads/2023/09/Solace-logo-small-1.png",
+   "source_page": "https://solacewomensaid.org/",
+   "colour_note": "unknown",
+   "confidence": 75,
+   "status": "use",
+   "note": "Header logo but filename says 'small'; may be low-res. Checked by eye after download: correct full-colour logo."
+  },
+  {
+   "id": "spear",
+   "name": "SPEAR",
+   "logo_url": "https://www.spearlondon.org/wp-content/uploads/2022/08/SPEAR_Logo_Primary_07_2025.png",
+   "source_page": "https://www.spearlondon.org/",
+   "colour_note": "full-colour",
+   "confidence": 90,
+   "status": "use",
+   "note": "Primary logo, 2427x1355."
+  },
+  {
+   "id": "spires",
+   "name": "Spires",
+   "logo_url": "https://images.squarespace-cdn.com/content/v1/5cdc0acb12df070001540929/0072b3cd-d174-408a-ad40-8b300a36165b/Spires+Website+Redesign.png",
+   "source_page": "https://www.spires.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 80,
+   "status": "use",
+   "note": "Header logo."
+  },
+  {
+   "id": "spitalfields-crypt-trust",
+   "name": "Spitalfields Crypt Trust",
+   "logo_url": "",
+   "source_page": "https://sct.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 0,
+   "status": "use",
+   "note": "Official logo saved from the charity's own channels by Tek on 19 Oct 2026 and added to logos/official/ by hand (not scriptable)."
+  },
+  {
+   "id": "st-mungos",
+   "name": "St Mungo's",
+   "logo_url": "https://www.mungos.org/wp-content/uploads/2024/01/7978ecba-e8ba-4613-b2ba-50057ed04fc0.png",
+   "source_page": "https://www.mungos.org/",
+   "colour_note": "unknown",
+   "confidence": 70,
+   "status": "use",
+   "note": "Header logo (GUID filename); size/colour unverified. Checked by eye after download: correct full-colour logo."
+  },
+  {
+   "id": "stonewall-housing",
+   "name": "Stonewall Housing",
+   "logo_url": "https://stonewallhousing.org/wp-content/uploads/2022/06/logo3_red.png",
+   "source_page": "https://stonewallhousing.org/",
+   "colour_note": "single-colour dark",
+   "confidence": 25,
+   "status": "use",
+   "note": "Official logo saved from the charity's own channels by Tek on 19 Oct 2026 and added to logos/official/ by hand (not scriptable)."
+  },
+  {
+   "id": "streets-of-london",
+   "name": "Streets of London",
+   "logo_url": "https://www.streetsoflondon.org.uk/assets/svg/main-logo.svg",
+   "source_page": "https://www.streetsoflondon.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 90,
+   "status": "use",
+   "note": "Header logo."
+  },
+  {
+   "id": "thames-reach",
+   "name": "Thames Reach",
+   "logo_url": "https://thamesreach.org.uk/wp-content/uploads/2025/06/TRlogoBlue.jpg",
+   "source_page": "https://thamesreach.org.uk/",
+   "colour_note": "full-colour",
+   "confidence": 60,
+   "status": "use",
+   "note": "Site og:image (JPG, white background); likely the logo but not confirmed. Checked by eye after download: correct full-colour logo."
+  },
+  {
+   "id": "the-big-issue-foundation",
+   "name": "The Big Issue Foundation",
+   "logo_url": "https://www.bigissue.com/wp-content/themes/big-issue/assets/svg/logo.svg",
+   "source_page": "https://www.bigissue.com/",
+   "colour_note": "unknown",
+   "confidence": 50,
+   "status": "use",
+   "note": "Official logo saved from the charity's own channels by Tek on 19 Oct 2026 and added to logos/official/ by hand (not scriptable)."
+  },
+  {
+   "id": "the-connection-at-st-martins",
+   "name": "The Connection at St Martin's",
+   "logo_url": "",
+   "source_page": "https://www.connection-at-stmartins.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 0,
+   "status": "use",
+   "note": "Official logo saved from the charity's own channels by Tek on 19 Oct 2026 and added to logos/official/ by hand (not scriptable)."
+  },
+  {
+   "id": "the-passage",
+   "name": "The Passage",
+   "logo_url": "",
+   "source_page": "https://passage.org.uk/",
+   "colour_note": "single-colour red #e52421",
+   "confidence": 40,
+   "status": "use",
+   "note": "Official logo saved from the charity's own channels by Tek on 19 Oct 2026 and added to logos/official/ by hand (not scriptable)."
+  },
+  {
+   "id": "the-salvation-army",
+   "name": "The Salvation Army",
+   "logo_url": "https://www.salvationarmy.org.uk/themes/custom/salvation_army/logo.svg",
+   "source_page": "https://www.salvationarmy.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 60,
+   "status": "use",
+   "note": "Header and footer logo; colour unconfirmed. Checked by eye after download: correct full-colour logo."
+  },
+  {
+   "id": "the-upper-room",
+   "name": "The Upper Room",
+   "logo_url": "",
+   "source_page": "https://theupperroom.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 0,
+   "status": "use",
+   "note": "Official logo saved from the charity's own channels by Tek on 19 Oct 2026 and added to logos/official/ by hand (not scriptable)."
+  },
+  {
+   "id": "the-whitechapel-mission",
+   "name": "The Whitechapel Mission",
+   "logo_url": "https://whitechapel.org.uk/img/branding/logo.png",
+   "source_page": "https://whitechapel.org.uk/assets?type=media",
+   "colour_note": "unknown",
+   "confidence": 65,
+   "status": "use",
+   "note": "Branding logo from the media page. Media downloads also link to drop.ui.com. Checked by eye after download: correct full-colour logo."
+  },
+  {
+   "id": "west-london-mission",
+   "name": "Strides (formerly West London Mission)",
+   "logo_url": "https://strides.org.uk/wp-content/uploads/2024/10/strides-logo.svg",
+   "source_page": "https://strides.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 70,
+   "status": "use",
+   "note": "Strides logo (footer SVG on strides.org.uk), downloaded by the script and checked by eye."
+  },
+  {
+   "id": "women-at-the-well",
+   "name": "Women at the Well",
+   "logo_url": "https://images.squarespace-cdn.com/content/v1/651fe077005a1a2b2a3d3e72/c95e4d91-8529-42d5-87fe-746a0ae57085/w%40w+logo+2+no+background.png?format=1500w",
+   "source_page": "https://www.watw.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 85,
+   "status": "use",
+   "note": "Header logo."
+  },
+  {
+   "id": "ymca-london-city-and-north",
+   "name": "YMCA London City and North",
+   "logo_url": "https://www.ymcalondoncan.org/wp-content/themes/ymca/images/ymca-logo.png",
+   "source_page": "https://www.ymcalondoncan.org/",
+   "colour_note": "unknown",
+   "confidence": 60,
+   "status": "use",
+   "note": "Generic YMCA logo, accepted by Tek on 19 Oct 2026 (150x44, low resolution)."
+  },
+  {
+   "id": "ymca-st-pauls-group",
+   "name": "YMCA St Paul's Group",
+   "logo_url": "https://ymcastpaulsgroup.org/wp-content/uploads/2024/06/logo-white.png",
+   "source_page": "https://ymcastpaulsgroup.org/",
+   "colour_note": "white-on-transparent",
+   "confidence": 45,
+   "status": "use",
+   "note": "Official logo saved from the charity's own channels by Tek on 19 Oct 2026 and added to logos/official/ by hand (not scriptable)."
+  },
+  {
+   "id": "your-place",
+   "name": "Your Place",
+   "logo_url": "https://your-place.org.uk/wp-content/uploads/2022/09/your-place-1.svg",
+   "source_page": "https://your-place.org.uk/",
+   "colour_note": "unknown",
+   "confidence": 80,
+   "status": "use",
+   "note": "Header and footer logo."
+  }
+ ]
+}

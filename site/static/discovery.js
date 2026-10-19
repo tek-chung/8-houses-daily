@@ -80,18 +80,24 @@
       message(preview ? 'This preview link only works on this device.' : 'Copy the link to share this role.');
     }
   }
-  function socialImage(role) {
+  function loadImage(src){
+    return new Promise(done=>{if(!src)return done(null);const img=new Image();
+      img.onload=()=>done(img);img.onerror=()=>done(null);img.src=src;});
+  }
+  async function socialImage(role) {
+    const [brandLogo,charityLogo]=await Promise.all([loadImage('/assets/brand/symbol-reverse.png'),loadImage(role.logo)]);
     const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1350;
     const ctx=canvas.getContext('2d');
     if(!ctx){message('Image unavailable. You can still share the role link.');return;}
+    const SERIF="'Fraunces',Georgia,serif",SANS="'Archivo',Arial,sans-serif";
     ctx.fillStyle='#FBF7F0';ctx.fillRect(0,0,1080,1350);
     ctx.fillStyle='#30282A';ctx.strokeStyle='#30282A';ctx.lineWidth=3;
     ctx.strokeRect(44,44,992,1262);
     function line(y){ctx.beginPath();ctx.moveTo(86,y);ctx.lineTo(994,y);ctx.stroke();}
-    function text(value,y,size=32,font='Georgia',colour='#30282A'){
-      ctx.font=`${size}px ${font}`;ctx.fillStyle=colour;ctx.fillText(value,86,y);
+    function text(value,y,size=32,font=SERIF,colour='#30282A'){
+      ctx.font=`${font===SERIF?'600 ':''}${size}px ${font}`;ctx.fillStyle=colour;ctx.fillText(value,86,y);
     }
-    function wrapped(value,y,size,maxLines,font='Georgia',x=86,width=900){
+    function wrapped(value,y,size,maxLines,font=SERIF,x=86,width=900){
       ctx.font=`${size}px ${font}`;ctx.fillStyle='#30282A';
       const words=String(value).split(/\s+/);let row='',rows=[];
       for(const word of words){const candidate=row?row+' '+word:word;
@@ -107,14 +113,14 @@
     // Same particulars as the role card on the page: where, when, commitment,
     // screening, requirements and recruitment status.
     function fact(label,value,x,y,width,maxLines=2){
-      ctx.font='bold 19px Arial';ctx.fillStyle='#723A3D';ctx.fillText(label.toUpperCase(),x,y);
-      return wrapped(value,y+34,26,maxLines,'Georgia',x,width);
+      ctx.font=`600 19px ${SANS}`;ctx.fillStyle='#723A3D';ctx.fillText(label.toUpperCase(),x,y);
+      return wrapped(value,y+34,26,maxLines,SERIF,x,width);
     }
-    text('THE 8 HOUSES DAILY',124,48,'Georgia');line(159);
-    text('LONDON VOLUNTEERING · A SMALL STEP. A REAL DIFFERENCE.',214,22,'Arial','#723A3D');
+    text('The 8 Houses Daily',124,48,SERIF);line(159);
+    text('LONDON VOLUNTEERING · A SMALL STEP. A REAL DIFFERENCE.',214,22,SANS,'#723A3D');
     let y=wrapped(role.title,292,52,3);y+=16;
-    y=wrapped(role.charity,y+14,28,1,'Arial')+10;
-    ctx.font='bold 20px Arial';ctx.fillStyle='#723A3D';ctx.fillText((role.state||'').toUpperCase(),86,y+14);y+=50;
+    y=wrapped(role.charity,y+14,28,1,SANS)+10;
+    ctx.font=`600 20px ${SANS}`;ctx.fillStyle='#723A3D';ctx.fillText((role.state||'').toUpperCase(),86,y+14);y+=50;
     y=wrapped(role.summary,y,28,4)+22;line(y);y+=44;
     const colWidth=430,rightX=86+colWidth+48;
     const rowOne=Math.max(fact('Where',role.where||'Confirm location',86,y,colWidth),
@@ -123,11 +129,45 @@
     const rowTwo=Math.max(fact('Commitment',role.frequency||'Confirm commitment',86,y,colWidth),
       fact('Screening',role.screening||'Not stated',rightX,y,colWidth));
     y=rowTwo+24;
-    if(role.requirements&&role.requirements.length)fact('Before you save',role.requirements.join(' · '),86,y,900);
+    let yEnd=y-24;
+    if(role.requirements&&role.requirements.length)yEnd=fact('Before you save',role.requirements.join(' · '),86,y,900);
+    // The charity's own mark fills the space between the particulars and the footer.
+    // Logos are drawn exactly as supplied: no filter, tint or blending. Marks that are
+    // white on transparent (which vanish on white) go on a Charcoal plate instead.
+    (function placedBy(){
+      const top=yEnd+44,bottom=1090,room=bottom-top;
+      if(room<150)return;
+      const plateH=Math.min(300,room),plateY=top+(room-plateH)/2,plateX=86,plateW=908;
+      let light=false;
+      if(charityLogo){try{
+        const probe=document.createElement('canvas');probe.width=probe.height=48;
+        const pc=probe.getContext('2d');pc.drawImage(charityLogo,0,0,48,48);
+        const px=pc.getImageData(0,0,48,48).data;let seen=0,clear=0,sum=0;
+        for(let k=0;k<px.length;k+=4){const a=px[k+3];if(a<250)clear++;if(a>20){seen+=a;sum+=a*(0.3*px[k]+0.59*px[k+1]+0.11*px[k+2]);}}
+        light=clear>px.length/4*0.1&&seen>0&&sum/seen>215;
+      }catch(_){}
+      if(role.logo_dark)light=true;}
+      ctx.fillStyle=light?'#30282A':'#FFFFFF';ctx.fillRect(plateX,plateY,plateW,plateH);
+      if(!light){ctx.strokeStyle='#D8C9BF';ctx.lineWidth=2;ctx.strokeRect(plateX,plateY,plateW,plateH);}
+      if(charityLogo){
+        const boxW=plateW-96,boxH=plateH-80,nw=charityLogo.naturalWidth||150,nh=charityLogo.naturalHeight||150;
+        const scale=Math.min(boxW/nw,boxH/nh,4),w=nw*scale,h=nh*scale;
+        ctx.save();
+        ctx.drawImage(charityLogo,plateX+(plateW-w)/2,plateY+(plateH-h)/2,w,h);ctx.restore();
+      }else{
+        ctx.font=`600 44px ${SERIF}`;ctx.fillStyle='#30282A';ctx.textAlign='center';
+        ctx.fillText(role.charity,plateX+plateW/2,plateY+plateH/2+30,plateW-64);ctx.textAlign='left';
+      }
+    })();
     line(1120);text('Interested? Enquire with the charity.',1180,32);
+    // Supplied circular reverse 8 Houses mark, bottom right: square artwork clipped to a circle.
+    if(brandLogo){
+      const d=90;ctx.save();ctx.beginPath();ctx.arc(994-d/2,1133+d/2,d/2,0,Math.PI*2);ctx.clip();
+      ctx.drawImage(brandLogo,994-d,1133,d,d);ctx.restore();
+    }
     const preview=['localhost','127.0.0.1','[::1]'].includes(location.hostname);
-    text(preview?'LOCAL PREVIEW · PUBLIC LINK AVAILABLE AFTER LAUNCH':location.host+' · role link in caption',1233,preview?21:24,'Arial');
-    text('Confirm current availability and requirements.',1270,22,'Arial','#723A3D');
+    text(preview?'LOCAL PREVIEW · PUBLIC LINK AVAILABLE AFTER LAUNCH':location.host+' · role link in caption',1233,preview?21:24,SANS);
+    text('Confirm current availability and requirements.',1270,22,SANS,'#723A3D');
     const overlay=el('div','','social-overlay'),dialog=el('section','','social-dialog');
     dialog.setAttribute('role','dialog');dialog.setAttribute('aria-modal','true');dialog.setAttribute('aria-label','Share image');
     const previous=document.activeElement;

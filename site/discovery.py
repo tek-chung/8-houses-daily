@@ -99,6 +99,8 @@ def build(b, orgs, opps, fresh, total):
         roles.append({
             'id': op['id'], 'title': op['title'], 'charity': orgs[op['org_id']]['name'],
             # Printed on the role card, so repeated on the share image.
+            'logo': ('/assets/logos/' + b.logo_path(op['org_id'])) if b.logo_path(op['org_id']) else '',
+            'logo_dark': op['org_id'] in b.LOGO_ON_DARK,
             'where': p['where'], 'frequency': p['frequency'], 'timing': p['timing'],
             'requirements': p['requirements'], 'screening': p['screening'],
             'state': p['state'],
