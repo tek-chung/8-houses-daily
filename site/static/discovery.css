@@ -57,9 +57,9 @@ body[data-discovery] .title{font-size:36px;line-height:1.15;padding:14px 0;margi
 .discovery-notice .ad{margin:16px 0}
 /* A clipping lifts from the sheet, then tears towards the chosen side. */
 .paper-slot{overflow:hidden;padding:10px 18px;margin:0 -18px;isolation:isolate;background:radial-gradient(ellipse at center,var(--paper-2),transparent 72%)}
-.paper-slot .discovery-notice{transform-origin:50% 85%;will-change:auto;filter:drop-shadow(2px 5px 3px #453c331c)}
+.paper-slot .discovery-notice{transform-origin:50% 85%;will-change:auto;filter:drop-shadow(2px 5px 3px #30282a1c)}
 .paper-slot .role-notice{border-color:var(--rule);clip-path:polygon(0 0,100% 0,100% 98.5%,97% 99.6%,93% 98.8%,89% 100%,84% 99%,80% 99.7%,75% 98.8%,70% 100%,65% 99%,60% 99.8%,55% 98.7%,50% 100%,45% 99%,40% 99.7%,35% 98.8%,30% 100%,25% 99%,20% 99.7%,15% 98.8%,10% 100%,5% 99%,0 99.6%);padding-bottom:28px}
-.paper-choice{position:absolute;top:30px;right:14px;z-index:2;pointer-events:none;opacity:0;font:700 25px 'Segoe Print','Comic Sans MS',cursive;color:#315c48;background:#f8f2dfed;padding:7px 14px;border:3px dashed currentColor;transform:rotate(8deg)}
+.paper-choice{position:absolute;top:30px;right:14px;z-index:2;pointer-events:none;opacity:0;font:700 25px 'Segoe Print','Comic Sans MS',cursive;color:#3E604C;background:#fbf7f0ed;padding:7px 14px;border:3px dashed currentColor;transform:rotate(8deg)}
 .discovery-notice[data-choice] .paper-choice{opacity:1}
 .discovery-notice[data-choice=skip] .paper-choice{right:auto;left:14px;color:var(--red);transform:rotate(-9deg)}
 .paper-dragging{transform:translateX(var(--drag-x,0px)) rotate(var(--drag-angle,0deg));user-select:none;will-change:transform}
@@ -73,7 +73,7 @@ body[data-discovery] .title{font-size:36px;line-height:1.15;padding:14px 0;margi
   55%{opacity:1;transform:translate(calc(var(--drag-x,0px) + var(--tear-direction)*100px),-22px) rotate(calc(var(--drag-angle,0deg) + var(--tear-direction)*9deg))}
   100%{opacity:0;transform:translate(calc(var(--drag-x,0px) + var(--tear-direction)*115%),-50px) rotate(calc(var(--drag-angle,0deg) + var(--tear-direction)*21deg))}
 }
-@keyframes paper-peel{0%{transform:perspective(900px) rotateX(0)}40%{transform:perspective(900px) rotateX(-7deg);box-shadow:0 12px 18px #453c3333}100%{transform:perspective(900px) rotateX(12deg)}}
+@keyframes paper-peel{0%{transform:perspective(900px) rotateX(0)}40%{transform:perspective(900px) rotateX(-7deg);box-shadow:0 12px 18px #30282a33}100%{transform:perspective(900px) rotateX(12deg)}}
 .discovery-actions{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
 .discovery-actions>*{flex:1}
 .discovery-hint{font-size:14px;color:var(--ink-3)}
@@ -105,7 +105,7 @@ body[data-discovery] .title{font-size:36px;line-height:1.15;padding:14px 0;margi
 .share-link input{display:block;width:100%;margin-top:8px;padding:10px;font-size:16px;border:1px solid var(--rule);background:var(--paper)}
 .discovery-about{font-size:13px;margin-top:0}
 .discovery-about summary{cursor:pointer;min-height:44px;display:flex;align-items:center;text-decoration:underline;color:var(--ink-3)}
-.social-overlay{position:fixed;inset:0;z-index:100;background:#201c16b8;display:flex;align-items:center;justify-content:center;padding:16px}
+.social-overlay{position:fixed;inset:0;z-index:100;background:#30282Ab8;display:flex;align-items:center;justify-content:center;padding:16px}
 .social-dialog{max-width:480px;width:100%;max-height:95vh;overflow:auto;background:var(--paper);padding:20px;border:1px solid var(--ink)}
 .social-dialog h2{font:26px var(--display);margin:0 0 8px}
 .social-dialog p{font-size:15px;margin:0 0 16px;line-height:1.5}
@@ -116,18 +116,18 @@ body[data-discovery] .title{font-size:36px;line-height:1.15;padding:14px 0;margi
 .social-actions button:focus-visible,.social-actions a:focus-visible,.fit-reasons summary:focus-visible{outline:3px solid var(--red);outline-offset:3px}
 @media (min-width:900px){.shortlist-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 /* Saved newspaper clippings on a warm, lightly ruled scrapbook leaf. */
-.scrapbook{margin:20px -8px 24px;padding:28px 22px 22px;border:1px solid #c9bfa8;background:repeating-linear-gradient(0deg,transparent 0,transparent 31px,#b8ae982e 31px,#b8ae982e 32px),#e8dfca;box-shadow:3px 5px 0 #d9cfb9;position:relative}
-.scrapbook::before{content:'';position:absolute;top:0;bottom:0;left:12px;border-left:2px solid #9e2b2330;pointer-events:none}
+.scrapbook{margin:20px -8px 24px;padding:28px 22px 22px;border:1px solid #D8C9BF;background:repeating-linear-gradient(0deg,transparent 0,transparent 31px,#D8C9BF66 31px,#D8C9BF66 32px),#F0E3CD;box-shadow:3px 5px 0 #D8C9BF;position:relative}
+.scrapbook::before{content:'';position:absolute;top:0;bottom:0;left:12px;border-left:2px solid #723A3D30;pointer-events:none}
 .scrapbook h2{font:600 clamp(28px,5vw,38px)/1.15 var(--display);max-width:530px;margin:8px 0 12px}
 .scrapbook-kicker,.scrapbook-number{font:12px var(--label);text-transform:uppercase;letter-spacing:.12em;color:var(--ink-3)}
 .scrapbook-intro{font-size:16px;line-height:1.6;max-width:520px}
-.crayon-note{font:700 19px/1.5 'Segoe Print','Comic Sans MS',cursive;color:#315c48;text-shadow:.5px .4px 0 currentColor;letter-spacing:.02em}
+.crayon-note{font:700 19px/1.5 'Segoe Print','Comic Sans MS',cursive;color:#3E604C;text-shadow:.5px .4px 0 currentColor;letter-spacing:.02em}
 .scrapbook-note{display:table;margin:18px 0 28px;transform:rotate(-3deg);position:relative}
 .scrapbook-note::after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:5px;border-top:3px solid currentColor;border-bottom:1px dashed currentColor;border-radius:50%;transform:rotate(-1deg);opacity:.7}
 .scrapbook .shortlist-grid{grid-template-columns:1fr;gap:36px;margin:30px 0}
-.scrapbook .shortlist-item{position:relative;border:0;padding:24px 14px 16px;background:#f9f5e9;box-shadow:2px 4px 7px #453c3326;transform:rotate(-.7deg);border-bottom:3px dashed #c9bfa8}
+.scrapbook .shortlist-item{position:relative;border:0;padding:24px 14px 16px;background:#FBF7F0;box-shadow:2px 4px 7px #30282a26;transform:rotate(-.7deg);border-bottom:3px dashed #D8C9BF}
 .scrapbook .shortlist-item:nth-child(even){transform:rotate(.8deg)}
-.scrapbook .shortlist-item::before{content:'';position:absolute;z-index:1;top:-13px;left:calc(50% - 42px);width:84px;height:28px;background:repeating-linear-gradient(95deg,#d2ba8559 0,#d2ba8559 3px,#e5d09d66 3px,#e5d09d66 6px);border-left:2px dotted #c9b88b; border-right:2px dotted #c9b88b;transform:rotate(-5deg);pointer-events:none}
+.scrapbook .shortlist-item::before{content:'';position:absolute;z-index:1;top:-13px;left:calc(50% - 42px);width:84px;height:28px;background:repeating-linear-gradient(95deg,#EBCB8899 0,#EBCB8899 3px,#EBCB8866 3px,#EBCB8866 6px);border-left:2px dotted #D8B96F; border-right:2px dotted #D8B96F;transform:rotate(-5deg);pointer-events:none}
 .scrapbook .shortlist-item:nth-child(even)::before{transform:rotate(6deg)}
 .scrapbook .role-notice{background:transparent;border:0;border-top:1px solid var(--rule);padding:14px 0 4px}
 .scrapbook .shortlist-item .ad{margin:12px 0}

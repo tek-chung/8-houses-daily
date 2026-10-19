@@ -571,9 +571,14 @@ def test_charity_pages_disclaim_endorsement(built):
 
 def test_masthead_and_colophon_on_every_page(built):
     for url, h in built.items():
-        assert 'class="title"' in h, f"{url} has no masthead"
+        if url == "/find/":
+            # The swipe page swaps the newspaper masthead for the main 8 Houses logo.
+            assert 'class="brand-logo"' in h, f"{url} has no logo"
+            assert 'class="title"' not in h, f"{url} should not carry the masthead"
+        else:
+            assert 'class="title"' in h, f"{url} has no masthead"
+            assert "8 Houses Daily" in h, f"{url} does not name the paper"
         assert "colophon" in h, f"{url} has no colophon"
-        assert "8 Houses Daily" in h, f"{url} does not name the paper"
 
 
 def test_stamps_only_mark_exceptions(built):
@@ -1748,3 +1753,9 @@ def test_the_build_applies_the_date_to_every_record(monkeypatch, tmp_path):
     monkeypatch.setattr(b, "TODAY", lambda: date(2026, 10, 17))
     _, opps, _, _ = b.load()
     assert opps[0]["status"] == "seasonal_closed"
+
+
+def test_dateline_shows_the_readers_today_not_the_build_date(built):
+    """The static date is only a no-JS fallback; a script swaps in today (London)."""
+    h = built["/"]
+    assert "Europe/London" in h and ".dateline span" in h

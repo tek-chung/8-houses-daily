@@ -540,7 +540,9 @@ def shell(*, title, desc, path, body, state=None, extra_head="", noindex=False,
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f2ede1">
+<meta name="theme-color" content="#FBF7F0">
+<link rel="icon" type="image/png" href="/assets/brand/small-red.png">
+<link rel="apple-touch-icon" href="/assets/brand/small-red.png">
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{e(canonical)}">
@@ -563,7 +565,7 @@ def shell(*, title, desc, path, body, state=None, extra_head="", noindex=False,
 </head>
 <body {attrs}>
 <a class="skip" href="#main">Skip to content</a>
-{header(search=search)}
+{header(search=search, discovery=bool(st.get('discovery')))}
 {banner_html}
 {body}
 {lookup_block() if search else ""}
@@ -577,7 +579,7 @@ def shell(*, title, desc, path, body, state=None, extra_head="", noindex=False,
 """
 
 
-def header(search=True):
+def header(search=True, discovery=False):
     """The masthead. No search box — that moved below the fold.
 
     Someone arriving has not decided where to volunteer yet; a lookup field is for
@@ -588,13 +590,22 @@ def header(search=True):
     today = datetime.now(timezone.utc)
     title = (f'<a class="title" href="/"><span class="the">The</span> '
              f'8 Houses Daily</a>')
+    if discovery:
+        # The swipe page drops the newspaper masthead: the main logo only.
+        return """<header class="wrap">
+  <div class="brandbar">
+    <a class="brand-logo" href="/" aria-label="8 Houses &mdash; home">
+      <img src="/assets/brand/main-red.png" width="2200" height="720" alt="8 Houses">
+    </a>
+  </div>
+</header>"""
     return f"""<header class="wrap">
   <div class="masthead">
     <div class="doublerule"></div>
-    <div class="earpiece">
-      <span>Vol. I &middot; No. {today.strftime('%j').lstrip('0')}</span>
-      <span class="mid">Printed in London</span>
-      <span>Price &mdash; Nothing</span>
+    <div class="emblem">
+      <a href="https://8houses.co.uk" aria-label="8 Houses">
+        <img src="/assets/brand/symbol-reverse.png" width="1200" height="1200" alt="8 Houses">
+      </a>
     </div>
     <div class="r-hair"></div>
     {title}
@@ -607,6 +618,14 @@ def header(search=True):
     </div>
     <div class="r-thin"></div>
   </div>
+  <script>
+  /* The printed date is the build date, which is only when the paper was last
+     updated. Show the reader's today (London time) instead; no-JS keeps the build date. */
+  (function(){{try{{var p={{}};new Intl.DateTimeFormat('en-GB',{{timeZone:'Europe/London',
+  weekday:'long',day:'numeric',month:'long',year:'numeric'}}).formatToParts(new Date())
+  .forEach(function(x){{p[x.type]=x.value}});var s=document.querySelector('.dateline span');
+  if(s&&p.weekday)s.textContent=p.weekday+', '+p.day+' '+p.month+' '+p.year}}catch(e){{}}}})();
+  </script>
 </header>"""
 
 
@@ -629,6 +648,7 @@ def lookup_block():
 
 def footer():
     return f"""<footer class="wrap colophon">
+  <p class="colophon-logo"><img src="/assets/brand/symbol-red.png" width="1200" height="1200" alt="8 Houses"></p>
   <p><a href="/about/">About this paper</a></p>
   <p>We print notices &mdash; no applications taken, no charity vetted.
      Corrections to <a href="mailto:{CONTACT}">{CONTACT}</a></p>
@@ -1532,6 +1552,10 @@ def build_assets(orgs, opps, fresh):
     for asset in ("discovery.js", "discovery.css", "zone-map.js"):
         shutil.copy(STATIC / asset, DIST / "assets" / asset)
     shutil.copy(STATIC / 'images' / 'social-preview.png', DIST / 'assets' / 'social-preview.png')
+    brand_out = DIST / "assets" / "brand"
+    brand_out.mkdir(parents=True, exist_ok=True)
+    for brand_file in (STATIC / "brand").glob("*.png"):
+        shutil.copy(brand_file, brand_out / brand_file.name)
     logo_out = DIST / "assets" / "logos"
     logo_out.mkdir(parents=True, exist_ok=True)
     for filename in LOGO_FILE.values():
