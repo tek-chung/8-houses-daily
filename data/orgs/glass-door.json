@@ -21,8 +21,8 @@
     "lived_experience_roles": true,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-17T22:08:14+00:00",
-      "last_success": "2026-10-17T22:08:14+00:00",
+      "last_attempt": "2026-10-24T22:05:54+00:00",
+      "last_success": "2026-10-24T22:05:54+00:00",
       "link_status": "ok",
       "content_hash": "4ecf590f373dbe22eb0970e6ca5ff33518627dabb5b9d19df4fb41e2f199291a",
       "consecutive_failures": 0,
@@ -95,7 +95,7 @@
       "when": [
         "weekday_daytime"
       ],
-      "specific_times": null,
+      "specific_times": "One weekday shift a week, same shift each week",
       "activity": "advice",
       "location_type": "in_person",
       "who_can_apply": "individual",
@@ -118,17 +118,17 @@
       "org_id": "glass-door",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "llm",
-        "reviewed_by_human": true,
-        "confidence": 0.67,
+        "reviewed_by_human": false,
+        "confidence": 1.0,
         "source_url": "https://www.glassdoor.org.uk/casework-triage-volunteering",
         "verified_fields": [
           "status",
+          "specific_times",
           "commitment"
         ],
         "unsupported_fields": [
-          "specific_times",
           "screening.dbs",
           "screening.min_age"
         ]

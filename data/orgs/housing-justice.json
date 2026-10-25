@@ -18,8 +18,8 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-17T22:08:14+00:00",
-      "last_success": "2026-10-17T22:08:14+00:00",
+      "last_attempt": "2026-10-24T22:05:54+00:00",
+      "last_success": "2026-10-24T22:05:54+00:00",
       "link_status": "ok",
       "content_hash": "579442c18fdf60a1fe91fc4fba45ff1f754038d37ce5571dc481ac2aecd83592",
       "consecutive_failures": 0,
@@ -57,7 +57,7 @@
         "dbs": "required_unspecified",
         "references": null,
         "interview": null,
-        "min_age": null,
+        "min_age": 18,
         "induction": "Full induction, training and ongoing supervision"
       },
       "skills": [],
@@ -69,20 +69,19 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "llm",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://housingjustice.org.uk/citadel/volunteer-signup",
         "verified_fields": [
           "status",
           "screening.dbs",
+          "screening.min_age",
           "specific_times",
           "commitment"
         ],
-        "unsupported_fields": [
-          "screening.min_age"
-        ]
+        "unsupported_fields": []
       },
       "role_zones": [
         "north",
@@ -180,9 +179,9 @@
       "url_specificity": "org_volunteer_page",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "human",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 0.9,
         "source_url": "https://housingjustice.org.uk/get-involved",
         "verified_fields": [

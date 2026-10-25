@@ -26,8 +26,8 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-17T22:08:14+00:00",
-      "last_success": "2026-10-17T22:08:14+00:00",
+      "last_attempt": "2026-10-24T22:05:54+00:00",
+      "last_success": "2026-10-24T22:05:54+00:00",
       "link_status": "ok",
       "content_hash": "fa64f2cab592b90cf25dbc11458249860a2e7ab9d6462081e0f04e0148f87f66",
       "consecutive_failures": 0,
@@ -43,12 +43,12 @@
       "title": "Welcome and Reception",
       "what_youd_do": "Greet people arriving at a Skylight centre, sign them in, answer phones and point them to activities and appointments.",
       "commitment": "weekly",
-      "min_term_months": null,
+      "min_term_months": 6,
       "typical_shift_hours": null,
       "when": [
         "weekday_daytime"
       ],
-      "specific_times": "Croydon: Thursdays, ideally 10am to 4pm. London: 4 hours per week",
+      "specific_times": "London: Mon/Wed shifts, 6+ months. Croydon: Tue or Thu 10am-4pm",
       "activity": "befriending",
       "location_type": "in_person",
       "postcode_district": null,
@@ -69,9 +69,9 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "platform",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://mycrisisvolunteering.crisis.org.uk/roles/mld4IypOUVzFh7qSs3IBZ3CDiTz7r6",
         "verified_fields": [
@@ -88,8 +88,7 @@
         ]
       },
       "stated_places": [
-        "London - Skylight",
-        "London - Croydon Skylight"
+        "London"
       ]
     },
     {
@@ -272,7 +271,7 @@
       "who_can_apply": "individual",
       "postcode_district": null,
       "stated_places": [
-        "London-wide Services team"
+        "London"
       ],
       "screening": {
         "dbs": "none",
@@ -282,7 +281,7 @@
         "induction": null
       },
       "skills": [
-        "Experience as a handyperson, plumber,"
+        "good with a drill, screwdriver or"
       ],
       "eligibility": [],
       "seasonal_window": null,
@@ -293,9 +292,9 @@
       "org_id": "crisis",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "platform",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://mycrisisvolunteering.crisis.org.uk/roles/MrnKFkuk6EvmmSgfjng0oYkpnRKDCZ",
         "verified_fields": [
@@ -314,7 +313,7 @@
     {
       "id": "crisis-collections-volunteer",
       "title": "Collections Volunteer, London",
-      "what_youd_do": "Stand at a station or other public spot with a Crisis collecting unit, take cash and card donations and thank passers-by.",
+      "what_youd_do": "Collect donations for Crisis from members of the public on its behalf at community locations across London.",
       "commitment": "unknown",
       "min_term_months": null,
       "typical_shift_hours": null,
@@ -334,7 +333,7 @@
         "references": null,
         "interview": null,
         "min_age": 18,
-        "induction": "A written brief, with support from a member of the Community & Events team"
+        "induction": null
       },
       "skills": [],
       "eligibility": [],
@@ -346,9 +345,9 @@
       "org_id": "crisis",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "platform",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://mycrisisvolunteering.crisis.org.uk/roles/dQDaJ8OlOXGRYCGLqAXGfSwzD9H2nB",
         "verified_fields": [
@@ -366,13 +365,13 @@
     {
       "title": "Crisis at Christmas General Volunteer",
       "what_youd_do": "Welcome guests, serve meals and hot drinks, keep a Christmas day centre tidy and spend time chatting with guests.",
-      "commitment": "unknown",
+      "commitment": "one_off",
       "min_term_months": null,
       "typical_shift_hours": 9,
       "when": [
         "flexible"
       ],
-      "specific_times": "9am - 6pm shifts, mid December to early January",
+      "specific_times": "1 shift, 9am - 6pm, mid December to early January",
       "activity": "cooking_serving",
       "location_type": "in_person",
       "who_can_apply": "individual",
@@ -398,9 +397,9 @@
       "org_id": "crisis",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "platform",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
         "verified_fields": [
@@ -408,14 +407,13 @@
           "screening.dbs",
           "screening.min_age",
           "specific_times",
+          "commitment",
           "seasonal_window"
         ],
-        "unsupported_fields": [
-          "commitment"
-        ]
+        "unsupported_fields": []
       },
       "stated_places": [
-        "London - Christmas venue"
+        "London"
       ]
     },
     {
@@ -428,13 +426,13 @@
       "when": [
         "overnight"
       ],
-      "specific_times": null,
+      "specific_times": "2 shifts, 22:30-08:30",
       "activity": "befriending",
       "location_type": "in_person",
       "who_can_apply": "individual",
       "postcode_district": null,
       "stated_places": [
-        "London - Christmas venue"
+        "London"
       ],
       "screening": {
         "dbs": "none",
@@ -443,9 +441,7 @@
         "min_age": 18,
         "induction": "Access to relevant Crisis at Christmas training events"
       },
-      "skills": [
-        "Positive attitude and a general"
-      ],
+      "skills": [],
       "eligibility": [],
       "seasonal_window": {
         "start_month": 12,
@@ -458,77 +454,19 @@
       "org_id": "crisis",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "platform",
-        "reviewed_by_human": true,
-        "confidence": 0.8,
+        "reviewed_by_human": false,
+        "confidence": 1.0,
         "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
         "verified_fields": [
           "status",
           "screening.dbs",
           "screening.min_age",
+          "specific_times",
           "seasonal_window"
         ],
         "unsupported_fields": [
-          "specific_times",
-          "commitment"
-        ]
-      }
-    },
-    {
-      "id": "crisis-christmas-kitchen",
-      "title": "Christmas Kitchen Volunteer",
-      "what_youd_do": "Prepare vegetables, cook and serve hot meals, including a Christmas dinner, in the kitchen of a Crisis at Christmas day centre.",
-      "commitment": "unknown",
-      "min_term_months": null,
-      "typical_shift_hours": 8.5,
-      "when": [
-        "flexible"
-      ],
-      "specific_times": null,
-      "activity": "cooking_serving",
-      "location_type": "in_person",
-      "who_can_apply": "individual",
-      "postcode_district": null,
-      "stated_places": [
-        "London - Christmas venue"
-      ],
-      "screening": {
-        "dbs": "none",
-        "references": null,
-        "interview": null,
-        "min_age": 18,
-        "induction": "Access to relevant Crisis at Christmas training events"
-      },
-      "skills": [],
-      "eligibility": [
-        "Level 2 Food Safety and Hygiene Certificate needed (no experience needed)"
-      ],
-      "seasonal_window": {
-        "start_month": 12,
-        "end_month": 1
-      },
-      "next_intake": null,
-      "status": "open",
-      "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/smUcGRFkGAz7FoWYxzAghddOh9zKeb",
-      "url_specificity": "role",
-      "org_id": "crisis",
-      "coords": null,
-      "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
-        "method": "platform",
-        "reviewed_by_human": true,
-        "confidence": 0.83,
-        "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
-        "verified_fields": [
-          "status",
-          "screening.dbs",
-          "screening.min_age",
-          "seasonal_window",
-          "eligibility"
-        ],
-        "unsupported_fields": [
-          "specific_times",
           "commitment"
         ]
       }
@@ -549,7 +487,7 @@
       "who_can_apply": "individual",
       "postcode_district": null,
       "stated_places": [
-        "London - Christmas venue"
+        "London"
       ],
       "screening": {
         "dbs": "enhanced",
@@ -560,7 +498,7 @@
       },
       "skills": [],
       "eligibility": [
-        "Aged 23 to 75 with a clean licence held at least two years"
+        "Over 23 and under 75 years of age"
       ],
       "seasonal_window": {
         "start_month": 12,
@@ -573,9 +511,9 @@
       "org_id": "crisis",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "platform",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
         "verified_fields": [
@@ -607,7 +545,7 @@
       "who_can_apply": "individual",
       "postcode_district": null,
       "stated_places": [
-        "London - Christmas venue"
+        "London"
       ],
       "screening": {
         "dbs": "none",
@@ -616,9 +554,7 @@
         "min_age": 18,
         "induction": "Access to relevant Crisis at Christmas training events"
       },
-      "skills": [
-        "A reasonable level of fitness as the"
-      ],
+      "skills": [],
       "eligibility": [],
       "seasonal_window": {
         "start_month": 12,
@@ -631,9 +567,9 @@
       "org_id": "crisis",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "platform",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
         "verified_fields": [
@@ -664,7 +600,7 @@
       "who_can_apply": "individual",
       "postcode_district": null,
       "stated_places": [
-        "London - Christmas venue"
+        "London"
       ],
       "screening": {
         "dbs": "enhanced",
@@ -674,9 +610,7 @@
         "induction": "Access to relevant Crisis at Christmas training events"
       },
       "skills": [],
-      "eligibility": [
-        "Registered healthcare professional (GMC, NMC, GPhC or HCPC number needed)"
-      ],
+      "eligibility": [],
       "seasonal_window": {
         "start_month": 12,
         "end_month": 1
@@ -688,9 +622,9 @@
       "org_id": "crisis",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "platform",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
         "verified_fields": [
@@ -699,8 +633,7 @@
           "screening.min_age",
           "specific_times",
           "commitment",
-          "seasonal_window",
-          "eligibility"
+          "seasonal_window"
         ],
         "unsupported_fields": []
       }
@@ -708,20 +641,20 @@
     {
       "id": "crisis-christmas-guest-welfare",
       "title": "Christmas Guest Welfare Volunteer",
-      "what_youd_do": "Use mental health or vulnerable-adult experience to support the most distressed guests at a Christmas centre and link them to help available there.",
+      "what_youd_do": "Look after the wellbeing of guests at a Christmas centre or hotel, working alongside the guest welfare coordinator.",
       "commitment": "unknown",
       "min_term_months": null,
       "typical_shift_hours": null,
       "when": [
         "flexible"
       ],
-      "specific_times": null,
+      "specific_times": "At least 2 shifts; times vary by venue",
       "activity": "befriending",
       "location_type": "in_person",
       "who_can_apply": "individual",
       "postcode_district": null,
       "stated_places": [
-        "London - Christmas venue"
+        "London"
       ],
       "screening": {
         "dbs": "basic",
@@ -731,9 +664,7 @@
         "induction": "Access to relevant Crisis at Christmas training events"
       },
       "skills": [],
-      "eligibility": [
-        "For mental health professionals, counsellors or people experienced with vulnerable adults"
-      ],
+      "eligibility": [],
       "seasonal_window": {
         "start_month": 12,
         "end_month": 1
@@ -745,21 +676,20 @@
       "org_id": "crisis",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "platform",
-        "reviewed_by_human": true,
-        "confidence": 0.86,
+        "reviewed_by_human": false,
+        "confidence": 1.0,
         "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
         "verified_fields": [
           "status",
           "screening.dbs",
           "screening.interview",
           "screening.min_age",
-          "seasonal_window",
-          "eligibility"
+          "specific_times",
+          "seasonal_window"
         ],
         "unsupported_fields": [
-          "specific_times",
           "commitment"
         ]
       }
@@ -780,7 +710,7 @@
       "who_can_apply": "individual",
       "postcode_district": null,
       "stated_places": [
-        "London - Christmas venue"
+        "London"
       ],
       "screening": {
         "dbs": "none",
@@ -790,9 +720,7 @@
         "induction": "Access to relevant Crisis at Christmas training events"
       },
       "skills": [],
-      "eligibility": [
-        "Evidence of your qualification or a reference from your employer"
-      ],
+      "eligibility": [],
       "seasonal_window": {
         "start_month": 12,
         "end_month": 1
@@ -804,9 +732,9 @@
       "org_id": "crisis",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "platform",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
         "verified_fields": [
@@ -815,8 +743,7 @@
           "screening.min_age",
           "specific_times",
           "commitment",
-          "seasonal_window",
-          "eligibility"
+          "seasonal_window"
         ],
         "unsupported_fields": []
       }
@@ -886,13 +813,13 @@
       "when": [
         "flexible"
       ],
-      "specific_times": null,
+      "specific_times": "4 shifts; day centres 9am - 6pm, hotels in three shifts",
       "activity": "admin",
       "location_type": "in_person",
       "who_can_apply": "individual",
       "postcode_district": null,
       "stated_places": [
-        "London - Christmas venue"
+        "London"
       ],
       "screening": {
         "dbs": "basic",
@@ -901,9 +828,7 @@
         "min_age": 18,
         "induction": "Access to relevant Crisis at Christmas training events"
       },
-      "skills": [
-        "Familiar with Microsoft Teams and"
-      ],
+      "skills": [],
       "eligibility": [],
       "seasonal_window": {
         "start_month": 12,
@@ -916,20 +841,20 @@
       "org_id": "crisis",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "platform",
-        "reviewed_by_human": true,
-        "confidence": 0.83,
+        "reviewed_by_human": false,
+        "confidence": 1.0,
         "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
         "verified_fields": [
           "status",
           "screening.dbs",
           "screening.interview",
           "screening.min_age",
+          "specific_times",
           "seasonal_window"
         ],
         "unsupported_fields": [
-          "specific_times",
           "commitment"
         ]
       }
@@ -987,6 +912,840 @@
         ],
         "unsupported_fields": [
           "commitment"
+        ]
+      }
+    },
+    {
+      "id": "crisis-christmas-hotel-assistant",
+      "title": "Christmas Hotel Assistant Volunteer",
+      "what_youd_do": "Help look after guests staying in a Crisis at Christmas hotel in London, covering day, evening or night shifts.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "2 shifts; hotel shifts run day, evening or overnight",
+      "activity": "befriending",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [
+        "London"
+      ],
+      "screening": {
+        "dbs": "none",
+        "references": null,
+        "interview": null,
+        "min_age": 18,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": {
+        "start_month": 12,
+        "end_month": 1
+      },
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/9rw9QQ3c5zdCCyw9WgSqfVgXxVRRMu",
+      "url_specificity": "role",
+      "org_id": "crisis",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "method": "platform",
+        "reviewed_by_human": false,
+        "confidence": 1.0,
+        "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
+        "verified_fields": [
+          "status",
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "seasonal_window"
+        ],
+        "unsupported_fields": [
+          "commitment"
+        ]
+      }
+    },
+    {
+      "id": "crisis-christmas-centre-willing-to-drive",
+      "title": "Christmas Centre Volunteer (Willing to Drive)",
+      "what_youd_do": "Help at a Crisis at Christmas day centre or hotel in London and be ready to drive for the event as well, over three shifts.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "3 shifts; day centres 8am - 6pm, hotels in three shifts",
+      "activity": "practical",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [
+        "London"
+      ],
+      "screening": {
+        "dbs": "basic",
+        "references": null,
+        "interview": null,
+        "min_age": 23,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [
+        "Over 23 and under 75 years of age"
+      ],
+      "seasonal_window": {
+        "start_month": 12,
+        "end_month": 1
+      },
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/XGmCYpJRRdPzEDoFF8GcgL1P83lXkj",
+      "url_specificity": "role",
+      "org_id": "crisis",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "method": "platform",
+        "reviewed_by_human": false,
+        "confidence": 1.0,
+        "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
+        "verified_fields": [
+          "status",
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "seasonal_window",
+          "eligibility"
+        ],
+        "unsupported_fields": [
+          "commitment"
+        ]
+      }
+    },
+    {
+      "id": "crisis-christmas-minibus-driver",
+      "title": "Christmas Minibus Driver Volunteer",
+      "what_youd_do": "Drive a minibus for the Crisis at Christmas operation in London, working out of the Crisis warehouse, across two shifts.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "2 shifts, mostly 9am - 5pm",
+      "activity": "practical",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [
+        "London"
+      ],
+      "screening": {
+        "dbs": "enhanced",
+        "references": null,
+        "interview": null,
+        "min_age": 23,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [
+        "Over 23 and under 75 years of age"
+      ],
+      "seasonal_window": {
+        "start_month": 12,
+        "end_month": 1
+      },
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/vMB0lssrQ5ngNXJUqlvIxHl7IgDlEm",
+      "url_specificity": "role",
+      "org_id": "crisis",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "method": "platform",
+        "reviewed_by_human": false,
+        "confidence": 1.0,
+        "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
+        "verified_fields": [
+          "status",
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "seasonal_window",
+          "eligibility"
+        ],
+        "unsupported_fields": [
+          "commitment"
+        ]
+      }
+    },
+    {
+      "id": "crisis-christmas-mental-health-advice",
+      "title": "Christmas Mental Health Advice Volunteer",
+      "what_youd_do": "Offer mental health advice and support to guests at Crisis at Christmas day centres and hotels in London.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "2 shifts; times vary by venue",
+      "activity": "advice",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [
+        "London"
+      ],
+      "screening": {
+        "dbs": "enhanced",
+        "references": null,
+        "interview": true,
+        "min_age": 18,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": {
+        "start_month": 12,
+        "end_month": 1
+      },
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/yFd4BBH7LhfHNXyS7yGRi73kFGship",
+      "url_specificity": "role",
+      "org_id": "crisis",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "method": "platform",
+        "reviewed_by_human": false,
+        "confidence": 1.0,
+        "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
+        "verified_fields": [
+          "status",
+          "screening.dbs",
+          "screening.interview",
+          "screening.min_age",
+          "specific_times",
+          "seasonal_window"
+        ],
+        "unsupported_fields": [
+          "commitment"
+        ]
+      }
+    },
+    {
+      "id": "crisis-christmas-warehouse-willing-to-drive",
+      "title": "Christmas Warehouse Volunteer (Willing to Drive)",
+      "what_youd_do": "Work in the Crisis warehouse getting Christmas supplies ready and moved, and be willing to drive as well, over three shifts.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "3 shifts, 9am - 5pm during the event",
+      "activity": "shop_warehouse",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [
+        "London"
+      ],
+      "screening": {
+        "dbs": "none",
+        "references": null,
+        "interview": null,
+        "min_age": 23,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [
+        "Over 23 and under 75 years of age"
+      ],
+      "seasonal_window": {
+        "start_month": 12,
+        "end_month": 1
+      },
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/1KUumIdBTC3P009Aut06dJu7Un04kS",
+      "url_specificity": "role",
+      "org_id": "crisis",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "method": "platform",
+        "reviewed_by_human": false,
+        "confidence": 1.0,
+        "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
+        "verified_fields": [
+          "status",
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "seasonal_window",
+          "eligibility"
+        ],
+        "unsupported_fields": [
+          "commitment"
+        ]
+      }
+    },
+    {
+      "id": "crisis-christmas-resources-coordinator",
+      "title": "Christmas Resources Coordinator Volunteer (Quartermaster)",
+      "what_youd_do": "Keep Christmas centres and hotels stocked by tracking and handing out equipment and supplies, across four shifts.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "4 shifts; day centres 9am - 6pm, hotels in three shifts",
+      "activity": "admin",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [
+        "London"
+      ],
+      "screening": {
+        "dbs": "none",
+        "references": null,
+        "interview": null,
+        "min_age": 18,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": {
+        "start_month": 12,
+        "end_month": 1
+      },
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/EE5e4Ci7EWLuGT8ivJgllqvnYt9TF1",
+      "url_specificity": "role",
+      "org_id": "crisis",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "method": "platform",
+        "reviewed_by_human": false,
+        "confidence": 1.0,
+        "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
+        "verified_fields": [
+          "status",
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "seasonal_window"
+        ],
+        "unsupported_fields": [
+          "commitment"
+        ]
+      }
+    },
+    {
+      "id": "crisis-christmas-av-support",
+      "title": "Christmas AV Support Volunteer",
+      "what_youd_do": "Set up and run sound and audio-visual equipment for activities at a Christmas day centre or hotel in London.",
+      "commitment": "one_off",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "1 shift; timings depend on your chosen location",
+      "activity": "practical",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [
+        "London"
+      ],
+      "screening": {
+        "dbs": "none",
+        "references": null,
+        "interview": null,
+        "min_age": 18,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": {
+        "start_month": 12,
+        "end_month": 1
+      },
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/ouiVpPxp1V6d21MUP6FiKxLnBg7k4b",
+      "url_specificity": "role",
+      "org_id": "crisis",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "method": "platform",
+        "reviewed_by_human": false,
+        "confidence": 1.0,
+        "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
+        "verified_fields": [
+          "status",
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "commitment",
+          "seasonal_window"
+        ],
+        "unsupported_fields": []
+      }
+    },
+    {
+      "id": "crisis-christmas-chef",
+      "title": "Christmas Chef Volunteer",
+      "what_youd_do": "Cook meals for guests as a volunteer chef in a Crisis at Christmas day centre kitchen in London, working one shift.",
+      "commitment": "one_off",
+      "min_term_months": null,
+      "typical_shift_hours": 8.5,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "1 shift, 8:30am - 5pm",
+      "activity": "cooking_serving",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [
+        "London"
+      ],
+      "screening": {
+        "dbs": "none",
+        "references": null,
+        "interview": true,
+        "min_age": 18,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": {
+        "start_month": 12,
+        "end_month": 1
+      },
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/kWiC5OI2lI4RUQRu20QoU31ht4YhIU",
+      "url_specificity": "role",
+      "org_id": "crisis",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "method": "platform",
+        "reviewed_by_human": false,
+        "confidence": 1.0,
+        "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
+        "verified_fields": [
+          "status",
+          "screening.dbs",
+          "screening.interview",
+          "screening.min_age",
+          "specific_times",
+          "commitment",
+          "seasonal_window"
+        ],
+        "unsupported_fields": []
+      }
+    },
+    {
+      "id": "crisis-christmas-digital-it-support",
+      "title": "Christmas Digital and IT Support Volunteer",
+      "what_youd_do": "Help guests and staff with digital and IT needs at a Crisis at Christmas day centre or hotel in London over two shifts.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "2 shifts; times vary by venue",
+      "activity": "admin",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [
+        "London"
+      ],
+      "screening": {
+        "dbs": "none",
+        "references": null,
+        "interview": true,
+        "min_age": 18,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": {
+        "start_month": 12,
+        "end_month": 1
+      },
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/jXeRrCJd4hsZOTjlpENRnsb52xQyrY",
+      "url_specificity": "role",
+      "org_id": "crisis",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "method": "platform",
+        "reviewed_by_human": false,
+        "confidence": 1.0,
+        "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
+        "verified_fields": [
+          "status",
+          "screening.dbs",
+          "screening.interview",
+          "screening.min_age",
+          "specific_times",
+          "seasonal_window"
+        ],
+        "unsupported_fields": [
+          "commitment"
+        ]
+      }
+    },
+    {
+      "id": "crisis-christmas-operations",
+      "title": "Christmas Operations Volunteer",
+      "what_youd_do": "Help run the Christmas operation from the Crisis warehouse in London, working three shifts of about five hours.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": 5,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "3 shifts, 8:30am - 1:30pm or 1pm - 6pm",
+      "activity": "admin",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [
+        "London"
+      ],
+      "screening": {
+        "dbs": "none",
+        "references": null,
+        "interview": true,
+        "min_age": 18,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": {
+        "start_month": 12,
+        "end_month": 1
+      },
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/1gjbpysz5AVPRRb5c3MrDuGl5hvLuF",
+      "url_specificity": "role",
+      "org_id": "crisis",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "method": "platform",
+        "reviewed_by_human": false,
+        "confidence": 1.0,
+        "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
+        "verified_fields": [
+          "status",
+          "screening.dbs",
+          "screening.interview",
+          "screening.min_age",
+          "specific_times",
+          "seasonal_window"
+        ],
+        "unsupported_fields": [
+          "commitment"
+        ]
+      }
+    },
+    {
+      "id": "crisis-christmas-performer",
+      "title": "Christmas Performer Volunteer",
+      "what_youd_do": "Perform for guests at a Crisis at Christmas day centre or hotel in London, for up to an hour in the afternoon or early evening.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": 2,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "Up to 1-hour performance; 2-hour shift can be booked",
+      "activity": "befriending",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [
+        "London"
+      ],
+      "screening": {
+        "dbs": "none",
+        "references": null,
+        "interview": null,
+        "min_age": 18,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": {
+        "start_month": 12,
+        "end_month": 1
+      },
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/5Em7suU2coT15U4h76ApJfM0YPYsao",
+      "url_specificity": "role",
+      "org_id": "crisis",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "method": "platform",
+        "reviewed_by_human": false,
+        "confidence": 1.0,
+        "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
+        "verified_fields": [
+          "status",
+          "screening.dbs",
+          "screening.min_age",
+          "specific_times",
+          "seasonal_window"
+        ],
+        "unsupported_fields": [
+          "commitment"
+        ]
+      }
+    },
+    {
+      "id": "crisis-christmas-sports-facilitator",
+      "title": "Christmas Sports Facilitator Volunteer",
+      "what_youd_do": "Lead sport and physical activity sessions for guests at a Crisis at Christmas day centre or hotel in London.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "At least 1 shift; times vary by location",
+      "activity": "teaching",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [
+        "London"
+      ],
+      "screening": {
+        "dbs": "none",
+        "references": null,
+        "interview": true,
+        "min_age": 18,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": {
+        "start_month": 12,
+        "end_month": 1
+      },
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/Mi2wOhdgW2ncTIKVppiRptIT3Zxj44",
+      "url_specificity": "role",
+      "org_id": "crisis",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "method": "platform",
+        "reviewed_by_human": false,
+        "confidence": 1.0,
+        "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
+        "verified_fields": [
+          "status",
+          "screening.dbs",
+          "screening.interview",
+          "screening.min_age",
+          "specific_times",
+          "seasonal_window"
+        ],
+        "unsupported_fields": [
+          "commitment"
+        ]
+      }
+    },
+    {
+      "id": "crisis-christmas-wellbeing",
+      "title": "Christmas Wellbeing Volunteer",
+      "what_youd_do": "Support guests' wellbeing at a Crisis at Christmas day centre or hotel in London for one complete shift.",
+      "commitment": "one_off",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "1 shift; centres 9:30am - 5:30pm, hotels 9:30am - 3:45pm",
+      "activity": "befriending",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [
+        "London"
+      ],
+      "screening": {
+        "dbs": "none",
+        "references": null,
+        "interview": true,
+        "min_age": 18,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": {
+        "start_month": 12,
+        "end_month": 1
+      },
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/uNpSmgcd6e8eWZHvy8Z111IE0urV5l",
+      "url_specificity": "role",
+      "org_id": "crisis",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "method": "platform",
+        "reviewed_by_human": false,
+        "confidence": 1.0,
+        "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
+        "verified_fields": [
+          "status",
+          "screening.dbs",
+          "screening.interview",
+          "screening.min_age",
+          "specific_times",
+          "commitment",
+          "seasonal_window"
+        ],
+        "unsupported_fields": []
+      }
+    },
+    {
+      "id": "crisis-skylight-brent-admin",
+      "title": "Client Services Administrative Volunteer (Brent Skylight)",
+      "what_youd_do": "Keep the Brent Skylight office running: research and phone calls, updating the member database and spreadsheets, preparing resources and handling post.",
+      "commitment": "weekly",
+      "min_term_months": null,
+      "typical_shift_hours": 6,
+      "when": [
+        "weekday_daytime"
+      ],
+      "specific_times": "One day a week, Mon-Fri, 10am - 4pm",
+      "activity": "admin",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [
+        "London"
+      ],
+      "screening": {
+        "dbs": "basic",
+        "references": true,
+        "interview": null,
+        "min_age": 18,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/3jj7mrQ6rIboLtiQJKsFCgU4m4jHUA",
+      "url_specificity": "role",
+      "org_id": "crisis",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "method": "platform",
+        "reviewed_by_human": false,
+        "confidence": 1.0,
+        "source_url": "https://mycrisisvolunteering.crisis.org.uk/roles/3jj7mrQ6rIboLtiQJKsFCgU4m4jHUA",
+        "verified_fields": [
+          "status",
+          "screening.dbs",
+          "screening.references",
+          "screening.min_age",
+          "specific_times",
+          "commitment"
+        ],
+        "unsupported_fields": [
+          "mycrisisvolunteering.crisis.org.uk: facts read from the charity's volunteering platform"
+        ]
+      }
+    },
+    {
+      "id": "crisis-skylight-green-fingers-lead",
+      "title": "Green Fingers Lead Volunteer (Skylight London)",
+      "what_youd_do": "Look after the plants in two Crisis offices, guiding the existing plant-care volunteer and ordering supplies with the admin and facilities teams.",
+      "commitment": "weekly",
+      "min_term_months": null,
+      "typical_shift_hours": 6,
+      "when": [
+        "weekday_daytime"
+      ],
+      "specific_times": "Fridays 10am - 4pm",
+      "activity": "practical",
+      "location_type": "in_person",
+      "who_can_apply": "individual",
+      "postcode_district": null,
+      "stated_places": [
+        "London"
+      ],
+      "screening": {
+        "dbs": "basic",
+        "references": true,
+        "interview": true,
+        "min_age": 18,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "open",
+      "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/qPUc7kGoWeYmNAhKk3qak7GhHcLSfJ",
+      "url_specificity": "role",
+      "org_id": "crisis",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "method": "platform",
+        "reviewed_by_human": false,
+        "confidence": 1.0,
+        "source_url": "https://mycrisisvolunteering.crisis.org.uk/roles/qPUc7kGoWeYmNAhKk3qak7GhHcLSfJ",
+        "verified_fields": [
+          "status",
+          "screening.dbs",
+          "screening.references",
+          "screening.interview",
+          "screening.min_age",
+          "specific_times",
+          "commitment"
+        ],
+        "unsupported_fields": [
+          "mycrisisvolunteering.crisis.org.uk: facts read from the charity's volunteering platform"
         ]
       }
     }

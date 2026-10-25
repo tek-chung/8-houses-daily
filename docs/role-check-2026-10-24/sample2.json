@@ -1,0 +1,128 @@
+[
+ {
+  "role": "crisis-christmas-hair-and-nails",
+  "field": "screening.min_age",
+  "value": 18,
+  "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+  "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+ },
+ {
+  "role": "crisis-collections-volunteer",
+  "field": "screening.min_age",
+  "value": 18,
+  "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+  "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+ },
+ {
+  "role": "emmaus-slc-van-driver-crew",
+  "field": "screening.min_age",
+  "value": 18,
+  "url": "https://emmaus.org.uk/slc/volunteer-role/volunteer-van-drivers/",
+  "quote": "I confirm that I am over 18"
+ },
+ {
+  "role": "crisis-christmas-hotel-assistant",
+  "field": "screening.dbs",
+  "value": "none",
+  "url": "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer?page=4&perPage=8&filter[0][attr]=apps_close_timestamp&filter[0][operator]=>|empty&filter[0][value]=2026-10-24T09:00:00Z",
+  "quote": "\"custom_disclosure_check_type\":\"None\""
+ },
+ {
+  "role": "crisis-christmas-warehouse",
+  "field": "screening.dbs",
+  "value": "none",
+  "url": "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer?page=7&perPage=8&filter[0][attr]=apps_close_timestamp&filter[0][operator]=>|empty&filter[0][value]=2026-10-24T09:00:00Z",
+  "quote": "\"custom_disclosure_check_type\":\"None\""
+ },
+ {
+  "role": "crisis-skylight-brent-admin",
+  "field": "screening.min_age",
+  "value": 18,
+  "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+  "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+ },
+ {
+  "role": "c4ws-homeless-project-home-from-home-host",
+  "field": "status",
+  "value": "open",
+  "url": "https://c4wshomelessproject.org/home-from-home",
+  "quote": "Have a spare room? Join us in making a lasting difference in the lives of those in need by becoming a part of our Home from Home hosting programme today."
+ },
+ {
+  "role": "crisis-christmas-wellbeing",
+  "field": "screening.min_age",
+  "value": 18,
+  "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+  "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+ },
+ {
+  "role": "st-mungos-outreach-westminster",
+  "field": "screening.dbs",
+  "value": "required_unspecified",
+  "url": "https://www.mungos.org/volunteer_role/outreach-volunteer/",
+  "quote": "A DBS check will be carried out for this role."
+ },
+ {
+  "role": "crisis-christmas-hair-and-nails",
+  "field": "status",
+  "value": "open",
+  "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+  "quote": "Applications to volunteer for Crisis at Christmas 2026 are now open!"
+ },
+ {
+  "role": "999-club-reception-volunteer",
+  "field": "status",
+  "value": "open",
+  "url": "https://999club.org/volunteer/",
+  "quote": "We are currently looking for people to join our fantastic volunteering team!"
+ },
+ {
+  "role": "crisis-christmas-chef",
+  "field": "screening.min_age",
+  "value": 18,
+  "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+  "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+ },
+ {
+  "role": "crisis-skylight-welcome",
+  "field": "screening.min_age",
+  "value": 18,
+  "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+  "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+ },
+ {
+  "role": "simon-community-live-in",
+  "field": "screening.min_age",
+  "value": 18,
+  "url": "https://www.simoncommunity.org.uk/volunteering/",
+  "quote": "Full-time volunteers need to be at least 18 years old"
+ },
+ {
+  "role": "crisis-christmas-sports-facilitator",
+  "field": "screening.min_age",
+  "value": 18,
+  "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+  "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+ },
+ {
+  "role": "crisis-christmas-night-owl",
+  "field": "screening.min_age",
+  "value": 18,
+  "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+  "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+ },
+ {
+  "role": "crisis-christmas-guest-welfare",
+  "field": "screening.min_age",
+  "value": 18,
+  "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+  "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+ },
+ {
+  "role": "crisis-skylight-brent-admin",
+  "field": "screening.dbs",
+  "value": "basic",
+  "url": "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer?page=1&perPage=8&filter[0][attr]=apps_close_timestamp&filter[0][operator]=>|empty&filter[0][value]=2026-10-24T09:00:00Z",
+  "quote": "\"custom_disclosure_check_type\":\"Basic Disclosure DBS\""
+ }
+]

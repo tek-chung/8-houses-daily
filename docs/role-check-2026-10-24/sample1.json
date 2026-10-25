@@ -1,0 +1,128 @@
+[
+ {
+  "role": "crisis-christmas-chef",
+  "field": "screening.dbs",
+  "value": "none",
+  "url": "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer?page=5&perPage=8&filter[0][attr]=apps_close_timestamp&filter[0][operator]=>|empty&filter[0][value]=2026-10-24T09:00:00Z",
+  "quote": "\"custom_disclosure_check_type\":\"None\""
+ },
+ {
+  "role": "crisis-christmas-digital-it-support",
+  "field": "screening.min_age",
+  "value": 18,
+  "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+  "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+ },
+ {
+  "role": "crisis-christmas-resources-coordinator",
+  "field": "status",
+  "value": "open",
+  "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+  "quote": "Applications to volunteer for Crisis at Christmas 2026 are now open!"
+ },
+ {
+  "role": "crisis-skylight-green-fingers-lead",
+  "field": "screening.dbs",
+  "value": "basic",
+  "url": "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer?page=11&perPage=8&filter[0][attr]=apps_close_timestamp&filter[0][operator]=>|empty&filter[0][value]=2026-10-24T09:00:00Z",
+  "quote": "\"custom_disclosure_check_type\":\"Basic Disclosure DBS\""
+ },
+ {
+  "role": "crisis-collections-volunteer",
+  "field": "status",
+  "value": "open",
+  "url": "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer?page=10&perPage=8&filter[0][attr]=apps_close_timestamp&filter[0][operator]=>|empty&filter[0][value]=2026-10-24T09:00:00Z",
+  "quote": "\"promoted\":\"No\",\"public\":\"Yes\",\"publish\":\"Yes\""
+ },
+ {
+  "role": "kingston-churches-action-on-homelessness-wrecking-crew",
+  "field": "status",
+  "value": "closed",
+  "url": "https://kcah.org.uk/volunteer-roles/wrecking-crew/",
+  "quote": "This is a one day project on the 10th of October from 9am – 3pm."
+ },
+ {
+  "role": "crisis-christmas-shift-office",
+  "field": "status",
+  "value": "open",
+  "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+  "quote": "Applications to volunteer for Crisis at Christmas 2026 are now open!"
+ },
+ {
+  "role": "solace-womens-aid-next-steps-peer-mentor",
+  "field": "status",
+  "value": "open",
+  "url": "https://solacewomensaid.org/vacancy/next-steps-peer-mentor/",
+  "quote": "Please note we will be reviewing applications on a rolling basis and may close the role earlier than advertised."
+ },
+ {
+  "role": "crisis-christmas-centre-willing-to-drive",
+  "field": "screening.min_age",
+  "value": 23,
+  "url": "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer?page=4&perPage=8&filter[0][attr]=apps_close_timestamp&filter[0][operator]=>|empty&filter[0][value]=2026-10-24T09:00:00Z",
+  "quote": "\"custom_age_limit_for_this_role\":\"Over 23 and under 75 years of age\""
+ },
+ {
+  "role": "crisis-skylight-welcome",
+  "field": "status",
+  "value": "open",
+  "url": "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer?page=1&perPage=8&filter[0][attr]=apps_close_timestamp&filter[0][operator]=>|empty&filter[0][value]=2026-10-24T09:00:00Z",
+  "quote": "The deadline for applications is Wednesday 11th November 12pm"
+ },
+ {
+  "role": "emmaus-slc-retail-assistant",
+  "field": "screening.min_age",
+  "value": 18,
+  "url": "https://emmaus.org.uk/slc/volunteering-at-emmaus-slc/",
+  "quote": "I confirm that I am over 18"
+ },
+ {
+  "role": "crisis-christmas-av-support",
+  "field": "screening.dbs",
+  "value": "none",
+  "url": "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer?page=5&perPage=8&filter[0][attr]=apps_close_timestamp&filter[0][operator]=>|empty&filter[0][value]=2026-10-24T09:00:00Z",
+  "quote": "\"custom_disclosure_check_type\":\"None\""
+ },
+ {
+  "role": "crisis-christmas-warehouse-willing-to-drive",
+  "field": "status",
+  "value": "open",
+  "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+  "quote": "Applications to volunteer for Crisis at Christmas 2026 are now open!"
+ },
+ {
+  "role": "emmaus-slc-van-driver-crew",
+  "field": "status",
+  "value": "open",
+  "url": "https://emmaus.org.uk/slc/volunteer-role/volunteer-van-drivers/",
+  "quote": "We are looking for van drivers or van crew to help us collect and deliver furniture donations"
+ },
+ {
+  "role": "crisis-christmas-healthcare",
+  "field": "screening.min_age",
+  "value": 18,
+  "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+  "quote": "If you are over 18 and have the right to volunteer in the UK, then we would love for you to volunteer with us."
+ },
+ {
+  "role": "emmaus-slc-retail-assistant",
+  "field": "status",
+  "value": "open",
+  "url": "https://emmaus.org.uk/slc/volunteer-role/volunteer-retail-assistants/",
+  "quote": "We are looking for volunteers who are interested in working alongside people who have experienced homelessness and social exclusion."
+ },
+ {
+  "role": "crisis-christmas-warehouse",
+  "field": "status",
+  "value": "open",
+  "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+  "quote": "Applications to volunteer for Crisis at Christmas 2026 are now open!"
+ },
+ {
+  "role": "emmaus-greenwich-trustee",
+  "field": "status",
+  "value": "open",
+  "url": "https://emmaus.org.uk/greenwich/volunteer-role/trustee/",
+  "quote": "CLOSING DATE: Ongoing LOCATION: Plumstead TYPE: Trustee"
+ }
+]

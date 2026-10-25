@@ -21,8 +21,8 @@
     "lived_experience_roles": true,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-17T22:08:14+00:00",
-      "last_success": "2026-10-17T22:08:14+00:00",
+      "last_attempt": "2026-10-24T22:05:54+00:00",
+      "last_success": "2026-10-24T22:05:54+00:00",
       "link_status": "ok",
       "content_hash": "36e6c9ff570cc1b80ac96c7ef1760fd593adb9af814b31f13f6bbad02110a4f5",
       "consecutive_failures": 0,
@@ -94,7 +94,7 @@
       ]
     },
     {
-      "title": "Workshop Assistant Volunteer",
+      "title": "Construction Workshop Assistant Volunteer",
       "what_youd_do": "Support clients in a hands-on building and plumbing workshop, helping keep the space safe and orderly so they can learn.",
       "commitment": "long_term",
       "min_term_months": 6,
@@ -125,9 +125,9 @@
       "org_id": "st-mungos",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "llm",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://www.mungos.org/volunteer_role/workshop-assistant-volunteer/",
         "verified_fields": [
@@ -212,10 +212,9 @@
       "typical_shift_hours": null,
       "when": [
         "weekday_daytime",
-        "weekday_evening",
-        "weekend_daytime"
+        "weekday_evening"
       ],
-      "specific_times": "Bournemouth 6-9am or 9pm-12am weekly; Reading Wed 6-10am, Fri 10:30am-1:30pm",
+      "specific_times": "Brent Mon-Fri 6-10am; Ealing Mon 10pm-2am or Wed/Fri 5am-9am",
       "activity": "outreach",
       "location_type": "in_person",
       "postcode_district": null,
@@ -228,7 +227,9 @@
         "induction": null
       },
       "skills": [],
-      "eligibility": [],
+      "eligibility": [
+        "Ealing placement needs a driving licence"
+      ],
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
@@ -236,9 +237,9 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "llm",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://www.mungos.org/volunteer_role/outreach-volunteer/",
         "verified_fields": [
@@ -248,12 +249,15 @@
           "screening.interview",
           "screening.min_age",
           "specific_times",
-          "commitment"
+          "commitment",
+          "eligibility"
         ],
         "unsupported_fields": []
       },
       "stated_places": [
+        "Brent",
         "Bournemouth",
+        "Ealing",
         "Reading"
       ]
     },

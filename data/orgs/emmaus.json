@@ -21,8 +21,8 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-17T22:08:14+00:00",
-      "last_success": "2026-10-17T22:08:14+00:00",
+      "last_attempt": "2026-10-24T22:05:54+00:00",
+      "last_success": "2026-10-24T22:05:54+00:00",
       "link_status": "ok",
       "content_hash": null,
       "consecutive_failures": 0,
@@ -332,15 +332,13 @@
       "who_can_apply": "individual",
       "screening": {
         "dbs": "basic",
-        "references": true,
+        "references": null,
         "interview": null,
-        "min_age": 18,
+        "min_age": null,
         "induction": "Induction and training"
       },
       "skills": [],
-      "eligibility": [
-        "People aged 18 or over"
-      ],
+      "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
@@ -348,20 +346,18 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "llm",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
-        "source_url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
+        "source_url": "https://emmaus.org.uk/greenwich/volunteer-role/trustee/",
         "verified_fields": [
           "status",
           "screening.dbs",
-          "screening.references",
-          "screening.min_age",
-          "specific_times",
-          "eligibility"
+          "specific_times"
         ],
         "unsupported_fields": [
+          "screening.min_age",
           "commitment"
         ]
       },

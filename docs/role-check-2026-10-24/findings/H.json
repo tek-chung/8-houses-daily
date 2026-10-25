@@ -1,0 +1,544 @@
+{
+  "agent": "H",
+  "checked_at": "2026-10-24",
+  "orgs": [
+    {
+      "org_id": "the-salvation-army",
+      "read_status": "partial",
+      "pages_read": [
+        "https://www.salvationarmy.org.uk/volunteer",
+        "https://www.salvationarmy.org.uk/volunteer/homelessness"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Volunteer pages are national and carry no London-specific role or vacancy. Actual vacancies sit in a separate webrecruitment portal; fetching its search link returned an empty body, so it could not be read. No roles held; none added.",
+      "org_fields": {},
+      "roles": [],
+      "retire": []
+    },
+    {
+      "org_id": "ymca-london-city-and-north",
+      "read_status": "ok",
+      "pages_read": [
+        "https://www.ymcalondoncan.org/engage/volunteer/"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Page lists a Fundraising Events Volunteer (not recorded: fundraising events, get-in-touch only). Two skills roles are described with a contact link only; no dated vacancies. Page last modified Aug 2025.",
+      "org_fields": {},
+      "roles": [
+        {
+          "match": "existing",
+          "id": "ymca-london-city-and-north-english-language-volunteer",
+          "title": "English Language Volunteer",
+          "what_youd_do": "Run small-group spoken and written English practice with residents who speak English as an additional language.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": ["flexible"],
+          "specific_times": null,
+          "activity": "teaching",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "stated_places": ["Crouch End", "Hackney", "the City of London"],
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": ["ESOL teaching"],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.ymcalondoncan.org/engage/volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {
+            "status": {
+              "url": "https://www.ymcalondoncan.org/engage/volunteer/",
+              "quote": "We are looking for a volunteer who can work with residents in small groups to improve their spoken and written English."
+            },
+            "screening.dbs": {
+              "url": "https://www.ymcalondoncan.org/engage/volunteer/",
+              "quote": "The YMCA would provide a DBS check and travel expenses."
+            },
+            "stated_places": {
+              "url": "https://www.ymcalondoncan.org/engage/volunteer/",
+              "quote": "Crouch End, Hackney, the City of London"
+            }
+          },
+          "changes_vs_current": []
+        },
+        {
+          "match": "existing",
+          "id": "ymca-london-city-and-north-money-management-volunteer",
+          "title": "Money Management Volunteer",
+          "what_youd_do": "Lead a weekly budgeting and money-saving workshop in the computer room for up to eight residents at a time.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": ["flexible"],
+          "specific_times": null,
+          "activity": "teaching",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "stated_places": ["Crouch End", "Hackney", "the City of London"],
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": ["budgeting", "finance"],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.ymcalondoncan.org/engage/volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {
+            "status": {
+              "url": "https://www.ymcalondoncan.org/engage/volunteer/",
+              "quote": "We are looking for someone to run a weekly money management workshop here in our computer room for up to eight of our residents at a time."
+            },
+            "commitment": {
+              "url": "https://www.ymcalondoncan.org/engage/volunteer/",
+              "quote": "run a weekly money management workshop"
+            },
+            "screening.dbs": {
+              "url": "https://www.ymcalondoncan.org/engage/volunteer/",
+              "quote": "We would run a DBS check for you and pay any travel expenses that you incur."
+            },
+            "stated_places": {
+              "url": "https://www.ymcalondoncan.org/engage/volunteer/",
+              "quote": "Crouch End, Hackney, the City of London"
+            }
+          },
+          "changes_vs_current": []
+        }
+      ],
+      "retire": []
+    },
+    {
+      "org_id": "ymca-st-pauls-group",
+      "read_status": "ok",
+      "pages_read": [
+        "https://ymcastpaulsgroup.org/volunteering/",
+        "https://ymcastpaulsgroup.org/services/housing/supported-lodgings-scheme/"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Individual roles on the volunteering page are only described with a Register your interest button; no vacancy statement, so status stays unknown. Corporate team days are offered (not recorded as individual roles). Lodgings page confirms host recruitment.",
+      "org_fields": {},
+      "roles": [
+        {
+          "match": "existing",
+          "id": "ymca-st-pauls-group-supported-lodgings-host",
+          "title": "Supported Lodgings Host",
+          "what_youd_do": "Offer a spare room in your own home to a young person who is homeless or leaving care, and help them build independent living skills.",
+          "commitment": "long_term",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": ["flexible"],
+          "specific_times": null,
+          "activity": "hosting",
+          "location_type": "own_home",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "stated_places": ["West London"],
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": true,
+            "interview": null,
+            "min_age": 21,
+            "induction": "Training and ongoing team support"
+          },
+          "skills": [],
+          "eligibility": [
+            "Live around West London",
+            "Aged 21 or over",
+            "Own or rent your own home",
+            "Have a spare room"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://ymcastpaulsgroup.org/services/housing/supported-lodgings-scheme/",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {
+              "url": "https://ymcastpaulsgroup.org/services/housing/supported-lodgings-scheme/",
+              "quote": "Be a Host today"
+            },
+            "screening.dbs": {
+              "url": "https://ymcastpaulsgroup.org/services/housing/supported-lodgings-scheme/",
+              "quote": "statutory DBS check, medical reference and two character references"
+            },
+            "screening.references": {
+              "url": "https://ymcastpaulsgroup.org/services/housing/supported-lodgings-scheme/",
+              "quote": "statutory DBS check, medical reference and two character references"
+            },
+            "screening.min_age": {
+              "url": "https://ymcastpaulsgroup.org/services/housing/supported-lodgings-scheme/",
+              "quote": "Aged 21 or over"
+            },
+            "commitment": {
+              "url": "https://ymcastpaulsgroup.org/services/housing/supported-lodgings-scheme/",
+              "quote": "A young person will stay with you until they are ready to move to more independent accommodation"
+            },
+            "eligibility": {
+              "url": "https://ymcastpaulsgroup.org/services/housing/supported-lodgings-scheme/",
+              "quote": "Own or rent your own home"
+            },
+            "stated_places": {
+              "url": "https://ymcastpaulsgroup.org/services/housing/supported-lodgings-scheme/",
+              "quote": "Live around West London"
+            }
+          },
+          "changes_vs_current": []
+        },
+        {
+          "match": "existing",
+          "id": "ymca-st-pauls-group-youth-session-volunteer",
+          "title": "Youth Session Volunteer",
+          "what_youd_do": "Join youth sessions such as basketball, taking part alongside young people and offering careers guidance.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": ["flexible"],
+          "specific_times": null,
+          "activity": "mentoring",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://ymcastpaulsgroup.org/volunteering/",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {},
+          "changes_vs_current": []
+        },
+        {
+          "match": "existing",
+          "id": "ymca-st-pauls-group-employability-skills-volunteer",
+          "title": "Employability Skills Session Volunteer",
+          "what_youd_do": "Talk with young people about what interviews and working life are really like, drawing on your own experience.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": ["flexible"],
+          "specific_times": null,
+          "activity": "mentoring",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://ymcastpaulsgroup.org/volunteering/",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {},
+          "changes_vs_current": []
+        },
+        {
+          "match": "new",
+          "id": "ymca-st-pauls-group-skills-based-volunteer",
+          "title": "Skill-Based Volunteer",
+          "what_youd_do": "Lend professional expertise in areas such as marketing, IT or finance to help the charity run its operations.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": ["flexible"],
+          "specific_times": null,
+          "activity": "admin",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": ["marketing", "IT", "finance"],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://ymcastpaulsgroup.org/volunteering/",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {},
+          "changes_vs_current": []
+        }
+      ],
+      "retire": []
+    },
+    {
+      "org_id": "emmaus-slc",
+      "read_status": "ok",
+      "pages_read": [
+        "https://emmaus.org.uk/slc/volunteering-at-emmaus-slc/",
+        "https://emmaus.org.uk/slc/volunteer-role/kitchen-volunteer/",
+        "https://emmaus.org.uk/slc/volunteer-role/volunteer-van-drivers/",
+        "https://emmaus.org.uk/slc/volunteer-role/volunteer-retail-assistants/"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Three role pages, all still listed as current and Ongoing. Shared application form says over 18 and asks two telephone referees; no DBS mentioned. Role pages last modified Aug 2024. Caterham is outside London; Wallington and Purley are Sutton/Croydon.",
+      "org_fields": {},
+      "roles": [
+        {
+          "match": "existing",
+          "id": "emmaus-slc-kitchen-volunteer",
+          "title": "Kitchen Volunteer",
+          "what_youd_do": "Help residents and staff cook and serve hot meals for 30 to 40 people, sort food deliveries and clean the kitchen.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": ["flexible"],
+          "specific_times": null,
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": "SE27",
+          "stated_places": ["West Norwood"],
+          "screening": {
+            "dbs": "unknown",
+            "references": true,
+            "interview": null,
+            "min_age": 18,
+            "induction": "Full training and induction provided"
+          },
+          "skills": ["cooking", "food hygiene"],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://emmaus.org.uk/slc/volunteer-role/kitchen-volunteer/",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {
+              "url": "https://emmaus.org.uk/slc/volunteer-role/kitchen-volunteer/",
+              "quote": "CLOSING DATE: Ongoing LOCATION: Emmaus SLC TYPE: Volunteer"
+            },
+            "screening.references": {
+              "url": "https://emmaus.org.uk/slc/volunteer-role/kitchen-volunteer/",
+              "quote": "we will need a telephone reference from someone who is not related to you"
+            },
+            "screening.min_age": {
+              "url": "https://emmaus.org.uk/slc/volunteer-role/kitchen-volunteer/",
+              "quote": "I confirm that I am over 18"
+            },
+            "stated_places": {
+              "url": "https://emmaus.org.uk/slc/volunteer-role/kitchen-volunteer/",
+              "quote": "Kitchen Volunteer in West Norwood"
+            }
+          },
+          "changes_vs_current": ["screening.min_age: null -> 18 (application form: I confirm that I am over 18)"]
+        },
+        {
+          "match": "existing",
+          "id": "emmaus-slc-van-driver-crew",
+          "title": "Van Driver / Crew",
+          "what_youd_do": "Ride on a three-person van collecting and delivering donated furniture and appliances between the Emmaus shops.",
+          "commitment": "flexible",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": ["weekday_daytime", "weekend_daytime"],
+          "specific_times": "Every day except Sunday, 9-5",
+          "activity": "practical",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "stated_places": ["West Norwood", "Wallington", "Caterh-on-the Hill"],
+          "screening": {
+            "dbs": "unknown",
+            "references": true,
+            "interview": null,
+            "min_age": 18,
+            "induction": null
+          },
+          "skills": ["driving"],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://emmaus.org.uk/slc/volunteer-role/volunteer-van-drivers/",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {
+              "url": "https://emmaus.org.uk/slc/volunteer-role/volunteer-van-drivers/",
+              "quote": "We are looking for van drivers or van crew to help us collect and deliver furniture donations"
+            },
+            "commitment": {
+              "url": "https://emmaus.org.uk/slc/volunteer-role/volunteer-van-drivers/",
+              "quote": "for as many days as you can give; 1 day a week, 2 days a month."
+            },
+            "when": {
+              "url": "https://emmaus.org.uk/slc/volunteer-role/volunteer-van-drivers/",
+              "quote": "We need people every day (except Sunday) from 9-5"
+            },
+            "specific_times": {
+              "url": "https://emmaus.org.uk/slc/volunteer-role/volunteer-van-drivers/",
+              "quote": "We need people every day (except Sunday) from 9-5"
+            },
+            "screening.references": {
+              "url": "https://emmaus.org.uk/slc/volunteer-role/volunteer-van-drivers/",
+              "quote": "we will need a telephone reference from someone who is not related to you"
+            },
+            "screening.min_age": {
+              "url": "https://emmaus.org.uk/slc/volunteer-role/volunteer-van-drivers/",
+              "quote": "I confirm that I am over 18"
+            },
+            "stated_places": {
+              "url": "https://emmaus.org.uk/slc/volunteer-role/volunteer-van-drivers/",
+              "quote": "Caterh-on-the Hill"
+            }
+          },
+          "changes_vs_current": ["screening.min_age: null -> 18 (application form: I confirm that I am over 18)"]
+        },
+        {
+          "match": "existing",
+          "id": "emmaus-slc-retail-assistant",
+          "title": "Retail Assistant",
+          "what_youd_do": "Work in an Emmaus charity shop sorting donated goods, serving customers and dressing the windows alongside former rough sleepers.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": ["flexible"],
+          "specific_times": null,
+          "activity": "shop_warehouse",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "stated_places": ["West Norwood", "Lower Addiscombe Road", "Purley", "Wallington", "Caterham-on-the-Hill"],
+          "screening": {
+            "dbs": "unknown",
+            "references": true,
+            "interview": null,
+            "min_age": 18,
+            "induction": null
+          },
+          "skills": ["customer service"],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://emmaus.org.uk/slc/volunteer-role/volunteer-retail-assistants/",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {
+              "url": "https://emmaus.org.uk/slc/volunteer-role/volunteer-retail-assistants/",
+              "quote": "We are looking for volunteers who are interested in working alongside people who have experienced homelessness and social exclusion."
+            },
+            "screening.references": {
+              "url": "https://emmaus.org.uk/slc/volunteering-at-emmaus-slc/",
+              "quote": "we will need a telephone reference from someone who is not related to you"
+            },
+            "screening.min_age": {
+              "url": "https://emmaus.org.uk/slc/volunteering-at-emmaus-slc/",
+              "quote": "I confirm that I am over 18"
+            },
+            "stated_places": {
+              "url": "https://emmaus.org.uk/slc/volunteer-role/volunteer-retail-assistants/",
+              "quote": "Lower Addiscombe Road"
+            }
+          },
+          "changes_vs_current": [
+            "screening.references: null -> true (shared application form on the main volunteering page; the role page itself has no form)",
+            "screening.min_age: null -> 18 (shared application form on the main volunteering page)"
+          ]
+        }
+      ],
+      "retire": []
+    },
+    {
+      "org_id": "bench-outreach",
+      "read_status": "ok",
+      "pages_read": [
+        "https://benchoutreach.com/volunteer-housing-benefits-support-assistant/",
+        "https://benchoutreach.com/category/jobs/",
+        "https://benchoutreach.com/join-our-board/"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "One volunteer role listed; apply by emailing a cover letter. Join Our Board page holds its detail only in an image, so no trustee role recorded. Charity number not stated on pages read.",
+      "org_fields": {},
+      "roles": [
+        {
+          "match": "existing",
+          "id": "bench-outreach-housing-benefits-support-assistant",
+          "title": "Housing & Benefits Support Assistant",
+          "what_youd_do": "Staff the phones on Mondays, then sit with local people to complete housing and benefit forms and keep tidy case records.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": ["weekday_daytime"],
+          "specific_times": "Mondays (more days possible later)",
+          "activity": "advice",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": "SE8",
+          "stated_places": ["Deptford"],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "Full training and ongoing guidance"
+          },
+          "skills": ["communication", "listening", "basic IT"],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://benchoutreach.com/volunteer-housing-benefits-support-assistant/",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {
+              "url": "https://benchoutreach.com/volunteer-housing-benefits-support-assistant/",
+              "quote": "Bench Outreach is looking for a dedicated volunteer to join our Deptford team on Mondays."
+            },
+            "commitment": {
+              "url": "https://benchoutreach.com/volunteer-housing-benefits-support-assistant/",
+              "quote": "Mondays (with potential for additional days as we grow)"
+            },
+            "specific_times": {
+              "url": "https://benchoutreach.com/volunteer-housing-benefits-support-assistant/",
+              "quote": "Mondays (with potential for additional days as we grow)"
+            },
+            "stated_places": {
+              "url": "https://benchoutreach.com/volunteer-housing-benefits-support-assistant/",
+              "quote": "Location: Deptford"
+            }
+          },
+          "changes_vs_current": []
+        }
+      ],
+      "retire": []
+    }
+  ]
+}

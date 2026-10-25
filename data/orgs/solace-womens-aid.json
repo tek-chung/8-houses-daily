@@ -19,8 +19,8 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-17T22:08:14+00:00",
-      "last_success": "2026-10-17T22:08:14+00:00",
+      "last_attempt": "2026-10-24T22:05:54+00:00",
+      "last_success": "2026-10-24T22:05:54+00:00",
       "link_status": "ok",
       "content_hash": null,
       "consecutive_failures": 0,
@@ -47,7 +47,7 @@
       "when": [
         "flexible"
       ],
-      "specific_times": null,
+      "specific_times": "Minimum 3 clinical hours a week plus admin time",
       "activity": "advice",
       "location_type": "hybrid",
       "postcode_district": null,
@@ -55,13 +55,14 @@
       "screening": {
         "dbs": "required_unspecified",
         "references": true,
-        "interview": true,
+        "interview": null,
         "min_age": 16,
         "induction": "Induction training, plus role-specific training delivered on site"
       },
       "skills": [],
       "eligibility": [
-        "Qualified counsellors, or final-years trainees with over 150 clinical hours"
+        "Qualified counsellors, or final-years trainees with over 150 clinical hours",
+        "Women only (exempt under the Equality Act 2010)"
       ],
       "seasonal_window": null,
       "next_intake": null,
@@ -70,23 +71,21 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "llm",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://solacewomensaid.org/vacancy/volunteer-staff-counsellor/",
         "verified_fields": [
           "status",
           "screening.dbs",
           "screening.references",
-          "screening.interview",
           "screening.min_age",
+          "specific_times",
           "commitment",
           "eligibility"
         ],
-        "unsupported_fields": [
-          "specific_times"
-        ]
+        "unsupported_fields": []
       },
       "london_wide": true,
       "stated_places": []
@@ -94,12 +93,12 @@
     {
       "id": "solace-womens-aid-next-steps-peer-mentor",
       "title": "Next Steps Peer Mentor Volunteer",
-      "what_youd_do": "Give ongoing emotional and peer support to people using Bexley's commissioned domestic abuse service, based at Bexley Library on set weekdays.",
+      "what_youd_do": "Phone or meet women who have experienced domestic abuse for a six-week run of peer support, helping rebuild confidence, based at Bexley Library.",
       "commitment": "weekly",
-      "min_term_months": null,
+      "min_term_months": 6,
       "typical_shift_hours": null,
       "when": [
-        "flexible"
+        "weekday_daytime"
       ],
       "specific_times": "Min 4 hours a week, Tuesdays, Wednesday or Thursdays",
       "activity": "mentoring",
@@ -111,37 +110,38 @@
       ],
       "screening": {
         "dbs": "required_unspecified",
-        "references": true,
+        "references": null,
         "interview": true,
-        "min_age": null,
+        "min_age": 16,
         "induction": "Induction training, plus role-specific training delivered on site"
       },
       "skills": [],
-      "eligibility": [],
+      "eligibility": [
+        "Women only (exempt under the Equality Act 2010)"
+      ],
       "seasonal_window": null,
       "next_intake": null,
-      "status": "closed",
-      "apply_url": "https://solacewomensaid.org/get-involved/volunteer-with-us/",
-      "url_specificity": "org_volunteer_page",
+      "status": "open",
+      "apply_url": "https://solacewomensaid.org/vacancy/next-steps-peer-mentor/",
+      "url_specificity": "role",
       "org_id": "solace-womens-aid",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "llm",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
-        "source_url": "https://solacewomensaid.org/get-involved/volunteer-with-us/",
+        "source_url": "https://solacewomensaid.org/vacancy/next-steps-peer-mentor/",
         "verified_fields": [
           "status",
           "screening.dbs",
-          "screening.references",
           "screening.interview",
+          "screening.min_age",
           "specific_times",
-          "commitment"
+          "commitment",
+          "eligibility"
         ],
-        "unsupported_fields": [
-          "screening.min_age"
-        ]
+        "unsupported_fields": []
       }
     }
   ]

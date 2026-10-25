@@ -17,8 +17,8 @@
     "focus_groups": [],
     "lived_experience_roles": false,
     "check": {
-      "last_attempt": "2026-10-17T22:08:14+00:00",
-      "last_success": "2026-10-17T22:08:14+00:00",
+      "last_attempt": "2026-10-24T22:05:54+00:00",
+      "last_success": "2026-10-24T22:05:54+00:00",
       "link_status": "ok",
       "content_hash": null,
       "consecutive_failures": 0,
@@ -40,7 +40,7 @@
       "specific_times": "Mon-Fri, 8:45am-12:30pm or 12pm-3:15pm, or all day",
       "activity": "befriending",
       "location_type": "in_person",
-      "who_can_apply": "individual",
+      "who_can_apply": "unknown",
       "postcode_district": null,
       "stated_places": [],
       "screening": {
@@ -63,9 +63,9 @@
       "org_id": "999-club",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "llm",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://999club.org/volunteer/",
         "verified_fields": [
@@ -202,7 +202,7 @@
       "specific_times": "Mon-Fri, 8:45am-12:30pm or 12pm-3:15pm, or all day",
       "activity": "admin",
       "location_type": "in_person",
-      "who_can_apply": "individual",
+      "who_can_apply": "unknown",
       "postcode_district": null,
       "stated_places": [],
       "screening": {
@@ -225,9 +225,9 @@
       "org_id": "999-club",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "llm",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://999club.org/volunteer/",
         "verified_fields": [
@@ -255,7 +255,7 @@
       "specific_times": "Mon-Fri, 8:15am-12:30pm or 12pm-3:15pm, or all day",
       "activity": "admin",
       "location_type": "hybrid",
-      "who_can_apply": "individual",
+      "who_can_apply": "unknown",
       "postcode_district": null,
       "stated_places": [],
       "screening": {
@@ -279,9 +279,9 @@
       "org_id": "999-club",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "llm",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://999club.org/volunteer/",
         "verified_fields": [

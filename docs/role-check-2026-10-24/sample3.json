@@ -1,0 +1,142 @@
+[
+ {
+  "role": "crisis-christmas-digital-it-support",
+  "field": "screening.dbs",
+  "value": "none",
+  "url": "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer?page=5&perPage=8&filter[0][attr]=apps_close_timestamp&filter[0][operator]=>|empty&filter[0][value]=2026-10-24T09:00:00Z",
+  "quote": "\"custom_disclosure_check_type\":\"None\""
+ },
+ {
+  "role": "crisis-christmas-chef",
+  "field": "status",
+  "value": "open",
+  "url": "https://www.crisis.org.uk/get-involved/volunteer/",
+  "quote": "Applications to volunteer for Crisis at Christmas 2026 are now open!"
+ },
+ {
+  "role": "crisis-christmas-warehouse-willing-to-drive",
+  "field": "screening.dbs",
+  "value": "none",
+  "url": "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer?page=4&perPage=8&filter[0][attr]=apps_close_timestamp&filter[0][operator]=>|empty&filter[0][value]=2026-10-24T09:00:00Z",
+  "quote": "\"custom_disclosure_check_type\":\"None\""
+ },
+ {
+  "role": "crisis-christmas-resources-coordinator",
+  "field": "screening.dbs",
+  "value": "none",
+  "url": "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer?page=5&perPage=8&filter[0][attr]=apps_close_timestamp&filter[0][operator]=>|empty&filter[0][value]=2026-10-24T09:00:00Z",
+  "quote": "\"custom_disclosure_check_type\":\"None\""
+ },
+ {
+  "role": "crisis-christmas-operations",
+  "field": "screening.dbs",
+  "value": "none",
+  "url": "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer?page=6&perPage=8&filter[0][attr]=apps_close_timestamp&filter[0][operator]=>|empty&filter[0][value]=2026-10-24T09:00:00Z",
+  "quote": "\"custom_disclosure_check_type\":\"None\""
+ },
+ {
+  "role": "crisis-christmas-driver",
+  "field": "screening.dbs",
+  "value": "enhanced",
+  "url": "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer?page=4&perPage=8&filter[0][attr]=apps_close_timestamp&filter[0][operator]=>|empty&filter[0][value]=2026-10-24T09:00:00Z",
+  "quote": "\"custom_disclosure_check_type\":\"Enhanced DBS\""
+ },
+ {
+  "role": "crisis-christmas-centre-willing-to-drive",
+  "field": "eligibility",
+  "value": [
+   "Over 23 and under 75 years of age"
+  ],
+  "url": "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer?page=4&perPage=8&filter[0][attr]=apps_close_timestamp&filter[0][operator]=>|empty&filter[0][value]=2026-10-24T09:00:00Z",
+  "quote": "\"custom_age_limit_for_this_role\":\"Over 23 and under 75 years of age\""
+ },
+ {
+  "role": "crisis-christmas-healthcare",
+  "field": "eligibility",
+  "value": [
+   "Doctor, nurse, pharmacist, physiotherapist or podiatrist"
+  ],
+  "url": "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer?page=5&perPage=8&filter[0][attr]=apps_close_timestamp&filter[0][operator]=>|empty&filter[0][value]=2026-10-24T09:00:00Z",
+  "quote": "\"custom_role_name\":\"Doctor Volunteer, London\""
+ },
+ {
+  "role": "solace-staff-counsellor",
+  "field": "screening.interview",
+  "value": true,
+  "url": "https://www.solacewomensaid.org/get-involved/volunteer-with-us/",
+  "quote": "The team that is recruiting a volunteer will then draw up a shortlist and call those applicants to interview."
+ },
+ {
+  "role": "st-mungos-workshop-assistant-volunteer",
+  "field": "screening.references",
+  "value": true,
+  "url": "https://www.mungos.org/volunteer_role/workshop-assistant-volunteer/",
+  "quote": "Please provide us with the details of two people we may contact as referees, to comment on your suitability for volunteering."
+ },
+ {
+  "role": "solace-womens-aid-next-steps-peer-mentor",
+  "field": "eligibility",
+  "value": [
+   "Women only (exempt under the Equality Act 2010)"
+  ],
+  "url": "https://solacewomensaid.org/vacancy/next-steps-peer-mentor/",
+  "quote": "our volunteer opportunities are open to women only"
+ },
+ {
+  "role": "crisis-christmas-shift-office",
+  "field": "screening.interview",
+  "value": true,
+  "url": "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer?page=5&perPage=8&filter[0][attr]=apps_close_timestamp&filter[0][operator]=>|empty&filter[0][value]=2026-10-24T09:00:00Z",
+  "quote": "\"custom_interview_required_for_this_role\":\"Yes\""
+ },
+ {
+  "role": "the-whitechapel-mission-harvest-gift-sorting",
+  "field": "eligibility",
+  "value": [
+   "Teams of 6 to 10 people only",
+   "Over 18, as the page words it"
+  ],
+  "url": "https://whitechapel.org.uk/volunteering/gift-sorting-challenge",
+  "quote": "We require that volunteers are over 18 and able to spend a long time on their feet."
+ },
+ {
+  "role": "crisis-christmas-guest-welfare",
+  "field": "screening.interview",
+  "value": true,
+  "url": "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer?page=5&perPage=8&filter[0][attr]=apps_close_timestamp&filter[0][operator]=>|empty&filter[0][value]=2026-10-24T09:00:00Z",
+  "quote": "\"custom_interview_required_for_this_role\":\"Yes\""
+ },
+ {
+  "role": "shelter-hub-support",
+  "field": "eligibility",
+  "value": [
+   "You need to be an adult to volunteer in Services",
+   "People based in England, Scotland or Wales"
+  ],
+  "url": "https://england.shelter.org.uk/support_us/volunteer",
+  "quote": "you’ll need to be an adult to volunteer with us"
+ },
+ {
+  "role": "crisis-christmas-minibus-driver",
+  "field": "eligibility",
+  "value": [
+   "Over 23 and under 75 years of age"
+  ],
+  "url": "https://mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer?page=4&perPage=8&filter[0][attr]=apps_close_timestamp&filter[0][operator]=>|empty&filter[0][value]=2026-10-24T09:00:00Z",
+  "quote": "\"custom_age_limit_for_this_role\":\"Over 23 and under 75 years of age\""
+ },
+ {
+  "role": "solace-womens-aid-next-steps-peer-mentor",
+  "field": "commitment",
+  "value": "weekly",
+  "url": "https://solacewomensaid.org/vacancy/next-steps-peer-mentor/",
+  "quote": "Minimum 4 hours per week - Tuesdays, Wednesday or Thursdays"
+ },
+ {
+  "role": "solace-womens-aid-next-steps-peer-mentor",
+  "field": "screening.references",
+  "value": true,
+  "url": "https://www.solacewomensaid.org/get-involved/volunteer-with-us/",
+  "quote": "providing two references, doing a DBS check, and attending induction training"
+ }
+]
