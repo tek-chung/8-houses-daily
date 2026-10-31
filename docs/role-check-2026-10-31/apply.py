@@ -17,9 +17,12 @@ CORE = list(_OPPORTUNITY_CORE.keys())
 ORGS = ROOT / "data" / "orgs"
 
 # judgement calls resolved conservatively (documented in the report)
-KEEP_AS_UNKNOWN = {"housing-justice-winter-shelter"}  # retire quote was only a stand-in
+KEEP_AS_UNKNOWN = set()
 SKIP_UPDATE = {"the-big-issue-frontline-office"}  # volunteering page is on bigissue.com, charity site bigissue.org.uk
 SKIP_NEW = set()
+RETIRE_BASES = {"page_404", "not_on_board", "not_on_charity_pages", "source_not_volunteering"}
+_rem = ROOT / "docs" / FIND.parent.name / "removals.json"
+MANUAL_REMOVALS = json.loads(_rem.read_text(encoding="utf-8")) if _rem.exists() else []
 issues, applied, notes = [], [], []
 pending_links = []
 staged = {}
@@ -183,20 +186,24 @@ def main():
                 r["coords"] = None
                 r["provenance"] = build_prov(org, r, ev, cleared)
                 out.append(r); stat["new"] += 1
-        # retire
-        for rt in fnd.get("retire", []):
+        # retire. THE REMOVAL RULE: a role whose page no longer exists, as far as we know, is
+        # removed. "Gone" means one of RETIRE_BASES. A role whose own page still exists but
+        # does not say it is recruiting is NOT removed: it is kept with status unknown.
+        for rt in list(fnd.get("retire", [])) + [x for x in MANUAL_REMOVALS if x["id"] in existing]:
             rid = rt["id"]
             if rid not in existing: issues.append(f"{oid}: retire id {rid} not found"); continue
             seen.add(rid)
             e = rt.get("evidence") or {}
-            if rid in KEEP_AS_UNKNOWN or not e.get("quote"):
+            gone = rt.get("basis") in RETIRE_BASES or bool(e.get("quote"))
+            if rid in KEEP_AS_UNKNOWN or not gone:
                 x = copy.deepcopy(existing[rid]); x["status"] = "unknown"
                 x["provenance"] = {**x["provenance"], "extracted_at": NOW, "reviewed_by_human": False,
                                    "unsupported_fields": sorted(set(x["provenance"].get("unsupported_fields", [])) | {"status"})}
-                out.append(x); stat["kept_unknown"] += 1
-                notes.append(f"{rid}: not found on live pages; kept with status unknown ({rt.get('reason','')[:120]})")
+                out = [y for y in out if y["id"] != rid] + [x]; stat["kept_unknown"] += 1
+                notes.append(f"{rid}: no basis for removal given; kept with status unknown ({rt.get('reason','')[:120]})")
             else:
-                stat["retired"] += 1; notes.append(f"{rid}: RETIRED ({rt.get('reason','')[:140]})")
+                out = [y for y in out if y["id"] != rid]
+                stat["retired"] += 1; notes.append(f"{rid}: REMOVED [{rt.get('basis') or 'quote'}] ({rt.get('reason','')[:140]})")
         # roles the agent did not mention at all: keep untouched, report
         for rid, ex in existing.items():
             if rid not in seen and fnd["read_status"] not in ("read_failed", "suspicious_page"):

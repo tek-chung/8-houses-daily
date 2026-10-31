@@ -750,62 +750,6 @@
       }
     },
     {
-      "id": "crisis-christmas-arts",
-      "title": "Christmas Arts Facilitator Volunteer",
-      "what_youd_do": "Lead a creative arts activity such as painting, badge making or knitting for guests at a Christmas centre.",
-      "commitment": "one_off",
-      "min_term_months": null,
-      "typical_shift_hours": null,
-      "when": [
-        "flexible"
-      ],
-      "specific_times": "1 full day shift",
-      "activity": "teaching",
-      "location_type": "in_person",
-      "who_can_apply": "individual",
-      "postcode_district": null,
-      "stated_places": [
-        "London - Christmas venue"
-      ],
-      "screening": {
-        "dbs": "none",
-        "references": null,
-        "interview": true,
-        "min_age": 18,
-        "induction": "Access to relevant Crisis at Christmas training events"
-      },
-      "skills": [],
-      "eligibility": [],
-      "seasonal_window": {
-        "start_month": 12,
-        "end_month": 1
-      },
-      "next_intake": null,
-      "status": "unknown",
-      "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/BhrD0niAaRZq92FT2CPVBg1S3eMRod",
-      "url_specificity": "role",
-      "org_id": "crisis",
-      "coords": null,
-      "provenance": {
-        "extracted_at": "2026-10-31T21:55:53+00:00",
-        "method": "platform",
-        "reviewed_by_human": false,
-        "confidence": 1.0,
-        "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
-        "verified_fields": [
-          "screening.dbs",
-          "screening.interview",
-          "screening.min_age",
-          "specific_times",
-          "commitment",
-          "seasonal_window"
-        ],
-        "unsupported_fields": [
-          "status: no longer listed on the volunteering platform (31 Oct 2026)"
-        ]
-      }
-    },
-    {
       "id": "crisis-christmas-shift-office",
       "title": "Christmas Shift Office Coordinator Volunteer",
       "what_youd_do": "Run the shift office at a Christmas centre: handle requests, manage the Teams channel and email, and look after petty cash and valuables.",
@@ -1727,18 +1671,19 @@
       "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
-      "status": "unknown",
+      "status": "open",
       "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/qPUc7kGoWeYmNAhKk3qak7GhHcLSfJ",
       "url_specificity": "role",
       "org_id": "crisis",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-31T21:55:53+00:00",
+        "extracted_at": "2026-10-24T22:05:54+00:00",
         "method": "platform",
         "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://mycrisisvolunteering.crisis.org.uk/roles/qPUc7kGoWeYmNAhKk3qak7GhHcLSfJ",
         "verified_fields": [
+          "status",
           "screening.dbs",
           "screening.references",
           "screening.interview",
@@ -1747,8 +1692,7 @@
           "commitment"
         ],
         "unsupported_fields": [
-          "mycrisisvolunteering.crisis.org.uk: facts read from the charity's volunteering platform",
-          "status: no longer listed on the volunteering platform (31 Oct 2026)"
+          "mycrisisvolunteering.crisis.org.uk: facts read from the charity's volunteering platform"
         ]
       }
     }

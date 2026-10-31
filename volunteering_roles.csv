@@ -18,8 +18,6 @@ C4WS Homeless Project,Home from Home Host,hosting,unknown,Minimum commitment of 
 C4WS Homeless Project,Wednesday Club Cooking Team,cooking_serving,unknown,Every Wednesday (lunch club),in_person,,open,unknown,2026-10-17
 C4WS Homeless Project,Wednesday Club Front of House Team,practical,unknown,Every Wednesday (lunch club),in_person,,open,unknown,2026-10-17
 C4WS Homeless Project,Jobs Club Mentor,mentoring,unknown,,in_person,,unknown,unknown,2026-10-17
-Centrepoint,Gardening Volunteer (Hammersmith and Fulham),practical,long_term,,in_person,,unknown,required_unspecified,2026-10-31
-Centrepoint,Gardening Volunteer (Westminster),practical,long_term,Flexible to your availability; Mondays or Fridays preferred,in_person,,unknown,required_unspecified,2026-10-31
 Centrepoint,Helpline Volunteer,advice,long_term,,hybrid,,closed,required_unspecified,2026-10-31
 Crisis,Welcome and Reception,befriending,weekly,"London: 4 hours a week, 6+ months. Croydon: Thursdays, ideally 10am-4pm",in_person,,open,basic,2026-10-31
 Crisis,One-to-One Member Support,mentoring,unknown,,in_person,,closed,unknown,2026-10-17
@@ -34,7 +32,6 @@ Crisis,Christmas Warehouse Volunteer,shop_warehouse,unknown,"3 shifts, 9am - 5pm
 Crisis,Christmas Healthcare Professional Volunteer,advice,one_off,"1 shift, 10.30am - 4.30pm",in_person,,open,enhanced,2026-10-24
 Crisis,Christmas Guest Welfare Volunteer,befriending,unknown,At least 2 shifts; times vary by venue,in_person,,open,basic,2026-10-24
 Crisis,"Christmas Hairdressing, Barber and Nail Volunteer",practical,one_off,"1 shift: day centres 9:30-5:30, hotels 10:00-17:00",in_person,,open,none,2026-10-24
-Crisis,Christmas Arts Facilitator Volunteer,teaching,one_off,1 full day shift,in_person,,unknown,none,2026-10-31
 Crisis,Christmas Shift Office Coordinator Volunteer,admin,unknown,"4 shifts; day centres 9am - 6pm, hotels in three shifts",in_person,,open,basic,2026-10-24
 Crisis,Christmas Advice and Caseworker Support Volunteer,advice,unknown,"2 shifts, 10am - 6pm",in_person,,open,enhanced,2026-10-17
 Crisis,Christmas Hotel Assistant Volunteer,befriending,unknown,"2 shifts; hotel shifts run day, evening or overnight",in_person,,open,none,2026-10-24
@@ -51,7 +48,7 @@ Crisis,Christmas Performer Volunteer,befriending,unknown,Up to 1-hour performanc
 Crisis,Christmas Sports Facilitator Volunteer,teaching,unknown,At least 1 shift; times vary by location,in_person,,open,none,2026-10-24
 Crisis,Christmas Wellbeing Volunteer,befriending,one_off,"1 shift; centres 9:30am - 5:30pm, hotels 9:30am - 3:45pm",in_person,,open,none,2026-10-24
 Crisis,Client Services Administrative Volunteer (Brent Skylight),admin,weekly,"One day a week, Mon-Fri, 10am - 4pm",in_person,,open,basic,2026-10-31
-Crisis,Green Fingers Lead Volunteer (Skylight London),practical,weekly,Fridays 10am - 4pm,in_person,,unknown,basic,2026-10-31
+Crisis,Green Fingers Lead Volunteer (Skylight London),practical,weekly,Fridays 10am - 4pm,in_person,,open,basic,2026-10-24
 Depaul UK,Nightstop Host,hosting,flexible,Evenings you choose from a rota,own_home,,open,required_unspecified,2026-10-31
 Depaul UK,Nightstop Transport Volunteer,outreach,unknown,,in_person,,unknown,required_unspecified,2026-10-31
 Emmaus Greenwich,Retail Volunteer,shop_warehouse,weekly,"At least one full day a week, 9am to 5pm, on a day that suits you",in_person,SE18,open,basic,2026-10-31
@@ -73,7 +70,6 @@ HandsOn London,Wrap Up London Coat Collection,practical,unknown,Coat donations 2
 HandsOn London,Community Day,varies,one_off,Mainly Saturdays,in_person,,open,unknown,2026-10-24
 Housing Justice,Citadel Volunteer,befriending,weekly,1-3 hours a week,in_person,,open,required_unspecified,2026-10-31
 Housing Justice,Volunteer Host,hosting,long_term,,own_home,,open,required_unspecified,2026-10-17
-Housing Justice,Winter Night Shelter,cooking_serving,unknown,,in_person,,unknown,unknown,2026-10-31
 Kingston Churches Action on Homelessness,Housing Crisis Reception Volunteer,hosting,weekly,"Monday to Friday, 10:00 to 13:00",in_person,KT2,open,unknown,2026-10-31
 Kingston Churches Action on Homelessness,Housing Crisis Admin Support Volunteer,admin,weekly,"Monday to Friday, 13:00 to 17:00",in_person,KT2,open,unknown,2026-10-31
 Kingston Churches Action on Homelessness,Wrecking Crew Volunteer,practical,one_off,"One day, 10 October, 9am to 3pm",in_person,,closed,unknown,2026-10-24
@@ -87,7 +83,6 @@ Providence Row,Creative Lead - Art Volunteer,varies,unknown,,in_person,E1,open,u
 Providence Row,IT Volunteer,advice,unknown,,in_person,E1,unknown,unknown,2026-10-17
 Shelter,Community Shop Volunteer,shop_warehouse,flexible,From an hour a week upwards; many give a morning or afternoon,in_person,,open,none,2026-10-17
 Shelter,Shop Volunteer Supervisor,shop_warehouse,flexible,,in_person,,open,basic,2026-10-17
-Shelter,Hub Support,advice,unknown,,in_person,,unknown,unknown,2026-10-24
 Shelter,Winter Bucket Collection Volunteer,fundraising,flexible,"Winter; varied days, evenings and weekends, you choose",in_person,,open,unknown,2026-10-17
 Shelter,"Marshalling and Cheering at Walk for Home (London, 2026)",fundraising,one_off,"Tuesday 8 December 2026, 4pm-10:30pm",in_person,SE1,open,unknown,2026-10-31
 Shelter,Lived Experience Coordination Volunteer,admin,unknown,"Mon-Fri 9am-5pm; about 7-14 hours a month, to be agreed",hybrid,,open,unknown,2026-10-17
@@ -126,7 +121,6 @@ St Mungo's,Cooking Group Volunteer,cooking_serving,weekly,"Mon-Fri between 12pm-
 St Mungo's,Housing First Peer Volunteer,mentoring,long_term,"Mon-Fri 9am-5pm, up to 2 days per week",in_person,,open,required_unspecified,2026-10-31
 St Mungo's,Creative Activities Volunteer,teaching,weekly,"Mon-Fri 9am-5pm, 1-2 hours per week (afternoon preferred)",in_person,,open,required_unspecified,2026-10-31
 Stonewall Housing,Live Chat Volunteer,advice,flexible,Live chat runs weekdays 14:00-17:00,remote,,open,required_unspecified,2026-10-17
-Strides,Volunteering in their Services,befriending,unknown,,in_person,,unknown,unknown,2026-10-24
 Thames Reach,Volunteer - Hounslow Reach,advice,unknown,,in_person,TW3,open,unknown,2026-10-31
 Thames Reach,Data and IT Support Volunteer (Lambeth Outreach),admin,unknown,,in_person,SW9,open,unknown,2026-10-31
 Thames Reach,Fundraising Events Volunteer,fundraising,one_off,Fri 9 October (Camberwell) and Sat 10 October (King's Cross),in_person,,closed,unknown,2026-10-31

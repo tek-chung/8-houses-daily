@@ -56,7 +56,7 @@ Write ONE file per agent (path given in your task) containing JSON:
           "changes_vs_current": ["short plain list of what differs from the current record; [] for new or unchanged"]
         }
       ],
-      "retire": [ {"id": "existing role id no longer offered", "reason": "...", "evidence": {"url": "...", "quote": "..."} } ]
+      "retire": [ {"id": "existing role id no longer offered", "basis": "page_404|not_on_board|not_on_charity_pages|source_not_volunteering", "reason": "...", "evidence": {"url": "...", "quote": "..."}  // evidence optional for the bases above } ]
     }
   ]
 }
@@ -79,4 +79,9 @@ Write ONE file per agent (path given in your task) containing JSON:
 12. The current records already include the 24 October check. Only change a field when the live page now differs or the record is wrong; otherwise return it with `changes_vs_current: []` and refreshed evidence. Pay attention to dates: closing dates, one-off events and "posted" dates that have now passed (today is 2026-10-31).
 13. If the fetch tool refuses a repeat fetch of a URL, do not alter the URL with query strings to get round it; use what you already read, or report it.
 14. For board/feed charities (Crisis, Centrepoint, Thames Reach, Shelter, St Mungo's), read the feed completely; do not filter by guesswork.
-15. Do not retire a role unless you can quote the page showing it is gone or not recruiting; otherwise set status unknown.
+15. THE REMOVAL RULE. If the role's page no longer exists, as far as we can tell, the role no longer exists: put it in `retire`, with a `basis`:
+   - `page_404`: its own page returns 404/410, or redirects to a generic page.
+   - `not_on_board`: a board/feed charity's offer is no longer listed (look it up by token or id; an expired offer counts as gone).
+   - `not_on_charity_pages`: you read the charity's volunteering pages and none describes or offers the role.
+   - `source_not_volunteering`: the only source we hold is a page that is not about volunteering (a paid-jobs page, a defunct site).
+   A role whose own page still exists but does not say it is recruiting is NOT removed: keep it with status unknown. Do not remove a role just because a fetch failed or the page was client-rendered: report `read_failed`.

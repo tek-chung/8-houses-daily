@@ -1,0 +1,27 @@
+[
+ {
+  "id": "shelter-hub-support",
+  "basis": "not_on_charity_pages",
+  "reason": "Shelter London services search lists no Hub Support role and no page describes it"
+ },
+ {
+  "id": "housing-justice-winter-shelter",
+  "basis": "not_on_charity_pages",
+  "reason": "No housingjustice.org.uk page offers winter night shelter volunteering"
+ },
+ {
+  "id": "wlm-services-volunteer",
+  "basis": "source_not_volunteering",
+  "reason": "Only source is the Strides paid-jobs page (\"no current vacancies\"); the old wlm.org.uk page is empty"
+ },
+ {
+  "id": "centrepoint-gardening-volunteer-hammersmith-and-fulham",
+  "basis": "not_on_board",
+  "reason": "No longer in the Centrepoint Assemble feed; advert ended 30 October 2026"
+ },
+ {
+  "id": "centrepoint-gardening-volunteer-westminster",
+  "basis": "not_on_board",
+  "reason": "No longer in the Centrepoint Assemble feed; advert ended 30 October 2026"
+ }
+]
