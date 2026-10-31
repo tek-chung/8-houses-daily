@@ -20,8 +20,8 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-24T22:05:54+00:00",
-      "last_success": "2026-10-24T22:05:54+00:00",
+      "last_attempt": "2026-10-31T21:12:16+00:00",
+      "last_success": "2026-10-31T21:12:16+00:00",
       "link_status": "ok",
       "content_hash": "7677329d05283aee29aa7dba6a72b0d81c6691daac0f76af8ae826ead3c806f4",
       "consecutive_failures": 0,
@@ -47,7 +47,7 @@
       "activity": "cooking_serving",
       "location_type": "in_person",
       "postcode_district": "N16",
-      "who_can_apply": "individual",
+      "who_can_apply": "unknown",
       "screening": {
         "dbs": "unknown",
         "references": null,
@@ -64,9 +64,9 @@
       "url_specificity": "org_volunteer_page",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-31T21:12:16+00:00",
         "method": "llm",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://www.nlah.org.uk/volunteer/",
         "verified_fields": [

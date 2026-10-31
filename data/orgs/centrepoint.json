@@ -23,8 +23,8 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-24T22:05:54+00:00",
-      "last_success": "2026-10-24T22:05:54+00:00",
+      "last_attempt": "2026-10-31T21:12:16+00:00",
+      "last_success": "2026-10-31T21:12:16+00:00",
       "link_status": "redirected",
       "content_hash": "033f25f20af2e41add295e10053708c04066cdb62569744fa9cafab67b483061",
       "consecutive_failures": 0,
@@ -47,8 +47,8 @@
       "specific_times": null,
       "activity": "practical",
       "location_type": "in_person",
-      "who_can_apply": "individual",
-      "postcode_district": "W12",
+      "who_can_apply": "unknown",
+      "postcode_district": null,
       "stated_places": [
         "Hammersmith and Fulham"
       ],
@@ -56,7 +56,7 @@
         "dbs": "required_unspecified",
         "references": true,
         "interview": true,
-        "min_age": 18,
+        "min_age": null,
         "induction": "Structured induction and training"
       },
       "skills": [
@@ -65,27 +65,27 @@
       "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
-      "status": "open",
-      "apply_url": "https://centrepoint.goassemble.com/opportunities/125242-gardening-volunteer-hammersmith-and-fulham-2026-10-02",
-      "url_specificity": "role",
+      "status": "unknown",
+      "apply_url": "https://centrepoint.org.uk/support-us/volunteer",
+      "url_specificity": "org_volunteer_page",
       "org_id": "centrepoint",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-31T21:12:16+00:00",
         "method": "platform",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://centrepoint.goassemble.com/opportunities/125242-gardening-volunteer-hammersmith-and-fulham-2026-10-02",
         "verified_fields": [
-          "status",
           "screening.dbs",
           "screening.references",
           "screening.interview",
-          "screening.min_age",
           "commitment"
         ],
         "unsupported_fields": [
+          "screening.min_age",
           "specific_times",
+          "status",
           "centrepoint.goassemble.com: facts read from the charity's volunteering platform"
         ]
       }
@@ -103,16 +103,14 @@
       "specific_times": "Flexible to your availability; Mondays or Fridays preferred",
       "activity": "practical",
       "location_type": "in_person",
-      "who_can_apply": "individual",
+      "who_can_apply": "unknown",
       "postcode_district": null,
-      "stated_places": [
-        "Westminster"
-      ],
+      "stated_places": [],
       "screening": {
         "dbs": "required_unspecified",
         "references": true,
         "interview": true,
-        "min_age": 18,
+        "min_age": null,
         "induction": "Structured induction and training"
       },
       "skills": [
@@ -121,27 +119,27 @@
       "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
-      "status": "open",
-      "apply_url": "https://centrepoint.goassemble.com/opportunities/125244-gardening-volunteer-westminister-2026-10-02",
-      "url_specificity": "role",
+      "status": "unknown",
+      "apply_url": "https://centrepoint.org.uk/support-us/volunteer",
+      "url_specificity": "org_volunteer_page",
       "org_id": "centrepoint",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-31T21:12:16+00:00",
         "method": "platform",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://centrepoint.goassemble.com/opportunities/125244-gardening-volunteer-westminister-2026-10-02",
         "verified_fields": [
-          "status",
           "screening.dbs",
           "screening.references",
           "screening.interview",
-          "screening.min_age",
           "specific_times",
           "commitment"
         ],
         "unsupported_fields": [
+          "screening.min_age",
+          "status",
           "centrepoint.goassemble.com: facts read from the charity's volunteering platform"
         ]
       }
@@ -161,7 +159,7 @@
       "activity": "advice",
       "location_type": "hybrid",
       "postcode_district": null,
-      "who_can_apply": "individual",
+      "who_can_apply": "unknown",
       "screening": {
         "dbs": "required_unspecified",
         "references": true,
@@ -178,7 +176,7 @@
       "url_specificity": "org_volunteer_page",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "extracted_at": "2026-10-31T21:12:16+00:00",
         "method": "platform",
         "reviewed_by_human": false,
         "confidence": 1.0,

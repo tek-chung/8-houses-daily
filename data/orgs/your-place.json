@@ -271,6 +271,60 @@
           "commitment"
         ]
       }
+    },
+    {
+      "id": "your-place-community-partnerships-volunteer",
+      "title": "Community Partnerships Volunteer",
+      "what_youd_do": "Give office admin help to the community partnerships team at the Canning Town head office: phones, emails, minutes, database updates and creating promotional material.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "admin",
+      "location_type": "in_person",
+      "who_can_apply": "unknown",
+      "postcode_district": null,
+      "stated_places": [
+        "Canning Town"
+      ],
+      "screening": {
+        "dbs": "required_unspecified",
+        "references": null,
+        "interview": null,
+        "min_age": 21,
+        "induction": null
+      },
+      "skills": [
+        "Microsoft packages",
+        "organisation"
+      ],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "status": "unknown",
+      "apply_url": "https://your-place.org.uk/volunteer-role-community-partnerships-team/",
+      "url_specificity": "role",
+      "org_id": "your-place",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-31T21:12:16+00:00",
+        "method": "llm",
+        "reviewed_by_human": false,
+        "confidence": 1.0,
+        "source_url": "https://your-place.org.uk/volunteer-role-community-partnerships-team/",
+        "verified_fields": [
+          "screening.dbs",
+          "screening.min_age"
+        ],
+        "unsupported_fields": [
+          "specific_times",
+          "commitment",
+          "status"
+        ]
+      }
     }
   ]
 }

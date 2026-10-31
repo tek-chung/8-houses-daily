@@ -1,0 +1,548 @@
+{
+ "orgs": {
+  "999-club": {
+   "unchanged": 6,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Volunteer page lists six roles. Role pages for HEAT, Women's Sanctuary and Project Volunteer carry 'not currently accepting applications'; Gateway, Reception and Admin Assistant have an online apply button and no closure notice. Volunteer Admin Assistant works partly remotely."
+  },
+  "ace-of-clubs": {
+   "unchanged": 0,
+   "updated": 1,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Page describes tasks and links a Jotform application form (off-site, not read) but never says roles are currently recruiting, so status stays unknown. A stale banner still reads 'Are you free on Sat 9th March?'. No DBS, age or times stated."
+  },
+  "akt": {
+   "unchanged": 0,
+   "updated": 2,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Opportunities section is empty ('coming soon... Stay tuned!'), so both roles stay closed. Prose still describes mentoring and Pride events. Not London-specific: page says volunteers are across the UK."
+  },
+  "all-people-all-places": {
+   "unchanged": 0,
+   "updated": 3,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Framer page lists three roles under 'available roles', each with Apply now to /contact, all marked Posted 23 Sept 2025 (over a year old). Kept open since still listed. Future opportunities (activities, employment skills, creative, workshops) are explicitly not yet recruiting, not recorded."
+  },
+  "barons-court-project": {
+   "unchanged": 1,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Volunteer page mentions 'various roles' for people who can commit one or more days a week but describes no activity, so no individual role recorded; contact is by email or form. Corporate page lists pop-up shop, skills-based help, outings and events."
+  },
+  "bench-outreach": {
+   "unchanged": 1,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Volunteer URL is the single role page. Apply is by emailing a cover letter. Page does not state a charity number or the borough Lewisham, so org fields are left as they are."
+  },
+  "c4ws-homeless-project": {
+   "unchanged": 5,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Winter shelter runs Nov-Mar; sign-up by email to the Shelter Coordinator. Jobs Club Mentor page gives no recruiting statement and is no longer in the current site Volunteer menu on newer pages (older cached nav shows it): status left unknown, not retired. Other programmes (Sunday Club, English Classes etc.) not checked."
+  },
+  "cardboard-citizens": {
+   "unchanged": 0,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "suspicious_page",
+   "org_notes": "Homepage contains large blocks of unrelated casino/gambling spam in several languages (injected partner links). Nothing was read from it and existing data (no roles) is left untouched. Maintainer should check the site is not compromised and re-check later."
+  },
+  "centrepoint": {
+   "unchanged": 0,
+   "updated": 3,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Assemble feed now lists ONE opportunity: Mini Bus Driver (Bradford), not London, so omitted. Neither Gardening role is in the feed any more, though both role pages still render with no closed notice, so status is unknown (not retired). Helpline is not in the feed."
+  },
+  "crisis": {
+   "unchanged": 0,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "partial",
+   "org_notes": "Rosterfy feed (mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer) could NOT be read: the fetch tool refused the filtered URL as too long and the plain URL was denied by the permission classifier. The one role page fetched is a client-rendered shell (no content). Existing Crisis data left untouched. Volunteer page says Christmas 2026 applications are open."
+  },
+  "depaul-uk": {
+   "unchanged": 0,
+   "updated": 2,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Nightstop is a UK-wide network; the volunteer and FAQ pages name no London service, but find-a-nightstop lists 'Nightstop London' (Nightstop.Volunteering@depaulcharity.org.uk), so stated_places London was added. Only the Host role has a sign-up; Driver/Chaperone is described with 'get in touch' only, so status stays unknown. No feed configured."
+  },
+  "emmaus-slc": {
+   "unchanged": 3,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Overview page's 'current volunteer roles' list did not render; the three role pages (all CLOSING DATE: Ongoing) are unchanged. Retail page shows no form text; references and age are from the shared application form on the kitchen and van pages, which lists Retail Assistant as a choice. Form says Mon-Sat 9:30-5, van page says 9-5 except Sunday."
+  },
+  "emmaus": {
+   "unchanged": 3,
+   "updated": 3,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "partial",
+   "org_notes": "Roles list page returned only five 'Location:' lines (no titles/links), matching retail, outreach, kitchen, van crew, van driver; trustee is not on that list but its own page says ongoing. DBS (basic), 2 references and 18+ come from the org-wide FAQ and apply to all volunteers. FAQ says shifts Tue-Sat 10am-5pm, role pages say Mon-Sat 9am-5pm."
+  },
+  "evolve-housing-support": {
+   "unchanged": 1,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "One role advertised, with an enquiry form on the page. No DBS, age, reference or place details stated. Page names no borough for the role (Evolve's head office is in South Wimbledon)."
+  },
+  "firmfoundation": {
+   "unchanged": 0,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "partial",
+   "org_notes": "Neither page describes any volunteering role or recruitment (contact page is address/form/hub hours; night shelter page is dated content). No dedicated volunteer page found in the site menu. Existing record has no roles; none added. volunteer_url is just the contact page."
+  },
+  "glass-door": {
+   "unchanged": 3,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Three roles on the page, all held. Night shelters currently closed (season runs early November to April); Casework Triage applications closed (page updated 16 Sept 2026). The overview also mentions donation delivery at the office and translation help, with no role page or detail, so not recorded."
+  },
+  "groundswell": {
+   "unchanged": 0,
+   "updated": 2,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Page gives example role profiles and says to get in touch; the only apply route is an enquiry form (reply within two weeks). No statement that either role is currently recruiting, so status stays unknown."
+  },
+  "handson-london": {
+   "unchanged": 1,
+   "updated": 1,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "/volunteer is a Webflow board of other charities' roles (not read as HandsOn roles). Community page lists upcoming Wrap Up events with sign-up links; some listed events are past (24 Oct; a 'Saturday 21 October' BrightenUp date looks wrong). Wrap Up events span several London sites, so the held role_zones of central may be too narrow."
+  },
+  "housing-justice": {
+   "unchanged": 1,
+   "updated": 2,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Citadel/Community Connector and Hosting are live. No page on housingjustice.org.uk offers volunteering at winter night shelters (the Winter Night Shelter Network is for shelter projects), so that role is unconfirmed; recommend a human decide whether to retire it. Simply Volunteer lists Community Connector (N/E London, 18+, 1-3 hrs/wk) and a year-old Citadel Mentor (SE London) listing."
+  },
+  "kingston-churches-action-on-homelessness": {
+   "unchanged": 1,
+   "updated": 2,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Roles apply via a login/registration portal. Index still lists the three roles; Wrecking Crew (10 October) is past. Winter night shelter volunteering page is only an account sign-up form, no role described. Registration form mentions DBS status but not as a role requirement. Current Vacancies page not read (paid posts)."
+  },
+  "manna-society": {
+   "unchanged": 2,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Page describes kitchen and IT roles and links only a contact page; it never says whether they are recruiting, so status stays unknown. No DBS, age or day-of-week information."
+  },
+  "new-horizon-youth-centre": {
+   "unchanged": 0,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Page titled 'Jobs & volunteering' lists only two paid vacancies (Youth Worker, Housing Advice Worker) and no volunteer roles, so no role records. Existing empty roles list stands."
+  },
+  "north-london-action-for-the-homeless": {
+   "unchanged": 0,
+   "updated": 1,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Recruitment notice is headed 'August 2026 UPDATE', two months old; application is a 2022 Word form. N16 comes from the page's meta description. No DBS, age or references stated."
+  },
+  "providence-row": {
+   "unchanged": 5,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Roles page lists five role types with no vacancy/closed statement except the art role ('We are looking for artistic volunteers!'). No times, DBS or age stated. Application via a form (volunteer journey page)."
+  },
+  "shelter-from-the-storm": {
+   "unchanged": 4,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Page says always looking for volunteers and especially needs Overnight volunteers; sign-up is via a separate link (sfts.org.uk/newvols, not read). Page states a minimum age of 18 but says nothing about DBS, references or frequency, so those stay unknown."
+  },
+  "shelter": {
+   "unchanged": 6,
+   "updated": 1,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Better Impact board read in full (London search: 3 community roles, 13 North London and 16 South London shop/supervisor/van listings). Shop roles collapsed; only Streatham read as sample. Hub Support: services search lists no London role, left unknown (cannot quote it gone). Roles via login-free application form only."
+  },
+  "simon-community": {
+   "unchanged": 4,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Contact page says it is receiving a high volume of volunteer enquiries; roles limited by space ('any spaces that may be coming up'), so statuses left unknown except minibus drivers ('always in need'). Roles need UK-based or relocating at own expense."
+  },
+  "single-homeless-project": {
+   "unchanged": 4,
+   "updated": 0,
+   "new": 1,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Page sends people to simplyvolunteerlondon.uk and says to type SHP into search; that search currently returns 0 results for SHP. Roles are otherwise described by type with an enquiry form and no recruiting statements, so most statuses stay unknown. An undated Instagram embed on the page seeks Christmas Day hostel volunteers (added as new, status unknown)."
+  },
+  "solace-womens-aid": {
+   "unchanged": 2,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Page lists exactly two roles, both held. WordPress feed (job_type 124) lists only the Staff Counsellor; Peer Mentor is on the page but not in that feed. Peer Mentor closes 06/11/2026 and its interview date (06/10/2026) has already passed; page warns it may close early. Women only."
+  },
+  "spear": {
+   "unchanged": 0,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Page states 'We are not currently recruiting new volunteers'; no roles are listed or described, and none are held, so nothing to record. Recheck for resumed recruitment."
+  },
+  "spires": {
+   "unchanged": 2,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Roles unchanged. Application via a PDF form emailed to the charity. Minimum 3 hours a month at centre or on outreach."
+  },
+  "spitalfields-crypt-trust": {
+   "unchanged": 6,
+   "updated": 0,
+   "new": 1,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "SCT pages are old (volunteer pages last modified 2023-24). Added Online Shop role listed on the retail page. Charity shops page says 'seven charity shops' while our summary says eight (left unchanged: summary not otherwise stated on pages read). Barista DBS rule is on the main volunteer page."
+  },
+  "st-mungos": {
+   "unchanged": 6,
+   "updated": 1,
+   "new": 2,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Most roles close 9 Nov 2026 (Housing First, Creative Activities close 25 Nov). Listing also has Hub Support (Bournemouth), Women's Group and Sewing Group, Enhanced First Response (all Bristol): not London, omitted. WordPress feed (first page, 10 items) matches listing. Interview flag rests on org-wide FAQ text."
+  },
+  "stonewall-housing": {
+   "unchanged": 1,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Live Chat still recruiting. Page also has a generic interest form for other opportunities (not a role). Role has its own sign-up form; left apply_url as the org page."
+  },
+  "streets-of-london": {
+   "unchanged": 0,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Page runs no volunteering; it only points people to Homeless Link to find other charities. No roles."
+  },
+  "thames-reach": {
+   "unchanged": 0,
+   "updated": 3,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Assemble feed lists exactly three Published opportunities, all London and all already held. The Fundraising Events Volunteer events were 9 and 10 October, so it stays closed. Role pages were not fetched separately: the feed carries their full fields."
+  },
+  "the-big-issue-foundation": {
+   "unchanged": 1,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Group-wide page (bigissue.com) listing volunteering in 8 cities incl. London; no London-specific role detail, times or DBS. Apply by email to volunteering@bigissue.com. Page last modified 2025-05-07."
+  },
+  "the-connection-at-st-martins": {
+   "unchanged": 2,
+   "updated": 0,
+   "new": 1,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Volunteer page updated 26.10.2026: general roles (Dec 2026-Feb 2027) not yet open, interest-register form only. Events Support is by email ad hoc. Corporate kitchen/community volunteering is reserved for financial partners."
+  },
+  "the-passage": {
+   "unchanged": 8,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "All 8 held roles still listed on the vacancies page with role pages and Apply Now (Better Impact form). No DBS level stated on any role page, so dbs stays unknown. Pages carry no explicit closing dates. Sports and Activities page published Aug 2026."
+  },
+  "the-salvation-army": {
+   "unchanged": 0,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "partial",
+   "org_notes": "National page only. Actual vacancies (incl. any London Lifehouse or shop roles) sit in a separate webrecruitment.salvationarmy.org.uk search portal, not read here. No London-specific role named on either page, so no role record added; existing empty list left as is."
+  },
+  "the-upper-room": {
+   "unchanged": 0,
+   "updated": 1,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Volunteering is a pop-up application form on the homepage (no separate page). Form offers UR4Meals, UR4Driving, UR4Jobs, Fundraising and Administration but describes no activity or vacancy for them; it also asks 'If there are no current vacancies...'. Meals status stays unknown. Page has stale Christmas text (re-open 2 January)."
+  },
+  "the-whitechapel-mission": {
+   "unchanged": 3,
+   "updated": 1,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "partial",
+   "org_notes": "Teams only; page says \"We have no vacancies for Individual Volunteers\". Booking runs through diary.whitechapel.org.uk, which returned an empty shell, so real dates unseen. Booking page lists Breakfast, Clothing and Advice as current options. Gift sorting is not bookable online (phone only), so status stays unknown."
+  },
+  "west-london-mission": {
+   "unchanged": 1,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "partial",
+   "org_notes": "volunteer_url (/work-for-us/) is now a staff-jobs page (benefits list, \"no current vacancies\") with no volunteering content. Community hubs page also mentions no volunteer roles. No better volunteering URL found, so none suggested. Existing role unsupported by live pages; not retired as no quote shows it is gone."
+  },
+  "women-at-the-well": {
+   "unchanged": 3,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Single page for all three roles. It warns spots are limited and applicants may be waitlisted; application is a Word form download. Roles are described with an Apply Now button but no explicit vacancy statement, so status relies on the limited-spots wording."
+  },
+  "ymca-london-city-and-north": {
+   "unchanged": 2,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Page last modified Aug 2025 (per metadata) and has no apply form, only a contact link. A Fundraising Events Volunteer listing (Crouch End and the City of London) is not recorded as it describes no activity beyond helping at fundraising events and says get in touch."
+  },
+  "ymca-st-pauls-group": {
+   "unchanged": 4,
+   "updated": 0,
+   "new": 0,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "ok",
+   "org_notes": "Volunteering page lists three individual role areas with only a Register your interest button; no vacancy statement, so those stay status unknown. Corporate volunteering (team days, skills-based) is also offered via volunteers@ymcaspg.org. Supported Lodgings page is live with a sign-up route."
+  },
+  "your-place": {
+   "unchanged": 5,
+   "updated": 0,
+   "new": 1,
+   "retired": 0,
+   "kept_unknown": 0,
+   "skipped": 0,
+   "read_status": "partial",
+   "org_notes": "The four JD role links are .docx downloads; the fetch tool returned binary, so those were not read (status rests on the live opportunities list, details unchanged). Community Partnerships Volunteer page is dated Feb 2023, not on the current list, so status unknown. It states over-21 for office roles."
+  }
+ },
+ "issues": [
+  "crisis: existing role crisis-skylight-welcome not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-skylight-one-to-one not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-charity-shop not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-e-commerce-support not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-handyperson not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-collections-volunteer not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-crisis-at-christmas-volunteer not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-night-owl not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-driver not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-warehouse not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-healthcare not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-guest-welfare not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-hair-and-nails not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-arts not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-shift-office not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-advice-caseworker-support not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-hotel-assistant not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-centre-willing-to-drive not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-minibus-driver not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-mental-health-advice not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-warehouse-willing-to-drive not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-resources-coordinator not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-av-support not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-chef not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-digital-it-support not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-operations not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-performer not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-sports-facilitator not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-christmas-wellbeing not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-skylight-brent-admin not mentioned by the check; kept untouched",
+  "crisis: existing role crisis-skylight-green-fingers-lead not mentioned by the check; kept untouched",
+  "single-homeless-project-christmas-day-hostel-volunteer: commitment='one_off' had no usable quote -> forced 'unknown'",
+  "cstm-day-centre-volunteer: specific_times='Opportunities for December 2026 to February 2027' had no usable quote -> forced None"
+ ],
+ "notes": [
+  "handson-london-community-day: commitment kept (unchanged, no fresh quote)",
+  "shelter-shop-volunteer: screening.dbs kept (unchanged, no fresh quote)",
+  "simon-community-live-in: specific_times kept (unchanged, no fresh quote)",
+  "the-big-issue-frontline-office: left as published (its volunteering page is on bigissue.com, the charity site on bigissue.org.uk; an unreviewed change would fail the build's domain rule)"
+ ],
+ "role_links_pending_review": [
+  {
+   "id": "centrepoint-gardening-volunteer-hammersmith-and-fulham",
+   "role_link": "https://centrepoint.goassemble.com/opportunities/125242-gardening-volunteer-hammersmith-and-fulham-2026-10-02",
+   "charity": "centrepoint"
+  },
+  {
+   "id": "centrepoint-gardening-volunteer-westminster",
+   "role_link": "https://centrepoint.goassemble.com/opportunities/125244-gardening-volunteer-westminister-2026-10-02",
+   "charity": "centrepoint"
+  },
+  {
+   "id": "shelter-walk-for-home-marshal-2026",
+   "role_link": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=f0d5924e-d33a-4bdf-ab27-e37a377d121e",
+   "charity": "shelter"
+  },
+  {
+   "id": "thames-reach-hounslow-reach-volunteer",
+   "role_link": "https://thames-reach.goassemble.com/opportunities/122191-volunteer-hounslow-reach-2026-08-19",
+   "charity": "thames-reach"
+  },
+  {
+   "id": "thames-reach-data-it-support-lambeth",
+   "role_link": "https://thames-reach.goassemble.com/opportunities/122219-data-and-it-support-volunteer-lambeth-outreach-2026-08-19",
+   "charity": "thames-reach"
+  },
+  {
+   "id": "thames-reach-fundraising-events-volunteer",
+   "role_link": "https://thames-reach.goassemble.com/opportunities/124961-fundraising-events-volunteer-2026-09-28",
+   "charity": "thames-reach"
+  }
+ ],
+ "staged_orgs": []
+}

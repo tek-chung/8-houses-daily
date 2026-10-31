@@ -40,7 +40,7 @@
         "weekday_daytime",
         "weekend_daytime"
       ],
-      "specific_times": "On site by 5:45am, finished around 11:30am; any morning of the year",
+      "specific_times": "On site by 5:45am, finished around 11:30am",
       "activity": "cooking_serving",
       "location_type": "in_person",
       "postcode_district": "E1",
@@ -55,7 +55,7 @@
       "skills": [],
       "eligibility": [
         "Teams of 7 to 9 people only",
-        "Over 21, as the page words it"
+        "Over 18, as the page words it"
       ],
       "seasonal_window": null,
       "next_intake": null,
@@ -64,11 +64,11 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-31T21:12:16+00:00",
         "method": "llm",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
-        "source_url": "https://whitechapel.org.uk/process",
+        "source_url": "https://whitechapel.org.uk/volunteering/booking",
         "verified_fields": [
           "status",
           "specific_times",

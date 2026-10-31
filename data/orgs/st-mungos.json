@@ -21,8 +21,8 @@
     "lived_experience_roles": true,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-24T22:05:54+00:00",
-      "last_success": "2026-10-24T22:05:54+00:00",
+      "last_attempt": "2026-10-31T21:12:16+00:00",
+      "last_success": "2026-10-31T21:12:16+00:00",
       "link_status": "ok",
       "content_hash": "36e6c9ff570cc1b80ac96c7ef1760fd593adb9af814b31f13f6bbad02110a4f5",
       "consecutive_failures": 0,
@@ -214,7 +214,7 @@
         "weekday_daytime",
         "weekday_evening"
       ],
-      "specific_times": "Brent Mon-Fri 6-10am; Ealing Mon 10pm-2am or Wed/Fri 5am-9am",
+      "specific_times": "Bournemouth: 1 shift a week; Reading: at least 1 shift a month",
       "activity": "outreach",
       "location_type": "in_person",
       "postcode_district": null,
@@ -227,9 +227,7 @@
         "induction": null
       },
       "skills": [],
-      "eligibility": [
-        "Ealing placement needs a driving licence"
-      ],
+      "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
@@ -237,7 +235,7 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "extracted_at": "2026-10-31T21:12:16+00:00",
         "method": "llm",
         "reviewed_by_human": false,
         "confidence": 1.0,
@@ -249,15 +247,12 @@
           "screening.interview",
           "screening.min_age",
           "specific_times",
-          "commitment",
-          "eligibility"
+          "commitment"
         ],
         "unsupported_fields": []
       },
       "stated_places": [
-        "Brent",
         "Bournemouth",
-        "Ealing",
         "Reading"
       ]
     },
@@ -423,6 +418,111 @@
           "screening.dbs",
           "screening.references",
           "screening.interview",
+          "screening.min_age",
+          "specific_times",
+          "commitment"
+        ],
+        "unsupported_fields": []
+      }
+    },
+    {
+      "min_term_months": 6,
+      "typical_shift_hours": null,
+      "postcode_district": null,
+      "stated_places": [
+        "Haringey"
+      ],
+      "skills": [],
+      "eligibility": [
+        "Only open to people with lived experience of homelessness or the issues around it"
+      ],
+      "seasonal_window": null,
+      "next_intake": null,
+      "id": "st-mungos-housing-first-peer-volunteer",
+      "title": "Housing First Peer Volunteer",
+      "what_youd_do": "Work beside Housing First staff in Haringey, using your own experience of homelessness to build trust with tenants and help them keep their homes.",
+      "commitment": "long_term",
+      "when": [
+        "weekday_daytime"
+      ],
+      "specific_times": "Mon-Fri 9am-5pm, up to 2 days per week",
+      "activity": "mentoring",
+      "location_type": "in_person",
+      "who_can_apply": "unknown",
+      "screening": {
+        "dbs": "required_unspecified",
+        "references": true,
+        "interview": null,
+        "min_age": 18,
+        "induction": null
+      },
+      "status": "open",
+      "apply_url": "https://www.mungos.org/volunteer_role/housing-first-peer-volunteer/",
+      "url_specificity": "role",
+      "org_id": "st-mungos",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-31T21:12:16+00:00",
+        "method": "llm",
+        "reviewed_by_human": false,
+        "confidence": 1.0,
+        "source_url": "https://www.mungos.org/volunteer_role/housing-first-peer-volunteer/",
+        "verified_fields": [
+          "status",
+          "screening.dbs",
+          "screening.references",
+          "screening.min_age",
+          "specific_times",
+          "commitment",
+          "eligibility"
+        ],
+        "unsupported_fields": []
+      }
+    },
+    {
+      "min_term_months": 6,
+      "typical_shift_hours": null,
+      "postcode_district": null,
+      "stated_places": [
+        "Westminster"
+      ],
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": null,
+      "next_intake": null,
+      "id": "st-mungos-creative-activities-volunteer",
+      "title": "Creative Activities Volunteer",
+      "what_youd_do": "Run arts and creative sessions with clients at a Westminster service, helping people express themselves and grow in confidence.",
+      "commitment": "weekly",
+      "when": [
+        "weekday_daytime"
+      ],
+      "specific_times": "Mon-Fri 9am-5pm, 1-2 hours per week (afternoon preferred)",
+      "activity": "teaching",
+      "location_type": "in_person",
+      "who_can_apply": "unknown",
+      "screening": {
+        "dbs": "required_unspecified",
+        "references": true,
+        "interview": null,
+        "min_age": 18,
+        "induction": null
+      },
+      "status": "open",
+      "apply_url": "https://www.mungos.org/volunteer_role/creative-activities-volunteer/",
+      "url_specificity": "role",
+      "org_id": "st-mungos",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-31T21:12:16+00:00",
+        "method": "llm",
+        "reviewed_by_human": false,
+        "confidence": 1.0,
+        "source_url": "https://www.mungos.org/volunteer_role/creative-activities-volunteer/",
+        "verified_fields": [
+          "status",
+          "screening.dbs",
+          "screening.references",
           "screening.min_age",
           "specific_times",
           "commitment"

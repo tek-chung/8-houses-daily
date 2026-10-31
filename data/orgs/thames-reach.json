@@ -21,8 +21,8 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-24T22:05:54+00:00",
-      "last_success": "2026-10-24T22:05:54+00:00",
+      "last_attempt": "2026-10-31T21:12:16+00:00",
+      "last_success": "2026-10-31T21:12:16+00:00",
       "link_status": "ok",
       "content_hash": "987b32b3a6c900f1bb2dc62a28ae03fe8cb3e6d1bf3558744323f87bc42e31cc",
       "consecutive_failures": 0,
@@ -45,7 +45,7 @@
       "specific_times": null,
       "activity": "advice",
       "location_type": "in_person",
-      "who_can_apply": "individual",
+      "who_can_apply": "unknown",
       "postcode_district": "TW3",
       "stated_places": [
         "Hounslow"
@@ -65,14 +65,14 @@
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
-      "apply_url": "https://thames-reach.goassemble.com/opportunities/122191-volunteer-hounslow-reach-2026-08-19",
-      "url_specificity": "role",
+      "apply_url": "https://thamesreach.org.uk/support-us/volunteer/",
+      "url_specificity": "org_volunteer_page",
       "org_id": "thames-reach",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-31T21:12:16+00:00",
         "method": "platform",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://thames-reach.goassemble.com/opportunities/122191-volunteer-hounslow-reach-2026-08-19",
         "verified_fields": [
@@ -100,7 +100,7 @@
       "specific_times": null,
       "activity": "admin",
       "location_type": "in_person",
-      "who_can_apply": "individual",
+      "who_can_apply": "unknown",
       "postcode_district": "SW9",
       "stated_places": [
         "Lambeth Outreach"
@@ -120,14 +120,14 @@
       "seasonal_window": null,
       "next_intake": null,
       "status": "open",
-      "apply_url": "https://thames-reach.goassemble.com/opportunities/122219-data-and-it-support-volunteer-lambeth-outreach-2026-08-19",
-      "url_specificity": "role",
+      "apply_url": "https://thamesreach.org.uk/support-us/volunteer/",
+      "url_specificity": "org_volunteer_page",
       "org_id": "thames-reach",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-31T21:12:16+00:00",
         "method": "platform",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://thames-reach.goassemble.com/opportunities/122219-data-and-it-support-volunteer-lambeth-outreach-2026-08-19",
         "verified_fields": [
@@ -156,7 +156,7 @@
       "specific_times": "Fri 9 October (Camberwell) and Sat 10 October (King's Cross)",
       "activity": "fundraising",
       "location_type": "in_person",
-      "who_can_apply": "individual",
+      "who_can_apply": "unknown",
       "postcode_district": null,
       "stated_places": [
         "Camberwell",
@@ -174,14 +174,14 @@
       "seasonal_window": null,
       "next_intake": null,
       "status": "closed",
-      "apply_url": "https://thames-reach.goassemble.com/opportunities/124961-fundraising-events-volunteer-2026-09-28",
-      "url_specificity": "role",
+      "apply_url": "https://thamesreach.org.uk/support-us/volunteer/",
+      "url_specificity": "org_volunteer_page",
       "org_id": "thames-reach",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-31T21:12:16+00:00",
         "method": "platform",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://thames-reach.goassemble.com/opportunities/124961-fundraising-events-volunteer-2026-09-28",
         "verified_fields": [

@@ -1,0 +1,182 @@
+[
+ {
+  "role": "depaul-uk-nightstop-driver",
+  "field": "screening.dbs",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ },
+ {
+  "role": "housing-justice-citadel",
+  "field": "status",
+  "verdict": "ok",
+  "note": "Quote present on Citadel signup page; page invites sign-up for Citadel volunteering, no explicit vacancy count."
+ },
+ {
+  "role": "whitechapel-mission-breakfast-challenge",
+  "field": "commitment",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ },
+ {
+  "role": "emmaus-greenwich-retail",
+  "field": "eligibility",
+  "verdict": "wrong",
+  "note": "Quote not found anywhere on fetched page (page has no age/DBS/references text); page is org-wide volunteer overview."
+ },
+ {
+  "role": "emmaus-greenwich-outreach",
+  "field": "status",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ },
+ {
+  "role": "akt-volunteer-mentor",
+  "field": "status",
+  "verdict": "ok",
+  "note": "Quote present (\"new volunteering opportunities coming soon...\"); no mentor role listed under opportunities, supports closed."
+ },
+ {
+  "role": "st-mungos-creative-activities-volunteer",
+  "field": "status",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ },
+ {
+  "role": "whitechapel-mission-breakfast-challenge",
+  "field": "eligibility",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ },
+ {
+  "role": "emmaus-greenwich-retail",
+  "field": "screening.dbs",
+  "verdict": "wrong",
+  "note": "Quote not found anywhere on fetched page (page has no age/DBS/references text); page is org-wide volunteer overview."
+ },
+ {
+  "role": "depaul-uk-nightstop-host",
+  "field": "status",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ },
+ {
+  "role": "emmaus-greenwich-outreach",
+  "field": "screening.min_age",
+  "verdict": "wrong",
+  "note": "Quote not found anywhere on fetched page (page has no age/DBS/references text); page is org-wide volunteer overview."
+ },
+ {
+  "role": "st-mungos-housing-first-peer-volunteer",
+  "field": "screening.min_age",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ },
+ {
+  "role": "centrepoint-gardening-volunteer-hammersmith-and-fulham",
+  "field": "commitment",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ },
+ {
+  "role": "emmaus-greenwich-retail",
+  "field": "screening.min_age",
+  "verdict": "wrong",
+  "note": "Quote not found anywhere on fetched page (page has no age/DBS/references text); page is org-wide volunteer overview."
+ },
+ {
+  "role": "emmaus-greenwich-van-crew",
+  "field": "screening.references",
+  "verdict": "wrong",
+  "note": "Quote not found anywhere on fetched page (page has no age/DBS/references text); page is org-wide volunteer overview."
+ },
+ {
+  "role": "st-mungos-housing-first-peer-volunteer",
+  "field": "screening.references",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ },
+ {
+  "role": "thames-reach-fundraising-events-volunteer",
+  "field": "screening.min_age",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ },
+ {
+  "role": "whitechapel-mission-breakfast-challenge",
+  "field": "status",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ },
+ {
+  "role": "handson-london-wrap-up-london",
+  "field": "status",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ },
+ {
+  "role": "cstm-day-centre-volunteer",
+  "field": "status",
+  "verdict": "ok",
+  "note": "Quote present: applications for Dec 2026-Feb 2027 will open soon; no role-specific listing, supports closed."
+ },
+ {
+  "role": "sct-online-shop",
+  "field": "status",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ },
+ {
+  "role": "centrepoint-gardening-volunteer-westminster",
+  "field": "screening.references",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ },
+ {
+  "role": "housing-justice-citadel",
+  "field": "screening.dbs",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ },
+ {
+  "role": "depaul-uk-nightstop-host",
+  "field": "commitment",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ },
+ {
+  "role": "shelter-walk-for-home-marshal-2026",
+  "field": "status",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ },
+ {
+  "role": "all-people-all-places-community-barber",
+  "field": "status",
+  "verdict": "ok",
+  "note": "Quote present; Community Barber listed with Apply now (posted 23 Sept 2025, so possibly stale)."
+ },
+ {
+  "role": "st-mungos-creative-activities-volunteer",
+  "field": "screening.dbs",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ },
+ {
+  "role": "your-place-community-partnerships-volunteer",
+  "field": "screening.dbs",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ },
+ {
+  "role": "emmaus-greenwich-retail",
+  "field": "screening.references",
+  "verdict": "wrong",
+  "note": "Quote not found anywhere on fetched page (page has no age/DBS/references text); page is org-wide volunteer overview."
+ },
+ {
+  "role": "emmaus-greenwich-retail",
+  "field": "commitment",
+  "verdict": "unreadable",
+  "note": "Repeat fetch refused (already fetched earlier in session); not re-fetched."
+ }
+]

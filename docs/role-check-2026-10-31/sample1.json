@@ -1,0 +1,217 @@
+[
+ {
+  "role": "depaul-uk-nightstop-driver",
+  "field": "screening.dbs",
+  "value": "required_unspecified",
+  "url": "https://www.depaul.org.uk/nightstop-faqs/",
+  "quote": "We also run DBS checks for all Chaperones and Drivers."
+ },
+ {
+  "role": "housing-justice-citadel",
+  "field": "status",
+  "value": "open",
+  "url": "https://housingjustice.org.uk/citadel/volunteer-signup",
+  "quote": "Sign up to Volunteer in your local area:"
+ },
+ {
+  "role": "whitechapel-mission-breakfast-challenge",
+  "field": "commitment",
+  "value": "one_off",
+  "url": "https://whitechapel.org.uk/volunteering/booking",
+  "quote": "You can use our online diary to book a date and event."
+ },
+ {
+  "role": "emmaus-greenwich-retail",
+  "field": "eligibility",
+  "value": [
+   "People aged 18 or over"
+  ],
+  "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+  "quote": "you must be 18 or over to volunteer with Emmaus Greenwich"
+ },
+ {
+  "role": "emmaus-greenwich-outreach",
+  "field": "status",
+  "value": "open",
+  "url": "https://emmaus.org.uk/greenwich/volunteer-role/outreach-volunteer/",
+  "quote": "CLOSING DATE: Ongoing LOCATION: Westminster and Woolwich TYPE: volunteer"
+ },
+ {
+  "role": "akt-volunteer-mentor",
+  "field": "status",
+  "value": "closed",
+  "url": "https://www.akt.org.uk/volunteer/",
+  "quote": "new volunteering opportunities coming soon..."
+ },
+ {
+  "role": "st-mungos-creative-activities-volunteer",
+  "field": "status",
+  "value": "open",
+  "url": "https://www.mungos.org/volunteer_role/creative-activities-volunteer/",
+  "quote": "Please see all locations and the time commitments we are currently recruiting for in this role:"
+ },
+ {
+  "role": "whitechapel-mission-breakfast-challenge",
+  "field": "eligibility",
+  "value": [
+   "Teams of 7 to 9 people only",
+   "Over 18, as the page words it"
+  ],
+  "url": "https://whitechapel.org.uk/volunteering/breakfast-challenge",
+  "quote": "We ask that volunteers are over 18 and able to spend a long time on their feet."
+ },
+ {
+  "role": "emmaus-greenwich-retail",
+  "field": "screening.dbs",
+  "value": "basic",
+  "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+  "quote": "required to complete a basic DBS (Disclosure and Barring Service) check"
+ },
+ {
+  "role": "depaul-uk-nightstop-host",
+  "field": "status",
+  "value": "open",
+  "url": "https://www.depaul.org.uk/nightstop-volunteer/",
+  "quote": "You can sign up at the bottom of the page."
+ },
+ {
+  "role": "emmaus-greenwich-outreach",
+  "field": "screening.min_age",
+  "value": 18,
+  "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+  "quote": "you must be 18 or over to volunteer with Emmaus Greenwich"
+ },
+ {
+  "role": "st-mungos-housing-first-peer-volunteer",
+  "field": "screening.min_age",
+  "value": 18,
+  "url": "https://www.mungos.org/volunteer_role/housing-first-peer-volunteer/",
+  "quote": "You must be over 18 years old to volunteer at St Mungo's"
+ },
+ {
+  "role": "centrepoint-gardening-volunteer-hammersmith-and-fulham",
+  "field": "commitment",
+  "value": "long_term",
+  "url": "https://centrepoint.org.uk/support-us/volunteer",
+  "quote": "We ask you for a minimum of six months commitment."
+ },
+ {
+  "role": "emmaus-greenwich-retail",
+  "field": "screening.min_age",
+  "value": 18,
+  "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+  "quote": "you must be 18 or over to volunteer with Emmaus Greenwich"
+ },
+ {
+  "role": "emmaus-greenwich-van-crew",
+  "field": "screening.references",
+  "value": true,
+  "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+  "quote": "We ask for two references"
+ },
+ {
+  "role": "st-mungos-housing-first-peer-volunteer",
+  "field": "screening.references",
+  "value": true,
+  "url": "https://www.mungos.org/volunteer_role/housing-first-peer-volunteer/",
+  "quote": "Please provide us with the details of two people we may contact as referees, to comment on your suitability for volunteering."
+ },
+ {
+  "role": "thames-reach-fundraising-events-volunteer",
+  "field": "screening.min_age",
+  "value": 18,
+  "url": "https://thames-reach.goassemble.com/api/opportunities/",
+  "quote": "\"status\":\"active\",\"editable\":false,\"recruitable\":true,\"minimum_age\":18"
+ },
+ {
+  "role": "whitechapel-mission-breakfast-challenge",
+  "field": "status",
+  "value": "open",
+  "url": "https://whitechapel.org.uk/volunteering/booking",
+  "quote": "A team challenge for 7 to 9 people, starting at 06:00."
+ },
+ {
+  "role": "handson-london-wrap-up-london",
+  "field": "status",
+  "value": "open",
+  "url": "https://www.handsonlondon.org.uk/community-volunteering",
+  "quote": "Wrap Up London @ London Bridge: Launch Week Tuesday 3 November, 07:00 - 11:00 London Bridge Station Sign-up now"
+ },
+ {
+  "role": "cstm-day-centre-volunteer",
+  "field": "status",
+  "value": "closed",
+  "url": "https://www.connection-at-stmartins.org.uk/volunteer/",
+  "quote": "applications will open soon"
+ },
+ {
+  "role": "sct-online-shop",
+  "field": "status",
+  "value": "open",
+  "url": "https://sct.org.uk/volunteer-in-retail/",
+  "quote": "Curation of on-line stock, photographing merchandise, editing images, listing, order fulfilment and dispatch."
+ },
+ {
+  "role": "centrepoint-gardening-volunteer-westminster",
+  "field": "screening.references",
+  "value": true,
+  "url": "https://centrepoint.org.uk/support-us/volunteer",
+  "quote": "DBS clearance and reference checks"
+ },
+ {
+  "role": "housing-justice-citadel",
+  "field": "screening.dbs",
+  "value": "required_unspecified",
+  "url": "https://simplyvolunteerlondon.uk/role/5247/22/hackney/volunteer-community-connector",
+  "quote": "We will arrange a DBS check, and you will be entitled to reasonable expenses and travel costs."
+ },
+ {
+  "role": "depaul-uk-nightstop-host",
+  "field": "commitment",
+  "value": "flexible",
+  "url": "https://www.depaul.org.uk/nightstop-faqs/",
+  "quote": "you can do as much or as little as you choose."
+ },
+ {
+  "role": "shelter-walk-for-home-marshal-2026",
+  "field": "status",
+  "value": "open",
+  "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=f0d5924e-d33a-4bdf-ab27-e37a377d121e",
+  "quote": "If you would like to volunteer at this event, click ‘fill in an application’."
+ },
+ {
+  "role": "all-people-all-places-community-barber",
+  "field": "status",
+  "value": "open",
+  "url": "https://allpeopleallplaces.org/support-us/volunteer",
+  "quote": "Explore our available roles"
+ },
+ {
+  "role": "st-mungos-creative-activities-volunteer",
+  "field": "screening.dbs",
+  "value": "required_unspecified",
+  "url": "https://www.mungos.org/volunteer_role/creative-activities-volunteer/",
+  "quote": "A DBS check will be carried out for this role."
+ },
+ {
+  "role": "your-place-community-partnerships-volunteer",
+  "field": "screening.dbs",
+  "value": "required_unspecified",
+  "url": "https://your-place.org.uk/volunteer-role-community-partnerships-team/",
+  "quote": "you’ll need to undergo a criminal record check by the Disclosure and Barring Service"
+ },
+ {
+  "role": "emmaus-greenwich-retail",
+  "field": "screening.references",
+  "value": true,
+  "url": "https://emmaus.org.uk/greenwich/support-us/volunteer/",
+  "quote": "We ask for two references"
+ },
+ {
+  "role": "emmaus-greenwich-retail",
+  "field": "commitment",
+  "value": "weekly",
+  "url": "https://emmaus.org.uk/greenwich/volunteer-role/retail-volunteer/",
+  "quote": "commit to at least one full day (9am-5pm) per week, but we can be flexible when this day can be"
+ }
+]

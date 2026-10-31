@@ -1,0 +1,361 @@
+{
+  "agent": "I",
+  "checked_at": "2026-10-31",
+  "orgs": [
+    {
+      "org_id": "kingston-churches-action-on-homelessness",
+      "read_status": "ok",
+      "pages_read": [
+        "https://kcah.org.uk/volunteer-roles/",
+        "https://kcah.org.uk/volunteer-roles/housing-crisis-reception/",
+        "https://kcah.org.uk/volunteer-roles/housing-crisis-administrative-support/",
+        "https://kcah.org.uk/volunteer-roles/wrecking-crew/",
+        "https://kcah.org.uk/winter-night-shelter-volunteering/",
+        "https://kcah.org.uk/register-to-volunteer/"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Roles apply via a login/registration portal. Index still lists the three roles; Wrecking Crew (10 October) is past. Winter night shelter volunteering page is only an account sign-up form, no role described. Registration form mentions DBS status but not as a role requirement. Current Vacancies page not read (paid posts).",
+      "org_fields": {},
+      "roles": [
+        {
+          "match": "existing",
+          "id": "kingston-churches-action-on-homelessness-housing-crisis-reception",
+          "title": "Housing Crisis Reception Volunteer",
+          "what_youd_do": "Welcome people arriving at the housing advice drop-in, hand out registration forms, pass details to advisers and log new cases on the database.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 3,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Monday to Friday, 10:00 to 13:00",
+          "activity": "hosting",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": "KT2",
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [
+            "interpersonal skills",
+            "discretion"
+          ],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://kcah.org.uk/volunteer-roles/housing-crisis-reception/",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {
+              "url": "https://kcah.org.uk/volunteer-roles/housing-crisis-reception/",
+              "quote": "You will need to register as a general volunteer, then you can apply for the role from your volunteer dashboard."
+            },
+            "commitment": {
+              "url": "https://kcah.org.uk/volunteer-roles/housing-crisis-reception/",
+              "quote": "1+ mornings a week"
+            },
+            "when": {
+              "url": "https://kcah.org.uk/volunteer-roles/housing-crisis-reception/",
+              "quote": "Monday – Friday : 10:00 – 13:00"
+            },
+            "specific_times": {
+              "url": "https://kcah.org.uk/volunteer-roles/housing-crisis-reception/",
+              "quote": "Monday – Friday : 10:00 – 13:00"
+            }
+          },
+          "changes_vs_current": [
+            "who_can_apply individual -> unknown (no role-specific page statement)"
+          ]
+        },
+        {
+          "match": "existing",
+          "id": "kingston-churches-action-on-homelessness-housing-crisis-admin-support",
+          "title": "Housing Crisis Admin Support Volunteer",
+          "what_youd_do": "Type handwritten intake and interview notes from new clients into the case database, with training, and greet people arriving for booked appointments.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 4,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Monday to Friday, 13:00 to 17:00",
+          "activity": "admin",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": "KT2",
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "Training provided for the database entry."
+          },
+          "skills": [
+            "reading handwriting",
+            "discretion"
+          ],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://kcah.org.uk/volunteer-roles/housing-crisis-administrative-support/",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {
+              "url": "https://kcah.org.uk/volunteer-roles/housing-crisis-administrative-support/",
+              "quote": "You will need to register as a general volunteer, then you can apply for the role from your volunteer dashboard."
+            },
+            "commitment": {
+              "url": "https://kcah.org.uk/volunteer-roles/housing-crisis-administrative-support/",
+              "quote": "2+ afternoons a week"
+            },
+            "when": {
+              "url": "https://kcah.org.uk/volunteer-roles/housing-crisis-administrative-support/",
+              "quote": "Monday – Friday : 13:00 – 17:00"
+            },
+            "specific_times": {
+              "url": "https://kcah.org.uk/volunteer-roles/housing-crisis-administrative-support/",
+              "quote": "Monday – Friday : 13:00 – 17:00"
+            }
+          },
+          "changes_vs_current": [
+            "who_can_apply individual -> unknown (no role-specific page statement)"
+          ]
+        },
+        {
+          "match": "existing",
+          "id": "kingston-churches-action-on-homelessness-wrecking-crew",
+          "title": "Wrecking Crew Volunteer",
+          "what_youd_do": "Help strip out an old kitchen and clear a room at an Access Project property, hauling rubble to a skip; physical work, DIY demolition experience useful.",
+          "commitment": "one_off",
+          "min_term_months": null,
+          "typical_shift_hours": 6,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": "One day, 10 October, 9am to 3pm",
+          "activity": "practical",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [
+            "DIY demolition"
+          ],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "closed",
+          "apply_url": "https://kcah.org.uk/volunteer-roles/wrecking-crew/",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {
+              "url": "https://kcah.org.uk/volunteer-roles/wrecking-crew/",
+              "quote": "This is a one day project on the 10th of October from 9am – 3pm."
+            },
+            "commitment": {
+              "url": "https://kcah.org.uk/volunteer-roles/wrecking-crew/",
+              "quote": "This is a one day project on the 10th of October from 9am – 3pm."
+            },
+            "specific_times": {
+              "url": "https://kcah.org.uk/volunteer-roles/wrecking-crew/",
+              "quote": "This is a one day project on the 10th of October from 9am – 3pm."
+            }
+          },
+          "changes_vs_current": []
+        }
+      ],
+      "retire": []
+    },
+    {
+      "org_id": "firmfoundation",
+      "read_status": "partial",
+      "pages_read": [
+        "https://firmfoundation.org.uk/contact-us/",
+        "https://firmfoundation.org.uk/about-night-shelter/"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Neither page describes any volunteering role or recruitment (contact page is address/form/hub hours; night shelter page is dated content). No dedicated volunteer page found in the site menu. Existing record has no roles; none added. volunteer_url is just the contact page.",
+      "org_fields": {},
+      "roles": [],
+      "retire": []
+    },
+    {
+      "org_id": "all-people-all-places",
+      "read_status": "ok",
+      "pages_read": [
+        "https://allpeopleallplaces.org/support-us/volunteer"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Framer page lists three roles under 'available roles', each with Apply now to /contact, all marked Posted 23 Sept 2025 (over a year old). Kept open since still listed. Future opportunities (activities, employment skills, creative, workshops) are explicitly not yet recruiting, not recorded.",
+      "org_fields": {},
+      "roles": [
+        {
+          "match": "existing",
+          "id": "all-people-all-places-day-centre-support",
+          "title": "Day Centre Support Volunteer",
+          "what_youd_do": "Help at the Pymmes Park day centre: serve breakfast, run activity clubs, sort laundry and showers, hand out essentials and log what the centre provides.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": "Flexible hours within day centre hours, 8:00am to 3:00pm",
+          "activity": "hosting",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://allpeopleallplaces.org/support-us/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {
+            "status": {
+              "url": "https://allpeopleallplaces.org/support-us/volunteer",
+              "quote": "Explore our available roles"
+            },
+            "commitment": {
+              "url": "https://allpeopleallplaces.org/support-us/volunteer",
+              "quote": "Regular (weekly/daily shifts available)"
+            },
+            "specific_times": {
+              "url": "https://allpeopleallplaces.org/support-us/volunteer",
+              "quote": "Flexible hours within Day Centre hours (8:00am to 3:00pm)"
+            }
+          },
+          "changes_vs_current": [
+            "who_can_apply individual -> unknown (no page statement)"
+          ]
+        },
+        {
+          "match": "existing",
+          "id": "all-people-all-places-kitchen-support",
+          "title": "Kitchen Support Volunteer",
+          "what_youd_do": "Prepare and dish up hot food for people sleeping rough and others using the day centre, tidy the kitchen and dining area and welcome guests at mealtimes.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": "Flexible hours within day centre hours, 8:00am to 3:00pm",
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://allpeopleallplaces.org/support-us/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {
+            "status": {
+              "url": "https://allpeopleallplaces.org/support-us/volunteer",
+              "quote": "Explore our available roles"
+            },
+            "commitment": {
+              "url": "https://allpeopleallplaces.org/support-us/volunteer",
+              "quote": "Regular (weekly/daily shifts available)"
+            },
+            "specific_times": {
+              "url": "https://allpeopleallplaces.org/support-us/volunteer",
+              "quote": "Flexible hours within Day Centre hours (8:00am to 3:00pm)"
+            }
+          },
+          "changes_vs_current": [
+            "who_can_apply individual -> unknown (no page statement)",
+            "what_youd_do reworded to avoid an 8-word overlap with the page"
+          ]
+        },
+        {
+          "match": "existing",
+          "id": "all-people-all-places-community-barber",
+          "title": "Community Barber",
+          "what_youd_do": "Give free haircuts to day centre clients as an experienced barber, a few hours at a time, to lift their confidence and dignity.",
+          "commitment": "flexible",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": "A few hours per session",
+          "activity": "practical",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [
+            "experienced barber"
+          ],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://allpeopleallplaces.org/support-us/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {
+            "status": {
+              "url": "https://allpeopleallplaces.org/support-us/volunteer",
+              "quote": "Explore our available roles"
+            },
+            "commitment": {
+              "url": "https://allpeopleallplaces.org/support-us/volunteer",
+              "quote": "Flexible (as available)"
+            },
+            "specific_times": {
+              "url": "https://allpeopleallplaces.org/support-us/volunteer",
+              "quote": "A few hours per session"
+            }
+          },
+          "changes_vs_current": [
+            "who_can_apply individual -> unknown (no page statement)"
+          ]
+        }
+      ],
+      "retire": []
+    }
+  ]
+}

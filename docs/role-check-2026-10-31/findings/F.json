@@ -1,0 +1,1239 @@
+{
+  "agent": "F",
+  "checked_at": "2026-10-31",
+  "orgs": [
+    {
+      "org_id": "the-big-issue-foundation",
+      "read_status": "ok",
+      "pages_read": [
+        "https://www.bigissue.com/partner-with-the-big-issue-group/engage-your-staff/volunteering-with-the-big-issue/"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Group-wide page (bigissue.com) listing volunteering in 8 cities incl. London; no London-specific role detail, times or DBS. Apply by email to volunteering@bigissue.com. Page last modified 2025-05-07.",
+      "org_fields": {},
+      "roles": [
+        {
+          "id": "the-big-issue-frontline-office",
+          "title": "Frontline Office Volunteer",
+          "what_youd_do": "Work in their London frontline office — admin, and the front desk where vendors come in for magazines and for help with whatever else is going on.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "admin",
+          "location_type": "in_person",
+          "postcode_district": null,
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "Training in safeguarding, health and safety and data protection. Some roles ask for a reference."
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.bigissue.com/partner-with-the-big-issue-group/engage-your-staff/volunteering-with-the-big-issue/",
+          "url_specificity": "org_volunteer_page",
+          "stated_places": [],
+          "match": "existing",
+          "evidence": {
+            "status": {
+              "url": "https://www.bigissue.com/partner-with-the-big-issue-group/engage-your-staff/volunteering-with-the-big-issue/",
+              "quote": "We have volunteering options available in the following locations:"
+            },
+            "who_can_apply": {
+              "url": "https://www.bigissue.com/partner-with-the-big-issue-group/engage-your-staff/volunteering-with-the-big-issue/",
+              "quote": "For each role you will need to fill out a short application form telling us why you would like to carry out the role."
+            }
+          },
+          "changes_vs_current": [
+            "commitment weekly -> unknown (page gives no frequency; the only mention is one volunteer testimonial)",
+            "when weekday_daytime -> flexible (page gives no timing)"
+          ]
+        }
+      ],
+      "retire": []
+    },
+    {
+      "org_id": "the-connection-at-st-martins",
+      "read_status": "ok",
+      "pages_read": [
+        "https://www.connection-at-stmartins.org.uk/volunteer/",
+        "https://www.connection-at-stmartins.org.uk/corporate_partnerships/"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Volunteer page updated 26.10.2026: general roles (Dec 2026-Feb 2027) not yet open, interest-register form only. Events Support is by email ad hoc. Corporate kitchen/community volunteering is reserved for financial partners.",
+      "org_fields": {},
+      "roles": [
+        {
+          "id": "cstm-events-support",
+          "title": "Events Support",
+          "what_youd_do": "Help set up at the Connection's events and keep things running smoothly on the day, with free entry to the event itself.",
+          "commitment": "one_off",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": "Half a day to a day, ad hoc through the year",
+          "activity": "fundraising",
+          "location_type": "in_person",
+          "postcode_district": null,
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.connection-at-stmartins.org.uk/volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "stated_places": [],
+          "match": "existing",
+          "evidence": {
+            "status": {
+              "url": "https://www.connection-at-stmartins.org.uk/volunteer/",
+              "quote": "To find out more about becoming an events support volunteer please email events@cstm.org.uk"
+            },
+            "commitment": {
+              "url": "https://www.connection-at-stmartins.org.uk/volunteer/",
+              "quote": "½ day – 1 day on an ad hoc basis throughout the year"
+            },
+            "specific_times": {
+              "url": "https://www.connection-at-stmartins.org.uk/volunteer/",
+              "quote": "½ day – 1 day on an ad hoc basis throughout the year"
+            },
+            "who_can_apply": {
+              "url": "https://www.connection-at-stmartins.org.uk/volunteer/",
+              "quote": "help us set-up and make sure our events runs smoothly"
+            }
+          },
+          "changes_vs_current": []
+        },
+        {
+          "id": "cstm-corporate-day-centre",
+          "title": "Day Centre, for Partner Companies",
+          "what_youd_do": "Serve breakfast or lunch in the day centre kitchen one day a week for a set month or more, or join community activity groups, as part of a partner company team.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 2,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Breakfast 9-11am or lunch 10.45am-12.45pm; weekly for 1, 3 or 6 months",
+          "activity": "varies",
+          "location_type": "in_person",
+          "postcode_district": "WC2N",
+          "who_can_apply": "team_only",
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [
+            "Companies that are financial partners of the charity"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.connection-at-stmartins.org.uk/corporate_partnerships/",
+          "url_specificity": "role",
+          "stated_places": [],
+          "match": "existing",
+          "evidence": {
+            "status": {
+              "url": "https://www.connection-at-stmartins.org.uk/corporate_partnerships/",
+              "quote": "We provide one, three, and six months of volunteering per year for our corporate partners."
+            },
+            "commitment": {
+              "url": "https://www.connection-at-stmartins.org.uk/corporate_partnerships/",
+              "quote": "We ask you to choose one day a week during a particular month"
+            },
+            "specific_times": {
+              "url": "https://www.connection-at-stmartins.org.uk/corporate_partnerships/",
+              "quote": "Breakfast: 9.00am to 11.00am"
+            },
+            "who_can_apply": {
+              "url": "https://www.connection-at-stmartins.org.uk/corporate_partnerships/",
+              "quote": "send two-four volunteers for each meal"
+            },
+            "eligibility": {
+              "url": "https://www.connection-at-stmartins.org.uk/volunteer/",
+              "quote": "We reserve these opportunities for our financial partners as part of their partnership with us."
+            }
+          },
+          "changes_vs_current": []
+        },
+        {
+          "match": "new",
+          "id": "cstm-day-centre-volunteer",
+          "title": "Day Centre Volunteer",
+          "what_youd_do": "Help staff at the Adelaide Street day centre with its main services and with client activity groups, once the winter recruitment round opens.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": "Opportunities for December 2026 to February 2027",
+          "activity": "varies",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": "WC2N",
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": {
+            "start_month": 12,
+            "end_month": 2
+          },
+          "next_intake": null,
+          "status": "closed",
+          "apply_url": "https://www.connection-at-stmartins.org.uk/volunteer/",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {
+            "status": {
+              "url": "https://www.connection-at-stmartins.org.uk/volunteer/",
+              "quote": "applications will open soon"
+            },
+            "seasonal_window": {
+              "url": "https://www.connection-at-stmartins.org.uk/volunteer/",
+              "quote": "volunteering opportunities for December 2026 – February 2027"
+            }
+          },
+          "changes_vs_current": []
+        }
+      ],
+      "retire": []
+    },
+    {
+      "org_id": "the-passage",
+      "read_status": "ok",
+      "pages_read": [
+        "https://passage.org.uk/volunteering-vacancies/",
+        "https://passage.org.uk/volunteering/kitchen-support-volunteer-resource-centre/",
+        "https://passage.org.uk/volunteering/kitchen-support-volunteer-phac/",
+        "https://passage.org.uk/volunteering/clothing-store-laundry-service-volunteer/",
+        "https://passage.org.uk/volunteering/sports-activities-volunteer/",
+        "https://passage.org.uk/volunteering/reception-volunteer-phac/",
+        "https://passage.org.uk/volunteering/barber-hairdresser-afro-textured-specialist-2/",
+        "https://passage.org.uk/volunteering/hairdresser-womens-hair/",
+        "https://passage.org.uk/volunteering/station-collector-volunteer/"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "All 8 held roles still listed on the vacancies page with role pages and Apply Now (Better Impact form). No DBS level stated on any role page, so dbs stays unknown. Pages carry no explicit closing dates. Sports and Activities page published Aug 2026.",
+      "org_fields": {},
+      "roles": [
+        {
+          "id": "the-passage-kitchen-support-resource-centre",
+          "title": "Kitchen Support Volunteer",
+          "what_youd_do": "Join a small kitchen team under a chef, serving hot food and drinks, washing up and clearing down after service at the Victoria resource centre.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 3,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Breakfast 9am-12pm or lunch 12.30pm-3.30pm, Monday to Friday",
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "postcode_district": "SW1P",
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "unknown",
+            "references": true,
+            "interview": null,
+            "min_age": 18,
+            "induction": "Kitchen induction on day one and Level One Food Safety training; travel expenses reimbursed"
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://passage.org.uk/volunteering/kitchen-support-volunteer-resource-centre/",
+          "url_specificity": "role",
+          "stated_places": [],
+          "match": "existing",
+          "evidence": {
+            "status": {
+              "url": "https://passage.org.uk/volunteering/kitchen-support-volunteer-resource-centre/",
+              "quote": "We are seeking individuals who can volunteer once a week or fortnight"
+            },
+            "commitment": {
+              "url": "https://passage.org.uk/volunteering/kitchen-support-volunteer-resource-centre/",
+              "quote": "We are seeking individuals who can volunteer once a week or fortnight"
+            },
+            "specific_times": {
+              "url": "https://passage.org.uk/volunteering/kitchen-support-volunteer-resource-centre/",
+              "quote": "9.00am – 12.00pm, Monday – Friday"
+            },
+            "screening.min_age": {
+              "url": "https://passage.org.uk/volunteering/kitchen-support-volunteer-resource-centre/",
+              "quote": "Applicants must be 18 years old or over"
+            },
+            "screening.references": {
+              "url": "https://passage.org.uk/volunteering/kitchen-support-volunteer-resource-centre/",
+              "quote": "We will ask for personal references"
+            },
+            "who_can_apply": {
+              "url": "https://passage.org.uk/volunteering/kitchen-support-volunteer-resource-centre/",
+              "quote": "Applicants must be 18 years old or over"
+            }
+          },
+          "changes_vs_current": []
+        },
+        {
+          "id": "the-passage-kitchen-support-phac",
+          "title": "Kitchen Support Volunteer, Passage House",
+          "what_youd_do": "Help the chef at the Passage House hostel prepare evening meals and next-morning breakfast bags, wash up and keep the kitchen hygienic.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 2,
+          "when": [
+            "weekday_evening",
+            "weekend_evening"
+          ],
+          "specific_times": "Seven days a week, 4.30pm-6.30pm",
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": "SW1V",
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": true,
+            "interview": null,
+            "min_age": 18,
+            "induction": "First-day kitchen induction and Level One Food Safety training; travel expenses reimbursed"
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://passage.org.uk/volunteering/kitchen-support-volunteer-phac/",
+          "url_specificity": "role",
+          "match": "existing",
+          "evidence": {
+            "status": {
+              "url": "https://passage.org.uk/volunteering/kitchen-support-volunteer-phac/",
+              "quote": "Volunteers choose their shifts via an online rota so you can choose shifts that work for you."
+            },
+            "commitment": {
+              "url": "https://passage.org.uk/volunteering/kitchen-support-volunteer-phac/",
+              "quote": "Once a week or fortnight. Shifts take place 7 days a week, 4.30pm – 6.30pm"
+            },
+            "specific_times": {
+              "url": "https://passage.org.uk/volunteering/kitchen-support-volunteer-phac/",
+              "quote": "Shifts take place 7 days a week, 4.30pm – 6.30pm"
+            },
+            "screening.min_age": {
+              "url": "https://passage.org.uk/volunteering/kitchen-support-volunteer-phac/",
+              "quote": "Applicants must be 18 years old or over"
+            },
+            "screening.references": {
+              "url": "https://passage.org.uk/volunteering/kitchen-support-volunteer-phac/",
+              "quote": "We will ask for personal references"
+            },
+            "who_can_apply": {
+              "url": "https://passage.org.uk/volunteering/kitchen-support-volunteer-phac/",
+              "quote": "Applicants must be 18 years old or over"
+            }
+          },
+          "changes_vs_current": []
+        },
+        {
+          "id": "the-passage-clothing-store-laundry",
+          "title": "Clothing Store and Laundry Volunteer",
+          "what_youd_do": "Help run the laundry and clothing store, working directly with people who come in for a shower, clean clothes and a wash.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Mon-Fri, 9am-12pm or 1pm-3.30pm; shifts booked on an online rota",
+          "activity": "shop_warehouse",
+          "location_type": "in_person",
+          "postcode_district": "SW1P",
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "unknown",
+            "references": true,
+            "interview": null,
+            "min_age": 18,
+            "induction": "Full induction and training; travel expenses reimbursed"
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://passage.org.uk/volunteering/clothing-store-laundry-service-volunteer/",
+          "url_specificity": "role",
+          "stated_places": [],
+          "match": "existing",
+          "evidence": {
+            "status": {
+              "url": "https://passage.org.uk/volunteering/clothing-store-laundry-service-volunteer/",
+              "quote": "We are seeking volunteers to support with the daily running of our laundry service and clothing store."
+            },
+            "commitment": {
+              "url": "https://passage.org.uk/volunteering/clothing-store-laundry-service-volunteer/",
+              "quote": "ideally on a weekly or fortnightly basis, but we can be flexible"
+            },
+            "specific_times": {
+              "url": "https://passage.org.uk/volunteering/clothing-store-laundry-service-volunteer/",
+              "quote": "Monday to Friday, 9.00am – 12.00pm or 1.00pm – 3.30pm"
+            },
+            "screening.min_age": {
+              "url": "https://passage.org.uk/volunteering/clothing-store-laundry-service-volunteer/",
+              "quote": "Applicants must be 18 years old or over"
+            },
+            "screening.references": {
+              "url": "https://passage.org.uk/volunteering/clothing-store-laundry-service-volunteer/",
+              "quote": "We will ask for personal references"
+            },
+            "who_can_apply": {
+              "url": "https://passage.org.uk/volunteering/clothing-store-laundry-service-volunteer/",
+              "quote": "Applicants must be 18 years old or over"
+            }
+          },
+          "changes_vs_current": []
+        },
+        {
+          "id": "the-passage-sports-activities",
+          "title": "Sports and Activities Volunteer",
+          "what_youd_do": "Encourage and accompany clients at sports, gym, walking and social sessions, and help set up equipment for activities.",
+          "commitment": "flexible",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": "Depends on the activity schedule and your availability",
+          "activity": "teaching",
+          "location_type": "in_person",
+          "postcode_district": null,
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "unknown",
+            "references": true,
+            "interview": null,
+            "min_age": 18,
+            "induction": "Full induction and training; travel expenses reimbursed"
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://passage.org.uk/volunteering/sports-activities-volunteer/",
+          "url_specificity": "role",
+          "stated_places": [
+            "Westminster"
+          ],
+          "match": "existing",
+          "evidence": {
+            "status": {
+              "url": "https://passage.org.uk/volunteering/sports-activities-volunteer/",
+              "quote": "As a Sports & Activities Volunteer, you will support clients to access and participate in sports"
+            },
+            "commitment": {
+              "url": "https://passage.org.uk/volunteering/sports-activities-volunteer/",
+              "quote": "dependent on activity schedules and volunteer availability"
+            },
+            "specific_times": {
+              "url": "https://passage.org.uk/volunteering/sports-activities-volunteer/",
+              "quote": "dependent on activity schedules and volunteer availability"
+            },
+            "screening.min_age": {
+              "url": "https://passage.org.uk/volunteering/sports-activities-volunteer/",
+              "quote": "Applicants must be 18 years old or over"
+            },
+            "screening.references": {
+              "url": "https://passage.org.uk/volunteering/sports-activities-volunteer/",
+              "quote": "We will ask for personal references"
+            },
+            "who_can_apply": {
+              "url": "https://passage.org.uk/volunteering/sports-activities-volunteer/",
+              "quote": "Applicants must be 18 years old or over"
+            },
+            "stated_places": {
+              "url": "https://passage.org.uk/volunteering/sports-activities-volunteer/",
+              "quote": "Community venues across Westminster"
+            }
+          },
+          "changes_vs_current": []
+        },
+        {
+          "id": "the-passage-reception-passage-house",
+          "title": "Reception Volunteer, Passage House",
+          "what_youd_do": "Staff the front door and phone at the Passage House hostel, greeting residents and visitors, transferring calls and taking messages.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "weekday_daytime",
+            "weekday_evening",
+            "weekend_daytime"
+          ],
+          "specific_times": "8am-1pm, 1pm-6pm or 6pm-10pm, Monday to Sunday",
+          "activity": "befriending",
+          "location_type": "in_person",
+          "postcode_district": "SW1V",
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "unknown",
+            "references": true,
+            "interview": null,
+            "min_age": 18,
+            "induction": "Full induction and training; travel expenses reimbursed"
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://passage.org.uk/volunteering/reception-volunteer-phac/",
+          "url_specificity": "role",
+          "stated_places": [],
+          "match": "existing",
+          "evidence": {
+            "status": {
+              "url": "https://passage.org.uk/volunteering/reception-volunteer-phac/",
+              "quote": "We are looking for volunteers who can commit to once a week or fortnight"
+            },
+            "commitment": {
+              "url": "https://passage.org.uk/volunteering/reception-volunteer-phac/",
+              "quote": "We are looking for volunteers who can commit to once a week or fortnight"
+            },
+            "specific_times": {
+              "url": "https://passage.org.uk/volunteering/reception-volunteer-phac/",
+              "quote": "Shifts are either 8am – 1pm, 1pm – 6pm or 6pm – 10pm, Monday – Sunday"
+            },
+            "screening.min_age": {
+              "url": "https://passage.org.uk/volunteering/reception-volunteer-phac/",
+              "quote": "Applicants must be 18 years old or over"
+            },
+            "screening.references": {
+              "url": "https://passage.org.uk/volunteering/reception-volunteer-phac/",
+              "quote": "We will ask for personal references"
+            },
+            "who_can_apply": {
+              "url": "https://passage.org.uk/volunteering/reception-volunteer-phac/",
+              "quote": "Applicants must be 18 years old or over"
+            }
+          },
+          "changes_vs_current": []
+        },
+        {
+          "id": "the-passage-barber-afro-textured",
+          "title": "Barber, Afro-Textured Hair Specialist",
+          "what_youd_do": "Give clients clipper and scissor cuts plus beard and eyebrow trims, specialising in afro hair; bring your own tools, chairs and capes are provided.",
+          "commitment": "monthly",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Once a fortnight or month; Mon-Fri, 9am-12pm or 1.30pm-3.30pm",
+          "activity": "teaching",
+          "location_type": "in_person",
+          "postcode_district": "SW1P",
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "unknown",
+            "references": true,
+            "interview": null,
+            "min_age": 18,
+            "induction": "Introduction to homelessness and boundaries; ongoing staff support; travel expenses reimbursed"
+          },
+          "skills": [
+            "barbering",
+            "afro-textured hair"
+          ],
+          "eligibility": [
+            "Must hold current public liability insurance and own cutting equipment"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://passage.org.uk/volunteering/barber-hairdresser-afro-textured-specialist-2/",
+          "url_specificity": "role",
+          "stated_places": [],
+          "match": "existing",
+          "evidence": {
+            "status": {
+              "url": "https://passage.org.uk/volunteering/barber-hairdresser-afro-textured-specialist-2/",
+              "quote": "We are seeking a skilled and compassionate volunteer barber who is confident cutting and styling Afro Hair."
+            },
+            "commitment": {
+              "url": "https://passage.org.uk/volunteering/barber-hairdresser-afro-textured-specialist-2/",
+              "quote": "Once a fortnight or once a month"
+            },
+            "specific_times": {
+              "url": "https://passage.org.uk/volunteering/barber-hairdresser-afro-textured-specialist-2/",
+              "quote": "Monday – Friday, 9.00am – 12.00pm or 1.30pm – 3.30pm"
+            },
+            "screening.min_age": {
+              "url": "https://passage.org.uk/volunteering/barber-hairdresser-afro-textured-specialist-2/",
+              "quote": "Applicants must be 18 years old or over"
+            },
+            "screening.references": {
+              "url": "https://passage.org.uk/volunteering/barber-hairdresser-afro-textured-specialist-2/",
+              "quote": "We will ask for personal references"
+            },
+            "who_can_apply": {
+              "url": "https://passage.org.uk/volunteering/barber-hairdresser-afro-textured-specialist-2/",
+              "quote": "Applicants must be 18 years old or over"
+            },
+            "eligibility": {
+              "url": "https://passage.org.uk/volunteering/barber-hairdresser-afro-textured-specialist-2/",
+              "quote": "Holds a current Public Liability Insurance policy"
+            }
+          },
+          "changes_vs_current": []
+        },
+        {
+          "id": "the-passage-womens-hairdresser",
+          "title": "Women's Hairdresser",
+          "what_youd_do": "Cut and style women's hair of all types. The role exists because women using the service asked for a hairdresser they felt comfortable with. Bring your own equipment; chairs and capes provided.",
+          "commitment": "monthly",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "1-2 sessions a month; Mon-Fri, 9am-12pm or 1.30pm-3.30pm",
+          "activity": "teaching",
+          "location_type": "in_person",
+          "postcode_district": "SW1P",
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "unknown",
+            "references": true,
+            "interview": null,
+            "min_age": 18,
+            "induction": "Introduction to homelessness and boundaries; ongoing staff support; travel expenses reimbursed"
+          },
+          "skills": [
+            "hairdressing"
+          ],
+          "eligibility": [
+            "Must hold current public liability insurance and own cutting equipment"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://passage.org.uk/volunteering/hairdresser-womens-hair/",
+          "url_specificity": "role",
+          "stated_places": [],
+          "match": "existing",
+          "evidence": {
+            "status": {
+              "url": "https://passage.org.uk/volunteering/hairdresser-womens-hair/",
+              "quote": "We are seeking a skilled and compassionate volunteer hairdresser who is confident cutting and styling women’s hair"
+            },
+            "commitment": {
+              "url": "https://passage.org.uk/volunteering/hairdresser-womens-hair/",
+              "quote": "1–2 sessions per month"
+            },
+            "specific_times": {
+              "url": "https://passage.org.uk/volunteering/hairdresser-womens-hair/",
+              "quote": "Monday – Friday, 9.00am – 12.00pm or 1.30pm – 3.30pm"
+            },
+            "screening.min_age": {
+              "url": "https://passage.org.uk/volunteering/hairdresser-womens-hair/",
+              "quote": "Applicants must be 18 years old or over"
+            },
+            "screening.references": {
+              "url": "https://passage.org.uk/volunteering/hairdresser-womens-hair/",
+              "quote": "We will ask for personal references"
+            },
+            "who_can_apply": {
+              "url": "https://passage.org.uk/volunteering/hairdresser-womens-hair/",
+              "quote": "Applicants must be 18 years old or over"
+            },
+            "eligibility": {
+              "url": "https://passage.org.uk/volunteering/hairdresser-womens-hair/",
+              "quote": "Holds a current Public Liability Insurance policy"
+            }
+          },
+          "changes_vs_current": []
+        },
+        {
+          "id": "the-passage-station-collector",
+          "title": "Station Collector",
+          "what_youd_do": "Take cash and contactless donations from passers-by on the concourse at Victoria or a London tube station, and hand out leaflets about the charity.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "weekday_daytime",
+            "weekday_evening"
+          ],
+          "specific_times": "Usually Tuesday or Thursday, 7am to 10pm; monthly collections",
+          "activity": "fundraising",
+          "location_type": "in_person",
+          "postcode_district": null,
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "unknown",
+            "references": true,
+            "interview": null,
+            "min_age": 18,
+            "induction": "Volunteer induction and in-role training; travel expenses reimbursed"
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://passage.org.uk/volunteering/station-collector-volunteer/",
+          "url_specificity": "role",
+          "stated_places": [],
+          "match": "existing",
+          "evidence": {
+            "status": {
+              "url": "https://passage.org.uk/volunteering/station-collector-volunteer/",
+              "quote": "Join our friendly team of Station Collectors to help increase donations from passers by."
+            },
+            "specific_times": {
+              "url": "https://passage.org.uk/volunteering/station-collector-volunteer/",
+              "quote": "collections are usually held on a Tuesday or Thursday between the hours of 7am and 10pm"
+            },
+            "screening.min_age": {
+              "url": "https://passage.org.uk/volunteering/station-collector-volunteer/",
+              "quote": "Applicants must be 18 years old or over"
+            },
+            "screening.references": {
+              "url": "https://passage.org.uk/volunteering/station-collector-volunteer/",
+              "quote": "We will ask for personal references"
+            },
+            "who_can_apply": {
+              "url": "https://passage.org.uk/volunteering/station-collector-volunteer/",
+              "quote": "Applicants must be 18 years old or over"
+            }
+          },
+          "changes_vs_current": []
+        }
+      ],
+      "retire": []
+    },
+    {
+      "org_id": "the-whitechapel-mission",
+      "read_status": "partial",
+      "pages_read": [
+        "https://whitechapel.org.uk/volunteering",
+        "https://whitechapel.org.uk/volunteering/booking",
+        "https://whitechapel.org.uk/volunteering/breakfast-challenge",
+        "https://whitechapel.org.uk/volunteering/clothing-challenge",
+        "https://whitechapel.org.uk/volunteering/advice-challenge",
+        "https://whitechapel.org.uk/volunteering/gift-sorting-challenge",
+        "https://diary.whitechapel.org.uk"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Teams only; page says \"We have no vacancies for Individual Volunteers\". Booking runs through diary.whitechapel.org.uk, which returned an empty shell, so real dates unseen. Booking page lists Breakfast, Clothing and Advice as current options. Gift sorting is not bookable online (phone only), so status stays unknown.",
+      "org_fields": {},
+      "roles": [
+        {
+          "id": "whitechapel-mission-breakfast-challenge",
+          "title": "Breakfast Challenge",
+          "what_youd_do": "Bring a group from your workplace to prepare and serve the morning meal alongside regular staff. Very early start.",
+          "commitment": "one_off",
+          "min_term_months": null,
+          "typical_shift_hours": 5.75,
+          "when": [
+            "weekday_daytime",
+            "weekend_daytime"
+          ],
+          "specific_times": "On site by 5:45am, finished around 11:30am",
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "postcode_district": "E1",
+          "who_can_apply": "team_only",
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "First-time groups visit the site beforehand. Not suitable in the third trimester of pregnancy."
+          },
+          "skills": [],
+          "eligibility": [
+            "Teams of 7 to 9 people only",
+            "Over 18, as the page words it"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://whitechapel.org.uk/volunteering/breakfast-challenge",
+          "url_specificity": "role",
+          "stated_places": [],
+          "match": "existing",
+          "evidence": {
+            "status": {
+              "url": "https://whitechapel.org.uk/volunteering/booking",
+              "quote": "A team challenge for 7 to 9 people, starting at 06:00."
+            },
+            "commitment": {
+              "url": "https://whitechapel.org.uk/volunteering/booking",
+              "quote": "You can use our online diary to book a date and event."
+            },
+            "specific_times": {
+              "url": "https://whitechapel.org.uk/volunteering/breakfast-challenge",
+              "quote": "we will request that your team are on-site by 5:45am latest"
+            },
+            "who_can_apply": {
+              "url": "https://whitechapel.org.uk/volunteering",
+              "quote": "Our volunteering programme is designed for teams rather than individuals."
+            },
+            "eligibility": {
+              "url": "https://whitechapel.org.uk/volunteering/breakfast-challenge",
+              "quote": "We ask that volunteers are over 18 and able to spend a long time on their feet."
+            }
+          },
+          "changes_vs_current": [
+            "eligibility age corrected: page now says over 18 (record said over 21)",
+            "specific_times: dropped \"any morning of the year\" (not on page); day centre is described as open each day 6am-11am"
+          ]
+        },
+        {
+          "id": "whitechapel-mission-clothing-challenge",
+          "title": "Clothing Challenge",
+          "what_youd_do": "Bring a group to work through sacks of donated clothing, sorting, measuring, tagging and hanging items ready to be given out.",
+          "commitment": "one_off",
+          "min_term_months": null,
+          "typical_shift_hours": 3.5,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": "On site by 8.45am, finished by 12.15pm",
+          "activity": "shop_warehouse",
+          "location_type": "in_person",
+          "postcode_district": "E1",
+          "who_can_apply": "team_only",
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "First-time groups visit the site beforehand. Not suitable in the third trimester of pregnancy."
+          },
+          "skills": [],
+          "eligibility": [
+            "Teams of 10 to 20 people only",
+            "Over 21, as the page words it"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://whitechapel.org.uk/volunteering/clothing-challenge",
+          "url_specificity": "role",
+          "stated_places": [],
+          "match": "existing",
+          "evidence": {
+            "status": {
+              "url": "https://whitechapel.org.uk/volunteering/clothing-challenge",
+              "quote": "We can accommodate 3 Clothing Challenges a week between September and February."
+            },
+            "commitment": {
+              "url": "https://whitechapel.org.uk/volunteering/booking",
+              "quote": "You can use our online diary to book a date and event."
+            },
+            "specific_times": {
+              "url": "https://whitechapel.org.uk/volunteering/clothing-challenge",
+              "quote": "We request that your team are on-site by 8:45am latest as this is a team building challenge"
+            },
+            "who_can_apply": {
+              "url": "https://whitechapel.org.uk/volunteering",
+              "quote": "Our volunteering programme is designed for teams rather than individuals."
+            },
+            "eligibility": {
+              "url": "https://whitechapel.org.uk/volunteering/clothing-challenge",
+              "quote": "We ask that volunteers are over 21 and able to spend a long time on their feet."
+            }
+          },
+          "changes_vs_current": []
+        },
+        {
+          "id": "whitechapel-mission-advice-challenge",
+          "title": "Advice Challenge",
+          "what_youd_do": "A team of one or two supports guests at the Advice Centre with benefits, housing and employment questions.",
+          "commitment": "one_off",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Advice Centre opens at 8am each weekday",
+          "activity": "advice",
+          "location_type": "in_person",
+          "postcode_district": "E1",
+          "who_can_apply": "team_only",
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "Book at least two weeks ahead so the checks can be done and the role explained."
+          },
+          "skills": [],
+          "eligibility": [
+            "Only volunteers the Mission already knows; partner-company staff come first"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://whitechapel.org.uk/volunteering/advice-challenge",
+          "url_specificity": "role",
+          "stated_places": [],
+          "match": "existing",
+          "evidence": {
+            "status": {
+              "url": "https://whitechapel.org.uk/volunteering/advice-challenge",
+              "quote": "We are always looking for volunteers to assist us as we support, encourage and assist homeless people"
+            },
+            "commitment": {
+              "url": "https://whitechapel.org.uk/volunteering/booking",
+              "quote": "You can use our online diary to book a date and event."
+            },
+            "specific_times": {
+              "url": "https://whitechapel.org.uk/volunteering/advice-challenge",
+              "quote": "Our Advice Centre opens at 8am each weekday"
+            },
+            "who_can_apply": {
+              "url": "https://whitechapel.org.uk/volunteering",
+              "quote": "Our volunteering programme is designed for teams rather than individuals."
+            },
+            "eligibility": {
+              "url": "https://whitechapel.org.uk/volunteering/advice-challenge",
+              "quote": "We take safeguarding very seriously here and cannot accept people we do not know for this volunteering opportunity."
+            }
+          },
+          "changes_vs_current": []
+        },
+        {
+          "id": "the-whitechapel-mission-harvest-gift-sorting",
+          "title": "Harvest Gift Sorting Challenge",
+          "what_youd_do": "Bring a team to open boxes of donated toiletries and tinned food, sort out unusable items, crate them by type and date-mark them ready to give out.",
+          "commitment": "one_off",
+          "min_term_months": null,
+          "typical_shift_hours": 3.5,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": "On site by 8.45am, finished by 12.15pm",
+          "activity": "shop_warehouse",
+          "location_type": "in_person",
+          "who_can_apply": "team_only",
+          "postcode_district": "E1",
+          "stated_places": [],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "First-time groups visit the site beforehand. Not suitable in the third trimester of pregnancy."
+          },
+          "skills": [],
+          "eligibility": [
+            "Teams of 6 to 10 people only",
+            "Over 18, as the page words it"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://whitechapel.org.uk/volunteering/gift-sorting-challenge",
+          "url_specificity": "role",
+          "match": "existing",
+          "evidence": {
+            "commitment": {
+              "url": "https://whitechapel.org.uk/volunteering/booking",
+              "quote": "You can use our online diary to book a date and event."
+            },
+            "specific_times": {
+              "url": "https://whitechapel.org.uk/volunteering/gift-sorting-challenge",
+              "quote": "We request that your team are on-site by 8:45am latest as this is a team building challenge"
+            },
+            "who_can_apply": {
+              "url": "https://whitechapel.org.uk/volunteering",
+              "quote": "Our volunteering programme is designed for teams rather than individuals."
+            },
+            "eligibility": {
+              "url": "https://whitechapel.org.uk/volunteering/gift-sorting-challenge",
+              "quote": "We require that volunteers are over 18 and able to spend a long time on their feet."
+            }
+          },
+          "changes_vs_current": []
+        }
+      ],
+      "retire": []
+    },
+    {
+      "org_id": "west-london-mission",
+      "read_status": "partial",
+      "pages_read": [
+        "https://strides.org.uk/work-for-us/",
+        "https://strides.org.uk/community-hubs/"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "volunteer_url (/work-for-us/) is now a staff-jobs page (benefits list, \"no current vacancies\") with no volunteering content. Community hubs page also mentions no volunteer roles. No better volunteering URL found, so none suggested. Existing role unsupported by live pages; not retired as no quote shows it is gone.",
+      "org_fields": {},
+      "roles": [
+        {
+          "id": "wlm-services-volunteer",
+          "title": "Volunteering in their Services",
+          "what_youd_do": "Support one of their services — The Haven day centre or St Luke's. Their page does not set out individual roles; you name the one you want on the application form after talking to the service.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "befriending",
+          "location_type": "in_person",
+          "postcode_district": null,
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "An informal discussion with the service first, then an application form"
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://strides.org.uk/work-for-us/",
+          "url_specificity": "org_volunteer_page",
+          "stated_places": [],
+          "match": "existing",
+          "evidence": {},
+          "changes_vs_current": [
+            "page no longer mentions volunteering at all: it is a paid-jobs page saying \"Unfortunately we don’t have any current vacancies\"; nothing supports the Haven/St Luke’s volunteering described. Status stays unknown, maintainer to decide whether to retire"
+          ]
+        }
+      ],
+      "retire": []
+    },
+    {
+      "org_id": "women-at-the-well",
+      "read_status": "ok",
+      "pages_read": [
+        "https://www.watw.org.uk/volunteer"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Single page for all three roles. It warns spots are limited and applicants may be waitlisted; application is a Word form download. Roles are described with an Apply Now button but no explicit vacancy statement, so status relies on the limited-spots wording.",
+      "org_fields": {},
+      "roles": [
+        {
+          "title": "Kitchen Volunteer",
+          "what_youd_do": "Prepare snacks and light meals for drop-in visitors while chatting and keeping the kitchen area orderly.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 3,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Monday through Thursday, 12:30pm to 3:30pm",
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": "WC1H",
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "Complete a certified online course in food hygiene and receive hands-on training."
+          },
+          "skills": [],
+          "eligibility": [
+            "Women only service"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.watw.org.uk/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "id": "watw-kitchen",
+          "stated_places": [],
+          "match": "existing",
+          "evidence": {
+            "status": {
+              "url": "https://www.watw.org.uk/volunteer",
+              "quote": "We often have only a limited number of volunteer spots available."
+            },
+            "commitment": {
+              "url": "https://www.watw.org.uk/volunteer",
+              "quote": "we ask that you pick a regular, weekly Drop-In day"
+            },
+            "specific_times": {
+              "url": "https://www.watw.org.uk/volunteer",
+              "quote": "open 12:30-15:30 Monday through Thursday"
+            },
+            "eligibility": {
+              "url": "https://www.watw.org.uk/volunteer",
+              "quote": "We are a women-only service and can only accept applications from women."
+            },
+            "who_can_apply": {
+              "url": "https://www.watw.org.uk/volunteer",
+              "quote": "APPLICATION OPEN TO WOMEN ONLY."
+            }
+          },
+          "changes_vs_current": []
+        },
+        {
+          "title": "Activities Volunteer",
+          "what_youd_do": "Facilitate creative workshops or support visitors by engaging in craft sessions and offering a friendly conversation.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 3,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Monday through Thursday, 12:30pm to 3:30pm",
+          "activity": "teaching",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": "WC1H",
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [
+            "Creative skills",
+            "People skills"
+          ],
+          "eligibility": [
+            "Women only service"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.watw.org.uk/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "id": "watw-activities",
+          "stated_places": [],
+          "match": "existing",
+          "evidence": {
+            "status": {
+              "url": "https://www.watw.org.uk/volunteer",
+              "quote": "We often have only a limited number of volunteer spots available."
+            },
+            "commitment": {
+              "url": "https://www.watw.org.uk/volunteer",
+              "quote": "we ask that you pick a regular, weekly Drop-In day"
+            },
+            "specific_times": {
+              "url": "https://www.watw.org.uk/volunteer",
+              "quote": "open 12:30-15:30 Monday through Thursday"
+            },
+            "eligibility": {
+              "url": "https://www.watw.org.uk/volunteer",
+              "quote": "We are a women-only service and can only accept applications from women."
+            },
+            "who_can_apply": {
+              "url": "https://www.watw.org.uk/volunteer",
+              "quote": "APPLICATION OPEN TO WOMEN ONLY."
+            }
+          },
+          "changes_vs_current": []
+        },
+        {
+          "title": "Reception Volunteer",
+          "what_youd_do": "Welcome visitors at the front desk, handle incoming telephone calls, and schedule appointments.",
+          "commitment": "weekly",
+          "min_term_months": null,
+          "typical_shift_hours": 3,
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Monday through Thursday, 12:30pm to 3:30pm",
+          "activity": "admin",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "postcode_district": "WC1H",
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "skills": [
+            "Communication",
+            "Organization"
+          ],
+          "eligibility": [
+            "Women only service"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://www.watw.org.uk/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "id": "watw-reception",
+          "stated_places": [],
+          "match": "existing",
+          "evidence": {
+            "status": {
+              "url": "https://www.watw.org.uk/volunteer",
+              "quote": "We often have only a limited number of volunteer spots available."
+            },
+            "commitment": {
+              "url": "https://www.watw.org.uk/volunteer",
+              "quote": "we ask that you pick a regular, weekly Drop-In day"
+            },
+            "specific_times": {
+              "url": "https://www.watw.org.uk/volunteer",
+              "quote": "open 12:30-15:30 Monday through Thursday"
+            },
+            "eligibility": {
+              "url": "https://www.watw.org.uk/volunteer",
+              "quote": "We are a women-only service and can only accept applications from women."
+            },
+            "who_can_apply": {
+              "url": "https://www.watw.org.uk/volunteer",
+              "quote": "APPLICATION OPEN TO WOMEN ONLY."
+            }
+          },
+          "changes_vs_current": []
+        }
+      ],
+      "retire": []
+    }
+  ]
+}

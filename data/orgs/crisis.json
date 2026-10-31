@@ -26,14 +26,14 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-24T22:05:54+00:00",
-      "last_success": "2026-10-24T22:05:54+00:00",
+      "last_attempt": "2026-10-31T21:55:53+00:00",
+      "last_success": "2026-10-31T21:55:53+00:00",
       "link_status": "ok",
       "content_hash": "fa64f2cab592b90cf25dbc11458249860a2e7ab9d6462081e0f04e0148f87f66",
       "consecutive_failures": 0,
       "etag": null,
       "last_modified": null,
-      "last_extraction": "2026-10-17T18:50:09+00:00"
+      "last_extraction": "2026-10-31T21:55:53+00:00"
     }
   },
   "opportunities": [
@@ -48,7 +48,7 @@
       "when": [
         "weekday_daytime"
       ],
-      "specific_times": "London: Mon/Wed shifts, 6+ months. Croydon: Tue or Thu 10am-4pm",
+      "specific_times": "London: 4 hours a week, 6+ months. Croydon: Thursdays, ideally 10am-4pm",
       "activity": "befriending",
       "location_type": "in_person",
       "postcode_district": null,
@@ -69,7 +69,7 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "extracted_at": "2026-10-31T21:55:53+00:00",
         "method": "platform",
         "reviewed_by_human": false,
         "confidence": 1.0,
@@ -84,7 +84,8 @@
           "commitment"
         ],
         "unsupported_fields": [
-          "mycrisisvolunteering.crisis.org.uk: facts read from the charity's volunteering platform"
+          "mycrisisvolunteering.crisis.org.uk: facts read from the charity's volunteering platform",
+          "closes 2026-11-11 (London), 2026-11-13 (Croydon)"
         ]
       },
       "stated_places": [
@@ -780,19 +781,18 @@
         "end_month": 1
       },
       "next_intake": null,
-      "status": "open",
+      "status": "unknown",
       "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/BhrD0niAaRZq92FT2CPVBg1S3eMRod",
       "url_specificity": "role",
       "org_id": "crisis",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-31T21:55:53+00:00",
         "method": "platform",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://www.crisis.org.uk/get-involved/volunteer/",
         "verified_fields": [
-          "status",
           "screening.dbs",
           "screening.interview",
           "screening.min_age",
@@ -800,7 +800,9 @@
           "commitment",
           "seasonal_window"
         ],
-        "unsupported_fields": []
+        "unsupported_fields": [
+          "status: no longer listed on the volunteering platform (31 Oct 2026)"
+        ]
       }
     },
     {
@@ -1677,7 +1679,7 @@
       "org_id": "crisis",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "extracted_at": "2026-10-31T21:55:53+00:00",
         "method": "platform",
         "reviewed_by_human": false,
         "confidence": 1.0,
@@ -1691,7 +1693,8 @@
           "commitment"
         ],
         "unsupported_fields": [
-          "mycrisisvolunteering.crisis.org.uk: facts read from the charity's volunteering platform"
+          "mycrisisvolunteering.crisis.org.uk: facts read from the charity's volunteering platform",
+          "closes 2026-11-20"
         ]
       }
     },
@@ -1724,19 +1727,18 @@
       "eligibility": [],
       "seasonal_window": null,
       "next_intake": null,
-      "status": "open",
+      "status": "unknown",
       "apply_url": "https://mycrisisvolunteering.crisis.org.uk/roles/qPUc7kGoWeYmNAhKk3qak7GhHcLSfJ",
       "url_specificity": "role",
       "org_id": "crisis",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "extracted_at": "2026-10-31T21:55:53+00:00",
         "method": "platform",
         "reviewed_by_human": false,
         "confidence": 1.0,
         "source_url": "https://mycrisisvolunteering.crisis.org.uk/roles/qPUc7kGoWeYmNAhKk3qak7GhHcLSfJ",
         "verified_fields": [
-          "status",
           "screening.dbs",
           "screening.references",
           "screening.interview",
@@ -1745,7 +1747,8 @@
           "commitment"
         ],
         "unsupported_fields": [
-          "mycrisisvolunteering.crisis.org.uk: facts read from the charity's volunteering platform"
+          "mycrisisvolunteering.crisis.org.uk: facts read from the charity's volunteering platform",
+          "status: no longer listed on the volunteering platform (31 Oct 2026)"
         ]
       }
     }

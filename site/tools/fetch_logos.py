@@ -41,6 +41,24 @@ def sniff(data):
     return None
 
 
+def size_svg(data):
+    """Give an SVG an explicit width/height from its viewBox. Without them some
+    browsers report a 0x0 image, which squashes the logo when drawn to a canvas
+    (the share image). The artwork itself is untouched."""
+    import re
+    text = data.decode("utf-8", errors="replace")
+    tag = re.search(r"<svg\b[^>]*>", text)
+    if not tag or (re.search(r'\swidth="[\d.]+', tag.group(0)) and re.search(r'\sheight="[\d.]+', tag.group(0))):
+        return data
+    box = re.search(r'viewBox="([^"]+)"', tag.group(0))
+    if not box:
+        return data
+    v = box.group(1).replace(",", " ").split()
+    new = re.sub(r'\s(width|height)="[^"]*"', "", tag.group(0)).replace(
+        "<svg", '<svg width="%g" height="%g"' % (round(float(v[2]), 2), round(float(v[3]), 2)), 1)
+    return text.replace(tag.group(0), new, 1).encode("utf-8")
+
+
 def fetch(url, referer=""):
     """Try a few times; the second and third attempts look like a browser, since
     some sites refuse unknown agents (HTTP 403) or are just slow."""
@@ -86,6 +104,8 @@ def main():
                 raise ValueError("response is not an image")
             for old in dest.glob(e["id"] + ".*"):
                 old.unlink()
+            if ext == "svg":
+                data = size_svg(data)
             (dest / f"{e['id']}.{ext}").write_bytes(data)
             ok.append((e["id"], ext, len(data)))
             print(f"ok    {e['id']:42} {ext:5} {len(data)//1024:>6} KB")

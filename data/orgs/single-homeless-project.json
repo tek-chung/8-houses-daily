@@ -19,8 +19,8 @@
     "lived_experience_roles": true,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-24T22:05:54+00:00",
-      "last_success": "2026-10-24T22:05:54+00:00",
+      "last_attempt": "2026-10-31T21:12:16+00:00",
+      "last_success": "2026-10-31T21:12:16+00:00",
       "link_status": "ok",
       "content_hash": "a56d3670f53d33cfa5459235b88eadcfc2cb7d4640ba5c2b9a37f7b2949233ca",
       "consecutive_failures": 0,
@@ -254,6 +254,66 @@
         "Islington",
         "Westminster"
       ]
+    },
+    {
+      "id": "single-homeless-project-christmas-day-hostel-volunteer",
+      "title": "Christmas Day Hostel Volunteer",
+      "what_youd_do": "Spend Christmas Day at an SHP hostel helping prepare the festive meal, joining in games and keeping residents company.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": "Christmas Day",
+      "activity": "cooking_serving",
+      "location_type": "in_person",
+      "who_can_apply": "unknown",
+      "postcode_district": null,
+      "stated_places": [
+        "Islington",
+        "Camden",
+        "Westminster",
+        "Wandsworth",
+        "Greenwich",
+        "Lewisham"
+      ],
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": {
+        "start_month": 12,
+        "end_month": 12
+      },
+      "next_intake": null,
+      "status": "unknown",
+      "apply_url": "https://www.shp.org.uk/get-involved/volunteer/",
+      "url_specificity": "org_volunteer_page",
+      "org_id": "single-homeless-project",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-31T21:12:16+00:00",
+        "method": "llm",
+        "reviewed_by_human": false,
+        "confidence": 0.67,
+        "source_url": "https://www.shp.org.uk/get-involved/volunteer/",
+        "verified_fields": [
+          "specific_times",
+          "seasonal_window"
+        ],
+        "unsupported_fields": [
+          "commitment",
+          "screening.dbs",
+          "screening.min_age",
+          "status"
+        ]
+      }
     }
   ]
 }

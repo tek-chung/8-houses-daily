@@ -19,8 +19,8 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-24T22:05:54+00:00",
-      "last_success": "2026-10-24T22:05:54+00:00",
+      "last_attempt": "2026-10-31T21:12:16+00:00",
+      "last_success": "2026-10-31T21:12:16+00:00",
       "link_status": "ok",
       "content_hash": null,
       "consecutive_failures": 0,
@@ -130,6 +130,59 @@
         ]
       },
       "stated_places": []
+    },
+    {
+      "id": "cstm-day-centre-volunteer",
+      "title": "Day Centre Volunteer",
+      "what_youd_do": "Help staff at the Adelaide Street day centre with its main services and with client activity groups, once the winter recruitment round opens.",
+      "commitment": "unknown",
+      "min_term_months": null,
+      "typical_shift_hours": null,
+      "when": [
+        "flexible"
+      ],
+      "specific_times": null,
+      "activity": "varies",
+      "location_type": "in_person",
+      "who_can_apply": "unknown",
+      "postcode_district": "WC2N",
+      "stated_places": [],
+      "screening": {
+        "dbs": "unknown",
+        "references": null,
+        "interview": null,
+        "min_age": null,
+        "induction": null
+      },
+      "skills": [],
+      "eligibility": [],
+      "seasonal_window": {
+        "start_month": 12,
+        "end_month": 2
+      },
+      "next_intake": null,
+      "status": "closed",
+      "apply_url": "https://www.connection-at-stmartins.org.uk/volunteer/",
+      "url_specificity": "org_volunteer_page",
+      "org_id": "the-connection-at-st-martins",
+      "coords": null,
+      "provenance": {
+        "extracted_at": "2026-10-31T21:12:16+00:00",
+        "method": "llm",
+        "reviewed_by_human": false,
+        "confidence": 0.67,
+        "source_url": "https://www.connection-at-stmartins.org.uk/volunteer/",
+        "verified_fields": [
+          "status",
+          "seasonal_window"
+        ],
+        "unsupported_fields": [
+          "specific_times",
+          "screening.dbs",
+          "screening.min_age",
+          "commitment"
+        ]
+      }
     }
   ]
 }

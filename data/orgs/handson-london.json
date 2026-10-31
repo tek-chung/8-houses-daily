@@ -18,8 +18,8 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-24T22:05:54+00:00",
-      "last_success": "2026-10-24T22:05:54+00:00",
+      "last_attempt": "2026-10-31T21:12:16+00:00",
+      "last_success": "2026-10-31T21:12:16+00:00",
       "link_status": "ok",
       "content_hash": "7a2349d59da8f679745b901c927da437159c3b40bb6f9edd47fcc437d08427c3",
       "consecutive_failures": 0,
@@ -33,7 +33,7 @@
       "id": "handson-london-wrap-up-london",
       "org_id": "handson-london",
       "title": "Wrap Up London Coat Collection",
-      "what_youd_do": "Give your time to the November winter-coat campaign, or set up and run an official coat collection point; contact the team to find out what help is needed.",
+      "what_youd_do": "Help with London's winter-coat drive by signing up for a launch-week station, weekend site or sorting-hub session, or by emailing the Wrap Up team.",
       "commitment": "unknown",
       "min_term_months": null,
       "typical_shift_hours": null,
@@ -56,7 +56,7 @@
       "eligibility": [],
       "seasonal_window": {
         "start_month": 11,
-        "end_month": 11
+        "end_month": 12
       },
       "next_intake": null,
       "status": "open",
@@ -64,11 +64,11 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "extracted_at": "2026-10-31T21:12:16+00:00",
         "method": "llm",
         "reviewed_by_human": false,
         "confidence": 1.0,
-        "source_url": "https://www.handsonlondon.org.uk/wrap-uplondon",
+        "source_url": "https://www.handsonlondon.org.uk/community-volunteering",
         "verified_fields": [
           "status",
           "specific_times",

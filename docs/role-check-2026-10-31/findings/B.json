@@ -1,0 +1,1146 @@
+{
+  "agent": "B",
+  "checked_at": "2026-10-31",
+  "orgs": [
+    {
+      "org_id": "shelter",
+      "read_status": "ok",
+      "pages_read": [
+        "https://england.shelter.org.uk/support_us/volunteer",
+        "https://app.betterimpact.com/PublicEnterprise/EnterpriseSearch?EnterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&SearchType=SuitabilityClassification&SearchId=3526",
+        "https://app.betterimpact.com/PublicEnterprise/EnterpriseSearch?EnterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&SearchType=ActivityClassification&SearchId=20733",
+        "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=7e531ffc-a10e-4d58-ad2c-489dff161be7",
+        "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=f0d5924e-d33a-4bdf-ab27-e37a377d121e",
+        "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=09564b8a-d5c7-4f2e-8ad5-795033944f9a",
+        "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=b1fed740-bf07-421c-b57c-aca4443997b4",
+        "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=70c0c194-e87d-4364-9baf-dfeae233a02b",
+        "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=f6b7ccd8-6884-4b2d-a0d2-f9f9ffd583e9",
+        "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=7660a8de-b43a-43d9-a478-c223b302e873"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Better Impact board read in full (London search: 3 community roles, 13 North London and 16 South London shop/supervisor/van listings). Shop roles collapsed; only Streatham read as sample. Hub Support: services search lists no London role, left unknown (cannot quote it gone). Roles via login-free application form only.",
+      "org_fields": {},
+      "roles": [
+        {
+          "match": "existing",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "postcode_district": null,
+          "stated_places": [],
+          "skills": [],
+          "eligibility": [
+            "People aged 14 or over, with a parent or carer's consent under 18",
+            "People based in England, Scotland or Wales"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "changes_vs_current": [],
+          "id": "shelter-shop-volunteer",
+          "title": "Community Shop Volunteer",
+          "what_youd_do": "Serve customers, sort donated stock, dress the shop window or help collect donations, in one of Shelter's community shops across London.",
+          "commitment": "flexible",
+          "when": [
+            "flexible"
+          ],
+          "specific_times": "From an hour a week upwards; many give a morning or afternoon",
+          "activity": "shop_warehouse",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "none",
+            "references": null,
+            "interview": null,
+            "min_age": 14,
+            "induction": "Training, induction and ongoing support from your Shop Manager; out-of-pocket expenses refunded."
+          },
+          "status": "open",
+          "apply_url": "https://app.betterimpact.com/PublicEnterprise/3649308b-8a14-4513-8a59-a4087e2a2ee8",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=7660a8de-b43a-43d9-a478-c223b302e873",
+              "quote": "After you’ve filled in an application, we will invite you for an informal chat to find the right role for you."
+            },
+            "screening.dbs": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=7660a8de-b43a-43d9-a478-c223b302e873",
+              "quote": "You will not undergo a criminal record check for this role"
+            },
+            "screening.min_age": {
+              "url": "https://england.shelter.org.uk/support_us/volunteer",
+              "quote": "Within our shops, we’re able to accept volunteers from 14 years old with consent from a parent or carer."
+            },
+            "commitment": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=7660a8de-b43a-43d9-a478-c223b302e873",
+              "quote": "It’s up to you! We have volunteers who support for one hour a week and others who volunteer more."
+            },
+            "specific_times": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=7660a8de-b43a-43d9-a478-c223b302e873",
+              "quote": "It’s up to you! We have volunteers who support for one hour a week and others who volunteer more."
+            },
+            "who_can_apply": {
+              "url": "https://england.shelter.org.uk/support_us/volunteer",
+              "quote": "Click ‘fill in an application’, enter your details and press ‘submit application’."
+            },
+            "eligibility": {
+              "url": "https://england.shelter.org.uk/support_us/volunteer",
+              "quote": "All our opportunities require volunteers to be based in England, Scotland or Wales."
+            }
+          }
+        },
+        {
+          "match": "existing",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "postcode_district": null,
+          "stated_places": [
+            "East Sheen",
+            "Streatham"
+          ],
+          "skills": [],
+          "eligibility": [
+            "People based in England, Scotland or Wales"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "changes_vs_current": [],
+          "id": "shelter-shop-supervisor",
+          "title": "Shop Volunteer Supervisor",
+          "what_youd_do": "Help run one of the shops — supporting the other volunteers, working the till systems, being the person people ask. No shop experience needed.",
+          "commitment": "flexible",
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "shop_warehouse",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "basic",
+            "references": null,
+            "interview": true,
+            "min_age": null,
+            "induction": "Learning, a full induction and an on-the-job induction before starting; out-of-pocket expenses paid."
+          },
+          "status": "open",
+          "apply_url": "https://app.betterimpact.com/PublicEnterprise/3649308b-8a14-4513-8a59-a4087e2a2ee8",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=70c0c194-e87d-4364-9baf-dfeae233a02b",
+              "quote": "Please complete an application form online."
+            },
+            "screening.dbs": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=70c0c194-e87d-4364-9baf-dfeae233a02b",
+              "quote": "we will require you to undertake a basic Criminal Record Check"
+            },
+            "screening.interview": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=70c0c194-e87d-4364-9baf-dfeae233a02b",
+              "quote": "invite successful candidates to attend a recruitment conversation"
+            },
+            "commitment": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=70c0c194-e87d-4364-9baf-dfeae233a02b",
+              "quote": "It’s up to you! We have volunteers who support for one hour a week and others who volunteer more."
+            },
+            "who_can_apply": {
+              "url": "https://england.shelter.org.uk/support_us/volunteer",
+              "quote": "Click ‘fill in an application’, enter your details and press ‘submit application’."
+            },
+            "eligibility": {
+              "url": "https://england.shelter.org.uk/support_us/volunteer",
+              "quote": "All our opportunities require volunteers to be based in England, Scotland or Wales."
+            },
+            "stated_places": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=70c0c194-e87d-4364-9baf-dfeae233a02b",
+              "quote": "Location: 337 Upper Richmond Road West East Sheen London SW14 8QR"
+            },
+            "stated_places_2": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=f6b7ccd8-6884-4b2d-a0d2-f9f9ffd583e9",
+              "quote": "Location: 242 Streatham High Road Streatham London SW16 1BB"
+            }
+          }
+        },
+        {
+          "match": "existing",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "postcode_district": null,
+          "stated_places": [],
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "changes_vs_current": [],
+          "id": "shelter-hub-support",
+          "title": "Hub Support",
+          "what_youd_do": "Work inside a local hub with their legal, housing rights or support services teams — admin or direct client support.",
+          "commitment": "unknown",
+          "when": [
+            "flexible"
+          ],
+          "specific_times": null,
+          "activity": "advice",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "status": "unknown",
+          "apply_url": "https://england.shelter.org.uk/support_us/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {}
+        },
+        {
+          "match": "existing",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "postcode_district": null,
+          "stated_places": [
+            "London"
+          ],
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "changes_vs_current": [],
+          "id": "shelter-winter-bucket-collection",
+          "title": "Winter Bucket Collection Volunteer",
+          "what_youd_do": "Hold collection buckets at community events and in public spaces across London to raise money for Shelter, picking the events that suit you.",
+          "commitment": "flexible",
+          "when": [
+            "flexible"
+          ],
+          "specific_times": "Winter; varied days, evenings and weekends, you choose",
+          "activity": "fundraising",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "Induction, access to learning and a volunteer handbook; reasonable expenses can be claimed."
+          },
+          "status": "open",
+          "apply_url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=09564b8a-d5c7-4f2e-8ad5-795033944f9a",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=09564b8a-d5c7-4f2e-8ad5-795033944f9a",
+              "quote": "You can apply for this role by clicking ‘fill in an application’."
+            },
+            "commitment": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=09564b8a-d5c7-4f2e-8ad5-795033944f9a",
+              "quote": "This is a highly flexible role."
+            },
+            "specific_times": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=09564b8a-d5c7-4f2e-8ad5-795033944f9a",
+              "quote": "You can choose the times and days that best suit your availability."
+            },
+            "who_can_apply": {
+              "url": "https://england.shelter.org.uk/support_us/volunteer",
+              "quote": "Click ‘fill in an application’, enter your details and press ‘submit application’."
+            },
+            "stated_places": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=09564b8a-d5c7-4f2e-8ad5-795033944f9a",
+              "quote": "Location: Various, London"
+            }
+          }
+        },
+        {
+          "match": "existing",
+          "min_term_months": null,
+          "typical_shift_hours": 6.5,
+          "postcode_district": "SE1",
+          "stated_places": [
+            "London"
+          ],
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": "2026-12-08",
+          "changes_vs_current": [
+            "apply_url now the event's own page (was the general volunteering page), url_specificity role; event is still ahead (8 Dec 2026) and listed with an apply route"
+          ],
+          "id": "shelter-walk-for-home-marshal-2026",
+          "title": "Marshalling and Cheering at Walk for Home (London, 2026)",
+          "what_youd_do": "Marshal and cheer on Shelter's fundraising walkers at an evening event at Leake Street Arches, keeping spirits high for them on the route.",
+          "commitment": "one_off",
+          "when": [
+            "weekday_evening"
+          ],
+          "specific_times": "Tuesday 8 December 2026, 4pm-10:30pm",
+          "activity": "fundraising",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": null
+          },
+          "status": "open",
+          "apply_url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=f0d5924e-d33a-4bdf-ab27-e37a377d121e",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=f0d5924e-d33a-4bdf-ab27-e37a377d121e",
+              "quote": "If you would like to volunteer at this event, click ‘fill in an application’."
+            },
+            "next_intake": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=f0d5924e-d33a-4bdf-ab27-e37a377d121e",
+              "quote": "Tuesday 8th December 2026"
+            },
+            "commitment": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=f0d5924e-d33a-4bdf-ab27-e37a377d121e",
+              "quote": "Tuesday 8th December 2026"
+            },
+            "specific_times": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=f0d5924e-d33a-4bdf-ab27-e37a377d121e",
+              "quote": "4pm - 10:30pm"
+            },
+            "who_can_apply": {
+              "url": "https://england.shelter.org.uk/support_us/volunteer",
+              "quote": "Click ‘fill in an application’, enter your details and press ‘submit application’."
+            },
+            "stated_places": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=f0d5924e-d33a-4bdf-ab27-e37a377d121e",
+              "quote": "26 Leake Street, Leake Street Arches, London, SE1 7NN"
+            }
+          }
+        },
+        {
+          "match": "existing",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "postcode_district": null,
+          "stated_places": [
+            "London"
+          ],
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "changes_vs_current": [],
+          "id": "shelter-lived-experience-coordination",
+          "title": "Lived Experience Coordination Volunteer",
+          "what_youd_do": "Help run lived experience groups: schedule meetings, handle room bookings and logistics, keep attendance records current and help write reports and newsletters.",
+          "commitment": "unknown",
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Mon-Fri 9am-5pm; about 7-14 hours a month, to be agreed",
+          "activity": "admin",
+          "location_type": "hybrid",
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "Induction, access to learning and a copy of the volunteer handbook; reasonable expenses can be claimed."
+          },
+          "status": "open",
+          "apply_url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=7e531ffc-a10e-4d58-ad2c-489dff161be7",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=7e531ffc-a10e-4d58-ad2c-489dff161be7",
+              "quote": "You can apply for this role by clicking ‘fill in an application’."
+            },
+            "specific_times": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=7e531ffc-a10e-4d58-ad2c-489dff161be7",
+              "quote": "Approximately 7 - 14 hours per month, flexible and to be agreed together"
+            },
+            "when": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=7e531ffc-a10e-4d58-ad2c-489dff161be7",
+              "quote": "within Monday to Friday, 9am to 5pm"
+            },
+            "who_can_apply": {
+              "url": "https://england.shelter.org.uk/support_us/volunteer",
+              "quote": "Click ‘fill in an application’, enter your details and press ‘submit application’."
+            },
+            "stated_places": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=7e531ffc-a10e-4d58-ad2c-489dff161be7",
+              "quote": "Location: Hub/community/home based location, London."
+            }
+          }
+        },
+        {
+          "match": "existing",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "postcode_district": null,
+          "stated_places": [
+            "South London"
+          ],
+          "skills": [],
+          "eligibility": [
+            "Must be able to lift heavy items of furniture"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "changes_vs_current": [],
+          "id": "shelter-van-drivers-mate",
+          "title": "Volunteer Van Driver's Mate",
+          "what_youd_do": "Ride with a Shelter van driver around south London, collecting donated stock and furniture and delivering it between shops and pick-ups.",
+          "commitment": "flexible",
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Any time Monday-Friday, 10am-6pm",
+          "activity": "shop_warehouse",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "basic",
+            "references": null,
+            "interview": null,
+            "min_age": null,
+            "induction": "Training, induction and ongoing support from your Shop Manager; out-of-pocket expenses refunded."
+          },
+          "status": "open",
+          "apply_url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=b1fed740-bf07-421c-b57c-aca4443997b4",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=b1fed740-bf07-421c-b57c-aca4443997b4",
+              "quote": "After you’ve filled in an application, we will invite you for an informal chat to find the right role for you."
+            },
+            "screening.dbs": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=b1fed740-bf07-421c-b57c-aca4443997b4",
+              "quote": "This role does require a basic criminal record check"
+            },
+            "commitment": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=b1fed740-bf07-421c-b57c-aca4443997b4",
+              "quote": "It’s up to you! We have volunteers who support for one hour a week and others who volunteer more."
+            },
+            "specific_times": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=b1fed740-bf07-421c-b57c-aca4443997b4",
+              "quote": "The Van Driver’s Mate role can be any time between Monday-Friday, 10am-6pm."
+            },
+            "who_can_apply": {
+              "url": "https://england.shelter.org.uk/support_us/volunteer",
+              "quote": "Click ‘fill in an application’, enter your details and press ‘submit application’."
+            },
+            "eligibility": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=b1fed740-bf07-421c-b57c-aca4443997b4",
+              "quote": "This role does require the ability to lift heavy items of furniture."
+            },
+            "stated_places": {
+              "url": "https://app.betterimpact.com/PublicEnterprise/EnterpriseGvi?enterpriseGuid=3649308b-8a14-4513-8a59-a4087e2a2ee8&gviGuid=b1fed740-bf07-421c-b57c-aca4443997b4",
+              "quote": "Location: South London"
+            }
+          }
+        }
+      ],
+      "retire": []
+    },
+    {
+      "org_id": "st-mungos",
+      "read_status": "ok",
+      "pages_read": [
+        "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+        "https://www.mungos.org/wp-json/wp/v2/volunteer_role",
+        "https://www.mungos.org/volunteer_role/roma-casework-volunteer/",
+        "https://www.mungos.org/volunteer_role/workshop-assistant-volunteer/",
+        "https://www.mungos.org/volunteer_role/digital-skills-volunteer/",
+        "https://www.mungos.org/volunteer_role/outreach-volunteer/",
+        "https://www.mungos.org/volunteer_role/first-response-volunteer/",
+        "https://www.mungos.org/volunteer_role/gardening-group-volunteer/",
+        "https://www.mungos.org/volunteer_role/cooking-group-volunteer/",
+        "https://www.mungos.org/volunteer_role/housing-first-peer-volunteer/",
+        "https://www.mungos.org/volunteer_role/creative-activities-volunteer/"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Most roles close 9 Nov 2026 (Housing First, Creative Activities close 25 Nov). Listing also has Hub Support (Bournemouth), Women's Group and Sewing Group, Enhanced First Response (all Bristol): not London, omitted. WordPress feed (first page, 10 items) matches listing. Interview flag rests on org-wide FAQ text.",
+      "org_fields": {},
+      "roles": [
+        {
+          "match": "existing",
+          "min_term_months": 3,
+          "typical_shift_hours": 6,
+          "postcode_district": null,
+          "stated_places": [
+            "London"
+          ],
+          "skills": [
+            "Romanian language",
+            "Roma language",
+            "Communication",
+            "Empathy"
+          ],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "changes_vs_current": [],
+          "id": "st-mungos-roma-casework-volunteer",
+          "title": "Roma Casework Volunteer",
+          "what_youd_do": "Interpret for clients, assist with completing referrals, and help coordinate casework activities to improve access to support services.",
+          "commitment": "long_term",
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Mon-Thu, 10am-4pm, 1 day per week",
+          "activity": "advice",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": true,
+            "interview": true,
+            "min_age": 18,
+            "induction": null
+          },
+          "status": "open",
+          "apply_url": "https://www.mungos.org/volunteer_role/roma-casework-volunteer/",
+          "url_specificity": "role",
+          "evidence": {
+            "screening.dbs": {
+              "url": "https://www.mungos.org/volunteer_role/roma-casework-volunteer/",
+              "quote": "A DBS check will be carried out for this role."
+            },
+            "screening.min_age": {
+              "url": "https://www.mungos.org/volunteer_role/roma-casework-volunteer/",
+              "quote": "You must be over 18 years old to volunteer at St Mungo's"
+            },
+            "screening.references": {
+              "url": "https://www.mungos.org/volunteer_role/roma-casework-volunteer/",
+              "quote": "Please provide us with the details of two people we may contact as referees, to comment on your suitability for volunteering."
+            },
+            "screening.interview": {
+              "url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+              "quote": "during your initial telephone interview, you will be asked to declare all spent and unspent convictions"
+            },
+            "who_can_apply": {
+              "url": "https://www.mungos.org/volunteer_role/roma-casework-volunteer/",
+              "quote": "You must be over 18 years old to volunteer at St Mungo's"
+            },
+            "status": {
+              "url": "https://www.mungos.org/volunteer_role/roma-casework-volunteer/",
+              "quote": "Please see all locations and the time commitments we are currently recruiting for in this role:"
+            },
+            "commitment": {
+              "url": "https://www.mungos.org/volunteer_role/roma-casework-volunteer/",
+              "quote": "This role requires a 3 month commitment."
+            },
+            "specific_times": {
+              "url": "https://www.mungos.org/volunteer_role/roma-casework-volunteer/",
+              "quote": "London- Mondays-Thursday, 10am-4pm, 1 day per week."
+            },
+            "stated_places": {
+              "url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+              "quote": "Location:London"
+            }
+          }
+        },
+        {
+          "match": "existing",
+          "min_term_months": 6,
+          "typical_shift_hours": 6,
+          "postcode_district": null,
+          "stated_places": [
+            "Hammersmith and Fulham",
+            "Hackney"
+          ],
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "changes_vs_current": [],
+          "id": "st-mungos-workshop-assistant-volunteer",
+          "title": "Construction Workshop Assistant Volunteer",
+          "what_youd_do": "Support clients in a hands-on building and plumbing workshop, helping keep the space safe and orderly so they can learn.",
+          "commitment": "long_term",
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Mon-Fri 9:30am-3:30pm, 2 days per week",
+          "activity": "practical",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": true,
+            "interview": true,
+            "min_age": 18,
+            "induction": null
+          },
+          "status": "open",
+          "apply_url": "https://www.mungos.org/volunteer_role/workshop-assistant-volunteer/",
+          "url_specificity": "role",
+          "evidence": {
+            "screening.dbs": {
+              "url": "https://www.mungos.org/volunteer_role/workshop-assistant-volunteer/",
+              "quote": "A DBS check will be carried out for this role as it is a client-facing role."
+            },
+            "screening.min_age": {
+              "url": "https://www.mungos.org/volunteer_role/workshop-assistant-volunteer/",
+              "quote": "You must be over 18 years old to volunteer at St Mungo's"
+            },
+            "screening.references": {
+              "url": "https://www.mungos.org/volunteer_role/workshop-assistant-volunteer/",
+              "quote": "Please provide us with the details of two people we may contact as referees, to comment on your suitability for volunteering."
+            },
+            "screening.interview": {
+              "url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+              "quote": "during your initial telephone interview, you will be asked to declare all spent and unspent convictions"
+            },
+            "who_can_apply": {
+              "url": "https://www.mungos.org/volunteer_role/workshop-assistant-volunteer/",
+              "quote": "You must be over 18 years old to volunteer at St Mungo's"
+            },
+            "status": {
+              "url": "https://www.mungos.org/volunteer_role/workshop-assistant-volunteer/",
+              "quote": "Please see all locations and the time commitments we are currently recruiting for in this role:"
+            },
+            "commitment": {
+              "url": "https://www.mungos.org/volunteer_role/workshop-assistant-volunteer/",
+              "quote": "This role requires a 6 month commitment."
+            },
+            "specific_times": {
+              "url": "https://www.mungos.org/volunteer_role/workshop-assistant-volunteer/",
+              "quote": "Hammersmith and Fulham or Hackney- Monday-Friday, 09:30am-3:30pm, 2 days per week."
+            },
+            "stated_places": {
+              "url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+              "quote": "Location:Hammersmith and Fulham, Hackney"
+            }
+          }
+        },
+        {
+          "match": "existing",
+          "min_term_months": 6,
+          "typical_shift_hours": 6,
+          "postcode_district": null,
+          "stated_places": [
+            "Islington"
+          ],
+          "skills": [
+            "Learning design",
+            "Creativity",
+            "IT skills"
+          ],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "changes_vs_current": [],
+          "id": "st-mungos-digital-skills-volunteer",
+          "title": "Digital Learning Volunteer",
+          "what_youd_do": "Design online learning materials and build digital training tools to give clients better access to education.",
+          "commitment": "long_term",
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Monday-Friday, 10am-4pm, minimum 1 day per week",
+          "activity": "teaching",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": true,
+            "interview": true,
+            "min_age": 18,
+            "induction": null
+          },
+          "status": "open",
+          "apply_url": "https://www.mungos.org/volunteer_role/digital-skills-volunteer/",
+          "url_specificity": "role",
+          "evidence": {
+            "screening.dbs": {
+              "url": "https://www.mungos.org/volunteer_role/digital-skills-volunteer/",
+              "quote": "A DBS check will be carried out for this role as it is a client-facing role."
+            },
+            "screening.min_age": {
+              "url": "https://www.mungos.org/volunteer_role/digital-skills-volunteer/",
+              "quote": "You must be over 18 years old to volunteer at St Mungo's"
+            },
+            "screening.references": {
+              "url": "https://www.mungos.org/volunteer_role/digital-skills-volunteer/",
+              "quote": "Please provide us with the details of two people we may contact as referees, to comment on your suitability for volunteering."
+            },
+            "screening.interview": {
+              "url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+              "quote": "during your initial telephone interview, you will be asked to declare all spent and unspent convictions"
+            },
+            "who_can_apply": {
+              "url": "https://www.mungos.org/volunteer_role/digital-skills-volunteer/",
+              "quote": "You must be over 18 years old to volunteer at St Mungo's"
+            },
+            "status": {
+              "url": "https://www.mungos.org/volunteer_role/digital-skills-volunteer/",
+              "quote": "Please see all locations and the time commitments we are currently recruiting for in this role:"
+            },
+            "commitment": {
+              "url": "https://www.mungos.org/volunteer_role/digital-skills-volunteer/",
+              "quote": "This role requires a 6 month commitment."
+            },
+            "specific_times": {
+              "url": "https://www.mungos.org/volunteer_role/digital-skills-volunteer/",
+              "quote": "Islington- Monday-Friday, 10am-4pm, minimum 1 day per week."
+            },
+            "stated_places": {
+              "url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+              "quote": "Location:Islington"
+            }
+          }
+        },
+        {
+          "match": "existing",
+          "min_term_months": 6,
+          "typical_shift_hours": null,
+          "postcode_district": null,
+          "stated_places": [
+            "Bournemouth",
+            "Reading"
+          ],
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "changes_vs_current": [
+            "stated_places now Bournemouth and Reading only (Brent and Ealing placements are gone), so every named place is outside London and the role should be hidden",
+            "eligibility: Ealing driving licence line removed (Ealing no longer listed)",
+            "specific_times updated to the Bournemouth and Reading slots"
+          ],
+          "id": "st-mungos-outreach-westminster",
+          "title": "Outreach Volunteer",
+          "what_youd_do": "Assist outreach workers on their shifts, adding capacity so the team can reach more people sleeping rough, including people referred through StreetLink.",
+          "commitment": "long_term",
+          "when": [
+            "weekday_daytime",
+            "weekday_evening"
+          ],
+          "specific_times": "Bournemouth: 1 shift a week; Reading: at least 1 shift a month",
+          "activity": "outreach",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": true,
+            "interview": true,
+            "min_age": 18,
+            "induction": null
+          },
+          "status": "open",
+          "apply_url": "https://www.mungos.org/volunteer_role/outreach-volunteer/",
+          "url_specificity": "role",
+          "evidence": {
+            "screening.dbs": {
+              "url": "https://www.mungos.org/volunteer_role/outreach-volunteer/",
+              "quote": "A DBS check will be carried out for this role."
+            },
+            "screening.min_age": {
+              "url": "https://www.mungos.org/volunteer_role/outreach-volunteer/",
+              "quote": "You must be over 18 years old to volunteer at St Mungo's"
+            },
+            "screening.references": {
+              "url": "https://www.mungos.org/volunteer_role/outreach-volunteer/",
+              "quote": "Please provide us with the details of two people we may contact as referees, to comment on your suitability for volunteering."
+            },
+            "screening.interview": {
+              "url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+              "quote": "during your initial telephone interview, you will be asked to declare all spent and unspent convictions"
+            },
+            "who_can_apply": {
+              "url": "https://www.mungos.org/volunteer_role/outreach-volunteer/",
+              "quote": "You must be over 18 years old to volunteer at St Mungo's"
+            },
+            "status": {
+              "url": "https://www.mungos.org/volunteer_role/outreach-volunteer/",
+              "quote": "Please see all locations and the time commitments we are currently recruiting for in this role:"
+            },
+            "commitment": {
+              "url": "https://www.mungos.org/volunteer_role/outreach-volunteer/",
+              "quote": "All of our roles require a 6 month commitment."
+            },
+            "specific_times": {
+              "url": "https://www.mungos.org/volunteer_role/outreach-volunteer/",
+              "quote": "Bournemouth – Monday to Sunday, 6am-9am or 9pm-12am, 1 shift per week"
+            },
+            "stated_places": {
+              "url": "https://www.mungos.org/volunteer_role/outreach-volunteer/",
+              "quote": "Reading- Wednesdays, 6am-10am, and/or Fridays, 10:30am-1:30pm, at least one shift per month."
+            }
+          }
+        },
+        {
+          "match": "existing",
+          "min_term_months": 6,
+          "typical_shift_hours": 4,
+          "postcode_district": null,
+          "stated_places": [
+            "Bournemouth",
+            "Reading",
+            "Oxford",
+            "Westminster"
+          ],
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "changes_vs_current": [],
+          "id": "st-mungos-first-response",
+          "title": "First Response Volunteer",
+          "what_youd_do": "Help track down people reported as sleeping rough so outreach workers can spend their time supporting them; not client-facing, so it suits newcomers to the sector.",
+          "commitment": "monthly",
+          "when": [
+            "weekday_evening",
+            "weekend_evening",
+            "weekend_daytime"
+          ],
+          "specific_times": "Westminster: Tue/Thu/Sun 8pm-12am, Sat 6-10am; 1 shift a month",
+          "activity": "outreach",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": true,
+            "interview": true,
+            "min_age": 18,
+            "induction": null
+          },
+          "status": "open",
+          "apply_url": "https://www.mungos.org/volunteer_role/first-response-volunteer/",
+          "url_specificity": "role",
+          "evidence": {
+            "screening.dbs": {
+              "url": "https://www.mungos.org/volunteer_role/first-response-volunteer/",
+              "quote": "A DBS check will be carried out for this role."
+            },
+            "screening.min_age": {
+              "url": "https://www.mungos.org/volunteer_role/first-response-volunteer/",
+              "quote": "You must be over 18 years old to volunteer at St Mungo's"
+            },
+            "screening.references": {
+              "url": "https://www.mungos.org/volunteer_role/first-response-volunteer/",
+              "quote": "Please provide us with the details of two people we may contact as referees, to comment on your suitability for volunteering."
+            },
+            "screening.interview": {
+              "url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+              "quote": "during your initial telephone interview, you will be asked to declare all spent and unspent convictions"
+            },
+            "who_can_apply": {
+              "url": "https://www.mungos.org/volunteer_role/first-response-volunteer/",
+              "quote": "You must be over 18 years old to volunteer at St Mungo's"
+            },
+            "status": {
+              "url": "https://www.mungos.org/volunteer_role/first-response-volunteer/",
+              "quote": "Please see all locations and the time commitments we are currently recruiting for in this role:"
+            },
+            "commitment": {
+              "url": "https://www.mungos.org/volunteer_role/first-response-volunteer/",
+              "quote": "Westminster-Tuesdays, Thursdays, Sundays 8pm-12am, Saturdays 6am-10am (1 shift per month)."
+            },
+            "specific_times": {
+              "url": "https://www.mungos.org/volunteer_role/first-response-volunteer/",
+              "quote": "Westminster-Tuesdays, Thursdays, Sundays 8pm-12am, Saturdays 6am-10am (1 shift per month)."
+            },
+            "stated_places": {
+              "url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+              "quote": "Location:Bournemouth, Reading, Oxford, Westminster"
+            }
+          }
+        },
+        {
+          "match": "existing",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "postcode_district": null,
+          "stated_places": [
+            "Brent",
+            "Camden",
+            "Haringey"
+          ],
+          "skills": [
+            "gardening"
+          ],
+          "eligibility": [
+            "Camden placement is women only"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "changes_vs_current": [],
+          "id": "st-mungos-gardening",
+          "title": "Gardening Group Volunteer",
+          "what_youd_do": "Lead gardening sessions with clients at a St Mungo's service, letting each person learn at their own speed, and tend the outdoor space there.",
+          "commitment": "weekly",
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Mon-Fri daytime; Brent 4 hours a week, Camden/Haringey flexible",
+          "activity": "practical",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": true,
+            "interview": true,
+            "min_age": 18,
+            "induction": null
+          },
+          "status": "open",
+          "apply_url": "https://www.mungos.org/volunteer_role/gardening-group-volunteer/",
+          "url_specificity": "role",
+          "evidence": {
+            "screening.dbs": {
+              "url": "https://www.mungos.org/volunteer_role/gardening-group-volunteer/",
+              "quote": "A DBS check will be carried out for this role as it is a client-facing role."
+            },
+            "screening.min_age": {
+              "url": "https://www.mungos.org/volunteer_role/gardening-group-volunteer/",
+              "quote": "You must be over 18 years old to volunteer at St Mungo's"
+            },
+            "screening.references": {
+              "url": "https://www.mungos.org/volunteer_role/gardening-group-volunteer/",
+              "quote": "Please provide us with the details of two people we may contact as referees, to comment on your suitability for volunteering."
+            },
+            "screening.interview": {
+              "url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+              "quote": "during your initial telephone interview, you will be asked to declare all spent and unspent convictions"
+            },
+            "who_can_apply": {
+              "url": "https://www.mungos.org/volunteer_role/gardening-group-volunteer/",
+              "quote": "You must be over 18 years old to volunteer at St Mungo's"
+            },
+            "status": {
+              "url": "https://www.mungos.org/volunteer_role/gardening-group-volunteer/",
+              "quote": "Please see all locations and the time commitments we are currently recruiting for in this role:"
+            },
+            "commitment": {
+              "url": "https://www.mungos.org/volunteer_role/gardening-group-volunteer/",
+              "quote": "Brent- Monday-Friday, between 8am-4pm, 4 hours a week (1-2 month commitment needed)"
+            },
+            "specific_times": {
+              "url": "https://www.mungos.org/volunteer_role/gardening-group-volunteer/",
+              "quote": "Haringey- Monday-Friday from 10-5pm, we are flexible with days and hours."
+            },
+            "eligibility": {
+              "url": "https://www.mungos.org/volunteer_role/gardening-group-volunteer/",
+              "quote": "For the Camden service, this is a female only service, so we are only accepting applications from females."
+            },
+            "stated_places": {
+              "url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+              "quote": "Location:Brent, Camden, Haringey"
+            }
+          }
+        },
+        {
+          "match": "existing",
+          "min_term_months": 6,
+          "typical_shift_hours": 2,
+          "postcode_district": null,
+          "stated_places": [
+            "Southwark"
+          ],
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "changes_vs_current": [],
+          "id": "st-mungos-cooking-group-volunteer",
+          "title": "Cooking Group Volunteer",
+          "what_youd_do": "Cook alongside clients, helping choose recipes and buy ingredients so people can socialise over a meal.",
+          "commitment": "weekly",
+          "when": [
+            "weekday_daytime",
+            "weekday_evening"
+          ],
+          "specific_times": "Mon-Fri between 12pm-7pm, 2 hours per week",
+          "activity": "cooking_serving",
+          "location_type": "in_person",
+          "who_can_apply": "individual",
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": true,
+            "interview": true,
+            "min_age": 18,
+            "induction": "Level 2 food hygiene certificate needed; arranged online by St Mungo's."
+          },
+          "status": "open",
+          "apply_url": "https://www.mungos.org/volunteer_role/cooking-group-volunteer/",
+          "url_specificity": "role",
+          "evidence": {
+            "screening.dbs": {
+              "url": "https://www.mungos.org/volunteer_role/cooking-group-volunteer/",
+              "quote": "A DBS check will be carried out for this role as it is a client-facing role."
+            },
+            "screening.min_age": {
+              "url": "https://www.mungos.org/volunteer_role/cooking-group-volunteer/",
+              "quote": "You must be over 18 years old to volunteer at St Mungo's"
+            },
+            "screening.references": {
+              "url": "https://www.mungos.org/volunteer_role/cooking-group-volunteer/",
+              "quote": "Please provide us with the details of two people we may contact as referees, to comment on your suitability for volunteering."
+            },
+            "screening.interview": {
+              "url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+              "quote": "during your initial telephone interview, you will be asked to declare all spent and unspent convictions"
+            },
+            "who_can_apply": {
+              "url": "https://www.mungos.org/volunteer_role/cooking-group-volunteer/",
+              "quote": "You must be over 18 years old to volunteer at St Mungo's"
+            },
+            "status": {
+              "url": "https://www.mungos.org/volunteer_role/cooking-group-volunteer/",
+              "quote": "Please see all locations and the time commitments we are currently recruiting for in this role:"
+            },
+            "commitment": {
+              "url": "https://www.mungos.org/volunteer_role/cooking-group-volunteer/",
+              "quote": "Southwark-Monday-Friday, between 12pm-7pm, 2 hours per week."
+            },
+            "specific_times": {
+              "url": "https://www.mungos.org/volunteer_role/cooking-group-volunteer/",
+              "quote": "Southwark-Monday-Friday, between 12pm-7pm, 2 hours per week."
+            },
+            "stated_places": {
+              "url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+              "quote": "Location:Southwark"
+            }
+          }
+        },
+        {
+          "match": "new",
+          "min_term_months": 6,
+          "typical_shift_hours": null,
+          "postcode_district": null,
+          "stated_places": [
+            "Haringey"
+          ],
+          "skills": [],
+          "eligibility": [
+            "Only open to people with lived experience of homelessness or the issues around it"
+          ],
+          "seasonal_window": null,
+          "next_intake": null,
+          "changes_vs_current": [],
+          "id": "st-mungos-housing-first-peer-volunteer",
+          "title": "Housing First Peer Volunteer",
+          "what_youd_do": "Work beside Housing First staff in Haringey, using your own experience of homelessness to build trust with tenants and help them keep their homes.",
+          "commitment": "long_term",
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Mon-Fri 9am-5pm, up to 2 days per week",
+          "activity": "mentoring",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": true,
+            "interview": null,
+            "min_age": 18,
+            "induction": null
+          },
+          "status": "open",
+          "apply_url": "https://www.mungos.org/volunteer_role/housing-first-peer-volunteer/",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {
+              "url": "https://www.mungos.org/volunteer_role/housing-first-peer-volunteer/",
+              "quote": "Please see all locations and the time commitments we are currently recruiting for in this role:"
+            },
+            "commitment": {
+              "url": "https://www.mungos.org/volunteer_role/housing-first-peer-volunteer/",
+              "quote": "All of our roles require a minimum 6 month commitment."
+            },
+            "specific_times": {
+              "url": "https://www.mungos.org/volunteer_role/housing-first-peer-volunteer/",
+              "quote": "Haringey– Monday-Friday, between 9am-5pm, up to 2 days per week."
+            },
+            "screening.dbs": {
+              "url": "https://www.mungos.org/volunteer_role/housing-first-peer-volunteer/",
+              "quote": "A DBS check will be carried out for this role as it is a client-facing role."
+            },
+            "screening.min_age": {
+              "url": "https://www.mungos.org/volunteer_role/housing-first-peer-volunteer/",
+              "quote": "You must be over 18 years old to volunteer at St Mungo's"
+            },
+            "screening.references": {
+              "url": "https://www.mungos.org/volunteer_role/housing-first-peer-volunteer/",
+              "quote": "Please provide us with the details of two people we may contact as referees, to comment on your suitability for volunteering."
+            },
+            "eligibility": {
+              "url": "https://www.mungos.org/volunteer_role/housing-first-peer-volunteer/",
+              "quote": "This opportunity is only open to people who have lived experience of homelessness or the issues surrounding it."
+            },
+            "stated_places": {
+              "url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+              "quote": "Location:Haringey"
+            }
+          }
+        },
+        {
+          "match": "new",
+          "min_term_months": 6,
+          "typical_shift_hours": null,
+          "postcode_district": null,
+          "stated_places": [
+            "Westminster"
+          ],
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "changes_vs_current": [],
+          "id": "st-mungos-creative-activities-volunteer",
+          "title": "Creative Activities Volunteer",
+          "what_youd_do": "Run arts and creative sessions with clients at a Westminster service, helping people express themselves and grow in confidence.",
+          "commitment": "weekly",
+          "when": [
+            "weekday_daytime"
+          ],
+          "specific_times": "Mon-Fri 9am-5pm, 1-2 hours per week (afternoon preferred)",
+          "activity": "teaching",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": true,
+            "interview": null,
+            "min_age": 18,
+            "induction": null
+          },
+          "status": "open",
+          "apply_url": "https://www.mungos.org/volunteer_role/creative-activities-volunteer/",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {
+              "url": "https://www.mungos.org/volunteer_role/creative-activities-volunteer/",
+              "quote": "Please see all locations and the time commitments we are currently recruiting for in this role:"
+            },
+            "commitment": {
+              "url": "https://www.mungos.org/volunteer_role/creative-activities-volunteer/",
+              "quote": "Westminster- Monday- Friday, between 9am-5pm, 1-2 hour pers week (preferably afternoon)."
+            },
+            "specific_times": {
+              "url": "https://www.mungos.org/volunteer_role/creative-activities-volunteer/",
+              "quote": "Westminster- Monday- Friday, between 9am-5pm, 1-2 hour pers week (preferably afternoon)."
+            },
+            "screening.dbs": {
+              "url": "https://www.mungos.org/volunteer_role/creative-activities-volunteer/",
+              "quote": "A DBS check will be carried out for this role."
+            },
+            "screening.min_age": {
+              "url": "https://www.mungos.org/volunteer_role/creative-activities-volunteer/",
+              "quote": "You must be over 18 years old to volunteer at St Mungo's"
+            },
+            "screening.references": {
+              "url": "https://www.mungos.org/volunteer_role/creative-activities-volunteer/",
+              "quote": "Please provide us with the details of two people we may contact as referees, to comment on your suitability for volunteering."
+            },
+            "stated_places": {
+              "url": "https://www.mungos.org/get-involved/volunteer/current-volunteering-opportunities/",
+              "quote": "Location:Westminster"
+            }
+          }
+        }
+      ],
+      "retire": []
+    }
+  ]
+}

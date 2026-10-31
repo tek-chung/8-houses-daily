@@ -47,7 +47,7 @@
       "activity": "shop_warehouse",
       "location_type": "in_person",
       "postcode_district": "SE18",
-      "who_can_apply": "individual",
+      "who_can_apply": "unknown",
       "screening": {
         "dbs": "basic",
         "references": true,
@@ -66,11 +66,11 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-31T21:12:16+00:00",
         "method": "llm",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
-        "source_url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
+        "source_url": "https://emmaus.org.uk/greenwich/volunteer-role/retail-volunteer/",
         "verified_fields": [
           "status",
           "screening.dbs",
@@ -103,7 +103,7 @@
       "activity": "outreach",
       "location_type": "in_person",
       "postcode_district": "SE18",
-      "who_can_apply": "individual",
+      "who_can_apply": "unknown",
       "screening": {
         "dbs": "basic",
         "references": true,
@@ -122,11 +122,11 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-31T21:12:16+00:00",
         "method": "llm",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
-        "source_url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
+        "source_url": "https://emmaus.org.uk/greenwich/volunteer-role/outreach-volunteer/",
         "verified_fields": [
           "status",
           "screening.dbs",
@@ -213,7 +213,7 @@
       "activity": "practical",
       "location_type": "in_person",
       "postcode_district": null,
-      "who_can_apply": "individual",
+      "who_can_apply": "unknown",
       "screening": {
         "dbs": "basic",
         "references": true,
@@ -235,11 +235,11 @@
       "url_specificity": "role",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-17T22:08:14+00:00",
+        "extracted_at": "2026-10-31T21:12:16+00:00",
         "method": "llm",
-        "reviewed_by_human": true,
+        "reviewed_by_human": false,
         "confidence": 1.0,
-        "source_url": "https://emmaus.org.uk/greenwich/support-us/volunteer-roles/",
+        "source_url": "https://emmaus.org.uk/greenwich/volunteer-role/van-crew-volunteer/",
         "verified_fields": [
           "status",
           "screening.dbs",

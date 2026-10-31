@@ -22,8 +22,8 @@
     "lived_experience_roles": false,
     "robots_allowed": true,
     "check": {
-      "last_attempt": "2026-10-24T22:05:54+00:00",
-      "last_success": "2026-10-24T22:05:54+00:00",
+      "last_attempt": "2026-10-31T21:12:16+00:00",
+      "last_success": "2026-10-31T21:12:16+00:00",
       "link_status": "ok",
       "content_hash": "4e9ef762c5aaacfa038b3999a1939a7a0cfbb24f5663d640dc4e1b6618634269",
       "consecutive_failures": 0,
@@ -297,7 +297,7 @@
       "org_id": "shelter",
       "coords": null,
       "provenance": {
-        "extracted_at": "2026-10-24T22:05:54+00:00",
+        "extracted_at": "2026-10-31T21:12:16+00:00",
         "method": "platform",
         "reviewed_by_human": false,
         "confidence": 1.0,

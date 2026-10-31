@@ -1,4 +1,4 @@
-<svg viewBox="0 0 600 336" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+<svg width="600" height="336" viewBox="0 0 600 336" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
   <path fill="none" d="M0 0h600v336H0z"/>
   <path fill="none" d="M0 0h600v336H0z"/>
   <path d="M599.928 20.996C599.928 9.404 590.511 0 578.913 0H21.015C9.418 0 0 9.404 0 20.996V314.92c0 11.584 9.418 20.988 21.015 20.988h557.898c11.601 0 21.015-9.404 21.015-20.992V20.996Z" fill="#fff"/>

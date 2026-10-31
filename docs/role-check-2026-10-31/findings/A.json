@@ -1,0 +1,294 @@
+{
+  "agent": "A",
+  "checked_at": "2026-10-31",
+  "orgs": [
+    {
+      "org_id": "crisis",
+      "read_status": "partial",
+      "pages_read": [
+        "https://www.crisis.org.uk/get-involved/volunteer/",
+        "https://mycrisisvolunteering.crisis.org.uk/roles/mld4IypOUVzFh7qSs3IBZ3CDiTz7r6"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Rosterfy feed (mycrisisvolunteering.crisis.org.uk/api/v2/headcount/roleoffer) could NOT be read: the fetch tool refused the filtered URL as too long and the plain URL was denied by the permission classifier. The one role page fetched is a client-rendered shell (no content). Existing Crisis data left untouched. Volunteer page says Christmas 2026 applications are open.",
+      "org_fields": {},
+      "roles": [],
+      "retire": []
+    },
+    {
+      "org_id": "centrepoint",
+      "read_status": "ok",
+      "pages_read": [
+        "https://centrepoint.goassemble.com/api/opportunities/",
+        "https://centrepoint.org.uk/support-us/volunteer",
+        "https://centrepoint.goassemble.com/opportunities/125242-gardening-volunteer-hammersmith-and-fulham-2026-10-02",
+        "https://centrepoint.goassemble.com/opportunities/125244-gardening-volunteer-westminister-2026-10-02"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Assemble feed now lists ONE opportunity: Mini Bus Driver (Bradford), not London, so omitted. Neither Gardening role is in the feed any more, though both role pages still render with no closed notice, so status is unknown (not retired). Helpline is not in the feed.",
+      "org_fields": {},
+      "roles": [
+        {
+          "match": "existing",
+          "id": "centrepoint-gardening-volunteer-hammersmith-and-fulham",
+          "title": "Gardening Volunteer (Hammersmith and Fulham)",
+          "what_youd_do": "Weed, dig, prune and plant to look after a garden at a Centrepoint service, including starting a new vegetable patch.",
+          "commitment": "long_term",
+          "min_term_months": 6,
+          "typical_shift_hours": null,
+          "when": ["flexible"],
+          "specific_times": null,
+          "activity": "practical",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "stated_places": ["Hammersmith and Fulham"],
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": true,
+            "interview": true,
+            "min_age": null,
+            "induction": "Structured induction and training"
+          },
+          "skills": ["Be reliable and have a positive outlook"],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://centrepoint.goassemble.com/opportunities/125242-gardening-volunteer-hammersmith-and-fulham-2026-10-02",
+          "url_specificity": "role",
+          "evidence": {
+            "commitment": {"url": "https://centrepoint.org.uk/support-us/volunteer", "quote": "We ask you for a minimum of six months commitment."},
+            "screening.dbs": {"url": "https://centrepoint.org.uk/support-us/volunteer", "quote": "DBS clearance and reference checks"},
+            "screening.references": {"url": "https://centrepoint.org.uk/support-us/volunteer", "quote": "DBS clearance and reference checks"},
+            "screening.interview": {"url": "https://centrepoint.org.uk/support-us/volunteer", "quote": "Attend interview or selection evening"},
+            "stated_places": {"url": "https://centrepoint.goassemble.com/opportunities/125242-gardening-volunteer-hammersmith-and-fulham-2026-10-02", "quote": "Gardening Volunteer (Hammersmith and Fulham)"}
+          },
+          "changes_vs_current": [
+            "status open -> unknown: role absent from the Assemble feed, page gives no vacancy statement either way",
+            "who_can_apply individual -> unknown: no page statement",
+            "min_age 18 -> null: role page does not state an age",
+            "postcode_district W12 -> null: page gives no address"
+          ]
+        },
+        {
+          "match": "existing",
+          "id": "centrepoint-gardening-volunteer-westminster",
+          "title": "Gardening Volunteer (Westminster)",
+          "what_youd_do": "Weed, dig, prune and plant to look after the garden spaces at a Centrepoint service in Westminster, with times set around your availability.",
+          "commitment": "long_term",
+          "min_term_months": 6,
+          "typical_shift_hours": null,
+          "when": ["flexible"],
+          "specific_times": "Flexible to your availability; Mondays or Fridays preferred",
+          "activity": "practical",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "stated_places": [],
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": true,
+            "interview": true,
+            "min_age": null,
+            "induction": "Structured induction and training"
+          },
+          "skills": ["Be reliable and have a positive outlook"],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "unknown",
+          "apply_url": "https://centrepoint.goassemble.com/opportunities/125244-gardening-volunteer-westminister-2026-10-02",
+          "url_specificity": "role",
+          "evidence": {
+            "commitment": {"url": "https://centrepoint.org.uk/support-us/volunteer", "quote": "We ask you for a minimum of six months commitment."},
+            "when": {"url": "https://centrepoint.goassemble.com/opportunities/125244-gardening-volunteer-westminister-2026-10-02", "quote": "This role is flexible based on the volunteers availability"},
+            "specific_times": {"url": "https://centrepoint.goassemble.com/opportunities/125244-gardening-volunteer-westminister-2026-10-02", "quote": "Mondays or Fridays would be preferred if possible."},
+            "screening.dbs": {"url": "https://centrepoint.org.uk/support-us/volunteer", "quote": "DBS clearance and reference checks"},
+            "screening.references": {"url": "https://centrepoint.org.uk/support-us/volunteer", "quote": "DBS clearance and reference checks"},
+            "screening.interview": {"url": "https://centrepoint.org.uk/support-us/volunteer", "quote": "Attend interview or selection evening"}
+          },
+          "changes_vs_current": [
+            "status open -> unknown: role absent from the Assemble feed, page gives no vacancy statement either way",
+            "who_can_apply individual -> unknown: no page statement",
+            "min_age 18 -> null: role page does not state an age",
+            "stated_places Westminster -> []: page spells the place 'Westminister', so 'Westminster' is not verbatim on the page"
+          ]
+        },
+        {
+          "match": "existing",
+          "id": "centrepoint-helpline",
+          "title": "Helpline Volunteer",
+          "what_youd_do": "Help with Centrepoint's helpline for young people facing homelessness; the page lists helpline support as a volunteer role but gives no further detail.",
+          "commitment": "long_term",
+          "min_term_months": 6,
+          "typical_shift_hours": null,
+          "when": ["flexible"],
+          "specific_times": null,
+          "activity": "advice",
+          "location_type": "hybrid",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "stated_places": [],
+          "screening": {
+            "dbs": "required_unspecified",
+            "references": true,
+            "interview": true,
+            "min_age": null,
+            "induction": "Investing in Volunteers accredited since 2024. A discussion meeting about the role before you start."
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "closed",
+          "apply_url": "https://centrepoint.org.uk/support-us/volunteer",
+          "url_specificity": "org_volunteer_page",
+          "evidence": {
+            "status": {"url": "https://centrepoint.goassemble.com/api/opportunities/", "quote": "\"meta\":{\"pagination\":{\"total\":1,\"count\":1"},
+            "commitment": {"url": "https://centrepoint.org.uk/support-us/volunteer", "quote": "We ask you for a minimum of six months commitment."},
+            "screening.dbs": {"url": "https://centrepoint.org.uk/support-us/volunteer", "quote": "DBS clearance and reference checks"},
+            "screening.references": {"url": "https://centrepoint.org.uk/support-us/volunteer", "quote": "DBS clearance and reference checks"},
+            "screening.interview": {"url": "https://centrepoint.org.uk/support-us/volunteer", "quote": "Attend interview or selection evening"}
+          },
+          "changes_vs_current": [
+            "who_can_apply individual -> unknown: no page statement"
+          ]
+        }
+      ],
+      "retire": []
+    },
+    {
+      "org_id": "thames-reach",
+      "read_status": "ok",
+      "pages_read": [
+        "https://thames-reach.goassemble.com/api/opportunities/",
+        "https://thamesreach.org.uk/support-us/volunteer/"
+      ],
+      "volunteer_url_suggestion": null,
+      "org_notes": "Assemble feed lists exactly three Published opportunities, all London and all already held. The Fundraising Events Volunteer events were 9 and 10 October, so it stays closed. Role pages were not fetched separately: the feed carries their full fields.",
+      "org_fields": {},
+      "roles": [
+        {
+          "match": "existing",
+          "id": "thames-reach-hounslow-reach-volunteer",
+          "title": "Volunteer - Hounslow Reach",
+          "what_youd_do": "Make welfare phone calls to people in Hounslow, look up local support services for them and join colleagues on home or community visits, writing up contact notes.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": ["flexible"],
+          "specific_times": null,
+          "activity": "advice",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": "TW3",
+          "stated_places": ["Hounslow"],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": 18,
+            "induction": null
+          },
+          "skills": ["Listening and empathy", "Respect for confidentiality"],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://thames-reach.goassemble.com/opportunities/122191-volunteer-hounslow-reach-2026-08-19",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {"url": "https://thames-reach.goassemble.com/api/opportunities/", "quote": "\"advert_end_date\":\"2027-02-19\",\"status\":\"Published\",\"minimum_age\":0,\"max_applications\":40,\"total_places\":8"},
+            "screening.min_age": {"url": "https://thames-reach.goassemble.com/api/opportunities/", "quote": "\"status\":\"active\",\"editable\":true,\"recruitable\":true,\"minimum_age\":18"},
+            "stated_places": {"url": "https://thames-reach.goassemble.com/api/opportunities/", "quote": "in the Borough of Hounslow"},
+            "postcode_district": {"url": "https://thames-reach.goassemble.com/api/opportunities/", "quote": "Hounslow\",\"county\":\"\",\"postcode\":\"TW3 1NH\""}
+          },
+          "changes_vs_current": [
+            "who_can_apply individual -> unknown: no page statement"
+          ]
+        },
+        {
+          "match": "existing",
+          "id": "thames-reach-data-it-support-lambeth",
+          "title": "Data and IT Support Volunteer (Lambeth Outreach)",
+          "what_youd_do": "Update and tidy the staff Team Handbook on SharePoint, check spreadsheets and data tools, and occasionally shadow an early morning outreach shift.",
+          "commitment": "unknown",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": ["flexible"],
+          "specific_times": null,
+          "activity": "admin",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": "SW9",
+          "stated_places": ["Lambeth Outreach"],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": 18,
+            "induction": null
+          },
+          "skills": ["Confidence using Excel", "Attention to detail"],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "open",
+          "apply_url": "https://thames-reach.goassemble.com/opportunities/122219-data-and-it-support-volunteer-lambeth-outreach-2026-08-19",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {"url": "https://thames-reach.goassemble.com/api/opportunities/", "quote": "\"advert_end_date\":\"2027-02-19\",\"status\":\"Published\",\"minimum_age\":0,\"max_applications\":4,\"total_places\":1"},
+            "screening.min_age": {"url": "https://thames-reach.goassemble.com/api/opportunities/", "quote": "\"status\":\"active\",\"editable\":false,\"recruitable\":true,\"minimum_age\":18"},
+            "stated_places": {"url": "https://thames-reach.goassemble.com/api/opportunities/", "quote": "Data and IT Support Volunteer (Lambeth Outreach)"},
+            "postcode_district": {"url": "https://thames-reach.goassemble.com/api/opportunities/", "quote": "\"county\":\"Greater London\",\"postcode\":\"SW9 9JF\""}
+          },
+          "changes_vs_current": [
+            "who_can_apply individual -> unknown: no page statement"
+          ]
+        },
+        {
+          "match": "existing",
+          "id": "thames-reach-fundraising-events-volunteer",
+          "title": "Fundraising Events Volunteer",
+          "what_youd_do": "Help at Thames Reach awareness and fundraising stands around World Homelessness Day, taking bucket collections in Camberwell and King's Cross.",
+          "commitment": "one_off",
+          "min_term_months": null,
+          "typical_shift_hours": null,
+          "when": ["weekday_daytime", "weekend_daytime"],
+          "specific_times": "Fri 9 October (Camberwell) and Sat 10 October (King's Cross)",
+          "activity": "fundraising",
+          "location_type": "in_person",
+          "who_can_apply": "unknown",
+          "postcode_district": null,
+          "stated_places": ["Camberwell", "King's Cross"],
+          "screening": {
+            "dbs": "unknown",
+            "references": null,
+            "interview": null,
+            "min_age": 18,
+            "induction": null
+          },
+          "skills": [],
+          "eligibility": [],
+          "seasonal_window": null,
+          "next_intake": null,
+          "status": "closed",
+          "apply_url": "https://thames-reach.goassemble.com/opportunities/124961-fundraising-events-volunteer-2026-09-28",
+          "url_specificity": "role",
+          "evidence": {
+            "status": {"url": "https://thames-reach.goassemble.com/api/opportunities/", "quote": "Friday 9 October in Camberwell, Morrisons"},
+            "specific_times": {"url": "https://thames-reach.goassemble.com/api/opportunities/", "quote": "Friday 9 October in Camberwell, Morrisons"},
+            "commitment": {"url": "https://thames-reach.goassemble.com/api/opportunities/", "quote": "two awareness and fundraising events taking place around World Homelessness Day"},
+            "screening.min_age": {"url": "https://thames-reach.goassemble.com/api/opportunities/", "quote": "\"status\":\"active\",\"editable\":false,\"recruitable\":true,\"minimum_age\":18"},
+            "stated_places": {"url": "https://thames-reach.goassemble.com/api/opportunities/", "quote": "Friday 9 October in Camberwell, Morrisons"}
+          },
+          "changes_vs_current": [
+            "who_can_apply individual -> unknown: no page statement"
+          ]
+        }
+      ],
+      "retire": []
+    }
+  ]
+}
